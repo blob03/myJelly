@@ -1,0 +1,187 @@
+<form style="margin:0 auto;">
+    <div class="verticalSection">
+        <h2 class="sectionTitle">
+            ${Subtitles}
+        </h2>
+
+        <div class="selectContainer">
+            <select is="emby-select" id="selectSubtitleLanguage" label="${LabelPreferredSubtitleLanguage}"></select>
+        </div>
+
+        <div class="selectContainer">
+            <select is="emby-select" id="selectSubtitlePlaybackMode" label="${LabelSubtitlePlaybackMode}">
+                <option value="Default">${Default}</option>
+                <option value="Smart">${Smart}</option>
+                <option value="OnlyForced">${OnlyForcedSubtitles}</option>
+                <option value="Always">${AlwaysPlaySubtitles}</option>
+                <option value="None">${None}</option>
+            </select>
+            <div class="fieldDescription subtitlesDefaultHelp subtitlesHelp hide">${DefaultSubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesSmartHelp subtitlesHelp hide">${SmartSubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesAlwaysHelp subtitlesHelp hide">${AlwaysPlaySubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesOnlyForcedHelp subtitlesHelp hide">${OnlyForcedSubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesNoneHelp subtitlesHelp hide">${NoSubtitlesHelp}</div>
+        </div>
+
+        <div class="selectContainer fldBurnIn hide">
+            <select is="emby-select" id="selectSubtitleBurnIn" label="${LabelBurnSubtitles}">
+                <option value="">${Auto}</option>
+                <option value="onlyimageformats">${OnlyImageFormats}</option>
+                <option value="allcomplexformats">${AllComplexFormats}</option>
+                <option value="all">${All}</option>
+            </select>
+            <div class="fieldDescription">${BurnSubtitlesHelp}</div>
+        </div>
+    </div>
+
+    <div class="verticalSection subtitleAppearanceSection hide">
+        <h2 class="sectionTitle">
+            ${HeaderSubtitleAppearance}
+        </h2>
+
+        <div class="subtitleappearance-fullpreview subtitleappearance-fullpreview-hide">
+            <div class="subtitleappearance-fullpreview-window">
+                <div class="subtitleappearance-fullpreview-text">
+                    ${HeaderSubtitleAppearance}
+                    <br>
+                    ${TheseSettingsAffectSubtitlesOnThisDevice}
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 2em 0 2em;">
+            <div class="fieldDescription">${SubtitleAppearanceSettingsDisclaimer}</div>
+            <div class="fieldDescription">${SubtitleAppearanceSettingsAlsoPassedToCastDevices}</div>
+        </div>
+
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+		
+			<div class="selectContainer" style="width: 50%;height: auto;">
+				<select is="emby-select" id="selectFont" label="${LabelFont}">
+					<option value="">${Default}</option>
+					<option value="AText">Albert Text</option>
+					<option value="Chewy">Chewy</option>
+					<option value="Impact">Impact Label &copy; 2011 Tension Type</option>
+					<option value="JACobbler">Janda Apple Cobbler &copy; 2012 Kimberly Geswein</option>
+					<option value="JECasual">Janda Everyday Casual &copy; 2011 Kimberly Geswein</option>
+					<option value="JRosalie">Janda Rosalie &copy; 2011 Kimberly Geswein</option>
+					<option value="Monserga">Monserga &copy; 2016 defharo.com</option>
+					<option value="OogieBoogie">OogieBoogie</option>
+					<option value="Orange">Orange Juice &copy; 2013 Brittney Murphy</option>
+					<option value="smallcaps">${SmallCaps}</option>
+					<option value="Ubuntu-C">Ubuntu-C &copy; 2010,2011 Canonical Ltd</option>
+					<option value="Ubuntu-L">Ubuntu-L &copy; 2010,2011 Canonical Ltd</option>
+					<option value="Ubuntu-M">Ubuntu-M &copy; 2010,2011 Canonical Ltd</option>
+					<option value="Ubuntu-R">Ubuntu-R &copy; 2010,2011 Canonical Ltd</option>
+					<option value="VTypewriter">Veteran Typewriter &copy; 2013 Koczman Bálint</option>
+					<option value="YouAreLoved">You Are Loved &copy; 2007 Kimberly Geswein</option>
+				</select>
+			</div>
+			
+			<div class="sliderContainer-settings" style="width: 25%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderTextSize" label="${LabelTextSize}" type="range" min="1" max="16" step="1"/>
+				</div>
+				<div class="fieldDescription" style="float:right"></div>
+			</div>
+			
+			<div class="checkboxContainer" style="width: 20%;height: auto;">
+				<label>
+					<input is="emby-checkbox" id="chkTextStyle" type="checkbox" class="chkTextStyle" />
+					<span style='font-style: italic'>${Italic}</span>
+				</label>
+			</div>
+		
+		</div>
+
+		<div class="selectContainer" style='display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: space-between;'>
+		
+			<label for='inputTextColor'>${LabelTextColor}</label>
+			<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+				
+				<div id='fcolor' style='width: 2.5em;height: 1.5em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;'></div>				
+				<div style='width:93% !important;height: auto;'>
+					<select is="emby-select" id="inputTextColor"
+						onchange='document.getElementById("fcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
+					</select>
+				</div>
+				
+			</div>
+			
+        </div>			
+		
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+		
+			<div class="selectContainer" style="width: 70%;height: auto;">
+			
+				<label for='inputTextStroke'>${LabelTextStrokeColor}</label>
+				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+				
+					<div id='strcolor' style='width: 2.5em;height: 1.5em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;'></div>
+					<div style='width: 90%;height: auto;'>
+						<select is="emby-select" id="inputTextStroke"  
+							onchange='document.getElementById("strcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
+						</select>
+					</div>
+					
+				</div>
+				
+			</div>
+
+			<div class="sliderContainer-settings" style="width: 25%;height: auto;">
+			
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderStrokeSize" label="${LabelStrokeSize}" type="range" min="1" max="6" step="1"/>
+				</div>
+				<div class="fieldDescription" style="float:right"></div>
+				
+			</div>
+		
+		</div>
+
+		
+		<div class="selectContainer" style='display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: space-between;'>
+		
+			<label for='inputTextBackground'>${LabelTextBackgroundColor}</label>
+			<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+			
+				<div id='bgcolor' style='width: 2.5em;height: 1.5em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;'></div>
+				<div style='width:93% !important;height: auto;'>
+					<select is="emby-select" id="inputTextBackground"  
+						onchange='document.getElementById("bgcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
+					</select>
+				</div>
+				
+			</div>
+			
+        </div>
+		
+        <div class="selectContainer">
+            <select is="emby-select" id="selectDropShadow" label="${LabelDropShadow}">
+                <option value="none">${None}</option>
+                <option value="raised">${Raised}</option>
+                <option value="depressed">${Depressed}</option>
+                <option value="uniform">${Uniform}</option>
+                <option value="">${DropShadow}</option>
+            </select>
+        </div>
+
+        <div class="sliderContainer-settings">
+            <div class="sliderContainer">
+                <input is="emby-slider" id="sliderVerticalPosition" label="${LabelSubtitleVerticalPosition}" type="range" min="-16" max="16" />
+            </div>
+            <div class="fieldDescription">${SubtitleVerticalPositionHelp}</div>
+        </div>
+
+        <div class="checkboxContainer">
+            <label>
+                <input is="emby-checkbox" id="chkPreview" type="checkbox" class="chkPreview" />
+                <span>${Preview}</span>
+            </label>
+        </div>
+    </div>
+
+    <button is="emby-button" type="submit" class="raised button-submit block btnSave hide">
+        <span>${Save}</span>
+    </button>
+</form>

@@ -1,0 +1,1321 @@
+.headerUserImage,
+.navMenuOption,
+.pageTitle {
+    vertical-align: middle;
+}
+
+.detailButton,
+.itemLinks,
+.listPaging,
+.sectionTabs,
+.viewSettings {
+    text-align: center;
+}
+
+.headerSelectedPlayer,
+.itemMiscInfo,
+.navMenuOptionText {
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.libraryPage {
+    padding-top: 7em !important;
+}
+
+.itemDetailPage {
+    padding-top: 0 !important;
+}
+
+.layout-tv body::-webkit-scrollbar {
+    display: none;
+}
+
+.layout-tv .itemDetailPage {
+    padding-top: 4.2em !important;
+}
+
+.standalonePage {
+    padding-top: 4.5em !important;
+}
+
+.wizardPage {
+    padding-top: 7em !important;
+}
+
+.libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 7.5em !important;
+}
+
+.absolutePageTabContent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    margin: 0 !important;
+    top: 6.9em !important;
+    -webkit-transition: -webkit-transform 0.2s ease-out;
+    -o-transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out;
+}
+
+.pageTabContent:not(.is-active) {
+    display: none !important;
+}
+
+.headerUserImage {
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-border-radius: 100em;
+    border-radius: 100em;
+    display: inline-block;
+}
+
+.headerUserButtonRound div {
+    -webkit-border-radius: 100em;
+    border-radius: 100em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.headerButton {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+.hideMainDrawer .mainDrawerButton {
+    display: none;
+}
+
+.headerLeft {
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    overflow: visible;
+    justify-content: flex-start;
+}
+
+.headerRight {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+.noHeaderRight .headerRight,
+.noHomeButtonHeader .headerHomeButton {
+    display: none !important;
+}
+
+.pageTitle {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    margin: 0 0 0 0.5em;
+    height: 1.7em;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;
+}
+
+.pageTitleWithDefaultLogo {
+    margin-top: 0;
+}
+
+.headerLeft,
+.skinHeader {
+    display: -webkit-box;
+    display: -webkit-flex;
+}
+
+.detailButton,
+.skinHeader {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+
+.pageTitleWithLogo {
+    background-position: left center;
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 13.2em;
+}
+
+.skinHeader {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    top: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    contain: layout style paint;
+    transition: background ease-in-out 0.5s;
+}
+
+.layout-tv .skinHeader {
+    /* In TV layout, it makes more sense to keep the top bar at the top of the page
+       Having it follow the view only makes us lose vertical space, while not being focusable */
+    position: relative;
+}
+
+.layout-tv .skinHeader.locked {
+    /* users of TVs offering a pointing device can use a floating bar exactly like pc users */
+    position: fixed;
+}
+
+.hiddenViewMenuBar .skinHeader {
+    display: none;
+}
+
+.headerTop {
+    padding: 0.54em 0;
+}
+
+.sectionTabs {
+    width: 100%;
+}
+
+.layout-tv .sectionTabs {
+    width: 55%;
+}
+
+.selectedMediaFolder {
+    background-color: #f2f2f2 !important;
+}
+
+.navMenuOption {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.9em 0 0.9em 2.4em !important;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.navMenuOptionIcon {
+    margin-right: 1.2em;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+.navMenuOptionText {
+    white-space: nowrap;
+    margin-top: 0.25em;
+}
+
+.sidebarHeader {
+    padding-left: 1.2em;
+    margin: 1em 0 0.5em;
+}
+
+.dashboardDocument .skinBody {
+    -webkit-transition: left ease-in-out 0.3s, padding ease-in-out 0.3s;
+    -o-transition: left ease-in-out 0.3s, padding ease-in-out 0.3s;
+    transition: left ease-in-out 0.3s, padding ease-in-out 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.centerMessage {
+    margin: auto;
+    width: 30%;
+    padding: 5em 0;
+    text-align: center;
+}
+
+.mainDrawer-scrollContainer {
+    padding-bottom: 10vh;
+}
+
+.primaryImageWrapper {
+    display: none;
+}
+
+.primaryImageWrapper > img {
+    display: block;
+    margin: 0 auto;
+    max-width: 80vw;
+    max-height: 50vh;
+}
+
+.primaryImageWrapper > img.aspect-square {
+    max-height: 45vh;
+}
+
+.layout-mobile .primaryImageWrapper {
+    display: block;
+    flex: 1 0 auto;
+}
+
+@media all and (min-width: 40em) {
+    .dashboardDocument .adminDrawerLogo,
+    .dashboardDocument .mainDrawerButton {
+        display: none !important;
+    }
+
+    .dashboardDocument .mainDrawer {
+        z-index: inherit !important;
+        left: 0 !important;
+        top: 0 !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        width: 20.205em !important;
+        font-size: 94%;
+    }
+
+    .dashboardDocument .mainDrawer-scrollContainer {
+        margin-top: 5em !important;
+    }
+
+    .dashboardDocument .skinBody {
+        left: 20em;
+    }
+}
+
+@media all and (max-width: 100em) {
+    .withSectionTabs .headerTop {
+        padding-bottom: 0.55em;
+    }
+
+    .sectionTabs {
+        font-size: 83.5%;
+    }
+
+    .layout-tv .sectionTabs {
+        width: 100%;
+    }
+}
+
+@media all and (min-width: 100em) {
+    .headerTop {
+        padding: 0.8em 0.8em;
+    }
+
+    .headerTabs {
+        -webkit-align-self: center;
+        align-self: center;
+        width: auto;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        position: relative;
+        margin-top: -4.3em;
+    }
+
+    .libraryPage:not(.noSecondaryNavPage) {
+        padding-top: 4.6em !important;
+    }
+
+    .pageWithAbsoluteTabs:not(.noSecondaryNavPage) {
+        padding-top: 6.7em !important;
+    }
+
+    .absolutePageTabContent {
+        top: 5.7em !important;
+    }
+
+    .dashboardDocument .mainDrawer-scrollContainer {
+        margin-top: 4.65em !important;
+    }
+}
+
+.headerSelectedPlayer {
+    max-width: 10em;
+    white-space: nowrap;
+}
+
+@media all and (max-width: 37.5em) {
+    .headerSelectedPlayer {
+        display: none;
+    }
+}
+
+.hidingAnimatedTab {
+    visibility: hidden;
+}
+
+.headerArrowImage {
+    height: 20px;
+    margin-left: 0.5em;
+}
+
+.backdropContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.libraryPage .header {
+    padding-bottom: 0;
+}
+
+.flexPageTabContent.is-active {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+}
+
+.viewSettings {
+    margin: 0 0 0.25em;
+}
+
+.listTopPaging,
+.viewControls {
+    display: inline-block;
+}
+
+.viewControls + .listTopPaging {
+    margin-left: 0.5em !important;
+}
+
+.criticReview {
+    margin: 1.5em 0;
+    background: #222;
+    padding: 0.8em 0.8em 0.8em 3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    position: relative;
+}
+
+.detailLogo,
+.itemBackdrop {
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.criticReview:first-child {
+    margin-top: 0.5em;
+}
+
+.criticReview img {
+    width: 2.4em;
+}
+
+.criticRatingScore {
+    margin-bottom: 0.5em;
+}
+
+.itemTag {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.itemOverview {
+    white-space: pre-wrap;
+}
+
+.itemLinks {
+    padding: 0;
+}
+
+.itemLinks p {
+    margin: 0.5em 0;
+}
+
+.reviewLink,
+.reviewerName {
+    margin-top: 0.5em;
+}
+
+.reviewerName {
+    color: #ccc;
+}
+
+.reviewDate {
+    margin-left: 1em;
+}
+
+.reviewScore {
+    position: absolute;
+    left: 0.8em;
+}
+
+.itemBackdrop {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 40vh;
+    position: relative;
+    animation: backdrop-fadein 800ms ease-in normal both;
+}
+
+.layout-mobile .itemBackdrop {
+    display: none;
+}
+
+.layout-desktop .itemBackdrop::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    display: block;
+}
+
+.layout-tv .itemBackdrop,
+.layout-desktop .noBackdrop .itemBackdrop {
+    display: none;
+}
+
+.detailPageContent {
+    display: flex;
+    flex-direction: column;
+    padding-left: 32.45vw;
+    padding-right: 2%;
+}
+
+.layout-mobile .detailPageContent {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.layout-desktop .detailPageContent .emby-scroller,
+.layout-tv .detailPageContent .emby-scroller {
+    margin-left: 0;
+}
+
+.layout-desktop .noBackdrop .detailPageContent,
+.layout-tv .noBackdrop .detailPageContent {
+    margin-top: 2.5em;
+}
+
+.layout-desktop .noBackdrop .detailImageContainer img,
+.layout-tv .noBackdrop .detailImageContainer img {
+    margin-top: 0;
+}
+
+.detailSectionContent a {
+    color: inherit;
+}
+
+.personBackdrop {
+    background-size: contain;
+}
+
+.itemBackdropProgressBar {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.desktopMiscInfoContainer {
+    position: absolute;
+    bottom: 0.75em;
+}
+
+.parentName {
+    display: block;
+    margin: 0 0 0;
+}
+
+.layout-mobile .parentName {
+    margin: 0.6em 0 0;
+}
+
+.musicParentName {
+    margin: 0.15em 0 0.2em;
+}
+
+.layout-mobile .musicParentName {
+    margin: -0.25em 0 0.25em;
+}
+
+.layout-mobile .itemExternalLinks {
+    display: none;
+}
+
+.mainDetailButtons {
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.detailButton,
+.mainDetailButtons {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+}
+
+.itemName {
+    margin: 0.5em 0;
+    font-weight: 600;
+}
+
+.itemName.originalTitle {
+    margin: 0.2em 0 0.2em;
+}
+
+.itemName.parentNameLast {
+    margin: 0 0 0;
+}
+
+.layout-mobile .itemName.parentNameLast {
+    margin: 0.4em 0 0.4em;
+}
+
+.layout-mobile h1.itemName,
+.layout-mobile h1.parentName {
+    font-size: 1.6em;
+}
+
+.itemName.parentNameLast.withOriginalTitle {
+    margin: 0 0 0;
+}
+
+.layout-mobile .itemName.parentNameLast.withOriginalTitle {
+    margin: 0.6em 0 0;
+}
+
+.layout-mobile .itemName.originalTitle {
+    margin: 0.5em 0 0.5em;
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.itemMiscInfo {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.layout-mobile .parentName,
+.layout-mobile .itemName,
+.layout-mobile .itemMiscInfo,
+.layout-mobile .mainDetailButtons {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.layout-mobile .mainDetailButtons {
+    flex: 2 0 70%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.subtitle {
+    margin: 0.15em 0 0.2em;
+}
+
+.layout-mobile .subtitle {
+    margin: 0.2em 0 0.2em;
+}
+
+.detailPagePrimaryContainer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    z-index: 2;
+}
+
+.layout-tv .detailPagePrimaryContainer {
+    display: block;
+}
+
+.layout-mobile .detailPagePrimaryContainer {
+    flex-wrap: wrap;
+    position: relative;
+    padding: 4.5rem 3.3% 0.5rem;
+}
+
+.layout-tv #itemDetailPage:not(.noBackdrop) .detailPagePrimaryContainer,
+.layout-desktop #itemDetailPage:not(.noBackdrop) .detailPagePrimaryContainer {
+    position: relative;
+    top: 0;
+    padding-left: 32.45vw;
+}
+
+.layout-desktop .detailRibbon {
+    margin-top: -7.2em;
+    height: 7.2em;
+}
+
+.layout-tv .detailRibbon {
+    margin-top: 0;
+    height: inherit;
+}
+
+.layout-desktop .noBackdrop .detailRibbon,
+.layout-tv .noBackdrop .detailRibbon {
+    margin-top: 0;
+}
+
+.infoWrapper {
+    flex: 1 0 0;
+}
+
+.layout-mobile .infoWrapper {
+    flex: 2 0 70%;
+}
+
+.infoText {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.layout-mobile .infoText {
+    white-space: normal;
+}
+
+.detailPageSecondaryContainer {
+    margin: 1.25em 0;
+}
+
+.layout-mobile .detailPageSecondaryContainer {
+    margin: 1em 0;
+}
+
+.layout-mobile .detailImageContainer {
+    display: none;
+}
+
+.detailImageContainer .card {
+    position: absolute;
+    top: 50%;
+    float: left;
+    width: 25vw;
+    z-index: 3;
+    transform: translateY(-50%);
+}
+
+.detailImageContainer .card.backdropCard {
+    top: 35%;
+}
+
+.detailImageContainer .card.squareCard {
+    top: 40%;
+}
+
+.layout-desktop .noBackdrop .detailImageContainer,
+.layout-tv .noBackdrop .detailImageContainer {
+    margin-top: 0;
+}
+
+.detailPagePrimaryContent {
+    position: relative;
+}
+
+.detailLogo {
+    width: 25vw;
+    height: 16vh;
+    position: absolute;
+    top: 10vh;
+    right: 25vw;
+    background-size: contain;
+}
+
+.noBackdrop .detailLogo,
+.layout-mobile .detailLogo {
+    display: none;
+}
+
+@media all and (max-width: 68.75em) {
+    .detailLogo {
+        display: none;
+    }
+}
+
+.itemDetailImage {
+    width: 100% !important;
+    -webkit-box-shadow: 0 0.1em 0.5em 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0.1em 0.5em 0 rgba(0, 0, 0, 0.75);
+}
+
+div.itemDetailGalleryLink.defaultCardBackground {
+    text-align: center;
+}
+
+.itemDetailGalleryLink.defaultCardBackground {
+    /* Dirty hack to get it to look somewhat square. Less than ideal. */
+    height: 23vw;
+}
+
+.sectionTitleTextButton > .material-icons {
+    font-size: 1.5em;
+    margin-bottom: 0.35em;
+    margin-top: 0;
+}
+
+.layout-mobile .sectionTitleTextButton > .material-icons {
+    margin-bottom: 0;
+    padding-top: 0.5em;
+}
+
+.itemDetailGalleryLink.defaultCardBackground > .material-icons {
+    font-size: 15vw;
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+
+@media all and (max-width: 62.5em) {
+    .detailPageWrapperContainer {
+        position: relative;
+    }
+
+    .layout-desktop .itemBackdrop {
+        height: 40vh;
+    }
+
+    .layout-desktop .detailPageWrapperContainer,
+    .layout-tv .detailPageWrapperContainer {
+        margin-top: 0.1em;
+    }
+
+    .layout-desktop .detailImageContainer .card,
+    .layout-tv .detailImageContainer .card {
+        top: 10%;
+    }
+
+    .btnPlaySimple {
+        display: none !important;
+    }
+}
+
+@media all and (max-width: 75em) {
+    .lnkSibling {
+        display: none !important;
+    }
+}
+
+.emby-button.detailFloatingButton {
+    font-size: 1.4em;
+    margin-right: 0.5em !important;
+    color: rgba(255, 255, 255, 0.76);
+}
+
+.emby-button.detailFloatingButton .material-icons {
+    font-size: 3.5em;
+}
+
+@media all and (max-width: 62.5em) {
+    .parentName {
+        margin-bottom: 0;
+    }
+
+    .itemDetailPage {
+        padding-top: 0 !important;
+    }
+}
+
+@media all and (min-width: 31.25em) {
+    .mobileDetails {
+        display: none;
+    }
+}
+
+@media all and (max-width: 31.25em) {
+    .desktopDetails {
+        display: none !important;
+    }
+}
+
+.empty {
+    margin: 0;
+}
+
+.detailCollapsibleSection:not(.hide) + .detailCollapsibleSection {
+    margin-top: -2em;
+}
+
+.detailPageCollabsible {
+    margin-top: 0;
+}
+
+.recordingFields button {
+    margin-left: 0;
+    margin-right: 0.5em;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+.mainDetailButtons.hide + .recordingFields {
+    margin-top: 1.5em !important;
+}
+
+.detailButton {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 0 !important;
+    padding: 0.7em 0.7em !important;
+}
+
+@media all and (min-width: 29em) {
+    .detailButton {
+        padding-left: 0.75em !important;
+        padding-right: 0.75em !important;
+    }
+}
+
+@media all and (min-width: 32em) {
+    .detailButton {
+        padding-left: 0.8em !important;
+        padding-right: 0.8em !important;
+    }
+}
+
+@media all and (min-width: 35em) {
+    .detailButton {
+        padding-left: 0.85em !important;
+        padding-right: 0.85em !important;
+    }
+}
+
+.detailButton-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.detailButton-icon {
+    font-size: 1.6em !important;
+    width: 1em;
+    height: 1em;
+}
+
+.detailImageProgressContainer {
+    bottom: 0;
+    margin-top: -0.4vw;
+    width: 100%;
+}
+
+.detailButton-text {
+    margin-top: 0.7em;
+    font-size: 80%;
+    font-weight: 400;
+}
+
+@media all and (max-width: 62.5em) {
+    .mainDetailButtons {
+        margin-left: -0.5em;
+    }
+
+    .detailButtonHideonMobile {
+        display: none !important;
+    }
+}
+
+@media all and (min-width: 100em) {
+    .personBackdrop {
+        display: none !important;
+    }
+
+    .mainDetailButtons {
+        font-size: 108%;
+        margin: 1.25em 0;
+    }
+
+    .layout-tv .mainDetailButtons {
+        font-size: 108%;
+        margin: 1em 0 1.25em;
+    }
+}
+
+@media all and (max-width: 50em) {
+    .editorMenuLink {
+        display: none;
+    }
+}
+
+@media all and (max-width: 31.25em) {
+    .mobileDetails .itemMiscInfo {
+        text-align: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+
+    .itemMiscInfo .endsAt {
+        display: none;
+    }
+}
+
+.detailVerticalSection .emby-scrollbuttons {
+    padding-top: 0.4em;
+}
+
+.layout-tv .detailVerticalSection {
+    margin-bottom: 3.4em !important;
+}
+
+.detailPageWrapperContainer {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.layout-desktop .noBackdrop .detailPageWrapperContainer,
+.layout-tv .noBackdrop .detailPageWrapperContainer {
+    margin-top: 3.8em;
+}
+
+.mediaInfoStream {
+    margin: 0 3em 0 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.mediaInfoStreamType {
+    display: block;
+    margin: 1em 0;
+}
+
+.mediaInfoAttribute,
+.mediaInfoLabel {
+    display: inline-block;
+}
+
+.mediaInfoLabel {
+    margin-right: 1em;
+    font-weight: 600;
+}
+
+.recordingProgressBar::-moz-progress-bar {
+    background-color: #c33;
+}
+
+.recordingProgressBar::-webkit-progress-value {
+    background-color: #c33;
+}
+
+.recordingProgressBar[aria-valuenow]::before {
+    background-color: #c33;
+}
+
+.timelineHeader {
+    margin-bottom: 0.25em;
+    line-height: 1.25em;
+    line-height: initial;
+}
+
+.itemsContainer {
+    margin: 0 auto;
+}
+
+@media all and (max-height: 31.25em) {
+    .itemBackdrop {
+        height: 52vh;
+    }
+}
+
+.listViewUserDataButtons {
+    display: flex;
+    align-items: center;
+}
+
+.bulletSeparator {
+    margin: 0 0.35em;
+}
+
+.mediaInfoIcons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 1em 0;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.verticalSection-extrabottompadding {
+    margin-bottom: 2.7em;
+}
+
+.layout-mobile .verticalSection-extrabottompadding {
+    margin-bottom: 1em;
+}
+
+.sectionTitleButton,
+.sectionTitleIconButton {
+    margin-right: 0 !important;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.sectionTitleContainer {
+    margin: 1.25em 0;
+}
+
+.sectionTitleContainer > .sectionTitle {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* these next two rules are for the scroller element headers */
+.sectionTitleContainer-cards {
+    margin: 0;
+    padding-top: 1.25em;
+}
+
+div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.2em;
+}
+
+.layout-mobile :not(.sectionTitleContainer-cards) > .sectionTitle-cards {
+    margin: 0;
+    padding-top: 0.5em;
+}
+
+.sectionTitleButton {
+    margin-left: 1.5em !important;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+.sectionTitleButton + .sectionTitleButton {
+    margin-left: 0.5em !important;
+}
+
+.sectionTitleIconButton {
+    margin-left: 1.5em !important;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    font-size: 84% !important;
+    padding: 0.5em !important;
+}
+
+.horizontalItemsContainer {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.sectionTitleTextButton {
+    margin: 0 !important;
+    display: -webkit-inline-box !important;
+    display: -webkit-inline-flex !important;
+    display: inline-flex !important;
+    color: inherit !important;
+}
+
+.sectionTitleTextButton:not(.padded-left) {
+    padding: 0 !important;
+}
+
+.sectionTitleTextButton.padded-left {
+    padding-bottom: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+}
+
+.sectionTitleTextButton > .sectionTitle {
+    margin-bottom: 0.35em;
+    margin-top: 0;
+}
+
+.padded-left {
+    padding-left: 3.3%;
+}
+
+.padded-right {
+    padding-right: 3.3%;
+}
+
+.padded-top {
+    padding-top: 1em;
+}
+
+.padded-bottom {
+    padding-bottom: 1em;
+}
+
+.layout-tv .padded-top-focusscale {
+    padding-top: 1.5em;
+    margin-top: -1.5em;
+}
+
+.layout-tv .padded-bottom-focusscale {
+    padding-bottom: 1.5em;
+    margin-bottom: -1.5em;
+}
+
+@media all and (min-height: 31.25em) {
+    .padded-right-withalphapicker {
+        padding-right: 7.5%;
+    }
+}
+
+.searchfields-icon {
+    color: #aaa;
+}
+
+.button-accent-flat {
+    color: #00a4dc !important;
+}
+
+.clearLink {
+    text-decoration: none;
+    font-weight: inherit !important;
+    vertical-align: middle;
+    color: inherit !important;
+}
+
+.itemsViewSettingsContainer {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+@media all and (min-width: 40em) {
+    .listIconButton-autohide {
+        display: none !important;
+    }
+}
+
+@media all and (max-width: 40em) {
+    .listTextButton-autohide {
+        display: none !important;
+    }
+}
+
+.itemsViewSettingsContainer > .button-flat {
+    margin: 0;
+}
+
+.layout-mobile #myPreferencesMenuPage {
+    padding-top: 3.75em;
+}
+
+.itemDetailsGroup {
+    margin-bottom: 1.5em;
+}
+
+.trackSelections {
+    max-width: 44em;
+}
+
+.detailsGroupItem,
+.trackSelections .selectContainer {
+    display: flex;
+    max-width: 44em;
+    margin: 0 0 0.5em !important;
+}
+
+.trackSelections .selectContainer {
+    margin: 0 0 0.3em !important;
+}
+
+.detailsGroupItem .label,
+.trackSelections .selectContainer .selectLabel {
+    cursor: default;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 6.25em;
+    margin: 0 0.6em 0 0;
+}
+
+.trackSelections .selectContainer .selectLabel {
+    margin: 0 0.2em 0 0;
+    line-height: 1.75;
+}
+
+.layout-mobile .detailsGroupItem .label,
+.layout-mobile .trackSelections .selectContainer .selectLabel {
+    flex-basis: 4.5em;
+}
+
+.trackSelections .selectContainer .detailTrackSelect {
+    font-size: inherit;
+    padding: 0;
+    overflow: hidden;
+}
+
+.trackSelections .selectContainer .selectArrowContainer .selectArrow {
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+.overview-controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.detail-clamp-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+}
+
+@media all and (min-width: 40em) {
+    .detail-clamp-text {
+        -webkit-line-clamp: 6;
+    }
+}

@@ -1,0 +1,244 @@
+<form style="margin: 0 auto;">
+    <h2 class="sectionTitle">
+        ${Display}
+    </h2>
+
+    <div class="selectContainer fldDisplayMode hide">
+        <select is="emby-select" id="selectLayout" class="selectLayout" label="${LabelDisplayMode}">
+            <option value="">${Auto}</option>
+            <option value="desktop">${Desktop}</option>
+            <option value="mobile">${Mobile}</option>
+            <option value="tv">${TV}</option>
+        </select>
+        <div class="fieldDescription">${DisplayModeHelp}</div>
+    </div>
+	
+    <div class="selectContainer languageSection hide">
+        <select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
+            <option value="">${Auto}</option>
+            <option value="af">Afrikaans</option>
+            <option value="sq">Albanian</option>
+            <option value="ar">Arabic</option>
+            <option value="be-BY">Belarusian</option>
+            <option value="bn_BD">Bengali (Bangladesh)</option>
+            <option value="bg-BG">Bulgarian</option>
+            <option value="ca">Catalan</option>
+            <option value="zh-HK">Chinese (Hong Kong)</option>
+            <option value="zh-CN">Chinese (Simplified)</option>
+            <option value="zh-TW">Chinese (Traditional)</option>
+            <option value="hr">Croatian</option>
+            <option value="cs">Czech</option>
+            <option value="da">Danish</option>
+            <option value="nl">Dutch</option>
+            <option value="en-US">English</option>
+            <option value="en-GB">English (United Kingdom)</option>
+            <option value="eo">Esperanto</option>
+            <option value="fil">Filipino</option>
+            <option value="fi">Finnish</option>
+            <option value="fr">French</option>
+            <option value="fr-CA">French (Canada)</option>
+            <option value="gl">Galician</option>
+            <option value="de">German</option>
+            <option value="gsw">German (Swiss)</option>
+            <option value="el">Greek</option>
+            <option value="he">Hebrew</option>
+            <option value="hi-IN">Hindi</option>
+            <option value="hu">Hungarian</option>
+            <option value="is">Icelandic</option>
+            <option value="id">Indonesian</option>
+            <option value="it">Italian</option>
+            <option value="ja">Japanese</option>
+            <option value="kk">Kazakh</option>
+            <option value="ko">Korean</option>
+            <option value="lt-LT">Lithuanian</option>
+            <option value="ms">Malay</option>
+            <option value="mr">Marathi</option>
+            <option value="nb">Norwegian Bokmål</option>
+            <option value="fa">Persian</option>
+            <option value="pr">Pirate</option>
+            <option value="pl">Polish</option>
+            <option value="pt">Portuguese</option>
+            <option value="pt-BR">Portuguese (Brazil)</option>
+            <option value="pt-PT">Portuguese (Portugal)</option>
+            <option value="ro">Romanian</option>
+            <option value="ru">Russian</option>
+            <option value="sk">Slovak</option>
+            <option value="sl-SI">Slovenian (Slovenia)</option>
+            <option value="es">Spanish</option>
+            <option value="es_AR">Spanish (Argentina)</option>
+            <option value="es_DO">Spanish (Dominican Republic)</option>
+            <option value="es-419">Spanish (Latin America)</option>
+            <option value="es-MX">Spanish (Mexico)</option>
+            <option value="sv">Swedish</option>
+            <option value="ta">Tamil</option>
+            <option value="th">Thai</option>
+            <option value="tr">Turkish</option>
+            <option value="uk">Ukrainian</option>
+            <option value="ur_PK">Urdu (Pakistan)</option>
+            <option value="vi">Vietnamese</option>
+        </select>
+        <div class="fieldDescription">
+            <div>${LabelDisplayLanguageHelp}</div>
+            <div class="learnHowToContributeContainer hide" style="margin-top: .25em;">
+                <a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://github.com/jellyfin/jellyfin" target="_blank">${LearnHowYouCanContribute}</a>
+            </div>
+        </div>
+    </div>
+
+	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+		
+		<div class="selectContainer fldDateTimeLocale hide" style="width: 45%;height: auto;">
+			<select is="emby-select" id="selectDateTimeLocale" class="selectDateTimeLocale" label="${LabelDateTimeLocale}">
+				<option value="">${Auto}</option>
+				<option value="af">Afrikaans</option>
+				<option value="sq">Albanian</option>
+				<option value="ar">Arabic</option>
+				<option value="be-BY">Belarusian</option>
+				<option value="bn_BD">Bengali (Bangladesh)</option>
+				<option value="bg-BG">Bulgarian</option>
+				<option value="ca">Catalan</option>
+				<option value="zh-HK">Chinese (Hong Kong)</option>
+				<option value="zh-CN">Chinese (Simplified)</option>
+				<option value="zh-TW">Chinese (Traditional)</option>
+				<option value="hr">Croatian</option>
+				<option value="cs">Czech</option>
+				<option value="da">Danish</option>
+				<option value="nl">Dutch</option>
+				<option value="en-US">English</option>
+				<option value="en-GB">English (United Kingdom)</option>
+				<option value="eo">Esperanto</option>
+				<option value="fil">Filipino</option>
+				<option value="fi">Finnish</option>
+				<option value="fr">French</option>
+				<option value="fr-CA">French (Canada)</option>
+				<option value="gl">Galician</option>
+				<option value="de">German</option>
+				<option value="gsw">German (Swiss)</option>
+				<option value="el">Greek</option>
+				<option value="he">Hebrew</option>
+				<option value="hi-IN">Hindi</option>
+				<option value="hu">Hungarian</option>
+				<option value="is">Icelandic</option>
+				<option value="id">Indonesian</option>
+				<option value="it">Italian</option>
+				<option value="ja">Japanese</option>
+				<option value="kk">Kazakh</option>
+				<option value="ko">Korean</option>
+				<option value="lt-LT">Lithuanian</option>
+				<option value="ms">Malay</option>
+				<option value="mr">Marathi</option>
+				<option value="nb">Norwegian Bokmål</option>
+				<option value="fa">Persian</option>
+				<option value="pr">Pirate</option>
+				<option value="pl">Polish</option>
+				<option value="pt">Portuguese</option>
+				<option value="pt-BR">Portuguese (Brazil)</option>
+				<option value="pt-PT">Portuguese (Portugal)</option>
+				<option value="ro">Romanian</option>
+				<option value="ru">Russian</option>
+				<option value="sk">Slovak</option>
+				<option value="sl-SI">Slovenian (Slovenia)</option>
+				<option value="es">Spanish</option>
+				<option value="es_AR">Spanish (Argentina)</option>
+				<option value="es_DO">Spanish (Dominican Republic)</option>
+				<option value="es-419">Spanish (Latin America)</option>
+				<option value="es-MX">Spanish (Mexico)</option>
+				<option value="sv">Swedish</option>
+				<option value="ta">Tamil</option>
+				<option value="th">Thai</option>
+				<option value="tr">Turkish</option>
+				<option value="uk">Ukrainian</option>
+				<option value="ur_PK">Urdu (Pakistan)</option>
+				<option value="vi">Vietnamese</option>
+			</select>
+		</div>
+				
+		<div class="checkboxContainer checkboxContainer-withDescription" style="width: 50%;height: auto;">
+			<label>
+				<input id="chkClock" type="checkbox" is="emby-checkbox"/>
+				<span>${EnableClock}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${EnableClockHelp}</div>
+		</div>	
+
+	</div>
+		
+	<div class="selectContainer"> 
+		<select id="selectTheme" is="emby-select" label="${LabelTheme}"></select>
+	</div>
+		
+	<div class="selectContainer selectDashboardThemeContainer hide">
+		<select id="selectDashboardTheme" is="emby-select" label="${LabelDashboardTheme}"></select>
+	</div>
+	
+    <div class="selectContainer hide selectScreensaverContainer">
+        <select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}"></select>
+    </div>
+	
+	<div class="sliderContainer-settings">
+		<div class="sliderContainer">
+			<input is="emby-slider" id="sliderLibraryPageSize" label="${LabelLibraryPageSize}" type="range" min="0" max="128" />
+		</div>
+		<div class="fieldDescription">${LabelLibraryPageSizeHelp}</div>
+	</div>
+
+    <div class="checkboxContainer checkboxContainer-withDescription">
+        <label>
+            <input type="checkbox" is="emby-checkbox" id="chkFadein" />
+            <span>${EnableFasterAnimations}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${EnableFasterAnimationsHelp}</div>
+    </div>
+
+    <div class="checkboxContainer checkboxContainer-withDescription">
+        <label>
+            <input type="checkbox" is="emby-checkbox" id="chkBlurhash" />
+            <span>${EnableBlurHash}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${EnableBlurHashHelp}</div>
+    </div>
+
+    <div class="checkboxContainer checkboxContainer-withDescription">
+        <label>
+            <input type="checkbox" is="emby-checkbox" id="chkDetailsBanner" />
+            <span>${EnableDetailsBanner}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${EnableDetailsBannerHelp}</div>
+    </div>
+
+    <div class="checkboxContainer checkboxContainer-withDescription fldBackdrops hide">
+        <label>
+            <input type="checkbox" is="emby-checkbox" id="chkBackdrops" />
+            <span>${Backdrops}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${EnableBackdropsHelp}</div>
+    </div>
+
+    <div class="checkboxContainer checkboxContainer-withDescription fldThemeSong hide">
+        <label>
+            <input type="checkbox" is="emby-checkbox" id="chkThemeSong" />
+            <span>${ThemeSongs}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${EnableThemeSongsHelp}</div>
+    </div>
+
+    <div class="checkboxContainer checkboxContainer-withDescription fldThemeVideo hide">
+        <label>
+            <input type="checkbox" is="emby-checkbox" id="chkThemeVideo" />
+            <span>${ThemeVideos}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${EnableThemeVideosHelp}</div>
+    </div>
+
+    <div class="checkboxContainer checkboxContainer-withDescription fldDisplayMissingEpisodes hide">
+        <label>
+            <input type="checkbox" is="emby-checkbox" class="chkDisplayMissingEpisodes" />
+            <span>${DisplayMissingEpisodesWithinSeasons}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${DisplayMissingEpisodesWithinSeasonsHelp}</div>
+    </div>
+
+    <button is="emby-button" type="submit" class="raised button-submit block btnSave hide">
+        <span>${Save}</span>
+    </button>
+</form>

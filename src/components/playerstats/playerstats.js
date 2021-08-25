@@ -1,0 +1,540 @@
+import { Events } from 'jellyfin-apiclient';
+import '../../elements/emby-button/paper-icon-button-light';
+import globalize from '../../scripts/globalize';
+import layoutManager from '../layoutManager';
+import { playbackManager } from '../playback/playbackmanager';
+import playMethodHelper from '../playback/playmethodhelper';
+import SyncPlay from '../../components/syncPlay/core';
+import './playerstats.scss';
+import ServerConnections from '../ServerConnections';
+
+/* eslint-disable indent */
+
+    function init(instance) {
+        const parent = document.createElement('div');
+
+        parent.classList.add('playerStats');
+
+        if (layoutManager.tv) {
+            parent.classList.add('playerStats-tv');
+        }
+
+        parent.classList.add('hide');
+
+        let button;
+
+        if (layoutManager.tv) {
+            button = '';
+        } else {
+            button = '<button type="button" is="paper-icon-button-light" class="playerStats-closeButton"><span class="material-icons close"></span></button>';
+        }
+
+        const contentClass = layoutManager.tv ? 'playerStats-content playerStats-content-tv' : 'playerStats-content';
+
+        parent.innerHTML = '<div class="' + contentClass + '">' + button + '<div class="playerStats-stats"></div></div>';
+
+        button = parent.querySelector('.playerStats-closeButton');
+
+        if (button) {
+            button.addEventListener('click', onCloseButtonClick.bind(instance));
+        }
+
+        document.body.appendChild(parent);
+
+        instance.element = parent;
+    }
+
+    function onCloseButtonClick() {
+        this.enabled(false);
+    }
+
+    function renderStats(elem, categories) {
+        elem.querySelector('.playerStats-stats').innerHTML = categories.map(function (category) {
+            let categoryHtml = '';
+
+            const stats = category.stats;
+
+            if (stats.length && category.name) {
+                categoryHtml += '<div class="playerStats-stat playerStats-stat-header">';
+
+                categoryHtml += '<div class="playerStats-stat-label">';
+                categoryHtml += category.name;
+                categoryHtml += '</div>';
+
+                categoryHtml += '<div class="playerStats-stat-value">';
+                categoryHtml += category.subText || '';
+                categoryHtml += '</div>';
+
+                categoryHtml += '</div>';
+            }
+
+            for (let i = 0, length = stats.length; i < length; i++) {
+                categoryHtml += '<div class="playerStats-stat">';
+
+                const stat = stats[i];
+
+                categoryHtml += '<div class="playerStats-stat-label">';
+                categoryHtml += stat.label;
+                categoryHtml += '</div>';
+
+                categoryHtml += '<div class="playerStats-stat-value">';
+                categoryHtml += stat.value;
+                categoryHtml += '</div>';
+
+                categoryHtml += '</div>';
+            }
+
+            return categoryHtml;
+        }).join('');
+    }
+
+    function getSession(instance, player) {
+        const now = new Date().getTime();
+
+        if ((now - (instance.lastSessionTime || 0)) < 10000) {
+            return Promise.resolve(instance.lastSession);
+        }
+
+        const apiClient = ServerConnections.getApiClient(playbackManager.currentItem(player).ServerId);
+
+        return apiClient.getSessions({
+            deviceId: apiClient.deviceId()
+        }).then(function (sessions) {
+            instance.lastSession = sessions[0] || {};
+            instance.lastSessionTime = new Date().getTime();
+
+            return Promise.resolve(instance.lastSession);
+        }, function () {
+            return Promise.resolve({});
+        });
+    }
+
+    function translateReason(reason) {
+        return globalize.translate('' + reason);
+    }
+
+    function getTranscodingStats(session, player, displayPlayMethod) {
+        const sessionStats = [];
+
+        let videoCodec;
+        let audioCodec;
+        let totalBitrate;
+        let audioChannels;
+
+        if (session.TranscodingInfo) {
+            videoCodec = session.TranscodingInfo.VideoCodec;
+            audioCodec = session.TranscodingInfo.AudioCodec;
+            totalBitrate = session.TranscodingInfo.Bitrate;
+            audioChannels = session.TranscodingInfo.AudioChannels;
+        }
+
+        if (videoCodec) {
+            sessionStats.push({
+                label: globalize.translate('LabelVideoCodec'),
+                value: session.TranscodingInfo.IsVideoDirect ? (videoCodec.toUpperCase() + ' (direct)') : videoCodec.toUpperCase()
+            });
+        }
+
+        if (audioCodec) {
+            sessionStats.push({
+                label: globalize.translate('LabelAudioCodec'),
+                value: session.TranscodingInfo.IsAudioDirect ? (audioCodec.toUpperCase() + ' (direct)') : audioCodec.toUpperCase()
+            });
+        }
+
+        if (displayPlayMethod === 'Transcode') {
+            if (audioChannels) {
+                sessionStats.push({
+                    label: globalize.translate('LabelAudioChannels'),
+                    value: audioChannels
+                });
+            }
+            if (totalBitrate) {
+                sessionStats.push({
+                    label: globalize.translate('LabelBitrate'),
+                    value: getDisplayBitrate(totalBitrate)
+                });
+            }
+            if (session.TranscodingInfo.CompletionPercentage) {
+                sessionStats.push({
+                    label: globalize.translate('LabelTranscodingProgress'),
+                    value: session.TranscodingInfo.CompletionPercentage.toFixed(1) + '%'
+                });
+            }
+            if (session.TranscodingInfo.Framerate) {
+                sessionStats.push({
+                    label: globalize.translate('LabelTranscodingFramerate'),
+                    value: session.TranscodingInfo.Framerate + ' fps'
+                });
+            }
+            if (session.TranscodingInfo.TranscodeReasons && session.TranscodingInfo.TranscodeReasons.length) {
+                sessionStats.push({
+                    label: globalize.translate('LabelReasonForTranscoding'),
+                    value: session.TranscodingInfo.TranscodeReasons.map(translateReason).join('<br/>')
+                });
+            }
+        }
+
+        return sessionStats;
+    }
+
+    function getDisplayBitrate(bitrate) {
+        if (bitrate > 1000000) {
+            return (bitrate / 1000000).toFixed(1) + ' Mbps';
+        } else {
+            return Math.floor(bitrate / 1000) + ' kbps';
+        }
+    }
+
+    function getReadableSize(size) {
+        if (size >= 1073741824) {
+            return parseFloat((size / 1073741824).toFixed(1)) + ' GiB';
+        } else if (size >= 1048576) {
+            return parseFloat((size / 1048576).toFixed(1)) + ' MiB';
+        } else {
+            return Math.floor(size / 1024) + ' KiB';
+        }
+    }
+
+    function getMediaSourceStats(session, player) {
+        const sessionStats = [];
+
+        const mediaSource = playbackManager.currentMediaSource(player) || {};
+        const totalBitrate = mediaSource.Bitrate;
+        const mediaFileSize = mediaSource.Size;
+
+        if (mediaSource.Container) {
+            sessionStats.push({
+                label: globalize.translate('LabelProfileContainer'),
+                value: mediaSource.Container
+            });
+        }
+
+        if (mediaFileSize) {
+            sessionStats.push({
+                label: globalize.translate('LabelSize'),
+                value: getReadableSize(mediaFileSize)
+            });
+        }
+
+        if (totalBitrate) {
+            sessionStats.push({
+                label: globalize.translate('LabelBitrate'),
+                value: getDisplayBitrate(totalBitrate)
+            });
+        }
+
+        const mediaStreams = mediaSource.MediaStreams || [];
+        const videoStream = mediaStreams.filter(function (s) {
+            return s.Type === 'Video';
+        })[0] || {};
+
+        const videoCodec = videoStream.Codec;
+
+        const audioStreamIndex = playbackManager.getAudioStreamIndex(player);
+        const audioStream = playbackManager.audioTracks(player).filter(function (s) {
+            return s.Type === 'Audio' && s.Index === audioStreamIndex;
+        })[0] || {};
+
+        const audioCodec = audioStream.Codec;
+        const audioChannels = audioStream.Channels;
+
+        const videoInfos = [];
+
+        if (videoCodec) {
+            videoInfos.push(videoCodec.toUpperCase());
+        }
+
+        if (videoStream.Profile) {
+            videoInfos.push(videoStream.Profile);
+        }
+
+        if (videoInfos.length) {
+            sessionStats.push({
+                label: globalize.translate('LabelVideoCodec'),
+                value: videoInfos.join(' ')
+            });
+        }
+
+        if (videoStream.BitRate) {
+            sessionStats.push({
+                label: globalize.translate('LabelVideoBitrate'),
+                value: getDisplayBitrate(videoStream.BitRate)
+            });
+        }
+
+        if (videoStream.VideoRange) {
+            sessionStats.push({
+                label: globalize.translate('LabelVideoRange'),
+                value: videoStream.VideoRange
+            });
+        }
+
+        if (videoStream.ColorSpace) {
+            sessionStats.push({
+                label: globalize.translate('LabelColorSpace'),
+                value: videoStream.ColorSpace
+            });
+        }
+
+        if (videoStream.ColorTransfer) {
+            sessionStats.push({
+                label: globalize.translate('LabelColorTransfer'),
+                value: videoStream.ColorTransfer
+            });
+        }
+
+        if (videoStream.ColorPrimaries) {
+            sessionStats.push({
+                label: globalize.translate('LabelColorPrimaries'),
+                value: videoStream.ColorPrimaries
+            });
+        }
+
+        const audioInfos = [];
+
+        if (audioCodec) {
+            audioInfos.push(audioCodec.toUpperCase());
+        }
+
+        if (audioStream.Profile) {
+            audioInfos.push(audioStream.Profile);
+        }
+
+        if (audioInfos.length) {
+            sessionStats.push({
+                label: globalize.translate('LabelAudioCodec'),
+                value: audioInfos.join(' ')
+            });
+        }
+
+        if (audioStream.BitRate) {
+            sessionStats.push({
+                label: globalize.translate('LabelAudioBitrate'),
+                value: getDisplayBitrate(audioStream.BitRate)
+            });
+        }
+
+        if (audioChannels) {
+            sessionStats.push({
+                label: globalize.translate('LabelAudioChannels'),
+                value: audioChannels
+            });
+        }
+
+        if (audioStream.SampleRate) {
+            sessionStats.push({
+                label: globalize.translate('LabelAudioSampleRate'),
+                value: audioStream.SampleRate + ' Hz'
+            });
+        }
+
+        if (audioStream.BitDepth) {
+            sessionStats.push({
+                label: globalize.translate('LabelAudioBitDepth'),
+                value: audioStream.BitDepth
+            });
+        }
+
+        return sessionStats;
+    }
+
+    function getSyncPlayStats() {
+        const syncStats = [];
+        const stats = SyncPlay.Manager.getStats();
+
+        syncStats.push({
+            label: globalize.translate('LabelSyncPlayTimeSyncDevice'),
+            value: stats.TimeSyncDevice
+        });
+
+        syncStats.push({
+            // TODO: clean old string 'LabelSyncPlayTimeOffset' from translations.
+            label: globalize.translate('LabelSyncPlayTimeSyncOffset'),
+            value: stats.TimeSyncOffset + ' ' + globalize.translate('MillisecondsUnit')
+        });
+
+        syncStats.push({
+            label: globalize.translate('LabelSyncPlayPlaybackDiff'),
+            value: stats.PlaybackDiff + ' ' + globalize.translate('MillisecondsUnit')
+        });
+
+        syncStats.push({
+            label: globalize.translate('LabelSyncPlaySyncMethod'),
+            value: stats.SyncMethod
+        });
+
+        return syncStats;
+    }
+
+    function getStats(instance, player) {
+        const statsPromise = player.getStats ? player.getStats() : Promise.resolve({});
+        const sessionPromise = getSession(instance, player);
+
+        return Promise.all([statsPromise, sessionPromise]).then(function (responses) {
+            const playerStatsResult = responses[0];
+            const playerStats = playerStatsResult.categories || [];
+            const session = responses[1];
+
+            const displayPlayMethod = playMethodHelper.getDisplayPlayMethod(session);
+            let localizedDisplayMethod = displayPlayMethod;
+
+            if (displayPlayMethod === 'DirectPlay') {
+                localizedDisplayMethod = globalize.translate('DirectPlaying');
+            } else if (displayPlayMethod === 'Remux') {
+                localizedDisplayMethod = globalize.translate('Remuxing');
+            } else if (displayPlayMethod === 'DirectStream') {
+                localizedDisplayMethod = globalize.translate('DirectStreaming');
+            } else if (displayPlayMethod === 'Transcode') {
+                localizedDisplayMethod = globalize.translate('Transcoding');
+            }
+
+            const baseCategory = {
+                stats: [],
+                name: globalize.translate('LabelPlaybackInfo')
+            };
+
+            baseCategory.stats.unshift({
+                label: globalize.translate('LabelPlayMethod'),
+                value: localizedDisplayMethod
+            });
+
+            baseCategory.stats.unshift({
+                label: globalize.translate('LabelPlayer'),
+                value: player.name
+            });
+
+            const categories = [];
+
+            categories.push(baseCategory);
+
+            for (let i = 0, length = playerStats.length; i < length; i++) {
+                const category = playerStats[i];
+                if (category.type === 'audio') {
+                    category.name = globalize.translate('LabelAudioInfo');
+                } else if (category.type === 'video') {
+                    category.name = globalize.translate('LabelVideoInfo');
+                }
+                categories.push(category);
+            }
+
+            let localizedTranscodingInfo = globalize.translate('LabelTranscodingInfo');
+            if (displayPlayMethod === 'Remux') {
+                localizedTranscodingInfo = globalize.translate('LabelRemuxingInfo');
+            } else if (displayPlayMethod === 'DirectStream') {
+                localizedTranscodingInfo = globalize.translate('LabelDirectStreamingInfo');
+            }
+
+            if (session.TranscodingInfo) {
+                categories.push({
+                    stats: getTranscodingStats(session, player, displayPlayMethod),
+                    name: localizedTranscodingInfo
+                });
+            }
+
+            categories.push({
+                stats: getMediaSourceStats(session, player),
+                name: globalize.translate('LabelOriginalMediaInfo')
+            });
+
+            const apiClient = ServerConnections.getApiClient(playbackManager.currentItem(player).ServerId);
+            if (SyncPlay.Manager.isSyncPlayEnabled() && apiClient.isMinServerVersion('10.6.0')) {
+                categories.push({
+                    stats: getSyncPlayStats(),
+                    name: globalize.translate('LabelSyncPlayInfo')
+                });
+            }
+
+            return Promise.resolve(categories);
+        });
+    }
+
+    function renderPlayerStats(instance, player) {
+        const now = new Date().getTime();
+
+        if ((now - (instance.lastRender || 0)) < 700) {
+            return;
+        }
+
+        instance.lastRender = now;
+
+        getStats(instance, player).then(function (stats) {
+            const elem = instance.element;
+            if (!elem) {
+                return;
+            }
+
+            renderStats(elem, stats);
+        });
+    }
+
+    function bindEvents(instance, player) {
+        const localOnTimeUpdate = function () {
+            renderPlayerStats(instance, player);
+        };
+
+        instance.onTimeUpdate = localOnTimeUpdate;
+        Events.on(player, 'timeupdate', localOnTimeUpdate);
+    }
+
+    function unbindEvents(instance, player) {
+        const localOnTimeUpdate = instance.onTimeUpdate;
+
+        if (localOnTimeUpdate) {
+            Events.off(player, 'timeupdate', localOnTimeUpdate);
+        }
+    }
+
+class PlayerStats {
+    constructor(options) {
+        this.options = options;
+
+        init(this);
+
+        this.enabled(true);
+    }
+
+    enabled(enabled) {
+        if (enabled == null) {
+            return this._enabled;
+        }
+
+        const options = this.options;
+
+        if (!options) {
+            return;
+        }
+
+        this._enabled = enabled;
+        if (enabled) {
+            this.element.classList.remove('hide');
+            bindEvents(this, options.player);
+        } else {
+            this.element.classList.add('hide');
+            unbindEvents(this, options.player);
+        }
+    }
+
+    toggle() {
+        this.enabled(!this.enabled());
+    }
+
+    destroy() {
+        const options = this.options;
+
+        if (options) {
+            this.options = null;
+            unbindEvents(this, options.player);
+        }
+
+        const elem = this.element;
+        if (elem) {
+            elem.parentNode.removeChild(elem);
+            this.element = null;
+        }
+    }
+}
+
+/* eslint-enable indent */
+
+export default PlayerStats;

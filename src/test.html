@@ -1,0 +1,191 @@
+<form style="margin:0 auto;">
+    <div class="verticalSection">
+        <h2 class="sectionTitle">
+            ${Subtitles}
+        </h2>
+
+        <div class="selectContainer">
+            <select is="emby-select" id="selectSubtitleLanguage" label="${LabelPreferredSubtitleLanguage}"></select>
+        </div>
+
+        <div class="selectContainer">
+            <select is="emby-select" id="selectSubtitlePlaybackMode" label="${LabelSubtitlePlaybackMode}">
+                <option value="Default">${Default}</option>
+                <option value="Smart">${Smart}</option>
+                <option value="OnlyForced">${OnlyForcedSubtitles}</option>
+                <option value="Always">${AlwaysPlaySubtitles}</option>
+                <option value="None">${None}</option>
+            </select>
+            <div class="fieldDescription subtitlesDefaultHelp subtitlesHelp hide">${DefaultSubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesSmartHelp subtitlesHelp hide">${SmartSubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesAlwaysHelp subtitlesHelp hide">${AlwaysPlaySubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesOnlyForcedHelp subtitlesHelp hide">${OnlyForcedSubtitlesHelp}</div>
+            <div class="fieldDescription subtitlesNoneHelp subtitlesHelp hide">${NoSubtitlesHelp}</div>
+        </div>
+
+        <div class="selectContainer fldBurnIn hide">
+            <select is="emby-select" id="selectSubtitleBurnIn" label="${LabelBurnSubtitles}">
+                <option value="">${Auto}</option>
+                <option value="onlyimageformats">${OnlyImageFormats}</option>
+                <option value="allcomplexformats">${AllComplexFormats}</option>
+                <option value="all">${All}</option>
+            </select>
+            <div class="fieldDescription">${BurnSubtitlesHelp}</div>
+        </div>
+    </div>
+
+    <div class="verticalSection subtitleAppearanceSection hide">
+        <h2 class="sectionTitle">
+            ${HeaderSubtitleAppearance}
+        </h2>
+
+        <div class="subtitleappearance-fullpreview subtitleappearance-fullpreview-hide">
+            <div class="subtitleappearance-fullpreview-window">
+                <div class="subtitleappearance-fullpreview-text">
+                    ${HeaderSubtitleAppearance}
+                    <br>
+                    ${TheseSettingsAffectSubtitlesOnThisDevice}
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 2em 0 2em;">
+            <div class="subtitleappearance-preview flex align-items-center justify-content-center" style="margin:2em 0;padding:1.6em;color:black;background:linear-gradient(140deg,#aa5cc3,#00a4dc);">
+                <div class="subtitleappearance-preview-window flex align-items-center justify-content-center" style="width: 90%; padding: .25em;">
+                    <div class="subtitleappearance-preview-text flex align-items-center justify-content-center">
+                        ${TheseSettingsAffectSubtitlesOnThisDevice}
+                    </div>
+                </div>
+            </div>
+            <div class="fieldDescription">${SubtitleAppearanceSettingsDisclaimer}</div>
+            <div class="fieldDescription">${SubtitleAppearanceSettingsAlsoPassedToCastDevices}</div>
+        </div>
+
+        <div class="selectContainer">
+            <select is="emby-select" id="selectTextSize" label="${LabelTextSize}">
+                <option value="smaller">${Smaller}</option>
+                <option value="small">${Small}</option>
+                <option value="">${Normal}</option>
+                <option value="large">${Large}</option>
+                <option value="larger">${Larger}</option>
+                <option value="extralarge">${ExtraLarge}</option>
+            </select>
+        </div>
+
+        <div class="selectContainer">
+            <select is="emby-select" id="selectFont" label="${LabelFont}">
+                <option value="">${Default}</option>
+                <option value="typewriter">${Typewriter}</option>
+                <option value="Monserga">Monserga</option>
+                <option value="console">${Console}</option>
+                <option value="casual">${Casual}</option>
+                <option value="smallcaps">${SmallCaps}</option>
+				<option value="retro">Retro</option>
+				<option value="xerographer">Xerographer</option>
+				<option value="cartoon">Cartoon</option>
+				<option value="gretoon">Gretoon</option>
+            </select>
+        </div>
+		
+		
+        <div class="selectContainer">
+			<label for='inputTextColor' style='margin-bottom:5px;'>${LabelTextColor}</label>
+			<div style='display: flex !important;width:15em;height:2em;flex-direction: row;align-items: center;justify-content: space-between;'>
+			
+			<span id='fcolor' style='width:2.5em;height:1.8em;'></span>
+			
+            <select is="emby-select" id="inputTextColor"
+				onchange='document.getElementById("fcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
+                <option value="White">White</option>
+				<option value="Black">Black</option>
+				<option value="LightSalmon">LightSalmon</option>
+                <option value="Crimson">Crimson</option>
+                <option value="FireBrick">FireBrick</option>
+				<option value="LightPink">LightPink</option>
+                <option value="DeepPink">DeepPink</option>
+				<option value="Yellow">Yellow</option>
+				<option value="Orange">Orange</option>
+				<option value="OrangeRed">OrangeRed</option>
+				<option value="Amethyst">Amethyst</option>
+				<option value="DarkOrchid">DarkOrchid</option>
+				<option value="Indigo">Indigo</option>
+				<option value="PaleGreen">PaleGreen</option>
+				<option value="SpringGreen">SpringGreen</option>
+				<option value="DarkGreen">DarkGreen</option>
+				<option value="LightSkyBlue">LightSkyBlue</option>
+				<option value="RoyalBlue">RoyalBlue</option>
+				<option value="DarkBlue">DarkBlue</option>
+				<option value="DarkGray">DarkGray</option>
+				<option value="Gray">Gray</option>
+				<option value="DimGray">DimGray</option>
+            </select>
+			
+			</div>
+        </div>				
+	
+		<div class="selectContainer">
+			<label for='inputTextBackground' style='margin-bottom:5px;'>${LabelTextBackgroundColor}</label>
+			<div style='display: flex !important;width:15em;height:2em;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+			<span id='bgcolor' style='width:2.5em;height:1.8em;'></span>
+
+			<select is="emby-select" id="inputTextBackground"
+			onchange='document.getElementById("bgcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
+			<option value="transparent">Transparent</option>
+			<option value="White">White</option>
+			<option value="Black">Black</option>
+			<option value="LightSalmon">LightSalmon</option>
+			<option value="Crimson">Crimson</option>
+			<option value="FireBrick">FireBrick</option>
+			<option value="LightPink">LightPink</option>
+			<option value="DeepPink">DeepPink</option>
+			<option value="Yellow">Yellow</option>
+			<option value="Orange">Orange</option>
+			<option value="OrangeRed">OrangeRed</option>
+			<option value="Amethyst">Amethyst</option>
+			<option value="DarkOrchid">DarkOrchid</option>
+			<option value="Indigo">Indigo</option>
+			<option value="PaleGreen">PaleGreen</option>
+			<option value="SpringGreen">SpringGreen</option>
+			<option value="DarkGreen">DarkGreen</option>
+			<option value="LightSkyBlue">LightSkyBlue</option>
+			<option value="RoyalBlue">RoyalBlue</option>
+			<option value="DarkBlue">DarkBlue</option>
+			<option value="DarkGray">DarkGray</option>
+			<option value="Gray">Gray</option>
+			<option value="DimGray">DimGray</option>
+			</select>
+
+			</div>
+        </div>	
+	
+
+        <div class="selectContainer">
+            <select is="emby-select" id="selectDropShadow" label="${LabelDropShadow}">
+                <option value="none">${None}</option>
+                <option value="raised">${Raised}</option>
+                <option value="depressed">${Depressed}</option>
+                <option value="uniform">${Uniform}</option>
+                <option value="">${DropShadow}</option>
+            </select>
+        </div>
+
+        <div class="sliderContainer-settings">
+            <div class="sliderContainer">
+                <input is="emby-slider" id="sliderVerticalPosition" label="${LabelSubtitleVerticalPosition}" type="range" min="-16" max="16" />
+            </div>
+            <div class="fieldDescription">${SubtitleVerticalPositionHelp}</div>
+        </div>
+
+        <div class="checkboxContainer">
+            <label>
+                <input is="emby-checkbox" type="checkbox" class="chkPreview" />
+                <span>${Preview}</span>
+            </label>
+        </div>
+    </div>
+
+    <button is="emby-button" type="submit" class="raised button-submit block btnSave hide">
+        <span>${Save}</span>
+    </button>
+</form>
