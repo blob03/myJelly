@@ -4,14 +4,13 @@
 
 Note: This is NOT the LG launcher but a modification of the official web client that is hosted on the server.
 
-`sh
 Homepage for Jellyfin server can be found here: https://github.com/jellyfin/jellyfin
 <br>
 Homepage for the official web client can be found here: https://github.com/jellyfin/jellyfin-web
 <br>
 Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin/jellyfin-webos
 <br>
-`
+
 
 ## Build Process
 
