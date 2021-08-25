@@ -1,3 +1,1 @@
-# myjelly
-Jellyfin web client modified (and tested) for LG WebOS.
-
+<h1 align="center">Jellyfin Web modified for LG WebOS</h1>
