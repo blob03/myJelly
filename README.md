@@ -4,9 +4,11 @@
 
 Note: This is NOT the LG launcher but a modification of the official web client that is hosted on the server.
 
+`sh
 Homepage for Jellyfin server can be found here: https://github.com/jellyfin/jellyfin
 Homepage for the official web client can be found here: https://github.com/jellyfin/jellyfin-web
 Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin/jellyfin-webos
+`
 
 ## Build Process
 
@@ -46,12 +48,15 @@ Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin
 
 5.	Make a backup of the web client installed.
 
+   ```sh
    sudo mv /usr/share/jellyfin/web /usr/share/jellyfin/web.bak
+   ```
 
 6.	Overwrite it with the modified client.
-	"dist" directory is automatically created at step #4.
-
-	sudo cp -rf dist /usr/share/jellyfin/web
-
+   ```sh
+   Note that the "dist" directory is automatically created at step #4.
+   sudo cp -rf dist /usr/share/jellyfin/web
+   ```
+   
 7. Connect the Jellyfin server as usual.
 
