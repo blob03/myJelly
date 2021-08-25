@@ -1,5 +1,8 @@
 <h1 align="center">MyJelly</h1>
-<h2 align="center">Jellyfin Web client modified for LG WebOS</h1>
+<h2 align="center">Jellyfin Web client modified to better fit LG WebOS</h2>
+<h2 align="center">+ some extra features.</h2>
+
+Note: This is NOT the LG launcher but a modification of the official web client that is hosted on the server.
 
 ## Build Process
 
