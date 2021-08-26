@@ -26,7 +26,7 @@ import template from './subtitlesettings.template.html';
  */
 
 const CSS_COLOR_NAMES = [
-"transparent",
+"Transparent",
 "Black",
 "White",
 
@@ -301,8 +301,8 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
         context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || '';
 		
 		loadColors(context);
-        context.querySelector('#inputTextBackground').value = appearanceSettings.textBackground || 'transparent';
-		context.querySelector('#inputTextStroke').value = appearanceSettings.textStroke || 'transparent';
+        context.querySelector('#inputTextBackground').value = appearanceSettings.textBackground || 'Transparent';
+		context.querySelector('#inputTextStroke').value = appearanceSettings.textStroke || 'Transparent';
         context.querySelector('#inputTextColor').value = appearanceSettings.textColor || 'White';
 		context.querySelector('#bgcolor').style.backgroundColor = context.querySelector('#inputTextBackground').value;
 		context.querySelector('#strcolor').style.backgroundColor = context.querySelector('#inputTextStroke').value;
