@@ -114,6 +114,8 @@ import template from './displaySettings.template.html';
         }
 
         fillThemes(context.querySelector('#selectTheme'), userSettings.theme());
+		context.querySelector('#selectTheme').addEventListener('change', function() {  skinManager.setTheme(this.value); });
+		
         fillThemes(context.querySelector('#selectDashboardTheme'), userSettings.dashboardTheme());
 
         loadScreensavers(context, userSettings);

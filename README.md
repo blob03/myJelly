@@ -57,7 +57,7 @@ Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin
 6.	Overwrite it with the modified client.
 
    ```sh
-   Note that the "dist" directory is automatically created at step #4.
+   Please note that the "dist" directory is automatically created at step #4.
    sudo cp -rf dist /usr/share/jellyfin/web
    ```
    
