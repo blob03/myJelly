@@ -18,7 +18,10 @@ Events.on(ServerConnections, 'localusersignedin', () => {
 
 pageClassOn('viewbeforeshow', 'page', function () {
     if (this.classList.contains('type-interior')) {
-        skinManager.setTheme(userSettings.dashboardTheme());
+		if (userSettings.dashboardTheme() === "Auto")
+			skinManager.setTheme(userSettings.theme());
+		else
+			skinManager.setTheme(userSettings.dashboardTheme());
     } else {
         skinManager.setTheme(userSettings.theme());
     }

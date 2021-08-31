@@ -163,8 +163,6 @@
     "EditSubtitles": "Modifier les sous-titres",
     "EnableBackdropsHelp": "Afficher des images d'arrière-plans sur certaines pages pendant la navigation dans la médiathèque.",
     "EnableCinemaMode": "Mode cinéma",
-	"EnableClock": "Activer l'horloge",
-	"EnableClockHelp": "Affiche la date et l'heure locale dans la barre du haut.",
     "EnableColorCodedBackgrounds": "Fonds avec code couleur",
     "EnableDisplayMirroring": "Affichage en miroir",
     "EnableExternalVideoPlayers": "Lecteurs vidéo externes",
@@ -694,8 +692,6 @@
     "LabelTag": "Étiquette :",
     "LabelTagline": "Slogan :",
     "LabelTextBackgroundColor": "Couleur de fond du texte :",
-	"LabelTextStrokeColor": "Couleur de contour du texte :",
-	"LabelStrokeSize": "Epaisseur du contour :",
     "LabelTextColor": "Couleur du texte :",
     "LabelTextSize": "Taille du texte :",
     "LabelTheme": "Thème :",
@@ -1285,7 +1281,6 @@
     "ButtonTogglePlaylist": "Liste de lecture",
     "Filter": "Filtre",
     "New": "Nouveau",
-    "LabelChromecastVersion": "Version de Chromecast",
     "LabelEnableHttpsHelp": "Écouter les requêtes HTTPS sur le port configuré. Un certificat valide doit être fourni pour permettre ce mode de fonctionnement.",
     "LabelEnableHttps": "Activer HTTPS",
     "HeaderServerAddressSettings": "Paramètres adresses serveur",
@@ -1471,7 +1466,6 @@
     "LabelSelectStereo": "Stéréo",
     "LabelSelectMono": "Mono",
     "LabelSelectAudioChannels": "Canaux",
-    "LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés",
     "LabelOriginalMediaInfo": "Informations sur les médias originaux",
     "AspectRatioFill": "Remplir",
     "AspectRatioCover": "Couverture",
@@ -1520,5 +1514,13 @@
     "Controls": "Contrôles",
     "MessageSent": "Message envoyé.",
     "LabelSlowResponseTime": "Délai (en millisecondes) à partir duquel une réponse est considérée comme lente",
-    "LabelSlowResponseEnabled": "Enregistrer une alerte dans le fichier log si la réponse du serveur est trop lente"
+    "LabelSlowResponseEnabled": "Enregistrer une alerte dans le fichier log si la réponse du serveur est trop lente",
+	
+	"EnableClock": "Activer l'horloge",
+	"EnableClockHelp": "Affiche la date et l'heure locale dans la barre du haut.",
+	"Italic": "Italique",
+	"LabelTextStrokeColor": "Couleur de contour du texte :",
+	"LabelStrokeSize": "Epaisseur du contour :",
+	"LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
+	"LabelChromecastVersion": "Version de Chromecast :"
 }

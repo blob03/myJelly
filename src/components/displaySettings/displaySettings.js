@@ -19,7 +19,7 @@ import template from './displaySettings.template.html';
 
     function fillThemes(select, selectedTheme) {
         skinManager.getThemes().then(themes => {
-            select.innerHTML = themes.map(t => {
+            select.innerHTML += themes.map(t => {
                 return `<option value="${t.id}">${t.name}</option>`;
             }).join('');
 
@@ -165,7 +165,7 @@ import template from './displaySettings.template.html';
         userSettingsInstance.enableThemeSongs(context.querySelector('#chkThemeSong').checked);
         userSettingsInstance.enableThemeVideos(context.querySelector('#chkThemeVideo').checked);
         userSettingsInstance.theme(context.querySelector('#selectTheme').value);
-        userSettingsInstance.dashboardTheme(context.querySelector('#selectDashboardTheme').value);
+		userSettingsInstance.dashboardTheme(context.querySelector('#selectDashboardTheme').value);
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);

@@ -17,8 +17,6 @@
     "LabelImportOnlyFavoriteChannels": "Restrict to channels marked as favourite",
     "LabelKodiMetadataUserHelp": "Save watch data to NFO files for other applications to utilize.",
     "LabelTextBackgroundColor": "Text background color:",
-	"LabelTextStrokeColor": "Text outline color:",
-	"LabelStrokeSize": "Text outline size:",
     "LabelTextColor": "Text color:",
     "NewCollectionHelp": "Collections allow you to create personalised groupings of movies and other library content.",
     "NoNewDevicesFound": "No new devices found. To add a new tuner, close this dialogueand enter the device information manually.",
@@ -207,8 +205,6 @@
     "EditSubtitles": "Edit subtitles",
     "EnableBackdropsHelp": "Display backdrops in the background of some pages while browsing the library.",
     "EnableCinemaMode": "Cinema mode",
-	"EnableClock": "Clock",
-	"EnableClockHelp": "Show local date and time in the top bar.",
     "EnableDisplayMirroring": "Display mirroring",
     "EnableExternalVideoPlayers": "External video players",
     "EnableExternalVideoPlayersHelp": "An external player menu will be shown when starting video playback.",
@@ -1335,7 +1331,6 @@
     "LabelRequireHttpsHelp": "If checked, the server will automatically redirect all requests over HTTP to HTTPS. This has no effect if the server is not listening on HTTPS.",
     "LabelRequireHttps": "Require HTTPS",
     "LabelStable": "Stable",
-    "LabelChromecastVersion": "Chromecast Version",
     "LabelEnableHttpsHelp": "Listen on the configured HTTPS port. A valid certificate must also be supplied for this to take effect.",
     "LabelEnableHttps": "Enable HTTPS",
     "HeaderSyncPlayEnabled": "SyncPlay enabled",
@@ -1471,7 +1466,6 @@
     "LabelSelectStereo": "Stereo",
     "LabelSelectMono": "Mono",
     "LabelSelectAudioChannels": "Channels",
-    "LabelAllowedAudioChannels": "Maximum Allowed Audio Channels",
     "AllowHevcEncoding": "Allow encoding in HEVC format",
     "PreferFmp4HlsContainerHelp": "Prefer to use fMP4 as the default container for HLS, making it possible to direct stream HEVC content on supported devices.",
     "PreferFmp4HlsContainer": "Prefer fMP4-HLS Media Container",
@@ -1520,5 +1514,13 @@
     "TextSent": "Text sent.",
     "MessageSent": "Message sent.",
     "LabelSlowResponseTime": "Time in ms after which a response is considered slow",
-    "LabelSlowResponseEnabled": "Log warning if server response was slow"
+    "LabelSlowResponseEnabled": "Log warning if server response was slow",
+	
+	"EnableClock": "Clock",
+	"EnableClockHelp": "Show local date and time in the top bar.",
+	"Italic": "Italic",
+	"LabelTextStrokeColor": "Text outline color:",
+	"LabelStrokeSize": "Text outline size:",
+	"LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",
+	"LabelChromecastVersion": "Chromecast Version:"
 }
