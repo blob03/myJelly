@@ -6,6 +6,7 @@
     <div class="selectContainer fldDisplayMode hide">
         <select is="emby-select" id="selectLayout" class="selectLayout" label="${LabelDisplayMode}">
             <option value="">${Auto}</option>
+			<option disabled="true" divider="true">${OptionDivider}</option>
             <option value="desktop">${Desktop}</option>
             <option value="mobile">${Mobile}</option>
             <option value="tv">${TV}</option>
@@ -16,6 +17,7 @@
     <div class="selectContainer languageSection hide">
         <select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
             <option value="">${Auto}</option>
+			<option disabled="true" divider="true">${OptionDivider}</option>
             <option value="af">Afrikaans</option>
             <option value="sq">Albanian</option>
             <option value="ar">Arabic</option>
@@ -90,6 +92,7 @@
 		<div class="selectContainer fldDateTimeLocale hide" style="width: 47%;height: auto;">
 			<select is="emby-select" id="selectDateTimeLocale" class="selectDateTimeLocale" label="${LabelDateTimeLocale}">
 				<option value="">${Auto}</option>
+				<option disabled="true" divider="true">${OptionDivider}</option>
 				<option value="af">Afrikaans</option>
 				<option value="sq">Albanian</option>
 				<option value="ar">Arabic</option>
@@ -172,8 +175,8 @@
 
 		<div class="selectContainer selectDashboardThemeContainer hide" style="flex-grow: 0;width: 47%">
 			<select id="selectDashboardTheme" is="emby-select" label="${LabelDashboardTheme}">
-				<option value="Auto">Auto</option>
-				<option disabled="true" divider="true">---------------------------------</option>
+				<option value="Auto">${Auto}</option>
+				<option disabled="true" divider="true">${OptionDivider}</option>
 			</select>
 		</div>
 
