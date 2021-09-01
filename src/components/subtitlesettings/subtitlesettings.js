@@ -223,34 +223,30 @@ function loadColors(context) {
 		let z = document.createElement("option");
 		
 		if (COLOR === false) {
-			x.text = "---------------------------------";
+			x.text = globalize.translate('OptionDivider');
 			x.disabled = true;
-			x.divider = true;
-			subColor.options.add(x, i); 
+			subColor.options.add(x, undefined); 
 		
-			y.text = "---------------------------------";
+			y.text = globalize.translate('OptionDivider');
 			y.disabled = true;
-			y.divider = true;
-			subBGcolor.options.add(y, i); 
+			subBGcolor.options.add(y, undefined); 
 			
-			z.text = "---------------------------------";
+			z.text = globalize.translate('OptionDivider');
 			z.disabled = true;
-			z.divider = true;
-			subSTRcolor.options.add(z, i); 
+			subSTRcolor.options.add(z, undefined); 
 			
-			++i;
 			continue;
 		}
 		
 		y.text = COLOR;
 		y.value = COLOR;
-		y.asideText =  `<div style="width: 2.5em;height: 1.5em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subBGcolor.options.add(y, i); 
+		y.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
+		subBGcolor.options.add(y, undefined); 
 		
 		z.text = COLOR;
 		z.value = COLOR;
-		z.asideText =  `<div style="width: 2.5em;height: 1.5em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subSTRcolor.options.add(z, i);
+		z.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
+		subSTRcolor.options.add(z, undefined);
 		
 		if (!i) {
 			++i;
@@ -259,10 +255,8 @@ function loadColors(context) {
 		
 		x.text = COLOR;
 		x.value = COLOR;
-		x.asideText =  `<div style="width: 2.5em;height: 1.5em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subColor.options.add(x, i-1); 
-		
-		++i;
+		x.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
+		subColor.options.add(x, undefined); 
 	}
 }
 	

@@ -71,7 +71,7 @@ import template from './playbackSettings.template.html';
 
         select.innerHTML += options.map(i => {
             // render empty string instead of 0 for the auto option
-            return `<option value="${i.bitrate || ''}">${i.name}</option>`;
+            return (i.bitrate?`<option value="${i.bitrate || ''}">${i.name}</option>`:'');
         }).join('');
 
         select.value = appSettings.maxChromecastBitrate() || '';

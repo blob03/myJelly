@@ -190,7 +190,7 @@ export function show(options) {
     for (let i = 0; i < options.items.length; i++) {
         const item = options.items[i];
 
-        if (item.divider) {
+        if (item.divider || item.disabled) {
             html += '<div class="actionsheetDivider"></div>';
             continue;
         }

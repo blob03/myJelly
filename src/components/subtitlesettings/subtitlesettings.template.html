@@ -26,6 +26,7 @@
         <div class="selectContainer fldBurnIn hide">
             <select is="emby-select" id="selectSubtitleBurnIn" label="${LabelBurnSubtitles}">
                 <option value="">${Auto}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="onlyimageformats">${OnlyImageFormats}</option>
                 <option value="allcomplexformats">${AllComplexFormats}</option>
                 <option value="all">${All}</option>
@@ -92,7 +93,7 @@
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: start;justify-content: space-between;'>
 				<label for='inputTextColor'>${LabelTextColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-					<div id='fcolor' style='width: 3.1em;height: 1.8em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 15px 0px 0px;'></div>				
+					<div id='fcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>				
 					<div style='width:100%;height: auto;'>
 						<select is="emby-select" id="inputTextColor"
 							onchange='document.getElementById("fcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
@@ -115,7 +116,7 @@
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: start;justify-content: flex-start;'>
 				<label for='inputTextStroke'>${LabelTextStrokeColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-					<div id='strcolor' style='width: 3.1em;height: 1.8em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;margin: 0px 15px 0px 0px;'></div>
+					<div id='strcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>
 					<div style='width: 100%;height: auto;'>
 						<select is="emby-select" id="inputTextStroke"  
 							onchange='document.getElementById("strcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
@@ -138,7 +139,7 @@
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: start;justify-content: flex-start;'>
 				<label for='inputTextBackground'>${LabelTextBackgroundColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-					<div id='bgcolor' style='width: 3.1em;height: 1.8em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;margin: 0px 15px 0px 0px;'></div>
+					<div id='bgcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>
 					<div style='width: 100%;height: auto;'>
 						<select is="emby-select" id="inputTextBackground"  
 							onchange='document.getElementById("bgcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
