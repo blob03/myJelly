@@ -23,9 +23,7 @@ import template from './playbackSettings.template.html';
     }
 
     function populateLanguages(select, languages) {
-        let html = '';
-
-        html += `<option value=''>${globalize.translate('AnyLanguage')}</option>`;
+		let html = '';
 
         for (let i = 0, length = languages.length; i < length; i++) {
             const culture = languages[i];
@@ -33,7 +31,7 @@ import template from './playbackSettings.template.html';
             html += `<option value='${culture.ThreeLetterISOLanguageName}'>${culture.DisplayName}</option>`;
         }
 
-        select.innerHTML = html;
+        select.innerHTML += html;
     }
 
     function setMaxBitrateIntoField(select, isInNetwork, mediatype) {
@@ -51,9 +49,9 @@ import template from './playbackSettings.template.html';
 
         });
 
-        select.innerHTML = options.map(i => {
+        select.innerHTML += options.map(i => {
             // render empty string instead of 0 for the auto option
-            return `<option value="${i.bitrate || ''}">${i.name}</option>`;
+            return (i.bitrate?`<option value="${i.bitrate}">${i.name}</option>`:'');
         }).join('');
 
         if (appSettings.enableAutomaticBitrateDetection(isInNetwork, mediatype)) {
@@ -71,7 +69,7 @@ import template from './playbackSettings.template.html';
             enableAuto: true
         });
 
-        select.innerHTML = options.map(i => {
+        select.innerHTML += options.map(i => {
             // render empty string instead of 0 for the auto option
             return `<option value="${i.bitrate || ''}">${i.name}</option>`;
         }).join('');
