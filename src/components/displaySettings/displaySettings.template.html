@@ -168,11 +168,13 @@
 	
 	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 	
-		<div class="selectContainer" style="width: 47%;height: auto;"> 
+		<div class="selectContainer" style="flex-grow: 3;width: 47%;height: auto;"> 
 			<select id="selectTheme" is="emby-select" label="${LabelTheme}">
 			</select>
 		</div>
 
+		<div class="selectDashboardThemeContainer hide" style="width: 6%"></div>
+		
 		<div class="selectContainer selectDashboardThemeContainer hide" style="width: 47%;height: auto;">
 			<select id="selectDashboardTheme" is="emby-select" label="${LabelDashboardTheme}">
 				<option value="Auto">${Auto}</option>

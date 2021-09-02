@@ -85,7 +85,11 @@ import template from './displaySettings.template.html';
             context.querySelector('.learnHowToContributeContainer').classList.add('hide');
         }
 
-        context.querySelector('.selectDashboardThemeContainer').classList.toggle('hide', !user.Policy.IsAdministrator);
+        //context.querySelector('.selectDashboardThemeContainer').classList.toggle('hide', !user.Policy.IsAdministrator);
+		
+		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
+		dashboardthemeNodes.forEach( function(userItem) {
+			userItem.classList.toggle('hide', !user.Policy.IsAdministrator);});
 
         if (appHost.supports('screensaver')) {
             context.querySelector('.selectScreensaverContainer').classList.remove('hide');
