@@ -555,3 +555,6 @@ html {
     height: 0.83em !important;
 }
 
+.homeLibraryButton {
+	opacity: 60%;
+}

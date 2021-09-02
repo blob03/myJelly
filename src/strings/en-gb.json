@@ -1516,6 +1516,7 @@
     "LabelSlowResponseTime": "Time in ms after which a response is considered slow",
     "LabelSlowResponseEnabled": "Log warning if server response was slow",
 	
+	"OptionDivider": "---------------------------------",
 	"EnableClock": "Clock",
 	"EnableClockHelp": "Show local date and time in the top bar.",
 	"Italic": "Italic",
