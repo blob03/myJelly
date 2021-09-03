@@ -38,6 +38,13 @@ function getThemeStylesheetInfo(id) {
 
 function setTheme(id) {
     return new Promise(function (resolve) {
+		
+		// If requested theme is "None" then unload the theme in use and exit.
+		if (id === "None") {
+			unloadTheme();
+			return;
+		}
+		
         if (currentThemeId && currentThemeId === id) {
             resolve();
             return;

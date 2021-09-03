@@ -1516,7 +1516,6 @@
     "LabelSlowResponseTime": "Délai (en millisecondes) à partir duquel une réponse est considérée comme lente",
     "LabelSlowResponseEnabled": "Enregistrer une alerte dans le fichier log si la réponse du serveur est trop lente",
 	
-	"OptionDivider": "---------------------------------",
 	"EnableClock": "Activer l'horloge",
 	"EnableClockHelp": "Affiche la date et l'heure locale dans la barre du haut.",
 	"Italic": "Italique",

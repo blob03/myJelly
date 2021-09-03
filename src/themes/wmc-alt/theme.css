@@ -1,5 +1,6 @@
 * {
     scrollbar-color: #083b6b #081b3b;
+	scrollbar-width: thin;
 }
 
 html {
@@ -61,7 +62,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background: rgba(17, 98, 164, 0.9);
+    background: rgba(17, 98, 164, 0.85);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -557,4 +558,10 @@ html {
 
 .homeLibraryButton {
 	opacity: 60%;
+}
+
+select option:disabled {
+    color: #9edfdf;
+    text-shadow: 0px 0px 15px #0cf3dd;
+    font-weight: bold;
 }
