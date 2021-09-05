@@ -6,6 +6,7 @@ import qualityoptions from '../qualityOptions';
 import layoutManager from '../layoutManager';
 import globalize from '../../scripts/globalize';
 import loading from '../loading/loading';
+import settingsHelper from '../settingshelper';
 import { Events } from 'jellyfin-apiclient';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-slider/emby-slider';
@@ -20,18 +21,6 @@ import template from './playbackSettings.template.html';
 		const pnode = e.target.parentNode.parentNode;
 		if (pnode) 
 			pnode.querySelector('.fieldDescription').innerHTML = globalize.translate('ValueSeconds', e.target.value);
-    }
-
-    function populateLanguages(select, languages) {
-		let html = '';
-
-        for (let i = 0, length = languages.length; i < length; i++) {
-            const culture = languages[i];
-
-            html += `<option value='${culture.ThreeLetterISOLanguageName}'>${culture.DisplayName}</option>`;
-        }
-
-        select.innerHTML += html;
     }
 
     function setMaxBitrateIntoField(select, isInNetwork, mediatype) {
@@ -140,11 +129,21 @@ import template from './playbackSettings.template.html';
         showHideQualityFields(context, user, apiClient);
 
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
+		context.querySelector('.chkEpisodeAutoPlay').checked = user.Configuration.EnableNextEpisodeAutoPlay || false;
 
-        apiClient.getCultures().then(allCultures => {
-            populateLanguages(context.querySelector('#selectAudioLanguage'), allCultures);
-            context.querySelector('#selectAudioLanguage', context).value = user.Configuration.AudioLanguagePreference || '';
-            context.querySelector('.chkEpisodeAutoPlay').checked = user.Configuration.EnableNextEpisodeAutoPlay || false;
+		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
+		apiClient.getCultures().then(allCultures => {
+			allCultures.sort((a, b) => {
+				let fa = a.DisplayName.toLowerCase(),
+					fb = b.DisplayName.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
+			settingsHelper.populateLanguages(selectAudioLanguage, allCultures);
+			selectAudioLanguage.value = user.Configuration.AudioLanguagePreference || '';
         });
 
         // hide cinema mode options if disabled at server level

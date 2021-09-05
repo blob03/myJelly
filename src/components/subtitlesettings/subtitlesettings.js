@@ -327,9 +327,20 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 		selectSubtitlePlaybackMode.dispatchEvent(event);
 	
 		let selectSubtitleLanguage = context.querySelector('#selectSubtitleLanguage');
-        settingsHelper.populateLanguages(selectSubtitleLanguage, allCultures);
-		selectSubtitleLanguage.value = user.Configuration.SubtitleLanguagePreference || '';		
-		selectSubtitleLanguage.dispatchEvent(event);
+		apiClient.getCultures().then(allCultures => {
+			allCultures.sort((a, b) => {
+				let fa = a.DisplayName.toLowerCase(),
+					fb = b.DisplayName.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
+			settingsHelper.populateLanguages(selectSubtitleLanguage, allCultures);
+			selectSubtitleLanguage.value = user.Configuration.SubtitleLanguagePreference || '';		
+			selectSubtitleLanguage.dispatchEvent(event);
+        });
 
         loading.hide();
     });
