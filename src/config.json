@@ -16,13 +16,16 @@
       "name": "Light",
       "id": "light"
     }, {
+	  "name": "Light alt. 1.0",
+      "id": "light-alt"
+    }, {
       "name": "Purple Haze",
       "id": "purplehaze"
     }, {
       "name": "WMC",
       "id": "wmc"
     },{
-      "name": "WMC Alt. 1.0",
+      "name": "WMC alt. 1.0",
       "id": "wmc-alt"
     }
   ],

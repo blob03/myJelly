@@ -1,0 +1,573 @@
+
+* {
+    scrollbar-color: #bdc054 #696844;
+	scrollbar-width: thin;
+}
+
+.skinHeader,
+html {
+    color: #222;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.wizardStartForm,
+.ui-corner-all,
+.ui-shadow {
+    background-color: #303030;
+}
+
+.emby-collapsible-button {
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.158);
+}
+
+.collapseContent {
+    background-color: #eaeaea;
+}
+
+.skinHeader-withBackground {
+	background-color: #55544f;
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.87);
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.osdHeader {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.skinHeader.semiTransparent {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.layout-tv .skinHeader.semiTransparent {
+    background: none;
+}
+
+.pageTitleWithDefaultLogo {
+    background-image: url(../../assets/img/banner-light.png);
+}
+
+.layout-tv .pageTitleWithDefaultLogo {
+    background-image: url(../../assets/img/icon-transparent.png);
+}
+
+.backgroundContainer,
+html {
+    background-color: #f2f2f2;
+}
+
+.backgroundContainer.withBackdrop {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dialog,
+.nowPlayingPlaylist,
+.nowPlayingContextMenu {
+    background-color: #f0f0f0;
+}
+
+.emby-scrollbuttons .paper-icon-button-light {
+    color: #000;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .paper-icon-button-light:hover:not(:disabled) {
+        color: #f0ed3c;
+		background-color: rgba(236, 220, 11, 0.2);
+    }
+}
+
+.paper-icon-button-light:active:not(:disabled) {
+    color: #f0ed3c;
+	background-color: rgba(236, 220, 11, 0.2);
+}
+
+.paper-icon-button-light.show-focus:focus {
+    color: #f0ed3c;
+}
+
+.fab,
+.raised {
+    background: #d8d8d8;
+    color: inherit;
+}
+
+.fab:focus,
+.raised:focus {
+    background: #ccc;
+}
+
+.button-submit:focus {
+    background: #f0e89c;
+}
+
+.button-delete {
+    background: rgb(247, 0, 0);
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.checkboxLabel {
+    color: inherit;
+}
+
+.checkboxListLabel,
+.inputLabel,
+.inputLabelUnfocused,
+.paperListLabel,
+.textareaLabelUnfocused {
+    color: #555;
+}
+
+.button-link,
+.inputLabelFocused,
+.selectLabelFocused,
+.textareaLabelFocused {
+    color: #bdb42f;
+}
+
+.checkboxOutline {
+    border-color: currentColor;
+}
+
+.paperList,
+.visualCardBox {
+    background-color: #fff;
+}
+
+.defaultCardBackground1 {
+    background-color: #009688;
+}
+
+.defaultCardBackground2 {
+    background-color: #d32f2f;
+}
+
+.defaultCardBackground3 {
+    background-color: #0288d1;
+}
+
+.defaultCardBackground4 {
+    background-color: #388e3c;
+}
+
+.defaultCardBackground5 {
+    background-color: #f57f17;
+}
+
+.formDialogHeader:not(.formDialogHeader-clear) {
+    background-color: #00a4dc;
+    color: #fff;
+}
+
+.formDialogFooter:not(.formDialogFooter-clear) {
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    color: inherit;
+}
+
+.cardText-secondary,
+.fieldDescription,
+.guide-programNameCaret,
+.listItem .secondary,
+.nowPlayingBarSecondaryText,
+.programSecondaryTitle,
+.secondaryText {
+    color: #888;
+}
+
+.actionsheetDivider {
+    background: #ddd;
+    background: rgba(0, 0, 0, 0.14);
+}
+
+.cardFooter-vibrant .cardText-secondary {
+    color: inherit;
+    opacity: 0.5;
+}
+
+.formDialogHeader a,
+.toast {
+    color: #fff;
+}
+
+.actionSheetMenuItem:hover {
+    background-color: #ddd;
+}
+
+.toast {
+    background: #303030;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.appfooter,
+.playlistSectionButton {
+    background: #282828;
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.nowPlayingBarSecondaryText {
+    color: #999;
+}
+
+.itemSelectionPanel {
+    border: 1px solid #00a4dc;
+}
+
+.selectionCommandsPanel {
+    background: #00a4dc;
+    color: #fff;
+}
+
+.upNextDialog-countdownText {
+    color: #00a4dc;
+}
+
+.alphaPickerButton {
+    color: #555;
+    color: rgba(0, 0, 0, 0.7);
+    background-color: transparent;
+}
+
+.alphaPickerButton-selected,
+.alphaPickerButton-tv:focus {
+    background-color: #00a4dc;
+    color: #fff !important;
+}
+
+.detailRibbon {
+    background-color: #303030;
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.87);
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.layout-tv .detailRibbon {
+    background: none;
+}
+
+.detailTableBodyRow-shaded:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.listItem-border {
+    border-color: #a7a7a7 !important;
+}
+
+.listItem:focus {
+    background: #ddd;
+}
+
+.progressring-spiner {
+    border-color: #00a4dc;
+}
+
+.mediaInfoText {
+    color: #333;
+    background: #fff;
+}
+
+.emby-input,
+.emby-textarea {
+    color: inherit;
+    background: #fff;
+    border: 0.16em solid rgba(0, 0, 0, 0.158);
+    -webkit-border-radius: 0.2em;
+    border-radius: 0.2em;
+}
+
+.emby-input:focus,
+.emby-textarea:focus {
+    border-color: #00a4dc;
+}
+
+.emby-select-withcolor {
+    color: inherit;
+    background: #fff;
+    border: 0.07em solid rgba(0, 0, 0, 0.158);
+}
+
+.emby-checkbox:checked + span + .checkboxOutline,
+.emby-select-withcolor:focus {
+    border-color: #cba719;
+}
+
+.emby-checkbox:focus + span + .checkboxOutline {
+    border-color: #000;
+}
+
+.emby-checkbox:checked + span + .checkboxOutline,
+.itemProgressBarForeground {
+    background-color: #e2dec6;
+}
+
+.emby-checkbox:focus:not(:checked) + span + .checkboxOutline {
+    border-color: #cba719;
+}
+
+.emby-select-withcolor > option {
+    color: #000;
+    background: #fff;
+}
+
+.emby-select-tv-withcolor:focus {
+    background-color: #00a4dc;
+    color: #fff;
+}
+
+.itemProgressBarForeground-recording {
+    background-color: #cb272a;
+}
+
+.countIndicator,
+.fullSyncIndicator,
+.playedIndicator {
+    background: #968b5b;
+}
+
+.fullSyncIndicator {
+    color: #fff;
+}
+
+.mainDrawer {
+    background: #fff;
+}
+
+.navMenuOption:hover {
+    background: #f2f2f2;
+}
+
+.navMenuOption-selected {
+    background: #968b5b !important;
+    color: #fff;
+}
+
+.emby-button.show-focus:focus {
+    background: #968b5b;
+    color: #fff;
+}
+
+.emby-tab-button {
+    color: #999;
+}
+
+.emby-tab-button-active {
+    color: #968b5b;
+}
+
+.emby-tab-button.show-focus:focus {
+    color: #968b5b;
+}
+
+.emby-tab-button:hover {
+    color: #968b5b;
+}
+
+.channelPrograms,
+.guide-channelHeaderCell,
+.programCell {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.programCell-sports {
+    background: #3949ab !important;
+}
+
+.programCell-movie {
+    background: #5e35b1 !important;
+}
+
+.programCell-kids {
+    background: #039be5 !important;
+}
+
+.programCell-news {
+    background: #43a047 !important;
+}
+
+.programCell-active {
+    background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.guide-channelHeaderCell:focus,
+.programCell:focus {
+    background-color: #968b5b !important;
+    color: #fff !important;
+}
+
+.guide-programTextIcon {
+    color: #1e1e1e;
+    background: #555;
+}
+
+.guide-headerTimeslots {
+    color: inherit;
+}
+
+.guide-date-tab-button {
+    color: #555;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.guide-date-tab-button.emby-tab-button-active,
+.guide-date-tab-button:focus {
+    color: #968b5b;
+}
+
+.guide-date-tab-button.show-focus:focus {
+    background-color: #968b5b;
+    color: #fff;
+}
+
+.infoBanner {
+    color: #000;
+    background: #fff3a5;
+    padding: 1em;
+    -webkit-border-radius: 0.25em;
+    border-radius: 0.25em;
+}
+
+.ratingbutton-icon-withrating {
+    color: #c33;
+}
+
+.downloadbutton-icon-complete,
+.downloadbutton-icon-on {
+    color: #4285f4;
+}
+
+.playstatebutton-icon-played {
+    color: #c33;
+}
+
+.buttonActive {
+    color: #968b5b !important;
+}
+
+.cardBox:not(.visualCardBox) .cardPadder {
+    background-color: #fff;
+}
+
+.card:focus .cardBox.visualCardBox,
+.card:focus .cardBox:not(.visualCardBox) .cardScalable {
+    border-color: #968b5b !important;
+}
+
+.metadataSidebarIcon {
+    color: #968b5b;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #081b3b;
+}
+
+.layout-desktop ::-webkit-scrollbar,
+.layout-tv ::-webkit-scrollbar {
+    width: 1em;
+    height: 1em;
+}
+
+::-webkit-scrollbar-thumb:horizontal,
+::-webkit-scrollbar-thumb:vertical {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background: center no-repeat #083b6b;
+}
+
+/* checkbox widget */
+
+@keyframes check-in {
+	from {transform: scale(0,0);}
+	to {transform: scale(1.8,1.8);}
+}
+
+.checkboxIcon-checked {
+	padding-left: 5px;
+	padding-bottom: 6px;
+	transform: scale(1.8,1.8);
+	text-shadow: 1px 2px 3px #1e1d25;
+	animation-name: check-in;
+	animation-duration: .15s;
+}
+
+.checkboxOutline {
+	overflow: visible;
+	transform: scale(0.7,0.7);
+	border: 2px solid #cba719;
+	border-radius: 22px;
+}
+
+.btnSave,
+.button-submit {
+	background-color: #eeecd8;
+	color: #8c8c83;
+	border: 2px double #968b5b;
+}
+
+/* select widget */
+
+.selectArrow {
+	text-shadow: 2px 2px 3px #1e1d25;
+}
+
+.emby-button.show-focus:focus {
+	transform: scale(1.1);
+}
+
+.headerClockTime {
+	text-shadow: 0px 0px 15px #ffe93c;
+	color: rgba(253, 255, 184, 0.7) !important;
+}
+
+/* slider widget */
+
+.mdl-slider-background,
+.mdl-slider-background-flex  {
+	box-shadow: 1px 2px 8px #1e1d25;
+}
+
+.mdl-slider-background-lower  {
+	background: linear-gradient(135deg, rgb(193, 143, 25) 0%, rgb(255, 235, 129) 50%, rgb(193, 143, 25) 100%);
+}
+
+.mdl-slider::-moz-range-thumb
+ {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: #ece4a5;
+}
+
+.mdl-slider::-webkit-slider-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: #ece4a5;
+}
+
+.mdl-slider::-ms-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: #ece4a5;
+}
+
+.mdl-slider-container {
+    height: 0.83em !important;
+}
+
+.homeLibraryButton {
+	opacity: 60%;
+}
+
+select option:disabled {
+	color: #dcdea2;
+	text-shadow: 0px 0px 15px #f7ff02;
+	font-weight: bold;
+}
