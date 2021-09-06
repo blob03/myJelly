@@ -181,6 +181,11 @@ html {
     color: #888;
 }
 
+.fieldDescription {
+	font-style: italic;
+	font-size: 85%;
+}
+
 .actionsheetDivider {
     background: #ddd;
     background: rgba(0, 0, 0, 0.14);
