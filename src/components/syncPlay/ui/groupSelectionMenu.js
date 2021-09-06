@@ -62,8 +62,8 @@ class GroupSelectionMenu {
                     title: globalize.translate('HeaderSyncPlaySelectGroup'),
                     items: menuItems,
                     positionTo: button,
-                    resolveOnClick: true,
-                    border: true
+                    border: true,
+                    enableHistory: false
                 };
 
                 actionsheet.show(menuOptions).then(function (id) {
@@ -102,7 +102,7 @@ class GroupSelectionMenu {
         const menuItems = [];
 
         if (!SyncPlay.Manager.isPlaylistEmpty() && !SyncPlay.Manager.isPlaybackActive()) {
-            menuItems.push({
+            menuItems.push({ 
                 name: globalize.translate('LabelSyncPlayResumePlayback'),
                 icon: 'play_circle_filled',
                 id: 'resume-playback',
@@ -131,8 +131,8 @@ class GroupSelectionMenu {
             title: groupInfo.GroupName,
             items: menuItems,
             positionTo: button,
-            resolveOnClick: true,
-            border: true
+            border: true,
+            enableHistory: false
         };
 
         actionsheet.show(menuOptions).then(function (id) {
