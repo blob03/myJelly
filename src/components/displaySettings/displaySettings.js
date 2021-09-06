@@ -152,7 +152,7 @@ import template from './displaySettings.template.html';
 		
         if (appHost.supports('displaylanguage')) {	
 			const VAL = context.querySelector('#selectLanguage').value;
-			if (userSettingsInstance.language() !== VAL) {
+			if (VAL !== (userSettingsInstance.language() || '')) {
 				userSettingsInstance.language(VAL);
 				instance.needreload = true;
 			}
@@ -160,7 +160,7 @@ import template from './displaySettings.template.html';
 
 		if (appHost.supports('displaymode')) {
 			const VAL = context.querySelector('.selectLayout').value;
-			if (layoutManager.getSavedLayout() !== VAL) {
+			if (VAL !== (layoutManager.getSavedLayout() || '')) {
 				layoutManager.setLayout(VAL);
 				instance.needreload = true;
 			}
@@ -197,7 +197,7 @@ import template from './displaySettings.template.html';
                 }
 				Events.trigger(instance, 'saved');
 				// Allow enough time to save the parameters before reloading the page.
-				if (instance.needreload === true)
+				if (instance.needreload === true) 
 					setTimeout(() => { window.location.reload(false) }, 1000);
             }, () => {
                 loading.hide();
