@@ -26,7 +26,7 @@ html {
 }
 
 .skinHeader-withBackground {
-	background-color: #55544f;
+	background-color: #edece8;
     color: #ccc;
     color: rgba(255, 255, 255, 0.87);
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -49,7 +49,7 @@ html {
 }
 
 .pageTitleWithDefaultLogo {
-    background-image: url(../../assets/img/banner-light.png);
+    background-image: url(../../assets/img/banner-dark.png);
 }
 
 .layout-tv .pageTitleWithDefaultLogo {
@@ -93,7 +93,7 @@ html {
 
 .fab,
 .raised {
-    background: #d8d8d8;
+    background: #f0f1e9;
     color: inherit;
 }
 
@@ -172,16 +172,19 @@ html {
 }
 
 .cardText-secondary,
-.fieldDescription,
 .guide-programNameCaret,
 .listItem .secondary,
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-    color: #888;
+    color: #4f4c41;
+	text-shadow: 1px 1px 15px #454541;
+	overflow: visible;
 }
-
+	
+	
 .fieldDescription {
+	color: #4f4c41;
 	font-style: italic;
 	font-size: 85%;
 }
@@ -334,7 +337,10 @@ html {
 .countIndicator,
 .fullSyncIndicator,
 .playedIndicator {
-    background: #968b5b;
+	color: #6a6344;
+	background: white;
+	box-shadow: 0px 2px 8px #1e1d25;
+	text-shadow: 1px 1px 3px #727272;
 }
 
 .fullSyncIndicator {
@@ -516,9 +522,12 @@ html {
 
 .btnSave,
 .button-submit {
-	background-color: #eeecd8;
-	color: #8c8c83;
-	border: 2px double #968b5b;
+	border: 3px double #968b5b;
+    border-radius: 2em;
+	text-shadow: 1px 1px 15px #6c6c69;
+	overflow: visible;
+	box-shadow: 1px 1px 8px #55554f;
+	background-color: rgba(250,250,251,0.4);
 }
 
 /* select widget */
@@ -568,7 +577,19 @@ html {
 }
 
 .homeLibraryButton {
-	opacity: 60%;
+	text-shadow: 1px 1px 8px #989893;
+	overflow: visible;
+	box-shadow: 1px 1px 8px #55554f;
+	background-color: rgba(250,250,251,0.4);
+}
+
+.material-icons,
+.headerClockTime,
+.headerClockDate,
+.pageTitle {
+	color: #313030 !important;
+	text-shadow: 3px 3px 6px #171716;
+	overflow: visible;
 }
 
 select option:disabled {
