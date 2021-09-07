@@ -41,7 +41,7 @@ html {
 .skinHeader.semiTransparent {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(220, 220, 220, 0.8);
 }
 
 .layout-tv .skinHeader.semiTransparent {
@@ -249,17 +249,7 @@ html {
     color: #fff !important;
 }
 
-.detailRibbon {
-    background-color: #303030;
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.87);
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-}
 
-.layout-tv .detailRibbon {
-    background: none;
-}
 
 .detailTableBodyRow-shaded:nth-child(even) {
     background: #f8f8f8;
@@ -336,9 +326,10 @@ html {
 
 .countIndicator,
 .fullSyncIndicator,
-.playedIndicator {
+.playedIndicator,
+.indicator {
 	color: #6a6344;
-	background: white;
+	background: White;
 	box-shadow: 0px 2px 8px #1e1d25;
 	text-shadow: 1px 1px 3px #727272;
 }
@@ -370,15 +361,15 @@ html {
 }
 
 .emby-tab-button-active {
-    color: #968b5b;
+    color: #f0ed3c;
 }
 
 .emby-tab-button.show-focus:focus {
-    color: #968b5b;
+    color: #f0ed3c;
 }
 
 .emby-tab-button:hover {
-    color: #968b5b;
+    color: #f0ed3c;
 }
 
 .channelPrograms,
@@ -540,9 +531,10 @@ html {
 	transform: scale(1.1);
 }
 
-.headerClockTime {
-	text-shadow: 0px 0px 15px #ffe93c;
-	color: rgba(253, 255, 184, 0.7) !important;
+select option:disabled {
+	color: #dcdea2;
+	text-shadow: 0px 0px 15px #f7ff02;
+	font-weight: bold;
 }
 
 /* slider widget */
@@ -583,17 +575,39 @@ html {
 	background-color: rgba(250,250,251,0.4);
 }
 
-.material-icons,
 .headerClockTime,
-.headerClockDate,
-.pageTitle {
+.headerClockDate {
 	color: #313030 !important;
 	text-shadow: 3px 3px 6px #171716;
-	overflow: visible;
 }
 
-select option:disabled {
-	color: #dcdea2;
-	text-shadow: 0px 0px 15px #f7ff02;
-	font-weight: bold;
+.pageTitle {
+	color: White !important;	
+	text-shadow: 3px 3px 6px #171716;
+}
+
+.material-icons {
+	color: #White !important;
+	text-shadow: 1px 1px 8px #171716;
+}
+
+.detailRibbon {
+    background-color: White;
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.87);
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.layout-tv .detailRibbon {
+    background: none;
+}
+
+.mediaInfoItem {
+	color: #313030 !important;	
+}
+
+.itemName {
+	color: White !important;	
+	text-shadow: 3px 3px 6px #171716;
 }
