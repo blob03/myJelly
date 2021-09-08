@@ -40,21 +40,11 @@ import template from './displaySettings.template.html';
             };
         });
 
-        options.unshift({
-            name: globalize.translate('None'),
-            value: 'none'
-        });
-
-        selectScreensaver.innerHTML = options.map(o => {
+        selectScreensaver.innerHTML += options.map(o => {
             return `<option value="${o.value}">${o.name}</option>`;
         }).join('');
 
-        selectScreensaver.value = userSettings.screensaver();
-
-        if (!selectScreensaver.value) {
-            // TODO: set the default instead of none
-            selectScreensaver.value = 'none';
-        }
+        selectScreensaver.value = userSettings.screensaver() || 'none';
     }
 
     function showOrHideMissingEpisodesField(context) {
@@ -84,8 +74,6 @@ import template from './displaySettings.template.html';
         } else {
             context.querySelector('.learnHowToContributeContainer').classList.add('hide');
         }
-
-        //context.querySelector('.selectDashboardThemeContainer').classList.toggle('hide', !user.Policy.IsAdministrator);
 		
 		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
 		dashboardthemeNodes.forEach( function(userItem) {

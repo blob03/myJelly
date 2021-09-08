@@ -188,7 +188,10 @@
 	</div>
 	
     <div class="selectContainer selectScreensaverContainer hide">
-        <select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}"></select>
+        <select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}">
+			<option value="none">${None}</option>
+			<option disabled>${OptionDivider}</option>
+		</select>
     </div>
 	
 	<div class="sliderContainer-settings">
