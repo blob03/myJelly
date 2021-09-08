@@ -77,8 +77,8 @@ html {
 
 @media (hover: hover) and (pointer: fine) {
     .paper-icon-button-light:hover:not(:disabled) {
-        color: #f0ed3c;
-		background-color: rgba(236, 220, 11, 0.2);
+        color: #efe4aa;
+		background-color: rgba(230, 219, 76, 0.4);
     }
 }
 
@@ -159,29 +159,12 @@ html {
     background-color: #f57f17;
 }
 
-.formDialogHeader:not(.formDialogHeader-clear) {
-    background-color: #00a4dc;
-    color: #fff;
-}
-
 .formDialogFooter:not(.formDialogFooter-clear) {
     background-color: #f0f0f0;
     border-top: 1px solid #ddd;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     color: inherit;
 }
-
-.cardText-secondary,
-.guide-programNameCaret,
-.listItem .secondary,
-.nowPlayingBarSecondaryText,
-.programSecondaryTitle,
-.secondaryText {
-    color: #4f4c41;
-	text-shadow: 1px 1px 15px #454541;
-	overflow: visible;
-}
-	
 	
 .fieldDescription {
 	color: #4f4c41;
@@ -361,7 +344,7 @@ html {
 }
 
 .emby-tab-button-active {
-    color: #f0ed3c;
+    color: #fff;
 }
 
 .emby-tab-button.show-focus:focus {
@@ -568,17 +551,26 @@ select option:disabled {
     height: 0.83em !important;
 }
 
+.sliderBubble {
+	background: #f6f6f6;
+	color: black;
+	border-radius: 62px;
+	border: 1px solid #cfcfcf;
+}
+
+/* */
+
 .homeLibraryButton {
-	text-shadow: 1px 1px 8px #989893;
 	overflow: visible;
-	box-shadow: 1px 1px 8px #55554f;
+	box-shadow: 1px 1px 8px #a6a6a0;
 	background-color: rgba(250,250,251,0.4);
+	font-weight: 500;
 }
 
 .headerClockTime,
 .headerClockDate {
 	color: #313030 !important;
-	text-shadow: 3px 3px 6px #171716;
+	text-shadow: 3px 3px 6px #787863;
 }
 
 .pageTitle {
@@ -587,8 +579,8 @@ select option:disabled {
 }
 
 .material-icons {
-	color: #White !important;
-	text-shadow: 1px 1px 8px #171716;
+	color: White !important;
+	text-shadow: 1px 1px 8px #696955;
 }
 
 .detailRibbon {
@@ -611,3 +603,23 @@ select option:disabled {
 	color: White !important;	
 	text-shadow: 3px 3px 6px #171716;
 }
+
+.formDialogHeader:not(.formDialogHeader-clear) {
+	background-color: #edece8;
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.87);
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.cardText-secondary,
+.guide-programNameCaret,
+.listItem .secondary,
+.nowPlayingBarSecondaryText,
+.programSecondaryTitle,
+.secondaryText {
+	color: #4f4c41;
+	text-shadow: 1px 1px 15px #8c8c8c;
+	overflow: visible;
+}
+
