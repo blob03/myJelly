@@ -334,11 +334,6 @@ html {
     color: #fff;
 }
 
-.emby-button.show-focus:focus {
-    background: #968b5b;
-    color: #fff;
-}
-
 .emby-tab-button {
     color: #999;
 }
@@ -474,14 +469,14 @@ html {
 /* checkbox widget */
 
 @keyframes check-in {
-	from {transform: scale(0,0);}
-	to {transform: scale(1.8,1.8);}
+	from {transform: scale(0);}
+	to {transform: scale(1.8);}
 }
 
 .checkboxIcon-checked {
 	padding-left: 5px;
 	padding-bottom: 6px;
-	transform: scale(1.8,1.8);
+	transform: scale(1.8);
 	text-shadow: 1px 2px 3px #1e1d25;
 	animation-name: check-in;
 	animation-duration: .15s;
@@ -489,7 +484,7 @@ html {
 
 .checkboxOutline {
 	overflow: visible;
-	transform: scale(0.7,0.7);
+	transform: scale(0.7);
 	border: 2px solid #cba719;
 	border-radius: 22px;
 }
@@ -504,14 +499,18 @@ html {
 	background-color: rgba(250,250,251,0.4);
 }
 
+/* Emby button */
+
+.emby-button.show-focus:focus {
+	transform: scale(1.1); 
+    background: #ece4a5;
+    color: #fff;
+}
+
 /* select widget */
 
 .selectArrow {
 	text-shadow: 2px 2px 3px #1e1d25;
-}
-
-.emby-button.show-focus:focus {
-	transform: scale(1.1);
 }
 
 select option:disabled {
@@ -557,8 +556,6 @@ select option:disabled {
 	border-radius: 62px;
 	border: 1px solid #cfcfcf;
 }
-
-/* */
 
 .homeLibraryButton {
 	overflow: visible;
@@ -623,3 +620,8 @@ select option:disabled {
 	overflow: visible;
 }
 
+.skinHeader.osdHeader {
+	background: linear-gradient(180deg,hsla(0, 0.4%, 86.5%, 0.85),hsla(0, 0.4%, 0%, 0.05));
+	height: 6.5em;
+	transition: opacity .6s ease-out;
+}
