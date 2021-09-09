@@ -55,6 +55,12 @@ import template from './displaySettings.template.html';
         }
         context.querySelector('.fldDisplayMissingEpisodes').classList.remove('hide');
     }
+	
+	function onScreensaverTimeChange(e) {
+		const pnode = e.target.parentNode.parentNode;
+		if (pnode) 
+			pnode.querySelector('.fieldDescription').innerHTML = e.target.value + " min.";
+	}
 
     function loadForm(context, user, userSettings) {
         if (appHost.supports('displaylanguage')) {
@@ -80,10 +86,17 @@ import template from './displaySettings.template.html';
 			userItem.classList.toggle('hide', !user.Policy.IsAdministrator);});
 
         if (appHost.supports('screensaver')) {
-            context.querySelector('.selectScreensaverContainer').classList.remove('hide');
-        } else {
-            context.querySelector('.selectScreensaverContainer').classList.add('hide');
-        }
+            context.querySelector('.ScreensaverArea').classList.remove('hide');
+			loadScreensavers(context, userSettings);
+			
+			let sliderScreensaverTime =  context.querySelector('#sliderScreensaverTime');
+			sliderScreensaverTime.value = (userSettings.screensaverTime()/60000) || 3;
+			sliderScreensaverTime.addEventListener('input', onScreensaverTimeChange);
+			sliderScreensaverTime.addEventListener('change', onScreensaverTimeChange);
+			let event_change = new Event('change');
+			sliderScreensaverTime.dispatchEvent(event_change);
+        } else 
+            context.querySelector('.ScreensaverArea').classList.add('hide');
 
         if (datetime.supportsLocalization()) {
             context.querySelector('.fldDateTimeLocale').classList.remove('hide');
@@ -109,8 +122,6 @@ import template from './displaySettings.template.html';
 		context.querySelector('#selectTheme').addEventListener('change', function() {  skinManager.setTheme(this.value); });
 		
         fillThemes(context.querySelector('#selectDashboardTheme'), userSettings.dashboardTheme());
-
-        loadScreensavers(context, userSettings);
 
         context.querySelector('.chkDisplayMissingEpisodes').checked = user.Configuration.DisplayMissingEpisodes || false;
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
@@ -160,6 +171,7 @@ import template from './displaySettings.template.html';
         userSettingsInstance.theme(context.querySelector('#selectTheme').value);
 		userSettingsInstance.dashboardTheme(context.querySelector('#selectDashboardTheme').value);
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
+		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);

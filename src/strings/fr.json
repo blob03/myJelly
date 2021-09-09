@@ -1531,5 +1531,6 @@
 	"LabelTextStrokeColor": "Couleur de contour du texte :",
 	"LabelStrokeSize": "Epaisseur du contour :",
 	"LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
-	"LabelChromecastVersion": "Version de Chromecast :"
+	"LabelChromecastVersion": "Version de Chromecast :",
+	"LabelScreensaverTime": "Délai avant activation :"
 }

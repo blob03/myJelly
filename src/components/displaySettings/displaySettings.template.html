@@ -187,12 +187,23 @@
 
 	</div>
 	
-    <div class="selectContainer selectScreensaverContainer hide">
-        <select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}">
-			<option value="none">${None}</option>
-			<option disabled>${OptionDivider}</option>
-		</select>
-    </div>
+	<div class="ScreensaverArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+		
+		<div class="selectContainer selectScreensaverContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: start;justify-content: flex-start;'>
+			<select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
+			</select>
+		</div>
+
+		<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+			<div class="sliderContainer">
+				<input is="emby-slider" id="sliderScreensaverTime" label="${LabelScreensaverTime}" type="range" min="1" max="30" step="1"/>
+			</div>
+			<div class="fieldDescription" style="float:right"></div>
+		</div>
+	
+	</div>
 	
 	<div class="sliderContainer-settings">
 		<div class="sliderContainer">

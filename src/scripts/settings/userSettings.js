@@ -464,6 +464,19 @@ export class UserSettings {
     }
 
     /**
+     * Get or set screensaver minimum time before activation.
+     * @param {string|undefined} val - Screensaver-idletime.
+     * @return {string} Screensaver-idletime.
+     */
+    screensaverTime(val) {
+        if (val !== undefined) {
+            return this.set('screensaverTime', val);
+        }
+
+        return this.get('screensaverTime');
+    }
+	
+    /**
      * Get or set library page size.
      * @param {number|undefined} val - Library page size.
      * @return {number} Library page size.
@@ -600,6 +613,7 @@ export const dashboardTheme = currentSettings.dashboardTheme.bind(currentSetting
 export const skin = currentSettings.skin.bind(currentSettings);
 export const theme = currentSettings.theme.bind(currentSettings);
 export const screensaver = currentSettings.screensaver.bind(currentSettings);
+export const screensaverTime = currentSettings.screensaverTime.bind(currentSettings);
 export const libraryPageSize = currentSettings.libraryPageSize.bind(currentSettings);
 export const soundEffects = currentSettings.soundEffects.bind(currentSettings);
 export const loadQuerySettings = currentSettings.loadQuerySettings.bind(currentSettings);
