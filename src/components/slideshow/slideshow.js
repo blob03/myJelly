@@ -187,6 +187,8 @@ export default function (options) {
                     html += getIcon('fullscreen', 'btnFullscreen', true);
                     html += getIcon('fullscreen_exit', 'btnFullscreenExit hide', true);
                 }
+				html += getIcon('rotate_left', 'btnRotateLeft', true);
+				html += getIcon('rotate_right', 'btnRotateRight', true);
             }
             html += getIcon('close', 'slideshowButton btnSlideshowExit hide-mouse-idle-tv', false);
             html += '</div>';
@@ -205,7 +207,8 @@ export default function (options) {
                     html += getIcon('fullscreen', 'btnFullscreen', true);
                     html += getIcon('fullscreen_exit', 'btnFullscreenExit hide', true);
                 }
-
+				html += getIcon('rotate_left', 'btnRotateLeft', true);
+				html += getIcon('rotate_right', 'btnRotateRight', true);
                 html += '</div>';
             }
         } else {
@@ -250,6 +253,16 @@ export default function (options) {
                     toggleFullscreenButtons(screenfull.isFullscreen);
                 });
             }
+			
+			const btnRotateLeft = dialog.querySelector('.btnRotateLeft');
+            if (btnRotateLeft) {
+                btnRotateLeft.addEventListener('click', () => {rotateImage(false);});
+            }
+			
+			const btnRotateRight = dialog.querySelector('.btnRotateRight');
+            if (btnRotateRight) {
+                btnRotateRight.addEventListener('click', () => {rotateImage(true);});
+            }  
         }
 
         setUserScalable(true);
