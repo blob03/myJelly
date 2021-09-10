@@ -264,11 +264,6 @@ html {
     border-radius: 0.2em;
 }
 
-.emby-input:focus,
-.emby-textarea:focus {
-    border-color: #00a4dc;
-}
-
 .emby-select-withcolor {
     color: inherit;
     background: #fff;
@@ -582,10 +577,7 @@ select option:disabled {
 
 .detailRibbon {
     background-color: White;
-    color: #ccc;
     color: rgba(255, 255, 255, 0.87);
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
 
 .layout-tv .detailRibbon {
@@ -603,7 +595,6 @@ select option:disabled {
 
 .formDialogHeader:not(.formDialogHeader-clear) {
 	background-color: #edece8;
-    color: #ccc;
     color: rgba(255, 255, 255, 0.87);
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -624,4 +615,19 @@ select option:disabled {
 	background: linear-gradient(180deg,hsla(0, 0.4%, 86.5%, 0.85),hsla(0, 0.4%, 0%, 0.05));
 	height: 6.5em;
 	transition: opacity .6s ease-out;
+}
+
+.emby-input:focus,
+.emby-textarea:focus {
+    border-color: #ece4a5;  
+}
+
+.jstree-default .jstree-wholerow-clicked {
+    background: #edeabc !important;
+}
+
+.button-accent-flat {
+	color: #4f4c41 !important;
+	text-shadow: 1px 1px 15px #8c8c8c !important;
+	overflow: visible !important;
 }
