@@ -99,26 +99,25 @@ import cardBuilder from '../../components/cardbuilder/cardBuilder';
             icon: 'photo'
         });
         menuItems.push({
-            name: globalize.translate('ManageLibrary'),
-            id: 'edit',
-            icon: 'folder'
-        });
-        menuItems.push({
-            name: globalize.translate('ButtonRemove'),
-            id: 'delete',
-            icon: 'delete'
-        });
-        menuItems.push({
             name: globalize.translate('ButtonRename'),
             id: 'rename',
             icon: 'mode_edit'
+        });
+		menuItems.push({
+            name: globalize.translate('ManageLibrary'),
+            id: 'edit',
+            icon: 'folder'
         });
         menuItems.push({
             name: globalize.translate('ScanLibrary'),
             id: 'refresh',
             icon: 'refresh'
         });
-
+        menuItems.push({
+            name: globalize.translate('ButtonRemove'),
+            id: 'delete',
+            icon: 'delete'
+        });
         import('../../components/actionSheet/actionSheet').then((actionsheet) => {
             actionsheet.show({
                 items: menuItems,
