@@ -166,12 +166,6 @@ html {
     color: inherit;
 }
 	
-.fieldDescription {
-	color: #4f4c41;
-	font-style: italic;
-	font-size: 85%;
-}
-
 .actionsheetDivider {
     background: #ddd;
     background: rgba(0, 0, 0, 0.14);
@@ -630,4 +624,10 @@ select option:disabled {
 	color: #4f4c41 !important;
 	text-shadow: 1px 1px 15px #8c8c8c !important;
 	overflow: visible !important;
+}
+
+.fieldDescription {
+	color: #999585;
+	font-style: italic;
+	font-size: 85%;
 }

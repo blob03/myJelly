@@ -47,12 +47,8 @@ class Manager {
      * @param {Object} apiClient The ApiClient.
      */
     init(apiClient) {
-        if (!apiClient) {
-            throw new Error('ApiClient is null!');
-        }
-
         // Set ApiClient.
-        this.apiClient = apiClient;
+        this.updateApiClient(apiClient);
 
         // Get default player wrapper.
         this.playerWrapper = this.playerFactory.getDefaultWrapper(this);
@@ -71,6 +67,18 @@ class Manager {
                 });
             }
         });
+    }
+
+    /**
+     * Update active ApiClient.
+     * @param {Object} apiClient The ApiClient.
+     */
+    updateApiClient(apiClient) {
+        if (!apiClient) {
+            throw new Error('ApiClient is null!');
+        }
+
+        this.apiClient = apiClient;
     }
 
     /**
@@ -185,10 +193,19 @@ class Manager {
                 this.queueCore.updatePlayQueue(apiClient, cmd.Data);
                 break;
             case 'UserJoined':
+
                 toast(globalize.translate('MessageSyncPlayUserJoined', cmd.Data));
+                if (!this.groupInfo.Participants) {
+                    this.groupInfo.Participants = [cmd.Data];
+                } else {
+                    this.groupInfo.Participants.push(cmd.Data);
+                }
                 break;
             case 'UserLeft':
                 toast(globalize.translate('MessageSyncPlayUserLeft', cmd.Data));
+                if (this.groupInfo.Participants) {
+                    this.groupInfo.Participants = this.groupInfo.Participants.filter((user) => user !== cmd.Data);
+                }
                 break;
             case 'GroupJoined':
                 cmd.Data.LastUpdatedAt = new Date(cmd.Data.LastUpdatedAt);
