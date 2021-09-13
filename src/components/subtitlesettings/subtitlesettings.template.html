@@ -11,10 +11,11 @@
         <div class="selectContainer">
             <select is="emby-select" id="selectSubtitlePlaybackMode" label="${LabelSubtitlePlaybackMode}">
                 <option value="Default">${Default}</option>
+				<option value="None">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="Smart">${Smart}</option>
                 <option value="OnlyForced">${OnlyForcedSubtitles}</option>
                 <option value="Always">${AlwaysPlaySubtitles}</option>
-                <option value="None">${None}</option>
             </select>
             <div class="fieldDescription subtitlesDefaultHelp subtitlesHelp hide">${DefaultSubtitlesHelp}</div>
             <div class="fieldDescription subtitlesSmartHelp subtitlesHelp hide">${SmartSubtitlesHelp}</div>
@@ -60,6 +61,7 @@
 			<div class="selectContainer" style="width: 47%;height: auto;">
 				<select is="emby-select" id="selectFont" label="${LabelFont}">
 					<option value="">${Default}</option>
+					<option disabled>${OptionDivider}</option>
 					<option value="AText">Albert Text</option>
 					<option value="Chewy">Chewy</option>
 					<option value="Impact">Impact Label &copy; 2011 Tension Type</option>
@@ -151,6 +153,7 @@
 			<div class="selectContainer" style="width: 47%;height: auto;">
 				<select is="emby-select" id="selectDropShadow" label="${LabelDropShadow}">
 					<option value="none">${None}</option>
+					<option disabled>${OptionDivider}</option>
 					<option value="raised">${Raised}</option>
 					<option value="depressed">${Depressed}</option>
 					<option value="uniform">${Uniform}</option>
