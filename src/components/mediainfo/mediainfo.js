@@ -106,7 +106,6 @@ import '../../elements/emby-button/emby-button';
         const miscInfo = [];
         let text;
         let date;
-        let minutes;
         let count;
 
         const showFolderRuntime = item.Type === 'MusicAlbum' || item.MediaType === 'MusicArtist' || item.Type === 'Playlist' || item.MediaType === 'Playlist' || item.MediaType === 'MusicGenre';
@@ -119,7 +118,7 @@ import '../../elements/emby-button/emby-button';
             }
 
             if (item.RunTimeTicks) {
-                miscInfo.push(datetime.getDisplayRunningTime(item.RunTimeTicks));
+                miscInfo.push(datetime.getDisplayDuration(item.RunTimeTicks));
             }
         } else if (item.Type === 'PhotoAlbum' || item.Type === 'BoxSet') {
             count = item.ChildCount;
@@ -257,11 +256,7 @@ import '../../elements/emby-button/emby-button';
             if (item.Type === 'Audio') {
                 miscInfo.push(datetime.getDisplayRunningTime(item.RunTimeTicks));
             } else {
-                minutes = item.RunTimeTicks / 600000000;
-
-                minutes = minutes || 1;
-
-                miscInfo.push(`${Math.round(minutes)} mins`);
+				miscInfo.push(datetime.getDisplayDuration(item.RunTimeTicks));
             }
         }
 
