@@ -75,22 +75,8 @@ html {
     color: #000;
 }
 
-@media (hover: hover) and (pointer: fine) {
-    .paper-icon-button-light:hover:not(:disabled) {
-        color: #efe4aa;
-		background-color: rgba(230, 219, 76, 0.4);
-    }
-}
 
-.paper-icon-button-light:active:not(:disabled) {
-    color: #f0ed3c;
-	background-color: rgba(236, 220, 11, 0.2);
-}
-
-.paper-icon-button-light.show-focus:focus {
-    color: #f0ed3c;
-}
-
+   
 .fab,
 .raised {
     background: #f0f1e9;
@@ -99,11 +85,8 @@ html {
 
 .fab:focus,
 .raised:focus {
-    background: #ccc;
-}
-
-.button-submit:focus {
-    background: #f0e89c;
+    background-color: rgba(230, 219, 76, 0.4);
+	color: rgba(255, 232, 232, 0.8);
 }
 
 .button-delete {
@@ -111,11 +94,6 @@ html {
     color: rgba(255, 255, 255, 0.87);
 }
 
-.checkboxLabel {
-    color: inherit;
-}
-
-.checkboxListLabel,
 .inputLabel,
 .inputLabelUnfocused,
 .paperListLabel,
@@ -127,11 +105,7 @@ html {
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: #bdb42f;
-}
-
-.checkboxOutline {
-    border-color: currentColor;
+    color: rgba(230, 219, 76, 0.85);
 }
 
 .paperList,
@@ -226,8 +200,6 @@ html {
     color: #fff !important;
 }
 
-
-
 .detailTableBodyRow-shaded:nth-child(even) {
     background: #f8f8f8;
 }
@@ -264,22 +236,12 @@ html {
     border: 0.07em solid rgba(0, 0, 0, 0.158);
 }
 
-.emby-checkbox:checked + span + .checkboxOutline,
 .emby-select-withcolor:focus {
-    border-color: #cba719;
+	border-color: rgba(230, 219, 76, 0.8);
 }
 
-.emby-checkbox:focus + span + .checkboxOutline {
-    border-color: #000;
-}
-
-.emby-checkbox:checked + span + .checkboxOutline,
 .itemProgressBarForeground {
     background-color: #e2dec6;
-}
-
-.emby-checkbox:focus:not(:checked) + span + .checkboxOutline {
-    border-color: #cba719;
 }
 
 .emby-select-withcolor > option {
@@ -288,7 +250,7 @@ html {
 }
 
 .emby-select-tv-withcolor:focus {
-    background-color: #00a4dc;
+    border-color: rgba(230, 219, 76, 0.8);
     color: #fff;
 }
 
@@ -321,22 +283,6 @@ html {
 .navMenuOption-selected {
     background: #968b5b !important;
     color: #fff;
-}
-
-.emby-tab-button {
-    color: #999;
-}
-
-.emby-tab-button-active {
-    color: #fff;
-}
-
-.emby-tab-button.show-focus:focus {
-    color: #f0ed3c;
-}
-
-.emby-tab-button:hover {
-    color: #f0ed3c;
 }
 
 .channelPrograms,
@@ -426,7 +372,7 @@ html {
 
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-    border-color: #968b5b !important;
+	border-color: rgba(230, 219, 76, 0.8) !important;
 }
 
 .metadataSidebarIcon {
@@ -455,11 +401,49 @@ html {
     background: center no-repeat #083b6b;
 }
 
+/* tab buttons */
+
+.emby-tab-button {
+    color: rgba(153, 149, 133, 0.8);
+}
+
+.emby-tab-button-active {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.emby-tab-button.show-focus:focus {
+    color: rgba(230, 219, 76, 0.8);
+}
+
+.emby-tab-button:hover:not(:disabled) {
+    color: rgba(230, 219, 76, 0.8);
+}
+
 /* checkbox widget */
 
 @keyframes check-in {
 	from {transform: scale(0);}
 	to {transform: scale(1.8);}
+}
+
+.checkboxOutline {
+	overflow: visible;
+	transform: scale(0.7);
+	border: 3px solid rgba(230, 219, 76, 0.8);
+	border-radius: 100%;
+}
+
+.emby-checkbox + span + .checkboxOutline {
+    border-color: rgba(153, 149, 133, 0.8);
+}
+
+.emby-checkbox:checked + span + .checkboxOutline {
+	border-color: rgba(230, 219, 76, 0.8);
+}
+
+.emby-checkbox:focus + span + .checkboxOutline,
+.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
+	background-color: rgba(230, 219, 76, 0.4);
 }
 
 .checkboxIcon-checked {
@@ -471,29 +455,95 @@ html {
 	animation-duration: .15s;
 }
 
-.checkboxOutline {
-	overflow: visible;
-	transform: scale(0.7);
-	border: 2px solid #cba719;
-	border-radius: 22px;
+/* Buttons */
+
+@keyframes focus {
+	from {transform: scale(1);}
+	to {transform: scale(1.3);}
 }
 
-.btnSave,
-.button-submit {
-	border: 3px double #968b5b;
-    border-radius: 2em;
-	text-shadow: 1px 1px 15px #6c6c69;
+.emby-button:hover:not(:disabled) {
+	color: rgba(230, 219, 76, 0.4);
+}
+
+.emby-button:focus {
+	color: rgba(230, 219, 76, 0.4);
+	animation-name: focus;
+	animation-duration: .15s;
+	transform: scale(1.3);
+}
+
+.emby-button:active {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.headerButton.show-focus:focus {
+    background-color: rgba(230, 219, 76, 0.4);
+	animation-name: focus;
+	animation-duration: .15s;
+	transform: scale(1.3);
+}
+
+.headerButton:hover:not(:disabled) {
+	color: #efe4aa;
+	background-color: rgba(230, 219, 76, 0.4);
+}
+
+.headerButton:active:not(:disabled) {
+    color: #f0ed3c;
+	background-color: rgba(255, 232, 232, 0.8);
+}
+
+.homeLibraryButton {
 	overflow: visible;
+	box-shadow: 1px 1px 8px #a6a6a0;
+	background-color: rgba(250,250,251,0.4);
+	font-weight: 500;
+}
+
+.homeLibraryButton.emby-button:hover,
+.homeLibraryButton.emby-button:focus {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+/* Save button */
+
+.button-submit {
+	border: 3px ridge #968b5b;
 	box-shadow: 1px 1px 8px #55554f;
 	background-color: rgba(250,250,251,0.4);
+	border-color: rgba(153, 149, 133, 0.8);
+	width: 50% !important;
+	margin:0 auto !important;
 }
 
-/* Emby button */
+.button-submit:hover:not(:disabled),
+.button-submit:focus {
+	background-color: rgba(230, 219, 76, 0.4);
+	color: rgba(20, 20, 20, 0.8);
+}
 
-.emby-button.show-focus:focus {
-	transform: scale(1.1); 
-    background: #ece4a5;
-    color: #fff;
+.button-submit:active {
+	background-color: rgba(230, 219, 76, 0.8);
+}
+
+/* detail button */
+
+.detailButton {
+	border-radius: 50%;
+	border: 0;
+}
+
+.detailButton:hover:not(:disabled) {
+	background-color: rgba(230, 219, 76, 0.4);
+}
+
+.detailButton:focus {
+	background-color: rgba(230, 219, 76, 0.4);
+}
+
+.detailButton:active {
+	background-color: rgba(255, 232, 232, 0.8) !important;
 }
 
 /* select widget */
@@ -503,16 +553,27 @@ html {
 }
 
 select option:disabled {
-	color: #dcdea2;
-	text-shadow: 0px 0px 15px #f7ff02;
-	font-weight: bold;
+	color: rgba(230, 219, 76, 0.2);
 }
 
 /* slider widget */
 
+.mdl-slider {
+	background: transparent;
+}
+
 .mdl-slider-background,
 .mdl-slider-background-flex  {
 	box-shadow: 1px 2px 8px #1e1d25;
+}
+
+.mdl-slider:focus,
+.mdl-slider:hover:not(:disabled) {
+	background-color: rgba(230, 219, 76, 0.1);
+}
+
+.mdl-slider:active {
+	background-color: rgba(255, 255, 255, 0.1);
 }
 
 .mdl-slider-background-lower  {
@@ -544,13 +605,6 @@ select option:disabled {
 	color: black;
 	border-radius: 62px;
 	border: 1px solid #cfcfcf;
-}
-
-.homeLibraryButton {
-	overflow: visible;
-	box-shadow: 1px 1px 8px #a6a6a0;
-	background-color: rgba(250,250,251,0.4);
-	font-weight: 500;
 }
 
 .headerClockTime,
@@ -600,8 +654,8 @@ select option:disabled {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-	color: #4f4c41;
-	text-shadow: 1px 1px 15px #8c8c8c;
+	color: #959287;
+	font-size: 85%;
 	overflow: visible;
 }
 
@@ -613,7 +667,7 @@ select option:disabled {
 
 .emby-input:focus,
 .emby-textarea:focus {
-    border-color: #ece4a5;  
+	border-color: rgba(230, 219, 76, 0.8);	
 }
 
 .jstree-default .jstree-wholerow-clicked {
