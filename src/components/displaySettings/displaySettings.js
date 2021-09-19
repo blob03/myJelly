@@ -133,7 +133,7 @@ import template from './displaySettings.template.html';
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
         context.querySelector('.selectDateTimeLocale').value = userSettings.dateTimeLocale() || '';
-		context.querySelector('#txtMaxDaysForNextUp').value = userSettings.maxDaysForNextUp();
+		
 		if (appHost.supports('displaylanguage')) 
 			context.querySelector('#selectLanguage').value = userSettings.language() || '';
 		if (appHost.supports('displaymode')) 
@@ -141,6 +141,8 @@ import template from './displaySettings.template.html';
 		
         let sliderLibraryPageSize = context.querySelector('#sliderLibraryPageSize');
         sliderLibraryPageSize.value = userSettings.libraryPageSize() || 32;
+		
+		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
 		
         showOrHideMissingEpisodesField(context);
 
@@ -174,7 +176,7 @@ import template from './displaySettings.template.html';
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
-		userSettingsInstance.maxDaysForNextUp(context.querySelector('#txtMaxDaysForNextUp').value);
+		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);

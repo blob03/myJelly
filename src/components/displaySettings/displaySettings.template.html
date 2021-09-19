@@ -212,8 +212,10 @@
 		<div class="fieldDescription">${LabelLibraryPageSizeHelp}</div>
 	</div>
 	
-	<div class="inputContainer inputContainer-withDescription">
-        <input is="emby-input" type="number" id="txtMaxDaysForNextUp" pattern="[0-9]*" required="required" min="0" max="1000" step="1" label="${LabelMaxDaysForNextUp}" />
+	<div class="sliderContainer-settings">
+		<div class="sliderContainer">
+			<input is="emby-slider" id="sliderMaxDaysForNextUp" label="${LabelMaxDaysForNextUp}" type="range" min="1" max="365" />
+		</div>
         <div class="fieldDescription">${LabelMaxDaysForNextUpHelp}</div>
     </div>
 
