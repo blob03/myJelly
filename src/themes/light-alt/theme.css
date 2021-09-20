@@ -36,7 +36,7 @@ html {
 }
 
 .skinHeader-withBackground {
-	background-color: #edece8;
+	background-color: #e3e3e3;
     color: #ccc;
     color: rgba(255, 255, 255, 0.87);
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -130,11 +130,6 @@ html {
 .actionsheetDivider {
     background: #ddd;
     background: rgba(0, 0, 0, 0.14);
-}
-
-.cardText-secondary {
-    color: inherit;
-    opacity: 0.5;
 }
 
 .formDialogHeader a,
@@ -309,16 +304,12 @@ html {
 }
 
 .ratingbutton-icon-withrating {
-    color: #c33;
+    color: #fc68d7 !important;
 }
 
 .downloadbutton-icon-complete,
 .downloadbutton-icon-on {
     color: #4285f4;
-}
-
-.playstatebutton-icon-played {
-    color: #c33;
 }
 
 .buttonActive {
@@ -466,7 +457,7 @@ html {
 	transform: scale(1.3) !important;
 }
 
-/* header buttons */
+/* headerButton */
 
 .headerButton:focus {
     background-color: rgba(230, 219, 76, 0.4);
@@ -494,14 +485,13 @@ html {
 }
 
 .button-submit {
-	border: 3px ridge #968b5b;
-	box-shadow: 1px 1px 8px #55554f;
-	background-color: rgba(200,200,200,0.4);
-	color: rgba(30, 30, 30, 0.8) !important;
-	border-color: rgba(153, 149, 133, 0.8);
 	width: 50% !important;
-	margin:0 auto !important;
+	margin: 0 auto !important;
 	transform: scale(1.0);
+	color: rgba(30, 30, 30, 0.8) !important;
+	background-color: rgba(200,200,200,0.4);
+	box-shadow: 1px 1px 8px #a6a6a0;
+	font-weight: 500;
 }
 
 .button-submit:hover:not(:disabled) {
@@ -527,7 +517,8 @@ html {
 
 .detailButton {
 	border-radius: 50%;
-	border: 0;
+	margin: 6px !important;
+	padding: 12px !important;
 }
 
 .detailButton:hover:not(:disabled) {
@@ -657,17 +648,25 @@ select option:selected {
 .headerClockTime,
 .headerClockDate {
 	color: #fff !important;
-	text-shadow: 0px 0px 11px #000;
+	text-shadow: 1px 1px 4px #39392d;
 }
 
 .pageTitle {
-	color: White !important;	
-	text-shadow: 3px 3px 6px #171716;
+	color: #fff !important;
+	text-shadow: 1px 1px 4px #39392d;
 }
 
 .material-icons {
-	color: White !important;
-	text-shadow: 1px 1px 8px #696955;
+	color: White;
+	text-shadow: 1px 1px 4px #39392d;
+}
+
+.starIcon {
+    color: #f2b01e !important;
+}
+
+.playstatebutton-icon-played {
+    color: #59f772 !important;
 }
 
 .detailRibbon {
@@ -701,9 +700,8 @@ select option:selected {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-	color: #959287;
+	color: #615f5b;
 	font-size: 85%;
-	overflow: visible;
 }
 
 .skinHeader.osdHeader {
