@@ -16,8 +16,11 @@
       "name": "Light",
       "id": "light"
     }, {
-	  "name": "Light alt. 1.19",
+      "name": "Light alt. 1.19",
       "id": "light-alt"
+    }, {
+      "name": "Light alt. 1.19 blue",
+      "id": "light-alt-blue"
     }, {
       "name": "Purple Haze",
       "id": "purplehaze"
