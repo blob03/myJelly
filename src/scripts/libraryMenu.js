@@ -50,11 +50,19 @@ import appSettings from './settings/appSettings';
 			html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerLockButton hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		/* Added: casing for the topbar clock */
-		html += '<table style="border-collapse:collapse;border:solid 0px;" id="headerClock" class="headerClock"><tr><td>';
-		html += '<span id="headerClockDate" class="headerClockDate" style="float:right;font-size: 70%;color: rgba(255,255,255,0.4);padding:0px 5px"></span>';
-		html += '</td></tr><tr><td>';
-		html += '<span id="headerClockTime" class="headerClockTime" style="float:right;font-size: 120%;color: rgba(255,255,255,0.4);padding:0px 5px"></span>';
-		html += '</td></tr></table>';			 
+		/* new version uses a disabled flexbox button rather than a mere table */
+		html += '<button id="headerClock" disabled class="headerClockButton headerClock" style="display: flex;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border:solid 0px;background-color:transparent;padding:0px 15px;">';
+		html += '<div id="headerClockDate" class="headerClockDate" style="font-size: 70%;color: rgba(255,255,255,0.4);"></div>';
+		html += '<div id="headerClockTime" class="headerClockTime" style="font-size: 120%;color: rgba(255,255,255,0.4);"></div>';
+		html += '</button>';
+		
+		/*
+			html += '<table style="border-collapse:collapse;border:solid 0px;" id="headerClock" class="headerClock"><tr><td>';
+			html += '<span id="headerClockDate" class="headerClockDate" style="float:right;font-size: 70%;color: rgba(255,255,255,0.4);padding:0px 5px"></span>';
+			html += '</td></tr><tr><td>';
+			html += '<span id="headerClockTime" class="headerClockTime" style="float:right;font-size: 120%;color: rgba(255,255,255,0.4);padding:0px 5px"></span>';
+			html += '</td></tr></table>';			 
+		*/
 		/* ********************************** */
 		
         html += '<button is="paper-icon-button-light" class="headerButton headerButtonRight headerUserButton hide"><span class="material-icons person"></span></button>';			

@@ -184,9 +184,10 @@ import template from './displaySettings.template.html';
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
 
+/*
         if (user.Id === apiClient.getCurrentUserId()) 
             skinManager.setTheme(userSettingsInstance.theme());
-        
+  */      
         return apiClient.updateUserConfiguration(user.Id, user.Configuration);
     }
 
