@@ -70,7 +70,7 @@ html {
 }
 
 .backgroundContainer {
-    background-color: rgba(98, 60, 28, 0.6) !important;
+    background-color: rgba(98, 60, 28, 0.8) !important;
 }
 
 .backdropImage {
@@ -85,7 +85,7 @@ html {
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #f0f0f0;
+    background-color: #000;
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -208,9 +208,9 @@ html {
 
 .emby-input,
 .emby-textarea {
-    color: inherit;
-    background: #fff;
-    border: 0.16em solid rgba(0, 0, 0, 0.158);
+	color: #000;
+	background: #f1d49c;
+	border: 0.16em solid rgb(9, 0, 0);
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
 }
@@ -417,13 +417,13 @@ html {
 
 .listItemBody:hover:not(:disabled),
 .listItem-button:hover:not(:disabled) {
-	color: rgba(255, 255, 255, 0.8) !important;
+	color: #fff !important;
 	background-color: rgba(231, 156, 39, 0.6) !important;
 }
 
 .listItem-button:focus {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
+	color: #fff !important;
+	background-color: rgb(160, 88, 24, 0.8) !important;
 }
 
 .listItem-button:active {
@@ -464,7 +464,7 @@ html {
 /* headerButton */
 
 .headerButton:focus {
-    background-color: rgba(123, 152, 184, 0.4);
+    background-color: rgba(231, 123, 7, 0.4);
 	animation-name: focus;
 	animation-duration: .15s;
 	transform: scale(1.3);
@@ -617,7 +617,7 @@ select option:selected {
 .mdl-slider::-webkit-slider-thumb:hover,
 .mdl-slider::-webkit-slider-thumb:focus {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: rgba(38, 218, 247, 0.8);
+	background: #ffa906;
 }
 
 .mdl-slider-container {
@@ -739,7 +739,7 @@ select option:selected {
 
 .emby-input:focus,
 .emby-textarea:focus {
-	border-color: rgba(38, 218, 247, 0.8);	
+	border-color: #fff;	
 }
 
 .jstree-default .jstree-wholerow-clicked {
