@@ -22,11 +22,9 @@ const defaultSubtitleAppearanceSettings = {
 };
 
 function hdrClock(obj) {
-	
 	const _hdrclck = document.getElementById("headerClock");
-	if (_hdrclck === null) {
+	if (_hdrclck === null)
 		return false;
-	}
 	
 	// If clock is disabled 
 	// remove any pending timer
@@ -34,23 +32,21 @@ function hdrClock(obj) {
 	// return
 	if (obj.enableClock() !== true) {
 		if (obj.clockTimer !== undefined) {
-			clearTimeout(obj.clockTimer);
+			clearInterval(obj.clockTimer);
 			obj.clockTimer = undefined;
 		}
-		//if ( !_hdrclck.classList.contains('hide')) {
-			_hdrclck.classList.add('hide');
-		//}
+		_hdrclck.classList.add('hide');
 		return;
 	}
 
 	var _hdrclkdate_span = document.getElementById("headerClockDate");
 	if (_hdrclkdate_span == null) {
-		obj.clockTimer = setTimeout(function() { hdrClock(obj) }, 2000);
+		setTimeout(function() { hdrClock(obj) }, 2000);
 		return;
 	}
 	var _hdrclktime_span = document.getElementById("headerClockTime");
 	if (_hdrclktime_span == null) {
-		obj.clockTimer = setTimeout(function() { hdrClock(obj) }, 2000);
+		setTimeout(function() { hdrClock(obj) }, 2000);
 		return;
 	}
 	globalize.updateCurrentCulture();
@@ -65,11 +61,11 @@ function hdrClock(obj) {
 	});
 	_hdrclkdate_span.innerHTML = _hdrclk_day + " " + _hdrclk_date;
 	_hdrclktime_span.innerHTML = _hdrclk_time;
-	//if ( _hdrclck.classList.contains('hide')) {
-		_hdrclck.classList.remove('hide');
-	//}
+	_hdrclck.classList.remove('hide');
 
-	obj.clockTimer = setTimeout(function() { hdrClock(obj) }, 10000);
+	if (!obj.clockTimer)
+		obj.clockTimer = setInterval(function() { hdrClock(obj) }, 10000);
+	
 	return;
 }
 

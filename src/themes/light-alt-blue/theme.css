@@ -649,16 +649,29 @@ select option:selected {
 
 /* top bar clock style */
 
-.headerClockTime,
-.headerClockDate {
-	color: #d6e5fc !important;
-	text-shadow: 1px 1px 4px #39392d;
+.headerClockButton {
+	padding:0px 15px;
 }
 
-.headerClockButton:hover {
-	animation-name: focus;
-	animation-duration: .15s;
-	transform: scale(1.3);
+.headerClockTime,
+.headerClockDate {
+	color: #dbe1f1;
+}
+
+.nightClock > .headerClockTime,
+.nightClock > .headerClockDate {
+	color: #fff;
+	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2bd726, 0 0 40px #22ee1d, 0 0 50px #49f00d, 0 0 60px #16da3e, 0 0 70px #00e60e;
+}
+
+.headerClockButton:hover > .headerClockTime,
+.headerClockButton:focus > .headerClockTime {
+	font-size: 140% !important;
+}
+
+.headerClockButton:hover > .headerClockDate,
+.headerClockButton:focus > .headerClockDate {
+	font-size: 90% !important;
 }
 
 .pageTitle {
@@ -715,7 +728,7 @@ select option:selected {
 }
 
 .skinHeader.osdHeader {
-	background: linear-gradient(180deg,hsla(0, 0.4%, 86.5%, 0.85),hsla(0, 0.4%, 0%, 0.05));
+	background: linear-gradient(180deg,hsla(213.8, 35.9%, 30%, 0.85),hsla(240, 100%, 0.2%, 0.05));
 	height: 6.5em;
 	transition: opacity .6s ease-out;
 }

@@ -22,6 +22,15 @@ import appSettings from './settings/appSettings';
 
 /* eslint-disable indent */
 
+	function toggleClockMode() {
+		let clockButton = document.getElementById("headerClock");
+		// Switch night-mode ON and OFF.
+		if (clockButton.classList.contains('nightClock')) 
+			clockButton.classList.remove('nightClock');
+		else
+			clockButton.classList.add('nightClock');
+	}
+	
     function renderHeader() {
         let html = '';
         html += '<div class="flex align-items-center flex-grow headerTop">';
@@ -51,9 +60,9 @@ import appSettings from './settings/appSettings';
 		
 		/* Added: casing for the topbar clock */
 		/* new version uses a disabled flexbox button rather than a mere table */
-		html += '<button id="headerClock" disabled class="headerClockButton headerClock" style="display: flex;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border:solid 0px;background-color:transparent;padding:0px 15px;">';
-		html += '<div id="headerClockDate" class="headerClockDate" style="font-size: 70%;color: rgba(255,255,255,0.4);"></div>';
-		html += '<div id="headerClockTime" class="headerClockTime" style="font-size: 120%;color: rgba(255,255,255,0.4);"></div>';
+		html += '<button id="headerClock" class="headerClockButton headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;">';
+		html += '<div id="headerClockDate" class="headerClockDate" style="font-size: 70%;"></div>';
+		html += '<div id="headerClockTime" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
 		
 		/*
@@ -80,6 +89,8 @@ import appSettings from './settings/appSettings';
         skinHeader.innerHTML = html;
 
         headerBackButton = skinHeader.querySelector('.headerBackButton');
+		headerClockButton = skinHeader.querySelector('.headerClock');
+		headerClockButton.addEventListener('click', toggleClockMode);
         headerHomeButton = skinHeader.querySelector('.headerHomeButton');
         mainDrawerButton = skinHeader.querySelector('.mainDrawerButton');
         headerUserButton = skinHeader.querySelector('.headerUserButton');
@@ -95,7 +106,7 @@ import appSettings from './settings/appSettings';
         bindMenuEvents();
         updateCastIcon();
     }
-	
+		
     function getCurrentApiClient() {
         if (currentUser && currentUser.localUser) {
             return ServerConnections.getApiClient(currentUser.localUser.ServerId);
@@ -977,6 +988,7 @@ import appSettings from './settings/appSettings';
     let currentDrawerType;
     let pageTitleElement;
     let headerBackButton;
+	let headerClockButton;
     let headerUserButton;
     let currentUser;
     let headerCastButton;

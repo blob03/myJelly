@@ -16,11 +16,14 @@
       "name": "Light",
       "id": "light"
     }, {
-      "name": "Light alt. 1.2",
+      "name": "Light alt. 1.21",
       "id": "light-alt"
     }, {
-      "name": "Light alt. 1.2 blue",
+      "name": "Light alt. 1.21 blue",
       "id": "light-alt-blue"
+    }, {
+      "name": "Light alt. 1.21 Halloween",
+      "id": "light-alt-Halloween"
     }, {
       "name": "Purple Haze",
       "id": "purplehaze"
@@ -28,7 +31,7 @@
       "name": "WMC",
       "id": "wmc"
     },{
-      "name": "WMC alt. 1.12",
+      "name": "WMC alt. 1.13",
       "id": "wmc-alt"
     }
   ],

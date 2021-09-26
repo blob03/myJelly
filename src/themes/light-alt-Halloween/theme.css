@@ -1,23 +1,22 @@
 
 * {
-    scrollbar-color: #ffffff #d5d5d5;
+    scrollbar-color: #000 #fe9001;
     scrollbar-width: thin;
 }
 
 .skinHeader,
 html {
-    color: #222;
-    color: rgba(0, 0, 0, 0.87);
+    color: rgb(206, 161, 121);
 }
 
 ::-moz-selection { 
-	color: #3c3c3c;
-	background: #f4f4b5;
+	color: #ffa700;
+	background: #000;
 }
 
 ::selection {
-	color: #3c3c3c;
-	background: #f4f4b5;
+	color: #ffa700;
+	background: #000;
 }
 
 .wizardStartForm,
@@ -36,7 +35,7 @@ html {
 }
 
 .skinHeader-withBackground {
-	background-color: #e3e3e3;
+	background-color: #301f03;
     color: #ccc;
     color: rgba(255, 255, 255, 0.87);
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -51,28 +50,36 @@ html {
 .skinHeader.semiTransparent {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    background-color: rgba(220, 220, 220, 0.8);
+    background-color: #91b0d2;
 }
 
 .layout-tv .skinHeader.semiTransparent {
-    background: none;
+    /*! background: none; */
 }
 
 .pageTitleWithDefaultLogo {
-    background-image: url(../../assets/img/banner-dark.png);
+    background-image: url(../../assets/img/banner-light.png);
 }
 
 .layout-tv .pageTitleWithDefaultLogo {
     background-image: url(../../assets/img/icon-transparent.png);
 }
 
-.backgroundContainer,
 html {
-    background-color: #f2f2f2;
+    background-color: #d17320 !important;
 }
 
-.backgroundContainer.withBackdrop {
-    background-color: rgba(255, 255, 255, 0.8);
+.backgroundContainer {
+    background-color: rgba(98, 60, 28, 0.6) !important;
+}
+
+.backdropImage {
+    background-color: rgb(242, 137, 45) !important;
+	background-image: url(./bg.jpg) !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position-x: left;
+	background-position-y: center;
 }
 
 .dialog,
@@ -108,7 +115,7 @@ html {
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: rgba(230, 219, 76, 0.85);
+    color: rgb(255, 255, 255);
 }
 
 .paperList,
@@ -314,8 +321,8 @@ html {
 
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-	border-color: rgba(255, 255, 255, 0.8) !important;
-}
+	border-color: rgba(106, 136, 207, 0.8) !important;
+} 
 
 .metadataSidebarIcon {
     color: #968b5b;
@@ -324,10 +331,11 @@ html {
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: #081b3b;
+    background-color: #fe9001;
 }
 
 .layout-desktop ::-webkit-scrollbar,
@@ -340,9 +348,8 @@ html {
 ::-webkit-scrollbar-thumb:vertical {
     border-radius: 2px;
     -webkit-border-radius: 2px;
-    background: center no-repeat #083b6b;
+    background: center no-repeat #000;
 }
-
 
 /* checkbox widget */
 
@@ -354,21 +361,21 @@ html {
 .checkboxOutline {
 	overflow: visible;
 	transform: scale(0.7);
-	border: 3px solid rgba(230, 219, 76, 0.8);
+	border: 3px solid rgba(97, 213, 233, 0.8);
 	border-radius: 100%;
 }
 
 .emby-checkbox + span + .checkboxOutline {
-    border-color: rgba(153, 149, 133, 0.8);
+    border-color: #463019;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
-	border-color: rgba(230, 219, 76, 0.8);
+	background-color: rgb(157, 97, 3);
 }
 
 .emby-checkbox:focus + span + .checkboxOutline,
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	background-color: rgba(230, 219, 76, 0.4);
+	border-color: rgba(244, 205, 114, 0.8);
 }
 
 .checkboxIcon-checked {
@@ -383,36 +390,35 @@ html {
 /* Buttons */
 
 @keyframes focus {
-	from {transform: scale(1);}
 	to {transform: scale(1.3);}
 }
 
 .homeLibraryButton {
-	color: rgba(30, 30, 30, 0.8) !important;
-	background-color: rgba(200, 200, 200,0.4);
+	color: rgb(50, 67, 37) !important;
+	background-color: rgba(255, 197, 123, 0.6);
 	box-shadow: 1px 1px 8px #a6a6a0;
 	font-weight: 500;
 }
 
 .homeLibraryButton:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(230, 230, 230, 0.8) !important;
+	background-color: rgba(244, 128, 42, 0.8) !important;
 }
 
 .homeLibraryButton:focus {
 	color: rgba(30, 30, 30, 0.8) !important;
-	background-color: rgba(250, 250, 250, 0.8) !important;
+	background-color: rgba(248, 208, 159, 0.8) !important;
 	transform: scale(1.1) !important;
 }
 
 .listItemBody {
-	color: rgba(30, 30, 30, 0.8);
+	color: rgb(222, 121, 31);
 }
 
 .listItemBody:hover:not(:disabled),
 .listItem-button:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(230, 230, 230, 0.8) !important;
+	background-color: rgba(231, 156, 39, 0.6) !important;
 }
 
 .listItem-button:focus {
@@ -425,7 +431,7 @@ html {
 }
  
 .emby-button:hover:not(:disabled) {
-	color: rgba(230, 219, 76, 0.4);
+	color: rgba(62, 231, 239, 0.4);
 }
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
@@ -440,14 +446,11 @@ html {
 /* tab buttons */
 
 .emby-tab-button {
-	text-shadow: 3px 3px 6px #6c6c6c;
-    color: rgba(255, 255, 255, 0.6);
-	transform: scale(1.0);
+    color: rgb(180, 83, 11);
 }
 
 .emby-tab-button:hover:not(:disabled) {
-    color: rgba(255, 249, 169, 0.8);
-	text-shadow: 3px 3px 6px #000000;
+    color: rgb(255, 185, 96);
 }
 
 .emby-tab-button-active,
@@ -461,7 +464,7 @@ html {
 /* headerButton */
 
 .headerButton:focus {
-    background-color: rgba(230, 219, 76, 0.4);
+    background-color: rgba(123, 152, 184, 0.4);
 	animation-name: focus;
 	animation-duration: .15s;
 	transform: scale(1.3);
@@ -469,7 +472,7 @@ html {
 
 .headerButton:hover:not(:disabled) {
 	color: #efe4aa;
-	background-color: rgba(230, 219, 76, 0.4);
+	background-color:rgba(235, 197, 136, 0.4);
 }
 
 .headerButton:active:not(:disabled) {
@@ -489,8 +492,8 @@ html {
 	width: 50% !important;
 	margin: 0 auto !important;
 	transform: scale(1.0);
-	color: rgba(30, 30, 30, 0.8) !important;
-	background-color: rgba(200,200,200,0.4);
+	color: rgba(17, 50, 13, 0.8) !important;
+	background-color: rgba(255, 150, 18, 0.8);
 	box-shadow: 1px 1px 8px #a6a6a0;
 	font-weight: 500;
 }
@@ -517,19 +520,19 @@ html {
 
 .detailButton {
 	border-radius: 50%;
-	margin: 5px !important;
-	padding: 8px !important;
+	margin: 4px !important;
+	padding: 9px !important;
 }
 
 .detailButton:hover:not(:disabled) {
-	background-color: rgba(230, 219, 76, 0.4);
+	background-color: rgba(169, 198, 230, 0.4);
 }
 
 .detailButton:focus {
-	background-color: rgba(230, 219, 76, 0.4);
+	transform: scale(1.3);
+	background-color: rgba(85, 142, 216, 0.4);
 	animation-name: focus;
 	animation-duration: .15s;
-	transform: scale(1.3);
 }
 
 .detailButton:active {
@@ -543,27 +546,27 @@ html {
 }
 
 .emby-select-withcolor {
-    color: inherit;
-    background: #fff;
-    border: 0.07em solid rgba(0, 0, 0, 0.158);
+    color: #000;
+    background: rgb(190, 125, 22);
+    border: 0.07em solid rgb(0, 0, 0);
 }
 
 .emby-select-withcolor:focus {
-	border-color: rgba(230, 219, 76, 0.8);
+	border-color: #fff;
 }
 
 .emby-select-withcolor > option {
-	color: #999585;
-	background: #fff;
+	color: #000;
+	background: rgb(190, 125, 22);
 }
 
 .emby-select-tv-withcolor:focus {
-    border-color: rgba(230, 219, 76, 0.8);
+    border-color: #fff;
     color: #fff;
 }
 
 select option:disabled {
-	color: rgb(186, 171, 66);
+	color: rgb(157, 97, 3);
 }
 
 select option:selected {
@@ -584,7 +587,7 @@ select option:selected {
 
 .mdl-slider:focus,
 .mdl-slider:hover:not(:disabled) {
-	background-color: rgba(230, 219, 76, 0.1);
+	background-color: rgba(255, 166, 86, 0.1);
 }
 
 .mdl-slider:active {
@@ -592,23 +595,29 @@ select option:selected {
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(135deg, rgb(193, 143, 25) 0%, rgb(255, 235, 129) 50%, rgb(193, 143, 25) 100%);
+	background: linear-gradient(135deg, rgb(134, 111, 21) 0%, rgb(194, 160, 80) 50%, rgb(222, 189, 125) 100%);
 }
 
 .mdl-slider::-moz-range-thumb
  {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #ece4a5;
-}
-
-.mdl-slider::-webkit-slider-thumb {
-	box-shadow: 0px 2px 8px #1e1d25;
-	background: #ece4a5;
+	background: rgb(222, 189, 125);
 }
 
 .mdl-slider::-ms-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #ece4a5;
+	background: rgb(222, 189, 125);
+}
+
+.mdl-slider::-webkit-slider-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: rgb(222, 189, 125);
+}
+
+.mdl-slider::-webkit-slider-thumb:hover,
+.mdl-slider::-webkit-slider-thumb:focus {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: rgba(38, 218, 247, 0.8);
 }
 
 .mdl-slider-container {
@@ -616,10 +625,10 @@ select option:selected {
 }
 
 .sliderBubble {
-	background: #f6f6f6;
-	color: black;
+	background: rgba(255, 155, 0, 0.8);
+	color: #000;
 	border-radius: 62px;
-	border: 1px solid #cfcfcf;
+	border: 1px solid #39392d;
 }
 
 /* dashboard menu */
@@ -651,7 +660,7 @@ select option:selected {
 
 .headerClockTime,
 .headerClockDate {
-	color: #928f79;
+	color: #ffdba3;
 }
 
 .nightClock > .headerClockTime,
@@ -671,12 +680,11 @@ select option:selected {
 }
 
 .pageTitle {
-	color: #fff !important;
-	text-shadow: 1px 1px 4px #39392d;
+	color: #806124 !important;
 }
 
 .material-icons {
-	color: White;
+	color: #e88b13;
 	text-shadow: 1px 1px 4px #39392d;
 }
 
@@ -698,7 +706,7 @@ select option:selected {
 }
 
 .mediaInfoItem {
-	color: #313030 !important;	
+	color: #0c2b65 !important;	
 }
 
 .itemName {
@@ -719,19 +727,19 @@ select option:selected {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-	color: #615f5b;
+	color: #b58a24;
 	font-size: 85%;
 }
 
 .skinHeader.osdHeader {
-	background: linear-gradient(180deg,hsla(60, 3.5%, 39.4%, 0.85),hsla(0, 0%, 0%, 0.05));
+	background: linear-gradient(180deg,hsla(213.8, 35.9%, 30%, 0.85),hsla(240, 100%, 0.2%, 0.05));
 	height: 6.5em;
 	transition: opacity .6s ease-out;
 }
 
 .emby-input:focus,
 .emby-textarea:focus {
-	border-color: rgba(230, 219, 76, 0.8);	
+	border-color: rgba(38, 218, 247, 0.8);	
 }
 
 .jstree-default .jstree-wholerow-clicked {
@@ -745,7 +753,7 @@ select option:selected {
 }
 
 .fieldDescription {
-	color: #999585;
+	color: #ff9b00;
 	font-style: italic;
 	font-size: 85%;
 }
@@ -760,4 +768,8 @@ select option:selected {
 
 .ratingbutton-icon-withrating {
     color: #913079 !important;
+}
+
+.sectionTitle {
+	color : rgb(255, 166, 86);
 }
