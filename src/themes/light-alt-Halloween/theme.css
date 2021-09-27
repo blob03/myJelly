@@ -123,14 +123,9 @@ html {
 	color: #fff !important;
 }
 
-
 .paperList,
 .visualCardBox {
     /*background-color: #fff;*/
-}
-
-.defaultCardBackground1 {
-    background-color: #009688;
 }
 
 .formDialogFooter:not(.formDialogFooter-clear) {
@@ -149,8 +144,6 @@ html {
 .toast {
     color: #fff;
 }
-
-
 
 .toast {
     background: #303030;
@@ -434,7 +427,11 @@ html {
 }
  
  .emby-button {
-	 color: #fe9001;
+	color: #000;
+ }
+ 
+ .dashboardActionsContainer > .emby-button {
+	color: #fe9001;
  }
  
 .emby-button:hover:not(:disabled) {
@@ -629,9 +626,9 @@ select option:selected {
 
 .sliderBubble {
 	background: rgba(255, 155, 0, 0.8);
-	color: #000;
+	color: #282828;
 	border-radius: 62px;
-	border: 1px solid #39392d;
+	border: 1px solid #c46e00;
 }
 
 /* dashboard menu */
@@ -686,6 +683,18 @@ select option:selected {
 	color: #8b877f !important;
 }
 
+@font-face {
+	font-family: "Halloween";
+    src: url(./fonts/Hellow2.ttf) format("truetype"); 
+}
+
+.headerButton > .material-icons.home::before {
+	font-family: "Halloween";
+	font-size: 100%;
+	font-weight: 400;
+	content: "j";
+}
+
 .material-icons {
 	color: #e88b13;
 	text-shadow: 1px 1px 4px #39392d;
@@ -697,6 +706,11 @@ select option:selected {
 .emby-input-iconbutton > .material-icons,
 .searchfields-icon.material-icons,
 .detailButton-content > .material-icons,
+.nowPlayingInfoButtons > * > .material-icons,
+.nowPlayingSecondaryButtons > * > .material-icons,
+.volumecontrol > * > .material-icons,
+.nowPlayingPageUserDataButtons > * > .material-icons,
+.itemsViewSettingsContainer > * > .material-icons,
 .listItem > .material-icons {
 	color: #000;
 }
@@ -719,17 +733,17 @@ select option:selected {
 }
 
 .mediaInfoItem {
-	color: #0c2b65 !important;	
+	color: #282828 !important;	
 }
 
 .itemName {
-	color: White !important;	
+	color: #282828 !important;	
 	text-shadow: 3px 3px 6px #171716;
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {
-	background-color: #edece8;
-    color: rgba(255, 255, 255, 0.87);
+	background-color: #282828;
+    color: #8b877f;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
