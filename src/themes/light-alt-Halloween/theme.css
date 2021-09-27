@@ -86,7 +86,7 @@ html {
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #000;
+    background-color: rgba(235, 129, 40, 1) !important;
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -145,9 +145,7 @@ html {
     color: #fff;
 }
 
-.actionSheetMenuItem:hover {
-    background-color: #ddd;
-}
+
 
 .toast {
     background: #303030;
@@ -416,10 +414,9 @@ html {
 	color: rgb(127, 67, 15);
 }
 
-.listItemBody:hover:not(:disabled),
 .listItem-button:hover:not(:disabled) {
 	color: #fff !important;
-	background-color: rgba(231, 156, 39, 0.6) !important;
+	background-color: rgba(231, 156, 39, 0.8) !important;
 }
 
 .listItem-button:focus {
@@ -661,13 +658,13 @@ select option:selected {
 
 .headerClockTime,
 .headerClockDate {
-	color: #ffdba3;
+	color: #f29300;
 }
 
 .nightClock > .headerClockTime,
 .nightClock > .headerClockDate {
-	color: #fff;
-	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2bd726, 0 0 40px #22ee1d, 0 0 50px #49f00d, 0 0 60px #16da3e, 0 0 70px #00e60e;
+	color: #f8e5bf;
+	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -681,7 +678,7 @@ select option:selected {
 }
 
 .pageTitle {
-	color: #806124 !important;
+	color: #8b877f !important;
 }
 
 .material-icons {
@@ -691,6 +688,8 @@ select option:selected {
 
 .homeLibraryButton > .material-icons,
 .dashboardSection > .sectionTitleTextButton > .material-icons,
+.btnCloseActionSheet > .material-icons,
+.emby-input-iconbutton > .material-icons,
 .listItem > .material-icons {
 	color: #000;
 }
@@ -788,4 +787,8 @@ select option:selected {
 
 .navMenuOptionText {
 	color: #fe9001;
+}
+
+.sidebarHeader {
+	color: #8b877f;
 }
