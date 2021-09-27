@@ -116,8 +116,13 @@ html {
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: rgb(255, 255, 255);
+    color: #ffc579 !important;
 }
+
+.button-link:hover {
+	color: #fff !important;
+}
+
 
 .paperList,
 .visualCardBox {
@@ -193,7 +198,7 @@ html {
 }
 
 .listItem-border {
-    border-color: #a7a7a7 !important;
+    border-color: #b86800 !important;
 }
 
 .progressring-spiner {
@@ -320,9 +325,9 @@ html {
 
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-	border-color: rgba(106, 136, 207, 0.8) !important;
+	border-color: #fe9001 !important;
 } 
-
+ 
 .metadataSidebarIcon {
     color: #968b5b;
 }
@@ -438,7 +443,7 @@ html {
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
+	background-color: #fe9001;
 }
 
 .emby-button:active {
@@ -523,16 +528,16 @@ html {
 }
 
 .detailButton:hover:not(:disabled) {
-	background-color: rgba(230, 230, 230, .8);
+	background-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .detailButton:focus {
 	transform: scale(1.3);
-	background-color: rgba(220, 220, 220, .8);
+	background-color: rgba(255, 255, 255, 0.2) !important;
 	animation-name: focus;
 	animation-duration: .15s;
 }
-
+ 
 .detailButton:active {
 	background-color: rgba(255, 232, 232, 0.8) !important;
 }
@@ -690,6 +695,8 @@ select option:selected {
 .dashboardSection > .sectionTitleTextButton > .material-icons,
 .btnCloseActionSheet > .material-icons,
 .emby-input-iconbutton > .material-icons,
+.searchfields-icon.material-icons,
+.detailButton-content > .material-icons,
 .listItem > .material-icons {
 	color: #000;
 }
@@ -782,7 +789,7 @@ select option:selected {
 }
 
 .cardOverlayContainer {
-	background: rgba(227, 93, 12, 0.3);
+	background: rgba(42, 42, 42, 0.8);
 }
 
 .navMenuOptionText {
