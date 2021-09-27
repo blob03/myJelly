@@ -430,7 +430,8 @@ html {
 	color: #000;
  }
  
- .dashboardActionsContainer > .emby-button {
+.dashboardActionsContainer > .emby-button,
+.sectionTitleContainer > .emby-button {
 	color: #fe9001;
  }
  
@@ -812,4 +813,8 @@ select option:selected {
 
 .sidebarHeader {
 	color: #8b877f;
+}
+
+.listItemIcon:not(.listItemIcon-transparent) {
+	background-color: #ffb43e;
 }

@@ -661,7 +661,7 @@ select option:selected {
 .nightClock > .headerClockTime,
 .nightClock > .headerClockDate {
 	color: #fff;
-	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2bd726, 0 0 40px #22ee1d, 0 0 50px #49f00d, 0 0 60px #16da3e, 0 0 70px #00e60e;
+	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #bcf5ff, 0 0 40px #76e8fb, 0 0 50px #0cfcf1, 0 0 60px #16ffde, 0 0 70px #1cfff4;
 }
 
 .headerClockButton:hover > .headerClockTime,
