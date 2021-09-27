@@ -6,7 +6,7 @@
 
 .skinHeader,
 html {
-    color: rgb(206, 161, 121);
+    color: #000;
 }
 
 ::-moz-selection { 
@@ -70,7 +70,8 @@ html {
 }
 
 .backgroundContainer {
-    background-color: rgba(98, 60, 28, 0.8) !important;
+    /*background-color: rgba(98, 60, 28, 0.8) !important;*/
+	background-color: rgba(235, 129, 40, 0.8) !important;
 }
 
 .backdropImage {
@@ -412,7 +413,7 @@ html {
 }
 
 .listItemBody {
-	color: rgb(222, 121, 31);
+	color: rgb(127, 67, 15);
 }
 
 .listItemBody:hover:not(:disabled),
@@ -430,8 +431,12 @@ html {
 	color: rgba(255, 255, 255, 0.8) !important;
 }
  
+ .emby-button {
+	 color: #fe9001;
+ }
+ 
 .emby-button:hover:not(:disabled) {
-	color: rgba(62, 231, 239, 0.4);
+	color: #fff;
 }
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
@@ -493,27 +498,23 @@ html {
 	margin: 0 auto !important;
 	transform: scale(1.0);
 	color: rgba(248, 195, 94, 0.8) !important;
-	background-color: rgba(40, 40, 40, 0.8);
+	background-color: #282828;
 	box-shadow: 1px 1px 8px #eb740b;
 	font-weight: 600;
 }
 
 .button-submit:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(230,230,230,0.8) !important;
 }
 
 .button-submit:focus {
-	color: rgba(30, 30, 30, 0.8) !important;
-	background-color: rgba(250,250,250,0.8) !important;
-	transform: scale(1.1) !important;
+	color: rgba(255, 255, 255, 0.8) !important;
+	background-color: rgba(60, 60, 60, 0.8) !important;
 }
 
 .button-submit:active {
 	background-color: rgba(255, 232, 232, 0.8) !important;
 	color: rgba(255, 255, 255, 1) !important;
-	animation-name: click;
-	animation-duration: .15s;
 }
 
 /* detail button */
@@ -544,10 +545,10 @@ html {
 .selectArrow {
 	text-shadow: 2px 2px 3px #1e1d25;
 }
-
+ 
 .emby-select-withcolor {
-    color: #000;
-    background: rgb(190, 125, 22);
+    color: #fe9001;
+    background: #282828;
     border: 0.07em solid rgb(0, 0, 0);
 	font-weight: 600;
 }
@@ -557,13 +558,12 @@ html {
 }
 
 .emby-select-withcolor > option {
-	color: #000;
-	background: rgb(190, 125, 22);
+	color: #fe9001;
+	background: #282828;
 }
 
 .emby-select-tv-withcolor:focus {
     border-color: #fff;
-    color: #fff;
 }
 
 select option:disabled {
@@ -572,7 +572,7 @@ select option:disabled {
 
 select option:selected {
 	color: #ffffff !important;
-	background: #898989 !important;
+	background: #282828 !important;
 }
 
 /* slider widget */
@@ -689,7 +689,9 @@ select option:selected {
 	text-shadow: 1px 1px 4px #39392d;
 }
 
-.homeLibraryButton > .material-icons {
+.homeLibraryButton > .material-icons,
+.dashboardSection > .sectionTitleTextButton > .material-icons,
+.listItem > .material-icons {
 	color: #000;
 }
 
@@ -732,7 +734,7 @@ select option:selected {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-	color: #b58a24;
+	color: #ffc898;
 	font-size: 85%;
 }
 
@@ -758,7 +760,7 @@ select option:selected {
 }
 
 .fieldDescription {
-	color: #ff9b00;
+	color: #efcc95;
 	font-style: italic;
 	font-size: 85%;
 }
@@ -776,9 +778,14 @@ select option:selected {
 }
 
 .sectionTitle {
-	color : rgb(255, 166, 86);
+	color : #000;
+	font-weight: 600;
 }
 
 .cardOverlayContainer {
 	background: rgba(227, 93, 12, 0.3);
+}
+
+.navMenuOptionText {
+	color: #fe9001;
 }
