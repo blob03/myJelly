@@ -55,6 +55,17 @@
             <div class="fieldDescription">${SubtitleAppearanceSettingsDisclaimer}</div>
             <div class="fieldDescription">${SubtitleAppearanceSettingsAlsoPassedToCastDevices}</div>
         </div>
+		
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: flex-start;'>
+		
+			<div class="selectContainer" style="width: 100%;height: auto;">
+				<select is="emby-select" id="selectSubtitlePreset" label="${LabelSubtitlePresets}">
+					<option value="">${None}</option>
+					<option disabled>${OptionDivider}</option>
+				</select>
+			</div>
+			
+        </div>
 
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: flex-start;'>
 		
@@ -64,6 +75,8 @@
 					<option disabled>${OptionDivider}</option>
 					<option value="AText">Albert Text</option>
 					<option value="Chewy">Chewy</option>
+					<option value="MGothisch">Manuskript Gotisch &copy; 2013 Peter Wiegel</option>
+					<option value="DSWeiss">DS Weiss Gotisch</option>
 					<option value="Impact">Impact Label &copy; 2011 Tension Type</option>
 					<option value="JACobbler">Janda Apple Cobbler &copy; 2012 Kimberly Geswein</option>
 					<option value="JECasual">Janda Everyday Casual &copy; 2011 Kimberly Geswein</option>

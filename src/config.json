@@ -61,5 +61,74 @@
     "logoScreensaver/plugin",
     "sessionPlayer/plugin",
     "chromecastPlayer/plugin"
+  ],
+  "presets": [
+	{
+      "name": "Dark",
+      "id": "dark",
+	  "font": "JACobbler",
+	  "italic": 1,
+	  "fgcolor": "FireBrick",
+	  "size": 7,
+	  "ocolor": "Black",
+	  "osize": 2,
+	  "bgcolor": "White",
+	  "shadow": ""
+    }, {
+      "name": "War Movies",
+      "id": "war",
+	  "font": "AText",
+	  "italic": 1,
+	  "fgcolor": "White",
+	  "size": 8,
+	  "ocolor": "DarkRed",
+	  "osize": 2,
+	  "bgcolor": "Transparent",
+	  "shadow": ""
+    }, {
+      "name": "Cute",
+      "id": "Cute",
+	  "font": "Monserga",
+	  "italic": 0,
+	  "fgcolor": "HotPink",
+	  "size": 8,
+	  "ocolor": "PaleVioletRed",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shadow": "uniform"
+    }, {
+      "name": "Halloween",
+      "id": "Halloween",
+	  "font": "Chewy",
+	  "italic": 1,
+	  "fgcolor": "DarkOrange",
+	  "size": 9,
+	  "ocolor": "Black",
+	  "osize": 2,
+	  "bgcolor": "Transparent",
+	  "shadow": ""
+    }, {
+      "name": "Fantasy movies",
+      "id": "Fantasy",
+	  "font": "DSWeiss",
+	  "italic": 0,
+	  "fgcolor": "DarkRed",
+	  "size": 8,
+	  "ocolor": "Black",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shadow": ""
+    }, {
+      "name": "Medieval movies",
+      "id": "Medieval",
+	  "font": "MGothisch",
+	  "italic": 0,
+	  "fgcolor": "DarkRed",
+	  "size": 8,
+	  "ocolor": "Black",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shadow": ""
+    }
   ]
 }

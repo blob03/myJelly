@@ -1589,5 +1589,6 @@
 	"LabelStrokeSize": "Epaisseur du contour :",
 	"LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
 	"LabelChromecastVersion": "Version de Chromecast :",
-	"LabelScreensaverTime": "Délai avant activation :"
+	"LabelScreensaverTime": "Délai avant activation :",
+	"LabelSubtitlePresets": "Styles pré-configurés :"
 }

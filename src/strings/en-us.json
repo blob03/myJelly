@@ -1586,5 +1586,6 @@
 	"LabelStrokeSize": "Text outline size:",
 	"LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",
 	"LabelChromecastVersion": "Chromecast Version:",
-	"LabelScreensaverTime": "Minimum time before activation:"
+	"LabelScreensaverTime": "Minimum time before activation:",
+	"LabelSubtitlePresets": "Subtitles style presets:"
 }

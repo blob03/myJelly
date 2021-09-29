@@ -94,7 +94,14 @@ const baseDefaultTheme = {
     'default': true
 };
 
+const baseDefaultPreset = {
+    'name': 'Dark',
+    'id': 'dark',
+    'default': true
+};
+
 let internalDefaultTheme = baseDefaultTheme;
+let internalDefaultPreset = baseDefaultPreset;
 
 const checkDefaultTheme = (themes) => {
     if (themes) {
@@ -107,6 +114,19 @@ const checkDefaultTheme = (themes) => {
     }
 
     internalDefaultTheme = baseDefaultTheme;
+};
+
+const checkDefaultPreset = (presets) => {
+    if (presets) {
+        const defaultPreset = presets.find((preset) => preset.default);
+
+        if (defaultPreset) {
+            internalDefaultPreset = defaultPreset;
+            return;
+        }
+    }
+
+    internalDefaultPreset = baseDefaultPreset;
 };
 
 export function getThemes() {
@@ -124,7 +144,24 @@ export function getThemes() {
     });
 }
 
+export function getPresets() {
+    return getConfig().then(config => {
+        if (!Array.isArray(config.presets)) {
+            console.error('web config is invalid, missing presets:', config);
+        }
+        const presets = Array.isArray(config.presets) ? config.presets : DefaultConfig.presets;
+        checkDefaultPreset(presets);
+        return presets;
+    }).catch(error => {
+        console.log('cannot get web config:', error);
+        checkDefaultPreset();
+        return DefaultConfig.presets;
+    });
+}
+
 export const getDefaultTheme = () => internalDefaultTheme;
+
+export const getDefaultPreset = () => internalDefaultPreset;
 
 export function getMenuLinks() {
     return getConfig().then(config => {

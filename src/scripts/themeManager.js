@@ -1,4 +1,4 @@
-import { getDefaultTheme, getThemes as getConfiguredThemes } from './settings/webSettings';
+import { getDefaultTheme, getThemes as getConfiguredThemes, getPresets as getConfiguredPresets } from './settings/webSettings';
 
 let themeStyleElement = document.querySelector('#cssTheme');
 let currentThemeId;
@@ -13,6 +13,10 @@ function unloadTheme() {
 
 function getThemes() {
     return getConfiguredThemes();
+}
+
+function getPresets() {
+    return getConfiguredPresets();
 }
 
 function getThemeStylesheetInfo(id) {
@@ -90,5 +94,6 @@ function setTheme(id) {
 
 export default {
     getThemes: getThemes,
+	getPresets: getPresets,
     setTheme: setTheme
 };

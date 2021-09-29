@@ -16,29 +16,6 @@ function getTextStyles(settings, preview) {
 			break;
 	}
 	
-	/*
-    switch (settings.textSize || '') {
-        case 'smaller':
-            list.push({ name: 'font-size', value: '.8em' });
-            break;
-        case 'small':
-            list.push({ name: 'font-size', value: 'inherit' });
-            break;
-		default:
-		case 'medium':
-            list.push({ name: 'font-size', value: '1.36em' });
-            break;
-		case 'large':
-            list.push({ name: 'font-size', value: '1.72em' });
-            break;
-        case 'larger':
-            list.push({ name: 'font-size', value: '2em' });
-            break;
-        case 'extralarge':
-            list.push({ name: 'font-size', value: '2.2em' });
-            break;
-    }*/
-	
 	list.push({ name: 'font-size', value: settings.textSize ? (0.6 + (settings.textSize/10)) + 'em' : '1.36em'});
 
     switch (settings.dropShadow || '') {
@@ -67,6 +44,14 @@ function getTextStyles(settings, preview) {
     switch (settings.font || '') {
         case 'VTypewriter':
             list.push({ name: 'font-family', value: 'VTypewriter' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
+		case 'DSWeiss':
+            list.push({ name: 'font-family', value: 'DSWeiss' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
+		case 'MGothisch':
+            list.push({ name: 'font-family', value: 'MGothisch' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
         case 'Monserga':

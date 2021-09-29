@@ -4,6 +4,14 @@
 	for any non profit project such as Jellyfin.
 */
 
+@font-face {font-family: "DSWeiss";
+    src: url("/assets/fonts/DSWeiss/DSWeiss-Gotisch.ttf") format("truetype"); /* chrome firefox */
+}
+
+@font-face {font-family: "MGothisch";
+    src: url("/assets/fonts/Manuskript Gotisch/Manuskript Gothisch UNZ1A.ttf") format("truetype"); /* chrome firefox */
+}
+
 @font-face {font-family: "Ubuntu-M";
     src: url("/assets/fonts/Ubuntu/Ubuntu-M.ttf") format("truetype"); /* chrome firefox */
 }
