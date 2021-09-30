@@ -1581,6 +1581,7 @@
 	"OptionDivider": "...............................",
 	"EnableClock": "Clock",
 	"EnableClockHelp": "Show local date and time in the top bar.",
+	"LabelTextShadowColor": "Text shadow color:",
 	"LabelTextStrokeColor": "Text outline color:",
 	"LabelStrokeSize": "Text outline size:",
 	"LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",

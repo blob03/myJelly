@@ -67,23 +67,25 @@
       "name": "Dark",
       "id": "dark",
 	  "font": "JACobbler",
-	  "oblique": 3,
+	  "oblique": 5,
 	  "fgcolor": "FireBrick",
 	  "size": 7,
 	  "ocolor": "Black",
 	  "osize": 2,
-	  "bgcolor": "White",
+	  "bgcolor": "Transparent",
+	  "shcolor": "White",
 	  "shadow": ""
     }, {
       "name": "War Movies",
       "id": "war",
 	  "font": "AText",
-	  "oblique": 3,
-	  "fgcolor": "White",
+	  "oblique": 4,
+	  "fgcolor": "Red",
 	  "size": 8,
-	  "ocolor": "DarkRed",
+	  "ocolor": "White",
 	  "osize": 2,
 	  "bgcolor": "Transparent",
+	  "shcolor": "Black",
 	  "shadow": ""
     }, {
       "name": "Cute",
@@ -95,7 +97,8 @@
 	  "ocolor": "PaleVioletRed",
 	  "osize": 1,
 	  "bgcolor": "Transparent",
-	  "shadow": "uniform"
+	  "shcolor": "DarkViolet",
+	  "shadow": ""
     }, {
       "name": "Halloween",
       "id": "Halloween",
@@ -106,6 +109,7 @@
 	  "ocolor": "Black",
 	  "osize": 2,
 	  "bgcolor": "Transparent",
+	  "shcolor": "OrangeRed",
 	  "shadow": ""
     }, {
       "name": "Fantasy movies",
@@ -117,6 +121,7 @@
 	  "ocolor": "Black",
 	  "osize": 1,
 	  "bgcolor": "Transparent",
+	  "shcolor": "Black",
 	  "shadow": ""
     }, {
       "name": "Medieval movies",
@@ -128,6 +133,7 @@
 	  "ocolor": "Black",
 	  "osize": 1,
 	  "bgcolor": "Transparent",
+	  "shcolor": "Black",
 	  "shadow": ""
     }
   ]

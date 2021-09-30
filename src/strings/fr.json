@@ -1584,6 +1584,7 @@
 	
 	"EnableClock": "Activer l'horloge",
 	"EnableClockHelp": "Affiche la date et l'heure locale dans la barre du haut.",
+	"LabelTextShadowColor": "Teinte de l'ombre portée :",
 	"LabelTextStrokeColor": "Couleur de contour du texte :",
 	"LabelStrokeSize": "Epaisseur du contour :",
 	"LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",

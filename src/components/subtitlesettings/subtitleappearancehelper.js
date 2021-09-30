@@ -8,22 +8,23 @@ function getTextStyles(settings, preview) {
 	
 	list.push({ name: 'font-size', value: settings.textSize ? (0.6 + (settings.textSize/10)) + 'em' : '1.36em'});
 
+	let sColor = (settings.textShadow || '#000');
     switch (settings.dropShadow || '') {
         case 'raised':
-            list.push({ name: 'text-shadow', value: '-1px -1px white, 0px -1px white, -1px 0px white, 1px 1px black, 0px 1px black, 1px 0px black' });
+            list.push({ name: 'text-shadow', value: '-1px -1px white, 0px -1px white, -1px 0px white, 1px 1px ' + sColor + ', 0px 1px ' + sColor + ', 1px 0px ' + sColor });
             break;
         case 'depressed':
-            list.push({ name: 'text-shadow', value: '1px 1px white, 0px 1px white, 1px 0px white, -1px -1px black, 0px -1px black, -1px 0px black' });
+            list.push({ name: 'text-shadow', value: '1px 1px white, 0px 1px white, 1px 0px white, -1px -1px ' + sColor + ', 0px -1px ' + sColor + ', -1px 0px ' + sColor });
             break;
         case 'uniform':
-            list.push({ name: 'text-shadow', value: '-1px 0px #000000, 0px 1px #000000, 1px 0px #000000, 0px -1px #000000' });
+            list.push({ name: 'text-shadow', value: sColor + ' -1px 0px, ' + sColor + ' 0px 1px, ' + sColor + ' 1px 0px, ' + sColor + ' 0px -1px' });
             break;
         case 'none':
             list.push({ name: 'text-shadow', value: 'none' });
             break;
         default:
         case 'dropshadow':
-            list.push({ name: 'text-shadow', value: '#000000 0px 0px 7px' });
+			list.push({ name: 'text-shadow', value: sColor + ' 0px 0px 7px' });
             break;
     }
 	

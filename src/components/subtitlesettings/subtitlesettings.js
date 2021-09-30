@@ -215,44 +215,55 @@ function loadColors(context) {
 	const subColor = context.querySelector('#inputTextColor');
 	const subBGcolor = context.querySelector('#inputTextBackground');
 	const subSTRcolor = context.querySelector('#inputTextStroke');
+	const subSHAcolor = context.querySelector('#inputShadowColor');
 	
 	var i = 0;
 	
 	for (const COLOR of CSS_COLOR_NAMES) {
+		let w = document.createElement("option");
 		let x = document.createElement("option");
 		let y = document.createElement("option");
 		let z = document.createElement("option");
 		
 		if (COLOR === false) {
+			w.text = globalize.translate('OptionDivider');
+			w.disabled = true;
+			subColor.options.add(w, undefined); 
+		
 			x.text = globalize.translate('OptionDivider');
 			x.disabled = true;
-			subColor.options.add(x, undefined); 
-		
+			subBGcolor.options.add(x, undefined); 
+			
 			y.text = globalize.translate('OptionDivider');
 			y.disabled = true;
-			subBGcolor.options.add(y, undefined); 
+			subSTRcolor.options.add(y, undefined); 
 			
 			z.text = globalize.translate('OptionDivider');
 			z.disabled = true;
-			subSTRcolor.options.add(z, undefined); 
+			subSHAcolor.options.add(z, undefined); 
 			
 			continue;
 		}
 		
+		w.text = COLOR;
+		w.value = COLOR;
+		w.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
+		subColor.options.add(w, undefined); 
+		
 		x.text = COLOR;
 		x.value = COLOR;
 		x.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subColor.options.add(x, undefined); 
+		subBGcolor.options.add(x, undefined); 
 		
 		y.text = COLOR;
 		y.value = COLOR;
 		y.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subBGcolor.options.add(y, undefined); 
+		subSTRcolor.options.add(y, undefined);
 		
 		z.text = COLOR;
 		z.value = COLOR;
 		z.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subSTRcolor.options.add(z, undefined);
+		subSHAcolor.options.add(z, undefined);
 	}
 }
 
@@ -280,6 +291,7 @@ function getSubtitleAppearanceObject(context) {
     appearanceSettings.textBackground = context.querySelector('#inputTextBackground').value;
 	appearanceSettings.textStroke = context.querySelector('#inputTextStroke').value;
     appearanceSettings.textColor = context.querySelector('#inputTextColor').value;
+	appearanceSettings.textShadow = context.querySelector('#inputShadowColor').value;
     appearanceSettings.verticalPosition = context.querySelector('#sliderVerticalPosition').value;
 	appearanceSettings.chkPreview = context.querySelector('#chkPreview').checked;
 	appearanceSettings.oblique = context.querySelector('#sliderOblique').value;
@@ -334,6 +346,9 @@ function onSubPresetChange(e) {
 				document.getElementById("strcolor").style.backgroundColor = t.ocolor;
 				document.getElementById("inputTextBackground").value = t.bgcolor;
 				document.getElementById("bgcolor").style.backgroundColor = t.bgcolor;
+				document.getElementById("inputShadowColor").value = t.shcolor;
+				document.getElementById("shadowcolor").style.backgroundColor = t.shcolor;
+				
 				document.getElementById("selectDropShadow").value = t.shadow;
 				
 				// Force a refresh of the preview.
@@ -352,6 +367,10 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
         
         context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || '';
 		loadColors(context);
+		
+		context.querySelector('#inputShadowColor').value = appearanceSettings.textShadow || 'Transparent';
+		context.querySelector('#inputShadowColor').addEventListener('change', cancelPreset);
+		context.querySelector('#shadowcolor').style.backgroundColor = context.querySelector('#inputShadowColor').value;
 		
         context.querySelector('#inputTextBackground').value = appearanceSettings.textBackground || 'Transparent';
 		context.querySelector('#inputTextBackground').addEventListener('change', cancelPreset);
@@ -554,6 +573,7 @@ function embed(options, self) {
     options.element.querySelector('#inputTextColor').addEventListener('change', onAppearanceFieldChange);
     options.element.querySelector('#inputTextBackground').addEventListener('change', onAppearanceFieldChange);
 	options.element.querySelector('#inputTextStroke').addEventListener('change', onAppearanceFieldChange);
+	options.element.querySelector('#inputShadowColor').addEventListener('change', onAppearanceFieldChange);
 	options.element.querySelector('#sliderOblique').addEventListener('input', onAppearanceFieldChange);
 	options.element.querySelector('#sliderTextSize').addEventListener('input', onAppearanceFieldChange);
 	options.element.querySelector('#sliderStrokeSize').addEventListener('input', onAppearanceFieldChange);

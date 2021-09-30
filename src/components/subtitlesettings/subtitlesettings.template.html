@@ -96,7 +96,7 @@
 			
 			<div class="sliderContainer-settings" style="width: 47%;height: auto;">
 				<div class="sliderContainer">
-					<input is="emby-slider" id="sliderOblique" label="${Oblique}" type="range" min="-5" max="5" step="1"/>
+					<input is="emby-slider" id="sliderOblique" label="${Oblique}" type="range" min="-8" max="8" step="1"/>
 				</div>
 				<div class="fieldDescription" style="float:right"></div>
 			</div>
@@ -160,6 +160,22 @@
 							onchange='document.getElementById("bgcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
 						</select>
 					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+		
+			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
+				<label for='inputShadowColor'>${LabelTextShadowColor}</label>
+				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+					<div id='shadowcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>
+					<div style='width: 100%;height: auto;'>
+						<select is="emby-select" id="inputShadowColor"  
+							onchange='document.getElementById("shadowcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
+						</select>
+					</div>		
 				</div>
 			</div>
 			
