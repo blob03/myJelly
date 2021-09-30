@@ -239,6 +239,11 @@ function loadColors(context) {
 			continue;
 		}
 		
+		x.text = COLOR;
+		x.value = COLOR;
+		x.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
+		subColor.options.add(x, undefined); 
+		
 		y.text = COLOR;
 		y.value = COLOR;
 		y.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
@@ -248,16 +253,6 @@ function loadColors(context) {
 		z.value = COLOR;
 		z.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
 		subSTRcolor.options.add(z, undefined);
-		
-		if (!i) {
-			++i;
-			continue;
-		}
-		
-		x.text = COLOR;
-		x.value = COLOR;
-		x.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subColor.options.add(x, undefined); 
 	}
 }
 
@@ -287,7 +282,7 @@ function getSubtitleAppearanceObject(context) {
     appearanceSettings.textColor = context.querySelector('#inputTextColor').value;
     appearanceSettings.verticalPosition = context.querySelector('#sliderVerticalPosition').value;
 	appearanceSettings.chkPreview = context.querySelector('#chkPreview').checked;
-	appearanceSettings.chkTextStyle = context.querySelector('#chkTextStyle').checked;
+	appearanceSettings.oblique = context.querySelector('#sliderOblique').value;
 	appearanceSettings.preset = context.querySelector('#selectSubtitlePreset').value;
     return appearanceSettings;
 }
@@ -314,7 +309,12 @@ function onSubPresetChange(e) {
 				
 				// Update font.
 				document.getElementById("selectFont").value = t.font;
-				document.getElementById("chkTextStyle").checked = t.italic;
+				
+				// Update oblique strength.
+				let sliderOblique = document.getElementById("sliderOblique");
+				sliderOblique.value = t.oblique;
+				if (sliderOblique.parentNode.parentNode)
+					sliderOblique.parentNode.parentNode.querySelector('.fieldDescription').innerHTML = t.oblique;
 				
 				// Update sizes.
 				let sliderTextSize = document.getElementById("sliderTextSize");
@@ -368,8 +368,12 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
         context.querySelector('#selectFont').value = appearanceSettings.font || '';
 		context.querySelector('#selectFont').addEventListener('change', cancelPreset);
 		
-		context.querySelector('#chkTextStyle').checked = appearanceSettings.chkTextStyle;
-		context.querySelector('#chkTextStyle').addEventListener('change', cancelPreset);
+		let sliderOblique =  context.querySelector('#sliderOblique');
+		sliderOblique.addEventListener('input', onSliderInput);
+		sliderOblique.addEventListener('change', onSliderInput);
+		sliderOblique.addEventListener('change', cancelPreset);
+		sliderOblique.value = appearanceSettings.oblique || 1.36;
+		sliderOblique.dispatchEvent(event_change);
 		
 		let sliderTextSize =  context.querySelector('#sliderTextSize');
 		sliderTextSize.addEventListener('input', onSliderInput);
@@ -550,7 +554,7 @@ function embed(options, self) {
     options.element.querySelector('#inputTextColor').addEventListener('change', onAppearanceFieldChange);
     options.element.querySelector('#inputTextBackground').addEventListener('change', onAppearanceFieldChange);
 	options.element.querySelector('#inputTextStroke').addEventListener('change', onAppearanceFieldChange);
-	options.element.querySelector('#chkTextStyle').addEventListener('change', onAppearanceFieldChange);
+	options.element.querySelector('#sliderOblique').addEventListener('input', onAppearanceFieldChange);
 	options.element.querySelector('#sliderTextSize').addEventListener('input', onAppearanceFieldChange);
 	options.element.querySelector('#sliderStrokeSize').addEventListener('input', onAppearanceFieldChange);
 	

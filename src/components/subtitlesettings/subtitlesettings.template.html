@@ -67,7 +67,7 @@
 			
         </div>
 
-		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: flex-start;'>
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		
 			<div class="selectContainer" style="width: 47%;height: auto;">
 				<select is="emby-select" id="selectFont" label="${LabelFont}">
@@ -94,11 +94,11 @@
 				</select>
 			</div>
 			
-			<div class="checkboxContainer" style="height: auto;padding: 0px 0px 0px 6%;">
-				<label>
-					<input is="emby-checkbox" id="chkTextStyle" type="checkbox" class="chkTextStyle" />
-					<span style='font-style: italic'>${Italic}</span>
-				</label>
+			<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderOblique" label="${Oblique}" type="range" min="-5" max="5" step="1"/>
+				</div>
+				<div class="fieldDescription" style="float:right"></div>
 			</div>
 		
 		</div>

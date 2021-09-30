@@ -6,16 +6,6 @@
 function getTextStyles(settings, preview) {
     const list = [];
 	
-	switch (settings.chkTextStyle || false) {
-		case true:
-			list.push({ name: 'font-style', value: 'italic' });
-			break;
-		
-		case false:
-			list.push({ name: 'font-style', value: 'normal' });
-			break;
-	}
-	
 	list.push({ name: 'font-size', value: settings.textSize ? (0.6 + (settings.textSize/10)) + 'em' : '1.36em'});
 
     switch (settings.dropShadow || '') {
@@ -37,6 +27,7 @@ function getTextStyles(settings, preview) {
             break;
     }
 	
+	list.push({ name: 'font-style', value: 'oblique ' + (settings.oblique * 5 || '0' ) + 'deg'});
 	list.push({ name: 'background-color', value: settings.textBackground || 'transparent' });
     list.push({ name: 'color', value: settings.textColor || 'White' });
     list.push({ name: '-webkit-text-stroke', value: (settings.strokeSize ? (settings.strokeSize + 'px ') : '1px ') + (settings.textStroke ? settings.textStroke : '#000000')});
