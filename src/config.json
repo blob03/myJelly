@@ -74,7 +74,7 @@
 	  "osize": 2,
 	  "bgcolor": "Transparent",
 	  "shcolor": "LightCyan",
-	  "shadow": "diffused"
+	  "shadow": "diffused2"
     }, {
       "name": "War Movies",
       "id": "war",
@@ -88,6 +88,18 @@
 	  "shcolor": "Black",
 	  "shadow": "dropshadow"
     }, {
+	  "name": "War Movies, dark",
+      "id": "wardark",
+	  "font": "VTypewriter",
+	  "oblique": 4,
+	  "fgcolor": "Black",
+	  "size": 6,
+	  "ocolor": "Black",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shcolor": "Snow",
+	  "shadow": "diffused"
+    }, {
       "name": "Cute",
       "id": "Cute",
 	  "font": "Monserga",
@@ -100,13 +112,37 @@
 	  "shcolor": "DarkViolet",
 	  "shadow": "diffused"
 	}, {
-      "name": "Cartoons blue",
-      "id": "Cartoons",
+	  "name": "Cartoon pink",
+      "id": "Cartoonpink",
 	  "font": "OogieBoogie",
 	  "oblique": 0,
-	  "fgcolor": "RoyalBlue",
+	  "fgcolor": "LightPink",
 	  "size": 8,
-	  "ocolor": "LightSteelBlue",
+	  "ocolor": "HotPink",
+	  "osize": 2,
+	  "bgcolor": "Transparent",
+	  "shcolor": "Black",
+	  "shadow": "dropshadow"
+    }, {
+	  "name": "Cartoon green",
+      "id": "Cartoongreen",
+	  "font": "OogieBoogie",
+	  "oblique": 0,
+	  "fgcolor": "YellowGreen",
+	  "size": 8,
+	  "ocolor": "seaGreen",
+	  "osize": 2,
+	  "bgcolor": "Transparent",
+	  "shcolor": "Black",
+	  "shadow": "dropshadow"
+    }, {
+      "name": "Cartoon blue",
+      "id": "Cartoonblue",
+	  "font": "OogieBoogie",
+	  "oblique": 0,
+	  "fgcolor": "LightSteelBlue",
+	  "size": 8,
+	  "ocolor": "RoyalBlue",
 	  "osize": 2,
 	  "bgcolor": "Transparent",
 	  "shcolor": "Black",
@@ -183,6 +219,18 @@
 	  "bgcolor": "Transparent",
 	  "shcolor": "YellowGreen",
 	  "shadow": "diffused"
+    }, {
+      "name": "Neon blue",
+      "id": "Neonblue",
+	  "font": "JECasual",
+	  "oblique": 4,
+	  "fgcolor": "SkyBlue",
+	  "size": 7,
+	  "ocolor": "DeepSkyBlue",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shcolor": "Cyan",
+	  "shadow": "diffused2"
     }
   ]
 }

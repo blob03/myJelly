@@ -1583,6 +1583,7 @@
     "LabelMaxDaysForNextUp": "Expiration de la section 'À suivre' :",
 	
 	"Diffused": "Diffus",
+	"MoreDiffused": "Plus diffus",
 	"EnableClock": "Activer l'horloge",
 	"EnableClockHelp": "Affiche la date et l'heure locale dans la barre du haut.",
 	"LabelTextShadowColor": "Teinte de l'ombre portée :",

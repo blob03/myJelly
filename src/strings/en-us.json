@@ -1579,6 +1579,7 @@
     "AudioBitDepthNotSupported": "The audio's bit depth is not supported",
 	
 	"Diffused": "Diffused",
+	"MoreDiffused": "More diffused",
 	"OptionDivider": "...............................",
 	"EnableClock": "Clock",
 	"EnableClockHelp": "Show local date and time in the top bar.",

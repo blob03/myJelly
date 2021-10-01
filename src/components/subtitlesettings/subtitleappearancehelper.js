@@ -25,6 +25,9 @@ function getTextStyles(settings, preview) {
 		case 'diffused':
 			list.push({ name: 'text-shadow', value: sColor + ' 0px 0px 9px, ' + sColor + ' 0px 0px 20px' });
             break;
+		case 'diffused2':
+			list.push({ name: 'text-shadow', value: sColor + ' 0px 0px 9px, ' + sColor + ' 0px 0px 20px, ' + sColor + ' 0px 0px 30px'});
+            break;
         default:
         case 'dropshadow':
 			list.push({ name: 'text-shadow', value: sColor + ' 0px 0px 7px' });
