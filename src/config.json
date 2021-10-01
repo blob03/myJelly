@@ -68,13 +68,13 @@
       "id": "dark",
 	  "font": "JACobbler",
 	  "oblique": 4,
-	  "fgcolor": "FireBrick",
+	  "fgcolor": "Black",
 	  "size": 7,
 	  "ocolor": "Black",
 	  "osize": 2,
 	  "bgcolor": "Transparent",
-	  "shcolor": "White",
-	  "shadow": "dropshadow"
+	  "shcolor": "LightCyan",
+	  "shadow": "diffused"
     }, {
       "name": "War Movies",
       "id": "war",
@@ -100,16 +100,16 @@
 	  "shcolor": "DarkViolet",
 	  "shadow": "diffused"
 	}, {
-      "name": "Cartoons",
+      "name": "Cartoons blue",
       "id": "Cartoons",
 	  "font": "OogieBoogie",
 	  "oblique": 0,
-	  "fgcolor": "Orange",
+	  "fgcolor": "RoyalBlue",
 	  "size": 8,
-	  "ocolor": "OrangeRed",
-	  "osize": 4,
+	  "ocolor": "LightSteelBlue",
+	  "osize": 2,
 	  "bgcolor": "Transparent",
-	  "shcolor": "LightPink",
+	  "shcolor": "Black",
 	  "shadow": "dropshadow"
     }, {
       "name": "Halloween",
@@ -121,19 +121,19 @@
 	  "ocolor": "Black",
 	  "osize": 2,
 	  "bgcolor": "Transparent",
-	  "shcolor": "OrangeRed",
+	  "shcolor": "Black",
 	  "shadow": "diffused"
     }, {
       "name": "Fantasy movies",
       "id": "Fantasy",
 	  "font": "DSWeiss",
 	  "oblique": 0,
-	  "fgcolor": "DarkRed",
+	  "fgcolor": "GreenYellow",
 	  "size": 8,
-	  "ocolor": "Black",
+	  "ocolor": "ForestGreen",
 	  "osize": 1,
 	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
+	  "shcolor": "Purple",
 	  "shadow": "dropshadow"
     }, {
       "name": "Medieval movies",
@@ -142,10 +142,46 @@
 	  "oblique": 0,
 	  "fgcolor": "GoldenRod",
 	  "size": 8,
-	  "ocolor": "Black",
+	  "ocolor": "DarkGoldenRod",
 	  "osize": 1,
 	  "bgcolor": "Transparent",
 	  "shcolor": "Black",
+	  "shadow": "diffused"
+    }, {
+      "name": "Impact",
+      "id": "Impact",
+	  "font": "Impact",
+	  "oblique": 0,
+	  "fgcolor": "DarkOrange",
+	  "size": 7,
+	  "ocolor": "Transparent",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shcolor": "Red",
+	  "shadow": "diffused"
+    }, {
+      "name": "Neon pink",
+      "id": "Neonpink",
+	  "font": "JECasual",
+	  "oblique": 4,
+	  "fgcolor": "DarkOrange",
+	  "size": 7,
+	  "ocolor": "Fuchsia",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shcolor": "Red",
+	  "shadow": "diffused"
+    }, {
+      "name": "Neon green",
+      "id": "Neongreen",
+	  "font": "JECasual",
+	  "oblique": 4,
+	  "fgcolor": "GreenYellow",
+	  "size": 7,
+	  "ocolor": "Chartreuse",
+	  "osize": 1,
+	  "bgcolor": "Transparent",
+	  "shcolor": "YellowGreen",
 	  "shadow": "diffused"
     }
   ]
