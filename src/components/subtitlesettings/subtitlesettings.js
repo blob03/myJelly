@@ -391,7 +391,12 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 		sliderOblique.addEventListener('input', onSliderInput);
 		sliderOblique.addEventListener('change', onSliderInput);
 		sliderOblique.addEventListener('change', cancelPreset);
-		sliderOblique.value = appearanceSettings.oblique || 1.36;
+		if (layoutManager.tv) {
+			sliderOblique.min = 0;
+			sliderOblique.max = 4;
+			sliderOblique.step = 4;
+		}
+		sliderOblique.value = appearanceSettings.oblique || 0;
 		sliderOblique.dispatchEvent(event_change);
 		
 		let sliderTextSize =  context.querySelector('#sliderTextSize');

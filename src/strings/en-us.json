@@ -1578,6 +1578,7 @@
     "VideoProfileNotSupported": "The video codec's profile is not supported",
     "AudioBitDepthNotSupported": "The audio's bit depth is not supported",
 	
+	"Diffused": "Diffused",
 	"OptionDivider": "...............................",
 	"EnableClock": "Clock",
 	"EnableClockHelp": "Show local date and time in the top bar.",

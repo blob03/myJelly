@@ -22,13 +22,16 @@ function getTextStyles(settings, preview) {
         case 'none':
             list.push({ name: 'text-shadow', value: 'none' });
             break;
+		case 'diffused':
+			list.push({ name: 'text-shadow', value: sColor + ' 0px 0px 9px, ' + sColor + ' 0px 0px 20px' });
+            break;
         default:
         case 'dropshadow':
 			list.push({ name: 'text-shadow', value: sColor + ' 0px 0px 7px' });
             break;
     }
-	
-	list.push({ name: 'font-style', value: 'oblique ' + (settings.oblique * 5 || '0' ) + 'deg'});
+	if (settings.oblique)
+		list.push({ name: 'font-style', value: 'oblique ' + (settings.oblique * 5) + 'deg'});
 	list.push({ name: 'background-color', value: settings.textBackground || 'transparent' });
     list.push({ name: 'color', value: settings.textColor || 'White' });
     list.push({ name: '-webkit-text-stroke', value: (settings.strokeSize ? (settings.strokeSize + 'px ') : '1px ') + (settings.textStroke ? settings.textStroke : '#000000')});

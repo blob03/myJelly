@@ -1582,6 +1582,7 @@
     "LabelMaxDaysForNextUpHelp": "Définit le nombre maximal de jours avant qu'une émission ne soit retirée de la section 'À suivre'.",
     "LabelMaxDaysForNextUp": "Expiration de la section 'À suivre' :",
 	
+	"Diffused": "Diffus",
 	"EnableClock": "Activer l'horloge",
 	"EnableClockHelp": "Affiche la date et l'heure locale dans la barre du haut.",
 	"LabelTextShadowColor": "Teinte de l'ombre portée :",
