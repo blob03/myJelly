@@ -39,6 +39,9 @@ function getTextStyles(settings, preview) {
     list.push({ name: 'color', value: settings.textColor || 'White' });
     list.push({ name: '-webkit-text-stroke', value: (settings.strokeSize ? (settings.strokeSize + 'px ') : '1px ') + (settings.textStroke ? settings.textStroke : '#000000')});
 	
+	
+	list.push({ name: 'border-radius', value: settings.borderradius || '50%' });
+	
     switch (settings.font || '') {
         case 'VTypewriter':
             list.push({ name: 'font-family', value: 'VTypewriter' });
@@ -46,6 +49,14 @@ function getTextStyles(settings, preview) {
             break;
 		case 'DSWeiss':
             list.push({ name: 'font-family', value: 'DSWeiss' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
+		case 'ACharmingFont':
+            list.push({ name: 'font-family', value: 'ACharmingFont' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
+		case 'Yippy':
+            list.push({ name: 'font-family', value: 'Yippy' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
 		case 'MGothisch':
