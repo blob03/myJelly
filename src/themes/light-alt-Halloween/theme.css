@@ -207,10 +207,16 @@ html {
 .emby-textarea {
 	color: #282828;
 	font-weight: 600;
-	background: #f1d49c;
+	font-style: italic;
+	background-color: #e5e3e0;
 	border: 0.16em solid rgb(9, 0, 0);
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
+}
+
+.emby-input::placeholder,
+.emby-textarea::placeholder {
+  color: #b4b3b1;
 }
 
 .itemProgressBarForeground {
@@ -401,13 +407,15 @@ html {
 
 .homeLibraryButton:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(244, 128, 42, 0.8) !important;
+	background-color: rgba(255, 169, 57, 0.8) !important;
+	box-shadow: 1px 1px 8px #5e2c00, 1px 1px 18px #b84602;
 }
 
 .homeLibraryButton:focus {
 	color: rgba(30, 30, 30, 0.8) !important;
 	background-color: rgba(248, 208, 159, 0.8) !important;
 	transform: scale(1.1) !important;
+	box-shadow: 1px 1px 8px #282828, 1px 1px 18px #282828;
 }
 
 .listItemBody {
@@ -429,7 +437,7 @@ html {
 }
  
  .emby-button {
-	color: #000;
+	color: #fe9001;
  }
  
 .dashboardActionsContainer > .emby-button,
