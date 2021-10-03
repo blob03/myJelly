@@ -554,6 +554,7 @@ html {
 
 .selectArrow {
 	text-shadow: 2px 2px 3px #1e1d25;
+	color: #fe9001;
 }
  
 .emby-select-withcolor {
@@ -721,23 +722,23 @@ select option:selected {
 }
 
 .material-icons {
-	color: #e88b13;
+	color: #282828;
 	text-shadow: 1px 1px 4px #39392d;
 }
 
-.homeLibraryButton > .material-icons,
-.dashboardSection > .sectionTitleTextButton > .material-icons,
-.btnCloseActionSheet > .material-icons,
-.emby-input-iconbutton > .material-icons,
-.searchfields-icon.material-icons,
-.detailButton-content > .material-icons,
-.nowPlayingInfoButtons > * > .material-icons,
-.nowPlayingSecondaryButtons > * > .material-icons,
-.volumecontrol > * > .material-icons,
-.nowPlayingPageUserDataButtons > * > .material-icons,
-.itemsViewSettingsContainer > * > .material-icons,
-.listItem > .material-icons {
-	color: #282828;
+.headerButton > .material-icons,
+.formDialogHeader > * > .material-icons,
+.cardOverlayButtonIcon.material-icons,
+.submit > .material-icons,
+.mediaButton > .material-icons,
+.selectArrowContainer > .material-icons,
+.slideshowButton > .material-icons,
+.slideshowBottomBar > * > .material-icons,
+.buttons > * > .material-icons,
+.volumeButtons > * > .material-icons,
+.navMenuOption > .material-icons {
+	color: #e88b13;
+	text-shadow: 1px 1px 4px #39392d;	
 }
 
 .starIcon {
@@ -837,6 +838,10 @@ select option:selected {
 
 .sidebarHeader {
 	color: #8b877f;
+}
+
+.listItemAside {
+	color: #edeceb;
 }
 
 .listItemIcon:not(.listItemIcon-transparent) {
