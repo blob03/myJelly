@@ -205,7 +205,8 @@ html {
 
 .emby-input,
 .emby-textarea {
-	color: #000;
+	color: #282828;
+	font-weight: 600;
 	background: #f1d49c;
 	border: 0.16em solid rgb(9, 0, 0);
     -webkit-border-radius: 0.2em;
@@ -392,7 +393,7 @@ html {
 }
 
 .homeLibraryButton {
-	color: rgb(50, 67, 37) !important;
+	color: #282828 !important;
 	background-color: rgba(255, 197, 123, 0.6);
 	box-shadow: 1px 1px 8px #ff6e03;
 	font-weight: 600;
@@ -665,6 +666,15 @@ select option:selected {
 	color: #f29300;
 }
 
+.headerClockTime {
+	font-family: "Mystery";
+	font-size: 170% !important;
+}
+
+.headerClockDate {
+	font-size: 80% !important;
+}
+
 .nightClock > .headerClockTime,
 .nightClock > .headerClockDate {
 	color: #f8e5bf;
@@ -673,12 +683,12 @@ select option:selected {
 
 .headerClockButton:hover > .headerClockTime,
 .headerClockButton:focus > .headerClockTime {
-	font-size: 140% !important;
+	font-size: 170% !important;
 }
 
 .headerClockButton:hover > .headerClockDate,
 .headerClockButton:focus > .headerClockDate {
-	font-size: 90% !important;
+	font-size: 80% !important;
 }
 
 .pageTitle {
@@ -688,6 +698,11 @@ select option:selected {
 @font-face {
 	font-family: "Halloween";
     src: url(./fonts/Hellow2.ttf) format("truetype"); 
+}
+
+@font-face {
+	font-family: "Mystery";
+    src: url(./fonts/MysteryQuest-Regular.ttf) format("truetype"); 
 }
 
 .headerButton > .material-icons.home::before {
@@ -714,7 +729,7 @@ select option:selected {
 .nowPlayingPageUserDataButtons > * > .material-icons,
 .itemsViewSettingsContainer > * > .material-icons,
 .listItem > .material-icons {
-	color: #000;
+	color: #282828;
 }
 
 .starIcon {
@@ -800,7 +815,7 @@ select option:selected {
 }
 
 .sectionTitle {
-	color : #000;
+	color : #282828;
 	font-weight: 600;
 }
 

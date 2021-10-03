@@ -64,14 +64,6 @@ import appSettings from './settings/appSettings';
 		html += '<div id="headerClockDate" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTime" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
-		
-		/*
-			html += '<table style="border-collapse:collapse;border:solid 0px;" id="headerClock" class="headerClock"><tr><td>';
-			html += '<span id="headerClockDate" class="headerClockDate" style="float:right;font-size: 70%;color: rgba(255,255,255,0.4);padding:0px 5px"></span>';
-			html += '</td></tr><tr><td>';
-			html += '<span id="headerClockTime" class="headerClockTime" style="float:right;font-size: 120%;color: rgba(255,255,255,0.4);padding:0px 5px"></span>';
-			html += '</td></tr></table>';			 
-		*/
 		/* ********************************** */
 		
         html += '<button is="paper-icon-button-light" class="headerButton headerButtonRight headerUserButton hide"><span class="material-icons person"></span></button>';			
@@ -101,7 +93,7 @@ import appSettings from './settings/appSettings';
 		headerLockButton = skinHeader.querySelector('.headerLockButton');
         headerSyncButton = skinHeader.querySelector('.headerSyncButton');
 
-        retranslateUi();
+        //retranslateUi();
         lazyLoadViewMenuBarImages();
         bindMenuEvents();
         updateCastIcon();

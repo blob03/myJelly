@@ -226,19 +226,21 @@ function loadColors(context) {
 		let z = document.createElement("option");
 		
 		if (COLOR === false) {
-			w.text = globalize.translate('OptionDivider');
+			let divider = globalize.translate('OptionDivider');
+			
+			w.text = divider;
 			w.disabled = true;
 			subColor.options.add(w, undefined); 
 		
-			x.text = globalize.translate('OptionDivider');
+			x.text = divider;
 			x.disabled = true;
 			subBGcolor.options.add(x, undefined); 
 			
-			y.text = globalize.translate('OptionDivider');
+			y.text = divider;
 			y.disabled = true;
 			subSTRcolor.options.add(y, undefined); 
 			
-			z.text = globalize.translate('OptionDivider');
+			z.text = divider;
 			z.disabled = true;
 			subSHAcolor.options.add(z, undefined); 
 			
@@ -515,23 +517,15 @@ function onLanguageFieldChange(e) {
 			loading.hide();
 			return;
 		}
-		let html;
-		let key = dictionary['HeaderSubtitleAppearance'];
-		if (key)
-			html = key;
-		key = dictionary['TheseSettingsAffectSubtitlesOnThisDevice'];
-		if (key) {
-			if (html)
-				html += '<br>';
-			html += key;
-		}
+		let html = dictionary['HeaderSubtitleAppearance'] || '';
+		if (html)
+			html += '<br>';
+		html += dictionary['TheseSettingsAffectSubtitlesOnThisDevice'] || '';
+		
 		// Case when both translations are missing
 		// We try a key of last resort.
-		if (!html) {
-			key = dictionary['LabelPreferredSubtitleLanguage'];
-			if (key)
-				html = key;
-		}
+		if (!html) 
+			html = dictionary['LabelPreferredSubtitleLanguage'] || '';
 		if (html)
 			preview.innerHTML = html;
 		loading.hide();
