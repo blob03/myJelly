@@ -700,6 +700,16 @@ select option:selected {
 	font-size: 80% !important;
 }
 
+/* Tab About... */
+
+.abouttab {
+	color: #282828 !important;
+}
+
+.aboutcontent {
+	color: #ffc898;
+}
+
 .pageTitle {
 	color: #8b877f !important;
 }
