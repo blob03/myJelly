@@ -1596,5 +1596,6 @@
 	"Oblique": "Oblique :",
 	"About": "A propos...",
 	"AppDesc": "Description :",
-	"AppContact": "Contact :"
+	"AppContact": "Contact :",
+	"AppRepositoryName": "Nom du dépôt :"
 }
