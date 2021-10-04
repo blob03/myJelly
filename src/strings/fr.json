@@ -1593,5 +1593,8 @@
 	"LabelChromecastVersion": "Version de Chromecast :",
 	"LabelScreensaverTime": "Délai avant activation :",
 	"LabelSubtitlePresets": "Styles pré-configurés :",
-	"Oblique": "Oblique :"
+	"Oblique": "Oblique :",
+	"About": "A propos...",
+	"AppDesc": "Description:",
+	"AppContact": "Contact:"
 }

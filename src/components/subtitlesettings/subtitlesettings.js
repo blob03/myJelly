@@ -1,6 +1,7 @@
 import globalize from '../../scripts/globalize';
 import { appHost } from '../apphost';
 import appSettings from '../../scripts/settings/appSettings';
+import browser from '../../scripts/browser';
 import focusManager from '../focusManager';
 import layoutManager from '../layoutManager';
 import loading from '../loading/loading';
@@ -19,7 +20,6 @@ import './subtitlesettings.scss';
 import ServerConnections from '../ServerConnections';
 import toast from '../toast/toast';
 import template from './subtitlesettings.template.html';
-
 
 /**
  * Subtitle settings.
@@ -393,7 +393,7 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 		sliderOblique.addEventListener('input', onSliderInput);
 		sliderOblique.addEventListener('change', onSliderInput);
 		sliderOblique.addEventListener('change', cancelPreset);
-		if (layoutManager.tv) {
+		if (browser.web0s) {
 			sliderOblique.min = 0;
 			sliderOblique.max = 4;
 			sliderOblique.step = 4;

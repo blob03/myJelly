@@ -1590,5 +1590,8 @@
 	"LabelChromecastVersion": "Chromecast Version:",
 	"LabelScreensaverTime": "Minimum time before activation:",
 	"LabelSubtitlePresets": "Subtitles style presets:",
-	"Oblique": "Oblique:"
+	"Oblique": "Oblique:",
+	"About": "About...",
+	"AppDesc": "Description:",
+	"AppContact": "Contact:"
 }

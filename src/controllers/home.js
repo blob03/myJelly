@@ -33,7 +33,9 @@ class HomeView extends TabbedView {
             name: globalize.translate('Home')
         }, {
             name: globalize.translate('Favorites')
-        }];
+        }, {
+			name: globalize.translate('About')
+		}];
     }
 
     getTabController(index) {
@@ -50,6 +52,11 @@ class HomeView extends TabbedView {
 
             case 1:
                 depends = 'favorites';
+				break;
+				
+			case 2:
+                depends = 'about';
+                break;
         }
 
         const instance = this;
