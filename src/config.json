@@ -1,308 +1,307 @@
 {
-  "includeCorsCredentials": false,
-  "multiserver": false,
-  "themes": [
-    {
-      "name": "Apple TV",
-      "id": "appletv",
-	  "color": "#bcbcbc"
-    }, {
-      "name": "Blue Radiance",
-      "id": "blueradiance",
-	  "color": "#011432"
-    }, {
-      "name": "Dark",
-      "id": "dark",
-	  "color": "#202020",
-      "default": true
-    }, {
-      "name": "Light",
-      "id": "light",
-	  "color": "#303030"
-    }, {
-      "name": "Light alt. 1.22",
-      "id": "light-alt",
-	  "color": "#303030"
-    }, {
-      "name": "Light alt. blue 1.23",
-      "id": "light-alt-blue",
-	  "color": "#303030"
-    }, {
-      "name": "Light alt. Halloween 1.33",
-      "id": "light-alt-Halloween",
-	  "color": "#282828"
-    }, {
-      "name": "Purple Haze",
-      "id": "purplehaze",
-	  "color": "#000420"
-    }, {
-      "name": "WMC",
-      "id": "wmc",
-	  "color": "#0c2450"
-    },{
-      "name": "WMC alt. 1.13",
-      "id": "wmc-alt",
-	  "color": "#0c2450"
-    }
-  ],
-  "menuLinks": [],
-  "servers": [],
-  "plugins": [
-    "playAccessValidation/plugin",
-    "experimentalWarnings/plugin",
-    "htmlAudioPlayer/plugin",
-    "htmlVideoPlayer/plugin",
-    "photoPlayer/plugin",
-    "comicsPlayer/plugin",
-    "bookPlayer/plugin",
-    "youtubePlayer/plugin",
-    "backdropScreensaver/plugin",
-    "pdfPlayer/plugin",
-    "logoScreensaver/plugin",
-    "sessionPlayer/plugin",
-    "chromecastPlayer/plugin"
-  ],
-  "presets": [
+	"includeCorsCredentials": false,
+	"multiserver": false,
+	"themes": [
 	{
-      "name": "War Movies",
-      "id": "war",
-	  "font": "AText",
-	  "oblique": 4,
-	  "fgcolor": "Red",
-	  "size": 8,
-	  "ocolor": "White",
-	  "osize": 2,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "dropshadow"
-    }, {
-	  "name": "War Movies, clair-obscur",
-      "id": "wardark",
-	  "font": "VTypewriter",
-	  "oblique": 4,
-	  "fgcolor": "Black",
-	  "size": 6,
-	  "ocolor": "Black",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Snow",
-	  "shadow": "diffused"
-    }, {
-	  "name": "Cartoon pink",
-      "id": "Cartoonpink",
-	  "font": "OogieBoogie",
-	  "oblique": 0,
-	  "fgcolor": "LightPink",
-	  "size": 8,
-	  "ocolor": "HotPink",
-	  "osize": 2,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "dropshadow"
-    }, {
-	  "name": "Cartoon green",
-      "id": "Cartoongreen",
-	  "font": "OogieBoogie",
-	  "oblique": 0,
-	  "fgcolor": "YellowGreen",
-	  "size": 8,
-	  "ocolor": "seaGreen",
-	  "osize": 2,
-	  "bgcolor": "Crimson",
-	  "shcolor": "Black",
-	  "shadow": "diffused"
-    }, {
-      "name": "Cartoon blue",
-      "id": "Cartoonblue",
-	  "font": "OogieBoogie",
-	  "oblique": 0,
-	  "fgcolor": "LightSteelBlue",
-	  "size": 8,
-	  "ocolor": "RoyalBlue",
-	  "osize": 2,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "dropshadow"
-    }, {
-      "name": "Halloween",
-      "id": "Halloween",
-	  "font": "JACobbler",
-	  "oblique": 4,
-	  "fgcolor": "Black",
-	  "size": 7,
-	  "ocolor": "Black",
-	  "osize": 2,
-	  "bgcolor": "Transparent",
-	  "shcolor": "LightCyan",
-	  "shadow": "diffused2"
-    }, {
-      "name": "Halloween cartoon",
-      "id": "Halloween2",
-	  "font": "Chewy",
-	  "oblique": 4,
-	  "fgcolor": "DarkOrange",
-	  "size": 9,
-	  "ocolor": "Black",
-	  "osize": 2,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "diffused"
-    }, {
-      "name": "Halloween slim",
-      "id": "Halloween3",
-	  "font": "Yippy",
-	  "oblique": 0,
-	  "fgcolor": "DarkOrange",
-	  "size": 13,
-	  "ocolor": "Black",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "dropshadow"
-    }, {
-      "name": "Fantasy movies",
-      "id": "Fantasy",
-	  "font": "ACharmingFont",
-	  "oblique": 4,
-	  "fgcolor": "Indigo",
-	  "size": 14,
-	  "ocolor": "MediumPurple",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "White",
-	  "shadow": "dropshadow"
-    }, {
-      "name": "Medieval movies",
-      "id": "Medieval",
-	  "font": "MGothisch",
-	  "oblique": 0,
-	  "fgcolor": "GoldenRod",
-	  "size": 8,
-	  "ocolor": "DarkGoldenRod",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "diffused"
-    }, {
-      "name": "Impact",
-      "id": "Impact",
-	  "font": "Impact",
-	  "oblique": 0,
-	  "fgcolor": "DarkOrange",
-	  "size": 7,
-	  "ocolor": "Transparent",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Red",
-	  "shadow": "diffused"
-    }, {
-      "name": "Neon pink",
-      "id": "Neonpink",
-	  "font": "JECasual",
-	  "oblique": 4,
-	  "fgcolor": "DarkOrange",
-	  "size": 7,
-	  "ocolor": "Fuchsia",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Red",
-	  "shadow": "diffused"
-    }, {
-      "name": "Neon pink alt.",
-      "id": "Cutepink",
-	  "font": "Monserga",
-	  "oblique": 0,
-	  "fgcolor": "HotPink",
-	  "size": 8,
-	  "ocolor": "PaleVioletRed",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "DarkViolet",
-	  "shadow": "diffused"
+		"name": "Apple TV",
+		"id": "appletv",
+		"color": "#bcbcbc"
 	}, {
-      "name": "Neon green",
-      "id": "Neongreen",
-	  "font": "JECasual",
-	  "oblique": 4,
-	  "fgcolor": "GreenYellow",
-	  "size": 7,
-	  "ocolor": "Chartreuse",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "YellowGreen",
-	  "shadow": "diffused"
+		"name": "Blue Radiance",
+		"id": "blueradiance",
+		"color": "#011432"
+	}, {
+		"name": "Dark",
+		"id": "dark",
+		"color": "#202020",
+		"default": true
+	}, {
+		"name": "Light",
+		"id": "light",
+		"color": "#303030"
+	}, {
+		"name": "Light alt. 1.22",
+		"id": "light-alt",
+		"color": "#303030"
+	}, {
+		"name": "Light alt. blue 1.23",
+		"id": "light-alt-blue",
+		"color": "#303030"
+	}, {
+		"name": "Light alt. Halloween 1.33",
+		"id": "light-alt-Halloween",
+		"color": "#282828"
+	}, {
+		"name": "Purple Haze",
+		"id": "purplehaze",
+		"color": "#000420"
+	}, {
+		"name": "WMC",
+		"id": "wmc",
+		"color": "#0c2450"
+	},{
+		"name": "WMC alt. 1.13",
+		"id": "wmc-alt",
+		"color": "#0c2450"
+	}],
+	"menuLinks": [],
+	"servers": [],
+	"plugins": [
+		"playAccessValidation/plugin",
+		"experimentalWarnings/plugin",
+		"htmlAudioPlayer/plugin",
+		"htmlVideoPlayer/plugin",
+		"photoPlayer/plugin",
+		"comicsPlayer/plugin",
+		"bookPlayer/plugin",
+		"youtubePlayer/plugin",
+		"backdropScreensaver/plugin",
+		"pdfPlayer/plugin",
+		"logoScreensaver/plugin",
+		"sessionPlayer/plugin",
+		"chromecastPlayer/plugin"
+	],
+	"presets": [
+	{
+		"name": "War Movies",
+		"id": "war",
+		"font": "AText",
+		"oblique": 4,
+		"fgcolor": "Red",
+		"size": 8,
+		"ocolor": "White",
+		"osize": 2,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "dropshadow"
+	}, {
+		"name": "War Movies, clair-obscur",
+		"id": "wardark",
+		"font": "VTypewriter",
+		"oblique": 4,
+		"fgcolor": "Black",
+		"size": 6,
+		"ocolor": "Black",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Snow",
+		"shadow": "diffused"
     }, {
-      "name": "Neon green alt.",
-      "id": "Cutegreen",
-	  "font": "Monserga",
-	  "oblique": 0,
-	  "fgcolor": "GreenYellow",
-	  "size": 8,
-	  "ocolor": "Chartreuse",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "YellowGreen",
-	  "shadow": "diffused"
+		"name": "Cartoon pink",
+		"id": "Cartoonpink",
+		"font": "OogieBoogie",
+		"oblique": 0,
+		"fgcolor": "LightPink",
+		"size": 8,
+		"ocolor": "HotPink",
+		"osize": 2,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "dropshadow"
     }, {
-      "name": "Neon blue",
-      "id": "Neonblue",
-	  "font": "JECasual",
-	  "oblique": 4,
-	  "fgcolor": "SkyBlue",
-	  "size": 7,
-	  "ocolor": "DeepSkyBlue",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Cyan",
-	  "shadow": "diffused2"
+		"name": "Cartoon green",
+		"id": "Cartoongreen",
+		"font": "OogieBoogie",
+		"oblique": 0,
+		"fgcolor": "YellowGreen",
+		"size": 8,
+		"ocolor": "seaGreen",
+		"osize": 2,
+		"bgcolor": "Crimson",
+		"shcolor": "Black",
+		"shadow": "diffused"
     }, {
-	  "name": "Neon blue alt.",
-      "id": "Cuteblue",
-	  "font": "Monserga",
-	  "oblique": 0,
-	  "fgcolor": "SkyBlue",
-	  "size": 8,
-	  "ocolor": "LightCyan",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Cyan",
-	  "shadow": "diffused2"
+		"name": "Cartoon blue",
+		"id": "Cartoonblue",
+		"font": "OogieBoogie",
+		"oblique": 0,
+		"fgcolor": "LightSteelBlue",
+		"size": 8,
+		"ocolor": "RoyalBlue",
+		"osize": 2,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "dropshadow"
     }, {
-	  "name": "Rusty",
-      "id": "Rusty",
-	  "font": "YouAreLoved",
-	  "oblique": 4,
-	  "fgcolor": "SandyBrown",
-	  "size": 9,
-	  "ocolor": "Chocolate",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "diffused2"
+		"name": "Halloween",
+		"id": "Halloween",
+		"font": "JACobbler",
+		"oblique": 4,
+		"fgcolor": "Black",
+		"size": 7,
+		"ocolor": "Transparent",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "LightCyan",
+		"shadow": "diffused2"
     }, {
-	  "name": "Rusty alt.",
-      "id": "Rusty2",
-	  "font": "YouAreLoved",
-	  "oblique": 0,
-	  "fgcolor": "Tan",
-	  "size": 9,
-	  "ocolor": "Brown",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "diffused2"
+		"name": "Halloween cartoon",
+		"id": "Halloween2",
+		"font": "Chewy",
+		"oblique": 4,
+		"fgcolor": "DarkOrange",
+		"size": 9,
+		"ocolor": "Black",
+		"osize": 2,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "diffused"
     }, {
-	  "name": "Rusty blue",
-      "id": "Rusty3",
-	  "font": "YouAreLoved",
-	  "oblique": 0,
-	  "fgcolor": "DarkGray",
-	  "size": 9,
-	  "ocolor": "DarkSlateGray",
-	  "osize": 1,
-	  "bgcolor": "Transparent",
-	  "shcolor": "Black",
-	  "shadow": "diffused2"
+		"name": "Halloween slim",
+		"id": "Halloween3",
+		"font": "Yippy",
+		"oblique": 0,
+		"fgcolor": "DarkOrange",
+		"size": 13,
+		"ocolor": "Black",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "dropshadow"
+    }, {
+		"name": "Fantasy movies",
+		"id": "Fantasy",
+		"font": "ACharmingFont",
+		"oblique": 4,
+		"fgcolor": "Indigo",
+		"size": 14,
+		"ocolor": "MediumPurple",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "White",
+		"shadow": "dropshadow"
+    }, {
+		"name": "Medieval movies",
+		"id": "Medieval",
+		"font": "MGothisch",
+		"oblique": 0,
+		"fgcolor": "GoldenRod",
+		"size": 8,
+		"ocolor": "DarkGoldenRod",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "diffused"
+    }, {
+		"name": "Impact",
+		"id": "Impact",
+		"font": "Impact",
+		"oblique": 0,
+		"fgcolor": "DarkOrange",
+		"size": 7,
+		"ocolor": "Transparent",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Red",
+		"shadow": "diffused"
+    }, {
+		"name": "Neon pink",
+		"id": "Neonpink",
+		"font": "JECasual",
+		"oblique": 4,
+		"fgcolor": "DarkOrange",
+		"size": 7,
+		"ocolor": "Fuchsia",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Red",
+		"shadow": "diffused"
+    }, {
+		"name": "Neon pink alt.",
+		"id": "Cutepink",
+		"font": "Monserga",
+		"oblique": 0,
+		"fgcolor": "HotPink",
+		"size": 8,
+		"ocolor": "PaleVioletRed",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "DarkViolet",
+		"shadow": "diffused"
+	}, {
+		"name": "Neon green",
+		"id": "Neongreen",
+		"font": "JECasual",
+		"oblique": 4,
+		"fgcolor": "GreenYellow",
+		"size": 7,
+		"ocolor": "Chartreuse",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "YellowGreen",
+		"shadow": "diffused"
+    }, {
+		"name": "Neon green alt.",
+		"id": "Cutegreen",
+		"font": "Monserga",
+		"oblique": 0,
+		"fgcolor": "GreenYellow",
+		"size": 8,
+		"ocolor": "Chartreuse",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "YellowGreen",
+		"shadow": "diffused"
+    }, {
+		"name": "Neon blue",
+		"id": "Neonblue",
+		"font": "JECasual",
+		"oblique": 4,
+		"fgcolor": "SkyBlue",
+		"size": 7,
+		"ocolor": "DeepSkyBlue",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Cyan",
+		"shadow": "diffused2"
+    }, {
+		"name": "Neon blue alt.",
+		"id": "Cuteblue",
+		"font": "Monserga",
+		"oblique": 0,
+		"fgcolor": "SkyBlue",
+		"size": 8,
+		"ocolor": "LightCyan",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Cyan",
+		"shadow": "diffused2"
+    }, {
+		"name": "Rusty",
+		"id": "Rusty",
+		"font": "YouAreLoved",
+		"oblique": 4,
+		"fgcolor": "SandyBrown",
+		"size": 9,
+		"ocolor": "Chocolate",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "diffused2"
+    }, {
+		"name": "Rusty alt.",
+		"id": "Rusty2",
+		"font": "YouAreLoved",
+		"oblique": 0,
+		"fgcolor": "Tan",
+		"size": 9,
+		"ocolor": "Brown",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "diffused2"
+    }, {
+		"name": "Rusty blue",
+		"id": "Rusty3",
+		"font": "YouAreLoved",
+		"oblique": 0,
+		"fgcolor": "DarkGray",
+		"size": 9,
+		"ocolor": "DarkSlateGray",
+		"osize": 1,
+		"bgcolor": "Transparent",
+		"shcolor": "Black",
+		"shadow": "diffused2"
     }
   ]
 }
