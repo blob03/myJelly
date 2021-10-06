@@ -63,8 +63,8 @@ function populateList(options) {
 function getRepositoryHtml(repository) {
     let html = '';
 
-    html += '<div class="listItem listItem-border">';
-    html += `<a is="emby-linkbutton" style="margin:0;padding:0" class="clearLink listItemIconContainer" href="${repository.Url}">`;
+    html += '<div class="listItem listItem-border" style="cursor:default">';
+    html += `<a is="emby-linkbutton" style="margin:0;padding:0" class="clearLink listItemIconContainer" href="${repository.Url}" rel="noopener noreferrer" target="_blank">`;
     html += '<span class="material-icons listItemIcon open_in_new"></span>';
     html += '</a>';
     html += '<div class="listItemBody two-line">';

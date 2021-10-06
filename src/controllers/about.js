@@ -9,7 +9,7 @@ import focusManager from '../components/focusManager';
 import '../elements/emby-itemscontainer/emby-itemscontainer';
 import '../elements/emby-scroller/emby-scroller';
 import ServerConnections from '../components/ServerConnections';
-import appInfo from '../../package.json';
+import appInfo from '../config.json';
 
 class AboutTab {
     constructor(view, params) {
