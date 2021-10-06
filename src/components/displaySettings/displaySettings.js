@@ -19,6 +19,15 @@ import template from './displaySettings.template.html';
 
     function fillThemes(select, selectedTheme) {
         skinManager.getThemes().then(themes => {
+			themes.sort((a, b) => {
+				let fa = a.name.toLowerCase(),
+					fb = b.name.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
             select.innerHTML += themes.map(t => {
                 return `<option value="${t.id}">${t.name}</option>`;
             }).join('');
