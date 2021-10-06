@@ -696,7 +696,10 @@ select option:selected {
 /* Tab About... */
 
 .abouttab {
-	color: #777c89 !important;
+	color: #767b88 !important;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1.25;
 }
 
 .aboutcontent {
@@ -710,6 +713,11 @@ select option:selected {
 .material-icons {
 	color: #fff;
 	text-shadow: 1px 1px 4px #39392d;
+}
+
+.homeLibraryButton > .material-icons {
+	color: #a5a5a5;
+	text-shadow: 1px 1px 4px #39392d;	
 }
 
 .homeLibraryButton:hover > .material-icons,
