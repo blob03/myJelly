@@ -112,21 +112,18 @@ import template from './displaySettings.template.html';
         } else {
             context.querySelector('.fldDateTimeLocale').classList.add('hide');
         }
-
-        if (!browser.tizen && !browser.web0s) {
-			//others
-			context.querySelector('.fldThemeVideo').classList.remove('hide');
-		} else if (!browser.tizen) {
-			//webos
-            context.querySelector('.fldBackdrops').classList.remove('hide');
+		
+		context.querySelector('.fldBackdrops').classList.remove('hide');
+		
+		if (browser.web0s) {
             context.querySelector('.fldThemeSong').classList.remove('hide');
-        } else {
-			//tizen
-            context.querySelector('.fldBackdrops').classList.add('hide');
+        } else if (browser.tizen) {
             context.querySelector('.fldThemeSong').classList.add('hide');
             context.querySelector('.fldThemeVideo').classList.add('hide');
-        }
-
+        } else {
+			context.querySelector('.fldThemeVideo').classList.remove('hide');
+		}
+		
         fillThemes(context.querySelector('#selectTheme'), userSettings.theme());
 		context.querySelector('#selectTheme').addEventListener('change', function() {  skinManager.setTheme(this.value); });
 		
