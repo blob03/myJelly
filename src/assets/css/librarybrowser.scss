@@ -183,6 +183,11 @@
     position: relative;
 }
 
+.layout-tv .skinHeader.locked {
+    /* users of TVs that come with a pointing device can use a floating bar like PC users */
+    position: fixed;
+}
+
 .hiddenViewMenuBar .skinHeader {
     display: none;
 }
