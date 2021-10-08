@@ -10,6 +10,10 @@ html {
     color: rgba(0, 0, 0, 0.87);
 }
 
+.headerLeft, .headerRight {
+	overflow: visible;
+}
+
 ::-moz-selection { 
 	color: #3c3c3c;
 	background: #f4f4b5;

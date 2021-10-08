@@ -25,19 +25,19 @@
 		"id": "light",
 		"color": "#303030"
 	}, {
-		"name": "Light alt. 1.22",
+		"name": "Light alt. 1.23",
 		"id": "light-alt",
 		"color": "#303030"
 	}, {
-		"name": "Light alt. blue 1.23",
+		"name": "Light alt. blue 1.24",
 		"id": "light-alt-blue",
 		"color": "#303030"
 	}, {
-		"name": "Light alt. Halloween 1.33",
+		"name": "Light alt. Halloween 1.34",
 		"id": "light-alt-Halloween",
 		"color": "#282828"
 	}, {
-		"name": "Dark alt. 1.2",
+		"name": "Dark alt. 1.21",
 		"id": "dark-alt",
 		"color": "#202020"
 	}, {
@@ -49,7 +49,7 @@
 		"id": "wmc",
 		"color": "#0c2450"
 	},{
-		"name": "WMC alt. 1.13",
+		"name": "WMC alt. 1.14",
 		"id": "wmc-alt",
 		"color": "#0c2450"
 	}],

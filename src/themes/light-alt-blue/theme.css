@@ -9,6 +9,10 @@ html {
     color: rgb(9, 54, 111);
 }
 
+.headerLeft, .headerRight {
+	overflow: visible;
+}
+
 ::-moz-selection { 
 	color: #3c3c3c;
 	background: #f4f4b5;

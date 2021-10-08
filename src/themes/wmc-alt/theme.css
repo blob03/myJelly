@@ -9,6 +9,10 @@ html {
     background-color: #0f3562;
 }
 
+.headerLeft, .headerRight {
+	overflow: visible;
+}
+
 .wizardStartForm,
 .ui-corner-all,
 .ui-shadow {

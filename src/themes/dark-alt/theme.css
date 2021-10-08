@@ -1,3 +1,7 @@
+@font-face {
+	font-family: "Shangai";
+    src: url("fonts/shanghai.ttf") format("truetype"); 
+}
 
 * {
 	scrollbar-color: #202020 #fff;
@@ -8,6 +12,10 @@
 html {
     color: #8997ae;
 	background-color: #202020 !important;
+}
+
+.headerLeft, .headerRight {
+	overflow: visible;
 }
 
 ::-moz-selection { 
@@ -644,6 +652,7 @@ select option:selected {
 .mdl-slider-background,
 .mdl-slider-background-flex  {
 	box-shadow: 1px 2px 8px #1e1d25;
+	background: #353535;
 }
 
 .mdl-slider:focus,
@@ -685,11 +694,16 @@ select option:selected {
     height: 0.83em !important;
 }
 
+.sliderBubbleText {
+	font-family: "Shangai";
+	font-size: 170% !important;
+}
+
 .sliderBubble {
-	background: #aaa;
-	color: #282828;
+	background: #282d32;
+	color: #ccc;
 	border-radius: 62px;
-	border: 1px solid #444;
+	border: .2em ridge #474c52;
 }
 
 /* dashboard menu */
@@ -714,11 +728,6 @@ select option:selected {
 }
 
 /* top bar clock style */
-
-@font-face {
-	font-family: "Shangai";
-    src: url("fonts/shanghai.ttf") format("truetype"); 
-}
 
 .headerClockButton {
 	padding:0px 15px;
@@ -759,7 +768,7 @@ select option:selected {
 .abouttab {
 	color: #767b88 !important;
 	font-family: inherit;
-	font-size: 90%;
+	font-size: 85%;
 	line-height: 1.25;
 }
 
