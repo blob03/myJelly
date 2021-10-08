@@ -1,3 +1,12 @@
+@font-face {
+	font-family: "Halloween";
+    src: url(./fonts/Hellow2.ttf) format("truetype"); 
+}
+
+@font-face {
+	font-family: "Mystery";
+    src: url(./fonts/MysteryQuest-Regular.ttf) format("truetype"); 
+}
 
 * {
     scrollbar-color: #fe9001 #282828;
@@ -644,7 +653,12 @@ select option:selected {
 	background: rgba(255, 155, 0, 0.8);
 	color: #282828;
 	border-radius: 62px;
-	border: 1px solid #c46e00;
+	border: 3px ridge #c46e00;
+}
+
+.sliderBubbleText {
+	font-family: "Mystery";
+	font-size: 170% !important;
 }
 
 /* dashboard menu */
@@ -716,16 +730,6 @@ select option:selected {
 
 .pageTitle {
 	color: #8b877f !important;
-}
-
-@font-face {
-	font-family: "Halloween";
-    src: url(./fonts/Hellow2.ttf) format("truetype"); 
-}
-
-@font-face {
-	font-family: "Mystery";
-    src: url(./fonts/MysteryQuest-Regular.ttf) format("truetype"); 
 }
 
 .headerButton > .material-icons.home::before {
