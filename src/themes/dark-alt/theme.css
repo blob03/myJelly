@@ -78,7 +78,10 @@ html {
 }
 
 .backdropImage {
-    background-color: rgb(242, 137, 45) !important;
+    background-color: rgb(40, 40, 40) !important;
+}
+
+.backdropImage.themeBackdrop {
 	background-image: url(./bg.jpg) !important;
 	background-repeat: no-repeat !important;
 	background-size: cover !important;
@@ -768,7 +771,7 @@ select option:selected {
 .abouttab {
 	color: #767b88 !important;
 	font-family: inherit;
-	font-size: 85%;
+	font-size: 90%;
 	line-height: 1.25;
 }
 

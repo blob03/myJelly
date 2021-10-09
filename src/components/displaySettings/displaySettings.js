@@ -113,8 +113,6 @@ import template from './displaySettings.template.html';
             context.querySelector('.fldDateTimeLocale').classList.add('hide');
         }
 		
-		context.querySelector('.fldBackdrops').classList.remove('hide');
-		
 		if (browser.web0s) {
             context.querySelector('.fldThemeSong').classList.remove('hide');
         } else if (browser.tizen) {
@@ -135,11 +133,11 @@ import template from './displaySettings.template.html';
 		context.querySelector('#chkClock').checked = userSettings.enableClock();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#chkBlurhash').checked = userSettings.enableBlurhash();
-        context.querySelector('#chkBackdrops').checked = userSettings.enableBackdrops();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
         context.querySelector('.selectDateTimeLocale').value = userSettings.dateTimeLocale() || '';
-		
+		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops();
+				
 		if (appHost.supports('displaylanguage')) 
 			context.querySelector('#selectLanguage').value = userSettings.language() || '';
 		if (appHost.supports('displaymode')) 
@@ -186,7 +184,8 @@ import template from './displaySettings.template.html';
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);
-        userSettingsInstance.enableBackdrops(context.querySelector('#chkBackdrops').checked);
+        userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
+	
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
 

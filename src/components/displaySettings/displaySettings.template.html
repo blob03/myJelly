@@ -187,6 +187,19 @@
 
 	</div>
 	
+	<div class="selectContainer" style="width: 100%;height: auto;">
+	
+		<select is="emby-select" id="srcBackdrops" label="${Backdrops}">
+			<option value="Auto" selected>${Auto}</option>
+			<option value="None">${None}</option>
+			<option disabled>${OptionDivider}</option>
+			<option value="Theme">${Theme}</option>
+			<option value="Libraries">${HeaderLibraries}</option>
+		</select>
+		<div class="fieldDescription ">${EnableBackdropsHelp}</div>
+		
+	</div>
+	
 	<div class="ScreensaverArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 
 		<div class="selectContainer selectScreensaverContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
@@ -242,15 +255,7 @@
         </label>
         <div class="fieldDescription checkboxFieldDescription">${EnableDetailsBannerHelp}</div>
     </div>
-
-    <div class="checkboxContainer checkboxContainer-withDescription fldBackdrops hide">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkBackdrops" />
-            <span>${Backdrops}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${EnableBackdropsHelp}</div>
-    </div>
-
+	
     <div class="checkboxContainer checkboxContainer-withDescription fldThemeSong hide">
         <label>
             <input type="checkbox" is="emby-checkbox" id="chkThemeSong" />

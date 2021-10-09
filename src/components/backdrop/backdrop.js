@@ -41,9 +41,25 @@ import ServerConnections from '../ServerConnections';
                 const backdropImage = document.createElement('div');
                 backdropImage.classList.add('backdropImage');
                 backdropImage.classList.add('displayingBackdropImage');
-                backdropImage.style.backgroundImage = `url('${url}')`;
-                backdropImage.setAttribute('data-url', url);
-
+				
+				switch(userSettings.enableBackdrops()) {
+					case 'None':
+						break;
+					case 'Libraries':
+						backdropImage.style.backgroundImage = `url('${url}')`;
+						backdropImage.setAttribute('data-url', url);
+						break;
+					case 'Theme':
+						backdropImage.classList.add('themeBackdrop');
+						break;
+					default:
+					case 'Auto':
+						backdropImage.style.backgroundImage = `url('${url}')`;
+						backdropImage.setAttribute('data-url', url);
+						backdropImage.classList.add('themeBackdrop');
+						break;
+				};
+				
                 backdropImage.classList.add('backdropImageFadeIn');
                 parent.appendChild(backdropImage);
 

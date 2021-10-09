@@ -39,7 +39,6 @@ html {
 }
 
 .emby-collapsible-button {
-    border-color: #ccc;
     border-color: rgba(0, 0, 0, 0.158);
 }
 
@@ -49,7 +48,6 @@ html {
 
 .skinHeader-withBackground {
 	background-color: #282828;
-    color: #ccc;
     color: rgba(255, 255, 255, 0.87);
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -83,12 +81,14 @@ html {
 }
 
 .backgroundContainer {
-    /*background-color: rgba(98, 60, 28, 0.8) !important;*/
 	background-color: rgba(235, 129, 40, 0.8) !important;
 }
 
 .backdropImage {
     background-color: rgb(242, 137, 45) !important;
+}
+
+.backdropImage.themeBackdrop {
 	background-image: url(./bg.jpg) !important;
 	background-repeat: no-repeat !important;
 	background-size: cover !important;
@@ -149,7 +149,6 @@ html {
 }
 	
 .actionsheetDivider {
-    background: #ddd;
     background: rgba(0, 0, 0, 0.14);
 }
 
@@ -158,15 +157,10 @@ html {
     color: #fff;
 }
 
-.toast {
-    background: #303030;
-    color: rgba(255, 255, 255, 0.87);
-}
-
+.toast,
 .appfooter,
 .playlistSectionButton {
     background: #282828;
-    color: #ccc;
     color: rgba(255, 255, 255, 0.78);
 }
 
@@ -188,7 +182,6 @@ html {
 }
 
 .alphaPickerButton {
-    color: #555;
     color: rgba(0, 0, 0, 0.7);
     background-color: transparent;
 }
@@ -229,7 +222,7 @@ html {
 
 .emby-input::placeholder,
 .emby-textarea::placeholder {
-  color: #b4b3b1;
+	color: #b4b3b1;
 }
 
 .itemProgressBarForeground {
@@ -722,6 +715,9 @@ select option:selected {
 
 .abouttab {
 	color: #282828 !important;
+	font-family: inherit;
+	font-size: 90%;
+	line-height: 1.25;
 }
 
 .aboutcontent {
