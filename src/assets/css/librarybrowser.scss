@@ -62,6 +62,10 @@
     padding-top: 0 !important;
 }
 
+.layout-tv body::-webkit-scrollbar {
+    display: none;
+}
+
 .layout-tv .itemDetailPage {
     padding-top: 4.2em !important;
 }
