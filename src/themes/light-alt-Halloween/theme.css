@@ -65,7 +65,7 @@ html {
 }
 
 .layout-tv .skinHeader.semiTransparent {
-    /*! background: none; */
+    background-color: #282828;
 }
 
 .pageTitleWithDefaultLogo {
@@ -477,8 +477,8 @@ html {
 .emby-tab-button-active,
 .emby-tab-button-active:focus,
 .emby-tab-button-active:hover:not(:disabled) {
-	text-shadow: 3px 3px 6px #6c6c6c !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+	text-shadow: 0 0 6px #ef8638 !important;
+	color: #ffe7d9;
 	transform: scale(1.3) !important;
 }
 
@@ -860,4 +860,10 @@ select option:selected {
 
 .listItemIcon:not(.listItemIcon-transparent) {
 	background-color: #ffb43e;
+}
+
+/* fix for TV Layout */
+
+.layout-tv .detailPageWrapperContainer {
+	margin-top: 2%;
 }

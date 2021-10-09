@@ -11,7 +11,7 @@
 .skinHeader,
 html {
     color: #8997ae;
-	background-color: #202020 !important;
+	background-color: #202020;
 }
 
 .headerLeft, .headerRight {
@@ -45,7 +45,7 @@ html {
 
 .skinHeader-withBackground {
 	background-color: #202020;
-    color: transparent;
+    color: #fff;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
@@ -62,7 +62,7 @@ html {
 }
 
 .layout-tv .skinHeader.semiTransparent {
-    /*! background: none; */
+    background-color: #202020;
 }
 
 .pageTitleWithDefaultLogo {
@@ -892,4 +892,10 @@ select option:selected {
 
 .listItemIcon:not(.listItemIcon-transparent) {
 	background-color: #646c70;
+}
+
+/* fix for TV Layout */
+
+.layout-tv .detailPageWrapperContainer {
+	margin-top: 2%;
 }

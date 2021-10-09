@@ -6,7 +6,6 @@
 
 .skinHeader,
 html {
-    color: #222;
     color: rgba(0, 0, 0, 0.87);
 }
 
@@ -31,7 +30,6 @@ html {
 }
 
 .emby-collapsible-button {
-    border-color: #ccc;
     border-color: rgba(0, 0, 0, 0.158);
 }
 
@@ -41,7 +39,6 @@ html {
 
 .skinHeader-withBackground {
 	background-color: #e3e3e3;
-    color: #ccc;
     color: rgba(255, 255, 255, 0.87);
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -59,7 +56,7 @@ html {
 }
 
 .layout-tv .skinHeader.semiTransparent {
-    background: none;
+   background-color: #e3e3e3;
 }
 
 .pageTitleWithDefaultLogo {
@@ -76,7 +73,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .dialog,
@@ -126,13 +123,11 @@ html {
 
 .formDialogFooter:not(.formDialogFooter-clear) {
     background-color: #f0f0f0;
-    border-top: 1px solid #ddd;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     color: inherit;
 }
 	
 .actionsheetDivider {
-    background: #ddd;
     background: rgba(0, 0, 0, 0.14);
 }
 
@@ -153,7 +148,6 @@ html {
 .appfooter,
 .playlistSectionButton {
     background: #282828;
-    color: #ccc;
     color: rgba(255, 255, 255, 0.78);
 }
 
@@ -175,7 +169,6 @@ html {
 }
 
 .alphaPickerButton {
-    color: #555;
     color: rgba(0, 0, 0, 0.7);
     background-color: transparent;
 }
@@ -281,7 +274,6 @@ html {
 }
 
 .guide-date-tab-button {
-    color: #555;
     color: rgba(0, 0, 0, 0.54);
 }
 
@@ -658,10 +650,18 @@ select option:selected {
 	color: #928f79;
 }
 
+.headerClockTime {
+	font-size: 140% !important;
+}
+
+.headerClockDate {
+	font-size: 90% !important;
+}
+
 .nightClock > .headerClockTime,
 .nightClock > .headerClockDate {
 	color: #fff;
-	text-shadow: 0 0 10px #f7ff00, 0 0 20px #ffe405, 0 0 30px #ffef02, 0 0 40px #fffb00, 0 0 50px #f7ff00, 0 0 60px #f7ff02, 0 0 70px #ffef00;
+	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -764,4 +764,22 @@ select option:selected {
 
 .ratingbutton-icon-withrating {
     color: #913079 !important;
+}
+
+.backdropImage {
+    background-color: rgb(220, 220, 220) !important;
+}
+
+.backdropImage.themeBackdrop {
+	background-image: url(./bg.jpg) !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position-x: left;
+	background-position-y: center;
+}
+
+/* fix for TV Layout */
+
+.layout-tv .detailPageWrapperContainer {
+	margin-top: 2%;
 }

@@ -30,7 +30,6 @@ html {
 }
 
 .emby-collapsible-button {
-    border-color: #ccc;
     border-color: rgba(0, 0, 0, 0.158);
 }
 
@@ -40,8 +39,7 @@ html {
 
 .skinHeader-withBackground {
 	background-color: #91b0d2;
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.87);
+    color: #fff;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
@@ -58,7 +56,7 @@ html {
 }
 
 .layout-tv .skinHeader.semiTransparent {
-    /*! background: none; */
+    background-color: #91b0d2;
 }
 
 .pageTitleWithDefaultLogo {
@@ -75,7 +73,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .dialog,
@@ -111,7 +109,7 @@ html {
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: rgba(76, 230, 165, 0.85);
+    color: rgb(60, 172, 227);
 }
 
 .paperList,
@@ -131,7 +129,6 @@ html {
 }
 	
 .actionsheetDivider {
-    background: #ddd;
     background: rgba(0, 0, 0, 0.14);
 }
 
@@ -152,7 +149,6 @@ html {
 .appfooter,
 .playlistSectionButton {
     background: #282828;
-    color: #ccc;
     color: rgba(255, 255, 255, 0.78);
 }
 
@@ -174,7 +170,6 @@ html {
 }
 
 .alphaPickerButton {
-    color: #555;
     color: rgba(0, 0, 0, 0.7);
     background-color: transparent;
 }
@@ -280,7 +275,6 @@ html {
 }
 
 .guide-date-tab-button {
-    color: #555;
     color: rgba(0, 0, 0, 0.54);
 }
 
@@ -414,8 +408,8 @@ html {
 
 .listItemBody:hover:not(:disabled),
 .listItem-button:hover:not(:disabled) {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(230, 230, 230, 0.8) !important;
+	color: rgba(244, 245, 247, 0.8) !important;
+	background-color: rgba(187, 208, 230, 0.8) !important;
 }
 
 .listItem-button:focus {
@@ -428,7 +422,7 @@ html {
 }
  
 .emby-button:hover:not(:disabled) {
-	color: rgba(126, 177, 231, 0.4);
+	color: rgb(4, 103, 162);
 }
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
@@ -663,6 +657,14 @@ select option:selected {
 	color: #dbe1f1;
 }
 
+.headerClockTime {
+	font-size: 140% !important;
+}
+
+.headerClockDate {
+	font-size: 90% !important;
+}
+
 .nightClock > .headerClockTime,
 .nightClock > .headerClockDate {
 	color: #fff;
@@ -769,4 +771,34 @@ select option:selected {
 
 .ratingbutton-icon-withrating {
     color: #913079 !important;
+}
+
+.backdropImage {
+    background-color: rgb(220, 220, 220) !important;
+}
+
+.backdropImage.themeBackdrop {
+	background-image: url(./bg.jpg) !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position-x: left;
+	background-position-y: center;
+}
+
+/* fix for TV Layout */
+
+.layout-tv .detailPageWrapperContainer {
+	margin-top: 2%;
+}
+
+/* Tab About... */
+
+.abouttab {
+	font-family: inherit;
+	font-size: 90%;
+	line-height: 1.25;
+}
+
+.aboutcontent {
+	color: #4e9ba7;
 }
