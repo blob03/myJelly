@@ -225,10 +225,10 @@ html {
 
 .emby-input,
 .emby-textarea {
-	color: #282828;
+	color: #635c54;
 	font-weight: 600;
 	font-style: italic;
-	background-color: #e3cc71;
+	background-color: #d68a39;
 	border: 6px ridge rgb(229, 164, 81);
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
@@ -236,7 +236,7 @@ html {
 
 .emby-input::placeholder,
 .emby-textarea::placeholder {
-	color: #b4b3b1;
+	color: #7d6e52;
 }
 
 .itemProgressBarForeground {
@@ -821,7 +821,7 @@ select option:selected {
 
 .emby-input:focus,
 .emby-textarea:focus {
-	border-color: #fff;	
+	border-color: rgb(253, 142, 0);	
 }
 
 .jstree-default .jstree-wholerow-clicked {
