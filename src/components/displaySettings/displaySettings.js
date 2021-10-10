@@ -57,7 +57,6 @@ import template from './displaySettings.template.html';
     }
 
     function showOrHideMissingEpisodesField(context) {
-        //if (browser.tizen || browser.web0s) {
 		if (browser.tizen) {
             context.querySelector('.fldDisplayMissingEpisodes').classList.add('hide');
             return;
@@ -188,11 +187,7 @@ import template from './displaySettings.template.html';
 	
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
-
-/*
-        if (user.Id === apiClient.getCurrentUserId()) 
-            skinManager.setTheme(userSettingsInstance.theme());
-  */      
+     
         return apiClient.updateUserConfiguration(user.Id, user.Configuration);
     }
 

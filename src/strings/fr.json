@@ -1598,5 +1598,6 @@
 	"AppDesc": "Description :",
 	"AppContact": "Contact :",
 	"Theme": "Thème",
-	"AppRepositoryName": "Nom du dépôt :"
+	"AppRepositoryName": "Nom du dépôt :",
+	"LabelBackdrops": "Arrière-plans :"
 }

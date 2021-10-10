@@ -1595,5 +1595,6 @@
 	"AppDesc": "Description:",
 	"AppContact": "Contact:",
 	"Theme": "Theme",
-	"AppRepositoryName": "Repository Name:"
+	"AppRepositoryName": "Repository Name:",
+	"LabelBackdrops": "Backdrops:"
 }

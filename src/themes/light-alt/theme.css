@@ -109,7 +109,7 @@ html {
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: rgba(230, 219, 76, 0.85);
+    color: rgb(94, 184, 179);
 }
 
 .paperList,
@@ -421,7 +421,7 @@ html {
 }
  
 .emby-button:hover:not(:disabled) {
-	color: rgba(230, 219, 76, 0.4);
+	color: rgb(15, 101, 93);
 }
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
@@ -442,7 +442,7 @@ html {
 }
 
 .emby-tab-button:hover:not(:disabled) {
-    color: rgba(255, 249, 169, 0.8);
+    color: rgb(175, 233, 220);
 	text-shadow: 3px 3px 6px #000000;
 }
 
