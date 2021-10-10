@@ -1,6 +1,6 @@
 
 * {
-    scrollbar-color: #ffffff #d5d5d5;
+	scrollbar-color: #246b76 #add1e7;
     scrollbar-width: thin;
 }
 
@@ -38,7 +38,7 @@ html {
 }
 
 .skinHeader-withBackground {
-	background-color: #91b0d2;
+	background: linear-gradient(to right, #fff 0%, #add1d3 18%, #6eb5d8 38%, #a3d4dc 68%, #6fa3b6 81%, #2c687b 100%);
     color: #fff;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -69,11 +69,11 @@ html {
 
 .backgroundContainer,
 html {
-    background-color: #f2f2f2;
+    background-color: #daeaf4;
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(220, 242, 248, 0.8);
 }
 
 .dialog,
@@ -142,14 +142,16 @@ html {
 }
 
 .toast {
-    background: #303030;
-    color: rgba(255, 255, 255, 0.87);
+	color: #113c6a;
+	background: #b7d6f7;
 }
 
 .appfooter,
 .playlistSectionButton {
-    background: #282828;
-    color: rgba(255, 255, 255, 0.78);
+	background: linear-gradient(to right, #fff 0%, #add1d3 18%, #6eb5d8 38%, #a3d4dc 68%, #6fa3b6 81%, #2c687b 100%);
+    color: #1d6fa1;
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
 
 .nowPlayingBarSecondaryText {
@@ -219,10 +221,10 @@ html {
 .playedIndicator,
 .mediaSourceIndicator,
 .indicator {
-	color: #6a6344;
+	color: #1684ba;
 	background: White;
-	box-shadow: 0px 2px 8px #1e1d25;
-	text-shadow: 1px 1px 3px #727272;
+	box-shadow: 0 0 8px #286089;
+	text-shadow: 1px 1px 3px #9eb9c3;
 }
 
 .fullSyncIndicator {
@@ -356,7 +358,7 @@ html {
 }
 
 .emby-checkbox + span + .checkboxOutline {
-    border-color: #113c6a;
+    border-color: #a5bdd8;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
@@ -393,7 +395,7 @@ html {
 
 .homeLibraryButton:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(190, 200, 210, 0.8) !important;
+	background-color: rgba(112, 149, 167, 0.8) !important;
 }
 
 .homeLibraryButton:focus {
@@ -409,7 +411,7 @@ html {
 .listItemBody:hover:not(:disabled),
 .listItem-button:hover:not(:disabled) {
 	color: rgba(244, 245, 247, 0.8) !important;
-	background-color: rgba(187, 208, 230, 0.8) !important;
+	background-color: rgba(177, 224, 239, 0.8) !important;
 }
 
 .listItem-button:focus {
@@ -437,21 +439,21 @@ html {
 /* tab buttons */
 
 .emby-tab-button {
-	text-shadow: 3px 3px 6px #6c6c6c;
-    color: rgba(255, 255, 255, 0.6);
+	text-shadow: 0 0 2px #749cb0;
+	color: #277499;
 	transform: scale(1.0);
 }
 
 .emby-tab-button:hover:not(:disabled) {
-    color: rgba(20, 74, 201, 0.8);
-	text-shadow: 3px 3px 6px #000000;
+    color: rgba(143, 225, 229, 0.8);
+	text-shadow: 0 0 6px #144272;
 }
 
 .emby-tab-button-active,
 .emby-tab-button-active:focus,
 .emby-tab-button-active:hover:not(:disabled) {
-	text-shadow: 3px 3px 6px #6c6c6c !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+	text-shadow: 0 0 6px #142b4f;
+	color: rgba(246, 255, 255, 0.8);
 	transform: scale(1.3) !important;
 }
 
@@ -477,7 +479,7 @@ html {
 /* Save button */
 
 @keyframes click {
-	from {transform: scale(1.2);}
+	from {transform: scale(1.1);}
 	70% {transform: scale(1.4);}
 	to {transform: scale(1.2);}
 }
@@ -485,21 +487,22 @@ html {
 .button-submit {
 	width: 50% !important;
 	margin: 0 auto !important;
-	transform: scale(1.0);
-	color: rgba(30, 30, 30, 0.8) !important;
+	color: rgba(8, 26, 60, 0.8) !important;
 	background-color: rgba(32, 119, 212, 0.4);
 	box-shadow: 1px 1px 8px #a6a6a0;
 	font-weight: 500;
+	transform: scale(1.0) !important;
 }
 
 .button-submit:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(230,230,230,0.8) !important;
+	background-color: rgba(112, 149, 167, 0.8) !important;
+	transform: scale(1.1) !important;
 }
 
 .button-submit:focus {
 	color: rgba(30, 30, 30, 0.8) !important;
-	background-color: rgba(250,250,250,0.8) !important;
+	background-color: rgba(123, 152, 184, 0.8) !important;
 	transform: scale(1.1) !important;
 }
 
@@ -576,7 +579,7 @@ select option:selected {
 
 .mdl-slider-background,
 .mdl-slider-background-flex  {
-	box-shadow: 1px 2px 8px #1e1d25;
+	background: hsl(209.5, 36.5%, 67.3%);
 }
 
 .mdl-slider:focus,
@@ -589,7 +592,7 @@ select option:selected {
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(135deg, rgb(21, 75, 134) 0%, rgb(80, 135, 194) 50%, rgb(125, 177, 222) 100%);
+	background: linear-gradient(135deg, rgb(151, 225, 241) 0%, rgb(131, 219, 255) 50%, rgb(0, 180, 251) 100%);
 }
 
 .mdl-slider::-moz-range-thumb
@@ -691,6 +694,11 @@ select option:selected {
 	text-shadow: 1px 1px 4px #39392d;
 }
 
+.cardOverlayButton > .material-icons {
+    color: #cbeeff;
+    text-shadow: 1px 1px 4px #4a5152;
+}
+
 .starIcon {
     color: #f2b01e !important;
 }
@@ -713,8 +721,8 @@ select option:selected {
 }
 
 .itemName {
-	color: White !important;	
-	text-shadow: 3px 3px 6px #171716;
+	color: #146088;
+	text-shadow: 0 0 4px #6f7373;
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {
@@ -800,5 +808,5 @@ select option:selected {
 }
 
 .aboutcontent {
-	color: #4e9ba7;
+	color: #1da4b8;
 }
