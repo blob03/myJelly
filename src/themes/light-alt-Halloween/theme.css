@@ -100,6 +100,16 @@ html {
 	background-position-y: center;
 }
 
+.backdropImage.themeBackdrop.alt1 {
+	background-image: url(./bg.jpg) !important;
+}
+.backdropImage.themeBackdrop.alt2 {
+	background-image: url(./bg-alt1.jpg) !important;
+}
+.backdropImage.themeBackdrop.alt3 {
+	background-image: url(./bg-alt1.jpg) !important;
+}
+
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
@@ -218,10 +228,10 @@ html {
 	color: #282828;
 	font-weight: 600;
 	font-style: italic;
-	background-color: #e5e3e0;
-	border: 0.16em solid rgb(9, 0, 0);
-    -webkit-border-radius: 0.2em;
-    border-radius: 0.2em;
+	background-color: #e3cc71;
+	border: 6px ridge rgb(229, 164, 81);
+	-webkit-border-radius: 0.2em;
+	border-radius: 0.2em;
 }
 
 .emby-input::placeholder,
@@ -447,7 +457,7 @@ html {
 }
  
  .emby-button {
-	color: #fe9001;
+	color: #894e00;
  }
  
 .dashboardActionsContainer > .emby-button,
@@ -781,8 +791,9 @@ select option:selected {
 }
 
 .itemName {
-	color: #282828 !important;	
-	text-shadow: 3px 3px 6px #171716;
+	color: #282828 !important;
+	text-shadow: 3px 3px 6px #7b7b77;
+	overflow: visible;
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {
