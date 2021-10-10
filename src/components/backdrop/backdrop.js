@@ -50,13 +50,19 @@ import ServerConnections from '../ServerConnections';
 						backdropImage.setAttribute('data-url', url);
 						break;
 					case 'Theme':
+						let idx = Math.floor(Math.random() * 4);
 						backdropImage.classList.add('themeBackdrop');
+						if (idx)
+							backdropImage.classList.add('alt' + idx);
 						break;
 					default:
 					case 'Auto':
+						idx = Math.floor(Math.random() * 4);
 						backdropImage.style.backgroundImage = `url('${url}')`;
 						backdropImage.setAttribute('data-url', url);
 						backdropImage.classList.add('themeBackdrop');
+						if (idx)
+							backdropImage.classList.add('alt' + idx);
 						break;
 				};
 				
