@@ -465,11 +465,14 @@ export class UserSettings {
      * @return {string} Screensaver-idletime.
      */
     screensaverTime(val) {
-        if (val !== undefined) {
-            return this.set('screensaverTime', val);
-        }
-
-        return this.get('screensaverTime');
+        if (val !== undefined) 
+            return this.set('screensaverTime', parseInt(val, 10));
+        
+		const screensaverTime = this.get('screensaverTime');
+		if (isNaN(screensaverTime) || screensaverTime > 1800000) 
+			return 180000; // default to 3min in ms.
+        else 
+            return screensaverTime;
     }
 	
     /**
@@ -478,17 +481,14 @@ export class UserSettings {
      * @return {number} Library page size.
      */
     libraryPageSize(val) {
-        if (val !== undefined) {
+        if (val !== undefined) 
             return this.set('libraryPageSize', parseInt(val, 10));
-        }
 
-        const libraryPageSize = parseInt(this.get('libraryPageSize'), 10);
-        if (libraryPageSize === 0) {
-            // Explicitly return 0 to avoid returning 100 because 0 is falsy.
-            return 0;
-        } else {
-            return libraryPageSize || 100;
-        }
+        const libraryPageSize = this.get('libraryPageSize');
+		if (isNaN(libraryPageSize) || libraryPageSize > 128) 
+			return 60;
+        else 
+            return libraryPageSize;
     }
 
 	/**
@@ -497,11 +497,10 @@ export class UserSettings {
      * @return {number} Max days for a show to stay in next up without being watched.
      */
     maxDaysForNextUp(val) {
-        if (val !== undefined) {
-            return this.set('maxDaysForNextUp', parseInt(val, 10), false);
-        }
+        if (val !== undefined) 
+            return this.set('maxDaysForNextUp', parseInt(val, 10));
 
-        const maxDaysForNextUp = this.get('maxDaysForNextUp', false);
+        const maxDaysForNextUp = this.get('maxDaysForNextUp');
         if (isNaN(maxDaysForNextUp) || !maxDaysForNextUp || maxDaysForNextUp > 365) 
 			return 30;
         else 

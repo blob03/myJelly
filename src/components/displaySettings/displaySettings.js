@@ -142,9 +142,7 @@ import template from './displaySettings.template.html';
 		if (appHost.supports('displaymode')) 
 			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 		
-        let sliderLibraryPageSize = context.querySelector('#sliderLibraryPageSize');
-        sliderLibraryPageSize.value = userSettings.libraryPageSize() || 32;
-		
+        context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize() || 60;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
 		
         showOrHideMissingEpisodesField(context);
