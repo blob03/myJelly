@@ -54,7 +54,11 @@ html {
 }
 
 .scrollX {
-	overflow: hidden !important;
+	overflow: hidden;
+}
+
+.emby-tabs {
+	overflow: visible !important;
 }
 
 .osdHeader {
