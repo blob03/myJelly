@@ -385,13 +385,16 @@ export class UserSettings {
      * Get or set amount of rewind.
      * @param {number|undefined} val - Amount of rewind.
      * @return {number} Amount of rewind.
-     */
+     */		
     skipBackLength(val) {
-        if (val !== undefined) {
-            return this.set('skipBackLength', val.toString());
-        }
-
-        return parseInt(this.get('skipBackLength') || '10000');
+        if (val !== undefined) 
+            return this.set('skipBackLength', parseInt(val, 10));
+        
+		const skipBackLength = this.get('skipBackLength');
+		if (isNaN(skipBackLength) || skipBackLength < 5000 || skipBackLength > 60000) 
+			return 30000; // default to 30s in ms.
+        else 
+            return skipBackLength;
     }
 
     /**
@@ -400,11 +403,14 @@ export class UserSettings {
      * @return {number} Amount of fast forward.
      */
     skipForwardLength(val) {
-        if (val !== undefined) {
-            return this.set('skipForwardLength', val.toString());
-        }
-
-        return parseInt(this.get('skipForwardLength') || '30000');
+		if (val !== undefined) 
+            return this.set('skipForwardLength', parseInt(val, 10));
+        
+		const skipForwardLength = this.get('skipForwardLength');
+		if (isNaN(skipForwardLength) || skipForwardLength < 5000 || skipForwardLength > 60000) 
+			return 30000; // default to 30s in ms.
+        else 
+            return skipForwardLength;
     }
 
     /**
