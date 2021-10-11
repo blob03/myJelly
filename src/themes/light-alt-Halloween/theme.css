@@ -54,7 +54,7 @@ html {
 }
 
 .scrollX {
-	overflow: visible !important;
+	overflow: hidden !important;
 }
 
 .osdHeader {
@@ -101,13 +101,13 @@ html {
 }
 
 .backdropImage.themeBackdrop.alt1 {
-	background-image: url(./bg.jpg) !important;
+	background-image: url(./bg-alt1.jpg) !important;
 }
 .backdropImage.themeBackdrop.alt2 {
 	background-image: url(./bg-alt1.jpg) !important;
 }
 .backdropImage.themeBackdrop.alt3 {
-	background-image: url(./bg-alt1.jpg) !important;
+	background-image: url(./bg.jpg) !important;
 }
 
 .dialog,
@@ -236,7 +236,7 @@ html {
 
 .emby-input::placeholder,
 .emby-textarea::placeholder {
-	color: #7d6e52;
+	color: #9f7019;
 }
 
 .itemProgressBarForeground {
@@ -420,22 +420,22 @@ html {
 
 .homeLibraryButton {
 	color: #282828 !important;
-	background-color: rgba(255, 197, 123, 0.6);
-	box-shadow: 1px 1px 8px #ff6e03;
+	background-color: rgba(242, 150, 31, 0.6) !important;
+	box-shadow: 0 0 6px #72360a;
 	font-weight: 600;
 }
 
 .homeLibraryButton:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(255, 169, 57, 0.8) !important;
-	box-shadow: 1px 1px 8px #5e2c00, 1px 1px 18px #b84602;
+	background-color: rgba(252, 175, 75, 0.8) !important;
+	box-shadow: 0 0 8px #5e2c00, 1px 1px 18px #b84602;
 }
 
 .homeLibraryButton:focus {
 	color: rgba(30, 30, 30, 0.8) !important;
 	background-color: rgba(248, 208, 159, 0.8) !important;
 	transform: scale(1.1) !important;
-	box-shadow: 1px 1px 8px #282828, 1px 1px 18px #282828;
+	box-shadow: 0 0 8px #282828, 1px 1px 18px #282828;
 }
 
 .listItemBody {
@@ -614,7 +614,8 @@ select option:selected {
 
 .mdl-slider-background,
 .mdl-slider-background-flex  {
-	box-shadow: 1px 2px 8px #1e1d25;
+	box-shadow: 0 0 3px #1e1d25;
+	background: #745534;
 }
 
 .mdl-slider:focus,
@@ -627,7 +628,7 @@ select option:selected {
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(135deg, rgb(134, 111, 21) 0%, rgb(194, 160, 80) 50%, rgb(222, 189, 125) 100%);
+	background: linear-gradient(135deg, rgb(68, 46, 3) 0%, rgb(203, 120, 14) 50%, rgb(247, 163, 2) 100%);
 }
 
 .mdl-slider::-moz-range-thumb
@@ -793,6 +794,12 @@ select option:selected {
 .itemName {
 	color: #282828 !important;
 	text-shadow: 3px 3px 6px #7b7b77;
+	overflow: visible;
+}
+
+.layout-tv .itemName {
+	color: #282828 !important;
+	text-shadow: 3px 3px 6px #844017;
 	overflow: visible;
 }
 
