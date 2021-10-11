@@ -793,6 +793,10 @@ select option:selected {
 	background-position-y: center;
 }
 
+.backdropImage.themeBackdrop.alt1 {
+	background-image: url(./bg-alt1.jpg) !important;
+}
+
 /* fix for TV Layout */
 
 .layout-tv .detailPageWrapperContainer {

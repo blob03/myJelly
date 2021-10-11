@@ -501,13 +501,11 @@ export class UserSettings {
             return this.set('maxDaysForNextUp', parseInt(val, 10), false);
         }
 
-        const maxDaysForNextUp = parseInt(this.get('maxDaysForNextUp', false), 10);
-        if (maxDaysForNextUp === 0) {
-            // Explicitly return 0 to avoid returning 100 because 0 is falsy.
-            return 0;
-        } else {
-            return maxDaysForNextUp || 365;
-        }
+        const maxDaysForNextUp = this.get('maxDaysForNextUp', false);
+        if (isNaN(maxDaysForNextUp) || !maxDaysForNextUp || maxDaysForNextUp > 365) 
+			return 30;
+        else 
+            return maxDaysForNextUp;
     }
 	
     /**
