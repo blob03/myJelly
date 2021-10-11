@@ -367,7 +367,7 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 		if (appHost.supports('subtitleburnsettings') && user.Policy.EnableVideoPlaybackTranscoding) 
 			context.querySelector('.fldBurnIn').classList.remove('hide');
         
-        context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || '';
+        context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || 'none';
 		loadColors(context);
 		
 		context.querySelector('#inputShadowColor').value = appearanceSettings.textShadow || 'Transparent';
