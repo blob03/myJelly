@@ -71,31 +71,32 @@ import template from './displaySettings.template.html';
 	}
 
     function loadForm(context, user, userSettings) {
+		if (appHost.supports('displaymode')) {
+			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
+            context.querySelector('.fldDisplayMode').classList.remove('hide');
+        } else {
+            context.querySelector('.fldDisplayMode').classList.add('hide');
+        }
+		
         if (appHost.supports('displaylanguage')) {
+			context.querySelector('#selectLanguage').value = userSettings.language() || '';
             context.querySelector('.languageSection').classList.remove('hide');
         } else {
             context.querySelector('.languageSection').classList.add('hide');
         }
 
-        if (appHost.supports('displaymode')) {
-            context.querySelector('.fldDisplayMode').classList.remove('hide');
-        } else {
-            context.querySelector('.fldDisplayMode').classList.add('hide');
-        }
-
-        if (appHost.supports('externallinks')) {
+        if (appHost.supports('externallinks')) 
             context.querySelector('.learnHowToContributeContainer').classList.remove('hide');
-        } else {
+        else 
             context.querySelector('.learnHowToContributeContainer').classList.add('hide');
-        }
 		
 		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
 		dashboardthemeNodes.forEach( function(userItem) {
 			userItem.classList.toggle('hide', !user.Policy.IsAdministrator);});
 
         if (appHost.supports('screensaver')) {
-            context.querySelector('.ScreensaverArea').classList.remove('hide');
 			loadScreensavers(context, userSettings);
+			context.querySelector('.ScreensaverArea').classList.remove('hide');
 			
 			let sliderScreensaverTime =  context.querySelector('#sliderScreensaverTime');
 			sliderScreensaverTime.value = (userSettings.screensaverTime()/60000) || 3;
@@ -107,6 +108,7 @@ import template from './displaySettings.template.html';
             context.querySelector('.ScreensaverArea').classList.add('hide');
 
         if (datetime.supportsLocalization()) {
+			context.querySelector('.selectDateTimeLocale').value = userSettings.dateTimeLocale() || '';
             context.querySelector('.fldDateTimeLocale').classList.remove('hide');
         } else {
             context.querySelector('.fldDateTimeLocale').classList.add('hide');
@@ -134,14 +136,7 @@ import template from './displaySettings.template.html';
         context.querySelector('#chkBlurhash').checked = userSettings.enableBlurhash();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
-        context.querySelector('.selectDateTimeLocale').value = userSettings.dateTimeLocale() || '';
-		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops();
-				
-		if (appHost.supports('displaylanguage')) 
-			context.querySelector('#selectLanguage').value = userSettings.language() || '';
-		if (appHost.supports('displaymode')) 
-			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
-		
+		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
         context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize() || 60;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
 		
@@ -151,11 +146,10 @@ import template from './displaySettings.template.html';
     }
 
     function saveUser(instance, context, user, userSettingsInstance, apiClient) {
-        user.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
-		
         if (appHost.supports('displaylanguage')) {	
 			const VAL = context.querySelector('#selectLanguage').value;
-			if (VAL !== (userSettingsInstance.language() || '')) {
+			const savedLanguage = userSettingsInstance.language();
+			if (!savedLanguage || VAL !== savedLanguage) {
 				userSettingsInstance.language(VAL);
 				instance.needreload = true;
 			}
@@ -164,10 +158,12 @@ import template from './displaySettings.template.html';
 		if (appHost.supports('displaymode')) {
 			const VAL = context.querySelector('.selectLayout').value;
 			if (VAL !== (layoutManager.getSavedLayout() || '')) {
-				layoutManager.setLayout(VAL);
+				layoutManager.setLayout(VAL, true);
 				instance.needreload = true;
 			}
 		}
+		
+		user.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
 		
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
         userSettingsInstance.enableThemeSongs(context.querySelector('#chkThemeSong').checked);
@@ -182,7 +178,6 @@ import template from './displaySettings.template.html';
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);
         userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
-	
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
      

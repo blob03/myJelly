@@ -825,11 +825,12 @@ select option:selected {
 }
 
 .skinHeader.osdHeader {
-	background: linear-gradient(180deg,hsla(213.8, 35.9%, 30%, 0.85),hsla(240, 100%, 0.2%, 0.05));
-	height: 6.5em;
+	background: linear-gradient(90deg, rgba(40, 40, 40, 0.85), rgba(40, 40, 40, 0.55));
+	height: 4.5em;
 	transition: opacity .6s ease-out;
+	color: #fe9001;
 }
-
+ 
 .emby-input:focus,
 .emby-textarea:focus {
 	border-color: rgb(253, 142, 0);	
@@ -892,4 +893,15 @@ select option:selected {
 
 .layout-tv .detailPageWrapperContainer {
 	margin-top: 2%;
+}
+
+/* upNext dialog box */
+
+.upNextContainer {
+	background: #fe9001;
+	color:	#282828;
+}
+
+.upNextDialog-countdownText {
+	color: #fff;
 }

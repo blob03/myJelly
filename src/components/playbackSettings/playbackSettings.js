@@ -114,14 +114,6 @@ import template from './playbackSettings.template.html';
         });
     }
 
-    function showOrHideEpisodesField(context) {
-        if (browser.tizen || browser.web0s) {
-            context.querySelector('.fldEpisodeAutoPlay').classList.add('hide');
-            return;
-        }
-        context.querySelector('.fldEpisodeAutoPlay').classList.remove('hide');
-    }
-
     function loadForm(context, user, userSettings, apiClient) {
         const loggedInUserId = apiClient.getCurrentUserId();
         const userId = user.Id;
@@ -174,12 +166,6 @@ import template from './playbackSettings.template.html';
             context.querySelector('.fldChromecastQuality').classList.add('hide');
         }
 
-        if (browser.tizen || browser.web0s) {
-            context.querySelector('.fldEnableNextVideoOverlay').classList.add('hide');
-        } else {
-            context.querySelector('.fldEnableNextVideoOverlay').classList.remove('hide');
-        }
-
         context.querySelector('.chkPlayDefaultAudioTrack').checked = user.Configuration.PlayDefaultAudioTrack || false;
         context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
         context.querySelector('.chkEnableCinemaMode').checked = userSettings.enableCinemaMode();
@@ -191,23 +177,29 @@ import template from './playbackSettings.template.html';
         setMaxBitrateIntoField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
 
         fillChromecastQuality(context.querySelector('.selectChromecastVideoQuality'));
+        context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
 
-        const selectChromecastVersion = context.querySelector('.selectChromecastVersion');
-        selectChromecastVersion.value = userSettings.chromecastVersion();
-
-		let event = new Event('input');
+		if (browser.tizen || browser.web0s) {
+			context.querySelector('.fldEnableNextVideoOverlay').classList.add('hide');
+		} else {
+			context.querySelector('.fldEnableNextVideoOverlay').classList.remove('hide');
+		}
 		
+		if (browser.tizen) {
+            context.querySelector('.fldEpisodeAutoPlay').classList.add('hide');	
+        } else {
+			context.querySelector('.fldEpisodeAutoPlay').classList.remove('hide');
+		}
+		
+		let event = new Event('input');
         let sliderSkipForward = context.querySelector('#sliderSkipForwardLength');
 		sliderSkipForward.addEventListener('input', onSkipLengthChange);
         sliderSkipForward.value = userSettings.skipForwardLength()/1000 || 30;
 		sliderSkipForward.dispatchEvent(event);
-		
         let sliderSkipBack = context.querySelector('#sliderSkipBackLength');
 		sliderSkipBack.addEventListener('input', onSkipLengthChange);
         sliderSkipBack.value = userSettings.skipBackLength()/1000 || 30;
 		sliderSkipBack.dispatchEvent(event);
-
-        showOrHideEpisodesField(context);
 
         loading.hide();
     }

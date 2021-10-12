@@ -323,9 +323,12 @@ export class UserSettings {
         if (val !== undefined) {
             return this.set('enableBackdrops', val.toString());
         }
-
-        val = this.get('enableBackdrops');
-        return val;
+		
+		const enableBackdrops = this.get('enableBackdrops');
+		if (enableBackdrops && typeof(enableBackdrops) === 'string') 
+			return enableBackdrops; 
+        else 
+            return 'Auto'; 
     }
 
     /**
@@ -349,12 +352,16 @@ export class UserSettings {
      */
     language(val) {
         if (val !== undefined) {
-            return this.set('language', val.toString(), true);
+            return this.set('language', val.toString());
         }
 
-        return this.get('language');
+		const language = this.get('language');
+		if (language && typeof(language) === 'string') 
+			return language; 
+        else 
+            return ''; // defaults to 'auto'.
     }
-
+		
     /**
      * Get or set datetime locale.
      * @param {string|undefined} val - Datetime locale.
@@ -364,8 +371,12 @@ export class UserSettings {
         if (val !== undefined) {
             return this.set('datetimelocale', val.toString());
         }
-
-        return this.get('datetimelocale');
+		
+		const datetimelocale = this.get('datetimelocale');
+		if (datetimelocale && typeof(datetimelocale) === 'string') 
+			return datetimelocale; 
+        else 
+            return ''; // defaults to 'auto'.
     }
 
     /**
