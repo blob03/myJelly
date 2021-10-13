@@ -174,10 +174,10 @@ export class UserSettings {
      */
     allowedAudioChannels(val) {
         if (val !== undefined) {
-            return this.set('allowedAudioChannels', val, false);
+            return this.set('allowedAudioChannels', val);
         }
 
-        return this.get('allowedAudioChannels', false) || '-1';
+        return this.get('allowedAudioChannels') || '-1';
     }
 
     /**
@@ -187,10 +187,10 @@ export class UserSettings {
      */
     preferFmp4HlsContainer(val) {
         if (val !== undefined) {
-            return this.set('preferFmp4HlsContainer', val.toString(), false);
+            return this.set('preferFmp4HlsContainer', val.toString());
         }
 
-        val = this.get('preferFmp4HlsContainer', false);
+        val = this.get('preferFmp4HlsContainer');
         return val === 'true';
     }
 
@@ -201,10 +201,10 @@ export class UserSettings {
      */
     enableCinemaMode(val) {
         if (val !== undefined) {
-            return this.set('enableCinemaMode', val.toString(), false);
+            return this.set('enableCinemaMode', val.toString());
         }
 
-        val = this.get('enableCinemaMode', false);
+        val = this.get('enableCinemaMode');
         return val === 'true';
     }
 
@@ -215,10 +215,10 @@ export class UserSettings {
      */
     enableNextVideoInfoOverlay(val) {
         if (val !== undefined) {
-            return this.set('enableNextVideoInfoOverlay', val.toString(), false); 
+            return this.set('nextVideoInfoOverlay', val.toString()); 
         }
 
-        val = this.get('enableNextVideoInfoOverlay', false);
+        val = this.get('nextVideoInfoOverlay');
         return val === 'true';
     }
 
@@ -257,10 +257,10 @@ export class UserSettings {
      */
     useEpisodeImagesInNextUpAndResume(val) {
         if (val !== undefined) {
-            return this.set('useEpisodeImagesInNextUpAndResume', val.toString(), true);
+            return this.set('useEpisodeImagesInNextUpAndResume', val.toString());
         }
 
-        val = this.get('useEpisodeImagesInNextUpAndResume', true);
+        val = this.get('useEpisodeImagesInNextUpAndResume');
         return val === 'true';
     }
 
@@ -297,7 +297,7 @@ export class UserSettings {
         }
 
         val = this.get('fastFadein');
-        return val !== 'false';
+        return val === 'true';
     }
 
     /**
@@ -311,7 +311,7 @@ export class UserSettings {
         }
 
         val = this.get('blurhash');
-        return val !== 'false';
+        return val === 'true';
     }
 
     /**
@@ -338,11 +338,11 @@ export class UserSettings {
      */
     detailsBanner(val) {
         if (val !== undefined) {
-            return this.set('detailsBanner', val.toString(), false);
+            return this.set('detailsBanner', val.toString());
         }
 
-        val = this.get('detailsBanner', false);
-        return val !== 'false';
+        val = this.get('detailsBanner');
+        return val === 'true';
     }
 
     /**
@@ -444,10 +444,10 @@ export class UserSettings {
      */
     skin(val) {
         if (val !== undefined) {
-            return this.set('skin', val, false);
+            return this.set('skin', val);
         }
 
-        return this.get('skin', false);
+        return this.get('skin');
     }
 
     /**
@@ -531,10 +531,10 @@ export class UserSettings {
      */
     soundEffects(val) {
         if (val !== undefined) {
-            return this.set('soundeffects', val, false);
+            return this.set('soundeffects', val);
         }
 
-        return this.get('soundeffects', false);
+        return this.get('soundeffects');
     }
 
     /**
@@ -580,7 +580,7 @@ export class UserSettings {
      */
     getSubtitleAppearanceSettings(key) {
         key = key || 'localplayersubtitleappearance3';
-        return Object.assign(defaultSubtitleAppearanceSettings, JSON.parse(this.get(key, false) || '{}'));
+        return Object.assign(defaultSubtitleAppearanceSettings, JSON.parse(this.get(key) || '{}'));
     }
 
     /**
