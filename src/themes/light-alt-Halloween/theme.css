@@ -1,3 +1,30 @@
+/*
+                                ..zeee.
+                               $$$$$$$$
+                               4$$$$$P
+               .ze$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ec.
+           z$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$c
+        z$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$c
+      d$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$b
+    d$$$$$$$$$$$$$$$$$$$$*$$$$$$$$$$$$$$$$$$*$$$$$$$$$$$$$$$$$$$b
+   d$$$$$$$$$$$$$$$$$$P"  "$$$$$$$$$$$$$$$$%  ^$$$$$$$$$$$$$$$$$$$
+  $$$$$$$$$$$$$$$$$$"      ^$$$$$$$$$$$$$$"     "$$$$$$$$$$$$$$$$$$
+ d$$$$$$$$$$$$$$$$"          *$$$$$$$$$$$"        "$$$$$$$$$$$$$$$$b
+.$$$$$$$$$$$$$$$$$$$$$$$$$beee$$$$$$$$$$beeeeeeeeeee$$$$$$$$$$$$$$$$.
+4$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P  *$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$F
+*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*     ^*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P
+4$$$$$$$$$$$$$$$$$$$$$$$$$$$$"         ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$F
+ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*"3$$$$$$$$$$$$
+ '$$$$$$$$$$$.  ^""*$$$$$$$$$$$$$$$$$$$$$$$$$$$*""    d$$$$$$$$$$$$%
+  "$$$$$$$$$$$b        $$$$P           '$$$$$       z$$$$$$$$$$$$$"
+   ^$$$$$$$$$$$$$c     ****%            $$$P*-   .d$$$$$$$$$$$$$$"
+     *$$$$$$$$$$$$$$$e..        $$$$$        .ze$$$$$$$$$$$$$$$P
+       *$$$$$$$$$$$$$$$$$$$$eecJ$$$$$.zeed$$$$$$$$$$$$$$$$$$$*
+         ^*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P"
+             "*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$P"
+
+*/
+
 @font-face {
 	font-family: "Halloween";
     src: url(./fonts/Hellow2.ttf) format("truetype"); 
@@ -15,7 +42,7 @@
 
 .skinHeader,
 html {
-    color: #000;
+    color: #282828;
 }
 
 .headerLeft, .headerRight {
@@ -24,12 +51,12 @@ html {
 
 ::-moz-selection { 
 	color: #ffa700;
-	background: #000;
+	background: #282828;
 }
 
 ::selection {
 	color: #ffa700;
-	background: #000;
+	background: #282828;
 }
 
 .wizardStartForm,
@@ -121,7 +148,7 @@ html {
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
-    color: #000;
+    color: #282828;
 }
 
 .fab,
@@ -152,11 +179,6 @@ html {
 
 .button-link:hover {
 	color: #fff !important;
-}
-
-.paperList,
-.visualCardBox {
-    /*background-color: #fff;*/
 }
 
 .formDialogFooter:not(.formDialogFooter-clear) {
@@ -243,8 +265,12 @@ html {
 	color: #9f7019;
 }
 
+.itemProgressBar {
+	height: .4em;
+}
+
 .itemProgressBarForeground {
-    background-color: #e2dec6;
+   background: radial-gradient(#ffa700, #ce6e19);
 }
 
 .itemProgressBarForeground-recording {
@@ -327,7 +353,7 @@ html {
 }
 
 .infoBanner {
-    color: #000;
+    color: #282828;
     background: #fff3a5;
     padding: 1em;
     -webkit-border-radius: 0.25em;
@@ -376,7 +402,7 @@ html {
 ::-webkit-scrollbar-thumb:vertical {
     border-radius: 2px;
     -webkit-border-radius: 2px;
-    background: center no-repeat #000;
+    background: center no-repeat #282828;
 }
 
 /* checkbox widget */
@@ -461,7 +487,11 @@ html {
 }
  
  .emby-button {
-	color: #894e00;
+	color: #e68a11;
+ }
+ 
+ .listTextButton-autohide.emby-button {
+	 color: rgb(160, 88, 24, 0.8) !important;
  }
  
 .dashboardActionsContainer > .emby-button,
@@ -531,7 +561,7 @@ html {
 	width: 50% !important;
 	margin: 0 auto !important;
 	transform: scale(1.0);
-	color: rgba(248, 195, 94, 0.8) !important;
+	color: #e68a11; !important;
 	background-color: #282828;
 	box-shadow: 1px 1px 8px #eb740b;
 	font-weight: 600;
@@ -755,8 +785,12 @@ select option:selected {
 }
 
 .material-icons {
+	text-shadow: 1px 1px 4px #39392d;	
+}
+
+.material-icons,
+.listItemIcon.material-icons {
 	color: #282828;
-	text-shadow: 1px 1px 4px #39392d;
 }
 
 .headerButton > .material-icons,
@@ -771,7 +805,11 @@ select option:selected {
 .volumeButtons > * > .material-icons,
 .navMenuOption > .material-icons {
 	color: #e88b13;
-	text-shadow: 1px 1px 4px #39392d;	
+}
+
+.notifications.material-icons {
+	background-color: #ffb43e !important;
+	color: #282828;
 }
 
 .starIcon {
@@ -866,6 +904,7 @@ select option:selected {
 
 .sectionTitle {
 	color : #282828;
+	text-shadow: 1px 1px 3px #a25c0f;
 	font-weight: 600;
 }
 
@@ -905,3 +944,33 @@ select option:selected {
 .upNextDialog-countdownText {
 	color: #fff;
 }
+
+legend {
+	text-shadow: 2px 2px 4px #63390b;
+	padding: 0 10px 0 10px;
+	font-weight: 600 !important;
+	color: #d4c6b9;
+}
+
+div[data-role="controlgroup"] a.ui-btn-active {
+	background: #d56f1a !important;
+	color: #fff !important;
+	font-weight: 600 !important;
+}
+
+.formDialogFooter:not(.formDialogFooter-clear) {
+	background: rgba(235, 129, 40, 1) !important;
+}
+
+.lnkEditSubProfile {
+	color:#fff !important;
+}
+
+.nameContainer {
+    overflow: hidden;
+}
+
+.visualCardBox {
+	background: #e18829;
+}
+
