@@ -47,7 +47,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                 }
 
                 if (userSettings.libraryPageSize() > 0) {
-                    query.StartIndex += query.Limit;
+                    query.StartIndex += parseInt(query.Limit, 10);
                 }
                 itemsContainer.refreshItems();
             }
