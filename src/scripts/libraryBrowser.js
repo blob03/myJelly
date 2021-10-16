@@ -79,10 +79,11 @@ export function showLayoutMenu (button, currentLayout, views) {
 }
 
 export function getQueryPagingHtml (options) {
-    const startIndex = options.startIndex;
-    const limit = options.limit;
-    const totalRecordCount = options.totalRecordCount;
+    const startIndex = parseInt(options.startIndex, 10);
+    const limit = parseInt(options.limit, 10);
+    const totalRecordCount = parseInt(options.totalRecordCount, 10);
     let html = '';
+	
     const recordsEnd = Math.min(startIndex + limit, totalRecordCount);
     const showControls = limit < totalRecordCount;
 
@@ -91,7 +92,7 @@ export function getQueryPagingHtml (options) {
         html += globalize.translate('ListPaging', (totalRecordCount ? startIndex + 1 : 0), recordsEnd, totalRecordCount);
         html += '</span>';
     }
-
+ 
     if (showControls || options.viewButton || options.filterButton || options.sortButton || options.addLayoutButton) {
         html += '<div style="display:inline-block;">';
 

@@ -121,8 +121,7 @@ import template from './playbackSettings.template.html';
         showHideQualityFields(context, user, apiClient);
 
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
-		context.querySelector('.chkEpisodeAutoPlay').checked = user.Configuration.EnableNextEpisodeAutoPlay || false;
-
+		
 		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
 		apiClient.getCultures().then(allCultures => {
 			allCultures.sort((a, b) => {
@@ -166,10 +165,10 @@ import template from './playbackSettings.template.html';
             context.querySelector('.fldChromecastQuality').classList.add('hide');
         }
 
-        context.querySelector('.chkPlayDefaultAudioTrack').checked = user.Configuration.PlayDefaultAudioTrack || false;
+        context.querySelector('.chkPlayDefaultAudioTrack').checked = user.Configuration.PlayDefaultAudioTrack;
         context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
         context.querySelector('.chkEnableCinemaMode').checked = userSettings.enableCinemaMode();
-        context.querySelector('.chkEnableNextVideoOverlay').checked = userSettings.enableNextVideoInfoOverlay();
+       
         context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
 
         setMaxBitrateIntoField(context.querySelector('.selectVideoInNetworkQuality'), true, 'Video');
@@ -179,16 +178,22 @@ import template from './playbackSettings.template.html';
         fillChromecastQuality(context.querySelector('.selectChromecastVideoQuality'));
         context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
 
-		if (browser.tizen || browser.web0s) {
-			context.querySelector('.fldEnableNextVideoOverlay').classList.add('hide');
-		} else {
-			context.querySelector('.fldEnableNextVideoOverlay').classList.remove('hide');
-		}
-		
+		// Following two options (checkboxes) are mutually exclusive.
+		// chkEnableNextVideoOverlay has precedence if somehow both are checked in configuration.
+		let chkEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay');
+		let chkEnableNextVideoOverlay = context.querySelector('.chkEnableNextVideoOverlay');
+		chkEnableNextVideoOverlay.checked = userSettings.enableNextVideoInfoOverlay();
+		chkEpisodeAutoPlay.checked = user.Configuration.EnableNextEpisodeAutoPlay && !chkEnableNextVideoOverlay.checked;
+		chkEpisodeAutoPlay.addEventListener('change', function() {  if (chkEpisodeAutoPlay.checked) chkEnableNextVideoOverlay.checked = false });
+		chkEnableNextVideoOverlay.addEventListener('change', function() {  if (chkEnableNextVideoOverlay.checked) chkEpisodeAutoPlay.checked = false });
+		 
+		/* if (browser.tizen || browser.web0s) { */
 		if (browser.tizen) {
             context.querySelector('.fldEpisodeAutoPlay').classList.add('hide');	
+			context.querySelector('.fldEnableNextVideoOverlay').classList.add('hide');
         } else {
 			context.querySelector('.fldEpisodeAutoPlay').classList.remove('hide');
+			context.querySelector('.fldEnableNextVideoOverlay').classList.remove('hide');
 		}
 		
 		let event = new Event('input');

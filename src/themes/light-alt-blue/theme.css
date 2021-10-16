@@ -14,8 +14,8 @@ html {
 }
 
 ::-moz-selection { 
-	color: #3c3c3c;
-	background: #f4f4b5;
+	color: #113c6a;
+	background: #b7d6f7;
 }
 
 ::selection {
@@ -67,6 +67,7 @@ html {
     background-image: url(../../assets/img/icon-transparent.png);
 }
 
+.formDialogContent,
 .backgroundContainer,
 html {
     background-color: #daeaf4;
@@ -143,7 +144,7 @@ html {
 
 .toast {
 	color: #113c6a;
-	background: #b7d6f7;
+	background: #fff;
 }
 
 .appfooter,
@@ -165,10 +166,6 @@ html {
 .selectionCommandsPanel {
     background: #00a4dc;
     color: #fff;
-}
-
-.upNextDialog-countdownText {
-    color: #00a4dc;
 }
 
 .alphaPickerButton {
@@ -201,11 +198,11 @@ html {
 
 .emby-input,
 .emby-textarea {
-    color: inherit;
-    background: #fff;
-    border: 0.16em solid rgba(0, 0, 0, 0.158);
-    -webkit-border-radius: 0.2em;
-    border-radius: 0.2em;
+	color: inherit;
+	background: #fff;
+	border: 4px ridge rgb(199, 215, 217);
+	-webkit-border-radius: 0.2em;
+	border-radius: 0.2em;
 }
 
 .itemProgressBarForeground {
@@ -388,14 +385,14 @@ html {
 
 .homeLibraryButton {
 	color: rgba(8, 26, 60, 0.8) !important;
-	background-color: rgba(32, 119, 212, 0.4);
+	background-color: rgba(36, 136, 153, 0.4);
 	box-shadow: 1px 1px 8px #a6a6a0;
 	font-weight: 500;
 }
 
 .homeLibraryButton:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(112, 149, 167, 0.8) !important;
+	background-color: rgba(92, 151, 179, 0.8) !important;
 }
 
 .homeLibraryButton:focus {
@@ -405,13 +402,17 @@ html {
 }
 
 .listItemBody {
-	color: rgba(8, 26, 60);
+	color: rgb(134, 167, 179);
 }
 
-.listItemBody:hover:not(:disabled),
+.listItemBody:hover:not(:disabled) {
+	color: rgba(244, 245, 247, 0.8) !important;
+	background-color: transparent !important;
+}
+
 .listItem-button:hover:not(:disabled) {
 	color: rgba(244, 245, 247, 0.8) !important;
-	background-color: rgba(177, 224, 239, 0.8) !important;
+	background-color: rgba(141, 180, 193, 0.8) !important
 }
 
 .listItem-button:focus {
@@ -429,7 +430,7 @@ html {
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
+	background-color: rgba(177, 224, 239, 0.8) !important;
 }
 
 .emby-button:active {
@@ -479,7 +480,7 @@ html {
 /* Save button */
 
 @keyframes click {
-	from {transform: scale(1.1);}
+	from {transform: scale(1.2);}
 	70% {transform: scale(1.4);}
 	to {transform: scale(1.2);}
 }
@@ -488,22 +489,21 @@ html {
 	width: 50% !important;
 	margin: 0 auto !important;
 	color: rgba(8, 26, 60, 0.8) !important;
-	background-color: rgba(32, 119, 212, 0.4);
+	background-color: rgba(36, 136, 153, 0.4);
 	box-shadow: 1px 1px 8px #a6a6a0;
 	font-weight: 500;
-	transform: scale(1.0) !important;
 }
 
 .button-submit:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(112, 149, 167, 0.8) !important;
-	transform: scale(1.1) !important;
+	background-color: rgba(92, 151, 179, 0.8) !important;
+	transform: scale(1.2);
 }
 
 .button-submit:focus {
 	color: rgba(30, 30, 30, 0.8) !important;
 	background-color: rgba(123, 152, 184, 0.8) !important;
-	transform: scale(1.1) !important;
+	transform: scale(1.2);
 }
 
 .button-submit:active {
@@ -511,6 +511,7 @@ html {
 	color: rgba(255, 255, 255, 1) !important;
 	animation-name: click;
 	animation-duration: .15s;
+	transform: scale(1.2);
 }
 
 /* detail button */
@@ -684,6 +685,14 @@ select option:selected {
 	font-size: 90% !important;
 }
 
+.formDialogHeader {
+	background: linear-gradient(to right, #fff 0%, #add1d3 18%, #6eb5d8 38%, #a3d4dc 68%, #6fa3b6 81%, #2c687b 100%);
+	color: #fff;
+	-webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+	box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.formDialogHeaderTitle,
 .pageTitle {
 	color: #fff !important;
 	text-shadow: 1px 1px 4px #39392d;
@@ -714,10 +723,6 @@ select option:selected {
 
 .layout-tv .detailRibbon {
     background: none;
-}
-
-.mediaInfoItem {
-	color: #0c2b65 !important;	
 }
 
 .itemName {
@@ -794,7 +799,15 @@ select option:selected {
 }
 
 .backdropImage.themeBackdrop.alt1 {
-	background-image: url(./bg-alt1.jpg) !important;
+	background-image: url(./bg.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt2 {
+	background-image: url(./bg.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt3 {
+	background-image: url(./bg.jpg) !important;
 }
 
 /* fix for TV Layout */
@@ -814,3 +827,89 @@ select option:selected {
 .aboutcontent {
 	color: #1da4b8;
 }
+
+/* upNext dialog box */
+
+.upNextContainer {
+	background: #113c6a;
+	color: #b7d6f7;
+	width: auto;
+	overflow: hidden;
+	margin: 0 0 0 0;
+	position: fixed;
+	bottom: 3%;
+	right: 1%;
+	will-change: unset;
+}
+
+.upNextDialog-countdownText {
+	color: #00a4dc;
+}
+
+.upNextDialog-button {
+	background: #e0e6e6;
+	color: #113c6a !important;
+}
+
+.upNextDialog-button:focus {
+	transform: scale(1.1) !important;
+	color: #113c6a !important;
+	background: #b7d6f7 !important;
+}
+
+.mediaInfoItem {
+	color: #fff !important;	
+}
+
+legend {
+	padding: 0 10px 0 10px;
+	font-weight: 600 !important;
+	text-shadow: 2px 2px 4px #6a7679;
+	color: #fbfdff;
+}
+
+fieldset {
+	padding: 1.5em 2em 0 2em;
+	margin: 0 0 2em 0;
+	border: 3px solid #cfe1e9;
+}
+
+.radio > * > .material-icons.checkboxIcon-unchecked::before {
+	content: "\e836";
+}
+
+.radio > * > .material-icons.checkboxIcon-checked::before {
+	content: "\e837";
+}
+
+.radio > * > .checkboxIcon-checked,
+.radio > * > .checkboxIcon-unchecked {
+	color: #abb2ba !important;
+	padding: 0 0 0 0;
+	transform: none;
+	text-shadow: none;
+	animation: none;
+	background: transparent;
+	font-size: 160%;
+}
+
+.radio > * > .checkboxIcon-checked {
+	color: #abb2ba !important;
+}
+
+.radio.emby-checkbox + span + .checkboxOutline {
+	transform: scale(.9);
+	border: 2px solid #a5bdd8 !important;
+	width: 1.73em;
+	height: 1.73em;
+}
+
+.radio.emby-checkbox:checked + span + .checkboxOutline {
+	background-color: rgba(155, 167, 196, 0.4);
+}
+
+.radio.emby-checkbox:focus + span + .checkboxOutline,
+.radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
+	border: 2px solid rgba(38, 218, 247, 0.8) !important;
+}
+

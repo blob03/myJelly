@@ -32,11 +32,15 @@ import template from './displaySettings.template.html';
                 return `<option value="${t.id}">${t.name}</option>`;
             }).join('');
 
-            // get default theme
-            const defaultTheme = themes.find(theme => theme.default);
-
-            // set the current theme
-            select.value = selectedTheme || defaultTheme.id;
+			select.value = selectedTheme;
+			if (selectedTheme === 'Auto' || selectedTheme === 'None')
+				return;
+			
+			// If for some reasons selectedTheme doesn't exist anymore (eg. a recent upgrade)
+			// selected value will be set to default theme id as defined by 'config.json'.
+		
+			skinManager.getThemeStylesheetInfo(selectedTheme).then(function (info) {
+				select.value = info.themeId});
         });
     }
 

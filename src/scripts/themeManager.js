@@ -43,18 +43,18 @@ function getThemeStylesheetInfo(id) {
 
 function setTheme(id) {
     return new Promise(function (resolve) {
-		
+				
+        if (currentThemeId && currentThemeId === id) {
+            resolve();
+            return;
+        }
+
 		// If requested theme is "None" then unload the theme in use and exit.
 		if (id === "None") {
 			unloadTheme();
 			return;
 		}
 		
-        if (currentThemeId && currentThemeId === id) {
-            resolve();
-            return;
-        }
-
         getThemeStylesheetInfo(id).then(function (info) {
             if (currentThemeId && currentThemeId === info.themeId) {
                 resolve();
@@ -95,5 +95,6 @@ function setTheme(id) {
 export default {
     getThemes: getThemes,
 	getPresets: getPresets,
-    setTheme: setTheme
+    setTheme: setTheme,
+	getThemeStylesheetInfo:getThemeStylesheetInfo
 };

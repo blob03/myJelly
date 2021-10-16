@@ -412,6 +412,16 @@ html {
 	to {transform: scale(1.8);}
 }
 
+.checkboxIcon-checked {
+	color: #282828 !important;
+	padding-left: 5px;
+	padding-bottom: 6px;
+	transform: scale(1.8);
+	text-shadow: 1px 2px 3px #1e1d25;
+	animation-name: check-in;
+	animation-duration: .15s;
+}
+
 .checkboxOutline {
 	overflow: visible;
 	transform: scale(0.7);
@@ -430,16 +440,6 @@ html {
 .emby-checkbox:focus + span + .checkboxOutline,
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
 	border-color: rgba(244, 205, 114, 0.8);
-}
-
-.checkboxIcon-checked {
-	color: #282828 !important;
-	padding-left: 5px;
-	padding-bottom: 6px;
-	transform: scale(1.8);
-	text-shadow: 1px 2px 3px #1e1d25;
-	animation-name: check-in;
-	animation-duration: .15s;
 }
 
 /* Buttons */
@@ -773,6 +773,7 @@ select option:selected {
 	color: #ffc898;
 }
 
+.formDialogHeaderTitle,
 .pageTitle {
 	color: #8b877f !important;
 }
@@ -939,10 +940,23 @@ select option:selected {
 .upNextContainer {
 	background: #fe9001;
 	color:	#282828;
+	width: auto;
+	overflow: hidden;
+	margin: 0 0 0 0;
+	position: fixed;
+	bottom: 3%;
+	right: 1%;
+	will-change: unset;
 }
 
 .upNextDialog-countdownText {
 	color: #fff;
+}
+
+.upNextDialog-button:focus {
+	transform: scale(1.1) !important;
+	color: #fff !important;
+	background: #fe9001 !important;
 }
 
 legend {
@@ -950,6 +964,12 @@ legend {
 	padding: 0 10px 0 10px;
 	font-weight: 600 !important;
 	color: #d4c6b9;
+}
+
+fieldset {
+	padding: 1.5em 2em 0 2em;
+	margin: 0 0 2em 0;
+	border: 3px solid #d7752e;
 }
 
 div[data-role="controlgroup"] a.ui-btn-active {
@@ -974,3 +994,37 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	background: #e18829;
 }
 
+.radio > * > .material-icons.checkboxIcon-unchecked::before {
+	content: "\e836";
+}
+
+.radio > * > .material-icons.checkboxIcon-checked::before {
+	content: "\e837";
+}
+
+.radio > * > .checkboxIcon-checked,
+.radio > * > .checkboxIcon-unchecked {
+	color: #282828 !important;
+	padding: 0 0 0 0;
+	transform: none;
+	text-shadow: none;
+	animation: none;
+	background: transparent;
+	font-size: 160%;
+}
+
+.radio.emby-checkbox + span + .checkboxOutline {
+	transform: scale(.9);
+	border: 2px solid #463019 !important;
+	width: 1.73em;
+	height: 1.73em;
+}
+
+.radio.emby-checkbox:checked + span + .checkboxOutline {
+	background-color: rgb(157, 97, 3);
+}
+
+.radio.emby-checkbox:focus + span + .checkboxOutline,
+.radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
+	border: 2px solid rgba(244, 205, 114, 0.8) !important;
+}

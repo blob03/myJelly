@@ -50,9 +50,10 @@ import '../../assets/css/flexstyles.scss';
 
         const elem = instance.options.parent;
 
-        const secondsRemaining = Math.max(Math.round(getTimeRemainingMs(instance) / 1000), 0);
-
-        console.debug('up next seconds remaining: ' + secondsRemaining);
+        // const secondsRemaining = Math.max(Math.round(getTimeRemainingMs(instance) / 1000), 0);
+		const secondsRemaining = ~~(getTimeRemainingMs(instance) / 1000);
+		
+        //console.debug('up next seconds remaining: ' + secondsRemaining);
 
         const timeText = '<span class="upNextDialog-countdownText">' + globalize.translate('HeaderSecondsValue', secondsRemaining) + '</span>';
 
@@ -143,12 +144,12 @@ import '../../assets/css/flexstyles.scss';
         const instance = this;
         clearCountdownTextTimeout(this);
 
-        if (!instance.options) {
-            return;
-        }
+        //if (!instance.options) {
+          //  return;
+        //}
 
-        const elem = instance.options.parent;
-		//const elem = document.querySelector('.upNextContainer')
+        //const elem = instance.options.parent;
+		const elem = document.querySelector('.upNextContainer');
         if (!elem) {
             return;
         }
@@ -190,14 +191,13 @@ import '../../assets/css/flexstyles.scss';
     function startComingUpNextHideTimer(instance) {
         const timeRemainingMs = getTimeRemainingMs(instance);
 
-        if (timeRemainingMs <= 0) {
+        if (timeRemainingMs <= 0) 
             return;
-        }
-
-        setNextVideoText.call(instance);
+		
         clearCountdownTextTimeout(instance);
+		setNextVideoText.call(instance);
 
-        instance._countdownTextTimeout = setInterval(setNextVideoText.bind(instance), 400);
+        instance._countdownTextTimeout = setInterval(setNextVideoText.bind(instance), 1000);
     }
 
 class UpNextDialog {
@@ -207,10 +207,13 @@ class UpNextDialog {
         init(this, options);
     }
     show() {
-        const elem = this.options.parent;
-
-        clearHideAnimationEventListeners(this, elem);
-
+        // const elem = this.options.parent;
+        const elem = document.querySelector('.upNextContainer');
+		if (!elem) 
+            return;		
+		
+		clearHideAnimationEventListeners(this, elem);
+		
         elem.classList.remove('hide');
 
         // trigger a reflow to force it to animate again
@@ -218,12 +221,14 @@ class UpNextDialog {
 
         elem.classList.remove('upNextDialog-hidden');
 
+		focusManager.focus(elem.querySelector('.btnStartNow'));
+		/*
         if (layoutManager.tv) {
             setTimeout(function () {
                 focusManager.focus(elem.querySelector('.btnStartNow'));
-            }, 50);
+            }, 500);
         }
-
+*/
         startComingUpNextHideTimer(this);
     }
     hide() {

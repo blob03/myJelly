@@ -89,6 +89,16 @@ html {
 	background-position-y: center;
 }
 
+.backdropImage.themeBackdrop.alt1 {
+	background-image: url(./bg.jpg) !important;
+}
+.backdropImage.themeBackdrop.alt2 {
+	background-image: url(./bg.jpg) !important;
+}
+.backdropImage.themeBackdrop.alt3 {
+	background-image: url(./bg.jpg) !important;
+}
+
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
@@ -779,6 +789,7 @@ select option:selected {
 	color: #fff;
 }
 
+.formDialogHeaderTitle,
 .pageTitle {
 	color: #dbe2ea !important;
 }
@@ -898,4 +909,84 @@ select option:selected {
 
 .layout-tv .detailPageWrapperContainer {
 	margin-top: 2%;
+}
+
+/* upNext dialog box */
+
+.upNextContainer {
+	background: #616567;
+	color: #282828;
+	width: auto;
+	overflow: hidden;
+	margin: 0 0 0 0;
+	position: fixed;
+	bottom: 3%;
+	right: 1%;
+	will-change: unset;
+}
+
+.upNextDialog-countdownText {
+	color: #fff;
+}
+
+.upNextDialog-button {
+	background: #e0e6e6;
+}
+
+.upNextDialog-button:focus {
+	transform: scale(1.1) !important;
+	color: #fff !important;
+	background: #a3abb0 !important;
+}
+
+legend {
+	padding: 0 10px 0 10px;
+	font-weight: 600 !important;
+	text-shadow: 2px 2px 4px #313638;
+	color: #989da1;
+}
+
+fieldset {
+	padding: 1.5em 2em 0 2em;
+	margin: 0 0 2em 0;
+	border: 3px solid #4f5254;
+}
+
+.radio > * > .material-icons.checkboxIcon-unchecked::before {
+	content: "\e836";
+}
+
+.radio > * > .material-icons.checkboxIcon-checked::before {
+	content: "\e837";
+}
+
+.radio > * > .checkboxIcon-checked,
+.radio > * > .checkboxIcon-unchecked {
+	color: #282828 !important;
+	padding: 0 0 0 0;
+	transform: none;
+	text-shadow: none;
+	animation: none;
+	background: transparent;
+	font-size: 160%;
+}
+
+.radio > * > .checkboxIcon-checked {
+	color: #abb2ba !important;
+}
+
+.radio.emby-checkbox + span + .checkboxOutline {
+	transform: scale(.9);
+	border: 2px solid #7e7e7e !important;
+	width: 1.73em;
+	height: 1.73em;
+}
+
+.radio.emby-checkbox:checked + span + .checkboxOutline {
+	background-color: rgb(62, 69, 74);
+}
+
+.radio.emby-checkbox:focus + span + .checkboxOutline,
+.radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
+	border: 2px solid #ccc !important;
 }
