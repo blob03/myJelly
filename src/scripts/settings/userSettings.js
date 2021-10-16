@@ -401,8 +401,8 @@ export class UserSettings {
         if (val !== undefined) 
             return this.set('skipBackLength', parseInt(val, 10));
         
-		const skipBackLength = this.get('skipBackLength');
-		if (isNaN(skipBackLength) || skipBackLength < 5000 || skipBackLength > 60000) 
+		const skipBackLength = parseInt(this.get('skipBackLength'), 10);
+		if (skipBackLength < 5000 || skipBackLength > 60000) 
 			return 30000; // default to 30s in ms.
         else 
             return skipBackLength;
@@ -417,8 +417,8 @@ export class UserSettings {
 		if (val !== undefined) 
             return this.set('skipForwardLength', parseInt(val, 10));
         
-		const skipForwardLength = this.get('skipForwardLength');
-		if (isNaN(skipForwardLength) || skipForwardLength < 5000 || skipForwardLength > 60000) 
+		const skipForwardLength = parseInt(this.get('skipForwardLength'), 10);
+		if (skipForwardLength < 5000 || skipForwardLength > 60000) 
 			return 30000; // default to 30s in ms.
         else 
             return skipForwardLength;
@@ -485,8 +485,8 @@ export class UserSettings {
         if (val !== undefined) 
             return this.set('screensaverTime', parseInt(val, 10));
         
-		const screensaverTime = this.get('screensaverTime');
-		if (isNaN(screensaverTime) || screensaverTime > 1800000) 
+		const screensaverTime = parseInt(this.get('screensaverTime'), 10);
+		if (screensaverTime > 1800000) 
 			return 180000; // default to 3min in ms.
         else 
             return screensaverTime;
@@ -501,8 +501,8 @@ export class UserSettings {
         if (val !== undefined) 
             return this.set('libraryPageSize', parseInt(val, 10));
 
-        const libraryPageSize = this.get('libraryPageSize');
-		if (isNaN(libraryPageSize) || libraryPageSize > 128) 
+		const libraryPageSize = parseInt(this.get('libraryPageSize'), 10);
+		if (libraryPageSize > 128) 
 			return 60;
         else 
             return libraryPageSize;
@@ -517,8 +517,8 @@ export class UserSettings {
         if (val !== undefined) 
             return this.set('maxDaysForNextUp', parseInt(val, 10));
 
-        const maxDaysForNextUp = this.get('maxDaysForNextUp');
-        if (isNaN(maxDaysForNextUp) || !maxDaysForNextUp || maxDaysForNextUp > 365) 
+		const maxDaysForNextUp = parseInt(this.get('maxDaysForNextUp'), 10);
+        if (!maxDaysForNextUp || maxDaysForNextUp > 365) 
 			return 30;
         else 
             return maxDaysForNextUp;
