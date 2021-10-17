@@ -184,8 +184,8 @@ import template from './playbackSettings.template.html';
 		let chkEnableNextVideoOverlay = context.querySelector('.chkEnableNextVideoOverlay');
 		chkEnableNextVideoOverlay.checked = userSettings.enableNextVideoInfoOverlay();
 		chkEpisodeAutoPlay.checked = user.Configuration.EnableNextEpisodeAutoPlay && !chkEnableNextVideoOverlay.checked;
-		chkEpisodeAutoPlay.addEventListener('change', function() {  if (chkEpisodeAutoPlay.checked) chkEnableNextVideoOverlay.checked = false });
-		chkEnableNextVideoOverlay.addEventListener('change', function() {  if (chkEnableNextVideoOverlay.checked) chkEpisodeAutoPlay.checked = false });
+		chkEpisodeAutoPlay.addEventListener('change', function() {  if (this.checked) chkEnableNextVideoOverlay.checked = false });
+		chkEnableNextVideoOverlay.addEventListener('change', function() {  if (this.checked) chkEpisodeAutoPlay.checked = false });
 		 
 		/* if (browser.tizen || browser.web0s) { */
 		if (browser.tizen) {
