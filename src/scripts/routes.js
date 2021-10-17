@@ -479,7 +479,7 @@ import { appRouter } from '../components/appRouter';
         path: 'dashboard/users/userprofiles.html',
         autoFocus: false,
         roles: 'admin',
-        controller: 'dashboard/users/userprofilespage'
+        pageComponent: 'UserProfilesPage'
     });
 
     defineRoute({
@@ -558,6 +558,11 @@ import { appRouter } from '../components/appRouter';
         enableContentQueryString: true,
         roles: 'admin',
         serverRequest: true
+    });
+
+    defineRoute({
+        path: '/dialog',
+        dummyRoute: true
     });
 
     defineRoute({
