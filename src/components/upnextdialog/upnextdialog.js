@@ -144,12 +144,12 @@ import '../../assets/css/flexstyles.scss';
         const instance = this;
         clearCountdownTextTimeout(this);
 
-        //if (!instance.options) {
-          //  return;
-        //}
+        if (!instance.options) {
+            return;
+        }
 
-        //const elem = instance.options.parent;
-		const elem = document.querySelector('.upNextContainer');
+        const elem = instance.options.parent;
+		//const elem = document.querySelector('.upNextContainer');
         if (!elem) {
             return;
         }

@@ -13,10 +13,12 @@
     color: #fff;
     user-select: none;
     -webkit-touch-callout: none;
+	z-index: 999;
 }
 
 .upNextDialog-hidden {
     opacity: 0;
+	z-index: -1;
 }
 
 .upNextDialog-countdownText {
