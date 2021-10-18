@@ -155,18 +155,19 @@
 	text-shadow: none !important;
 	animation: none;
 	background: transparent;
-	font-size: 220%;
+	font-size: 140%;
 }
 
 .radio.emby-checkbox + span + .checkboxOutline {
 	border: none;
 	border-radius: 100%;
-	width: 2.10em;
-	height: 2.10em;
+	width: 1.45em;
+	height: 1.45em;
 	overflow: hidden;
+	transform: none;
 }
 
 .radio.emby-checkbox:focus + span + .checkboxOutline,
 .radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border: 3px solid #fff;
+	border: 2px solid #fff;
 }
