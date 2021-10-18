@@ -883,30 +883,9 @@ fieldset {
 	border: 3px solid #e5e9eb;
 }
 
-.radio > * > .material-icons.checkboxIcon-unchecked::before {
-	content: "\e836";
-}
-
-.radio > * > .material-icons.checkboxIcon-checked::before {
-	content: "\e837";
-}
-
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
 	color: #abb2ba !important;
-	padding: 0 0 0 0;
-	transform: none;
-	text-shadow: none;
-	animation: none;
-	background: transparent;
-	font-size: 160%;
-}
-
-.radio.emby-checkbox + span + .checkboxOutline {
-	transform: scale(.9);
-	border: 2px solid rgba(153, 149, 133, 0.8) !important;
-	width: 1.73em;
-	height: 1.73em;
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
@@ -915,5 +894,5 @@ fieldset {
 
 .radio.emby-checkbox:focus + span + .checkboxOutline,
 .radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border: 2px solid rgba(158, 201, 193, 0.8) !important;
+	border-color: rgba(158, 201, 193, 0.8) !important;
 }

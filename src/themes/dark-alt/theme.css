@@ -669,12 +669,9 @@ select option:selected {
 }
 
 .mdl-slider:focus,
-.mdl-slider:hover:not(:disabled) {
-	background-color: rgba(255, 255, 255, 0.1);
-}
-
+.mdl-slider:hover:not(:disabled),
 .mdl-slider:active {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(100, 100, 100, 0.1);
 }
 
 .mdl-slider-background-lower  {
@@ -952,34 +949,9 @@ fieldset {
 	border: 3px solid #4f5254;
 }
 
-.radio > * > .material-icons.checkboxIcon-unchecked::before {
-	content: "\e836";
-}
-
-.radio > * > .material-icons.checkboxIcon-checked::before {
-	content: "\e837";
-}
-
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
-	color: #282828 !important;
-	padding: 0 0 0 0;
-	transform: none;
-	text-shadow: none;
-	animation: none;
-	background: transparent;
-	font-size: 160%;
-}
-
-.radio > * > .checkboxIcon-checked {
-	color: #abb2ba !important;
-}
-
-.radio.emby-checkbox + span + .checkboxOutline {
-	transform: scale(.9);
-	border: 2px solid #7e7e7e !important;
-	width: 1.73em;
-	height: 1.73em;
+	color: #888 !important;
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
@@ -988,5 +960,5 @@ fieldset {
 
 .radio.emby-checkbox:focus + span + .checkboxOutline,
 .radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border: 2px solid #ccc !important;
+	border-color: #ccc !important;
 }

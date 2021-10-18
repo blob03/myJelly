@@ -196,13 +196,15 @@ import template from './playbackSettings.template.html';
 			context.querySelector('.fldEnableNextVideoOverlay').classList.remove('hide');
 		}
 		
-		let event = new Event('input');
+		let event = new Event('change');
         let sliderSkipForward = context.querySelector('#sliderSkipForwardLength');
 		sliderSkipForward.addEventListener('input', onSkipLengthChange);
+		sliderSkipForward.addEventListener('change', onSkipLengthChange);
         sliderSkipForward.value = userSettings.skipForwardLength()/1000 || 30;
 		sliderSkipForward.dispatchEvent(event);
         let sliderSkipBack = context.querySelector('#sliderSkipBackLength');
 		sliderSkipBack.addEventListener('input', onSkipLengthChange);
+		sliderSkipBack.addEventListener('change', onSkipLengthChange);
         sliderSkipBack.value = userSettings.skipBackLength()/1000 || 30;
 		sliderSkipBack.dispatchEvent(event);
 

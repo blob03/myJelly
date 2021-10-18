@@ -135,3 +135,38 @@
         padding: 0;
     }
 }
+
+// pseudo radio buttons derived from emby-checkboxes.
+// p-radio buttons are simply radio buttons which can be unchecked.
+
+.radio > * > .material-icons.checkboxIcon-unchecked::before {
+	content: "\e836";
+}
+
+.radio > * > .material-icons.checkboxIcon-checked::before {
+	content: "\e837";
+}
+
+.radio > * > .checkboxIcon-checked,
+.radio > * > .checkboxIcon-unchecked {
+	color: #fff;
+	padding: unset;
+	transform: none;
+	text-shadow: none !important;
+	animation: none;
+	background: transparent;
+	font-size: 220%;
+}
+
+.radio.emby-checkbox + span + .checkboxOutline {
+	border: none;
+	border-radius: 100%;
+	width: 2.10em;
+	height: 2.10em;
+	overflow: hidden;
+}
+
+.radio.emby-checkbox:focus + span + .checkboxOutline,
+.radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
+	border: 3px solid #fff;
+}

@@ -71,7 +71,7 @@ import focusManager from '../../components/focusManager';
         labelTextElement.classList.add('checkboxLabel');
 
         this.addEventListener('keydown', onKeyDown);
-		//this.addEventListener('click', (e) => {focusManager.focus(e.target);});
+		this.addEventListener('click', (e) => {focusManager.focus(e.target);});
 
         if (enableRefreshHack) {
             forceRefresh.call(this, true);
