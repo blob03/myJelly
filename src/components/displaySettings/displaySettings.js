@@ -5,6 +5,7 @@ import { appHost } from '../apphost';
 import focusManager from '../focusManager';
 import datetime from '../../scripts/datetime';
 import globalize from '../../scripts/globalize';
+import settingsHelper from '../settingshelper';
 import loading from '../loading/loading';
 import skinManager from '../../scripts/themeManager';
 import { Events } from 'jellyfin-apiclient';
@@ -74,7 +75,7 @@ import template from './displaySettings.template.html';
 			pnode.querySelector('.fieldDescription').innerHTML = e.target.value + " min.";
 	}
 
-    function loadForm(context, user, userSettings) {
+    function loadForm(context, user, userSettings, apiClient) {
 		if (appHost.supports('displaymode')) {
 			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
             context.querySelector('.fldDisplayMode').classList.remove('hide');
@@ -83,11 +84,25 @@ import template from './displaySettings.template.html';
         }
 		
         if (appHost.supports('displaylanguage')) {
-			context.querySelector('#selectLanguage').value = userSettings.language() || '';
-            context.querySelector('.languageSection').classList.remove('hide');
-        } else {
-            context.querySelector('.languageSection').classList.add('hide');
-        }
+			let selectLanguage = context.querySelector('#selectLanguage');
+			apiClient.getCultures().then(allCultures => {
+				allCultures.sort((a, b) => {
+					let fa = a.DisplayName.toLowerCase(),
+					fb = b.DisplayName.toLowerCase();
+					if (fa < fb) 
+					return -1;
+					if (fa > fb) 
+					return 1;
+					return 0;
+				});
+				settingsHelper.populateLanguages(selectLanguage, allCultures);
+				selectLanguage.value = userSettings.language() || '';
+				context.querySelector('.languageSection').classList.remove('hide');
+			});
+		} else {
+				context.querySelector('.languageSection').classList.add('hide');
+		}
+		
 
         if (appHost.supports('externallinks')) 
             context.querySelector('.learnHowToContributeContainer').classList.remove('hide');
@@ -111,9 +126,22 @@ import template from './displaySettings.template.html';
         } else 
             context.querySelector('.ScreensaverArea').classList.add('hide');
 
-        if (datetime.supportsLocalization()) {
-			context.querySelector('.selectDateTimeLocale').value = userSettings.dateTimeLocale() || '';
-            context.querySelector('.fldDateTimeLocale').classList.remove('hide');
+        if (datetime.supportsLocalization()) { 
+			let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
+			apiClient.getCultures().then(allCultures => {
+				allCultures.sort((a, b) => {
+					let fa = a.DisplayName.toLowerCase(),
+					fb = b.DisplayName.toLowerCase();
+					if (fa < fb) 
+					return -1;
+					if (fa > fb) 
+					return 1;
+					return 0;
+				});
+				settingsHelper.populateLanguages(selectDateTimeLocale, allCultures);
+				selectDateTimeLocale.value = userSettings.dateTimeLocale() || '';
+				context.querySelector('.fldDateTimeLocale').classList.remove('hide');
+			});
         } else {
             context.querySelector('.fldDateTimeLocale').classList.add('hide');
         }
@@ -262,7 +290,7 @@ import template from './displaySettings.template.html';
             return apiClient.getUser(userId).then(user => {
                 return userSettings.setUserInfo(userId, apiClient).then(() => {
                     self.dataLoaded = true;
-                    loadForm(context, user, userSettings);
+                    loadForm(context, user, userSettings, apiClient);
                     if (autoFocus) {
                         focusManager.autoFocus(context);
                     }
