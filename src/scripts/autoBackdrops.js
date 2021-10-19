@@ -18,12 +18,16 @@ function getBackdropItemIds(apiClient, userId, types, parentId) {
         data = JSON.parse(data);
         return Promise.resolve(data);
     }
+	
+	let type = userSettings.enableBackdrops();
+	if (!type || (type !== "Movie" && type !== "Series"))
+		type = types;
 
     const options = {
         SortBy: 'IsFavoriteOrLiked,Random',
         Limit: 20,
         Recursive: true,
-        IncludeItemTypes: types,
+        IncludeItemTypes: type,
         ImageTypes: 'Backdrop',
         ParentId: parentId,
         EnableTotalRecordCount: false,

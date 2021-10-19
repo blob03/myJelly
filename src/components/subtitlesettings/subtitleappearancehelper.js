@@ -37,7 +37,7 @@ function getTextStyles(settings, preview) {
 		list.push({ name: 'font-style', value: 'oblique ' + (settings.oblique * 5) + 'deg'});
 	list.push({ name: 'background-color', value: settings.textBackground || 'transparent' });
     list.push({ name: 'color', value: settings.textColor || 'White' });
-    list.push({ name: '-webkit-text-stroke', value: (settings.strokeSize ? (settings.strokeSize + 'px ') : '1px ') + (settings.textStroke ? settings.textStroke : '#000000')});
+    list.push({ name: '-webkit-text-stroke', value: (settings.strokeSize ? (settings.strokeSize + 'px ') : '1px ') + (settings.textStroke ? settings.textStroke : '#000')});
 	
 	
 	list.push({ name: 'border-radius', value: settings.borderradius || '50%' });

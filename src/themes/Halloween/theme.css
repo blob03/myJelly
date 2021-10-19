@@ -125,18 +125,16 @@ html {
 
 .backdropImage.themeBackdrop {
 	background-image: url(./bg.jpg) !important;
-	background-repeat: no-repeat !important;
-	background-size: cover !important;
-	background-position-x: left;
-	background-position-y: center;
 }
 
 .backdropImage.themeBackdrop.alt1 {
 	background-image: url(./bg-alt1.jpg) !important;
 }
+
 .backdropImage.themeBackdrop.alt2 {
 	background-image: url(./bg-alt1.jpg) !important;
 }
+
 .backdropImage.themeBackdrop.alt3 {
 	background-image: url(./bg.jpg) !important;
 }

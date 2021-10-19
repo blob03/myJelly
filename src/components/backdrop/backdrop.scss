@@ -4,7 +4,7 @@
 
 .backdropImage {
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: 0em 4em;
     background-size: cover;
     position: absolute;
     top: 0;
@@ -13,6 +13,15 @@
     bottom: 0;
     contain: layout style;
 }
+
+.itemBackdrop {
+	background-position: 0em 4em !important;
+}
+
+.backdropImage.themeBackdrop {
+    background-position: 50% 50%;
+}
+
 
 .backdropImageFadeIn {
     animation: backdrop-fadein 800ms ease-in normal both;

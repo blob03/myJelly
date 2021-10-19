@@ -46,6 +46,8 @@ import ServerConnections from '../ServerConnections';
 					case 'None':
 						break;
 					case 'Libraries':
+					case 'Movie':
+					case 'Series':
 						backdropImage.style.backgroundImage = `url('${url}')`;
 						backdropImage.setAttribute('data-url', url);
 						break;

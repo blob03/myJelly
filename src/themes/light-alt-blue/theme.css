@@ -792,10 +792,6 @@ select option:selected {
 
 .backdropImage.themeBackdrop {
 	background-image: url(./bg.jpg) !important;
-	background-repeat: no-repeat !important;
-	background-size: cover !important;
-	background-position-x: left;
-	background-position-y: center;
 }
 
 .backdropImage.themeBackdrop.alt1 {

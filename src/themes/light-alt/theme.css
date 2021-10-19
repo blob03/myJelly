@@ -75,7 +75,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .dialog,
@@ -791,10 +791,6 @@ select option:selected {
 
 .backdropImage.themeBackdrop {
 	background-image: url(./bg.jpg) !important;
-	background-repeat: no-repeat !important;
-	background-size: cover !important;
-	background-position-x: left;
-	background-position-y: center;
 }
 
 /* fix for TV Layout */

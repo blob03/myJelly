@@ -150,8 +150,9 @@ import template from './displaySettings.template.html';
     }
 
     function saveUser(instance, context, user, userSettingsInstance, apiClient) {
+		let VAL;
         if (appHost.supports('displaylanguage')) {	
-			const VAL = context.querySelector('#selectLanguage').value;
+			VAL = context.querySelector('#selectLanguage').value;
 			const savedLanguage = userSettingsInstance.language();
 			if (!savedLanguage || VAL !== savedLanguage) {
 				userSettingsInstance.language(VAL);
@@ -160,7 +161,7 @@ import template from './displaySettings.template.html';
         }
 
 		if (appHost.supports('displaymode')) {
-			const VAL = context.querySelector('.selectLayout').value;
+			VAL = context.querySelector('.selectLayout').value;
 			if (VAL !== (layoutManager.getSavedLayout() || '')) {
 				layoutManager.setLayout(VAL, true);
 				instance.needreload = true;
@@ -181,7 +182,14 @@ import template from './displaySettings.template.html';
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);
-        userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
+		
+		VAL = context.querySelector('#srcBackdrops').value;
+		if (VAL !== userSettingsInstance.enableBackdrops()) {
+			userSettingsInstance.enableBackdrops(VAL);
+			if (VAL === "Libraries" || VAL === "Movie" || VAL === "Series") 
+				instance.needreload = true;
+		}
+		
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
      
