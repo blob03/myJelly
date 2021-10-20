@@ -10,28 +10,40 @@ function enabled() {
 }
 
 function getBackdropItemIds(apiClient, userId, types, parentId) {
-    const key = `backdrops2_${userId + (types || '') + (parentId || '')}`;
+	let ImageTypes = 'Backdrop';
+	let MaxOfficialRating = parentId ? '' : 'PG-13';
+	let SortBy = 'IsFavoriteOrLiked,Random';
+	let type = userSettings.enableBackdrops();
+	let genreIds = '';
+	
+	switch(type) {
+		case "Movie":			
+		case "Series":
+			break;
+		
+		default:
+			type = types;
+			break;
+	}
+	
+    const key = `backdrops2_${userId + (type || '') + (parentId || '')}`;
     let data = cache[key];
-
     if (data) {
         console.debug(`Found backdrop id list in cache. Key: ${key}`);
         data = JSON.parse(data);
         return Promise.resolve(data);
     }
-	
-	let type = userSettings.enableBackdrops();
-	if (!type || (type !== "Movie" && type !== "Series"))
-		type = types;
 
     const options = {
-        SortBy: 'IsFavoriteOrLiked,Random',
+        SortBy: SortBy,
         Limit: 20,
         Recursive: true,
         IncludeItemTypes: type,
-        ImageTypes: 'Backdrop',
+        ImageTypes: ImageTypes,
         ParentId: parentId,
+		GenreIds: genreIds,
         EnableTotalRecordCount: false,
-        MaxOfficialRating: parentId ? '' : 'PG-13'
+        MaxOfficialRating: MaxOfficialRating
     };
     return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
         const images = result.Items.map(function (i) {

@@ -63,7 +63,11 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background: rgba(17, 98, 164, 0.85);
+    background: rgba(17, 98, 164, .9);
+}
+
+.backgroundContainer.withThemeBackdrop {
+    background: rgba(17, 98, 164, 0.8);
 }
 
 @media (hover: hover) and (pointer: fine) {

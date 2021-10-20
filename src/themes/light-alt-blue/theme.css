@@ -74,7 +74,11 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(220, 242, 248, 0.8);
+    background-color: rgba(220, 242, 248, 0.9) !important;
+}
+
+.backgroundContainer.withThemeBackdrop {
+    background-color: rgba(220, 242, 248, 0.8) !important;
 }
 
 .dialog,

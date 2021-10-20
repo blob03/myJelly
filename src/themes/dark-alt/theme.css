@@ -74,7 +74,11 @@ html {
 }
 
 .backgroundContainer {
-	background-color: rgba(40, 40, 40, .8) !important;
+	background-color: rgba(40, 40, 40, .9) !important;
+}
+
+.backgroundContainer.withThemeBackdrop {
+    background-color: rgba(40, 40, 40, 0.8) !important;
 }
 
 .backdropImage {
@@ -143,7 +147,7 @@ html {
 }
 
 .formDialogFooter:not(.formDialogFooter-clear) {
-    background-color: #f0f0f0;
+    background-color: #202020;
     border-top: 1px solid #ddd;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     color: inherit;
@@ -459,7 +463,7 @@ html {
 }
 
 .listItem-border {
-    border-color: rgb(44, 46, 48) !important;
+    border-color: rgb(57, 72, 84) !important;
 }
 
 .listItem-button:hover:not(:disabled) {

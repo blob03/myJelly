@@ -44,18 +44,21 @@ import ServerConnections from '../ServerConnections';
 				
 				switch(userSettings.enableBackdrops()) {
 					case 'None':
+						getBackgroundContainer().classList.remove('withThemeBackdrop');
 						break;
 					case 'Libraries':
 					case 'Movie':
 					case 'Series':
 						backdropImage.style.backgroundImage = `url('${url}')`;
 						backdropImage.setAttribute('data-url', url);
+						getBackgroundContainer().classList.remove('withThemeBackdrop');
 						break;
 					case 'Theme':
 						let idx = Math.floor(Math.random() * 4);
 						backdropImage.classList.add('themeBackdrop');
 						if (idx)
 							backdropImage.classList.add('alt' + idx);
+						getBackgroundContainer().classList.add('withThemeBackdrop');
 						break;
 					default:
 					case 'Auto':
@@ -63,6 +66,7 @@ import ServerConnections from '../ServerConnections';
 						backdropImage.style.backgroundImage = `url('${url}')`;
 						backdropImage.setAttribute('data-url', url);
 						backdropImage.classList.add('themeBackdrop');
+						getBackgroundContainer().classList.add('withThemeBackdrop');
 						if (idx)
 							backdropImage.classList.add('alt' + idx);
 						break;

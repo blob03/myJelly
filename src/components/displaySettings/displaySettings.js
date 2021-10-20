@@ -100,7 +100,7 @@ import template from './displaySettings.template.html';
 				context.querySelector('.languageSection').classList.remove('hide');
 			});
 		} else {
-				context.querySelector('.languageSection').classList.add('hide');
+			context.querySelector('.languageSection').classList.add('hide');
 		}
 		
 
@@ -210,13 +210,7 @@ import template from './displaySettings.template.html';
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);
-		
-		VAL = context.querySelector('#srcBackdrops').value;
-		if (VAL !== userSettingsInstance.enableBackdrops()) {
-			userSettingsInstance.enableBackdrops(VAL);
-			if (VAL === "Libraries" || VAL === "Movie" || VAL === "Series") 
-				instance.needreload = true;
-		}
+		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
