@@ -74,11 +74,15 @@ html {
 }
 
 .backgroundContainer {
-	background-color: rgba(40, 40, 40, .9) !important;
+	background-color: rgba(40, 40, 40, 0.9);
+}
+
+.backgroundContainer.withBackdrop {
+    background-color: rgba(40, 40, 40, 0.9);
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background-color: rgba(40, 40, 40, 0.8) !important;
+    background-color: rgba(40, 40, 40, 0.8);
 }
 
 .backdropImage {

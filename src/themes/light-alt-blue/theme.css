@@ -68,17 +68,20 @@ html {
 }
 
 .formDialogContent,
-.backgroundContainer,
 html {
     background-color: #daeaf4;
 }
 
+.backgroundContainer {
+    background-color: rgba(220, 242, 248, 0.9);
+}
+
 .backgroundContainer.withBackdrop {
-    background-color: rgba(220, 242, 248, 0.9) !important;
+    background-color: rgba(220, 242, 248, 0.9);
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background-color: rgba(220, 242, 248, 0.8) !important;
+    background-color: rgba(220, 242, 248, 0.8);
 }
 
 .dialog,

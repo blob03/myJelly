@@ -115,12 +115,16 @@ html {
     background-color: #d17320 !important;
 }
 
+.backgroundContainer {
+    background-color: rgba(235, 129, 40, 0.8);
+}
+
 .backgroundContainer.withBackdrop {
-    background-color: rgba(235, 129, 40, .85) !important;
+    background-color: rgba(235, 129, 40, 0.85);
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background-color: rgba(235, 129, 40, 0.8) !important;
+    background-color: rgba(235, 129, 40, 0.8);
 }
 
 .backdropImage {

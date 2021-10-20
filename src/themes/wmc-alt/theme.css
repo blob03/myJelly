@@ -63,7 +63,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background: rgba(17, 98, 164, .9);
+    background: rgba(17, 98, 164, 0.9);
 }
 
 .backgroundContainer.withThemeBackdrop {
