@@ -9,20 +9,32 @@ function enabled() {
     return userSettings.enableBackdrops();
 }
 
-function getBackdropItemIds(apiClient, userId, types, parentId) {
+function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let ImageTypes = 'Backdrop';
 	let MaxOfficialRating = parentId ? '' : 'PG-13';
 	let SortBy = 'IsFavoriteOrLiked,Random';
+	let types = reqtypes;
 	let type = userSettings.enableBackdrops();
 	let genreIds = '';
+	let filters = '';
 	
 	switch(type) {
-		case "Movie":			
-		case "Series":
+		case "LibrariesFav":
+		case "MovieFav":			
+		case "SeriesFav":
+			filters = 'IsFavorite';
 			break;
-		
-		default:
-			type = types;
+	}
+			
+	switch(type) {	
+		case "Movie":
+		case "MovieFav":
+			types = "Movie";
+			break;
+			
+		case "Series":
+		case "SeriesFav":
+			types = "Series";
 			break;
 	}
 	
@@ -38,10 +50,11 @@ function getBackdropItemIds(apiClient, userId, types, parentId) {
         SortBy: SortBy,
         Limit: 20,
         Recursive: true,
-        IncludeItemTypes: type,
+        IncludeItemTypes: types,
         ImageTypes: ImageTypes,
         ParentId: parentId,
 		GenreIds: genreIds,
+		Filters: filters,
         EnableTotalRecordCount: false,
         MaxOfficialRating: MaxOfficialRating
     };
