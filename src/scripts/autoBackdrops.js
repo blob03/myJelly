@@ -12,7 +12,7 @@ function enabled() {
 function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let ImageTypes = 'Backdrop';
 	let MaxOfficialRating = parentId ? '' : 'PG-13';
-	let SortBy = 'IsFavoriteOrLiked,Random';
+	let SortBy = 'Random';
 	let types = reqtypes;
 	let type = userSettings.enableBackdrops();
 	let genreIds = '';

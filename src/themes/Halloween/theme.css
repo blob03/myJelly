@@ -800,6 +800,8 @@ select option:selected {
 	color: #282828;
 }
 
+.imageEditor-buttons > * > .material-icons,
+.playerStats-closeButton > .material-icons,
 .headerButton > .material-icons,
 .formDialogHeader > * > .material-icons,
 .cardOverlayButtonIcon.material-icons,

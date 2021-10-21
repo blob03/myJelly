@@ -150,16 +150,17 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function loadTranslation(translations, lang) {
+		
 		if (!lang)
-			return;
-        lang = normalizeLocaleName(lang);
+			lang = fallbackCulture;
+		
         let filtered = translations.filter(function (t) {
-            return normalizeLocaleName(t.lang) === lang;
+            return t.lang === lang;
         });
 
         if (!filtered.length) {
             filtered = translations.filter(function (t) {
-                return normalizeLocaleName(t.lang) === fallbackCulture;
+                return t.lang === fallbackCulture;
             });
         }
 

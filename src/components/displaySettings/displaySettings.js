@@ -82,28 +82,34 @@ import template from './displaySettings.template.html';
         } else {
             context.querySelector('.fldDisplayMode').classList.add('hide');
         }
-		
-        if (appHost.supports('displaylanguage')) {
-			let selectLanguage = context.querySelector('#selectLanguage');
-			apiClient.getCultures().then(allCultures => {
-				allCultures.sort((a, b) => {
-					let fa = a.DisplayName.toLowerCase(),
-					fb = b.DisplayName.toLowerCase();
-					if (fa < fb) 
+					
+		apiClient.getCultures().then(allCultures => {
+			allCultures.sort((a, b) => {
+				let fa = a.DisplayName.toLowerCase(),
+				fb = b.DisplayName.toLowerCase();
+				if (fa < fb) 
 					return -1;
-					if (fa > fb) 
+				if (fa > fb) 
 					return 1;
-					return 0;
-				});
+				return 0;
+			});
+			if (appHost.supports('displaylanguage')) { 
+				let selectLanguage = context.querySelector('#selectLanguage');
 				settingsHelper.populateLanguages(selectLanguage, allCultures);
 				selectLanguage.value = userSettings.language() || '';
 				context.querySelector('.languageSection').classList.remove('hide');
-			});
-		} else {
-			context.querySelector('.languageSection').classList.add('hide');
-		}
-		
-
+			} else 
+				context.querySelector('.languageSection').classList.add('hide');
+			
+			if (datetime.supportsLocalization()) { 
+				let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
+				settingsHelper.populateLanguages(selectDateTimeLocale, allCultures);
+				selectDateTimeLocale.value = userSettings.dateTimeLocale() || '';
+				context.querySelector('.fldDateTimeLocale').classList.remove('hide');
+			} else 
+				context.querySelector('.fldDateTimeLocale').classList.add('hide');
+		});
+	
         if (appHost.supports('externallinks')) 
             context.querySelector('.learnHowToContributeContainer').classList.remove('hide');
         else 
@@ -126,26 +132,6 @@ import template from './displaySettings.template.html';
         } else 
             context.querySelector('.ScreensaverArea').classList.add('hide');
 
-        if (datetime.supportsLocalization()) { 
-			let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
-			apiClient.getCultures().then(allCultures => {
-				allCultures.sort((a, b) => {
-					let fa = a.DisplayName.toLowerCase(),
-					fb = b.DisplayName.toLowerCase();
-					if (fa < fb) 
-					return -1;
-					if (fa > fb) 
-					return 1;
-					return 0;
-				});
-				settingsHelper.populateLanguages(selectDateTimeLocale, allCultures);
-				selectDateTimeLocale.value = userSettings.dateTimeLocale() || '';
-				context.querySelector('.fldDateTimeLocale').classList.remove('hide');
-			});
-        } else {
-            context.querySelector('.fldDateTimeLocale').classList.add('hide');
-        }
-		
 		if (browser.web0s) {
             context.querySelector('.fldThemeSong').classList.remove('hide');
         } else if (browser.tizen) {

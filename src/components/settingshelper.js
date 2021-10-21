@@ -7,12 +7,9 @@ import globalize from '../scripts/globalize';
 
 export function populateLanguages(select, languages) {
     let html = '';
-	
-    for (let i = 0, length = languages.length; i < length; i++) {
-        const culture = languages[i];
-        html += "<option value='" + culture.TwoLetterISOLanguageName + "'>" + culture.DisplayName + '</option>';
-    }
-
+	languages.forEach(language => {
+		html += "<option value='" + language.TwoLetterISOLanguageName + "'>" + language.DisplayName + '</option>';
+	});
     select.innerHTML += html;
 }
 
