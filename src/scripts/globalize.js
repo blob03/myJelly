@@ -4,7 +4,6 @@ import { Events } from 'jellyfin-apiclient';
 /* eslint-disable indent */
 
     const fallbackCulture = 'en-us';
-
     const allTranslations = {};
     let currentCulture;
     let currentDateTimeCulture;
@@ -22,7 +21,6 @@ import { Events } from 'jellyfin-apiclient';
         if (culture) {
             return culture;
         }
-
         if (navigator.language) {
             return navigator.language;
         }
@@ -32,41 +30,18 @@ import { Events } from 'jellyfin-apiclient';
         if (navigator.languages && navigator.languages.length) {
             return navigator.languages[0];
         }
-
         return fallbackCulture;
     }
 
     export function updateCurrentCulture() {
-        let culture;
-        try {
-            culture = userSettings.language();
-        } catch (err) {
-            console.error('no language set in user settings');
-        }
-        culture = culture || getDefaultLanguage();
-
-        currentCulture = normalizeLocaleName(culture);
-
-        let dateTimeCulture;
-        try {
-            dateTimeCulture = userSettings.dateTimeLocale();
-        } catch (err) {
-            console.error('no date format set in user settings');
-        }
-
-        if (dateTimeCulture) {
-            currentDateTimeCulture = normalizeLocaleName(dateTimeCulture);
-        } else {
-            currentDateTimeCulture = currentCulture;
-        }
+        currentCulture = userSettings.language() || getDefaultLanguage();
+		currentDateTimeCulture = userSettings.dateTimeLocale() || currentCulture;
         ensureTranslations(currentCulture);
     }
 	
 	export function updateCulture(culture) {
         culture = culture || getDefaultLanguage();
-
-        let nCulture = normalizeLocaleName(culture);
-        ensureTranslations(nCulture);
+        ensureTranslations(culture);
     }
 
     function ensureTranslations(culture) {
@@ -88,41 +63,49 @@ import { Events } from 'jellyfin-apiclient';
             translationInfo.dictionaries[culture] = dictionary;
         });
     }
-
-    function normalizeLocaleName(culture) {
-        // TODO remove normalizations
-        culture = culture.replace('_', '-');
-
-        // convert de-DE to de
-        const parts = culture.split('-');
-        if (parts.length === 2) {
-            if (parts[0].toLowerCase() === parts[1].toLowerCase()) {
-                culture = parts[0];
-            }
-        }
-
-        const lower = culture.toLowerCase();
-        if (lower === 'ca-es') {
-            return 'ca';
-        }
-
-        // normalize Swedish
-        if (lower === 'sv-se') {
-            return 'sv';
-        }
-
-        return lower;
-    }
+	
+	function convertISOName(culture) {
+		switch (culture) {
+			case 'bg':
+				return 'bg-bg'; //convert Bulgarian ISO code to local name.
+				break;
+				
+			case 'be':
+				return 'be-by'; //convert Bielorussian ISO code to local name.
+				break;
+				
+			case 'bn':
+				return 'bn_BD'; //convert Bengali ISO code to local name.
+				break;
+				
+			case 'hi':
+				return 'hi_in'; //convert Hindi ISO code to local name.
+				break;
+				
+			case 'lt':
+				return 'lt-lt'; //convert Lituanian ISO code to local name.
+				break;
+				
+			case 'no':
+				return 'nb'; //convert Norvegian ISO code to local name.
+				break;
+				
+			case 'sl':
+				return 'sl-si'; //convert Slovenian ISO code to local name.
+				break;
+				
+			case 'zh':
+				return 'zh-cn'; //convert Chinese ISO code to local name.
+				break;
+		}
+		return culture;
+	}
 
     function getDictionary(module, locale) {
-        if (!module) {
-            module = defaultModule();
-        }
-
+        module = module || defaultModule();
         const translations = allTranslations[module];
-        if (!translations) {
+        if (!translations) 
             return {};
-        }
 
         return translations.dictionaries[locale];
     }
@@ -150,9 +133,8 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function loadTranslation(translations, lang) {
-		
-		if (!lang)
-			lang = fallbackCulture;
+		lang = lang || fallbackCulture;
+		lang = convertISOName(lang);
 		
         let filtered = translations.filter(function (t) {
             return t.lang === lang;

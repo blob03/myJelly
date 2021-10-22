@@ -66,8 +66,6 @@ window.getParameterByName = function(name, url) {
     return decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
-
-	
 function loadCoreDictionary() {
     const languages = ['af', 'ar', 'be-by', 'bg-bg', 'bn_bd', 'ca', 'cs', 'da', 'de', 'el', 'en-gb', 'en-us', 'eo', 'es', 'es-419', 'es-ar', 'es_do', 'es-mx', 'et', 'fa', 'fi', 'fil', 'fr', 'fr-ca', 'gl', 'gsw', 'he', 'hi-in', 'hr', 'hu', 'id', 'is-is', 'it', 'ja', 'kk', 'ko', 'lt-lt', 'lv', 'ml', 'mr', 'ms', 'nb', 'nl', 'pl', 'pr', 'pt', 'pt-br', 'pt-pt', 'ro', 'ru', 'sk', 'sl-si', 'sq', 'sr', 'sv', 'ta', 'te', 'th', 'tr', 'uk', 'ur_pk', 'vi', 'zh-cn', 'zh-hk', 'zh-tw', 'zu'];
     const translations = languages.map(function (language) {
