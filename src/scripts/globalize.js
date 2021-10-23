@@ -5,6 +5,7 @@ import { Events } from 'jellyfin-apiclient';
 
     const fallbackCulture = 'en-us';
     const allTranslations = {};
+	let fallbackModule = 'core';
     let currentCulture;
     let currentDateTimeCulture;
 
@@ -59,7 +60,7 @@ import { Events } from 'jellyfin-apiclient';
         if (translationInfo.dictionaries[culture]) {
             return Promise.resolve();
         }
-        return loadTranslation(translationInfo.translations, culture).then(function (dictionary) {
+        return loadTranslation(culture).then(function (dictionary) {
             translationInfo.dictionaries[culture] = dictionary;
         });
     }
@@ -71,19 +72,23 @@ import { Events } from 'jellyfin-apiclient';
 				break;
 				
 			case 'be':
-				return 'be-by'; //convert Bielorussian ISO code to local name.
+				return 'be-by'; //convert Belarusian ISO code to local name.
 				break;
 				
 			case 'bn':
 				return 'bn_BD'; //convert Bengali ISO code to local name.
 				break;
-				
+			
+			case 'en':
+				return 'en-us'; //convert English ISO code to local name.
+				break;
+			
 			case 'hi':
-				return 'hi_in'; //convert Hindi ISO code to local name.
+				return 'hi-in'; //convert Hindi ISO code to local name.
 				break;
 				
 			case 'lt':
-				return 'lt-lt'; //convert Lituanian ISO code to local name.
+				return 'lt-lt'; //convert Lithuanian ISO code to local name.
 				break;
 				
 			case 'no':
@@ -121,44 +126,35 @@ import { Events } from 'jellyfin-apiclient';
         const locale = getCurrentLocale();
         const promises = [];
         let optionsName;
-        if (typeof options === 'string') {
-            optionsName = options;
-        } else {
-            optionsName = options.name;
-            register(options);
-        }
+		if (!options)
+			optionsName = defaultModule();
+        else if (typeof options === 'string')
+			optionsName = options;
+        else 
+			optionsName = options.name;
+		
+		if (!allTranslations[optionsName])
+			register({name: optionsName, translations: ''});
+		
         promises.push(ensureTranslation(allTranslations[optionsName], locale));
         promises.push(ensureTranslation(allTranslations[optionsName], fallbackCulture));
         return Promise.all(promises);
     }
 
-    function loadTranslation(translations, lang) {
+    function loadTranslation(lang) {
 		lang = lang || fallbackCulture;
 		lang = convertISOName(lang);
-		
-        let filtered = translations.filter(function (t) {
-            return t.lang === lang;
-        });
-
-        if (!filtered.length) {
-            filtered = translations.filter(function (t) {
-                return t.lang === fallbackCulture;
-            });
-        }
 
         return new Promise(function (resolve) {
-            if (!filtered.length) {
-                resolve();
-                return;
-            }
-
-            const url = filtered[0].path;
-
-            import(`../strings/${url}`).then((fileContent) => {
-                resolve(fileContent);
-            }).catch(() => {
-                resolve({});
-            });
+            import(`../strings/${lang}.json`).then((content) => {	
+				import(`../strings/${lang}.mj.json`).then((mjcontent) => {
+					resolve({...content, ...mjcontent});
+				}).catch(() => {
+					resolve(content);
+				});
+			}).catch(() => {
+				resolve({});
+			});
         });
     }
 
@@ -198,9 +194,27 @@ import { Events } from 'jellyfin-apiclient';
         return val;
     }
 	
-	export function getCoreDictionary(Lang) {
-		let translationInfo = allTranslations['core'];
-		return loadTranslation(translationInfo.translations, Lang);
+	let DicKeysNum = {};
+	
+	export function getCoreDictionaryProgress(lang) {
+		lang = lang || getCurrentLocale();
+		if (!DicKeysNum[fallbackCulture]) {
+			let fallbackDic = allTranslations['core'].dictionaries[fallbackCulture];
+			DicKeysNum[fallbackCulture] = Object.keys(fallbackDic).length;
+			if (!DicKeysNum[fallbackCulture])
+				return 0;
+		}
+		if (!DicKeysNum[lang]) {
+			let dic = allTranslations['core'].dictionaries[lang];
+			DicKeysNum[lang] = Object.keys(dic).length;
+			if (!DicKeysNum[lang])
+				return 0;
+		}
+		return Math.floor((DicKeysNum[lang] / DicKeysNum[fallbackCulture]) * 100);
+	}
+
+	export function getCoreDictionary(lang) {
+		return loadTranslation(lang);
 	}
 
     export function translateHtml(html, module) {
@@ -231,12 +245,11 @@ import { Events } from 'jellyfin-apiclient';
         return translateHtml(html, module);
     }
 
-    let _defaultModule;
     export function defaultModule(val) {
         if (val) {
-            _defaultModule = val;
+            fallbackModule = val;
         }
-        return _defaultModule;
+        return fallbackModule;
     }
 
     updateCurrentCulture();
@@ -250,6 +263,7 @@ import { Events } from 'jellyfin-apiclient';
 export default {
     translate,
 	getCoreDictionary,
+	getCoreDictionaryProgress,
     translateHtml,
     loadStrings,
     defaultModule,

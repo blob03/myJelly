@@ -1580,24 +1580,5 @@
     "SetUsingLastTracks": "Définir les sous-titres/pistes audios avec l'élément précédent",
     "PlaybackErrorPlaceHolder": "Ceci est un emplacement pour les médias physiques que Jellyfin ne peut pas jouer. Merci d'insérer le disque pour lancer la lecture.",
     "LabelMaxDaysForNextUpHelp": "Définit le nombre maximal de jours avant qu'une émission ne soit retirée de la section 'À suivre'.",
-    "LabelMaxDaysForNextUp": "Expiration de la section 'À suivre' :",
-	
-	"Diffused": "Diffus",
-	"MoreDiffused": "Plus diffus",
-	"EnableClock": "Activer l'horloge",
-	"EnableClockHelp": "Afficher la date et l'heure locale dans la barre du haut.",
-	"LabelTextShadowColor": "Teinte de l'ombre portée :",
-	"LabelTextStrokeColor": "Couleur de contour du texte :",
-	"LabelStrokeSize": "Epaisseur du contour :",
-	"LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
-	"LabelChromecastVersion": "Version de Chromecast :",
-	"LabelScreensaverTime": "Délai avant activation :",
-	"LabelSubtitlePresets": "Styles pré-configurés :",
-	"Oblique": "Oblique :",
-	"About": "A propos...",
-	"AppDesc": "Description :",
-	"AppContact": "Contact :",
-	"Theme": "Thème",
-	"AppRepositoryName": "Nom du dépôt :",
-	"LabelBackdrops": "Arrière-plans :"
+    "LabelMaxDaysForNextUp": "Expiration de la section 'À suivre' :"
 }

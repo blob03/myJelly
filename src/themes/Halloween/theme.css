@@ -800,6 +800,7 @@ select option:selected {
 	color: #282828;
 }
 
+.osdMediaStatus > .material-icons,
 .imageEditor-buttons > * > .material-icons,
 .playerStats-closeButton > .material-icons,
 .headerButton > .material-icons,

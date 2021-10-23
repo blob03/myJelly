@@ -7,12 +7,33 @@ import globalize from '../scripts/globalize';
 
 export function populateLanguages(select, languages) {
     let html = '';
+	
 	languages.forEach(language => {
-		html += "<option value='" + language.TwoLetterISOLanguageName + "'>" + language.DisplayName + '</option>';
+		let ISOName = language.TwoLetterISOLanguageName;
+		html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
 	});
+	
+    select.innerHTML += html;
+}
+
+export function populateDictionaries(select, languages) {
+    let html = '';
+	const locale = globalize.getCurrentLocale();
+	
+	languages.forEach(language => {
+		let ISOName = language.TwoLetterISOLanguageName;
+		let progress;
+		if (ISOName === locale) {
+			progress = globalize.getCoreDictionaryProgress(ISOName);
+			html += "<option value='" + ISOName + "'>" + language.DisplayName + " - " + progress + "% completed.</option>";
+		} else 
+			html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+	});
+	
     select.innerHTML += html;
 }
 
 export default {
-    populateLanguages: populateLanguages
+    populateLanguages: populateLanguages,
+	populateDictionaries: populateDictionaries
 };

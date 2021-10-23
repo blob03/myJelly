@@ -1,0 +1,20 @@
+{
+	"Diffused": "Diffus",
+	"MoreDiffused": "Plus diffus",
+	"EnableClock": "Activer l'horloge",
+	"EnableClockHelp": "Afficher la date et l'heure locale dans la barre du haut.",
+	"LabelTextShadowColor": "Teinte de l'ombre portée :",
+	"LabelTextStrokeColor": "Couleur de contour du texte :",
+	"LabelStrokeSize": "Epaisseur du contour :",
+	"LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
+	"LabelChromecastVersion": "Version de Chromecast :",
+	"LabelScreensaverTime": "Délai avant activation :",
+	"LabelSubtitlePresets": "Styles pré-configurés :",
+	"Oblique": "Oblique :",
+	"About": "A propos...",
+	"AppDesc": "Description :",
+	"AppContact": "Contact :",
+	"Theme": "Thème",
+	"AppRepositoryName": "Nom du dépôt :",
+	"LabelBackdrops": "Arrière-plans :"
+}

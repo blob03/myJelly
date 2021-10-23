@@ -95,7 +95,7 @@ import template from './displaySettings.template.html';
 			});
 			if (appHost.supports('displaylanguage')) { 
 				let selectLanguage = context.querySelector('#selectLanguage');
-				settingsHelper.populateLanguages(selectLanguage, allCultures);
+				settingsHelper.populateDictionaries(selectLanguage, allCultures);
 				selectLanguage.value = userSettings.language() || '';
 				context.querySelector('.languageSection').classList.remove('hide');
 			} else 
