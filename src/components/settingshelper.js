@@ -25,7 +25,7 @@ export function populateDictionaries(select, languages) {
 		let progress;
 		if (ISOName === locale) {
 			progress = globalize.getCoreDictionaryProgress(ISOName);
-			html += "<option value='" + ISOName + "'>" + language.DisplayName + " - " + progress + "% completed.</option>";
+			html += "<option value='" + ISOName + "'>" + language.DisplayName + " - " + progress + "%</option>";
 		} else 
 			html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
 	});
