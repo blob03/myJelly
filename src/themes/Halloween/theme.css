@@ -96,7 +96,8 @@ html {
 .skinHeader.semiTransparent {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    background-color: rgba(40, 40, 40, .8);
+    background-color: #282828;
+	overflow: visible;
 }
 
 .layout-tv .skinHeader.semiTransparent {
@@ -831,7 +832,7 @@ select option:selected {
 }
 
 .detailRibbon {
-    background-color: White;
+    background-color: #ffa03b;
     color: rgba(255, 255, 255, 0.87);
 }
 
@@ -845,7 +846,7 @@ select option:selected {
 
 .itemName {
 	color: #282828 !important;
-	text-shadow: 3px 3px 6px #7b7b77;
+	text-shadow: 3px 3px 6px #6e3f0c;
 	overflow: visible;
 }
 
@@ -1017,3 +1018,14 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	border-color: rgba(244, 205, 114, .8) !important;
 }
 
+.headerTop {
+    padding: .54em 0em 0em 0em !important;
+}
+
+.withTabs .content-primary {
+    margin-top: 1.5em !important;
+}
+
+.libraryPage {
+    padding-top: 3em !important;
+}
