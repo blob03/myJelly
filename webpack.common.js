@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 const Assets = [
     'native-promise-only/npo.js',
@@ -30,10 +31,15 @@ module.exports = {
         ]
     },
     plugins: [
+        new DefinePlugin({
+            __WEBPACK_SERVE__: JSON.stringify(!!process.env.WEBPACK_SERVE)
+        }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'index.html'
+            template: 'index.html',
+            // Append file hashes to bundle urls for cache busting
+            hash: true
         }),
         new CopyPlugin({
             patterns: [
@@ -75,7 +81,8 @@ module.exports = {
         })
     ],
     output: {
-        filename: '[name].[contenthash].bundle.js',
+        filename: '[name].jellyfin.bundle.js',
+        chunkFilename: '[name].[contenthash].chunk.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: ''
     },
@@ -89,7 +96,7 @@ module.exports = {
             },
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules[\\/](?!@uupaa[\\/]dynamic-import-polyfill|date-fns|epubjs|flv.js|libarchive.js)/,
+                exclude: /node_modules[\\/](?!@uupaa[\\/]dynamic-import-polyfill|blurhash|date-fns|epubjs|flv.js|libarchive.js)/,
                 use: [{
                     loader: 'babel-loader'
                 }]
@@ -146,17 +153,15 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
-                use: ['file-loader']
+                type: 'asset/resource'
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
+                type: 'asset/resource'
             },
             {
                 test: /\.(mp3)$/i,
-                use: ['file-loader']
+                type: 'asset/resource'
             },
             {
                 test: require.resolve('jquery'),
