@@ -82,7 +82,7 @@ import toast from '../../../components/toast/toast';
         $('#txtUserName', page).prop('disabled', '').removeAttr('disabled');
         $('#fldConnectInfo', page).show();
         $('.lnkEditUserPreferences', page).attr('href', 'mypreferencesmenu.html?userId=' + user.Id);
-        libraryMenu.setTitle(user.Name);
+        //libraryMenu.setTitle(user.Name);
         page.querySelector('.username').innerHTML = user.Name;
         $('#txtUserName', page).val(user.Name);
         $('#chkIsAdmin', page).prop('checked', user.Policy.IsAdministrator);

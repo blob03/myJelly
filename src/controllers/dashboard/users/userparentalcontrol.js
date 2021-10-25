@@ -78,7 +78,7 @@ import toast from '../../../components/toast/toast';
 
     function loadUser(page, user, allParentalRatings) {
         page.querySelector('.username').innerHTML = user.Name;
-        libraryMenu.setTitle(user.Name);
+        //libraryMenu.setTitle(user.Name);
         loadUnratedItems(page, user);
         loadBlockedTags(page, user.Policy.BlockedTags);
         populateRatings(allParentalRatings, page);

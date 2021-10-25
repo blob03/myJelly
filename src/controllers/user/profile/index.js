@@ -13,7 +13,7 @@ function reloadUser(page) {
     loading.show();
     ApiClient.getUser(userId).then(function (user) {
         page.querySelector('.username').innerHTML = user.Name;
-        libraryMenu.setTitle(user.Name);
+        //libraryMenu.setTitle(user.Name);
 
         let imageUrl = 'assets/img/avatar.png';
         if (user.PrimaryImageTag) {

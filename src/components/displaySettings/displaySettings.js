@@ -168,7 +168,7 @@ import template from './displaySettings.template.html';
         if (appHost.supports('displaylanguage')) {	
 			VAL = context.querySelector('#selectLanguage').value;
 			const savedLanguage = userSettingsInstance.language();
-			if (!savedLanguage || VAL !== savedLanguage) {
+			if (VAL !== savedLanguage) {
 				userSettingsInstance.language(VAL);
 				instance.needreload = true;
 			}

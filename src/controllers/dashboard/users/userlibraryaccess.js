@@ -84,7 +84,7 @@ import toast from '../../../components/toast/toast';
 
     function loadUser(page, user, loggedInUser, mediaFolders, channels, devices) {
         page.querySelector('.username').innerHTML = user.Name;
-        libraryMenu.setTitle(user.Name);
+        //libraryMenu.setTitle(user.Name);
         loadChannels(page, user, channels);
         loadMediaFolders(page, user, mediaFolders);
         loadDevices(page, user, devices);

@@ -22,12 +22,12 @@ import ServerConnections from '../ServerConnections';
         parent.classList.add('hide');
 
         let button;
-
-        if (layoutManager.tv) {
+		
+        /*if (layoutManager.tv) {
             button = '';
-        } else {
+        } else {*/
             button = '<button type="button" is="paper-icon-button-light" class="playerStats-closeButton"><span class="material-icons close"></span></button>';
-        }
+        /*}*/
 
         const contentClass = layoutManager.tv ? 'playerStats-content playerStats-content-tv' : 'playerStats-content';
 
@@ -349,7 +349,6 @@ import ServerConnections from '../ServerConnections';
         });
 
         syncStats.push({
-            // TODO: clean old string 'LabelSyncPlayTimeOffset' from translations.
             label: globalize.translate('LabelSyncPlayTimeSyncOffset'),
             value: stats.TimeSyncOffset + ' ' + globalize.translate('MillisecondsUnit')
         });
