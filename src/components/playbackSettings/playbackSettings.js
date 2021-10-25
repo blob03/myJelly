@@ -168,9 +168,9 @@ import template from './playbackSettings.template.html';
         context.querySelector('.chkPlayDefaultAudioTrack').checked = user.Configuration.PlayDefaultAudioTrack;
         context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
         context.querySelector('.chkEnableCinemaMode').checked = userSettings.enableCinemaMode();
-       
         context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
-
+		context.querySelector('.chkSetUsingLastTracks').checked = userSettings.enableSetUsingLastTracks();
+		
         setMaxBitrateIntoField(context.querySelector('.selectVideoInNetworkQuality'), true, 'Video');
         setMaxBitrateIntoField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
         setMaxBitrateIntoField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
@@ -222,7 +222,7 @@ import template from './playbackSettings.template.html';
         user.Configuration.AudioLanguagePreference = context.querySelector('#selectAudioLanguage').value;
         user.Configuration.PlayDefaultAudioTrack = context.querySelector('.chkPlayDefaultAudioTrack').checked;
         user.Configuration.EnableNextEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay').checked;
-		
+		userSettingsInstance.enableSetUsingLastTracks(context.querySelector('.chkSetUsingLastTracks').checked);
 		userSettingsInstance.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
         userSettingsInstance.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
         userSettingsInstance.enableCinemaMode(context.querySelector('.chkEnableCinemaMode').checked);

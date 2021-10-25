@@ -105,8 +105,6 @@ class HtmlAudioPlayer {
         };
 
         function setCurrentSrc(elem, options) {
-            elem.removeEventListener('error', onError);
-
             unBindEvents(elem);
             bindEvents(elem);
 
@@ -184,6 +182,7 @@ class HtmlAudioPlayer {
             elem.removeEventListener('playing', onPlaying);
             elem.removeEventListener('play', onPlay);
             elem.removeEventListener('waiting', onWaiting);
+            elem.removeEventListener('error', onError); // bound in htmlMediaHelper
         }
 
         self.stop = function (destroyPlayer) {
@@ -222,6 +221,7 @@ class HtmlAudioPlayer {
 
         self.destroy = function () {
             unBindEvents(self._mediaElement);
+            htmlMediaHelper.resetSrc(self._mediaElement);
         };
 
         function createMediaElement() {
@@ -457,14 +457,14 @@ class HtmlAudioPlayer {
     setVolume(val) {
         const mediaElement = this._mediaElement;
         if (mediaElement) {
-            mediaElement.volume = val / 100;
+            mediaElement.volume = Math.pow(val / 100, 3);
         }
     }
 
     getVolume() {
         const mediaElement = this._mediaElement;
         if (mediaElement) {
-            return Math.min(Math.round(mediaElement.volume * 100), 100);
+            return Math.min(Math.round(Math.pow(mediaElement.volume, 1 / 3) * 100), 100);
         }
     }
 

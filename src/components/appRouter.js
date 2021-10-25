@@ -24,24 +24,28 @@ class AppRouter {
     isDummyBackToHome;
     msgTimeout;
     popstateOccurred = false;
+    promiseShow;
     resolveOnNextShow;
+    previousRoute = {};
     /**
      * Pages of "no return" (when "Go back" should behave differently, probably quitting the application).
      */
     startPages = ['home', 'login', 'selectserver'];
 
     constructor() {
-        window.addEventListener('popstate', () => {
-            this.popstateOccurred = true;
+        // WebKit fires a popstate event on document load
+        // Skip it using timeout
+        // For Tizen 2.x
+        // https://stackoverflow.com/a/12214354
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                window.addEventListener('popstate', () => {
+                    this.popstateOccurred = true;
+                });
+            }, 0);
         });
 
-        document.addEventListener('viewshow', () => {
-            const resolve = this.resolveOnNextShow;
-            if (resolve) {
-                this.resolveOnNextShow = null;
-                resolve();
-            }
-        });
+        document.addEventListener('viewshow', () => this.onViewShow());
 
         this.baseRoute = window.location.href.split('?')[0].replace(this.getRequestFile(), '');
         // support hashbang
@@ -119,11 +123,24 @@ class AppRouter {
         }
     }
 
-    back() {
-        page.back();
+    ready() {
+        return this.promiseShow || Promise.resolve();
     }
 
-    show(path, options) {
+    async back() {
+        if (this.promiseShow) await this.promiseShow;
+
+        this.promiseShow = new Promise((resolve) => {
+            this.resolveOnNextShow = resolve;
+            page.back();
+        });
+
+        return this.promiseShow;
+    }
+
+    async show(path, options) {
+        if (this.promiseShow) await this.promiseShow;
+
         // ensure the path does not start with '#!' since the router adds this
         if (path.startsWith('#!')) {
             path = path.substring(2);
@@ -143,17 +160,25 @@ class AppRouter {
             }
         }
 
-        return new Promise((resolve) => {
+        this.promiseShow = new Promise((resolve) => {
             this.resolveOnNextShow = resolve;
-            page.show(path, options);
+            // Schedule a call to return the promise
+            setTimeout(() => page.show(path, options), 0);
         });
+
+        return this.promiseShow;
     }
 
-    showDirect(path) {
-        return new Promise(function(resolve) {
+    async showDirect(path) {
+        if (this.promiseShow) await this.promiseShow;
+
+        this.promiseShow = new Promise((resolve) => {
             this.resolveOnNextShow = resolve;
-            page.show(this.baseUrl() + path);
+            // Schedule a call to return the promise
+            setTimeout(() => page.show(this.baseUrl() + path), 0);
         });
+
+        return this.promiseShow;
     }
 
     start(options) {
@@ -408,6 +433,15 @@ class AppRouter {
         });
     }
 
+    onViewShow() {
+        const resolve = this.resolveOnNextShow;
+        if (resolve) {
+            this.promiseShow = null;
+            this.resolveOnNextShow = null;
+            resolve();
+        }
+    }
+
     onForcedLogoutMessageTimeout() {
         const msg = this.forcedLogoutMsg;
         this.forcedLogoutMsg = null;
@@ -625,8 +659,17 @@ class AppRouter {
     getHandler(route) {
         return (ctx, next) => {
             ctx.isBack = this.popstateOccurred;
-            this.handleRoute(ctx, next, route);
             this.popstateOccurred = false;
+
+            const ignore = route.dummyRoute === true || this.previousRoute.dummyRoute === true;
+            this.previousRoute = route;
+            if (ignore) {
+                // Resolve 'show' promise
+                this.onViewShow();
+                return;
+            }
+
+            this.handleRoute(ctx, next, route);
         };
     }
 

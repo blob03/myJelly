@@ -13,6 +13,7 @@ import {
     getCrossOriginValue,
     enableHlsJsPlayer,
     applySrc,
+    resetSrc,
     playWithPromise,
     onEndedInternal,
     saveVolume,
@@ -385,7 +386,6 @@ function tryRemoveElement(elem) {
             return new Promise((resolve, reject) => {
                 requireHlsPlayer(async () => {
                     let maxBufferLength = 30;
-                    let maxMaxBufferLength = 600;
 
                     // Some browsers cannot handle huge fragments in high bitrate.
                     // This issue usually happens when using HWA encoders with a high bitrate setting.
@@ -393,7 +393,6 @@ function tryRemoveElement(elem) {
                     // https://github.com/video-dev/hls.js/issues/876
                     if ((browser.chrome || browser.edgeChromium || browser.firefox) && playbackManager.getMaxStreamingBitrate(this) >= 25000000) {
                         maxBufferLength = 6;
-                        maxMaxBufferLength = 6;
                     }
 
                     const includeCorsCredentials = await getIncludeCorsCredentials();
@@ -401,7 +400,6 @@ function tryRemoveElement(elem) {
                     const hls = new Hls({
                         manifestLoadingTimeOut: 20000,
                         maxBufferLength: maxBufferLength,
-                        maxMaxBufferLength: maxMaxBufferLength,
                         xhrSetup(xhr) {
                             xhr.withCredentials = includeCorsCredentials;
                         }
@@ -678,13 +676,13 @@ function tryRemoveElement(elem) {
                 }
 
                 onEndedInternal(this, elem, this.onError);
-
-                if (destroyPlayer) {
-                    this.destroy();
-                }
             }
 
             this.destroyCustomTrack(elem);
+
+            if (destroyPlayer) {
+                this.destroy();
+            }
 
             return Promise.resolve();
         }
@@ -711,6 +709,9 @@ function tryRemoveElement(elem) {
                 videoElement.removeEventListener('click', this.onClick);
                 videoElement.removeEventListener('dblclick', this.onDblClick);
                 videoElement.removeEventListener('waiting', this.onWaiting);
+                videoElement.removeEventListener('error', this.onError); // bound in htmlMediaHelper
+
+                resetSrc(videoElement);
 
                 videoElement.parentNode.removeChild(videoElement);
             }
@@ -1065,7 +1066,13 @@ function tryRemoveElement(elem) {
                 workerUrl: `${appRouter.baseUrl()}/libraries/subtitles-octopus-worker.js`,
                 legacyWorkerUrl: `${appRouter.baseUrl()}/libraries/subtitles-octopus-worker-legacy.js`,
                 onError() {
-                    onErrorInternal(htmlVideoPlayer, 'mediadecodeerror');
+                    // HACK: Clear JavascriptSubtitlesOctopus: it gets disposed when an error occurs
+                    htmlVideoPlayer.#currentSubtitlesOctopus = null;
+
+                    // HACK: Give JavascriptSubtitlesOctopus time to dispose itself
+                    setTimeout(() => {
+                        onErrorInternal(htmlVideoPlayer, 'mediadecodeerror');
+                    }, 0);
                 },
                 timeOffset: (this._currentPlayOptions.transcodingOffsetTicks || 0) / 10000000,
 
@@ -1364,24 +1371,41 @@ function tryRemoveElement(elem) {
                         this.#videoDialog = dlg;
                         this.#mediaElement = videoElement;
 
+                        delete this.forcedFullscreen;
+
                         if (options.fullscreen) {
                             // At this point, we must hide the scrollbar placeholder, so it's not being displayed while the item is being loaded
                             document.body.classList.add('hide-scroll');
+
+                            // Enter fullscreen in the webOS browser to hide the top bar
+                            if (!window.NativeShell && browser.web0s && Screenfull.isEnabled) {
+                                Screenfull.request().then(() => {
+                                    this.forcedFullscreen = true;
+                                });
+                                return videoElement;
+                            }
+
+                            // don't animate on smart tv's, too slow
+                            if (!browser.slow && browser.supportsCssAnimation()) {
+                                return zoomIn(dlg).then(function () {
+                                    return videoElement;
+                                });
+                            }
                         }
 
-                        // don't animate on smart tv's, too slow
-                        if (options.fullscreen && browser.supportsCssAnimation() && !browser.slow) {
-                            return zoomIn(dlg).then(function () {
-                                return videoElement;
-                            });
-                        } else {
-                            return videoElement;
-                        }
+                        return videoElement;
                     });
                 } else {
-                    // we need to hide scrollbar when starting playback from page with animated background
                     if (options.fullscreen) {
+                        // we need to hide scrollbar when starting playback from page with animated background
                         document.body.classList.add('hide-scroll');
+
+                        // Enter fullscreen in the webOS browser to hide the top bar
+                        if (!this.forcedFullscreen && !window.NativeShell && browser.web0s && Screenfull.isEnabled) {
+                            Screenfull.request().then(() => {
+                                this.forcedFullscreen = true;
+                            });
+                        }
                     }
 
                     return Promise.resolve(dlg.querySelector('video'));
@@ -1708,14 +1732,14 @@ function tryRemoveElement(elem) {
     setVolume(val) {
         const mediaElement = this.#mediaElement;
         if (mediaElement) {
-            mediaElement.volume = val / 100;
+            mediaElement.volume = Math.pow(val / 100, 3);
         }
     }
 
     getVolume() {
         const mediaElement = this.#mediaElement;
         if (mediaElement) {
-            return Math.min(Math.round(mediaElement.volume * 100), 100);
+            return Math.min(Math.round(Math.pow(mediaElement.volume, 1 / 3) * 100), 100);
         }
     }
 
