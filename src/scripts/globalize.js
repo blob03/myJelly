@@ -144,10 +144,17 @@ import { Events } from 'jellyfin-apiclient';
     function loadTranslation(lang) {
 		lang = lang || fallbackCulture;
 		lang = convertISOName(lang);
+		
+		Object.filter = (obj, predicate) => 
+			Object.assign(...Object.keys(obj)
+				.filter( key => predicate(obj[key]) )
+				.map( key => ({ [key]: obj[key] }) ) );
 
         return new Promise(function (resolve) {
             import(`../strings/${lang}.json`).then((content) => {	
+			content = Object.filter(content, str => typeof str === "string" && str.length);
 				import(`../strings/${lang}.mj.json`).then((mjcontent) => {
+					mjcontent = Object.filter(mjcontent, str => typeof str === "string" && str.length);
 					resolve({...content, ...mjcontent});
 				}).catch(() => {
 					resolve(content);
