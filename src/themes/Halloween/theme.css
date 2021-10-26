@@ -407,43 +407,6 @@ html {
     background: center no-repeat #282828;
 }
 
-/* checkbox widget */
-
-@keyframes check-in {
-	from {transform: scale(0);}
-	to {transform: scale(1.8);}
-}
-
-.checkboxIcon-checked {
-	color: #282828 !important;
-	padding-left: 7px;
-	padding-bottom: 5px;
-	transform: scale(1.8);
-	text-shadow: 1px 2px 3px #1e1d25;
-	animation-name: check-in;
-	animation-duration: .15s;
-}
-
-.checkboxOutline {
-	overflow: visible;
-	transform: scale(0.7);
-	border: 3px solid rgba(97, 213, 233, 0.8);
-	border-radius: 100%;
-}
-
-.emby-checkbox + span + .checkboxOutline {
-    border-color: #463019;
-}
-
-.emby-checkbox:checked + span + .checkboxOutline {
-	background-color: rgb(157, 97, 3);
-}
-
-.emby-checkbox:focus + span + .checkboxOutline,
-.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border-color: rgba(244, 205, 114, 0.8);
-}
-
 /* Buttons */
 
 @keyframes focus {
@@ -672,12 +635,11 @@ select option:selected {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-.mdl-slider-background-lower  {
+.mdl-slider-background-lower {
 	background: linear-gradient(135deg, rgb(68, 46, 3) 0%, rgb(203, 120, 14) 50%, rgb(247, 163, 2) 100%);
 }
 
-.mdl-slider::-moz-range-thumb
- {
+.mdl-slider::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
 	background: #282828;
 }
@@ -692,10 +654,22 @@ select option:selected {
 	background: #282828;
 }
 
-.mdl-slider::-webkit-slider-thumb:hover,
-.mdl-slider::-webkit-slider-thumb:focus {
+.mdl-slider:focus::-moz-range-thumb,
+.mdl-slider:hover:not(:disabled)::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #ffa906;
+	background: rgb(244, 205, 114);
+}
+
+.mdl-slider:focus::-ms-thumb,
+.mdl-slider:hover:not(:disabled)::-ms-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: rgb(244, 205, 114);
+}
+
+.mdl-slider:focus::-webkit-slider-thumb,
+.mdl-slider:hover:not(:disabled)::-webkit-slider-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: rgb(244, 205, 114);
 }
 
 .mdl-slider-container {
@@ -1008,10 +982,53 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	background: #e18829;
 }
 
+/* checkbox widget */
+
+@keyframes check-in {
+	from {transform: scale(0);}
+	to {transform: scale(1.8);}
+}
+
+.checkboxIcon-checked {
+	color: #282828 !important;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	transform: scale(1.8);
+	text-shadow: 1px 2px 3px #1e1d25;
+	animation-name: check-in;
+	animation-duration: .15s;
+}
+
+.checkboxOutline {
+	overflow: visible;
+	transform: scale(0.74);
+	border: 3px solid rgba(97, 213, 233, 0.8);
+	border-radius: 100%;
+}
+
+.emby-checkbox + span + .checkboxOutline {
+    border-color: #463019;
+}
+
+.emby-checkbox:checked + span + .checkboxOutline {
+	background-color: rgb(157, 97, 3);
+}
+
+.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
+.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline > .checkboxIcon-checked,
+.emby-checkbox:focus + span + .checkboxOutline,
+.emby-checkbox:focus + span + .checkboxOutline > .checkboxIcon-checked {
+	border-color: rgb(244, 205, 114) !important;
+	color: rgb(244, 205, 114) !important;
+}
+
+/* Pseudo radio widget (a radio button that allows unselects) */
+/* based on the checkbox widget */
+
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
 	color: #282828 !important;
-	font-size: 160%;
+	font-size: 170%;
 	text-shadow: 1px 2px 3px #1e1d25;
 }
 
@@ -1029,7 +1046,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
 	color: rgb(244, 205, 114) !important;
 }
-
+ 
 .headerTop {
     padding: .54em 0em 0em 0em !important;
 }
