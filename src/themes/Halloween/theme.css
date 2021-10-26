@@ -1008,26 +1008,26 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	background: #e18829;
 }
 
+.radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
 	color: #282828 !important;
-	transform: scale(1.0);
+	font-size: 160%;
 	text-shadow: 1px 2px 3px #1e1d25;
-
 }
 
-.radio > * > .checkboxIcon-checked {
-	color: #282828 !important;
-	transform: scale(1.0);
-	text-shadow: 1px 2px 3px #1e1d25;
+.radio.emby-checkbox + span + .checkboxOutline {
+	border: none !important;
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
 	background-color: rgb(157, 97, 3);
 }
 
-.radio.emby-checkbox:focus + span + .checkboxOutline,
-.radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border-color: rgba(244, 205, 114, .8) !important;
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked,
+.radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
+.radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
+	color: rgb(244, 205, 114) !important;
 }
 
 .headerTop {
