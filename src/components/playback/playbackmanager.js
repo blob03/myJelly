@@ -1643,7 +1643,7 @@ class PlaybackManager {
 
         function changeStream(player, ticks, params) {
             if (canPlayerSeek(player) && params == null) {
-                player.currentTime(parseInt(ticks / 10000));
+                player.currentTime(parseInt(ticks / 10000, 10));
                 return;
             }
 
@@ -1666,7 +1666,7 @@ class PlaybackManager {
                 const apiClient = ServerConnections.getApiClient(currentItem.ServerId);
 
                 if (ticks) {
-                    ticks = parseInt(ticks);
+                    ticks = parseInt(ticks, 10);
                 }
 
                 const maxBitrate = params.MaxStreamingBitrate || self.getMaxStreamingBitrate(player);
@@ -2295,25 +2295,33 @@ class PlaybackManager {
 
         function autoSetNextTracks(prevSource, mediaSource) {
             try {
-                if (!prevSource) return;
+				
+				console.debug('Inside autoSetNextTracks.');					
+				
+                if (!prevSource) {
+					console.warn('AutoSet - No prevSource');
+					return;
+				}
 
                 if (!mediaSource) {
                     console.warn('AutoSet - No mediaSource');
                     return;
                 }
 
-                if (typeof prevSource.DefaultAudioStreamIndex != 'number'
-                    || typeof prevSource.DefaultSubtitleStreamIndex != 'number')
-                    return;
-
-                if (typeof mediaSource.DefaultAudioStreamIndex != 'number'
-                    || typeof mediaSource.DefaultSubtitleStreamIndex != 'number') {
-                    console.warn('AutoSet - No stream indexes (but prevSource has them)');
-                    return;
-                }
-
-                rankStreamType(prevSource.DefaultAudioStreamIndex, prevSource, mediaSource, 'Audio');
-                rankStreamType(prevSource.DefaultSubtitleStreamIndex, prevSource, mediaSource, 'Subtitle');
+				if (typeof prevSource.DefaultAudioStreamIndex === 'number' && 
+					typeof mediaSource.DefaultAudioStreamIndex === 'number')
+					rankStreamType(prevSource.DefaultAudioStreamIndex, prevSource, mediaSource, 'Audio');	
+				else
+					console.debug('AutoSet - Missing Audio stream index in given sources.');					
+				
+                if (typeof prevSource.DefaultSubtitleStreamIndex === 'number' && 
+					typeof mediaSource.DefaultSubtitleStreamIndex === 'number')
+                    rankStreamType(prevSource.DefaultSubtitleStreamIndex, prevSource, mediaSource, 'Subtitle');
+				else
+					console.debug('AutoSet - Missing Subtitles stream index in given sources.');					
+ 
+                return;
+                
             } catch (e) {
                 console.error(`AutoSet - Caught unexpected error: ${e}`);
             }
@@ -2380,7 +2388,7 @@ class PlaybackManager {
                 return getPlaybackMediaSource(player, apiClient, deviceProfile, maxBitrate, item, startPosition, mediaSourceId, audioStreamIndex, subtitleStreamIndex).then(function (mediaSource) {
                     if (userSettings.enableSetUsingLastTracks())
                         autoSetNextTracks(prevSource, mediaSource);
-
+ 
                     const streamInfo = createStreamInfo(apiClient, item.MediaType, item, mediaSource, startPosition, player);
 
                     streamInfo.fullscreen = playOptions.fullscreen;
@@ -3491,7 +3499,7 @@ class PlaybackManager {
 
         percent /= 100;
         ticks *= percent;
-        this.seek(parseInt(ticks), player);
+        this.seek(parseInt(ticks, 10), player);
     }
 
     seekMs(ms, player = this._currentPlayer) {
@@ -3882,13 +3890,13 @@ class PlaybackManager {
                 this.setBrightness(cmd.Arguments.Brightness, player);
                 break;
             case 'SetAudioStreamIndex':
-                this.setAudioStreamIndex(parseInt(cmd.Arguments.Index), player);
+                this.setAudioStreamIndex(parseInt(cmd.Arguments.Index, 10), player);
                 break;
             case 'SetSubtitleStreamIndex':
-                this.setSubtitleStreamIndex(parseInt(cmd.Arguments.Index), player);
+                this.setSubtitleStreamIndex(parseInt(cmd.Arguments.Index, 10), player);
                 break;
             case 'SetMaxStreamingBitrate':
-                this.setMaxStreamingBitrate(parseInt(cmd.Arguments.Bitrate), player);
+                this.setMaxStreamingBitrate(parseInt(cmd.Arguments.Bitrate, 10), player);
                 break;
             case 'ToggleFullscreen':
                 this.toggleFullscreen(player);

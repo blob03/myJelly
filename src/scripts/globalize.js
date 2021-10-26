@@ -17,7 +17,7 @@ import { Events } from 'jellyfin-apiclient';
         return currentDateTimeCulture;
     }
 
-    function getDefaultLanguage() {
+    export function getDefaultLanguage() {
         const culture = document.documentElement.getAttribute('data-culture');
         if (culture) {
             return culture;
@@ -269,6 +269,7 @@ export default {
     defaultModule,
     getCurrentLocale,
     getCurrentDateTimeLocale,
+	getDefaultLanguage,
     register,
     updateCurrentCulture,
 	updateCulture

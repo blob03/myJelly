@@ -495,7 +495,7 @@ html {
 }
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
-	background-color: #303030;
+	background-color: transparent;
 }
 
 .emby-button:active {
@@ -545,6 +545,8 @@ html {
 .headerButton:active:not(:disabled),
 .detailButton:active:not(:disabled),
 .headerButton:hover:not(:disabled) {
+	overflow: visible;
+	color: #efe4aa;
 }
 
 

@@ -416,8 +416,8 @@ html {
 
 .checkboxIcon-checked {
 	color: #282828 !important;
-	padding-left: 5px;
-	padding-bottom: 6px;
+	padding-left: 7px;
+	padding-bottom: 5px;
 	transform: scale(1.8);
 	text-shadow: 1px 2px 3px #1e1d25;
 	animation-name: check-in;
@@ -1008,9 +1008,17 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	background: #e18829;
 }
 
-.radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
 	color: #282828 !important;
+	transform: scale(1.0);
+	text-shadow: 1px 2px 3px #1e1d25;
+
+}
+
+.radio > * > .checkboxIcon-checked {
+	color: #282828 !important;
+	transform: scale(1.0);
+	text-shadow: 1px 2px 3px #1e1d25;
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
