@@ -1,4 +1,4 @@
-import { version as appVersion } from '../../package.json';
+import { version as appVersion, name as appName } from '../config.json';
 import appSettings from '../scripts/settings/appSettings';
 import browser from '../scripts/browser';
 import { Events } from 'jellyfin-apiclient';
@@ -6,8 +6,6 @@ import * as htmlMediaHelper from '../components/htmlMediaHelper';
 import * as webSettings from '../scripts/settings/webSettings';
 import globalize from '../scripts/globalize';
 import profileBuilder from '../scripts/browserDeviceProfile';
-
-const appName = 'Jellyfin Web';
 
 function getBaseProfileOptions(item) {
     const disableHlsVideoAudioCodecs = [];
