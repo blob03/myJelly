@@ -930,8 +930,8 @@ fieldset {
 
 .checkboxIcon-checked {
 	color: #888 !important;
-	padding-left: 7px;
-	padding-bottom: 7px;
+	padding-left: .2em;
+	padding-bottom: .2em;
 	transform: scale(1.8);
 	text-shadow: 1px 2px 3px #1e1d25;
 	animation-name: check-in;
@@ -939,8 +939,8 @@ fieldset {
 }
 
 .checkboxOutline {
-	transform: scale(0.74);
-	border: 3px solid rgba(97, 213, 233, 0.8);
+	transform: scale(0.78);
+	border: .2em solid rgb(97, 213, 233);
 	border-radius: 100%;
 	overflow: visible;
 }
@@ -967,6 +967,12 @@ fieldset {
 
 /* Pseudo radio widget (a radio button that allows unselects) */
 /* based on the checkbox widget */
+
+.radio > .checkboxLabel,
+.radio + .fieldDescription {
+	margin-bottom: .3em !important;
+	margin-left: -.3em !important;
+}
 
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {

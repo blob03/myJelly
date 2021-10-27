@@ -991,8 +991,8 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .checkboxIcon-checked {
 	color: #282828 !important;
-	padding-left: 7px;
-	padding-bottom: 7px;
+	padding-left: .2em;
+	padding-bottom: .2em;
 	transform: scale(1.8);
 	text-shadow: 1px 2px 3px #1e1d25;
 	animation-name: check-in;
@@ -1001,8 +1001,8 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .checkboxOutline {
 	overflow: visible;
-	transform: scale(0.74);
-	border: 3px solid rgba(97, 213, 233, 0.8);
+	transform: scale(0.78);
+	border: .2em solid rgb(93, 62, 15);
 	border-radius: 100%;
 }
 
@@ -1024,6 +1024,12 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 /* Pseudo radio widget (a radio button that allows unselects) */
 /* based on the checkbox widget */
+
+.radio > .checkboxLabel,
+.radio + .fieldDescription {
+	margin-bottom: .3em !important;
+	margin-left: -.3em !important;
+}
 
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
