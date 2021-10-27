@@ -386,23 +386,18 @@ import browser from './browser';
         if (supportsMp2VideoAudio) {
             videoAudioCodecs.push('mp2');
         }
-
+		
         let supportsDts = options.supportsDts;
         if (supportsDts == null) {
-            supportsDts = browser.tizen || browser.web0sVersion || videoTestElement.canPlayType('video/mp4; codecs="dts-"').replace(/no/, '') || videoTestElement.canPlayType('video/mp4; codecs="dts+"').replace(/no/, '');
+            supportsDts = browser.tizen || browser.web0sVersion 
+				|| videoTestElement.canPlayType('video/mp4; codecs="dts-"').replace(/no/, '') 
+				|| videoTestElement.canPlayType('video/mp4; codecs="dts+"').replace(/no/, '');
 			
 		    // DTS audio is not supported by Samsung TV 2018+ (Tizen 4.0+) and LG TV 2020+ (webOS 5.0+) models
-            if (browser.tizenVersion >= 4 || browser.web0sVersion >= 5) {
-                supportsDts = false;
-            }
+            if (browser.tizenVersion >= 4 || browser.web0sVersion >= 5) 
+                supportsDts = false;	
         }
 
-		// old Fix for LG
-		// DTS audio appears no longer supported by some models of late (eg. OLED 65CX)
-        // if (browser.web0s) {
-        //    supportsDts = false;
-        // }
-		
         if (supportsDts) {
             videoAudioCodecs.push('dca');
             videoAudioCodecs.push('dts');

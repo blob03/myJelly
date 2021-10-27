@@ -20,6 +20,7 @@ class AboutTab {
 		html += '<div> ' + globalize.translate('LabelName') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.name + '</span></div>';
 		html += '<div> ' + globalize.translate('AppDesc') + ' <span style="font-weight:400;font-style: italic;" class="aboutcontent">' + appInfo.description + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
+		html += '<div> ' + globalize.translate('AppHost') + ' <span style="font-weight:400;" class="aboutcontent">' + appHost.deviceName() + ' - ' + this.getHostVersion(browser)  + '</span></div>';
 		if (browser.tv || layoutManager.tv) {
 			html += '<div> ' + globalize.translate('AppRepositoryName') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.repository + '</span></div>';
 			html += '<div> ' + globalize.translate('AppContact') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.contact + '</span></div>';
@@ -30,6 +31,26 @@ class AboutTab {
 		html += '</div>';
 		this.sectionsContainer.innerHTML += html;
     }
+	
+	getHostVersion(browser) {
+		
+		if (browser.web0s) 
+			return 'WebOS ' + browser.web0sVersion;
+		if (browser.iOS) {
+			let version = browser.iOSVersion;
+			if (browser.ipad)
+				return 'ipad iOS ' + version;
+			if (browser.iphone)
+				return 'iphone iOS ' + version;
+			if (browser.ipod)
+				return 'ipod iOS ' + version;
+			return 'iOS ' + version;
+		}
+		if (browser.tizen) 
+			return 'Tizen ' + browser.tizenVersion;
+		
+		return browser.version;
+	}
 	
 	onResume(options) {
 	}
