@@ -19,6 +19,7 @@ import Dashboard, { pageClassOn } from './clientUtils';
 import ServerConnections from '../components/ServerConnections';
 import Headroom from 'headroom.js';
 import appSettings from './settings/appSettings';
+import { UserSettings } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 
@@ -728,9 +729,6 @@ import appSettings from './settings/appSettings';
             showBySelector('.libraryMenuDownloads', false);
         }
 
-        const userId = Dashboard.getCurrentUserId();
-        const apiClient = getCurrentApiClient();
-
         const customMenuOptions = document.querySelector('.customMenuOptions');
         if (customMenuOptions) {
             getMenuLinks().then(links => {
@@ -756,6 +754,8 @@ import appSettings from './settings/appSettings';
             });
         }
 
+        const userId = Dashboard.getCurrentUserId();
+        const apiClient = getCurrentApiClient();
         const libraryMenuOptions = document.querySelector('.libraryMenuOptions');
 
         if (libraryMenuOptions) {
@@ -1046,6 +1046,18 @@ import appSettings from './settings/appSettings';
         document.title = title || 'Jellyfin';
     }
 
+	function displayFontSizeModifier(apiClient) { 
+		const currentSettings = new UserSettings();
+		const userId = Dashboard.getCurrentUserId();
+		const setUserInfo = currentSettings.setUserInfo(userId, apiClient);
+		const currentResizeRatio = currentSettings.displayFontSize() || 0;
+		
+		let appValue = getComputedStyle(document.documentElement).getPropertyValue("font-size");
+		appValue = parseFloat(appValue.slice(0, appValue.length - 2));
+		
+		document.body.style.fontSize = (appValue + (appValue * currentResizeRatio/100)) + "px"; 
+	}
+	
     function setTransparentMenu (transparent) {
         if (transparent) {
             skinHeader.classList.add('semiTransparent');
@@ -1067,6 +1079,8 @@ import appSettings from './settings/appSettings';
         const isHomePage = page.classList.contains('homePage');
         const isLibraryPage = !isDashboardPage && page.classList.contains('libraryPage');
         const apiClient = getCurrentApiClient();
+
+		displayFontSizeModifier(apiClient);
 
         if (isDashboardPage) {
             if (mainDrawerButton) {

@@ -74,6 +74,11 @@ import template from './displaySettings.template.html';
 		if (pnode) 
 			pnode.querySelector('.fieldDescription').innerHTML = e.target.value + " min.";
 	}
+	
+	function onDisplayFontSizeChange(e) { 		
+		let appValue = 93;
+		document.body.style.fontSize = (appValue + (appValue * e.target.value/100)) + "%"; 
+	}
 
     function loadForm(context, user, userSettings, apiClient) {
 		if (appHost.supports('displaymode')) {
@@ -155,6 +160,14 @@ import template from './displaySettings.template.html';
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
+		
+		let event = new Event('change');
+		let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
+		sliderDisplayFontSize.value = userSettings.displayFontSize() || 0;
+		sliderDisplayFontSize.addEventListener('change', onDisplayFontSizeChange);
+		sliderDisplayFontSize.addEventListener('input', onDisplayFontSizeChange);
+		sliderDisplayFontSize.dispatchEvent(event);
+		
         context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize() || 60;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
 		
@@ -193,6 +206,7 @@ import template from './displaySettings.template.html';
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
+		userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);

@@ -17,5 +17,6 @@
 	"AppHost": "Hôte :",
 	"Theme": "Thème",
 	"AppRepositoryName": "Nom du dépôt :",
-	"LabelBackdrops": "Arrière-plans :"
+	"LabelBackdrops": "Arrière-plans :",
+	"LabelDisplayFontSize": "Taille de la police d'affichage :"
 }

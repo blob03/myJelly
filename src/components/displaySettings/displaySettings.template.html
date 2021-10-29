@@ -14,6 +14,13 @@
         <div class="fieldDescription">${DisplayModeHelp}</div>
     </div>
 	
+	<div class="sliderContainer-settings" style="width: 100%;height: auto;">
+		<div class="sliderContainer">
+			<input is="emby-slider" id="sliderDisplayFontSize" label="${LabelDisplayFontSize}" type="range" min="-20" max="20" step="2"/>
+		</div>
+		<div class="fieldDescription" style="float:right"></div>
+	</div>
+	
     <div class="selectContainer languageSection hide">
         <select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
             <option value="">${Auto}</option>

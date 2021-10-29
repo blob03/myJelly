@@ -422,6 +422,22 @@ export class UserSettings {
     }
 
     /**
+     * Get or set amount of resizing in % of the value set by the application.
+     * @param {number|undefined} val - % of resizing, between -20 and 20 inclusively.
+     * @return {number} % of resizing.
+     */		
+    displayFontSize(val) {
+        if (val !== undefined) 
+            return this.set('displayFontSize', parseInt(val, 10));
+        
+		const fontSize = parseInt(this.get('displayFontSize'), 10);
+		if (fontSize < -20 || fontSize > 20) 
+			return 0; // use application default.
+        else 
+            return fontSize;
+    }
+	
+    /**
      * Get or set amount of fast forward.
      * @param {number|undefined} val - Amount of fast forward.
      * @return {number} Amount of fast forward.
@@ -645,6 +661,7 @@ export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSet
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const enableBackdrops = currentSettings.enableBackdrops.bind(currentSettings);
+export const displayFontSize = currentSettings.displayFontSize.bind(currentSettings);
 export const detailsBanner = currentSettings.detailsBanner.bind(currentSettings);
 export const useEpisodeImagesInNextUpAndResume = currentSettings.useEpisodeImagesInNextUpAndResume.bind(currentSettings);
 export const language = currentSettings.language.bind(currentSettings);

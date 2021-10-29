@@ -18,5 +18,6 @@
 	"AppHost": "Host:",
 	"Theme": "Theme",
 	"AppRepositoryName": "Repository Name:",
-	"LabelBackdrops": "Backdrops:"
+	"LabelBackdrops": "Backdrops:",
+	"LabelDisplayFontSize": "Display font size:"
 }

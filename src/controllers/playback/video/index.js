@@ -562,10 +562,13 @@ import { appRouter } from '../../../components/appRouter';
         }
 
         function showComingUpNextIfNeeded(player, currentItem, currentTimeTicks, runtimeTicks) {
-            if (runtimeTicks && currentTimeTicks && !comingUpNextDisplayed && !currentVisibleMenu && currentItem.Type === 'Episode' && userSettings.enableNextVideoInfoOverlay()) {
-				// runtime > 50min then show up at end-40s or else if runtime > 40 min then at end-35s or else at end-30s.
+            if (runtimeTicks && currentTimeTicks && !comingUpNextDisplayed && !currentVisibleMenu 
+				&& currentItem.Type === 'Episode' && userSettings.enableNextVideoInfoOverlay()) {
+				// runtime > 50min then show the window at END - 40s
+				// runtime > 40min then show it up at END - 35s
+				// or else at END - 30s.
                 const showAtSecondsLeft = runtimeTicks >= 3e10 ? 40 : runtimeTicks >= 24e9 ? 35 : 30;
-                const showAtTicks = runtimeTicks - 1e3 * showAtSecondsLeft * 1e4;
+                const showAtTicks = runtimeTicks - showAtSecondsLeft * 1e7;
                 const timeRemainingTicks = runtimeTicks - currentTimeTicks;
 
 				// 10 millions ticks in one second hence 2e8 ticks convert into 20s.

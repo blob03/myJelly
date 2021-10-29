@@ -1,6 +1,6 @@
 {
 	"name": "Myjelly",
-	"version": "10.7.7-90",
+	"version": "10.7.7-91",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin Web client.",
 	"repository": "https://github.com/blob03/myjelly",
@@ -33,11 +33,11 @@
 		"id": "light-alt-blue",
 		"color": "#303030"
 	}, {
-		"name": "Halloween 1.54",
+		"name": "Halloween 1.55",
 		"id": "Halloween",
 		"color": "#282828"
 	}, {
-		"name": "Dark alt. 1.35",
+		"name": "Dark alt. 1.36",
 		"id": "dark-alt",
 		"color": "#202020"
 	}, {

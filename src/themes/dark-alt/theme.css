@@ -465,6 +465,7 @@ html {
 
 .emby-tab-button {
     color: rgb(112, 123, 128);
+	overflow: visible;
 }
 
 .emby-tab-button:hover:not(:disabled) {
