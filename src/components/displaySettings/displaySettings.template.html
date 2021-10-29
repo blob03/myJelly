@@ -3,22 +3,26 @@
         ${Display}
     </h2>
 
-    <div class="selectContainer fldDisplayMode hide">
-        <select is="emby-select" id="selectLayout" class="selectLayout" label="${LabelDisplayMode}">
-            <option value="">${Auto}</option>
-			<option disabled>${OptionDivider}</option>
-            <option value="desktop">${Desktop}</option>
-            <option value="mobile">${Mobile}</option>
-            <option value="tv">${TV}</option>
-        </select>
-        <div class="fieldDescription">${DisplayModeHelp}</div>
-    </div>
-	
-	<div class="sliderContainer-settings" style="width: 100%;height: auto;">
-		<div class="sliderContainer">
-			<input is="emby-slider" id="sliderDisplayFontSize" label="${LabelDisplayFontSize}" type="range" min="-20" max="20" step="2"/>
+	<div class="ScreensaverArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+		<div class="selectContainer fldDisplayMode hide" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
+			<select is="emby-select" id="selectLayout" class="selectLayout" label="${LabelDisplayMode}">
+				<option value="">${Auto}</option>
+				<option disabled>${OptionDivider}</option>
+				<option value="desktop">${Desktop}</option>
+				<option value="mobile">${Mobile}</option>
+				<option value="tv">${TV}</option>
+			</select>
+			<div class="fieldDescription">${DisplayModeHelp}</div>
 		</div>
-		<div class="fieldDescription" style="float:right"></div>
+		
+		<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+			<div class="sliderContainer">
+				<input is="emby-slider" id="sliderDisplayFontSize" label="${LabelDisplayFontSize}" type="range" min="-20" max="20" step="2"/>
+			</div>
+			<div class="fieldDescription" style="float:right"></div>
+		</div>
+
 	</div>
 	
     <div class="selectContainer languageSection hide">
