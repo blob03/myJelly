@@ -1051,11 +1051,9 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		const userId = Dashboard.getCurrentUserId();
 		const setUserInfo = currentSettings.setUserInfo(userId, apiClient);
 		const currentResizeRatio = currentSettings.displayFontSize() || 0;
+		const appValue = 93;
 		
-		let appValue = getComputedStyle(document.documentElement).getPropertyValue("font-size");
-		appValue = parseFloat(appValue.slice(0, appValue.length - 2));
-		
-		document.body.style.fontSize = (appValue + (appValue * currentResizeRatio/100)) + "px"; 
+		document.body.style.fontSize = (appValue + (appValue * currentResizeRatio/100)) + "%"; 
 	}
 	
     function setTransparentMenu (transparent) {
