@@ -81,13 +81,7 @@ import template from './displaySettings.template.html';
 	}
 
     function loadForm(context, user, userSettings, apiClient) {
-		if (appHost.supports('displaymode')) {
-			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
-            context.querySelector('.fldDisplayMode').classList.remove('hide');
-        } else {
-            context.querySelector('.fldDisplayMode').classList.add('hide');
-        }
-					
+				
 		apiClient.getCultures().then(allCultures => {
 			allCultures.sort((a, b) => {
 				let fa = a.DisplayName.toLowerCase(),
@@ -161,12 +155,28 @@ import template from './displaySettings.template.html';
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
 		
-		let event = new Event('change');
-		let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
-		sliderDisplayFontSize.value = userSettings.displayFontSize() || 0;
-		sliderDisplayFontSize.addEventListener('change', onDisplayFontSizeChange);
-		sliderDisplayFontSize.addEventListener('input', onDisplayFontSizeChange);
-		sliderDisplayFontSize.dispatchEvent(event);
+		if (appHost.supports('displaymode')) {
+			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
+			context.querySelector('.fldDisplayMode').classList.remove('hide');
+        } else {
+			context.querySelector('.fldDisplayMode').classList.add('hide');
+        }
+	
+		if (layoutManager.tv) {
+			context.querySelector('.fldDisplayFontSize').classList.remove('hide');
+			if (appHost.supports('displaymode'))
+				context.querySelector('.fldDisplaySeparator').classList.remove('hide');
+			
+			let event = new Event('change');
+			let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
+			sliderDisplayFontSize.value = userSettings.displayFontSize() || 0;
+			sliderDisplayFontSize.addEventListener('change', onDisplayFontSizeChange);
+			sliderDisplayFontSize.addEventListener('input', onDisplayFontSizeChange);
+			sliderDisplayFontSize.dispatchEvent(event);
+		} else {
+			context.querySelector('.fldDisplaySeparator').classList.add('hide');
+			context.querySelector('.fldDisplayFontSize').classList.add('hide');
+        }
 		
         context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize() || 60;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
@@ -206,11 +216,13 @@ import template from './displaySettings.template.html';
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
-		userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
+		
+		if (layoutManager.tv) 
+			userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);
 		
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);

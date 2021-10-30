@@ -1078,7 +1078,8 @@ import { UserSettings } from '../scripts/settings/userSettings';
         const isLibraryPage = !isDashboardPage && page.classList.contains('libraryPage');
         const apiClient = getCurrentApiClient();
 
-		displayFontSizeModifier(apiClient);
+		if (layoutManager.tv)
+			displayFontSizeModifier(apiClient);
 
         if (isDashboardPage) {
             if (mainDrawerButton) {
