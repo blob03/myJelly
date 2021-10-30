@@ -637,7 +637,7 @@ select option:selected {
 }
 
 .mdl-slider-background-lower {
-	background: linear-gradient(135deg, rgb(68, 46, 3) 0%, rgb(203, 120, 14) 50%, rgb(247, 163, 2) 100%);
+	background: linear-gradient(135deg, rgb(42, 3, 68) 0%, rgb(126, 66, 216) 50%, rgb(173, 151, 222) 100%);
 }
 
 .mdl-slider::-moz-range-thumb {
@@ -761,7 +761,7 @@ select option:selected {
 
 .formDialogHeaderTitle,
 .pageTitle {
-	color: #8b877f !important;
+	color: #996eb1 !important;
 }
 
 .headerButton > .material-icons.home::before {
