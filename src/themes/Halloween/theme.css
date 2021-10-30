@@ -565,7 +565,7 @@ html {
 }
 
 .detailButton:hover:not(:disabled) {
-	background-color: rgba(255, 255, 255, 0.4) !important;
+	background-color: rgba(133, 84, 204, 0.4) !important;
 }
 
 .detailButton:focus {
@@ -642,35 +642,35 @@ select option:selected {
 
 .mdl-slider::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #282828;
+	background: #43395b;
 }
 
 .mdl-slider::-ms-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #282828;
+	background: #43395b;
 }
 
 .mdl-slider::-webkit-slider-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #282828;
+	background: #43395b;
 }
 
 .mdl-slider:focus::-moz-range-thumb,
 .mdl-slider:hover:not(:disabled)::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: rgb(244, 205, 114);
+	background: #d3bffc;
 }
 
 .mdl-slider:focus::-ms-thumb,
 .mdl-slider:hover:not(:disabled)::-ms-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: rgb(244, 205, 114);
+	background: #d3bffc;
 }
 
 .mdl-slider:focus::-webkit-slider-thumb,
 .mdl-slider:hover:not(:disabled)::-webkit-slider-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: rgb(244, 205, 114);
+	background: #d3bffc;
 }
 
 .mdl-slider-container {
@@ -803,7 +803,7 @@ select option:selected {
 }
 
 .starIcon {
-    color: #f2b01e !important;
+    color: #741ef2 !important
 }
 
 .playstatebutton-icon-played {
@@ -991,7 +991,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .checkboxIcon-checked {
-	color: #282828 !important;
+	color: #43395b !important;
 	padding-left: .2em;
 	padding-bottom: .2em;
 	transform: scale(1.8);
@@ -1008,7 +1008,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .emby-checkbox + span + .checkboxOutline {
-    border-color: #463019;
+    border-color: #43395b;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
@@ -1019,8 +1019,8 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline > .checkboxIcon-checked,
 .emby-checkbox:focus + span + .checkboxOutline,
 .emby-checkbox:focus + span + .checkboxOutline > .checkboxIcon-checked {
-	border-color: rgb(244, 205, 114) !important;
-	color: rgb(244, 205, 114) !important;
+	border-color: #d3bffc !important;
+	color: #d3bffc !important;
 }
 
 /* Pseudo radio widget (a radio button that allows unselects) */
@@ -1034,7 +1034,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
-	color: #282828 !important;
+	color: #43395b !important;
 	font-size: 170%;
 	text-shadow: 1px 2px 3px #1e1d25;
 }
@@ -1051,7 +1051,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
-	color: rgb(244, 205, 114) !important;
+	color: #d3bffc !important;
 }
  
 .headerTop {
