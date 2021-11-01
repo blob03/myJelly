@@ -936,7 +936,7 @@
     "LabelTheme": "Tema:",
     "LabelTextSize": "Veličina teksta:",
     "LabelTextColor": "Boja teksta:",
-    "LabelSyncPlayAccess": "SyncPlay pristup",
+    "LabelSyncPlayAccess": "SyncPlay pristup:",
     "LabelSyncPlayAccessNone": "Onemogućeno za ovog korisnika",
     "LabelSyncPlayAccessJoinGroups": "Dozvoli korisniku da se pridruži grupama",
     "LabelSyncPlayAccessCreateAndJoinGroups": "Dozvoli korisniku da kreira i pridruži se grupama",
@@ -1186,5 +1186,6 @@
     "DirectPlayHelp": "Izvorna datoteka je u potpunosti kompatibilna sa klijentom i sesija prihvaća datoteku bez modifikacija.",
     "Conductor": "Dirigent",
     "Arranger": "Aranžer",
-    "AgeValue": "(staro {0} godina)"
+    "AgeValue": "(staro {0} godina)",
+    "MusicVideos": "Glazbeni spotovi"
 }
