@@ -231,7 +231,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
     }
 	
 	function doReload() {
-		// Reload everything fom the server.
+		// Reload everything from the server.
 		const z = '#!/home.html';
 		// Allow enough time to save the parameters before refreshing.
 		setTimeout(() => { appRouter.redirect(z).then( () => { window.location.reload(true) })}, 1000);

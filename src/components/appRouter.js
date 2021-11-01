@@ -152,7 +152,6 @@ class AppRouter {
 
         path = path.replace(this.baseUrl(), '');
 
-		
         if (this.currentRouteInfo && this.currentRouteInfo.path === path) {
             // can't use this with home right now due to the back menu
             if (this.currentRouteInfo.route.type !== 'home') {
