@@ -15,6 +15,7 @@ import '../../elements/emby-button/emby-button';
 import ServerConnections from '../ServerConnections';
 import toast from '../toast/toast';
 import template from './displaySettings.template.html';
+import { appRouter } from '../appRouter';
 
 /* eslint-disable indent */
 
@@ -236,13 +237,14 @@ import template from './displaySettings.template.html';
         apiClient.getUser(userId).then(user => {
             saveUser(instance, context, user, userSettings, apiClient).then(() => {
                 loading.hide();
-                if (enableSaveConfirmation) {
+                if (enableSaveConfirmation) 
                     toast(globalize.translate('SettingsSaved'));
-                }
 				Events.trigger(instance, 'saved');
-				// Allow enough time to save the parameters before reloading the page.
-				if (instance.needreload === true) 
-					setTimeout(() => { window.location.reload(false) }, 1000);
+				if (instance.needreload === true) {
+					const z = '#!/mypreferencesdisplay.html?userId=' + userId;
+					// Allow enough time to save the parameters before refreshing.
+					setTimeout(() => { appRouter.redirect(z) }, 1000);
+				}
             }, () => {
                 loading.hide();
             });

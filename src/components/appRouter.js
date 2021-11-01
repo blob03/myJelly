@@ -152,6 +152,7 @@ class AppRouter {
 
         path = path.replace(this.baseUrl(), '');
 
+		
         if (this.currentRouteInfo && this.currentRouteInfo.path === path) {
             // can't use this with home right now due to the back menu
             if (this.currentRouteInfo.route.type !== 'home') {
@@ -164,6 +165,29 @@ class AppRouter {
             this.resolveOnNextShow = resolve;
             // Schedule a call to return the promise
             setTimeout(() => page.show(path, options), 0);
+        });
+
+        return this.promiseShow;
+    }
+	
+	async redirect(path) {
+        if (this.promiseShow) await this.promiseShow;
+
+        // ensure the path does not start with '#!' since the router adds this
+        if (path.startsWith('#!')) {
+            path = path.substring(2);
+        }
+
+        if (path.indexOf('/') !== 0 && path.indexOf('://') === -1) {
+            path = '/' + path;
+        }
+
+        path = path.replace(this.baseUrl(), '');
+
+        this.promiseShow = new Promise((resolve) => {
+            this.resolveOnNextShow = resolve;
+            // Schedule a call to return the promise
+            setTimeout(() => page.redirect(path), 0);
         });
 
         return this.promiseShow;
