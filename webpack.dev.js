@@ -1,10 +1,9 @@
-const path = require('path');
 const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
 
 module.exports = merge(common, {
     // In order for live reload to work we must use "web" as the target not "browserlist"
-    target: 'web',
+    target: process.env.WEBPACK_SERVE ? 'web' : 'browserslist',
     mode: 'development',
     entry: './scripts/site.js',
     devtool: 'source-map',
@@ -12,20 +11,25 @@ module.exports = merge(common, {
         rules: [
             {
                 test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
                 enforce: 'pre',
                 use: ['source-map-loader']
             },
             {
                 test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
                 enforce: 'pre',
                 use: ['source-map-loader']
             }
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
         compress: true,
-	port: 9000,
-	host: '192.168.2.98'
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false
+            }
+        }
     }
 });
