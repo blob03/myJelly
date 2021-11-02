@@ -172,7 +172,6 @@ import { appRouter } from '../appRouter';
 			let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
 			sliderDisplayFontSize.value = userSettings.displayFontSize() || 0;
 			sliderDisplayFontSize.addEventListener('change', onDisplayFontSizeChange);
-			sliderDisplayFontSize.addEventListener('input', onDisplayFontSizeChange);
 			sliderDisplayFontSize.dispatchEvent(event);
 		} else {
 			context.querySelector('.fldDisplaySeparator').classList.add('hide');
