@@ -186,7 +186,7 @@ class AppRouter {
         this.promiseShow = new Promise((resolve) => {
             this.resolveOnNextShow = resolve;
             // Schedule a call to return the promise
-            setTimeout(() => page.redirect(path), 0);
+            setTimeout(() => page.replace(path), 0);
         });
 
         return this.promiseShow;

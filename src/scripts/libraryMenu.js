@@ -41,8 +41,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		
 		// Extra feature thought for TV and mobile users regardless of the layout in use.
 		// That one acts like a shift + reload with Firefox, requesting a fresh copy of everything from the server.
-		if (browser.tv || browser.mobile || browser.iOS) 
-			html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerReloadButton hide"><span class="material-icons refresh"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
         html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';
         html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);"></h3>';
@@ -56,8 +55,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		
 		// Extra feature thought for the TV layout.
 		// That one locks the top bar and will be useful for owners of a "smart remote" or any TV remote capable of acting like a mouse.
-		if (layoutManager.tv && !browser.mobile) 
-			html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerLockButton hide"><span id="lock" class="material-icons lock_open"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerLockButton hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		/* Added: casing for the topbar clock */
 		/* new version uses a disabled flexbox button rather than a mere table */
@@ -144,11 +142,14 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		}
     }
 
-    function updateUserInHeader(user) {
+    export function updateUserInHeader(user) {
         retranslateUi();
 
         let hasImage;
 
+		if (user === '')
+			user = currentUser;
+		
         if (user && user.name) {
             if (user.imageUrl) {
                 const url = user.imageUrl;
@@ -166,19 +167,18 @@ import { UserSettings } from '../scripts/settings/userSettings';
         }
 
         if (user && user.localUser) {
-            if (headerHomeButton) {
+            if (headerHomeButton) 
                 headerHomeButton.classList.remove('hide');
-            }
 
-            if (headerSearchButton) {
+            if (headerSearchButton)
                 headerSearchButton.classList.remove('hide');
-            }
 			
-			if (headerReloadButton) {
+			if (layoutManager.tv || browser.mobile || browser.iOS) 
 				headerReloadButton.classList.remove('hide');
-			}
+			else
+				headerReloadButton.classList.add('hide');
 			
-			if (headerLockButton) {
+			if (layoutManager.tv && !browser.mobile) {	
 				headerLockButton.classList.remove('hide');
 				if (appSettings.get('lockHeader', user.userId) === 'true') {
 					skinHeader.classList.add('locked');
@@ -189,12 +189,19 @@ import { UserSettings } from '../scripts/settings/userSettings';
 					document.getElementById("lock").classList.remove('lock');
 					document.getElementById("lock").classList.add('lock_open');
 				}
-			}
-
-            if (!layoutManager.tv) {
+			} else 
+				headerLockButton.classList.add('hide');
+			
+            if (!layoutManager.tv) 
                 headerCastButton.classList.remove('hide');
-            }
-
+            else
+				headerCastButton.classList.add('hide');
+			
+			 if (!layoutManager.tv) 
+                mainDrawerButton.classList.remove('hide');
+            else
+				mainDrawerButton.classList.add('hide');
+			
             const policy = user.Policy ? user.Policy : user.localUser.Policy;
 
             const apiClient = getCurrentApiClient();
@@ -202,6 +209,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
                 headerSyncButton.classList.remove('hide');
             }
         } else {
+			mainDrawerButton.classList.add('hide');
             headerHomeButton.classList.add('hide');
             headerCastButton.classList.add('hide');
             headerSyncButton.classList.add('hide');
@@ -212,10 +220,58 @@ import { UserSettings } from '../scripts/settings/userSettings';
 			if (headerLockButton) 
 				headerLockButton.classList.add('hide');
         }
-
         requiresUserRefresh = false;
     }
 
+	export function updateHeader() {
+        
+		if (headerHomeButton) 
+			headerHomeButton.classList.remove('hide');
+
+		if (headerSearchButton) {
+            headerSearchButton.title = globalize.translate('Search');
+			headerSearchButton.classList.remove('hide');
+		}
+		
+		if (layoutManager.tv || browser.mobile || browser.iOS) {
+			headerReloadButton.title = globalize.translate('Reload');
+			headerReloadButton.classList.remove('hide');
+		} else
+			headerReloadButton.classList.add('hide');
+			
+		if (layoutManager.tv && !browser.mobile) {	
+			headerLockButton.title = globalize.translate('LockHeader');
+			headerLockButton.classList.remove('hide');
+			if (appSettings.get('lockHeader', currentUser.userId) === 'true') {
+				skinHeader.classList.add('locked');
+				document.getElementById("lock").classList.remove('lock_open');
+				document.getElementById("lock").classList.add('lock');
+			} else {
+				skinHeader.classList.remove('locked');
+				document.getElementById("lock").classList.remove('lock');
+				document.getElementById("lock").classList.add('lock_open');
+			}
+		} else 
+			headerLockButton.classList.add('hide');
+			
+		if (!layoutManager.tv) {
+            headerCastButton.title = globalize.translate('ButtonCast');
+			headerCastButton.classList.remove('hide');
+		} else
+			headerCastButton.classList.add('hide');
+		
+		if (headerSyncButton)
+            headerSyncButton.title = globalize.translate('ButtonSyncPlay');
+		
+		if (headerAudioPlayerButton) 
+            headerAudioPlayerButton.title = globalize.translate('ButtonPlayer');
+        
+		if (!layoutManager.tv) 
+			mainDrawerButton.classList.remove('hide');
+		else
+			mainDrawerButton.classList.add('hide');			
+    }
+	
     function updateHeaderUserButton(src) {
         if (src) {
             headerUserButton.classList.add('headerUserButtonRound');
@@ -233,7 +289,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
 	function doReload() {
 		// Reload everything from the server.
 		const z = '#!/home.html';
-		// Allow enough time to save the parameters before refreshing.
+		// Move the current URL to the base page before reloading anew.
 		setTimeout(() => { appRouter.redirect(z).then( () => { window.location.reload(true) })}, 1000);
 	}
 	
@@ -290,7 +346,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
         headerUserButton.addEventListener('click', onHeaderUserButtonClick);
         headerHomeButton.addEventListener('click', onHeaderHomeButtonClick);
 
-        if (!layoutManager.tv) {
+        if (headerCastButton) {
             headerCastButton.addEventListener('click', onCastButtonClicked);
         }
 
@@ -1083,26 +1139,27 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		if (layoutManager.tv)
 			displayFontSizeModifier(apiClient);
 
-        if (isDashboardPage) {
-            if (mainDrawerButton) {
-                mainDrawerButton.classList.remove('hide');
-            }
+		if (!layoutManager.tv) {
+			if (isDashboardPage) {
+				if (mainDrawerButton) {
+					mainDrawerButton.classList.remove('hide');
+				}
+				refreshDashboardInfoInDrawer(apiClient);
+			} else {
+				if (mainDrawerButton) {
+					if (enableLibraryNavDrawer || (isHomePage && enableLibraryNavDrawerHome)) {
+						mainDrawerButton.classList.remove('hide');
+					} else {
+						mainDrawerButton.classList.add('hide');
+					}
+				}
 
-            refreshDashboardInfoInDrawer(apiClient);
-        } else {
-            if (mainDrawerButton) {
-                if (enableLibraryNavDrawer || (isHomePage && enableLibraryNavDrawerHome)) {
-                    mainDrawerButton.classList.remove('hide');
-                } else {
-                    mainDrawerButton.classList.add('hide');
-                }
-            }
-
-            if (currentDrawerType !== 'library') {
-                refreshLibraryDrawer();
-            }
-        }
-
+				if (currentDrawerType !== 'library') {
+					refreshLibraryDrawer();
+				}
+			}
+		}
+		
         updateMenuForPageType(isDashboardPage, isLibraryPage);
 
         // TODO: Seems to do nothing? Check if needed (also in other views).
@@ -1133,7 +1190,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
 
     Events.on(ServerConnections, 'localusersignedout', function () {
         currentUser = {};
-        updateUserInHeader();
+        updateUserInHeader(null);
     });
 
     Events.on(playbackManager, 'playerchange', updateCastIcon);

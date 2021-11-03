@@ -15,7 +15,8 @@ import '../../elements/emby-button/emby-button';
 import ServerConnections from '../ServerConnections';
 import toast from '../toast/toast';
 import template from './displaySettings.template.html';
-import { appRouter } from '../appRouter';
+import page from 'page';
+import * as LibraryMenu from '../../scripts/libraryMenu';
 
 /* eslint-disable indent */
 
@@ -186,8 +187,10 @@ import { appRouter } from '../appRouter';
         loading.hide();
     }
 
-    function saveUser(instance, context, user, userSettingsInstance, apiClient) {
+    function saveUser(instance, context, userSettingsInstance, apiClient) {
 		let VAL;
+		let user = instance.currentUser;
+		
         if (appHost.supports('displaylanguage')) {	
 			VAL = context.querySelector('#selectLanguage').value;
 			const savedLanguage = userSettingsInstance.language();
@@ -232,22 +235,20 @@ import { appRouter } from '../appRouter';
 
     function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
         loading.show();
-
-        apiClient.getUser(userId).then(user => {
-            saveUser(instance, context, user, userSettings, apiClient).then(() => {
-                loading.hide();
-                if (enableSaveConfirmation) 
-                    toast(globalize.translate('SettingsSaved'));
-				Events.trigger(instance, 'saved');
-				if (instance.needreload === true) {
-					const z = '#!/mypreferencesdisplay.html?userId=' + userId;
-					// Allow enough time to save the parameters before refreshing.
-					setTimeout(() => { appRouter.redirect(z) }, 1000);
-				}
-            }, () => {
-                loading.hide();
-            });
-        });
+        
+		saveUser(instance, context, userSettings, apiClient).then(() => {
+			if (instance.needreload === true) {
+				LibraryMenu.updateHeader(); 
+				const z = '/mypreferencesdisplay.html?userId=' + userId;
+				setTimeout(() => { page.redirect(z); }, 1000);
+			}	
+			loading.hide();
+			if (enableSaveConfirmation) 
+				toast(globalize.translate('SettingsSaved'));
+			Events.trigger(instance, 'saved');
+		}, () => {
+			loading.hide();
+		});
     }
 
     function onSubmit(e) {
@@ -281,6 +282,7 @@ import { appRouter } from '../appRouter';
         constructor(options) {
             this.options = options;
 			this.needreload = false;
+			this.currentUser = null;
             embed(options, this);
         }
 
@@ -295,6 +297,7 @@ import { appRouter } from '../appRouter';
             const userSettings = self.options.userSettings;
 
             return apiClient.getUser(userId).then(user => {
+				self.currentUser = user;
                 return userSettings.setUserInfo(userId, apiClient).then(() => {
                     self.dataLoaded = true;
                     loadForm(context, user, userSettings, apiClient);
