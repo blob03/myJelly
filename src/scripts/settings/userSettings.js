@@ -422,9 +422,9 @@ export class UserSettings {
     }
 
     /**
-     * Get or set amount of resizing in % of the value set by the application.
-     * @param {number|undefined} val - % of resizing, between -20 and 20 inclusively.
-     * @return {number} % of resizing.
+     * Get or set the amount of resizing expressed in % of the value set by the application.
+     * @param {number|undefined} % of resizing, between -20 and 20 inclusively.
+     * @return {number} % of resizing saved.
      */		
     displayFontSize(val) {
         if (val !== undefined) 

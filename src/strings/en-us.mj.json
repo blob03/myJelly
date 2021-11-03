@@ -19,5 +19,8 @@
 	"Theme": "Theme",
 	"AppRepositoryName": "Repository Name:",
 	"LabelBackdrops": "Backdrops:",
-	"LabelDisplayFontSize": "Display font size:"
+	"LabelDisplayFontSize": "Display font size:",
+	"Reload": "Reload this application",
+	"LockHeader": "Lock the menu bar",
+	"Videos": "Videos"
 }

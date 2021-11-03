@@ -156,6 +156,7 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
+		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		
 		if (appHost.supports('displaymode')) {
 			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
@@ -171,7 +172,6 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
 			
 			let event = new Event('change');
 			let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
-			sliderDisplayFontSize.value = userSettings.displayFontSize() || 0;
 			sliderDisplayFontSize.addEventListener('change', onDisplayFontSizeChange);
 			sliderDisplayFontSize.dispatchEvent(event);
 		} else {

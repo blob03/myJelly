@@ -18,5 +18,8 @@
 	"Theme": "Thème",
 	"AppRepositoryName": "Nom du dépôt :",
 	"LabelBackdrops": "Arrière-plans :",
-	"LabelDisplayFontSize": "Taille de la police d'affichage :"
+	"LabelDisplayFontSize": "Taille de la police d'affichage :",
+	"Reload": "Recharger l'application",
+	"LockHeader": "Verrouiller le menu",
+	"Videos": "Vidéos"
 }
