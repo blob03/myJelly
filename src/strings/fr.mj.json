@@ -1,6 +1,7 @@
 {
 	"Diffused": "Diffus",
 	"MoreDiffused": "Plus diffus",
+	"OptionDivider": "...............................",
 	"EnableClock": "Activer l'horloge",
 	"EnableClockHelp": "Afficher la date et l'heure locale dans la barre du haut.",
 	"LabelTextShadowColor": "Teinte de l'ombre portée :",
