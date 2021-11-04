@@ -5,32 +5,34 @@ import globalize from '../scripts/globalize';
  * @module components/settingsHelper
  */
 
-export function populateLanguages(select, languages) {
+export function populateLanguages(select, languages, val) {
     let html = '';
 	
 	languages.forEach(language => {
 		let ISOName = language.TwoLetterISOLanguageName;
-		html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+		if (val && val === ISOName) 
+			html += "<option value='" + ISOName + "' selected>" + language.DisplayName + "</option>";
+		else
+			html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
 	});
 	
     select.innerHTML += html;
 }
 
-export function populateDictionaries(select, languages) {
+export function populateDictionaries(select, languages, val) {
     let html = '';
-	const locale = globalize.getCurrentLocale();
-	
-	languages.forEach(language => {
-		let ISOName = language.TwoLetterISOLanguageName;
-		let progress;
-		if (ISOName === locale) {
-			progress = globalize.getCoreDictionaryProgress(ISOName);
-			html += "<option value='" + ISOName + "'>" + language.DisplayName + " - " + progress + "%</option>";
-		} else 
-			html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+	globalize.getCoreDictionaryProgress(val).then( (progress) => {
+		languages.forEach(language => {
+			let ISOName = language.TwoLetterISOLanguageName;
+			if (val && val === ISOName) {
+				html += "<option value='" + ISOName + "' selected>" + language.DisplayName 
+						+ (progress >= 0 ? (" [ " + progress + "% ]") : "") 
+						+ "</option>";
+			} else 
+				html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+		});
+		select.innerHTML += html;
 	});
-	
-    select.innerHTML += html;
 }
 
 export default {

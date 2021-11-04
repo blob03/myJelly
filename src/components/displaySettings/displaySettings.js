@@ -81,6 +81,11 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
 		let appValue = 93;
 		document.body.style.fontSize = (appValue + (appValue * e.target.value/100)) + "%"; 
 	}
+	
+	function displayFontSizeRset() { 		
+		let appValue = 93;
+		document.body.style.fontSize = appValue + "%"; 
+	}
 
     function loadForm(context, user, userSettings, apiClient) {
 				
@@ -96,16 +101,14 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
 			});
 			if (appHost.supports('displaylanguage')) { 
 				let selectLanguage = context.querySelector('#selectLanguage');
-				settingsHelper.populateDictionaries(selectLanguage, allCultures);
-				selectLanguage.value = userSettings.language() || '';
+				settingsHelper.populateDictionaries(selectLanguage, allCultures, userSettings.language() || '');
 				context.querySelector('.languageSection').classList.remove('hide');
 			} else 
 				context.querySelector('.languageSection').classList.add('hide');
 			
 			if (datetime.supportsLocalization()) { 
 				let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
-				settingsHelper.populateLanguages(selectDateTimeLocale, allCultures);
-				selectDateTimeLocale.value = userSettings.dateTimeLocale() || '';
+				settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, userSettings.dateTimeLocale() || '');
 				context.querySelector('.fldDateTimeLocale').classList.remove('hide');
 			} else 
 				context.querySelector('.fldDateTimeLocale').classList.add('hide');
@@ -166,9 +169,9 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
         }
 	
 		if (layoutManager.tv) {
-			context.querySelector('.fldDisplayFontSize').classList.remove('hide');
 			if (appHost.supports('displaymode'))
 				context.querySelector('.fldDisplaySeparator').classList.remove('hide');
+			context.querySelector('.fldDisplayFontSize').classList.remove('hide');
 			
 			let event = new Event('change');
 			let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
@@ -226,6 +229,8 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
 		
 		if (layoutManager.tv) 
 			userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);
+		else
+			displayFontSizeRset();
 		
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);

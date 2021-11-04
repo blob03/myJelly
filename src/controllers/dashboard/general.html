@@ -15,7 +15,10 @@
                         <div class="fieldDescription">${LabelServerNameHelp}</div>
                     </div>
                     <div class="selectContainer">
-                        <select is="emby-select" id="selectLocalizationLanguage" label="${LabelPreferredDisplayLanguage}"></select>
+                        <select is="emby-select" id="selectLocalizationLanguage" label="${LabelPreferredDisplayLanguage}">
+						    <option value="">${Auto}</option>
+							<option disabled>${OptionDivider}</option>
+						</select>
                         <div class="fieldDescription">
                             <div>${LabelDisplayLanguageHelp}</div>
                             <div style="margin-top: .25em;">
@@ -26,7 +29,7 @@
                 </div>
 
                 <div class="verticalSection verticalSection-extrabottompadding">
-                    <h2>${HeaderPaths}</h2>
+                    <h2 class="sectionTitle">${HeaderPaths}</h2>
                     <div class="inputContainer">
                         <div style="display: flex; align-items: center;">
                             <div style="flex-grow:1;">
@@ -63,7 +66,7 @@
                 </div>
 
                 <div class="verticalSection">
-                    <h2>${HeaderBranding}</h2>
+                    <h2 class="sectionTitle">${HeaderBranding}</h2>
                     <div class="inputContainer">
                         <input is="emby-input" type="text" id="txtLoginDisclaimer" label="${LabelLoginDisclaimer}" />
                         <div class="fieldDescription">${LabelLoginDisclaimerHelp}</div>
@@ -73,7 +76,8 @@
                         <div class="fieldDescription">${LabelCustomCssHelp}</div>
                     </div>
                 </div>
-                <br />
+                <br>
+				<br>
                 <div>
                     <button is="emby-button" type="submit" class="raised button-submit block">
                         <span>${Save}</span>

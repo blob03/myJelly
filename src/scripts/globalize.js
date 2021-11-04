@@ -136,30 +136,43 @@ import { Events } from 'jellyfin-apiclient';
 		if (!allTranslations[optionsName])
 			register({name: optionsName, translations: ''});
 		
-        promises.push(ensureTranslation(allTranslations[optionsName], locale));
-        promises.push(ensureTranslation(allTranslations[optionsName], fallbackCulture));
+		promises.push(ensureTranslation(allTranslations[optionsName], locale));
+		promises.push(ensureTranslation(allTranslations[optionsName], fallbackCulture));
+	
         return Promise.all(promises);
     }
+
+	let DicKeysNum = {};
 
     function loadTranslation(lang) {
 		lang = lang || fallbackCulture;
 		lang = convertISOName(lang);
+		
+		// already loaded?
+		if (DicKeysNum[lang])
+			return new Promise((resolve) => {
+				resolve(getDictionary('core', lang));
+			});
 		
 		Object.filter = (obj, predicate) => 
 			Object.assign(...Object.keys(obj)
 				.filter( key => predicate(obj[key]) )
 				.map( key => ({ [key]: obj[key] }) ) );
 
-        return new Promise(function (resolve) {
+        return new Promise((resolve) => {
             import(`../strings/${lang}.json`).then((content) => {	
-			content = Object.filter(content, str => typeof str === "string" && str.length);
+				content = Object.filter(content, str => typeof str === "string" && str.length);
+				DicKeysNum[lang] = Object.keys(content).length;
 				import(`../strings/${lang}.mj.json`).then((mjcontent) => {
 					mjcontent = Object.filter(mjcontent, str => typeof str === "string" && str.length);
-					resolve({...content, ...mjcontent});
+					let dic = {...content, ...mjcontent};
+					DicKeysNum[lang] = Object.keys(dic).length;
+					resolve(dic);
 				}).catch(() => {
 					resolve(content);
 				});
 			}).catch(() => {
+				DicKeysNum[lang] = 0;
 				resolve({});
 			});
         });
@@ -201,23 +214,27 @@ import { Events } from 'jellyfin-apiclient';
         return val;
     }
 	
-	let DicKeysNum = {};
-	
 	export function getCoreDictionaryProgress(lang) {
-		lang = lang || getCurrentLocale();
-		if (!DicKeysNum[fallbackCulture]) {
-			let fallbackDic = allTranslations['core'].dictionaries[fallbackCulture];
-			DicKeysNum[fallbackCulture] = Object.keys(fallbackDic).length;
-			if (!DicKeysNum[fallbackCulture])
-				return 0;
-		}
-		if (!DicKeysNum[lang]) {
-			let dic = allTranslations['core'].dictionaries[lang];
-			DicKeysNum[lang] = Object.keys(dic).length;
-			if (!DicKeysNum[lang])
-				return 0;
-		}
-		return Math.floor((DicKeysNum[lang] / DicKeysNum[fallbackCulture]) * 100);
+		return new Promise((resolve) => {
+			if (!lang)
+				resolve(0);
+			let ISOlang = convertISOName(lang);
+			let ISOfallback = convertISOName(fallbackCulture);
+			if (!DicKeysNum[ISOfallback]) {
+				let fallbackDic = getDictionary('core', ISOfallback);
+				if (!fallbackDic)
+					resolve(0);
+				DicKeysNum[ISOfallback] = Object.keys(fallbackDic).length;
+				if (!DicKeysNum[ISOfallback])
+					resolve(0);
+			}			
+			if (!DicKeysNum[ISOlang]) 
+					loadTranslation(ISOlang).then( (dic) => {
+						resolve( Math.floor((DicKeysNum[ISOlang] / DicKeysNum[ISOfallback]) * 100) );
+					} );
+			else 
+				resolve( Math.floor((DicKeysNum[ISOlang] / DicKeysNum[ISOfallback]) * 100) );
+		});
 	}
 
 	export function getCoreDictionary(lang) {

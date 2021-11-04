@@ -435,8 +435,7 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 					return 1;
 				return 0;
 			});
-			settingsHelper.populateLanguages(selectSubtitleLanguage, allCultures);
-			selectSubtitleLanguage.value = user.Configuration.SubtitleLanguagePreference || '';		
+			settingsHelper.populateLanguages(selectSubtitleLanguage, allCultures, user.Configuration.SubtitleLanguagePreference || '');
 			selectSubtitleLanguage.dispatchEvent(event_change);
         });
 

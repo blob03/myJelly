@@ -7,6 +7,7 @@ import '../../elements/emby-input/emby-input';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-button/emby-button';
 import Dashboard from '../../scripts/clientUtils';
+import settingsHelper from '../../components/settingshelper';
 import alert from '../../components/alert';
 
 /* eslint-disable indent */
@@ -17,10 +18,20 @@ import alert from '../../components/alert';
         page.querySelector('#chkQuickConnectAvailable').checked = config.QuickConnectAvailable === true;
         $('#txtMetadataPath', page).val(systemInfo.InternalMetadataPath || '');
         $('#txtMetadataNetworkPath', page).val(systemInfo.MetadataNetworkPath || '');
-        $('#selectLocalizationLanguage', page).html(languageOptions.map(function (language) {
-            return '<option value="' + language.Value + '">' + language.Name + '</option>';
-        })).val(config.UICulture);
-
+		
+		let selectLanguage = page.querySelector('#selectLocalizationLanguage');
+		ApiClient.getCultures().then(allCultures => {
+			allCultures.sort((a, b) => {
+				let fa = a.DisplayName.toLowerCase(),
+				fb = b.DisplayName.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
+			settingsHelper.populateLanguages(selectLanguage, allCultures, config.UICulture);
+		});
         loading.hide();
     }
 
