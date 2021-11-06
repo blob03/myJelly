@@ -780,6 +780,7 @@ select option:selected {
 	color: #282828;
 }
 
+.iconOsd > .material-icons,
 .osdMediaStatus > .material-icons,
 .imageEditor-buttons > * > .material-icons,
 .playerStats-closeButton > .material-icons,
@@ -1074,3 +1075,17 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	border: 6px ridge rgb(229, 164, 81);
 }
 
+ .radioButtonLabel,
+ .emby-collapsible-button {
+	color: rgb(127, 67, 15) !important;
+	font-size: .9em !important;
+ }
+ 
+ .collapseContent {
+	color: rgb(127, 67, 15) !important;
+	background-color: #dc6a06 !important; 
+ }
+ 
+ .iconOsdProgressInner {
+		background: rgb(126, 66, 216);
+}
