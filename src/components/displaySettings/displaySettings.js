@@ -17,6 +17,8 @@ import toast from '../toast/toast';
 import template from './displaySettings.template.html';
 import page from 'page';
 import * as LibraryMenu from '../../scripts/libraryMenu';
+import viewManager from '../viewManager/viewManager';
+import viewContainer from '../viewContainer';
 
 /* eslint-disable indent */
 
@@ -193,13 +195,17 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
     function saveUser(instance, context, userSettingsInstance, apiClient) {
 		let VAL;
 		let user = instance.currentUser;
+		const z = '/mypreferencesdisplay.html?userId=' + user.Id;					
 		
         if (appHost.supports('displaylanguage')) {	
 			VAL = context.querySelector('#selectLanguage').value;
 			const savedLanguage = userSettingsInstance.language();
 			if (VAL !== savedLanguage) {
 				userSettingsInstance.language(VAL);
-				instance.needreload = true;
+				globalize.updateCurrentCulture();
+				setTimeout(() => page.replace(z), 3000);
+				//LibraryMenu.updateHeader(); 
+				LibraryMenu.updateHeaderLang(); 
 			}
         }
 
@@ -207,7 +213,8 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
 			VAL = context.querySelector('.selectLayout').value;
 			if (VAL !== (layoutManager.getSavedLayout() || '')) {
 				layoutManager.setLayout(VAL, true);
-				instance.needreload = true;
+				setTimeout(() => page.replace(z), 3000);
+				LibraryMenu.updateHeader(); 
 			}
 		}
 		
@@ -238,22 +245,16 @@ import * as LibraryMenu from '../../scripts/libraryMenu';
         return apiClient.updateUserConfiguration(user.Id, user.Configuration);
     }
 
-    function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
+    async function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
         loading.show();
         
-		saveUser(instance, context, userSettings, apiClient).then(() => {
-			if (instance.needreload === true) {
-				LibraryMenu.updateHeader(); 
-				const z = '/mypreferencesdisplay.html?userId=' + userId;
-				setTimeout(() => { page.redirect(z); }, 1000);
-			}	
-			loading.hide();
-			if (enableSaveConfirmation) 
-				toast(globalize.translate('SettingsSaved'));
-			Events.trigger(instance, 'saved');
-		}, () => {
-			loading.hide();
-		});
+		await saveUser(instance, context, userSettings, apiClient);
+
+		if (enableSaveConfirmation) 
+			toast(globalize.translate('SettingsSaved'));
+		
+		loading.hide();
+		Events.trigger(instance, 'saved'); 			
     }
 
     function onSubmit(e) {
