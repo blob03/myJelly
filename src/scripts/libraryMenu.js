@@ -222,21 +222,6 @@ import { UserSettings } from '../scripts/settings/userSettings';
         }
         requiresUserRefresh = false;
     }
-
-	export function updateHeaderLang() {
-		if (headerSearchButton) 
-            headerSearchButton.title = globalize.translate('Search');
-		if (headerReloadButton)
-			headerReloadButton.title = globalize.translate('Reload');
-		if (headerLockButton)
-			headerLockButton.title = globalize.translate('LockHeader');
-		if (headerCastButton)
-            headerCastButton.title = globalize.translate('ButtonCast');
-		if (headerSyncButton)
-            headerSyncButton.title = globalize.translate('ButtonSyncPlay');
-		if (headerAudioPlayerButton) 
-            headerAudioPlayerButton.title = globalize.translate('ButtonPlayer');
-    }
 	
 	export function updateHeader() {
         
@@ -1124,9 +1109,8 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		const userId = Dashboard.getCurrentUserId();
 		const setUserInfo = currentSettings.setUserInfo(userId, apiClient);
 		const currentResizeRatio = currentSettings.displayFontSize() || 0;
-		const appValue = 93;
 		
-		document.body.style.fontSize = (appValue + (appValue * currentResizeRatio/100)) + "%"; 
+		document.body.style.fontSize = 1 + (currentResizeRatio/100) + "rem"; 
 	}
 	
     function setTransparentMenu (transparent) {

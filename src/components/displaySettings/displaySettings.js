@@ -80,13 +80,11 @@ import viewContainer from '../viewContainer';
 	}
 	
 	function onDisplayFontSizeChange(e) { 		
-		let appValue = 93;
-		document.body.style.fontSize = (appValue + (appValue * e.target.value/100)) + "%"; 
+		document.body.style.fontSize = 1 + (e.target.value/100) + "rem"; 
 	}
 	
 	function displayFontSizeRset() { 		
-		let appValue = 93;
-		document.body.style.fontSize = appValue + "%"; 
+		document.body.style.fontSize = "1rem";
 	}
 
     function loadForm(context, user, userSettings, apiClient) {
@@ -194,32 +192,33 @@ import viewContainer from '../viewContainer';
 
     function saveUser(instance, context, userSettingsInstance, apiClient) {
 		let VAL;
-		let user = instance.currentUser;
+		let reload = false;
+		const user = instance.currentUser;
 		const z = '/mypreferencesdisplay.html?userId=' + user.Id;					
 		
         if (appHost.supports('displaylanguage')) {	
 			VAL = context.querySelector('#selectLanguage').value;
-			const savedLanguage = userSettingsInstance.language();
-			if (VAL !== savedLanguage) {
+			if (VAL !== userSettingsInstance.language()) {
 				userSettingsInstance.language(VAL);
 				globalize.updateCurrentCulture();
-				setTimeout(() => page.replace(z), 3000);
-				//LibraryMenu.updateHeader(); 
-				LibraryMenu.updateHeaderLang(); 
+				reload = true;
 			}
         }
 
 		if (appHost.supports('displaymode')) {
 			VAL = context.querySelector('.selectLayout').value;
 			if (VAL !== (layoutManager.getSavedLayout() || '')) {
-				layoutManager.setLayout(VAL, true);
-				setTimeout(() => page.replace(z), 3000);
-				LibraryMenu.updateHeader(); 
+				layoutManager.setLayout(VAL, true);		
+				reload = true;
 			}
 		}
 		
-		user.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
+		if (reload) {
+			setTimeout(() => page.replace(z), 3000);
+			LibraryMenu.updateHeader(); 
+		}
 		
+		user.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
         userSettingsInstance.enableThemeSongs(context.querySelector('#chkThemeSong').checked);
         userSettingsInstance.enableThemeVideos(context.querySelector('#chkThemeVideo').checked);
@@ -287,7 +286,6 @@ import viewContainer from '../viewContainer';
     class DisplaySettings {
         constructor(options) {
             this.options = options;
-			this.needreload = false;
 			this.currentUser = null;
             embed(options, this);
         }
