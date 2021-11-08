@@ -160,16 +160,15 @@ import viewContainer from '../viewContainer';
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
+		context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 		
-		if (appHost.supports('displaymode')) {
-			context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
+		if (browser.web0s || appHost.supports('displaymode')) 	
 			context.querySelector('.fldDisplayMode').classList.remove('hide');
-        } else {
+        else 
 			context.querySelector('.fldDisplayMode').classList.add('hide');
-        }
 	
 		if (layoutManager.tv) {
-			if (appHost.supports('displaymode'))
+			if (browser.web0s || appHost.supports('displaymode'))
 				context.querySelector('.fldDisplaySeparator').classList.remove('hide');
 			context.querySelector('.fldDisplayFontSize').classList.remove('hide');
 			
@@ -205,15 +204,13 @@ import viewContainer from '../viewContainer';
 			}
         }
 
-		if (appHost.supports('displaymode')) {
-			VAL = context.querySelector('.selectLayout').value;
-			if (VAL !== (layoutManager.getSavedLayout() || '')) {
-				layoutManager.setLayout(VAL, true);		
-				reload = true;
-			}
+		VAL = context.querySelector('.selectLayout').value;
+		if (VAL !== (layoutManager.getSavedLayout() || '')) {
+			layoutManager.setLayout(VAL, true);		
+			reload = true;
 		}
-		
-		if (reload) {
+			
+		if (reload !== false) {
 			setTimeout(() => page.replace(z), 3000);
 			LibraryMenu.updateHeader(); 
 		}
