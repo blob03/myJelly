@@ -691,13 +691,13 @@ select option:selected {
 /* dashboard menu */
 
 .navMenuOption:hover:not(:disabled) {
+	background: #84989f !important;
 	color: rgba(155, 155, 155, 0.8) !important;
-	background-color: rgba(240, 240, 240, 0.8) !important;
 }
 
 .navMenuOption:focus {
+	background: #84989f !important;
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
 }
 
 .navMenuOption:active {
@@ -705,8 +705,8 @@ select option:selected {
 }
 
 .navMenuOption-selected {
-    background-color: rgba(180, 180, 180, 0.8) !important;
-    color: #fff;
+	background: rgba(90, 105, 120, 0.8) !important;
+	color: #292929;
 }
 
 /* top bar clock style */
@@ -1028,3 +1028,7 @@ fieldset {
 	overflow: visible;
 }
 
+div[data-role="controlgroup"] a.ui-btn-active {
+	background: #84989f !important;
+	color: #fff;
+}

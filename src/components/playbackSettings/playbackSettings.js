@@ -211,7 +211,9 @@ import template from './playbackSettings.template.html';
         loading.hide();
     }
 
-    function saveUser(context, user, userSettingsInstance, apiClient) {
+    function saveUser(instance, context, userSettingsInstance, apiClient) {
+		const user = instance.currentUser;
+		
         appSettings.enableSystemExternalPlayers(context.querySelector('.chkExternalVideoPlayer').checked);
         appSettings.maxChromecastBitrate(context.querySelector('.selectChromecastVideoQuality').value);
 
@@ -231,24 +233,21 @@ import template from './playbackSettings.template.html';
         userSettingsInstance.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);
         userSettingsInstance.skipBackLength(context.querySelector('#sliderSkipBackLength').value * 1000);
 
-        return apiClient.updateUserConfiguration(user.Id, user.Configuration);
+		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
+			userSettingsInstance.commit(); 
+		});
     }
 
     function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
         loading.show();
-
-        apiClient.getUser(userId).then(user => {
-            saveUser(context, user, userSettings, apiClient).then(() => {
-                loading.hide();
-                if (enableSaveConfirmation) {
-                    toast(globalize.translate('SettingsSaved'));
-                }
-
-                Events.trigger(instance, 'saved');
-            }, () => {
-                loading.hide();
-            });
-        });
+       
+		saveUser(instance, context, userSettings, apiClient);
+		
+		if (enableSaveConfirmation) 
+				toast(globalize.translate('SettingsSaved'));
+	
+		loading.hide();
+		Events.trigger(instance, 'saved');
     }
 
     function onSubmit(e) {
@@ -287,6 +286,7 @@ import template from './playbackSettings.template.html';
     class PlaybackSettings {
         constructor(options) {
             this.options = options;
+			this.currentUser = null;
             embed(options, this);
         }
 
@@ -301,6 +301,7 @@ import template from './playbackSettings.template.html';
             const userSettings = self.options.userSettings;
 
             apiClient.getUser(userId).then(user => {
+				self.currentUser = user;
                 userSettings.setUserInfo(userId, apiClient).then(() => {
                     self.dataLoaded = true;
 

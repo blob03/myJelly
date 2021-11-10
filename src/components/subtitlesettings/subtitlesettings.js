@@ -448,7 +448,11 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
     });
 }
 
-function saveUser(context, user, userSettingsInstance, appearanceKey, apiClient) {
+function saveUser(instance, context, userSettingsInstance, appearanceKey, apiClient, enableSaveConfirmation) {
+	const user = instance.currentUser;
+	
+	appSettings.set('subtitleburnin', context.querySelector('#selectSubtitleBurnIn').value);
+	
     let appearanceSettings = userSettingsInstance.getSubtitleAppearanceSettings(appearanceKey);
     appearanceSettings = Object.assign(appearanceSettings, getSubtitleAppearanceObject(context));
 
@@ -457,26 +461,20 @@ function saveUser(context, user, userSettingsInstance, appearanceKey, apiClient)
     user.Configuration.SubtitleLanguagePreference = context.querySelector('#selectSubtitleLanguage').value;
     user.Configuration.SubtitleMode = context.querySelector('#selectSubtitlePlaybackMode').value;
 		
-    return apiClient.updateUserConfiguration(user.Id, user.Configuration);
+    apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
+		userSettingsInstance.commit(); 		
+		if (enableSaveConfirmation) 
+			toast(globalize.translate('SettingsSaved'));
+	});
 }
 
 function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
     loading.show();
 
-    appSettings.set('subtitleburnin', context.querySelector('#selectSubtitleBurnIn').value);
-
-    apiClient.getUser(userId).then(function (user) {
-        saveUser(context, user, userSettings, instance.appearanceKey, apiClient).then(function () {
-            loading.hide();
-            if (enableSaveConfirmation) {
-                toast(globalize.translate('SettingsSaved'));
-            }
-
-            Events.trigger(instance, 'saved');
-        }, function () {
-            loading.hide();
-        });
-    });
+	saveUser(instance, context, userSettings, instance.appearanceKey, apiClient, enableSaveConfirmation);
+	
+	loading.hide();
+	Events.trigger(instance, 'saved');
 }
 
 function onSubtitleModeChange(e) {
@@ -619,7 +617,7 @@ function embed(options, self) {
 export class SubtitleSettings {
     constructor(options) {
         this.options = options;
-
+		this.currentUser = null;
         embed(options, this);
     }
 
@@ -634,6 +632,7 @@ export class SubtitleSettings {
         const userSettings = self.options.userSettings;
 
         apiClient.getUser(userId).then(function (user) {
+			self.currentUser = user;
             userSettings.setUserInfo(userId, apiClient).then(function () {
                 self.dataLoaded = true;
 

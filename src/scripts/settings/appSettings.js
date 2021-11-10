@@ -94,9 +94,9 @@ class AppSettings {
 
     set(name, value, userId) {
         const currentValue = this.get(name, userId);
-        AppStorage.setItem(this.#getKey(name, userId), value);
-
+        
         if (currentValue !== value) {
+			AppStorage.setItem(this.#getKey(name, userId), value);
             Events.trigger(this, 'change', [name]);
         }
     }

@@ -15,7 +15,6 @@ import '../../elements/emby-button/emby-button';
 import ServerConnections from '../ServerConnections';
 import toast from '../toast/toast';
 import template from './displaySettings.template.html';
-import page from 'page';
 import * as LibraryMenu from '../../scripts/libraryMenu';
 import viewManager from '../viewManager/viewManager';
 import viewContainer from '../viewContainer';
@@ -81,14 +80,18 @@ import viewContainer from '../viewContainer';
 	
 	function onDisplayFontSizeChange(e) { 		
 		document.body.style.fontSize = 1 + (e.target.value/100) + "rem"; 
+		//document.body.style.lineHeight = 1 + (e.target.value/100) + "rem"; 
 	}
 	
 	function displayFontSizeRset() { 		
 		document.body.style.fontSize = "1rem";
+		//document.body.style.lineHeight = "1rem";
 	}
 
-    function loadForm(context, user, userSettings, apiClient) {
-				
+	var savedLayout = '';
+	var savedDisplayLanguage = '';
+	
+    function loadForm(context, user, userSettings, apiClient) {	
 		apiClient.getCultures().then(allCultures => {
 			allCultures.sort((a, b) => {
 				let fa = a.DisplayName.toLowerCase(),
@@ -101,7 +104,8 @@ import viewContainer from '../viewContainer';
 			});
 			if (appHost.supports('displaylanguage')) { 
 				let selectLanguage = context.querySelector('#selectLanguage');
-				settingsHelper.populateDictionaries(selectLanguage, allCultures, userSettings.language() || '');
+				savedDisplayLanguage = userSettings.language() || '';
+				settingsHelper.populateDictionaries(selectLanguage, allCultures, savedDisplayLanguage);
 				context.querySelector('.languageSection').classList.remove('hide');
 			} else 
 				context.querySelector('.languageSection').classList.add('hide');
@@ -121,7 +125,7 @@ import viewContainer from '../viewContainer';
 		
 		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
 		dashboardthemeNodes.forEach( function(userItem) {
-			userItem.classList.toggle('hide', !user.Policy.IsAdministrator);});
+			userItem.classList.toggle('hide', !user.localUser.Policy.IsAdministrator);});
 
         if (appHost.supports('screensaver')) {
 			loadScreensavers(context, userSettings);
@@ -150,7 +154,7 @@ import viewContainer from '../viewContainer';
 		
         fillThemes(context.querySelector('#selectDashboardTheme'), userSettings.dashboardTheme());
 
-        context.querySelector('.chkDisplayMissingEpisodes').checked = user.Configuration.DisplayMissingEpisodes || false;
+        context.querySelector('.chkDisplayMissingEpisodes').checked = user.localUser.Configuration.DisplayMissingEpisodes || false;
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		context.querySelector('#chkClock').checked = userSettings.enableClock();
@@ -160,7 +164,7 @@ import viewContainer from '../viewContainer';
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
-		context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
+		savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 		
 		if (browser.web0s || appHost.supports('displaymode')) 	
 			context.querySelector('.fldDisplayMode').classList.remove('hide');
@@ -183,39 +187,31 @@ import viewContainer from '../viewContainer';
 		
         context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize() || 60;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
-		
         showOrHideMissingEpisodesField(context);
-
-        loading.hide();
     }
 
-    function saveUser(instance, context, userSettingsInstance, apiClient) {
+    function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
 		let VAL;
 		let reload = false;
 		const user = instance.currentUser;
-		const z = '/mypreferencesdisplay.html?userId=' + user.Id;					
-		
+		const z = '/mypreferencesdisplay.html?userId=' + user.localUser.Id;		
+					
         if (appHost.supports('displaylanguage')) {	
 			VAL = context.querySelector('#selectLanguage').value;
-			if (VAL !== userSettingsInstance.language()) {
+			if (VAL !== savedDisplayLanguage) {
 				userSettingsInstance.language(VAL);
-				globalize.updateCurrentCulture();
 				reload = true;
 			}
         }
 
 		VAL = context.querySelector('.selectLayout').value;
-		if (VAL !== (layoutManager.getSavedLayout() || '')) {
+		if (VAL !== savedLayout) {
 			layoutManager.setLayout(VAL, true);		
+			savedLayout = VAL;
 			reload = true;
 		}
-			
-		if (reload !== false) {
-			setTimeout(() => page.replace(z), 3000);
-			LibraryMenu.updateHeader(); 
-		}
-		
-		user.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
+					
+		user.localUser.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
         userSettingsInstance.enableThemeSongs(context.querySelector('#chkThemeSong').checked);
         userSettingsInstance.enableThemeVideos(context.querySelector('#chkThemeVideo').checked);
@@ -238,18 +234,23 @@ import viewContainer from '../viewContainer';
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
      
-        return apiClient.updateUserConfiguration(user.Id, user.Configuration);
+		apiClient.updateUserConfiguration(user.localUser.Id, user.localUser.Configuration).then( () => { 
+			userSettingsInstance.commit(); 
+			setTimeout(() => { 
+				if (reload !== false) {
+					embed(instance.options, instance);
+					LibraryMenu.setTitle(globalize.translate(instance.title));
+					LibraryMenu.updateUserInHeader(user);
+				}
+				if (enableSaveConfirmation) 
+					toast(globalize.translate('SettingsSaved'));}, 2000); 
+		});
     }
 
-    async function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
+    function save(instance, context, userSettings, apiClient, enableSaveConfirmation) {
         loading.show();
-        
-		await saveUser(instance, context, userSettings, apiClient);
-
-		if (enableSaveConfirmation) 
-			toast(globalize.translate('SettingsSaved'));
-		
-		loading.hide();
+		saveUser(instance, context, userSettings, apiClient, enableSaveConfirmation);
+		loading.hide();	
 		Events.trigger(instance, 'saved'); 			
     }
 
@@ -261,13 +262,13 @@ import viewContainer from '../viewContainer';
 
         userSettings.setUserInfo(userId, apiClient).then(() => {
             const enableSaveConfirmation = self.options.enableSaveConfirmation;
-            save(self, self.options.element, userId, userSettings, apiClient, enableSaveConfirmation);
+            save(self, self.options.element, userSettings, apiClient, enableSaveConfirmation);
         });
 
         // Disable default form submission
-        if (e) {
+        if (e) 
             e.preventDefault();
-        }
+
         return false;
     }
 
@@ -284,29 +285,30 @@ import viewContainer from '../viewContainer';
         constructor(options) {
             this.options = options;
 			this.currentUser = null;
+			this.title = 'Display';
             embed(options, this);
         }
 
         loadData(autoFocus) {
             const self = this;
             const context = self.options.element;
-
+			const userId = self.options.userId;
+			const userSettings = self.options.userSettings;
+			
             loading.show();
 
-            const userId = self.options.userId;
             const apiClient = ServerConnections.getApiClient(self.options.serverId);
-            const userSettings = self.options.userSettings;
-
-            return apiClient.getUser(userId).then(user => {
+            
+			return ServerConnections.user(apiClient).then((user) => {
 				self.currentUser = user;
                 return userSettings.setUserInfo(userId, apiClient).then(() => {
                     self.dataLoaded = true;
                     loadForm(context, user, userSettings, apiClient);
-                    if (autoFocus) {
+                    if (autoFocus) 
                         focusManager.autoFocus(context);
-                    }
-                });
-            });
+					loading.hide();
+                });	
+			});
         }
 
         submit() {

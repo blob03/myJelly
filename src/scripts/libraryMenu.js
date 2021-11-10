@@ -117,36 +117,36 @@ import { UserSettings } from '../scripts/settings/userSettings';
     }
 
     function retranslateUi() {
-        if (headerSyncButton) {
+        if (headerSyncButton) 
             headerSyncButton.title = globalize.translate('ButtonSyncPlay');
-        }
 
-        if (headerAudioPlayerButton) {
+        if (headerAudioPlayerButton) 
             headerAudioPlayerButton.title = globalize.translate('ButtonPlayer');
-        }
-
-        if (headerCastButton) {
+        
+        if (headerCastButton) 
             headerCastButton.title = globalize.translate('ButtonCast');
-        }
 
-        if (headerSearchButton) {
+        if (headerSearchButton)
             headerSearchButton.title = globalize.translate('Search');
-        }
 		
-		if (headerReloadButton) {
+		if (headerReloadButton) 
 			headerReloadButton.title = globalize.translate('Reload');
-		}
 		
-		if (headerLockButton) {
+		if (headerLockButton)
 			headerLockButton.title = globalize.translate('LockHeader');
-		}
+	
+		if (headerBackButton) 
+			headerBackButton.title = globalize.translate('ButtonBack');
+		
+		if (headerHomeButton) 
+			headerHomeButton.title = globalize.translate('Home');
     }
 
     export function updateUserInHeader(user) {
-        retranslateUi();
-
         let hasImage;
 
+		retranslateUi();
+		
 		if (user === '')
 			user = currentUser;
 		
@@ -158,21 +158,23 @@ import { UserSettings } from '../scripts/settings/userSettings';
             }
             headerUserButton.title = user.name;
             headerUserButton.classList.remove('hide');
-        } else {
+        } else 
             headerUserButton.classList.add('hide');
-        }
 
-        if (!hasImage) {
+        if (!hasImage) 
             updateHeaderUserButton(null);
-        }
 
         if (user && user.localUser) {
             if (headerHomeButton) 
                 headerHomeButton.classList.remove('hide');
-
             if (headerSearchButton)
                 headerSearchButton.classList.remove('hide');
-			
+			if (mainDrawerButton) {
+				if (!layoutManager.tv)
+					mainDrawerButton.classList.remove('hide');
+				else
+					mainDrawerButton.classList.add('hide');
+			}
 			if (layoutManager.tv || browser.mobile || browser.iOS) 
 				headerReloadButton.classList.remove('hide');
 			else
@@ -180,7 +182,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
 			
 			if (layoutManager.tv && !browser.mobile) {	
 				headerLockButton.classList.remove('hide');
-				if (appSettings.get('lockHeader', user.userId) === 'true') {
+				if (appSettings.get('lockHeader', user.localUser.Id) === 'true') {
 					skinHeader.classList.add('locked');
 					document.getElementById("lock").classList.remove('lock_open');
 					document.getElementById("lock").classList.add('lock');
@@ -196,11 +198,6 @@ import { UserSettings } from '../scripts/settings/userSettings';
                 headerCastButton.classList.remove('hide');
             else
 				headerCastButton.classList.add('hide');
-			
-			 if (!layoutManager.tv) 
-                mainDrawerButton.classList.remove('hide');
-            else
-				mainDrawerButton.classList.add('hide');
 			
             const policy = user.Policy ? user.Policy : user.localUser.Policy;
 
@@ -221,55 +218,6 @@ import { UserSettings } from '../scripts/settings/userSettings';
 				headerLockButton.classList.add('hide');
         }
         requiresUserRefresh = false;
-    }
-	
-	export function updateHeader() {
-        
-		if (headerHomeButton) 
-			headerHomeButton.classList.remove('hide');
-
-		if (headerSearchButton) {
-            headerSearchButton.title = globalize.translate('Search');
-			headerSearchButton.classList.remove('hide');
-		}
-		
-		if (layoutManager.tv || browser.mobile || browser.iOS) {
-			headerReloadButton.title = globalize.translate('Reload');
-			headerReloadButton.classList.remove('hide');
-		} else
-			headerReloadButton.classList.add('hide');
-			
-		if (layoutManager.tv && !browser.mobile) {	
-			headerLockButton.title = globalize.translate('LockHeader');
-			headerLockButton.classList.remove('hide');
-			if (appSettings.get('lockHeader', currentUser.userId) === 'true') {
-				skinHeader.classList.add('locked');
-				document.getElementById("lock").classList.remove('lock_open');
-				document.getElementById("lock").classList.add('lock');
-			} else {
-				skinHeader.classList.remove('locked');
-				document.getElementById("lock").classList.remove('lock');
-				document.getElementById("lock").classList.add('lock_open');
-			}
-		} else 
-			headerLockButton.classList.add('hide');
-			
-		if (!layoutManager.tv) {
-            headerCastButton.title = globalize.translate('ButtonCast');
-			headerCastButton.classList.remove('hide');
-		} else
-			headerCastButton.classList.add('hide');
-		
-		if (headerSyncButton)
-            headerSyncButton.title = globalize.translate('ButtonSyncPlay');
-		
-		if (headerAudioPlayerButton) 
-            headerAudioPlayerButton.title = globalize.translate('ButtonPlayer');
-        
-		if (!layoutManager.tv) 
-			mainDrawerButton.classList.remove('hide');
-		else
-			mainDrawerButton.classList.add('hide');			
     }
 	
     function updateHeaderUserButton(src) {
@@ -301,12 +249,12 @@ import { UserSettings } from '../scripts/settings/userSettings';
 			document.getElementById("lock").classList.remove('lock');
 			document.getElementById("lock").classList.add('lock_open');
 			// make new setting persistent
-			appSettings.set('lockHeader', 'false', currentUser.userId);
+			appSettings.set('lockHeader', 'false', currentUser.localUser.Id);
 		} else {
 			skinHeader.classList.add('locked');
 			document.getElementById("lock").classList.remove('lock_open');
 			document.getElementById("lock").classList.add('lock');
-			appSettings.set('lockHeader', 'true', currentUser.userId);
+			appSettings.set('lockHeader', 'true', currentUser.localUser.Id);
 		}
 	}
 
@@ -1079,7 +1027,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
         document.title = 'Jellyfin';
     }
 
-    function setTitle (title) {
+    export function setTitle (title) {
         if (title == null) {
             return void LibraryMenu.setDefaultTitle();
         }
@@ -1111,6 +1059,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		const currentResizeRatio = currentSettings.displayFontSize() || 0;
 		
 		document.body.style.fontSize = 1 + (currentResizeRatio/100) + "rem"; 
+		//document.body.style.lineHeight = 1 + (currentResizeRatio/100) + "rem";
 	}
 	
     function setTransparentMenu (transparent) {
@@ -1181,9 +1130,9 @@ import { UserSettings } from '../scripts/settings/userSettings';
 
         loadNavDrawer();
 
-        ServerConnections.user(currentApiClient).then(function (userResult) {
-            currentUser = userResult;
-            updateUserInHeader(userResult);
+        ServerConnections.user(currentApiClient).then(function (user) {
+            currentUser = user;
+            updateUserInHeader(user);
         });
     });
 

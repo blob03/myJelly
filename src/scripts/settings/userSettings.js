@@ -27,7 +27,7 @@ function hdrClock(obj) {
 		return false;
 	
 	// If clock is disabled 
-	// remove any pending timer
+	// clear any pending timer
 	// hide the clock 
 	// return
 	if (obj.enableClock() !== true) {
@@ -124,10 +124,11 @@ export class UserSettings {
         const currentValue = this.get(name, enableOnServer);
         const result = appSettings.set(name, value, userId);
 
-        if (enableOnServer !== false && this.displayPrefs) {
-            this.displayPrefs.CustomPrefs[name] = value == null ? value : value.toString();
-            saveServerPreferences(this);
-        }
+		if (this.displayPrefs) {
+			this.displayPrefs.CustomPrefs[name] = value == null ? value : value.toString();
+			if (enableOnServer === true)     
+				saveServerPreferences(this);
+		}
 
         if (currentValue !== value) {
             Events.trigger(this, 'change', [name]);
@@ -135,6 +136,13 @@ export class UserSettings {
 
         return result;
     }
+	
+	commit() {
+		if (this.displayPrefs)     
+			saveServerPreferences(this);
+		
+		return true;
+	}
 
     /**
      * Get value of setting.
@@ -144,10 +152,9 @@ export class UserSettings {
      */
     get(name, enableOnServer) {
         const userId = this.currentUserId;
-        if (enableOnServer !== false && this.displayPrefs) {
+        if (enableOnServer === true && this.displayPrefs) 
             return this.displayPrefs.CustomPrefs[name];
-        }
-
+        
         return appSettings.get(name, userId);
     }
 
@@ -284,15 +291,13 @@ export class UserSettings {
      */
 	enableClock(val) {
         if (val !== undefined) {
-			if (val === false) {
-				/* Stop and hide the clock. */
+			if (val === false) 
+				/* This will stop and hide the clock. */
 				this.set('clock', 'false');
-				hdrClock(this);
-			} else {
-				/* In case the clock isn't running already, unhide and start it. */
+			else 
+				/* In case the clock isn't running already, this will unhide and start it. */
 				this.set('clock', 'true');
-				hdrClock(this);
-			}
+			setTimeout(() => { hdrClock(this); }, 2000);
             return true;
         }
 		val = this.get('clock');
@@ -648,6 +653,7 @@ export const setUserInfo = currentSettings.setUserInfo.bind(currentSettings);
 export const getData = currentSettings.getData.bind(currentSettings);
 export const importFrom = currentSettings.importFrom.bind(currentSettings);
 export const set = currentSettings.set.bind(currentSettings);
+export const commit = currentSettings.commit.bind(currentSettings);
 export const get = currentSettings.get.bind(currentSettings);
 export const serverConfig = currentSettings.serverConfig.bind(currentSettings);
 export const allowedAudioChannels = currentSettings.allowedAudioChannels.bind(currentSettings);

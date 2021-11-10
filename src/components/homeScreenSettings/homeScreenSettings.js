@@ -343,20 +343,19 @@ import template from './homeScreenSettings.template.html';
         return list;
     }
 
-    function saveUser(context, user, userSettingsInstance, apiClient) {
+    function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
+		const user = instance.currentUser;
+		
         user.Configuration.HidePlayedInLatest = context.querySelector('.chkHidePlayedFromLatest').checked;
 
         user.Configuration.LatestItemsExcludes = getCheckboxItems('.chkIncludeInLatest', context, false).map(i => {
-            return i.getAttribute('data-folderid');
-        });
+            return i.getAttribute('data-folderid'); });
 
         user.Configuration.MyMediaExcludes = getCheckboxItems('.chkIncludeInMyMedia', context, false).map(i => {
-            return i.getAttribute('data-folderid');
-        });
+            return i.getAttribute('data-folderid'); });
 
         user.Configuration.GroupedFolders = getCheckboxItems('.chkGroupFolder', context, true).map(i => {
-            return i.getAttribute('data-folderid');
-        });
+            return i.getAttribute('data-folderid'); });
 
         const viewItems = context.querySelectorAll('.viewItem');
         const orderedViews = [];
@@ -367,9 +366,7 @@ import template from './homeScreenSettings.template.html';
         }
 
         user.Configuration.OrderedViews = orderedViews;
-
         userSettingsInstance.set('tvhome', context.querySelector('.selectTVHomeScreen').value);
-
         userSettingsInstance.set('homesection0', context.querySelector('#selectHomeSection1').value);
         userSettingsInstance.set('homesection1', context.querySelector('#selectHomeSection2').value);
         userSettingsInstance.set('homesection2', context.querySelector('#selectHomeSection3').value);
@@ -384,24 +381,22 @@ import template from './homeScreenSettings.template.html';
             userSettingsInstance.set(`landing-${selectLanding.getAttribute('data-folderid')}`, selectLanding.value);
         }
 
-        return apiClient.updateUserConfiguration(user.Id, user.Configuration);
+        apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
+			userSettingsInstance.commit(); 
+			setTimeout(() => { 
+				if (enableSaveConfirmation) 
+					toast(globalize.translate('SettingsSaved'));
+			}, 1000); 
+		});
     }
 
     function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
         loading.show();
 
-        apiClient.getUser(userId).then(user => {
-            saveUser(context, user, userSettings, apiClient).then(() => {
-                loading.hide();
-                if (enableSaveConfirmation) {
-                    toast(globalize.translate('SettingsSaved'));
-                }
-
-                Events.trigger(instance, 'saved');
-            }, () => {
-                loading.hide();
-            });
-        });
+		saveUser(instance, context, userSettings, apiClient, enableSaveConfirmation);
+		    
+		loading.hide();
+		Events.trigger(instance, 'saved');
     }
 
     function onSubmit(e) {
@@ -467,6 +462,7 @@ import template from './homeScreenSettings.template.html';
     class HomeScreenSettings {
         constructor(options) {
             this.options = options;
+			this.currentUser = null;
             embed(options, this);
         }
 
@@ -481,6 +477,7 @@ import template from './homeScreenSettings.template.html';
             const userSettings = self.options.userSettings;
 
             apiClient.getUser(userId).then(user => {
+				self.currentUser = user;
                 userSettings.setUserInfo(userId, apiClient).then(() => {
                     self.dataLoaded = true;
 
