@@ -21,15 +21,20 @@ export function populateLanguages(select, languages, val) {
 
 export function populateDictionaries(select, languages, val) {
     let html = '';
+	const source = 'en';
 	globalize.getCoreDictionaryProgress(val).then( (progress) => {
 		languages.forEach(language => {
 			let ISOName = language.TwoLetterISOLanguageName;
+			html += "<option";
+			if (ISOName === source) 
+				html += " class='sourceDictionaryOption'";
+			
 			if (val && val === ISOName) {
-				html += "<option value='" + ISOName + "' selected>" + language.DisplayName 
-						+ (progress >= 0 ? (" [ " + progress + "% ]") : "") 
+				html += " value='" + ISOName + "' selected>" + language.DisplayName 
+						+ (ISOName === source ? " [ S ]" : (progress >= 0 ? (" [ " + progress + "% ]") : "")) 
 						+ "</option>";
 			} else 
-				html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+				html += " value='" + ISOName + "'>" + language.DisplayName + "</option>";
 		});
 		select.innerHTML += html;
 	});

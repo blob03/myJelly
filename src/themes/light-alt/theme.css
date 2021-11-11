@@ -896,3 +896,7 @@ fieldset {
 .radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
 	border-color: rgba(158, 201, 193, 0.8) !important;
 }
+
+option.sourceDictionaryOption {
+	color: #fff;
+}

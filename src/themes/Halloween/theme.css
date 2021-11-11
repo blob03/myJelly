@@ -1089,3 +1089,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
  .iconOsdProgressInner {
 		background: rgb(126, 66, 216);
 }
+
+option.sourceDictionaryOption {
+	color: #fff;
+}

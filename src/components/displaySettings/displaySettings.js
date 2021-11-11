@@ -93,6 +93,9 @@ import viewContainer from '../viewContainer';
 	
     function loadForm(context, user, userSettings, apiClient) {	
 		apiClient.getCultures().then(allCultures => {
+			// *manually* add 'en-gb' to the list since the server only knows 'en' ('en-us' in reality)
+			// AKA the source dictionary.
+			allCultures.push({DisplayName: 'English (Great Britain)', TwoLetterISOLanguageName: 'en-gb'});
 			allCultures.sort((a, b) => {
 				let fa = a.DisplayName.toLowerCase(),
 				fb = b.DisplayName.toLowerCase();

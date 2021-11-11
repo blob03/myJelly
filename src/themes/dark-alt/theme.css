@@ -1032,3 +1032,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	background: #84989f !important;
 	color: #fff;
 }
+
+option.sourceDictionaryOption {
+	color: #fff;
+}
