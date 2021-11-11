@@ -242,6 +242,7 @@ import viewContainer from '../viewContainer';
 					LibraryMenu.setTitle(globalize.translate(instance.title));
 					LibraryMenu.updateUserInHeader(user);
 				}
+				loading.hide();	
 				if (enableSaveConfirmation) 
 					toast(globalize.translate('SettingsSaved'));}, 2000); 
 		});
@@ -250,7 +251,6 @@ import viewContainer from '../viewContainer';
     function save(instance, context, userSettings, apiClient, enableSaveConfirmation) {
         loading.show();
 		saveUser(instance, context, userSettings, apiClient, enableSaveConfirmation);
-		loading.hide();	
 		Events.trigger(instance, 'saved'); 			
     }
 
