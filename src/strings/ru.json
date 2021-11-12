@@ -593,8 +593,8 @@
     "LabelMethod": "Метод:",
     "LabelMinBackdropDownloadWidth": "Минимальная ширина загружаемого задника:",
     "LabelMinResumeDuration": "Минимальная длительность для возобновления:",
-    "LabelMinResumeDurationHelp": "Наименьшая длительность видео в секундах, при которой сохраняется позиция воспроизведения и позволяется возобновление.",
-    "LabelMinResumePercentage": "Минимальная доля для возобновления, %:",
+    "LabelMinResumeDurationHelp": "Наименьшая длительность видео, при которой сохраняется позиция воспроизведения и позволяется возобновление, в секундах.",
+    "LabelMinResumePercentage": "Минимум для возобновления, %:",
     "LabelMinResumePercentageHelp": "Произведения предполагаются не воспроизведёнными, при остановке до данного момента.",
     "LabelMinScreenshotDownloadWidth": "Минимальная ширина загружаемого снимка экрана:",
     "LabelModelDescription": "Описание модели",
@@ -1263,7 +1263,7 @@
     "LabelLibraryPageSize": "Размер страницы медиатеки:",
     "Episode": "Эпизод",
     "ClientSettings": "Параметры клиента",
-    "BoxSet": "Коллекционный",
+    "BoxSet": "Киносерийный",
     "Artist": "Исполнитель",
     "AlbumArtist": "Исполнитель альбома",
     "Album": "Альбом",
@@ -1595,7 +1595,7 @@
     "TypeOptionPluralMusicAlbum": "Музыкальные альбомы",
     "TypeOptionPluralMovie": "Фильмы",
     "TypeOptionPluralEpisode": "Эпизоды",
-    "TypeOptionPluralBoxSet": "Коллекции",
+    "TypeOptionPluralBoxSet": "Киносерии",
     "TypeOptionPluralBook": "Книги",
     "TypeOptionPluralAudio": "Аудио элементы"
 }

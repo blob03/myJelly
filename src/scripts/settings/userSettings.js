@@ -122,21 +122,22 @@ export class UserSettings {
     set(name, value, enableOnServer) {
         const userId = this.currentUserId;
         const currentValue = this.get(name, enableOnServer);
-        const result = appSettings.set(name, value, userId);
 
 		if (this.displayPrefs) {
 			this.displayPrefs.CustomPrefs[name] = value == null ? value : value.toString();
-			if (enableOnServer === true)     
+			if (enableOnServer === true) 
 				saveServerPreferences(this);
-		}
-
-        if (currentValue !== value) {
-            Events.trigger(this, 'change', [name]);
-        }
-
-        return result;
+		} else
+			appSettings.set(name, value, userId);
+		
+		if (currentValue !== value) 
+				Events.trigger(this, 'change', [name]);
+        return true;
     }
 	
+	/**
+	 * Save the user preferences into the server storage, all at once.
+	 */
 	commit() {
 		if (this.displayPrefs)     
 			saveServerPreferences(this);
@@ -148,14 +149,21 @@ export class UserSettings {
      * Get value of setting.
      * @param {string} name - Name of setting.
      * @param {boolean} enableOnServer - Flag to return preferences from server (cached).
-     * @return {string} Value of setting.
+     * @return {string} Value of setting or ''.
      */
     get(name, enableOnServer) {
         const userId = this.currentUserId;
-        if (enableOnServer === true && this.displayPrefs) 
-            return this.displayPrefs.CustomPrefs[name];
-        
-        return appSettings.get(name, userId);
+		
+		if (this.displayPrefs) {
+			if (enableOnServer === true) {
+				// Fetch all user preferences directly from the server and return the one requested.
+				const savedPreferences = self.currentApiClient.getDisplayPreferences('usersettings', userId, 'emby');
+				return savedPreferences[name] || '';
+			}
+			return this.displayPrefs.CustomPrefs[name] || '';
+		}
+		
+		return appSettings.get(name, userId) || '';
     }
 
     /**
