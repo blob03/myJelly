@@ -132,6 +132,7 @@ export class UserSettings {
 		
 		if (currentValue !== value) 
 				Events.trigger(this, 'change', [name]);
+			
         return true;
     }
 	
