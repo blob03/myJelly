@@ -153,11 +153,12 @@ export class UserSettings {
      */
     get(name, enableOnServer) {
         const userId = this.currentUserId;
+		const apiClient = this.currentApiClient;
 		
 		if (this.displayPrefs) {
 			if (enableOnServer === true) {
 				// Fetch all user preferences directly from the server and return the one requested.
-				const savedPreferences = self.currentApiClient.getDisplayPreferences('usersettings', userId, 'emby');
+				const savedPreferences = apiClient.getDisplayPreferences('usersettings', userId, 'emby');
 				return savedPreferences[name] || '';
 			}
 			return this.displayPrefs.CustomPrefs[name] || '';
