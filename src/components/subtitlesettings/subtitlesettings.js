@@ -455,25 +455,23 @@ function saveUser(instance, context, userSettingsInstance, appearanceKey, apiCli
 	
     let appearanceSettings = userSettingsInstance.getSubtitleAppearanceSettings(appearanceKey);
     appearanceSettings = Object.assign(appearanceSettings, getSubtitleAppearanceObject(context));
-
     userSettingsInstance.setSubtitleAppearanceSettings(appearanceSettings, appearanceKey);
 
     user.Configuration.SubtitleLanguagePreference = context.querySelector('#selectSubtitleLanguage').value;
     user.Configuration.SubtitleMode = context.querySelector('#selectSubtitlePlaybackMode').value;
 		
     apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
-		userSettingsInstance.commit(); 		
-		if (enableSaveConfirmation) 
-			toast(globalize.translate('SettingsSaved'));
+		userSettingsInstance.commit();
+		setTimeout(() => { 
+			loading.hide();
+			if (enableSaveConfirmation) 
+				toast(globalize.translate('SettingsSaved'));}, 1000);
 	});
 }
 
 function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
     loading.show();
-
 	saveUser(instance, context, userSettings, instance.appearanceKey, apiClient, enableSaveConfirmation);
-	
-	loading.hide();
 	Events.trigger(instance, 'saved');
 }
 

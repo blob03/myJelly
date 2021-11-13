@@ -2,12 +2,15 @@ import { Events } from 'jellyfin-apiclient';
 import toast from '../../../components/toast/toast';
 import globalize from '../../../scripts/globalize';
 import appSettings from '../../../scripts/settings/appSettings';
+import loading from '../../../components/loading/loading';
 
 export default function (view) {
     function submit(e) {
+		loading.show();
         appSettings.enableGamepad(view.querySelector('.chkEnableGamepad').checked);
-
-        toast(globalize.translate('SettingsSaved'));
+		setTimeout(() => { 
+			loading.hide();
+			toast(globalize.translate('SettingsSaved'));}, 1000);
 
         Events.trigger(view, 'saved');
 

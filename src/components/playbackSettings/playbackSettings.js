@@ -211,7 +211,7 @@ import template from './playbackSettings.template.html';
         loading.hide();
     }
 
-    function saveUser(instance, context, userSettingsInstance, apiClient) {
+    function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
 		const user = instance.currentUser;
 		
         appSettings.enableSystemExternalPlayers(context.querySelector('.chkExternalVideoPlayer').checked);
@@ -235,18 +235,16 @@ import template from './playbackSettings.template.html';
 
 		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 			userSettingsInstance.commit(); 
+			setTimeout(() => { 
+				loading.hide();
+				if (enableSaveConfirmation) 
+					toast(globalize.translate('SettingsSaved'));}, 1000);
 		});
     }
 
     function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
         loading.show();
-       
-		saveUser(instance, context, userSettings, apiClient);
-		
-		if (enableSaveConfirmation) 
-				toast(globalize.translate('SettingsSaved'));
-	
-		loading.hide();
+		saveUser(instance, context, userSettings, apiClient, enableSaveConfirmation);
 		Events.trigger(instance, 'saved');
     }
 
