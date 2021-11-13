@@ -901,3 +901,30 @@ option.sourceDictionaryOption {
 	color: #fff;
 }
 
+/* disabled slider */
+
+.sliderContainer-settings.disabled > .sliderLabel {
+	color: #c9d8d8;
+}
+
+.sliderContainer-settings.disabled  .mdl-slider-background, 
+.sliderContainer-settings.disabled  .mdl-slider-background-flex {
+	box-shadow: none;
+	background: #c9d8d8;
+}
+
+
+.sliderContainer-settings.disabled .fieldDescription,
+.sliderContainer-settings.disabled .sliderBubble {
+	color: #454d59;
+	visibility: hidden;
+}
+
+.sliderContainer-settings.disabled .mdl-slider-background-lower {
+	background: none;
+}
+
+.sliderContainer-settings.disabled .mdl-slider
+ {
+	visibility: hidden;
+}

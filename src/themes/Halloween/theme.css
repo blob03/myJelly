@@ -1093,3 +1093,31 @@ div[data-role="controlgroup"] a.ui-btn-active {
 option.sourceDictionaryOption {
 	color: #fff;
 }
+
+/* disabled slider */
+
+.sliderContainer-settings.disabled > .sliderLabel {
+	color: #b67632;
+}
+
+.sliderContainer-settings.disabled  .mdl-slider-background, 
+.sliderContainer-settings.disabled  .mdl-slider-background-flex {
+	box-shadow: none;
+	background: #ba6e1e;
+}
+
+
+.sliderContainer-settings.disabled .fieldDescription,
+.sliderContainer-settings.disabled .sliderBubble {
+	color: #454d59;
+	visibility: hidden;
+}
+
+.sliderContainer-settings.disabled .mdl-slider-background-lower {
+	background: none;
+}
+
+.sliderContainer-settings.disabled .mdl-slider
+ {
+	visibility: hidden;
+}

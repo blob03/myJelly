@@ -48,8 +48,7 @@ import viewContainer from '../viewContainer';
         });
     }
 
-    function loadScreensavers(context, userSettings) {
-        const selectScreensaver = context.querySelector('.selectScreensaver');
+    function loadScreensavers(selector, val) {
         const options = pluginManager.ofType('screensaver').map(plugin => {
             return {
                 name: plugin.name,
@@ -57,11 +56,11 @@ import viewContainer from '../viewContainer';
             };
         });
 
-        selectScreensaver.innerHTML += options.map(o => {
+        selector.innerHTML += options.map(o => {
             return `<option value="${o.value}">${o.name}</option>`;
         }).join('');
 
-        selectScreensaver.value = userSettings.screensaver() || 'none';
+        selector.value = val;
     }
 
     function showOrHideMissingEpisodesField(context) {
@@ -78,6 +77,18 @@ import viewContainer from '../viewContainer';
 			pnode.querySelector('.fieldDescription').innerHTML = e.target.value + " min.";
 	}
 	
+	function onScreenSaverChange(e) {
+		const pnode = e.target.parentNode.parentNode;
+		if (!pnode)
+			return;
+		
+		let sliderContainerSettings =  pnode.querySelector('.sliderContainer-settings');
+		if (e.target.value === 'none') 
+			sliderContainerSettings.classList.add('disabled');
+		else 
+			sliderContainerSettings.classList.remove('disabled');
+	}
+	
 	function onDisplayFontSizeChange(e) { 		
 		document.body.style.fontSize = 1 + (e.target.value/100) + "rem"; 
 		//document.body.style.lineHeight = 1 + (e.target.value/100) + "rem"; 
@@ -92,6 +103,7 @@ import viewContainer from '../viewContainer';
 	var savedDisplayLanguage = '';
 	
     function loadForm(context, user, userSettings, apiClient) {	
+		let event_change = new Event('change');
 		apiClient.getCultures().then(allCultures => {
 			// *manually* add 'en-gb' to the list since the server only knows 'en' ('en-us' in reality)
 			// AKA the source dictionary.
@@ -131,15 +143,19 @@ import viewContainer from '../viewContainer';
 			userItem.classList.toggle('hide', !user.localUser.Policy.IsAdministrator);});
 
         if (appHost.supports('screensaver')) {
-			loadScreensavers(context, userSettings);
+			let selectScreensaver = context.querySelector('.selectScreensaver');
+			loadScreensavers(selectScreensaver, userSettings.screensaver() || 'none');
+			selectScreensaver.addEventListener('change', onScreenSaverChange);
+			
 			context.querySelector('.ScreensaverArea').classList.remove('hide');
 			
 			let sliderScreensaverTime =  context.querySelector('#sliderScreensaverTime');
 			sliderScreensaverTime.value = (userSettings.screensaverTime()/60000) || 3;
 			sliderScreensaverTime.addEventListener('input', onScreensaverTimeChange);
 			sliderScreensaverTime.addEventListener('change', onScreensaverTimeChange);
-			let event_change = new Event('change');
+			
 			sliderScreensaverTime.dispatchEvent(event_change);
+			selectScreensaver.dispatchEvent(event_change);
         } else 
             context.querySelector('.ScreensaverArea').classList.add('hide');
 
@@ -179,10 +195,9 @@ import viewContainer from '../viewContainer';
 				context.querySelector('.fldDisplaySeparator').classList.remove('hide');
 			context.querySelector('.fldDisplayFontSize').classList.remove('hide');
 			
-			let event = new Event('change');
 			let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
 			sliderDisplayFontSize.addEventListener('change', onDisplayFontSizeChange);
-			sliderDisplayFontSize.dispatchEvent(event);
+			sliderDisplayFontSize.dispatchEvent(event_change);
 		} else {
 			context.querySelector('.fldDisplaySeparator').classList.add('hide');
 			context.querySelector('.fldDisplayFontSize').classList.add('hide');

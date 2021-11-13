@@ -663,3 +663,30 @@ fieldset {
 option.sourceDictionaryOption {
 	color: #fff;
 }
+/* disabled slider */
+
+.sliderContainer-settings.disabled > .sliderLabel {
+	color: #447a9b;
+}
+
+.sliderContainer-settings.disabled  .mdl-slider-background, 
+.sliderContainer-settings.disabled  .mdl-slider-background-flex {
+	box-shadow: none;
+	background: #447a9b;
+}
+
+
+.sliderContainer-settings.disabled .fieldDescription,
+.sliderContainer-settings.disabled .sliderBubble {
+	color: #454d59;
+	visibility: hidden;
+}
+
+.sliderContainer-settings.disabled .mdl-slider-background-lower {
+	background: none;
+}
+
+.sliderContainer-settings.disabled .mdl-slider
+ {
+	visibility: hidden;
+}
