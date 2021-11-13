@@ -134,7 +134,7 @@ import template from './playbackSettings.template.html';
 				return 0;
 			});
 			settingsHelper.populateLanguages(selectAudioLanguage, allCultures);
-			selectAudioLanguage.value = user.Configuration.AudioLanguagePreference || '';
+			selectAudioLanguage.value = userSettings.AudioLanguagePreference();
         });
 
         // hide cinema mode options if disabled at server level
@@ -165,7 +165,6 @@ import template from './playbackSettings.template.html';
             context.querySelector('.fldChromecastQuality').classList.add('hide');
         }
 
-        context.querySelector('.chkPlayDefaultAudioTrack').checked = user.Configuration.PlayDefaultAudioTrack;
         context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
         context.querySelector('.chkEnableCinemaMode').checked = userSettings.enableCinemaMode();
         context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
@@ -221,8 +220,6 @@ import template from './playbackSettings.template.html';
         setMaxBitrateFromField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
         setMaxBitrateFromField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
 
-        user.Configuration.AudioLanguagePreference = context.querySelector('#selectAudioLanguage').value;
-        user.Configuration.PlayDefaultAudioTrack = context.querySelector('.chkPlayDefaultAudioTrack').checked;
         user.Configuration.EnableNextEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay').checked;
 		userSettingsInstance.enableSetUsingLastTracks(context.querySelector('.chkSetUsingLastTracks').checked);
 		userSettingsInstance.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
@@ -232,7 +229,8 @@ import template from './playbackSettings.template.html';
         userSettingsInstance.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
         userSettingsInstance.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);
         userSettingsInstance.skipBackLength(context.querySelector('#sliderSkipBackLength').value * 1000);
-
+		userSettingsInstance.AudioLanguagePreference(context.querySelector('#selectAudioLanguage').value);
+		
 		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 

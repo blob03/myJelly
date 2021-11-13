@@ -224,6 +224,20 @@ export class UserSettings {
         val = this.get('enableCinemaMode');
         return val === 'true';
     }
+	
+	/**
+     * Get or set 'AudioLanguagePreference' state.
+     * @param {boolean|undefined} val - Language to set or undefined.
+     * @return {boolean} 'AudioLanguagePreference' state.
+     */
+    AudioLanguagePreference(val) {
+        if (val !== undefined) {
+            return this.set('AudioLanguagePreference', val.toString());
+        }
+
+        val = this.get('AudioLanguagePreference') || '';
+        return val;
+    }
 
     /**
      * Get or set 'Next Video Info Overlay' state.
@@ -669,6 +683,7 @@ export const serverConfig = currentSettings.serverConfig.bind(currentSettings);
 export const allowedAudioChannels = currentSettings.allowedAudioChannels.bind(currentSettings);
 export const preferFmp4HlsContainer = currentSettings.preferFmp4HlsContainer.bind(currentSettings);
 export const enableCinemaMode = currentSettings.enableCinemaMode.bind(currentSettings);
+export const AudioLanguagePreference = currentSettings.AudioLanguagePreference.bind(currentSettings);
 export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOverlay.bind(currentSettings);
 export const enableSetUsingLastTracks = currentSettings.enableSetUsingLastTracks.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
