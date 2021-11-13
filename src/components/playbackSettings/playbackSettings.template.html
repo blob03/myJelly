@@ -135,19 +135,23 @@
             </select>
         </div>
 		
-		<div class="sliderContainer-settings">
-            <div class="sliderContainer">
-                <input is="emby-slider" id="sliderSkipForwardLength" label="${LabelSkipForwardLength}" type="range" min="5" max="60" step="5"/>
-            </div>
-			<div class="fieldDescription" style="float:right"></div>
-        </div>
-		
-		<div class="sliderContainer-settings">
-            <div class="sliderContainer">
-                <input is="emby-slider" id="sliderSkipBackLength" label="${LabelSkipBackLength}" type="range" min="5" max="60" step="5"/>
-            </div>
-			<div class="fieldDescription" style="float:right"></div>
-        </div>	
+		<div class="BackNForwardArea" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+			<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderSkipBackLength" label="${LabelSkipBackLength}" type="range" min="5" max="60" step="5"/>
+				</div>
+				<div class="fieldDescription" style="float:right"></div>
+			</div>
+			
+			<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderSkipForwardLength" label="${LabelSkipForwardLength}" type="range" min="5" max="60" step="5"/>
+				</div>
+				<div class="fieldDescription" style="float:right"></div>
+			</div>	
+			
+		</div>
     </div>
 
     <button is="emby-button" type="submit" class="raised button-submit block btnSave hide">

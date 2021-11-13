@@ -144,7 +144,7 @@ import template from './playbackSettings.template.html';
             } else {
                 context.querySelector('.cinemaModeOptions').classList.add('hide');
             }
-        });
+        }).catch( () => {console.log("No cinemamode configuration available on server.")});;
 
         if (appHost.supports('externalplayerintent') && userId === loggedInUserId) {
             context.querySelector('.fldExternalPlayer').classList.remove('hide');
