@@ -660,6 +660,21 @@ fieldset {
 	border-color: #fff !important;
 }
 
+.radioButtonLabel,
+.emby-collapsible-button {
+	color: rgb(117, 129, 138);
+	font-size: .9em !important;
+ }
+ 
+.collapseContent {
+	color: rgb(82, 121, 145) !important;
+	background-color: #1f4075 !important; 
+ }
+ 
+.iconOsdProgressInner {
+	background: rgb(221, 219, 225);
+}
+
 option.sourceDictionaryOption {
 	color: #fff;
 }

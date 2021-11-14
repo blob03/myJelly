@@ -34,11 +34,6 @@ html {
     border-color: rgba(0, 0, 0, 0.158);
 }
 
-.collapseContent {
-    background-color: #eaeaea;
-}
-
-
 .skinHeader-withBackground {
 	background: linear-gradient(to right, #fff 0%, #d3dcdc 18%, #d2dae1 38%, #cfd9d9 68%, #eef5f8 81%, #d2d9da 100%);
     color: #fff;
@@ -79,7 +74,7 @@ html {
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background-color: rgba(255, 255, 255, 0.8) !important;
+    background-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .dialog,
@@ -797,6 +792,18 @@ select option:selected {
 	background-image: url(./bg.jpg) !important;
 }
 
+.backdropImage.themeBackdrop.alt1 {
+	background-image: url(./bg-alt1.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt2 {
+	background-image: url(./bg-alt1.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt3 {
+	background-image: url(./bg.jpg) !important;
+}
+
 /* fix for TV Layout */
 
 .layout-tv .detailPageWrapperContainer {
@@ -895,6 +902,21 @@ fieldset {
 .radio.emby-checkbox:focus + span + .checkboxOutline,
 .radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
 	border-color: rgba(158, 201, 193, 0.8) !important;
+}
+
+.radioButtonLabel,
+.emby-collapsible-button {
+	color: rgb(117, 129, 138);
+	font-size: .9em !important;
+ }
+ 
+.collapseContent {
+	color: rgb(86, 99, 107) !important;
+	background-color: #eaeaea !important; 
+ }
+ 
+.iconOsdProgressInner {
+	background: rgb(221, 219, 225);
 }
 
 option.sourceDictionaryOption {
