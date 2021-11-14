@@ -152,6 +152,8 @@ function fillLanguages(context, apiClient, languages) {
             const lang = user.Configuration.SubtitleLanguagePreference;
 
             if (lang) {
+				if (lang === "Auto")
+					lang = globalize.getCurrentLocale();
                 selectLanguage.value = lang;
             }
         });

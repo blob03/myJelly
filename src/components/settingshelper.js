@@ -15,7 +15,25 @@ export function populateLanguages(select, languages, val) {
 		else
 			html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
 	});
+    select.innerHTML += html;
+}
+
+/**
+ * Helper for creating a list of available subtitles languages.
+ * @module components/settingsHelper
+ */
+
+export function populateSubsLanguages(select, languages, val) {
+    let html = '';
 	
+	languages.forEach(language => {
+		let ISOName3L = language.ThreeLetterISOLanguageName;
+		let ISOName2L = language.TwoLetterISOLanguageName;
+		if (val && val === ISOName3L) 
+			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "' selected>" + language.DisplayName + "</option>";
+		else
+			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "'>" + language.DisplayName + "</option>";
+	});
     select.innerHTML += html;
 }
 
@@ -42,5 +60,6 @@ export function populateDictionaries(select, languages, val) {
 
 export default {
     populateLanguages: populateLanguages,
+	populateSubsLanguages: populateSubsLanguages,
 	populateDictionaries: populateDictionaries
 };

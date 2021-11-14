@@ -150,10 +150,10 @@ import { Events } from 'jellyfin-apiclient';
 		
 		// already loaded?
 		if (DicKeysNum[lang])
-			return new Promise((resolve) => {
-				resolve(getDictionary('core', lang));
-			});
-		
+			if (allTranslations['core'].dictionaries[lang])
+				return new Promise((resolve) => {
+					resolve(allTranslations['core'].dictionaries[lang]);});
+
 		Object.filter = (obj, predicate) => 
 			Object.assign(...Object.keys(obj)
 				.filter( key => predicate(obj[key]) )

@@ -360,92 +360,91 @@ function onSubPresetChange(e) {
 	});
 }
 
-function loadForm(context, user, userSettings, appearanceSettings, apiClient) {	
-	apiClient.getCultures().then(function (allCultures) {
-		let event_change = new Event('change');
-		
-		if (appHost.supports('subtitleburnsettings') && user.Policy.EnableVideoPlaybackTranscoding) 
-			context.querySelector('.fldBurnIn').classList.remove('hide');
-        
-        context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || 'none';
-		loadColors(context);
-		
-		context.querySelector('#inputShadowColor').value = appearanceSettings.textShadow || 'Transparent';
-		context.querySelector('#inputShadowColor').addEventListener('change', cancelPreset);
-		context.querySelector('#shadowcolor').style.backgroundColor = context.querySelector('#inputShadowColor').value;
-		
-        context.querySelector('#inputTextBackground').value = appearanceSettings.textBackground || 'Transparent';
-		context.querySelector('#inputTextBackground').addEventListener('change', cancelPreset);
-		context.querySelector('#bgcolor').style.backgroundColor = context.querySelector('#inputTextBackground').value;
-		
-		context.querySelector('#inputTextStroke').value = appearanceSettings.textStroke || 'Transparent';
-		context.querySelector('#inputTextStroke').addEventListener('change', cancelPreset);
-		context.querySelector('#strcolor').style.backgroundColor = context.querySelector('#inputTextStroke').value;
-		
-        context.querySelector('#inputTextColor').value = appearanceSettings.textColor || 'White';
-		context.querySelector('#inputTextColor').addEventListener('change', cancelPreset);
-		context.querySelector('#fcolor').style.backgroundColor = context.querySelector('#inputTextColor').value;
-		
-        context.querySelector('#selectFont').value = appearanceSettings.font || '';
-		context.querySelector('#selectFont').addEventListener('change', cancelPreset);
-		
-		let sliderOblique =  context.querySelector('#sliderOblique');
-		sliderOblique.addEventListener('input', onSliderInput);
-		sliderOblique.addEventListener('change', onSliderInput);
-		sliderOblique.addEventListener('change', cancelPreset);
-		if (browser.web0s) {
-			sliderOblique.min = 0;
-			sliderOblique.max = 4;
-			sliderOblique.step = 4;
-		}
-		sliderOblique.value = appearanceSettings.oblique || 0;
-		sliderOblique.dispatchEvent(event_change);
-		
-		let sliderTextSize =  context.querySelector('#sliderTextSize');
-		sliderTextSize.addEventListener('input', onSliderInput);
-		sliderTextSize.addEventListener('change', onSliderInput);
-		sliderTextSize.addEventListener('change', cancelPreset);
-		sliderTextSize.value = appearanceSettings.textSize || 1.36;
-		sliderTextSize.dispatchEvent(event_change);
-		
-		let sliderStrokeSize =  context.querySelector('#sliderStrokeSize');
-		sliderStrokeSize.addEventListener('input', onSliderInput);
-		sliderStrokeSize.addEventListener('change', onSliderInput);
-		sliderStrokeSize.addEventListener('change', cancelPreset);
-		sliderStrokeSize.value = appearanceSettings.strokeSize || 1;
-		sliderStrokeSize.dispatchEvent(event_change);
+function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
+	let event_change = new Event('change');
 	
-		context.querySelector('#sliderVerticalPosition').value = appearanceSettings.verticalPosition;
-        context.querySelector('#selectSubtitleBurnIn').value = appSettings.get('subtitleburnin') || '';
-		context.querySelector('#chkPreview').checked = appearanceSettings.chkPreview;
-		context.querySelector('#chkPreview').dispatchEvent(event_change);
-		
-		let selectSubtitlePlaybackMode = context.querySelector('#selectSubtitlePlaybackMode');
-		selectSubtitlePlaybackMode.value = user.Configuration.SubtitleMode || '';
-		selectSubtitlePlaybackMode.dispatchEvent(event_change);
+	if (appHost.supports('subtitleburnsettings') && user.Policy.EnableVideoPlaybackTranscoding) 
+		context.querySelector('.fldBurnIn').classList.remove('hide');
 	
+	context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || 'none';
+	loadColors(context);
+	
+	context.querySelector('#inputShadowColor').value = appearanceSettings.textShadow || 'Transparent';
+	context.querySelector('#inputShadowColor').addEventListener('change', cancelPreset);
+	context.querySelector('#shadowcolor').style.backgroundColor = context.querySelector('#inputShadowColor').value;
+	
+	context.querySelector('#inputTextBackground').value = appearanceSettings.textBackground || 'Transparent';
+	context.querySelector('#inputTextBackground').addEventListener('change', cancelPreset);
+	context.querySelector('#bgcolor').style.backgroundColor = context.querySelector('#inputTextBackground').value;
+	
+	context.querySelector('#inputTextStroke').value = appearanceSettings.textStroke || 'Transparent';
+	context.querySelector('#inputTextStroke').addEventListener('change', cancelPreset);
+	context.querySelector('#strcolor').style.backgroundColor = context.querySelector('#inputTextStroke').value;
+	
+	context.querySelector('#inputTextColor').value = appearanceSettings.textColor || 'White';
+	context.querySelector('#inputTextColor').addEventListener('change', cancelPreset);
+	context.querySelector('#fcolor').style.backgroundColor = context.querySelector('#inputTextColor').value;
+	
+	context.querySelector('#selectFont').value = appearanceSettings.font || '';
+	context.querySelector('#selectFont').addEventListener('change', cancelPreset);
+	
+	let sliderOblique =  context.querySelector('#sliderOblique');
+	sliderOblique.addEventListener('input', onSliderInput);
+	sliderOblique.addEventListener('change', onSliderInput);
+	sliderOblique.addEventListener('change', cancelPreset);
+	if (browser.web0s) {
+		sliderOblique.min = 0;
+		sliderOblique.max = 4;
+		sliderOblique.step = 4;
+	}
+	sliderOblique.value = appearanceSettings.oblique || 0;
+	
+	let sliderTextSize =  context.querySelector('#sliderTextSize');
+	sliderTextSize.addEventListener('input', onSliderInput);
+	sliderTextSize.addEventListener('change', onSliderInput);
+	sliderTextSize.addEventListener('change', cancelPreset);
+	sliderTextSize.value = appearanceSettings.textSize || 1.36;
+	
+	let sliderStrokeSize =  context.querySelector('#sliderStrokeSize');
+	sliderStrokeSize.addEventListener('input', onSliderInput);
+	sliderStrokeSize.addEventListener('change', onSliderInput);
+	sliderStrokeSize.addEventListener('change', cancelPreset);
+	sliderStrokeSize.value = appearanceSettings.strokeSize || 1;
+	
+	context.querySelector('#sliderVerticalPosition').value = appearanceSettings.verticalPosition;
+	context.querySelector('#selectSubtitleBurnIn').value = appSettings.get('subtitleburnin') || '';
+	context.querySelector('#chkPreview').checked = appearanceSettings.chkPreview;
+	
+	let selectSubtitlePlaybackMode = context.querySelector('#selectSubtitlePlaybackMode');
+	selectSubtitlePlaybackMode.value = user.Configuration.SubtitleMode || '';
+	
+	apiClient.getCultures().then(allCultures => {
+		allCultures.sort((a, b) => {
+			let fa = a.DisplayName.toLowerCase(),
+				fb = b.DisplayName.toLowerCase();
+			if (fa < fb) 
+				return -1;
+			if (fa > fb) 
+				return 1;
+			return 0;
+		});
 		let selectSubtitleLanguage = context.querySelector('#selectSubtitleLanguage');
-		apiClient.getCultures().then(allCultures => {
-			allCultures.sort((a, b) => {
-				let fa = a.DisplayName.toLowerCase(),
-					fb = b.DisplayName.toLowerCase();
-				if (fa < fb) 
-					return -1;
-				if (fa > fb) 
-					return 1;
-				return 0;
-			});
-			settingsHelper.populateLanguages(selectSubtitleLanguage, allCultures, user.Configuration.SubtitleLanguagePreference || '');
-			selectSubtitleLanguage.dispatchEvent(event_change);
-        });
+		settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, user.Configuration.SubtitleLanguagePreference || 'Auto');
+		selectSubtitleLanguage.dispatchEvent(event_change);
+	});
 
-		let selectSubPreset =  context.querySelector('#selectSubtitlePreset');
-		fillPresets(selectSubPreset, appearanceSettings.preset);
-		selectSubPreset.addEventListener('change', onSubPresetChange);
-		selectSubPreset.dispatchEvent(event_change);
-		
-        loading.hide();
-    });
+	let selectSubPreset =  context.querySelector('#selectSubtitlePreset');
+	fillPresets(selectSubPreset, appearanceSettings.preset);
+	selectSubPreset.addEventListener('change', onSubPresetChange);
+	
+	selectSubPreset.dispatchEvent(event_change);
+	selectSubtitlePlaybackMode.dispatchEvent(event_change);
+	context.querySelector('#chkPreview').dispatchEvent(event_change);
+	sliderOblique.dispatchEvent(event_change);
+	sliderTextSize.dispatchEvent(event_change);
+	sliderStrokeSize.dispatchEvent(event_change);
+	
+	loading.hide();
 }
 
 function saveUser(instance, context, userSettingsInstance, appearanceKey, apiClient, enableSaveConfirmation) {
@@ -496,37 +495,39 @@ function onAppearanceFieldChange(e) {
 }
 
 function onLanguageFieldChange(e) {
-	const Lang = document.getElementById('selectSubtitleLanguage').value;
+	const subselector = document.getElementById('selectSubtitleLanguage');
+	let Lang = subselector.value;
+	if (Lang === "Auto")
+		Lang = globalize.getCurrentLocale();
+	else
+		// get the two letters name equivalent needed to obtain a dictionary.
+		Lang = subselector.options[subselector.selectedIndex].getAttribute("ISOName2L");
+		
 	if (!Lang)
 		return;
     const view = dom.parentWithClass(e.target, 'subtitlesettings');
 	let preview = view.querySelector('.subtitleappearance-fullpreview-text');
 	if (!preview)  
 		return;
-	
 	loading.show();
-	
-	globalize.getCoreDictionary(Lang).then(
-	(dictionary) => {
-		if (!dictionary) {
-			loading.hide();
-			return;
-		}
-		let html = dictionary['HeaderSubtitleAppearance'] || '';
-		if (html)
-			html += '<br>';
-		html += dictionary['TheseSettingsAffectSubtitlesOnThisDevice'] || '';
-		
-		// Case when both translations are missing
-		// We try a key of last resort.
-		if (!html) 
-			html = dictionary['LabelPreferredSubtitleLanguage'] || '';
-		if (html)
+	globalize.getCoreDictionary(Lang).then((dictionary) => {
+		if (dictionary) {			
+			let html = dictionary['HeaderSubtitleAppearance'] || '';
+			if (html) html += '<br>';
+			html += dictionary['TheseSettingsAffectSubtitlesOnThisDevice'] || '';
+			// Case when both keys are missing, first try an alternate key
+			if (!html) 
+				html = dictionary['LabelPreferredSubtitleLanguage'] || '';
+			// and as a last resort, try the currently configured display language 
+			// and the source language (en-us) as a fallback if everything else has failed.
+			if (!html)
+				html = globalize.translate('HeaderSubtitleAppearance') 
+						+ '<br>' 
+						+ globalize.translate('TheseSettingsAffectSubtitlesOnThisDevice');
 			preview.innerHTML = html;
+		}
 		loading.hide();
-	}, () => {
-		loading.hide();
-    });
+	});
 }
 
 const subtitlePreviewDelay = 1000;
