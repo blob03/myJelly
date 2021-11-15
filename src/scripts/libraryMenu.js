@@ -1055,11 +1055,11 @@ import { UserSettings } from '../scripts/settings/userSettings';
 	function displayFontSizeModifier(apiClient) { 
 		const currentSettings = new UserSettings();
 		const userId = Dashboard.getCurrentUserId();
-		const setUserInfo = currentSettings.setUserInfo(userId, apiClient);
-		const currentResizeRatio = currentSettings.displayFontSize() || 0;
-		
-		document.body.style.fontSize = 1 + (currentResizeRatio/100) + "rem"; 
-		//document.body.style.lineHeight = 1 + (currentResizeRatio/100) + "rem";
+		currentSettings.setUserInfo(userId, apiClient).then(function () {
+			const currentResizeRatio = currentSettings.displayFontSize() || 0;
+			document.body.style.fontSize = 1 + (currentResizeRatio/100) + "rem"; 
+			//document.body.style.lineHeight = 1 + (currentResizeRatio/100) + "rem";
+		});
 	}
 	
     function setTransparentMenu (transparent) {
