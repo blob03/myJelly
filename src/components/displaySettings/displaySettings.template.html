@@ -130,6 +130,13 @@
         <div class="fieldDescription">${LabelMaxDaysForNextUpHelp}</div>
     </div>
 
+	<div class="sliderContainer-settings">
+		<div class="sliderContainer">
+			<input is="emby-slider" id="sliderBlurhash" label="${EnableBlurHash}" type="range" step="2" min="0" max="32" />
+		</div>
+		<div class="fieldDescription">${EnableBlurHashHelp}&nbsp;${EnableBlurHashMoreHelp}&nbsp;${EnableBlurHashSomeMoreHelp}</div>
+	</div>
+	
     <div class="checkboxContainer checkboxContainer-withDescription">
         <label>
             <input type="checkbox" is="emby-checkbox" id="chkFadein" />
@@ -137,16 +144,8 @@
         </label>
         <div class="fieldDescription checkboxFieldDescription">${EnableFasterAnimationsHelp}</div>
     </div>
-
-    <div class="checkboxContainer checkboxContainer-withDescription">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkBlurhash" />
-            <span>${EnableBlurHash}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${EnableBlurHashHelp}</div>
-    </div>
-
-    <div class="checkboxContainer checkboxContainer-withDescription">
+	
+    <div class="checkboxContainer checkboxContainer-withDescription fldDetailsBanner hide">
         <label>
             <input type="checkbox" is="emby-checkbox" id="chkDetailsBanner" />
             <span>${EnableDetailsBanner}</span>

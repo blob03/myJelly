@@ -25,5 +25,7 @@
 	"Videos": "Videos",
 	"DLNA": "DLNA",
 	"Queue": "Queue",
-	"AirPlay": "AirPlay"
+	"AirPlay": "AirPlay",
+	"EnableBlurHashMoreHelp": "Define the quality of blurring on a scale from 2 to 32 or choose the null value in order to disable it.",
+	"EnableBlurHashSomeMoreHelp": "Defining a lower value should provide better performance."
 }

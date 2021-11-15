@@ -343,17 +343,19 @@ export class UserSettings {
     }
 
     /**
-     * Get or set 'Blurhash' state.
-     * @param {boolean|undefined} val - Flag to enable 'Blurhash' or undefined.
-     * @return {boolean} 'Blurhash' state.
+     * Get or set 'Blurhash quality' state.
+     * @param {boolean|undefined} val - Quality level between 0 (disabled) and 32 (max quality) inclusively.
+     * @return {boolean} 'Blurhash quality' state.
      */
     enableBlurhash(val) {
-        if (val !== undefined) {
-            return this.set('blurhash', val.toString());
-        }
-
-        val = this.get('blurhash');
-        return val === 'true';
+		if (val !== undefined) 
+            return this.set('blurhash', parseInt(val, 10));
+        
+		const blurhash = parseInt(this.get('blurhash'), 10);
+		if (blurhash < 0 || blurhash > 32) 
+			return 8; // default to 8 (performance).
+        else 
+            return blurhash;
     }
 
     /**

@@ -17,8 +17,10 @@ import './style.scss';
             // Although the default values recommended by Blurhash developers is 32x32, a size of 18x18 seems to be the sweet spot for us,
             // improving the performance and reducing the memory usage, while retaining almost full blur quality.
             // Lower values had more visible pixelation
-            const width = 18;
-            const height = 18;
+			// Nov 2021: The size is now set by the user (display settings) as any value from 0 (disabled) to 32 (max quality).
+			// Also default has been reduced to 8 (8x8) to better accomodate Low resource appliances (such as TVs).
+			const width = userSettings.enableBlurhash();
+            const height = width;
             let pixels;
             try {
                 pixels = decode(blurhashstr, width, height);

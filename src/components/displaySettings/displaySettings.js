@@ -168,6 +168,11 @@ import viewContainer from '../viewContainer';
 			context.querySelector('.fldThemeVideo').classList.remove('hide');
 		}
 		
+		if (!layoutManager.tv && !layoutManager.mobile) 
+			context.querySelector('.fldDetailsBanner').classList.remove('hide');
+		else
+			context.querySelector('.fldDetailsBanner').classList.add('hide');
+		
         fillThemes(context.querySelector('#selectTheme'), userSettings.theme());
 		context.querySelector('#selectTheme').addEventListener('change', function() {  skinManager.setTheme(this.value); });
 		
@@ -178,13 +183,13 @@ import viewContainer from '../viewContainer';
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		context.querySelector('#chkClock').checked = userSettings.enableClock();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
-        context.querySelector('#chkBlurhash').checked = userSettings.enableBlurhash();
+        context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
-		
+			
 		if (browser.web0s || appHost.supports('displaymode')) 	
 			context.querySelector('.fldDisplayMode').classList.remove('hide');
         else 
@@ -241,7 +246,7 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
-        userSettingsInstance.enableBlurhash(context.querySelector('#chkBlurhash').checked);
+        userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		
 		if (layoutManager.tv) 

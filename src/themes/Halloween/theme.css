@@ -373,7 +373,7 @@ html {
 }
 
 .cardBox:not(.visualCardBox) .cardPadder {
-    background-color: #fff;
+    background-color: #e18829;
 }
 
 .card:focus .cardBox.visualCardBox,

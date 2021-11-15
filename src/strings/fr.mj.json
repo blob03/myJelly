@@ -22,5 +22,7 @@
 	"LabelDisplayFontSize": "Taille de la police d'affichage :",
 	"Reload": "Recharger l'application",
 	"LockHeader": "Verrouiller le menu",
-	"Videos": "Vidéos"
+	"Videos": "Vidéos",
+	"EnableBlurHashMoreHelp": "Définir le niveau de qualité du flou sur une échelle de 2 à 32 ou choisir la valeur nulle pour le désactiver.",
+	"EnableBlurHashSomeMoreHelp": "Le cas échéant, baisser la valeur pour améliorer les performances."
 }
