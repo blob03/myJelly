@@ -6,6 +6,7 @@ class BackdropScreensaver {
     constructor() {
         this.name = 'Backdrop ScreenSaver';
 		this.version = '1.1';
+		this.description = 'BackdropScreensaverHelp';
         this.type = 'screensaver';
         this.id = 'backdropscreensaver';
         this.supportsAnonymous = false;

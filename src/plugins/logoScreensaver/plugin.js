@@ -2,6 +2,8 @@ export default function () {
     const self = this;
 
     self.name = 'Logo ScreenSaver';
+	self.version = '1.0';
+	self.description = 'LogoScreensaverHelp';
     self.type = 'screensaver';
     self.id = 'logoscreensaver';
     self.supportsAnonymous = true;

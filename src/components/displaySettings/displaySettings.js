@@ -48,18 +48,46 @@ import viewContainer from '../viewContainer';
         });
     }
 
+	function onScreenSaverChange(e) {
+		const val = e.target.value;
+	    const options = pluginManager.ofType('screensaver').map(plugin => {
+            return {
+                value: plugin.id,
+				description: plugin.description || ''
+            };
+        });
+		let sel = options.filter(option => option.value === val);
+		
+		let pnode = e.target.parentNode;
+		if (pnode && sel[0]) {
+			const txt = globalize.translate(sel[0].description || '');
+			pnode.querySelector('.fieldDescription').innerHTML = txt;
+		}
+		
+		pnode = e.target.parentNode.parentNode;
+		if (!pnode) return;
+		let sliderContainerSettings =  pnode.querySelector('.sliderContainer-settings');
+		if (sliderContainerSettings) {
+			if (e.target.value === 'none') 
+				sliderContainerSettings.classList.add('disabled');
+			else 
+				sliderContainerSettings.classList.remove('disabled');
+		}
+	}
+	
     function loadScreensavers(selector, val) {
         const options = pluginManager.ofType('screensaver').map(plugin => {
             return {
                 name: plugin.name,
-                value: plugin.id
+                value: plugin.id,
+				version: plugin.version || '',
+				description: plugin.description || ''
             };
         });
-
+		
         selector.innerHTML += options.map(o => {
-            return `<option value="${o.value}">${o.name}</option>`;
+            return `<option value="${o.value}">${o.name} ${o.version}</option>`;
         }).join('');
-
         selector.value = val;
     }
 
@@ -75,18 +103,6 @@ import viewContainer from '../viewContainer';
 		const pnode = e.target.parentNode.parentNode;
 		if (pnode) 
 			pnode.querySelector('.fieldDescription').innerHTML = e.target.value + " min.";
-	}
-	
-	function onScreenSaverChange(e) {
-		const pnode = e.target.parentNode.parentNode;
-		if (!pnode)
-			return;
-		
-		let sliderContainerSettings =  pnode.querySelector('.sliderContainer-settings');
-		if (e.target.value === 'none') 
-			sliderContainerSettings.classList.add('disabled');
-		else 
-			sliderContainerSettings.classList.remove('disabled');
 	}
 	
 	function onDisplayFontSizeChange(e) { 		

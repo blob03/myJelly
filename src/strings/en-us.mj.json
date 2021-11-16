@@ -29,5 +29,7 @@
 	"Colon": ":",
 	"EnableBlurHashMoreHelp": "Define the quality of blurring on a scale from 2 to 32 or choose the null value in order to disable it.",
 	"EnableBlurHashSomeMoreHelp": "Defining a lower value should provide better performance.",
-	"EnableBackdropsHelp": "Select the source of backdrops to display while browsing the library."
+	"EnableBackdropsHelp": "Select the source of backdrops to display while browsing the library.",
+	"BackdropScreensaverHelp": "Show the backdrops from the source defined above.",
+	"LogoScreensaverHelp": "Show and animate a jellyfin logo."
 }
