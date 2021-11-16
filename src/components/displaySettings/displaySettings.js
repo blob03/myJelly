@@ -57,12 +57,12 @@ import viewContainer from '../viewContainer';
             };
         });
 		let sel = options.filter(option => option.value === val);
+		const key = sel[0]? sel[0].description || '' : '';
+		const txt = key? globalize.translate(key) || '' : '';
 		
 		let pnode = e.target.parentNode;
-		if (pnode && sel[0]) {
-			const txt = globalize.translate(sel[0].description || '');
+		if (pnode)	
 			pnode.querySelector('.fieldDescription').innerHTML = txt;
-		}
 		
 		pnode = e.target.parentNode.parentNode;
 		if (!pnode) return;
