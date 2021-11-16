@@ -1,23 +1,50 @@
 /* eslint-disable indent */
 import ServerConnections from '../../components/ServerConnections';
+import * as userSettings from '../../scripts/settings/userSettings';
 
 class BackdropScreensaver {
     constructor() {
         this.name = 'Backdrop ScreenSaver';
+		this.version = '1.1';
         this.type = 'screensaver';
         this.id = 'backdropscreensaver';
         this.supportsAnonymous = false;
     }
         show() {
+			let type = userSettings.enableBackdrops();
+			let types = 'Movie,Series,MusicArtist';
+			let filters = '';
+
+			switch(type) {
+				case "LibrariesFav":
+				case "MovieFav":			
+				case "SeriesFav":
+				filters = 'IsFavorite';
+				break;
+			}
+
+			switch(type) {	
+				case "Movie":
+				case "MovieFav":
+				types = "Movie";
+				break;
+
+				case "Series":
+				case "SeriesFav":
+				types = "Series";
+				break;
+			}
+
             const query = {
                 ImageTypes: 'Backdrop',
                 EnableImageTypes: 'Backdrop',
-                IncludeItemTypes: 'Movie,Series,MusicArtist',
+                IncludeItemTypes: types,
                 SortBy: 'Random',
                 Recursive: true,
                 Fields: 'Taglines',
                 ImageTypeLimit: 1,
                 StartIndex: 0,
+				Filters: filters,
                 Limit: 200
             };
 
