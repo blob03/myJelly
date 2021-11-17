@@ -31,5 +31,9 @@
 	"EnableBlurHashSomeMoreHelp": "Defining a lower value should provide better performance.",
 	"EnableBackdropsHelp": "Select the source of backdrops to display while browsing the library.",
 	"BackdropScreensaverHelp": "Show the backdrops from the source defined above.",
-	"LogoScreensaverHelp": "Show and animate a jellyfin logo."
+	"LogoScreensaverHelp": "Show and animate a jellyfin logo.",
+	"LabelSourceLanguage": "Source language:",
+	"LabelTranslatedKeys": "Translated keys:",
+	"LabelJellyfin": "Jellyfin:",
+	"LabelmyJelly": "myJelly:"
 }

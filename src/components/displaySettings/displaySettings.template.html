@@ -27,18 +27,34 @@
 
 	</div>
 	
-    <div class="selectContainer languageSection hide">
-        <select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
-            <option value="">${Auto}</option>
-			<option disabled>${OptionDivider}</option>
-        </select>
-        <div class="fieldDescription">
-            <div>${LabelDisplayLanguageHelp}</div>
-            <div class="learnHowToContributeContainer hide" style="margin-top: .25em;">
-                <a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://github.com/jellyfin/jellyfin" target="_blank">${LearnHowYouCanContribute}</a>
-            </div>
-        </div>
-    </div>
+	<div class="DisplayLanguageArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+		<div class="selectContainer languageSection" style='width: 47%;height: auto'>
+			<select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
+				<option value="">${Auto}</option>
+				<option disabled>${OptionDivider}</option>
+			</select>
+			<div class="fieldDescription">
+				<div>${LabelDisplayLanguageHelp}</div>
+				<div class="learnHowToContributeContainer hide" style="margin-top: .25em;">
+					<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://github.com/jellyfin/jellyfin" target="_blank">${LearnHowYouCanContribute}</a>
+				</div>
+			</div>
+		</div>
+
+		<fieldset style="width: 40%;height: auto;border: 1px solid #000;">
+		
+			<div class="selectContainer DisplayLanguageInfo fieldDescription" style='width: 100%;height: auto'>
+				<div class="infoDisplayLanguage"><span class="LangDetailsHeader">${LabelDisplayLanguage}</span></div>
+				<div class="infoSourceLanguage"><span class="LangDetailsHeader">${LabelSourceLanguage}</span></div>
+				<div class="infoKeysTranslated"><span class="LangDetailsHeader">${LabelTranslatedKeys}</span><span class="material-icons warning warningIcon hide" style="float:right; font-size: 200%;"></span></div>
+				<div class="infoJellyfinKeysTranslated" style="margin: 0 0 0 20px;font-size:90%">-&nbsp;${LabelJellyfin}</div>
+				<div class="infoMyjellyKeysTranslated" style="margin: 0 0 0 20px;font-size:90%">-&nbsp;${LabelmyJelly}</div>
+			</div>
+		
+		</fieldset>
+
+	</div>
 
 	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		

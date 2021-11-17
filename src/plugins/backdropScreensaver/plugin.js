@@ -20,20 +20,20 @@ class BackdropScreensaver {
 				case "LibrariesFav":
 				case "MovieFav":			
 				case "SeriesFav":
-				filters = 'IsFavorite';
-				break;
+					filters = 'IsFavorite';
+					break;
 			}
 
 			switch(type) {	
 				case "Movie":
 				case "MovieFav":
-				types = "Movie";
-				break;
+					types = "Movie";
+					break;
 
 				case "Series":
 				case "SeriesFav":
-				types = "Series";
-				break;
+					types = "Series";
+					break;
 			}
 
             const query = {
@@ -52,6 +52,7 @@ class BackdropScreensaver {
             const apiClient = ServerConnections.currentApiClient();
             apiClient.getItems(apiClient.getCurrentUserId(), query).then((result) => {
                 if (result.Items.length) {
+					
                     import('../../components/slideshow/slideshow').then(({default: Slideshow}) => {
                         const newSlideShow = new Slideshow({
                             showTitle: true,

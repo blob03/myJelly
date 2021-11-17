@@ -40,24 +40,40 @@ export function populateSubsLanguages(select, languages, val) {
 export function populateDictionaries(select, languages, val) {
     let html = '';
 	const source = 'en';
-	globalize.getCoreDictionaryProgress(val).then( (progress) => {
+	globalize.getCoreDictionaryProgress(val).then( (items) => {
+		let activeLanguage = null;
+		let sourceLanguage = null;
 		languages.forEach(language => {
 			let ISOName = language.TwoLetterISOLanguageName;
 			html += "<option";
-			if (ISOName === source) 
-				html += " class='sourceDictionaryOption'";
+			if (ISOName === source) {
+				//html += " class='sourceDictionaryOption'";
+				sourceLanguage = language;
+			}
 			
 			if (val && val === ISOName) {
-				html += " value='" + ISOName + "' selected>" + language.DisplayName 
-						+ (ISOName === source ? " [ S ]" : (progress >= 0 ? (" [ " + progress + "% ]") : "")) 
-						+ "</option>";
+				activeLanguage = language;
+				html += " value='" + ISOName + "' class='selected' selected>";
 			} else 
-				html += " value='" + ISOName + "'>" + language.DisplayName + "</option>";
+				html += " value='" + ISOName + "'>";
+			html += language.DisplayName + "</option>";
 		});
 		select.innerHTML += html;
+		
+		let pnode = select.parentNode.parentNode;
+		if (pnode) {	
+			let nodeInfo = pnode.querySelector('.DisplayLanguageInfo');  
+			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML += ' ' + activeLanguage.DisplayName + ' [ ' + activeLanguage.TwoLetterISOLanguageName + ' ]';
+			nodeInfo.querySelector('.infoSourceLanguage').innerHTML += ' ' + sourceLanguage.DisplayName + ' [ ' + items.sourceISOName + ' ]';
+			nodeInfo.querySelector('.infoKeysTranslated').innerHTML += ' ' + items.progress + '% [ ' + items.keys + '/' + items.sourceKeys + ' ]';
+			nodeInfo.querySelector('.infoJellyfinKeysTranslated').innerHTML += ' ' + items.origProgress + '% [ ' + items.origKeys + '/' + items.origSourceKeys + ' ]';
+			nodeInfo.querySelector('.infoMyjellyKeysTranslated').innerHTML += ' ' + items.myProgress + '% [ ' + items.myKeys + '/' + items.mySourceKeys + ' ]';
+			if (items.progress > 100 || items.origProgress > 100 || items.myProgress > 100)
+				nodeInfo.querySelector('.warningIcon').classList.remove('hide');
+		}		
 	});
 }
-
+							
 export default {
     populateLanguages: populateLanguages,
 	populateSubsLanguages: populateSubsLanguages,

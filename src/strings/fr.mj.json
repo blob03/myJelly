@@ -28,5 +28,9 @@
 	"EnableBlurHashSomeMoreHelp": "Le cas échéant, baisser la valeur pour améliorer les performances.",
 	"EnableBackdropsHelp": "Définir la source des fonds d'écran utilisés lors de la consultation de la médiathèque.",
 	"BackdropScreensaverHelp": "Afficher les fonds d'écran provenant de la source définie au-dessus.",
-	"LogoScreensaverHelp": "Afficher et animer le logo de jellyfin."
+	"LogoScreensaverHelp": "Afficher et animer le logo de jellyfin.",
+	"LabelSourceLanguage": "Langue source :",
+	"LabelTranslatedKeys": "Éléments traduits :",
+	"LabelJellyfin": "Jellyfin :",
+	"LabelmyJelly": "myJelly :"
 }

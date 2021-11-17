@@ -137,9 +137,9 @@ import viewContainer from '../viewContainer';
 				let selectLanguage = context.querySelector('#selectLanguage');
 				savedDisplayLanguage = userSettings.language() || '';
 				settingsHelper.populateDictionaries(selectLanguage, allCultures, savedDisplayLanguage);
-				context.querySelector('.languageSection').classList.remove('hide');
+				context.querySelector('.DisplayLanguageArea').classList.remove('hide');
 			} else 
-				context.querySelector('.languageSection').classList.add('hide');
+				context.querySelector('.DisplayLanguageArea').classList.add('hide');
 			
 			if (datetime.supportsLocalization()) { 
 				let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');

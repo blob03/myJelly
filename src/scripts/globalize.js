@@ -47,20 +47,21 @@ import { Events } from 'jellyfin-apiclient';
 
     function ensureTranslations(culture) {
         for (const i in allTranslations) {
-            ensureTranslation(allTranslations[i], culture);
+			console.log("calling ensuretrans i = " + i + ", culture = " + culture);
+            ensureTranslation(i, allTranslations[i], culture);
         }
         if (culture !== fallbackCulture) {
             for (const i in allTranslations) {
-                ensureTranslation(allTranslations[i], fallbackCulture);
+                ensureTranslation(i, allTranslations[i], fallbackCulture);
             }
         }
     }
 
-    function ensureTranslation(translationInfo, culture) {
+    function ensureTranslation(module, translationInfo, culture) {
         if (translationInfo.dictionaries[culture]) {
             return Promise.resolve();
         }
-        return loadTranslation(culture).then(function (dictionary) {
+        return loadTranslation(module, culture).then(function (dictionary) {
             translationInfo.dictionaries[culture] = dictionary;
         });
     }
@@ -136,20 +137,25 @@ import { Events } from 'jellyfin-apiclient';
 		if (!allTranslations[optionsName])
 			register({name: optionsName, translations: ''});
 		
-		promises.push(ensureTranslation(allTranslations[optionsName], locale));
-		promises.push(ensureTranslation(allTranslations[optionsName], fallbackCulture));
+		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], locale));
+		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], fallbackCulture));
 	
         return Promise.all(promises);
     }
 
 	let DicKeysNum = {};
+	let origKeysNum = {};
+	let myKeysNum = {};
 
-    function loadTranslation(lang) {
+    function loadTranslation(module, lang) {
+		if (module !== 'core')
+			return new Promise((resolve) => {});
+		
 		lang = lang || fallbackCulture;
 		lang = convertISOName(lang);
 		
 		// already loaded?
-		if (DicKeysNum[lang])
+		if (DicKeysNum[lang] && origKeysNum[lang])
 			if (allTranslations['core'].dictionaries[lang])
 				return new Promise((resolve) => {
 					resolve(allTranslations['core'].dictionaries[lang]);});
@@ -159,20 +165,26 @@ import { Events } from 'jellyfin-apiclient';
 				.filter( key => predicate(obj[key]) )
 				.map( key => ({ [key]: obj[key] }) ) );
 
+		DicKeysNum[lang] = origKeysNum[lang] = myKeysNum[lang] = 0;
         return new Promise((resolve) => {
+			// import jellyfin core translation file
             import(`../strings/${lang}.json`).then((content) => {	
 				content = Object.filter(content, str => typeof str === "string" && str.length);
-				DicKeysNum[lang] = Object.keys(content).length;
+				DicKeysNum[lang] = origKeysNum[lang] = Object.keys(content).length;
+			
+				// import myJelly core translation file
 				import(`../strings/${lang}.mj.json`).then((mjcontent) => {
 					mjcontent = Object.filter(mjcontent, str => typeof str === "string" && str.length);
+					myKeysNum[lang] = Object.keys(mjcontent).length;
+					DicKeysNum[lang] = origKeysNum[lang] + myKeysNum[lang];
+					
 					let dic = {...content, ...mjcontent};
-					DicKeysNum[lang] = Object.keys(dic).length;
+					//DicKeysNum[lang] = Object.keys(dic).length;
 					resolve(dic);
 				}).catch(() => {
 					resolve(content);
 				});
 			}).catch(() => {
-				DicKeysNum[lang] = 0;
 				resolve({});
 			});
         });
@@ -228,17 +240,44 @@ import { Events } from 'jellyfin-apiclient';
 				if (!DicKeysNum[ISOfallback])
 					resolve(0);
 			}			
-			if (!DicKeysNum[ISOlang]) 
-					loadTranslation(ISOlang).then( (dic) => {
-						resolve( Math.floor((DicKeysNum[ISOlang] / DicKeysNum[ISOfallback]) * 100) );
+			if (!DicKeysNum[ISOlang]) {
+					console.log("Into #1");
+					loadTranslation('core', ISOlang).then( (dic) => {
+						resolve( { 
+							'source' : fallbackCulture,
+							'sourceISOName': ISOfallback,
+							'keys' : DicKeysNum[ISOlang],
+							'origKeys' : origKeysNum[ISOlang],
+							'myKeys' : myKeysNum[ISOlang],
+							'sourceKeys' : DicKeysNum[ISOfallback],
+							'origSourceKeys' : origKeysNum[ISOfallback],
+							'mySourceKeys' : myKeysNum[ISOfallback],
+							'progress' : DicKeysNum[ISOfallback]? Math.round(10 * DicKeysNum[ISOlang] / DicKeysNum[ISOfallback] * 100) / 10 : 0,
+							'origProgress' : origKeysNum[ISOfallback]? Math.round(10 * origKeysNum[ISOlang] / origKeysNum[ISOfallback] * 100) / 10 : 0,
+							'myProgress' : myKeysNum[ISOfallback]? Math.round(10 * myKeysNum[ISOlang] / myKeysNum[ISOfallback] * 100) / 10 : 0 
+						} );
 					} );
-			else 
-				resolve( Math.floor((DicKeysNum[ISOlang] / DicKeysNum[ISOfallback]) * 100) );
+			} else {
+				console.log("Into #2, DicKeysNum[ISOlang] = " + DicKeysNum[ISOlang]);
+				resolve( { 
+					'source' : fallbackCulture,
+					'sourceISOName': ISOfallback,
+					'keys' : DicKeysNum[ISOlang],
+					'origKeys' : origKeysNum[ISOlang],
+					'myKeys' : myKeysNum[ISOlang],
+					'sourceKeys' : DicKeysNum[ISOfallback],
+					'origSourceKeys' : origKeysNum[ISOfallback],
+					'mySourceKeys' : myKeysNum[ISOfallback],
+					'progress' : DicKeysNum[ISOfallback]? Math.round(10 * DicKeysNum[ISOlang] / DicKeysNum[ISOfallback] * 100) / 10 : 0,
+					'origProgress' : origKeysNum[ISOfallback]? Math.round(10 * origKeysNum[ISOlang] / origKeysNum[ISOfallback] * 100) / 10 : 0,
+					'myProgress' : myKeysNum[ISOfallback]? Math.round(10 * myKeysNum[ISOlang] / myKeysNum[ISOfallback] * 100) / 10 : 0 
+				} );
+			}
 		});
 	}
 
 	export function getCoreDictionary(lang) {
-		return loadTranslation(lang);
+		return loadTranslation('core', lang);
 	}
 
     export function translateHtml(html, module) {
