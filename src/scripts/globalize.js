@@ -4,10 +4,13 @@ import { Events } from 'jellyfin-apiclient';
 /* eslint-disable indent */
 
     const fallbackCulture = 'en-us';
+	const fallbackModule = 'core';
     const allTranslations = {};
-	let fallbackModule = 'core';
     let currentCulture;
     let currentDateTimeCulture;
+	let DicKeysNum = {};
+	let origKeysNum = {};
+	let myKeysNum = {};
 
     export function getCurrentLocale() {
         return currentCulture;
@@ -46,22 +49,20 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function ensureTranslations(culture) {
+		let promises = [];
         for (const i in allTranslations) {
-			console.log("calling ensuretrans i = " + i + ", culture = " + culture);
-            ensureTranslation(i, allTranslations[i], culture);
-        }
-        if (culture !== fallbackCulture) {
-            for (const i in allTranslations) {
-                ensureTranslation(i, allTranslations[i], fallbackCulture);
-            }
-        }
+			promises.push(ensureTranslation(i, allTranslations[i], culture));
+			if (fallbackCulture !== culture) 
+				promises.push(ensureTranslation(i, allTranslations[i], fallbackCulture));
+		}
+		
+        return Promise.all(promises);
     }
 
     function ensureTranslation(module, translationInfo, culture) {
-        if (translationInfo.dictionaries[culture]) {
+        if (translationInfo.dictionaries[culture]) 
             return Promise.resolve();
-        }
-        return loadTranslation(module, culture).then(function (dictionary) {
+		return loadTranslation(module, culture).then( (dictionary) => {
             translationInfo.dictionaries[culture] = dictionary;
         });
     }
@@ -104,6 +105,7 @@ import { Events } from 'jellyfin-apiclient';
 				return 'zh-cn'; //convert Chinese ISO code to local name.
 				break;
 		}
+		
 		return culture;
 	}
 
@@ -143,10 +145,6 @@ import { Events } from 'jellyfin-apiclient';
         return Promise.all(promises);
     }
 
-	let DicKeysNum = {};
-	let origKeysNum = {};
-	let myKeysNum = {};
-
     function loadTranslation(module, lang) {
 		if (module !== 'core')
 			return new Promise((resolve) => {});
@@ -168,12 +166,13 @@ import { Events } from 'jellyfin-apiclient';
 		DicKeysNum[lang] = origKeysNum[lang] = myKeysNum[lang] = 0;
         return new Promise((resolve) => {
 			// import jellyfin core translation file
+
             import(`../strings/${lang}.json`).then((content) => {	
 				content = Object.filter(content, str => typeof str === "string" && str.length);
 				DicKeysNum[lang] = origKeysNum[lang] = Object.keys(content).length;
 			
 				// import myJelly core translation file
-				import(`../strings/${lang}.mj.json`).then((mjcontent) => {
+				import(`../strings/myJelly/${lang}.json`).then((mjcontent) => {
 					mjcontent = Object.filter(mjcontent, str => typeof str === "string" && str.length);
 					myKeysNum[lang] = Object.keys(mjcontent).length;
 					DicKeysNum[lang] = origKeysNum[lang] + myKeysNum[lang];
@@ -241,7 +240,7 @@ import { Events } from 'jellyfin-apiclient';
 					resolve(0);
 			}			
 			if (!DicKeysNum[ISOlang]) {
-					console.log("Into #1");
+					
 					loadTranslation('core', ISOlang).then( (dic) => {
 						resolve( { 
 							'source' : fallbackCulture,
@@ -258,7 +257,7 @@ import { Events } from 'jellyfin-apiclient';
 						} );
 					} );
 			} else {
-				console.log("Into #2, DicKeysNum[ISOlang] = " + DicKeysNum[ISOlang]);
+				
 				resolve( { 
 					'source' : fallbackCulture,
 					'sourceISOName': ISOfallback,

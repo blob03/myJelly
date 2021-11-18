@@ -7,11 +7,11 @@ import json
 # remove keys that only exist in translations
 
 cwd = os.getcwd()
-langdir = cwd + '/../src/strings'
-langlst = os.listdir(langdir)
+langdir = cwd + '/../src/strings/'
+# Now that there is a myJelly subdir, take care to only load files.
+langlst = [f for f in os.listdir(langdir) if os.path.isfile(os.path.join(langdir, f))]
 
 langlst.remove('en-us.json')
-langlst.remove('*.mj.json')
 print(langlst)
 input('press enter to continue')
 

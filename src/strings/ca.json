@@ -423,7 +423,6 @@
     "OptionAdminUsers": "Administradors",
     "OptionAllUsers": "Tots els usuaris",
     "OptionAllowBrowsingLiveTv": "Permetre accés a TV en directe",
-    "OptionAllowContentDownloading": "Permetre descàrrega de mitjans",
     "OptionAllowLinkSharing": "Permetre compartir els mitjans a les xarxes socials",
     "OptionAllowLinkSharingHelp": "Només les pàgines web contenint informació multimèdia seran compartides. En cap cas es comparteixen fitxers públicament. Les comparticions estan limitades per temps i expiraran després de {0} dies.",
     "OptionAllowManageLiveTv": "Permetre gestionar l'enregistrament de TV en directe",
