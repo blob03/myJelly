@@ -1,16 +1,16 @@
 {
     "Albums": "एल्बमहरू",
-    "Songs": "गीतहरू",
-    "Shows": "शोहरू",
-    "Playlists": "प्लेलिस्टहरू",
-    "Photos": "तस्बिरहरु",
-    "Movies": "चलचित्रहरू",
-    "HeaderContinueWatching": "हेर्न जारी राख्नुहोस्",
-    "Genres": "विधाहरू",
-    "Folders": "फोल्डरहरू",
-    "Favorites": "मनपर्ने",
-    "Collections": "संग्रह",
-    "Channels": "च्यानलहरू",
+    "Artists": "कलाकारहरू",
     "Books": "पुस्तकहरु",
-    "Artists": "कलाकारहरू"
+    "Channels": "च्यानलहरू",
+    "Collections": "संग्रह",
+    "Favorites": "मनपर्ने",
+    "Folders": "फोल्डरहरू",
+    "Genres": "विधाहरू",
+    "HeaderContinueWatching": "हेर्न जारी राख्नुहोस्",
+    "Movies": "चलचित्रहरू",
+    "Photos": "तस्बिरहरु",
+    "Playlists": "प्लेलिस्टहरू",
+    "Shows": "शोहरू",
+    "Songs": "गीतहरू"
 }

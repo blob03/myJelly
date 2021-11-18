@@ -1,9 +1,9 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-144",
+	"version": "10.7.7-145",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
-	"repository": "https://github.com/blob03/myjelly",
+	"repository": "https://github.com/blob03/myJelly",
 	"includeCorsCredentials": false,
 	"multiserver": false,
 	"themes": [

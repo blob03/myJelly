@@ -1,8 +1,8 @@
 {
-    "Default": "Diofyn",
-    "Collections": "Casgliadau",
-    "Channels": "Sianeli",
-    "Books": "Llyfrau",
+    "Albums": "Albwmau",
     "Artists": "Artistiaid",
-    "Albums": "Albwmau"
+    "Books": "Llyfrau",
+    "Channels": "Sianeli",
+    "Collections": "Casgliadau",
+    "Default": "Diofyn"
 }

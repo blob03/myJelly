@@ -8,7 +8,7 @@ import json
 
 cwd = os.getcwd()
 langdir = cwd + '/../../src/strings/'
-# Now that there is a myJelly subdir, take care to only load files.
+# Now that there is a myJelly subdir, take care to load files only.
 langlst = [f for f in os.listdir(langdir) if os.path.isfile(os.path.join(langdir, f))]
 
 langlst.remove('en-us.json')
@@ -38,7 +38,7 @@ for lang in langlst:
             elif key not in missing:
                 missing.append(key)
         f.seek(0)
-        f.write(json.dumps(langjnew, indent=inde, sort_keys=False, ensure_ascii=False))
+        f.write(json.dumps(langjnew, indent=inde, sort_keys=True, ensure_ascii=False))
         f.write('\n')
         f.truncate()
         f.close()
