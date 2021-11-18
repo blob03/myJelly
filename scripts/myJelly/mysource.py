@@ -7,7 +7,7 @@ import json
 # remove keys that only exist in translations
 
 cwd = os.getcwd()
-langdir = cwd + '/../src/strings/'
+langdir = cwd + '/../../src/strings/'
 # Now that there is a myJelly subdir, take care to only load files.
 langlst = [f for f in os.listdir(langdir) if os.path.isfile(os.path.join(langdir, f))]
 
@@ -18,18 +18,18 @@ input('press enter to continue')
 keysus = []
 missing = []
 
-with open(langdir + '/' + 'en-us.json') as en:
+with open(langdir + 'en-us.json') as en:
     langus = json.load(en)
     for key in langus:
         keysus.append(key)
 
 for lang in langlst:
-    with open(langdir + '/' + lang, 'r') as f:
+    with open(langdir + lang, 'r') as f:
         inde = 2
         if '\n    \"' in f.read():
             inde = 4
         f.close()
-    with open(langdir + '/' + lang, 'r+') as f:
+    with open(langdir + lang, 'r+') as f:
         langjson = json.load(f)
         langjnew = {}
         for key in langjson:

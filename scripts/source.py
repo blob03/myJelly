@@ -11,7 +11,6 @@ langdir = cwd + '/../src/strings'
 langlst = os.listdir(langdir)
 
 langlst.remove('en-us.json')
-langlst.remove('*.mj.json')
 print(langlst)
 input('press enter to continue')
 
