@@ -874,7 +874,7 @@ legend {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 3px solid #cfe1e9;
+	border: 3px groove #f9fdff !important;
 }
 
 .radio > * > .checkboxIcon-unchecked {

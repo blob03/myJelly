@@ -10,13 +10,6 @@
             <div class="fieldDescription">${LabelPleaseRestart}</div>
         </div>
 
-        <div class="verticalSection verticalSection-extrabottompadding">
-            <label class="checkboxContainer">
-                <input class="chkHidePlayedFromLatest" type="checkbox" is="emby-checkbox" />
-                <span>${HideWatchedContentFromLatestMedia}</span>
-            </label>
-        </div>
-
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection1" label="{section1label}">
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
@@ -117,6 +110,20 @@
         </div>
     </div>
 
+	<div class="sliderContainer-settings">
+		<div class="sliderContainer">
+			<input is="emby-slider" id="sliderMaxDaysForNextUp" label="${LabelMaxDaysForNextUp}" type="range" min="1" max="365" />
+		</div>
+		<div class="fieldDescription">${LabelMaxDaysForNextUpHelp}</div>
+	</div>
+
+	<div class="verticalSection verticalSection-extrabottompadding">
+		<label class="checkboxContainer">
+			<input class="chkHidePlayedFromLatest" type="checkbox" is="emby-checkbox" />
+			<span>${HideWatchedContentFromLatestMedia}</span>
+		</label>
+	</div>
+	
     <div class="verticalSection verticalSection-extrabottompadding">
         <h2 class="sectionTitle">${HeaderLibraryOrder}</h2>
         <div class="paperList viewOrderList"></div>

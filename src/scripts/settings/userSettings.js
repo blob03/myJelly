@@ -359,6 +359,22 @@ export class UserSettings {
     }
 
     /**
+     * Get or set 'Swiper delay' state.
+     * @param {boolean|undefined} val - Delay between each image in s.
+     * @return {boolean} 'Swiper delay' state.
+     */
+    swiperDelay(val) {
+		if (val !== undefined) 
+            return this.set('swiperDelay', parseInt(val, 10));
+        
+		const swiperDelay = parseInt(this.get('swiperDelay'), 10);
+		if (swiperDelay < 4 || swiperDelay > 60) 
+			return 4; // default to minimum.
+        else 
+            return swiperDelay;
+    }
+	
+    /**
      * Get or set 'Backdrops' source.
      * @param {string|undefined} val - String to set 'Backdrops' source or undefined.
      * @return {string} 'Backdrops' source.
@@ -693,6 +709,7 @@ export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentS
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
+export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);
 export const enableBackdrops = currentSettings.enableBackdrops.bind(currentSettings);
 export const displayFontSize = currentSettings.displayFontSize.bind(currentSettings);
 export const detailsBanner = currentSettings.detailsBanner.bind(currentSettings);

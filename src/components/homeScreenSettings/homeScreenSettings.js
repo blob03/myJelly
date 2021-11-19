@@ -291,6 +291,8 @@ import template from './homeScreenSettings.template.html';
         const promise1 = apiClient.getUserViews({ IncludeHidden: true }, user.Id);
         const promise2 = apiClient.getJSON(apiClient.getUrl(`Users/${user.Id}/GroupingOptions`));
 
+		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
+
         Promise.all([promise1, promise2]).then(responses => {
             renderViewOrder(context, user, responses[0]);
 
@@ -366,6 +368,7 @@ import template from './homeScreenSettings.template.html';
         }
 
         user.Configuration.OrderedViews = orderedViews;
+		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
         userSettingsInstance.set('tvhome', context.querySelector('.selectTVHomeScreen').value);
         userSettingsInstance.set('homesection0', context.querySelector('#selectHomeSection1').value);
         userSettingsInstance.set('homesection1', context.querySelector('#selectHomeSection2').value);

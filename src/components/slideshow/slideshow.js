@@ -18,6 +18,7 @@ import ServerConnections from '../ServerConnections';
 import { Swiper } from 'swiper/swiper-bundle.esm';
 import 'swiper/swiper-bundle.css';
 import screenfull from 'screenfull';
+import * as userSettings from '../../scripts/settings/userSettings';
 
 /**
  * Name of transition event.
@@ -449,7 +450,7 @@ export default function (options) {
             slides = currentOptions.items;
         }
 
-        swiperInstance = new Swiper(dialog.querySelector('.slideshowSwiperContainer'), {
+		let parameters = {
             direction: 'horizontal',
             // Loop is disabled due to the virtual slides option not supporting it.
             loop: false,
@@ -457,7 +458,6 @@ export default function (options) {
                 minRatio: 1,
                 toggle: true
             },
-            autoplay: !options.interactive,
             keyboard: {
                 enabled: true
             },
@@ -478,7 +478,15 @@ export default function (options) {
                 addSlidesBefore: 1,
                 addSlidesAfter: 1
             }
-        });
+        }
+		let obj = {};
+		obj.delay = userSettings.swiperDelay() * 1000;
+		parameters.autoplay = obj;
+			
+		if (options.interactive)
+			parameters.autoplay = false;
+			
+        swiperInstance = new Swiper(dialog.querySelector('.slideshowSwiperContainer'), parameters);
 
         swiperInstance.on('autoplayStart', onAutoplayStart);
         swiperInstance.on('autoplayStop', onAutoplayStop);
@@ -628,6 +636,9 @@ export default function (options) {
      */
     function play() {
         if (swiperInstance.autoplay) {
+			let obj = {};
+			obj.delay = userSettings.swiperDelay() * 1000;
+			swiperInstance.params.autoplay = obj;
             swiperInstance.autoplay.start();
         }
     }

@@ -200,6 +200,7 @@ import viewContainer from '../viewContainer';
 		context.querySelector('#chkClock').checked = userSettings.enableClock();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
+		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
@@ -225,7 +226,6 @@ import viewContainer from '../viewContainer';
         }
 		
         context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize() || 60;
-		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
         showOrHideMissingEpisodesField(context);
     }
 
@@ -259,10 +259,10 @@ import viewContainer from '../viewContainer';
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
-		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
 		userSettingsInstance.enableClock(context.querySelector('#chkClock').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
+		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		
 		if (layoutManager.tv) 

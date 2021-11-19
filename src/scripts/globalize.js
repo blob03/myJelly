@@ -178,7 +178,6 @@ import { Events } from 'jellyfin-apiclient';
 					DicKeysNum[lang] = origKeysNum[lang] + myKeysNum[lang];
 					
 					let dic = {...content, ...mjcontent};
-					//DicKeysNum[lang] = Object.keys(dic).length;
 					resolve(dic);
 				}).catch(() => {
 					resolve(content);
@@ -241,21 +240,21 @@ import { Events } from 'jellyfin-apiclient';
 			}			
 			if (!DicKeysNum[ISOlang]) {
 					
-					loadTranslation('core', ISOlang).then( (dic) => {
-						resolve( { 
-							'source' : fallbackCulture,
-							'sourceISOName': ISOfallback,
-							'keys' : DicKeysNum[ISOlang],
-							'origKeys' : origKeysNum[ISOlang],
-							'myKeys' : myKeysNum[ISOlang],
-							'sourceKeys' : DicKeysNum[ISOfallback],
-							'origSourceKeys' : origKeysNum[ISOfallback],
-							'mySourceKeys' : myKeysNum[ISOfallback],
-							'progress' : DicKeysNum[ISOfallback]? Math.round(10 * DicKeysNum[ISOlang] / DicKeysNum[ISOfallback] * 100) / 10 : 0,
-							'origProgress' : origKeysNum[ISOfallback]? Math.round(10 * origKeysNum[ISOlang] / origKeysNum[ISOfallback] * 100) / 10 : 0,
-							'myProgress' : myKeysNum[ISOfallback]? Math.round(10 * myKeysNum[ISOlang] / myKeysNum[ISOfallback] * 100) / 10 : 0 
-						} );
+				loadTranslation('core', ISOlang).then( (dic) => {
+					resolve( { 
+						'source' : fallbackCulture,
+						'sourceISOName': ISOfallback,
+						'keys' : DicKeysNum[ISOlang],
+						'origKeys' : origKeysNum[ISOlang],
+						'myKeys' : myKeysNum[ISOlang],
+						'sourceKeys' : DicKeysNum[ISOfallback],
+						'origSourceKeys' : origKeysNum[ISOfallback],
+						'mySourceKeys' : myKeysNum[ISOfallback],
+						'progress' : DicKeysNum[ISOfallback]? Math.round(10 * DicKeysNum[ISOlang] / DicKeysNum[ISOfallback] * 100) / 10 : 0,
+						'origProgress' : origKeysNum[ISOfallback]? Math.round(10 * origKeysNum[ISOlang] / origKeysNum[ISOfallback] * 100) / 10 : 0,
+						'myProgress' : myKeysNum[ISOfallback]? Math.round(10 * myKeysNum[ISOlang] / myKeysNum[ISOfallback] * 100) / 10 : 0 
 					} );
+				} );
 			} else {
 				
 				resolve( { 
