@@ -560,6 +560,8 @@
     "LabelAutoDiscoveryTracingHelp": "Pokiaľ je povolené, tak pakety prijaté na porte automatického rozpoznania budú zaznamenané.",
     "LabelAutomaticDiscovery": "Povoliť automatické rozpoznanie:",
     "LabelAutomaticDiscoveryHelp": "Povoliť aplikáciám automaticky objaviť Jellyfin pomocou UDP portu 7359.",
+    "LabelAutomaticallyAddToCollection": "Automaticky pridať do kolekcie",
+    "LabelAutomaticallyAddToCollectionHelp": "Pokiaľ majú aspoň 2 filmy rovnaký nazov kolekcie, budú automaticky pridané do kolekcie.",
     "LabelAutomaticallyRefreshInternetMetadataEvery": "Automaticky obnoviť metadáta z internetu:",
     "LabelBaseUrl": "Východzia URL:",
     "LabelBaseUrlHelp": "Pridá vlastný reťazec na URL adresu serveru, napr: <code>http://priklad.sk/<b>&lt;vlastny-retazec&gt;</b></code>",

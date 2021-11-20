@@ -918,12 +918,6 @@ legend {
 	color: #989da1;
 }
 
-fieldset {
-	padding: 1.5em 2em 0 2em;
-	margin: 0 0 2em 0;
-	border: 3px solid #4f5254;
-}
-
 /* checkbox widget */
 
 @keyframes check-in {
@@ -1079,6 +1073,12 @@ option.selected {
 .sliderContainer-settings.disabled .mdl-slider
  {
 	visibility: hidden;
+}
+
+fieldset {
+	padding: 1.5em 2em 0 2em;
+	margin: 0 0 2em 0;
+	border: 3px groove #273b47 !important;
 }
 
 .LangDetailsHeader {

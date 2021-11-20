@@ -55,10 +55,8 @@ def sort(langdir, source):
 
 
 cwd = os.getcwd()
-
 langdir = cwd + '/../../src/strings/'
 sort(langdir, 'en-us.json')
-
 # Repeat the process for myJelly files.
-langdir = cwd + '/../../src/strings/myJelly/'
+langdir += 'myJelly/'
 sort(langdir, 'en-us.json')

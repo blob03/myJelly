@@ -4,6 +4,7 @@ import { Events } from 'jellyfin-apiclient';
 /* eslint-disable indent */
 
     const fallbackCulture = 'en-us';
+	const fallbackCultureName = 'English';
 	const fallbackModule = 'core';
     const allTranslations = {};
     let currentCulture;
@@ -103,6 +104,14 @@ import { Events } from 'jellyfin-apiclient';
 				
 			case 'zh':
 				return 'zh-cn'; //convert Chinese ISO code to local name.
+				break;
+			
+			case 'es-do':
+				return 'es_DO'; //convert Dominican spanish code to local name.
+				break;
+				
+			case 'es-419':
+				return 'es_419'; //convert Latin american spanish code to local name.
 				break;
 		}
 		
@@ -242,7 +251,7 @@ import { Events } from 'jellyfin-apiclient';
 					
 				loadTranslation('core', ISOlang).then( (dic) => {
 					resolve( { 
-						'source' : fallbackCulture,
+						'sourceDisplayName' : fallbackCultureName,
 						'sourceISOName': ISOfallback,
 						'keys' : DicKeysNum[ISOlang],
 						'origKeys' : origKeysNum[ISOlang],
@@ -258,7 +267,7 @@ import { Events } from 'jellyfin-apiclient';
 			} else {
 				
 				resolve( { 
-					'source' : fallbackCulture,
+					'sourceDisplayName' : fallbackCultureName,
 					'sourceISOName': ISOfallback,
 					'keys' : DicKeysNum[ISOlang],
 					'origKeys' : origKeysNum[ISOlang],

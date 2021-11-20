@@ -1118,6 +1118,16 @@ option.sourceDictionaryOption {
 }
 
 .sliderContainer-settings.disabled .mdl-slider
- {
+{
 	visibility: hidden;
+}
+
+fieldset {
+	border: 3px groove #eb9d58 !important;
+}
+
+.LangDetailsHeader {
+	color: #6b737d;
+	font-size: 95%;
+	font-weight: 600;
 }

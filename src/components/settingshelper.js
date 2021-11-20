@@ -37,34 +37,40 @@ export function populateSubsLanguages(select, languages, val) {
     select.innerHTML += html;
 }
 
-export function populateDictionaries(select, languages, val) {
-    let html = '';
-	const source = 'en';
-	globalize.getCoreDictionaryProgress(val).then( (items) => {
-		let activeLanguage = null;
-		let sourceLanguage = null;
-		languages.forEach(language => {
-			let ISOName = language.TwoLetterISOLanguageName;
+export function populateDictionaries(select, languages, val) {		
+	
+	let html = '';
+	let activeLanguage = null;
+	
+	languages.forEach(language => {
+		let ISOName = language.TwoLetterISOLanguageName;
+		
+		// Some cultures appear to have a three letters code (ISO 639-2) only.
+		// This seems to be the case for swiss German and a few others.
+		if (!ISOName && language.ThreeLetterISOLanguageName)
+			ISOName = language.ThreeLetterISOLanguageName;
+		
+		if (ISOName) {
 			html += "<option";
-			if (ISOName === source) {
-				//html += " class='sourceDictionaryOption'";
-				sourceLanguage = language;
-			}
-			
 			if (val && val === ISOName) {
 				activeLanguage = language;
+				activeLanguage.ISOName = ISOName;
 				html += " value='" + ISOName + "' class='selected' selected>";
 			} else 
 				html += " value='" + ISOName + "'>";
+			
 			html += language.DisplayName + "</option>";
-		});
-		select.innerHTML += html;
+		}
+	});
+	select.innerHTML += html;
+	
+	globalize.getCoreDictionaryProgress(val).then( (items) => {
 		
 		let pnode = select.parentNode.parentNode;
 		if (pnode) {	
 			let nodeInfo = pnode.querySelector('.DisplayLanguageInfo');  
-			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML += ' ' + activeLanguage.DisplayName + ' [ ' + activeLanguage.TwoLetterISOLanguageName + ' ]';
-			nodeInfo.querySelector('.infoSourceLanguage').innerHTML += ' ' + sourceLanguage.DisplayName + ' [ ' + items.sourceISOName + ' ]';
+			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML += ' ' + activeLanguage.DisplayName + ' [ ' + activeLanguage.ISOName + ' ]';
+			nodeInfo.querySelector('.infoSourceLanguage').innerHTML += ' ' + items.sourceDisplayName + ' [ ' + items.sourceISOName + ' ]';
 			nodeInfo.querySelector('.infoKeysTranslated').innerHTML += ' ' + items.progress + '% [ ' + items.keys + '/' + items.sourceKeys + ' ]';
 			nodeInfo.querySelector('.infoJellyfinKeysTranslated').innerHTML += ' ' + items.origProgress + '% [ ' + items.origKeys + '/' + items.origSourceKeys + ' ]';
 			nodeInfo.querySelector('.infoMyjellyKeysTranslated').innerHTML += ' ' + items.myProgress + '% [ ' + items.myKeys + '/' + items.mySourceKeys + ' ]';

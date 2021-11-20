@@ -121,9 +121,17 @@ import viewContainer from '../viewContainer';
     function loadForm(context, user, userSettings, apiClient) {	
 		let event_change = new Event('change');
 		apiClient.getCultures().then(allCultures => {
+			
 			// *manually* add 'en-gb' to the list since the server only knows 'en' ('en-us' in reality)
-			// AKA the source dictionary.
 			allCultures.push({DisplayName: 'English (Great Britain)', TwoLetterISOLanguageName: 'en-gb'});
+			// Swiss German, filipino and some spanish cultures also are missing.
+			allCultures.push({DisplayName: 'Swiss German; Alemannic; Alsatian', ThreeLetterISOLanguageName: 'gsw'});
+			allCultures.push({DisplayName: 'Filipino', ThreeLetterISOLanguageName: 'fil'});
+			allCultures.push({DisplayName: 'Spanish (Argentina)', TwoLetterISOLanguageName: 'es-ar'});
+			allCultures.push({DisplayName: 'Spanish (Latin America)', TwoLetterISOLanguageName: 'es-419'});
+			allCultures.push({DisplayName: 'Spanish (Dominican Republic)', TwoLetterISOLanguageName: 'es-do'});
+			// This is a workaround that will eventually lead to a server patch of some sort.
+			
 			allCultures.sort((a, b) => {
 				let fa = a.DisplayName.toLowerCase(),
 				fb = b.DisplayName.toLowerCase();
