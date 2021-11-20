@@ -560,6 +560,8 @@
     "LabelAutoDiscoveryTracingHelp": "启用后，将记录在自动发现端口上接收到的数据包。",
     "LabelAutomaticDiscovery": "启用自动发现：",
     "LabelAutomaticDiscoveryHelp": "允许应用程序使用 UDP 端口 7359 自动检测 Jellyfin。",
+    "LabelAutomaticallyAddToCollection": "自动添加到合集",
+    "LabelAutomaticallyAddToCollectionHelp": "当至少有2个电影拥有相同的合集名称时，它们将会自动添加到合集中.",
     "LabelAutomaticallyRefreshInternetMetadataEvery": "自动从互联网获取元数据并刷新：",
     "LabelBaseUrl": "基础 URL：",
     "LabelBaseUrlHelp": "为服务器 URL添加自定义子目录，例如：<code>http://example.com/<b>&lt;baseurl&gt;</b></code>",

@@ -23,6 +23,8 @@
     "LabelSourceLanguage": "Source language:",
     "LabelStrokeSize": "Text outline size:",
     "LabelSubtitlePresets": "Subtitles style presets:",
+    "LabelSwiperDelay": "Slideshows speed:",
+    "LabelSwiperDelayHelp": "Define the delay in seconds between two slides.",
     "LabelTextShadowColor": "Text shadow color:",
     "LabelTextStrokeColor": "Text outline color:",
     "LabelTranslatedKeys": "Translated keys:",
@@ -35,7 +37,5 @@
     "Queue": "Queue",
     "Reload": "Reload this application",
     "Theme": "Theme",
-    "Videos": "Videos",
-    "sliderSwiperDelay": "Slideshows speed:",
-    "sliderSwiperDelayHelp": "Define the delay in seconds between two slides."
+    "Videos": "Videos"
 }
