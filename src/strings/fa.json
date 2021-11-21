@@ -206,7 +206,7 @@
     "EditSubtitles": "ویرایش زیرنویس‌ها",
     "EnableAutoCast": "تنظیم به عنوان پیشفرض",
     "EnableBackdropsHelp": "Display backdrops in the background of some pages while browsing the library.",
-    "EnableBlurHash": "Enable blurred placeholders for images",
+    "EnableBlurHash": "",
     "EnableBlurHashHelp": "Images that are still being loaded will be displayed with a blurred placeholder.",
     "EnableCinemaMode": "حالت سینما",
     "EnableColorCodedBackgrounds": "پشت‌ زمینه‌های کدگذاری شده رنگی",

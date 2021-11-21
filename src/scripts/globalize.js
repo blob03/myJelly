@@ -3,7 +3,7 @@ import { Events } from 'jellyfin-apiclient';
 
 /* eslint-disable indent */
 
-    const fallbackCulture = 'en-us';
+	const fallbackCulture = 'en';
 	const fallbackCultureName = 'English';
 	const fallbackModule = 'core';
     const allTranslations = {};
@@ -68,56 +68,6 @@ import { Events } from 'jellyfin-apiclient';
         });
     }
 	
-	function convertISOName(culture) {
-		switch (culture) {
-			case 'bg':
-				return 'bg-bg'; //convert Bulgarian ISO code to local name.
-				break;
-				
-			case 'be':
-				return 'be-by'; //convert Belarusian ISO code to local name.
-				break;
-				
-			case 'bn':
-				return 'bn_BD'; //convert Bengali ISO code to local name.
-				break;
-			
-			case 'en':
-				return 'en-us'; //convert English ISO code to local name.
-				break;
-			
-			case 'hi':
-				return 'hi-in'; //convert Hindi ISO code to local name.
-				break;
-				
-			case 'lt':
-				return 'lt-lt'; //convert Lithuanian ISO code to local name.
-				break;
-				
-			case 'no':
-				return 'nb'; //convert Norvegian ISO code to local name.
-				break;
-				
-			case 'sl':
-				return 'sl-si'; //convert Slovenian ISO code to local name.
-				break;
-				
-			case 'zh':
-				return 'zh-cn'; //convert Chinese ISO code to local name.
-				break;
-			
-			case 'es-do':
-				return 'es_DO'; //convert Dominican spanish code to local name.
-				break;
-				
-			case 'es-419':
-				return 'es_419'; //convert Latin american spanish code to local name.
-				break;
-		}
-		
-		return culture;
-	}
-
     function getDictionary(module, locale) {
         module = module || defaultModule();
         const translations = allTranslations[module];
@@ -159,7 +109,6 @@ import { Events } from 'jellyfin-apiclient';
 			return new Promise((resolve) => {});
 		
 		lang = lang || fallbackCulture;
-		lang = convertISOName(lang);
 		
 		// already loaded?
 		if (DicKeysNum[lang] && origKeysNum[lang])
@@ -237,8 +186,8 @@ import { Events } from 'jellyfin-apiclient';
 		return new Promise((resolve) => {
 			if (!lang)
 				resolve(0);
-			let ISOlang = convertISOName(lang);
-			let ISOfallback = convertISOName(fallbackCulture);
+			let ISOlang = lang;
+			let ISOfallback = fallbackCulture;
 			if (!DicKeysNum[ISOfallback]) {
 				let fallbackDic = getDictionary('core', ISOfallback);
 				if (!fallbackDic)
