@@ -5,11 +5,10 @@ import json
 
 # Rename a set of dictionaries in order to have them match the codes return by a call to /Localization/cultures
 # This allows to avoid converting them at runtime which is a waste of memory and cycles.
-def rename(langdir):
+def rename(langdir, flag):
 	langlst = {'ur_PK': 'ur', 'bg-bg': 'bg', 'be-by': 'be', 'bn_BD': 'bn', 'en-us': 'en', 'hi-in': 'hi', 'lt-lt': 'lt', 'nb': 'no', 'sl-si': 'sl', 'zh-cn': 'zh', 'es_DO': 'es-do', 'es_419': 'es-419'}
 	
-	with open('renamed.txt', 'w') as out:
-		out.seek(0)
+	with open('renamed.txt', flag) as out:
 		nbr = 0
 		for filename, BCP47 in langlst.items():
 			orig = filename + '.json'
@@ -26,7 +25,7 @@ def rename(langdir):
 # load every key in the source language
 # check the keys in all translations
 # remove keys that only exist in translations
-def sort(langdir, source):
+def sort(langdir, source, flag):
 	keysus = []
 	orphans = []
 
@@ -64,7 +63,7 @@ def sort(langdir, source):
 	print('Orphans found: ' + str(len(orphans)))
 	if len(orphans):
 		print(orphans)
-		with open('orphans.txt', 'w') as out:
+		with open('orphans.txt', flag) as out:
 			for item in orphans:
 				out.write(item + '\n')
 			out.close()
@@ -72,12 +71,12 @@ def sort(langdir, source):
 cwd = os.getcwd()
 print('#######################################')
 langdir = cwd + '/../../src/strings/'
-rename(langdir)
-sort(langdir, 'en.json')
+rename(langdir, 'w')
+sort(langdir, 'en.json', 'w')
 print('#######################################')
 # Repeat the process for myJelly files.
 langdir += 'myJelly/'
-rename(langdir)
-sort(langdir, 'en.json')
+rename(langdir, 'a')
+sort(langdir, 'en.json', 'a')
 print('#######################################')
 print('Done.')

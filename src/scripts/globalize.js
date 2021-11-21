@@ -158,15 +158,26 @@ import { Events } from 'jellyfin-apiclient';
         return translateKeyFromModule(key, module);
     }
 
-    function translateKeyFromModule(key, module) {
-        let dictionary = getDictionary(module, getCurrentLocale());
-        if (!dictionary || !dictionary[key]) {
-            dictionary = getDictionary(module, fallbackCulture);
-        }
-        if (!dictionary || !dictionary[key]) {
-            console.error(`Translation key is missing from dictionary: ${key}`);
-            return key;
-        }
+    function translateKeyFromModule(key, module, culture) {
+        let dictionary = {};
+		if (culture) {
+			dictionary = getDictionary(module, culture);
+			if (!dictionary) {
+				loadTranslation(module, culture).then( (newdic) => {
+					allTranslations[module].dictionaries[culture] = newdic;
+					dictionary = newdic;
+				});
+			}
+		} else 
+			dictionary = getDictionary(module, getCurrentLocale());
+		
+		if (!dictionary || !dictionary[key]) 
+			dictionary = getDictionary(module, fallbackCulture);			
+		if (!dictionary || !dictionary[key]) {
+			console.error(`Translation key is missing from dictionary: ${key}`);
+			return key;
+		}
+		
         return dictionary[key];
     }
 	
@@ -236,32 +247,29 @@ import { Events } from 'jellyfin-apiclient';
 		return loadTranslation('core', lang);
 	}
 
-    export function translateHtml(html, module) {
+    export function translateHtml(html, module, culture) {
         html = html.default || html;
 
-        if (!module) {
+        if (!module) 
             module = defaultModule();
-        }
-        if (!module) {
+        if (!module) 
             throw new Error('module cannot be null or empty');
-        }
 
-        let startIndex = html.indexOf('${');
-        if (startIndex === -1) {
-            return html;
-        }
+		do {
+			let startIndex = html.indexOf('${');
+			if (startIndex === -1) 
+				return html;
+			
+			startIndex += 2;
+			const endIndex = html.indexOf('}', startIndex);
+			if (endIndex === -1) 
+				return html;
+			
+			const key = html.substring(startIndex, endIndex);
+			const val = translateKeyFromModule(key, module, culture);
 
-        startIndex += 2;
-        const endIndex = html.indexOf('}', startIndex);
-        if (endIndex === -1) {
-            return html;
-        }
-
-        const key = html.substring(startIndex, endIndex);
-        const val = translateKeyFromModule(key, module);
-
-        html = html.replace('${' + key + '}', val);
-        return translateHtml(html, module);
+			html = html.replace('${' + key + '}', val);
+		} while(1)
     }
 
     export function defaultModule(val) {

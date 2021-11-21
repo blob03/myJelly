@@ -242,7 +242,14 @@ import viewContainer from '../viewContainer';
 		let reload = false;
 		const user = instance.currentUser;
 		const z = '/mypreferencesdisplay.html?userId=' + user.localUser.Id;		
-					
+		
+		VAL = context.querySelector('.selectLayout').value;
+		if (VAL !== savedLayout) {
+			layoutManager.setLayout(VAL, true);		
+			savedLayout = VAL;
+			reload = true;
+		}
+		
         if (appHost.supports('displaylanguage')) {	
 			VAL = context.querySelector('#selectLanguage').value;
 			if (VAL !== savedDisplayLanguage) {
@@ -250,13 +257,6 @@ import viewContainer from '../viewContainer';
 				reload = true;
 			}
         }
-
-		VAL = context.querySelector('.selectLayout').value;
-		if (VAL !== savedLayout) {
-			layoutManager.setLayout(VAL, true);		
-			savedLayout = VAL;
-			reload = true;
-		}
 					
 		user.localUser.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
@@ -285,7 +285,7 @@ import viewContainer from '../viewContainer';
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 
 				if (reload !== false) {
-					embed(instance.options, instance);
+					embed(instance.options, instance, VAL);
 					LibraryMenu.setTitle(globalize.translate(instance.title));
 					LibraryMenu.updateUserInHeader(user);
 				}
@@ -318,9 +318,9 @@ import viewContainer from '../viewContainer';
 
         return false;
     }
-
-    function embed(options, self) {
-        options.element.innerHTML = globalize.translateHtml(template, 'core');
+	
+    function embed(options, self, culture) {
+        options.element.innerHTML = globalize.translateHtml(template, 'core', culture);
         options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
         if (options.enableSaveButton) {
             options.element.querySelector('.btnSave').classList.remove('hide');
