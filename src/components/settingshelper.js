@@ -10,10 +10,18 @@ export function populateLanguages(select, languages, val) {
 	
 	languages.forEach(language => {
 		let ISOName = language.TwoLetterISOLanguageName;
-		if (val && val === ISOName) 
-			html += "<option value='" + ISOName + "' selected>" + language.DisplayName + "</option>";
-		else
-			html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+		
+		// Some cultures appear to have a three letters code (ISO 639-2) only.
+		// This seems to be the case for swiss German and a few others.
+		if (!ISOName && language.ThreeLetterISOLanguageName)
+			ISOName = language.ThreeLetterISOLanguageName;
+		
+		if (ISOName) {
+			if (val && val === ISOName) 
+				html += "<option value='" + ISOName + "' selected>" + language.DisplayName + "</option>";
+			else
+				html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+		}
 	});
     select.innerHTML += html;
 }

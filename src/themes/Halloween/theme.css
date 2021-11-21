@@ -875,12 +875,6 @@ select option:selected {
 	overflow: visible !important;
 }
 
-.fieldDescription {
-	color: #efcc95;
-	font-style: italic;
-	font-size: 85%;
-}
-
 .material-icons.favorite::before {
     content: "\e87e";
 }
@@ -954,12 +948,6 @@ legend {
 	padding: 0 10px 0 10px;
 	font-weight: 600 !important;
 	color: #d4c6b9;
-}
-
-fieldset {
-	padding: 1.5em 2em 0 2em;
-	margin: 0 0 2em 0;
-	border: 3px solid #d7752e;
 }
 
 div[data-role="controlgroup"] a.ui-btn-active {
@@ -1123,11 +1111,20 @@ option.sourceDictionaryOption {
 }
 
 fieldset {
+	padding: 1.5em 2em 0 2em;
+	margin: 0 0 2em 0;
 	border: 3px groove #eb9d58 !important;
+}
+
+.fieldDescription {
+	color: #efcc95;
+	font-style: italic;
+	font-size: 85%;
 }
 
 .LangDetailsHeader {
 	color: #6b737d;
-	font-size: 95%;
+	font-size: 100%;
 	font-weight: 600;
+	font-style: normal;
 }

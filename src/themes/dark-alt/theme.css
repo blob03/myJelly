@@ -829,12 +829,6 @@ select option:selected {
 	text-shadow: 1px 1px 15px #8c8c8c !important;
 }
 
-.fieldDescription {
-	color: #646e78;
-	font-style: italic;
-	font-size: 85%;
-}
-
 .emby-tabs,
 .emby-tab-button {
 	overflow: visible !important;
@@ -1078,11 +1072,18 @@ option.selected {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 3px groove #273b47 !important;
+	border: 4px groove #34383b !important;
+}
+
+.fieldDescription {
+	color: #646e78;
+	font-style: italic;
+	font-size: 85%;
 }
 
 .LangDetailsHeader {
 	color: #6b737d;
-	font-size: 95%;
+	font-size: 100%;
 	font-weight: 600;
+	font-style: normal;
 }

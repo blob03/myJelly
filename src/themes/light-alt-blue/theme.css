@@ -775,12 +775,6 @@ select option:selected {
 	overflow: visible !important;
 }
 
-.fieldDescription {
-	color: #86a9c3;
-	font-style: italic;
-	font-size: 85%;
-}
-
 .material-icons.favorite::before {
     content: "\e87e";
 }
@@ -871,12 +865,6 @@ legend {
 	color: #fbfdff;
 }
 
-fieldset {
-	padding: 1.5em 2em 0 2em;
-	margin: 0 0 2em 0;
-	border: 3px groove #f9fdff !important;
-}
-
 .radio > * > .checkboxIcon-unchecked {
 	color: #abb2ba !important;
 }
@@ -937,6 +925,26 @@ option.sourceDictionaryOption {
 }
 
 .sliderContainer-settings.disabled .mdl-slider
- {
+{
 	visibility: hidden;
+}
+
+fieldset {
+	padding: 1.5em 2em 0 2em;
+	margin: 0 0 2em 0;
+	border: 5px groove #fcfcfc !important;
+	border-color: #dbf8ff !important;
+}
+
+.fieldDescription {
+	color: #86a9c3;
+	font-style: italic;
+	font-size: 85%;
+}
+
+.LangDetailsHeader {
+	color: #789bc6;
+	font-size: 100%;
+	font-weight: 600;
+	font-style: normal;
 }

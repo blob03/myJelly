@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-149",
+	"version": "10.7.7-150",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -29,15 +29,15 @@
 		"id": "light-alt",
 		"color": "#303030"
 	}, {
-		"name": "Light alt. blue 1.34",
+		"name": "Light alt. blue 1.36",
 		"id": "light-alt-blue",
 		"color": "#303030"
 	}, {
-		"name": "Halloween 1.63",
+		"name": "Halloween 1.65",
 		"id": "Halloween",
 		"color": "#282828"
 	}, {
-		"name": "Dark alt. 1.42",
+		"name": "Dark alt. 1.44",
 		"id": "dark-alt",
 		"color": "#202020"
 	}, {
