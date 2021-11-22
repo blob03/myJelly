@@ -932,7 +932,7 @@ option.sourceDictionaryOption {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 5px groove #fcfcfc !important;
+	border: 4px groove #fcfcfc !important;
 	border-color: #dbf8ff !important;
 }
 
@@ -943,7 +943,7 @@ fieldset {
 }
 
 .LangDetailsHeader {
-	color: #789bc6;
+	color: #6fa6bc;
 	font-size: 100%;
 	font-weight: 600;
 	font-style: normal;

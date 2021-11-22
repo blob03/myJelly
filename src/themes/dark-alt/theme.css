@@ -4,7 +4,7 @@
 }
 
 * {
-	scrollbar-color: #202020 #fff;
+	scrollbar-color: #3e3e3e #2c2c2c;
 	scrollbar-width: thin;
 }
 
@@ -350,7 +350,7 @@ html {
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: #909090;
+    background-color: #2c2c2c;
 }
 
 .layout-desktop ::-webkit-scrollbar,
@@ -363,7 +363,7 @@ html {
 ::-webkit-scrollbar-thumb:vertical {
     border-radius: 2px;
     -webkit-border-radius: 2px;
-    background: center no-repeat #000;
+    background: center no-repeat #3e3e3e;
 }
 
 /* Buttons */
@@ -1082,7 +1082,7 @@ fieldset {
 }
 
 .LangDetailsHeader {
-	color: #6b737d;
+	color: #818b96;
 	font-size: 100%;
 	font-weight: 600;
 	font-style: normal;
