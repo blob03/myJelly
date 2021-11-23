@@ -221,22 +221,22 @@ import viewContainer from '../viewContainer';
     }
 
     function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
-		let VAL;
+		let newLayout;
+		let newDisplayLanguage = savedDisplayLanguage;
 		let reload = false;
 		const user = instance.currentUser;
-		const z = '/mypreferencesdisplay.html?userId=' + user.localUser.Id;		
 		
-		VAL = context.querySelector('.selectLayout').value;
-		if (VAL !== savedLayout) {
-			layoutManager.setLayout(VAL, true);		
-			savedLayout = VAL;
+		newLayout = context.querySelector('.selectLayout').value;
+		if (newLayout !== savedLayout) {
+			layoutManager.setLayout(newLayout, true);		
+			savedLayout = newLayout;
 			reload = true;
 		}
 		
         if (appHost.supports('displaylanguage')) {	
-			VAL = context.querySelector('#selectLanguage').value;
-			if (VAL !== savedDisplayLanguage) {
-				userSettingsInstance.language(VAL);
+			newDisplayLanguage = context.querySelector('#selectLanguage').value;
+			if (newDisplayLanguage !== savedDisplayLanguage) {
+				userSettingsInstance.language(newDisplayLanguage);
 				reload = true;
 			}
         }
@@ -268,7 +268,7 @@ import viewContainer from '../viewContainer';
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 
 				if (reload !== false) {
-					embed(instance.options, instance, VAL);
+					embed(instance.options, instance, newDisplayLanguage);
 					LibraryMenu.setTitle(globalize.translate(instance.title));
 					LibraryMenu.updateUserInHeader(user);
 				}

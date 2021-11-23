@@ -842,6 +842,7 @@
     "OptionAllowUserToManageServer": "Επιτρέψτε σε αυτόν τον χρήστη να διαχειρίζεται το διακομιστή",
     "OptionAllowVideoPlaybackRemuxing": "Επέτρεψε την αναπαραγωγή βίντεο που χρειάζεται αναπροσαρμογή",
     "OptionAllowVideoPlaybackTranscoding": "Επέτρεψε την αναπαραγωγή βίντεο που χρειάζεται αναπροσαρμογή",
+    "OptionBluray": "BD",
     "OptionCommunityRating": "Βαθμολογία Κοινότητας",
     "OptionCriticRating": "Βαθμολογία κριτικών",
     "OptionCustomUsers": "Προσαρμοσμένο",

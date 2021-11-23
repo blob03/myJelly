@@ -29,7 +29,7 @@ class AboutTab {
 			html += '<div> ' + globalize.translate('AppContact') + ' <span><a rel="noopener noreferrer" style="font-weight:400;" class="aboutcontent button-link emby-button" href="mailto:' + appInfo.contact + '">' + appInfo.contact + '</a></span></div>';
 		}
 		html += '</div>';
-		this.sectionsContainer.innerHTML += html;
+		this.sectionsContainer.innerHTML = html;
     }
 	
 	getHostVersion(browser) {

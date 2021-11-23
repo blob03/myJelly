@@ -8,7 +8,6 @@ import '../../elements/emby-select/emby-select';
 import '../../elements/emby-button/emby-button';
 import Dashboard from '../../scripts/clientUtils';
 import settingsHelper from '../../components/settingshelper';
-import cultures from '../../scripts/cultures';
 import alert from '../../components/alert';
 
 /* eslint-disable indent */
@@ -22,10 +21,19 @@ import alert from '../../components/alert';
 		
 		let selectLanguage = page.querySelector('#selectLocalizationLanguage');
 		
-		let allCultures = cultures.getCultures();
-		settingsHelper.populateLanguages(selectLanguage, allCultures, config.UICulture);
-		
-        loading.hide();
+		ApiClient.getCultures().then(allCultures => {
+			allCultures.sort((a, b) => {
+				let fa = a.DisplayName.toLowerCase(),
+				fb = b.DisplayName.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
+			settingsHelper.populateLanguages(selectLanguage, allCultures, config.UICulture);
+			loading.hide();
+		});
     }
 
     function onSubmit() {

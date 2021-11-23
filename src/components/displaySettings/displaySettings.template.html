@@ -43,17 +43,16 @@
 		</div>
 		
 		<fieldset class="infoDetails" style="width: 45%;height: auto;border: 1px solid #000;padding: 10px !important;margin: 0 !important;font-size: 90%;">
-		
+			<legend class="infoDetailsLegend hide">
+				<span class="material-icons warning warningIcon hide" style="font-size: 250%;"></span>
+				<span class="material-icons done doneIcon hide" style="font-size: 250%;color: rgb(84, 206, 149);"></span>
+			</legend>
 			<div class="DisplayLanguageInfo fieldDescription" style='width: 100%;height: auto;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
-				<div class="infoDisplayLanguage"><span class="LangDetailsHeader">${LabelDisplayLanguage}</span></div>
-				<div class="infoSourceLanguage"><span class="LangDetailsHeader">${LabelSourceLanguage}</span></div>
-				<div class="infoKeysTranslated">
-					<span class="LangDetailsHeader">${LabelTranslatedKeys}</span>
-					<span class="material-icons warning warningIcon hide" style="float:right; font-size: 200%;"></span>
-					<span class="material-icons done doneIcon hide" style="float:right; font-size: 200%;color: rgb(52, 220, 141)"></span>
-				</div>
-				<div class="infoJellyfinKeysTranslated" style="margin: 0 0 0 20px;font-size:90%">-&nbsp;${LabelJellyfin}</div>
-				<div class="infoMyjellyKeysTranslated" style="margin: 0 0 0 20px;font-size:90%">-&nbsp;${LabelmyJelly}</div>
+				<div><span class="LangDetailsHeader">${LabelDisplayLanguage}</span><span class="infoDisplayLanguage"></span></div>
+				<div><span class="LangDetailsHeader">${LabelSourceLanguage}</span><span class="infoSourceLanguage"></span></div>
+				<div><span class="LangDetailsHeader">${LabelTranslatedKeys}</span><span class="infoKeysTranslated"></span></div>
+				<div style="margin: 0 0 0 20px;font-size:90%">-&nbsp;${LabelJellyfin}<span class="infoJellyfinKeysTranslated"></span></div>
+				<div style="margin: 0 0 0 20px;font-size:90%">-&nbsp;${LabelmyJelly}<span class="infoMyjellyKeysTranslated"></span></div>
 			</div>
 		
 		</fieldset>

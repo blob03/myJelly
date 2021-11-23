@@ -1072,6 +1072,7 @@
     "OptionAllowLinkSharing": "Ijinkan Sharing media sok sial",
     "OptionAllowMediaPlayback": "Ijinkan Mainkan Media",
     "OptionAllowUserToManageServer": "Izinkan pengguna ini untuk mengelola server",
+    "OptionBluray": "BD",
     "OptionDisableUserHelp": "Server tidak akan mengizinkan koneksi apa pun dari pengguna ini. Koneksi yang ada akan dihentikan secara tiba-tiba.",
     "OptionEnableAccessFromAllDevices": "Aktifkan akses dari semua perangkat",
     "OptionEnableAccessToAllChannels": "Aktifkan akses ke semua channel",
