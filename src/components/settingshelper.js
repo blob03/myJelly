@@ -1,5 +1,6 @@
 import globalize from '../scripts/globalize';
-
+import cultures from '../scripts/cultures';
+ 
 /**
  * Helper for handling settings.
  * @module components/settingsHelper
@@ -18,9 +19,11 @@ export function populateLanguages(select, languages, val) {
 		
 		if (ISOName) {
 			if (val && val === ISOName) 
-				html += "<option value='" + ISOName + "' selected>" + language.DisplayName + "</option>";
+				html += "<option value='" + ISOName + "' selected>";
 			else
-				html += "<option value='" + ISOName + "'>" + language.DisplayName + "</option>";
+				html += "<option value='" + ISOName + "'>";
+			
+			html += language.DisplayName + "</option>";
 		}
 	});
     select.innerHTML += html;
@@ -46,33 +49,36 @@ export function populateSubsLanguages(select, languages, val) {
 }
 
 export function populateDictionaries(select, languages, val) {		
-	
 	let html = '';
-	let activeLanguage = null;
+	let activeLanguage = { "DisplayName": "", "ISOName": "" };
+	let lang = (val === '')? globalize.getDefaultCulture(): val; 
 	
 	languages.forEach(language => {
 		let ISOName = language.TwoLetterISOLanguageName;
 		
 		// Some cultures appear to have a three letters code (ISO 639-2) only.
-		// This seems to be the case for swiss German and a few others.
+		// This is the case for swiss German and a few others.
 		if (!ISOName && language.ThreeLetterISOLanguageName)
 			ISOName = language.ThreeLetterISOLanguageName;
 		
 		if (ISOName) {
 			html += "<option";
-			if (val && val === ISOName) {
+			if (lang && lang === ISOName) {
 				activeLanguage = language;
 				activeLanguage.ISOName = ISOName;
+			}
+			
+			if (val && val === ISOName)
 				html += " value='" + ISOName + "' class='selected' selected>";
-			} else 
+			else
 				html += " value='" + ISOName + "'>";
 			
 			html += language.DisplayName + "</option>";
 		}
 	});
 	select.innerHTML += html;
-	
-	globalize.getCoreDictionaryProgress(val).then( (items) => {
+		
+	globalize.getCoreDictionaryProgress(lang).then( (items) => {
 		
 		let pnode = select.parentNode.parentNode;
 		if (pnode) {	
@@ -84,10 +90,12 @@ export function populateDictionaries(select, languages, val) {
 			nodeInfo.querySelector('.infoMyjellyKeysTranslated').innerHTML += ' ' + items.myProgress + '% [ ' + items.myKeys + '/' + items.mySourceKeys + ' ]';
 			if (items.progress > 100 || items.origProgress > 100 || items.myProgress > 100)
 				nodeInfo.querySelector('.warningIcon').classList.remove('hide');
+			else if (items.progress === 100)
+				nodeInfo.querySelector('.doneIcon').classList.remove('hide');
 		}		
 	});
 }
-							
+
 export default {
     populateLanguages: populateLanguages,
 	populateSubsLanguages: populateSubsLanguages,

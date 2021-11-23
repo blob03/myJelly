@@ -7,6 +7,7 @@ import layoutManager from '../layoutManager';
 import loading from '../loading/loading';
 import subtitleAppearanceHelper from './subtitleappearancehelper';
 import settingsHelper from '../settingshelper';
+import cultures from '../../scripts/cultures';
 import skinManager from '../../scripts/themeManager';
 import dom from '../../scripts/dom';
 import { Events } from 'jellyfin-apiclient';
@@ -418,20 +419,10 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 	let selectSubtitlePlaybackMode = context.querySelector('#selectSubtitlePlaybackMode');
 	selectSubtitlePlaybackMode.value = user.Configuration.SubtitleMode || '';
 	
-	apiClient.getCultures().then(allCultures => {
-		allCultures.sort((a, b) => {
-			let fa = a.DisplayName.toLowerCase(),
-				fb = b.DisplayName.toLowerCase();
-			if (fa < fb) 
-				return -1;
-			if (fa > fb) 
-				return 1;
-			return 0;
-		});
-		let selectSubtitleLanguage = context.querySelector('#selectSubtitleLanguage');
-		settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, user.Configuration.SubtitleLanguagePreference || 'Auto');
-		selectSubtitleLanguage.dispatchEvent(event_change);
-	});
+	let allCultures = cultures.getCultures();	
+	let selectSubtitleLanguage = context.querySelector('#selectSubtitleLanguage');
+	settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, user.Configuration.SubtitleLanguagePreference || 'Auto');
+	selectSubtitleLanguage.dispatchEvent(event_change);
 
 	let selectSubPreset =  context.querySelector('#selectSubtitlePreset');
 	fillPresets(selectSubPreset, appearanceSettings.preset);

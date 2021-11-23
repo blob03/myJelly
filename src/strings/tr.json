@@ -931,6 +931,8 @@
     "OptionAllowUserToManageServer": "Bu kullanıcıya sunucuyu yönetme izni ver",
     "OptionAutomaticallyGroupSeries": "Birden çok klasöre yayılmış diziyi otomatik olarak birleştir",
     "OptionAutomaticallyGroupSeriesHelp": "Bu kitaplık içinde birden çok klasöre yayılan diziyi otomatik olarak tek bir dizi halinde birleştirilecektir.",
+    "OptionBluray": "BD",
+    "OptionCaptionInfoExSamsung": "CaptionInfoEx (Samsung)",
     "OptionCriticRating": "Rotten Tomatoes Puanı",
     "OptionDaily": "Günlük",
     "OptionDateAdded": "Eklenme Tarihi",

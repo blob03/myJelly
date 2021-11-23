@@ -4,19 +4,20 @@ import libraryMenu from '../../scripts/libraryMenu';
 import globalize from '../../scripts/globalize';
 import '../../components/listview/listview.scss';
 import Dashboard from '../../scripts/clientUtils';
+import settingsHelper from '../../components/settingshelper';
+import cultures from '../../scripts/cultures';
 
 /* eslint-disable indent */
 
-    function populateLanguages(select) {
-        return ApiClient.getCultures().then(function(languages) {
-            let html = '';
-            html += "<option value=''></option>";
-            for (let i = 0, length = languages.length; i < length; i++) {
-                const culture = languages[i];
-                html += "<option value='" + culture.TwoLetterISOLanguageName + "'>" + culture.DisplayName + '</option>';
-            }
-            select.innerHTML = html;
-        });
+    function populateLanguages(select) {        
+		let languages = cultures.getCultures();
+		let html = '';
+		html += "<option value=''></option>";
+		for (let i = 0, length = languages.length; i < length; i++) {
+			const culture = languages[i];
+			html += "<option value='" + culture.TwoLetterISOLanguageName + "'>" + culture.DisplayName + '</option>';
+		}
+		select.innerHTML = html;
     }
 
     function populateCountries(select) {

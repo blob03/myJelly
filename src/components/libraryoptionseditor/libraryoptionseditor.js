@@ -11,12 +11,17 @@ import '../../elements/emby-checkbox/emby-checkbox';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-input/emby-input';
 import template from './libraryoptionseditor.template.html';
+import settingsHelper from '../settingshelper';
+import cultures from '../../scripts/cultures';
 
     function populateLanguages(parent) {
-        return ApiClient.getCultures().then(languages => {
-            populateLanguagesIntoSelect(parent.querySelector('#selectLanguage'), languages);
+		return new Promise((resolve, reject) => {
+			let languages = cultures.getCultures();
+			resolve(languages);
+		}).then( languages => {
+			populateLanguagesIntoSelect(parent.querySelector('#selectLanguage'), languages);
             populateLanguagesIntoList(parent.querySelector('.subtitleDownloadLanguages'), languages);
-        });
+		});
     }
 
     function populateLanguagesIntoSelect(select, languages) {

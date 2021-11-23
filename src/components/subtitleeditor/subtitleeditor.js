@@ -3,6 +3,7 @@ import dialogHelper from '../dialogHelper/dialogHelper';
 import layoutManager from '../layoutManager';
 import globalize from '../../scripts/globalize';
 import * as userSettings from '../../scripts/settings/userSettings';
+import cultures from '../../scripts/cultures';
 import loading from '../loading/loading';
 import focusManager from '../focusManager';
 import dom from '../../scripts/dom';
@@ -425,10 +426,9 @@ function showEditorInternal(itemId, serverId) {
         dlg.querySelector('.subtitleList').addEventListener('click', onSubtitleListClick);
         dlg.querySelector('.subtitleResults').addEventListener('click', onSubtitleResultsClick);
 
-        apiClient.getCultures().then(function (languages) {
-            fillLanguages(editorContent, apiClient, languages);
-        });
-
+		let allCultures = cultures.getCultures();
+        fillLanguages(editorContent, apiClient, allCultures);
+        
         dlg.querySelector('.btnCancel').addEventListener('click', function () {
             dialogHelper.close(dlg);
         });

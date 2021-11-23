@@ -6,6 +6,7 @@ import focusManager from '../focusManager';
 import datetime from '../../scripts/datetime';
 import globalize from '../../scripts/globalize';
 import settingsHelper from '../settingshelper';
+import cultures from '../../scripts/cultures';
 import loading from '../loading/loading';
 import skinManager from '../../scripts/themeManager';
 import { Events } from 'jellyfin-apiclient';
@@ -120,42 +121,24 @@ import viewContainer from '../viewContainer';
 	
     function loadForm(context, user, userSettings, apiClient) {	
 		let event_change = new Event('change');
-		apiClient.getCultures().then(allCultures => {
-			
-			// *manually* add 'en-gb' to the list since the server only knows 'en' ('en-us' in reality)
-			allCultures.push({DisplayName: 'English (Great Britain)', TwoLetterISOLanguageName: 'en-gb'});
-			// Swiss German, filipino and some spanish cultures also are missing.
-			allCultures.push({DisplayName: 'Swiss German; Alemannic; Alsatian', ThreeLetterISOLanguageName: 'gsw'});
-			allCultures.push({DisplayName: 'Filipino', ThreeLetterISOLanguageName: 'fil'});
-			allCultures.push({DisplayName: 'Spanish (Argentina)', TwoLetterISOLanguageName: 'es-ar'});
-			allCultures.push({DisplayName: 'Spanish (Latin America)', TwoLetterISOLanguageName: 'es-419'});
-			allCultures.push({DisplayName: 'Spanish (Dominican Republic)', TwoLetterISOLanguageName: 'es-do'});
-			// This is a workaround that will eventually lead to a server patch of some sort.
-			
-			allCultures.sort((a, b) => {
-				let fa = a.DisplayName.toLowerCase(),
-				fb = b.DisplayName.toLowerCase();
-				if (fa < fb) 
-					return -1;
-				if (fa > fb) 
-					return 1;
-				return 0;
-			});
-			if (appHost.supports('displaylanguage')) { 
-				let selectLanguage = context.querySelector('#selectLanguage');
-				savedDisplayLanguage = userSettings.language() || '';
-				settingsHelper.populateDictionaries(selectLanguage, allCultures, savedDisplayLanguage);
-				context.querySelector('.DisplayLanguageArea').classList.remove('hide');
-			} else 
-				context.querySelector('.DisplayLanguageArea').classList.add('hide');
-			
-			if (datetime.supportsLocalization()) { 
-				let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
-				settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, userSettings.dateTimeLocale() || '');
-				context.querySelector('.fldDateTimeLocale').classList.remove('hide');
-			} else 
-				context.querySelector('.fldDateTimeLocale').classList.add('hide');
-		});
+		
+		let allCultures = cultures.getCultures();
+	
+		if (appHost.supports('displaylanguage')) { 
+			let selectLanguage = context.querySelector('#selectLanguage');
+			savedDisplayLanguage = userSettings.language() || '';
+			settingsHelper.populateDictionaries(selectLanguage, allCultures, savedDisplayLanguage);
+			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
+		} else 
+			context.querySelector('.DisplayLanguageArea').classList.add('hide');
+		
+		if (datetime.supportsLocalization()) { 
+			let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
+			settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, userSettings.dateTimeLocale() || '');
+			context.querySelector('.fldDateTimeLocale').classList.remove('hide');
+		} else 
+			context.querySelector('.fldDateTimeLocale').classList.add('hide');
+	
 	
         if (appHost.supports('externallinks')) 
             context.querySelector('.learnHowToContributeContainer').classList.remove('hide');

@@ -7,6 +7,7 @@ import layoutManager from '../layoutManager';
 import globalize from '../../scripts/globalize';
 import loading from '../loading/loading';
 import settingsHelper from '../settingshelper';
+import cultures from '../../scripts/cultures';
 import { Events } from 'jellyfin-apiclient';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-slider/emby-slider';
@@ -123,20 +124,11 @@ import template from './playbackSettings.template.html';
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
 		
 		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
-		apiClient.getCultures().then(allCultures => {
-			allCultures.sort((a, b) => {
-				let fa = a.DisplayName.toLowerCase(),
-					fb = b.DisplayName.toLowerCase();
-				if (fa < fb) 
-					return -1;
-				if (fa > fb) 
-					return 1;
-				return 0;
-			});
-			settingsHelper.populateLanguages(selectAudioLanguage, allCultures);
-			selectAudioLanguage.value = userSettings.AudioLanguagePreference();
-        });
 
+		let allCultures = cultures.getCultures();		
+		settingsHelper.populateLanguages(selectAudioLanguage, allCultures);
+		selectAudioLanguage.value = userSettings.AudioLanguagePreference();
+	
         // hide cinema mode options if disabled at server level
         apiClient.getNamedConfiguration('cinemamode').then(cinemaConfig => {
             if (cinemaConfig.EnableIntrosForMovies || cinemaConfig.EnableIntrosForEpisodes) {

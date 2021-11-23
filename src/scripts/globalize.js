@@ -3,7 +3,7 @@ import { Events } from 'jellyfin-apiclient';
 
 /* eslint-disable indent */
 
-	const fallbackCulture = 'en';
+	const fallbackCulture = 'en-US';
 	const fallbackCultureName = 'English';
 	const fallbackModule = 'core';
     const allTranslations = {};
@@ -21,31 +21,31 @@ import { Events } from 'jellyfin-apiclient';
         return currentDateTimeCulture;
     }
 
-    export function getDefaultLanguage() {
+    export function getDefaultCulture() {
         const culture = document.documentElement.getAttribute('data-culture');
-        if (culture) {
+        if (culture) 
             return culture;
-        }
-        if (navigator.language) {
+        
+        if (navigator.language) 
             return navigator.language;
-        }
-        if (navigator.userLanguage) {
+        
+        if (navigator.userLanguage) 
             return navigator.userLanguage;
-        }
-        if (navigator.languages && navigator.languages.length) {
+        
+        if (navigator.languages && navigator.languages.length) 
             return navigator.languages[0];
-        }
+        
         return fallbackCulture;
     }
 
     export function updateCurrentCulture() {
-        currentCulture = userSettings.language() || getDefaultLanguage();
+        currentCulture = userSettings.language() || getDefaultCulture();
 		currentDateTimeCulture = userSettings.dateTimeLocale() || currentCulture;
         ensureTranslations(currentCulture);
     }
 	
 	export function updateCulture(culture) {
-        culture = culture || getDefaultLanguage();
+        culture = culture || getDefaultCulture();
         ensureTranslations(culture);
     }
 
@@ -296,7 +296,7 @@ export default {
     defaultModule,
     getCurrentLocale,
     getCurrentDateTimeLocale,
-	getDefaultLanguage,
+	getDefaultCulture,
     register,
     updateCurrentCulture,
 	updateCulture

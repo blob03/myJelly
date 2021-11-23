@@ -694,6 +694,8 @@
     "Normal": "Normaal",
     "OnApplicationStartup": "Op applikasie begin",
     "OnWakeFromSleep": "Op wakker word van slaap",
+    "OptionBluray": "BD",
+    "OptionCaptionInfoExSamsung": "CaptionInfoEx (Samsung)",
     "OptionResElement": "res element",
     "Other": "Ander",
     "PathNotFound": "Die pad kon nie gevind word nie. Maak asseblief seker dat die pad geldig is en probeer weer.",
