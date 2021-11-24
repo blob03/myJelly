@@ -268,9 +268,9 @@ import viewContainer from '../viewContainer';
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 
 				if (reload !== false) {
-					embed(instance.options, instance, newDisplayLanguage);
 					LibraryMenu.setTitle(globalize.translate(instance.title));
 					LibraryMenu.updateUserInHeader(user);
+					embed(instance.options, instance, newDisplayLanguage);
 				}
 				loading.hide();	
 				if (enableSaveConfirmation) 
@@ -303,13 +303,15 @@ import viewContainer from '../viewContainer';
     }
 	
     function embed(options, self, culture) {
-        options.element.innerHTML = globalize.translateHtml(template, 'core', culture);
-        options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
-        if (options.enableSaveButton) {
-            options.element.querySelector('.btnSave').classList.remove('hide');
-        }
-        self.loadData(options.autoFocus);
-    }
+		globalize.getCoreDictionary(culture).then( () => {
+			options.element.innerHTML = globalize.translateHtml(template, 'core', culture);
+			options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
+			if (options.enableSaveButton) {
+				options.element.querySelector('.btnSave').classList.remove('hide');
+			}
+			self.loadData(options.autoFocus);
+		});
+	}
 
     class DisplaySettings {
         constructor(options) {

@@ -1,4 +1,5 @@
 import * as userSettings from './settings/userSettings';
+import cultures from './cultures';
 import { Events } from 'jellyfin-apiclient';
 
 /* eslint-disable indent */
@@ -22,19 +23,26 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     export function getDefaultCulture() {
-        const culture = document.documentElement.getAttribute('data-culture');
-        if (culture) 
-            return culture;
-        
-        if (navigator.language) 
-            return navigator.language;
-        
-        if (navigator.userLanguage) 
-            return navigator.userLanguage;
-        
-        if (navigator.languages && navigator.languages.length) 
-            return navigator.languages[0];
-        
+        let culture;
+		let test = {};
+		
+		if (document.documentElement.getAttribute('data-culture')) 
+			culture = document.documentElement.getAttribute('data-culture');
+		else if (navigator.language) 
+			culture = navigator.language;
+        else if (navigator.userLanguage) 
+            culture = navigator.userLanguage;
+        else if (navigator.languages && navigator.languages.length) 
+            culture = navigator.languages[0];
+		
+		if (culture) {
+			test = cultures.validateCulture(culture);
+			if (test.TwoLetterISOLanguageName)
+				return test.TwoLetterISOLanguageName;
+			if (test.ThreeLetterISOLanguageName)
+				return test.ThreeLetterISOLanguageName;
+		}
+		
         return fallbackCulture;
     }
 
@@ -50,6 +58,7 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function ensureTranslations(culture) {
+		culture = culture || getDefaultCulture();
 		let promises = [];
         for (const i in allTranslations) {
 			promises.push(ensureTranslation(i, allTranslations[i], culture));
@@ -61,20 +70,22 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function ensureTranslation(module, translationInfo, culture) {
+		culture = culture || getDefaultCulture();
         if (translationInfo.dictionaries[culture]) 
             return Promise.resolve();
-		return loadTranslation(module, culture).then( (dictionary) => {
-            translationInfo.dictionaries[culture] = dictionary;
-        });
+		
+		return loadTranslation(module, culture);
     }
 	
-    function getDictionary(module, locale) {
-        module = module || defaultModule();
+    function getDictionary(module, culture) {
+        module = module || getDefaultModule();
+		if (!culture)
+			return {};
         const translations = allTranslations[module];
         if (!translations) 
             return {};
 
-        return translations.dictionaries[locale];
+        return translations.dictionaries[culture];
     }
 
     export function register(options) {
@@ -89,7 +100,7 @@ import { Events } from 'jellyfin-apiclient';
         const promises = [];
         let optionsName;
 		if (!options)
-			optionsName = defaultModule();
+			optionsName = getDefaultModule();
         else if (typeof options === 'string')
 			optionsName = options;
         else 
@@ -105,16 +116,14 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function loadTranslation(module, lang) {
-		if (module !== 'core')
-			return new Promise((resolve) => {});
-		
-		lang = lang || fallbackCulture;
+		module = getDefaultModule(); // needs to be fixed.
+		lang = lang || getDefaultCulture();
 		
 		// already loaded?
-		if (DicKeysNum[lang] && origKeysNum[lang])
-			if (allTranslations['core'].dictionaries[lang])
-				return new Promise((resolve) => {
-					resolve(allTranslations['core'].dictionaries[lang]);});
+		if (allTranslations[module].dictionaries[lang])
+			return new Promise((resolve) => {
+				resolve(allTranslations[module].dictionaries[lang]);
+			});
 
 		Object.filter = (obj, predicate) => 
 			Object.assign(...Object.keys(obj)
@@ -136,8 +145,10 @@ import { Events } from 'jellyfin-apiclient';
 					DicKeysNum[lang] = origKeysNum[lang] + myKeysNum[lang];
 					
 					let dic = {...content, ...mjcontent};
+					allTranslations[module].dictionaries[lang] = dic;
 					resolve(dic);
 				}).catch(() => {
+					allTranslations[module].dictionaries[lang] = content;
 					resolve(content);
 				});
 			}).catch(() => {
@@ -159,18 +170,18 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function translateKeyFromModule(key, module, culture) {
-        let dictionary = {};
-		if (culture) {
-			dictionary = getDictionary(module, culture);
-			if (!dictionary) {
-				loadTranslation(module, culture).then( (newdic) => {
-					allTranslations[module].dictionaries[culture] = newdic;
-					dictionary = newdic;
-				});
-			}
-		} else 
-			dictionary = getDictionary(module, getCurrentLocale());
+		if (!key) return '';
+		module = module || getDefaultModule();
 		
+		// No parameter was passed.
+		if (culture === undefined) 
+			culture = getCurrentLocale();
+			
+		// Is culture set to Auto?
+		if (culture === '')
+			culture = getDefaultCulture();
+		
+        let dictionary = getDictionary(module, culture);				
 		if (!dictionary || !dictionary[key]) 
 			dictionary = getDictionary(module, fallbackCulture);			
 		if (!dictionary || !dictionary[key]) {
@@ -193,11 +204,11 @@ import { Events } from 'jellyfin-apiclient';
         return val;
     }
 	
-	export function getCoreDictionaryProgress(lang) {
+	export function getCoreDictionaryProgress(culture) {
+		culture = culture || getDefaultCulture();
+		
 		return new Promise((resolve) => {
-			if (!lang)
-				resolve(0);
-			let ISOlang = lang;
+			let ISOlang = culture;
 			let ISOfallback = fallbackCulture;
 			if (!DicKeysNum[ISOfallback]) {
 				let fallbackDic = getDictionary('core', ISOfallback);
@@ -243,18 +254,31 @@ import { Events } from 'jellyfin-apiclient';
 		});
 	}
 
-	export function getCoreDictionary(lang) {
-		return loadTranslation('core', lang);
+	// Function to load a specific language.
+	export function getCoreDictionary(culture) {
+		
+		if (culture === undefined)
+			culture = getCurrentLocale();
+			
+		// Is culture set to Auto?
+		if (culture === '')
+			culture = getDefaultCulture();
+		
+		return loadTranslation('core', culture);
 	}
 
     export function translateHtml(html, module, culture) {
         html = html.default || html;
-
-        if (!module) 
-            module = defaultModule();
-        if (!module) 
-            throw new Error('module cannot be null or empty');
-
+		module = module || getDefaultModule();
+		
+		// No parameter was passed.
+		if (culture === undefined) 
+			culture = getCurrentLocale();
+			
+		// Is culture set to Auto?
+		if (culture === '')
+			culture = getDefaultCulture();
+			
 		do {
 			let startIndex = html.indexOf('${');
 			if (startIndex === -1) 
@@ -272,10 +296,7 @@ import { Events } from 'jellyfin-apiclient';
 		} while(1)
     }
 
-    export function defaultModule(val) {
-        if (val) {
-            fallbackModule = val;
-        }
+    function getDefaultModule(val) {
         return fallbackModule;
     }
 
@@ -293,7 +314,6 @@ export default {
 	getCoreDictionaryProgress,
     translateHtml,
     loadStrings,
-    defaultModule,
     getCurrentLocale,
     getCurrentDateTimeLocale,
 	getDefaultCulture,

@@ -81,6 +81,42 @@ export function getNativeName(cultureCode) {
 	return '';
 }
 
+// Try to match a given culture with one in the list.
+// return the closest match or nothing.
+export function validateCulture(culture) {
+	if (!culture) 
+		return {};
+	let ctrlLst = getCultures();
+	
+	// find an exact match.
+	let lang = ctrlLst.filter( item => 
+		item.TwoLetterISOLanguageName === culture || item.ThreeLetterISOLanguageName === culture );
+	if (lang[0])
+		return lang[0];
+	
+	let parentCulture = culture.split('-')[0];
+	if (parentCulture) {
+		// find an exact match ot the parent.
+		lang = ctrlLst.filter((item) => 
+			item.TwoLetterISOLanguageName === parentCulture || item.ThreeLetterISOLanguageName === parentCulture );
+		if (lang[0]) 
+			return lang[0];
+		// find a sister culture.
+		lang = ctrlLst.filter((item) => 
+			item.TwoLetterISOLanguageName.split('-')[0] === parentCulture || item.ThreeLetterISOLanguageName.split('-')[0] === parentCulture );
+		if (lang[0]) 
+			return lang[0];
+	} else {
+		// find an child culture.
+		lang = ctrlLst.filter((item) => 
+			item.TwoLetterISOLanguageName.split('-')[0] === culture || item.ThreeLetterISOLanguageName.split('-')[0] === culture );
+		if (lang[0]) 
+			return lang[0];
+	}
+	
+	return {};
+}
+
 export function getCultures() {
 	return [
 	  {
@@ -1856,6 +1892,7 @@ export function getCultures() {
 }
 
 export default {
+	validateCulture: validateCulture,
 	getCultures: getCultures,
 	getNativeName: getNativeName
 };
