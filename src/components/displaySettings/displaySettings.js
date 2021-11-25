@@ -268,9 +268,9 @@ import viewContainer from '../viewContainer';
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 
 				if (reload !== false) {
-					LibraryMenu.setTitle(globalize.translate(instance.title));
-					LibraryMenu.updateUserInHeader(user);
 					embed(instance.options, instance, newDisplayLanguage).then( () => {
+						LibraryMenu.setTitle(globalize.translate(instance.title));
+						LibraryMenu.updateUserInHeader(user);
 						loading.hide();	
 						if (enableSaveConfirmation) 
 							toast(globalize.translate('SettingsSaved'));

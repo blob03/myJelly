@@ -9,9 +9,10 @@ import cultures from '../scripts/cultures';
 export function populateLanguages(select, languages, val) {
     let html = '';
 	
-	languages.sort((a, b) => {
-		let fa = a.DisplayNativeName.toLowerCase(),
-			fb = b.DisplayNativeName.toLowerCase();
+	let order = Object.keys(languages);
+	order.sort((a, b) => {
+		let fa = languages[a].DisplayNativeName.toLowerCase(),
+			fb = languages[b].DisplayNativeName.toLowerCase();
 		if (fa < fb) 
 			return -1;
 		if (fa > fb) 
@@ -19,13 +20,13 @@ export function populateLanguages(select, languages, val) {
 		return 0;
 	});
 	
-	languages.forEach(language => {
-		let ISOName = language.TwoLetterISOLanguageName;
+	order.forEach(item => {
+		let ISOName = languages[item].TwoLetterISOLanguageName;
 		
 		// Some cultures appear to have a three letters code (ISO 639-2) only.
 		// This seems to be the case for swiss German and a few others.
-		if (!ISOName && language.ThreeLetterISOLanguageName)
-			ISOName = language.ThreeLetterISOLanguageName;
+		if (!ISOName && languages[item].ThreeLetterISOLanguageName)
+			ISOName = languages[item].ThreeLetterISOLanguageName;
 		
 		if (ISOName) {
 			if (val && val === ISOName) 
@@ -33,7 +34,7 @@ export function populateLanguages(select, languages, val) {
 			else
 				html += "<option value='" + ISOName + "'>";
 			
-			html += language.DisplayNativeName + "</option>";
+			html += languages[item].DisplayNativeName + "</option>";
 		}
 	});
     select.innerHTML += html;
@@ -47,9 +48,10 @@ export function populateLanguages(select, languages, val) {
 export function populateSubsLanguages(select, languages, val) {
     let html = '';
 	
-	languages.sort((a, b) => {
-		let fa = a.DisplayNativeName.toLowerCase(),
-			fb = b.DisplayNativeName.toLowerCase();
+	let order = Object.keys(languages);
+	order.sort((a, b) => {
+		let fa = languages[a].DisplayNativeName.toLowerCase(),
+			fb = languages[b].DisplayNativeName.toLowerCase();
 		if (fa < fb) 
 			return -1;
 		if (fa > fb) 
@@ -57,16 +59,16 @@ export function populateSubsLanguages(select, languages, val) {
 		return 0;
 	});
 
-	languages.forEach(language => {
-		let ISOName3L = language.ThreeLetterISOLanguageName;
-		let ISOName2L = language.TwoLetterISOLanguageName;
+	order.forEach(item => {
+		let ISOName3L = languages[item].ThreeLetterISOLanguageName;
+		let ISOName2L = languages[item].TwoLetterISOLanguageName;
 		
 		if (val && val === ISOName3L) 
 			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "' selected>";
 		else
 			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "'>";
 		
-		html += language.DisplayNativeName + "</option>";
+		html += languages[item].DisplayNativeName + "</option>";
 	});
     select.innerHTML += html;
 }
@@ -81,9 +83,10 @@ export function populateDictionaries(select, languages, val) {
 	let activeLanguage = { "DisplayName": "", "ISOName": "" };
 	let lang = (val === '')? globalize.getDefaultCulture(): val; 
 	
-	languages.sort((a, b) => {
-		let fa = a.DisplayNativeName.toLowerCase(),
-			fb = b.DisplayNativeName.toLowerCase();
+	let order = Object.keys(languages);
+	order.sort((a, b) => {
+		let fa = languages[a].DisplayNativeName.toLowerCase(),
+			fb = languages[b].DisplayNativeName.toLowerCase();
 		if (fa < fb) 
 			return -1;
 		if (fa > fb) 
@@ -91,18 +94,18 @@ export function populateDictionaries(select, languages, val) {
 		return 0;
 	});
 	
-	languages.forEach(language => {
-		let ISOName = language.TwoLetterISOLanguageName;
+	order.forEach(item => {
+		let ISOName = languages[item].TwoLetterISOLanguageName;
 		
 		// Some cultures appear to have a three letters code (ISO 639-2) only.
 		// This is the case for swiss German and a few others.
-		if (!ISOName && language.ThreeLetterISOLanguageName)
-			ISOName = language.ThreeLetterISOLanguageName;
+		if (!ISOName && languages[item].ThreeLetterISOLanguageName)
+			ISOName = languages[item].ThreeLetterISOLanguageName;
 		
 		if (ISOName) {
 			html += "<option";
 			if (lang && lang === ISOName) {
-				activeLanguage = language;
+				activeLanguage = languages[item];
 				activeLanguage.ISOName = ISOName;
 			}
 			
@@ -111,7 +114,7 @@ export function populateDictionaries(select, languages, val) {
 			else
 				html += " value='" + ISOName + "'>";
 			
-			html += language.DisplayNativeName + "</option>";
+			html += languages[item].DisplayNativeName + "</option>";
 		}
 	});
 	select.innerHTML += html;

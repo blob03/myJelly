@@ -8,30 +8,32 @@ export function matchCulture(culture) {
 		return {};
 	let ctrlLst = getCultures();
 	
-	// find an exact match.
-	let lang = ctrlLst.filter( item => 
-		item.TwoLetterISOLanguageName === culture || item.ThreeLetterISOLanguageName === culture );
-	if (lang[0])
-		return lang[0];
+	// First, find an exact match.
+	let lang = Object.keys(ctrlLst)[culture];
+	if (lang)
+		return lang;
 	
-	let parentCulture = culture.split('-')[0];
-	if (parentCulture) {
+	// If culture is a child
+	if (culture.indexOf('-') > 1) {
+		let parentCulture = culture.split('-')[0];
 		// find an exact match ot the parent.
-		lang = ctrlLst.filter((item) => 
-			item.TwoLetterISOLanguageName === parentCulture || item.ThreeLetterISOLanguageName === parentCulture );
-		if (lang[0]) 
-			return lang[0];
-		// find a sister culture.
-		lang = ctrlLst.filter((item) => 
-			item.TwoLetterISOLanguageName.split('-')[0] === parentCulture || item.ThreeLetterISOLanguageName.split('-')[0] === parentCulture );
-		if (lang[0]) 
-			return lang[0];
+		lang = Object.keys(ctrlLst)[parentCulture]; 
+		if (lang) 
+			return lang;
+		// find a sister culture, pick the first found.
+		for (var item in ctrlLst) {
+			if (ctrlLst[item].TwoLetterISOLanguageName.split('-')[0] === parentCulture 
+			|| ctrlLst[item].ThreeLetterISOLanguageName.split('-')[0] === parentCulture)
+				return ctrlLst[item];
+		}
 	} else {
-		// find an child culture.
-		lang = ctrlLst.filter((item) => 
-			item.TwoLetterISOLanguageName.split('-')[0] === culture || item.ThreeLetterISOLanguageName.split('-')[0] === culture );
-		if (lang[0]) 
-			return lang[0];
+		// otherwise try and find a child culture.
+		// pick the first found.
+		for (var item in ctrlLst) {
+			if (ctrlLst[item].TwoLetterISOLanguageName.split('-')[0] === culture 
+			|| ctrlLst[item].ThreeLetterISOLanguageName.split('-')[0] === culture)
+				return ctrlLst[item];
+		}
 	}
 	
 	return {};
@@ -41,8 +43,8 @@ export function matchCulture(culture) {
 // https://meta.wikimedia.org/wiki/Template:List_of_language_names_ordered_by_code
 
 export function getCultures() {
-	return [
-	  {
+	return {
+	  "ab": {
 		"Name": "Abkhazian",
 		"DisplayName": "Abkhazian",
 		"DisplayNativeName": "Аҧсуа",
@@ -52,7 +54,7 @@ export function getCultures() {
 		  "abk"
 		]
 	  },
-	  {
+	  "aa": {
 		"Name": "Afar",
 		"DisplayName": "Afar",
 		"DisplayNativeName": "Afar",
@@ -62,7 +64,7 @@ export function getCultures() {
 		  "aar"
 		]
 	  },
-	  {
+	  "af": {
 		"Name": "Afrikaans",
 		"DisplayName": "Afrikaans",
 		"DisplayNativeName": "Afrikaans",
@@ -72,7 +74,7 @@ export function getCultures() {
 		  "afr"
 		]
 	  },
-	  {
+	  "ak": {
 		"Name": "Akan",
 		"DisplayName": "Akan",
 		"DisplayNativeName": "Akana",
@@ -82,7 +84,7 @@ export function getCultures() {
 		  "aka"
 		]
 	  },
-	  {
+	  "sq": {
 		"Name": "Albanian",
 		"DisplayName": "Albanian",
 		"DisplayNativeName": "Shqip",
@@ -93,7 +95,7 @@ export function getCultures() {
 		  "sqi"
 		]
 	  },
-	  {
+	  "am": {
 		"Name": "Amharic",
 		"DisplayName": "Amharic",
 		"DisplayNativeName": "አማርኛ",
@@ -103,7 +105,7 @@ export function getCultures() {
 		  "amh"
 		]
 	  },
-	  {
+	  "ar": {
 		"Name": "Arabic",
 		"DisplayName": "Arabic",
 		"DisplayNativeName": "العربية",
@@ -113,7 +115,7 @@ export function getCultures() {
 		  "ara"
 		]
 	  },
-	  {
+	  "an": {
 		"Name": "Aragonese",
 		"DisplayName": "Aragonese",
 		"DisplayNativeName": "Aragonés",
@@ -123,7 +125,7 @@ export function getCultures() {
 		  "arg"
 		]
 	  },
-	  {
+	  "hy": {
 		"Name": "Armenian",
 		"DisplayName": "Armenian",
 		"DisplayNativeName": "Հայերեն",
@@ -134,7 +136,7 @@ export function getCultures() {
 		  "hye"
 		]
 	  },
-	  {
+	  "as": {
 		"Name": "Assamese",
 		"DisplayName": "Assamese",
 		"DisplayNativeName": "অসমীয়া",
@@ -144,7 +146,7 @@ export function getCultures() {
 		  "asm"
 		]
 	  },
-	  {
+	  "av": {
 		"Name": "Avaric",
 		"DisplayName": "Avaric",
 		"DisplayNativeName": "Авар",
@@ -154,7 +156,7 @@ export function getCultures() {
 		  "ava"
 		]
 	  },
-	  {
+	  "ae": {
 		"Name": "Avestan",
 		"DisplayName": "Avestan",
 		"DisplayNativeName": "Avestan",
@@ -164,7 +166,7 @@ export function getCultures() {
 		  "ave"
 		]
 	  },
-	  {
+	  "ay": {
 		"Name": "Aymara",
 		"DisplayName": "Aymara",
 		"DisplayNativeName": "Aymar",
@@ -174,7 +176,7 @@ export function getCultures() {
 		  "aym"
 		]
 	  },
-	  {
+	  "az": {
 		"Name": "Azerbaijani",
 		"DisplayName": "Azerbaijani",
 		"DisplayNativeName": "Azərbaycanca",
@@ -184,7 +186,7 @@ export function getCultures() {
 		  "aze"
 		]
 	  },
-	  {
+	  "bm": {
 		"Name": "Bambara",
 		"DisplayName": "Bambara",
 		"DisplayNativeName": "Bamanankan",
@@ -194,7 +196,7 @@ export function getCultures() {
 		  "bam"
 		]
 	  },
-	  {
+	  "ba": {
 		"Name": "Bashkir",
 		"DisplayName": "Bashkir",
 		"DisplayNativeName": "Башҡорт",
@@ -204,7 +206,7 @@ export function getCultures() {
 		  "bak"
 		]
 	  },
-	  {
+	  "eu": {
 		"Name": "Basque",
 		"DisplayName": "Basque",
 		"DisplayNativeName": "Euskara",
@@ -215,7 +217,7 @@ export function getCultures() {
 		  "eus"
 		]
 	  },
-	  {
+	  "be-BY": {
 		"Name": "Belarusian",
 		"DisplayName": "Belarusian",
 		"DisplayNativeName": "Беларуская",
@@ -225,7 +227,7 @@ export function getCultures() {
 		  "bel"
 		]
 	  },
-	  {
+	  "bn-BD": {
 		"Name": "Bengali",
 		"DisplayName": "Bengali",
 		"DisplayNativeName": "বাংলা",
@@ -235,7 +237,7 @@ export function getCultures() {
 		  "ben"
 		]
 	  },
-	  {
+	  "bh": {
 		"Name": "Bihari languages",
 		"DisplayName": "Bihari languages",
 		"DisplayNativeName": "भोजपुरी",
@@ -245,7 +247,7 @@ export function getCultures() {
 		  "bih"
 		]
 	  },
-	  {
+	  "bi": {
 		"Name": "Bislama",
 		"DisplayName": "Bislama",
 		"DisplayNativeName": "Bislama",
@@ -255,7 +257,7 @@ export function getCultures() {
 		  "bis"
 		]
 	  },
-	  {
+	  "bs": {
 		"Name": "Bosnian",
 		"DisplayName": "Bosnian",
 		"DisplayNativeName": "Bosanski",
@@ -265,7 +267,7 @@ export function getCultures() {
 		  "bos"
 		]
 	  },
-	  {
+	  "br": {
 		"Name": "Breton",
 		"DisplayName": "Breton",
 		"DisplayNativeName": "Brezhoneg",
@@ -275,7 +277,7 @@ export function getCultures() {
 		  "bre"
 		]
 	  },
-	  {
+	  "bg-BG": {
 		"Name": "Bulgarian",
 		"DisplayName": "Bulgarian",
 		"DisplayNativeName": "Български",
@@ -285,7 +287,7 @@ export function getCultures() {
 		  "bul"
 		]
 	  },
-	  {
+	  "my": {
 		"Name": "Burmese",
 		"DisplayName": "Burmese",
 		"DisplayNativeName": "Myanmasa",
@@ -296,7 +298,7 @@ export function getCultures() {
 		  "mya"
 		]
 	  },
-	  {
+	  "ca": {
 		"Name": "Catalan; Valencian",
 		"DisplayName": "Catalan; Valencian",
 		"DisplayNativeName": "Català",
@@ -306,7 +308,7 @@ export function getCultures() {
 		  "cat"
 		]
 	  },
-	  {
+	  "km": {
 		"Name": "Central Khmer",
 		"DisplayName": "Central Khmer",
 		"DisplayNativeName": "ភាសាខ្មែរ",
@@ -316,7 +318,7 @@ export function getCultures() {
 		  "khm"
 		]
 	  },
-	  {
+	  "ch": {
 		"Name": "Chamorro",
 		"DisplayName": "Chamorro",
 		"DisplayNativeName": "Chamoru",
@@ -326,7 +328,7 @@ export function getCultures() {
 		  "cha"
 		]
 	  },
-	  {
+	  "ce": {
 		"Name": "Chechen",
 		"DisplayName": "Chechen",
 		"DisplayNativeName": "Нохчийн",
@@ -336,7 +338,7 @@ export function getCultures() {
 		  "che"
 		]
 	  },
-	  {
+	  "ny": {
 		"Name": "Chichewa; Chewa; Nyanja",
 		"DisplayName": "Chichewa; Chewa; Nyanja",
 		"DisplayNativeName": "Chi-Chewa",
@@ -346,7 +348,7 @@ export function getCultures() {
 		  "nya"
 		]
 	  },
-	  {
+	  "zh-CN": {
 		"Name": "Chinese",
 		"DisplayName": "Chinese",
 		"DisplayNativeName": "中文",
@@ -357,7 +359,7 @@ export function getCultures() {
 		  "zho"
 		]
 	  },
-	  {
+	  "zh-HK": {
 		"Name": "Chinese; Hong Kong",
 		"DisplayName": "Chinese; Hong Kong",
 		"DisplayNativeName": "廣東話 (香港)",
@@ -368,7 +370,7 @@ export function getCultures() {
 		  "zho"
 		]
 	  },
-	  {
+	  "zh-TW": {
 		"Name": "Chinese; Traditional",
 		"DisplayName": "Chinese; Traditional",
 		"DisplayNativeName": "中文(台灣)‬",
@@ -379,7 +381,7 @@ export function getCultures() {
 		  "zho"
 		]
 	  },
-	  {
+	  "cu": {
 		"Name": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
 		"DisplayName": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
 		"DisplayNativeName": "словѣньскъ",
@@ -389,7 +391,7 @@ export function getCultures() {
 		  "chu"
 		]
 	  },
-	  {
+	  "cv": {
 		"Name": "Chuvash",
 		"DisplayName": "Chuvash",
 		"DisplayNativeName": "Чăваш",
@@ -399,7 +401,7 @@ export function getCultures() {
 		  "chv"
 		]
 	  },
-	  {
+	  "kw": {
 		"Name": "Cornish",
 		"DisplayName": "Cornish",
 		"DisplayNativeName": "Kernewek",
@@ -409,7 +411,7 @@ export function getCultures() {
 		  "cor"
 		]
 	  },
-	  {
+	  "co": {
 		"Name": "Corsican",
 		"DisplayName": "Corsican",
 		"DisplayNativeName": "Corsu",
@@ -419,7 +421,7 @@ export function getCultures() {
 		  "cos"
 		]
 	  },
-	  {
+	  "cr": {
 		"Name": "Cree",
 		"DisplayName": "Cree",
 		"DisplayNativeName": "Nehiyaw",
@@ -429,7 +431,7 @@ export function getCultures() {
 		  "cre"
 		]
 	  },
-	  {
+	  "hr": {
 		"Name": "Croatian",
 		"DisplayName": "Croatian",
 		"DisplayNativeName": "Hrvatski",
@@ -439,7 +441,7 @@ export function getCultures() {
 		  "hrv"
 		]
 	  },
-	  {
+	  "cs": {
 		"Name": "Czech",
 		"DisplayName": "Czech",
 		"DisplayNativeName": "Česky",
@@ -450,7 +452,7 @@ export function getCultures() {
 		  "ces"
 		]
 	  },
-	  {
+	  "da": {
 		"Name": "Danish",
 		"DisplayName": "Danish",
 		"DisplayNativeName": "Dansk",
@@ -460,7 +462,7 @@ export function getCultures() {
 		  "dan"
 		]
 	  },
-	  {
+	  "dv": {
 		"Name": "Divehi; Dhivehi; Maldivian",
 		"DisplayName": "Divehi; Dhivehi; Maldivian",
 		"DisplayNativeName": "Divehi",
@@ -470,7 +472,7 @@ export function getCultures() {
 		  "div"
 		]
 	  },
-	  {
+	  "nl": {
 		"Name": "Dutch; Flemish",
 		"DisplayName": "Dutch; Flemish",
 		"DisplayNativeName": "Nederlands",
@@ -481,7 +483,7 @@ export function getCultures() {
 		  "nld"
 		]
 	  },
-	  {
+	  "dz": {
 		"Name": "Dzongkha",
 		"DisplayName": "Dzongkha",
 		"DisplayNativeName": "Dzongkha",
@@ -491,7 +493,7 @@ export function getCultures() {
 		  "dzo"
 		]
 	  },
-	  {
+	  "en-US": {
 		"Name": "English",
 		"DisplayName": "English",
 		"DisplayNativeName": "English",
@@ -501,7 +503,7 @@ export function getCultures() {
 		  "eng"
 		]
 	  },
-	  {
+	  "en-GB": {
 		"DisplayName": "English, Great Britain",
 		"DisplayNativeName": "English, Great Britain",
 		"TwoLetterISOLanguageName": "en-GB",
@@ -510,7 +512,7 @@ export function getCultures() {
 		  "eng"
 		]
 	  },
-	  {
+	  "eo": {
 		"Name": "Esperanto",
 		"DisplayName": "Esperanto",
 		"DisplayNativeName": "Esperanto",
@@ -520,7 +522,7 @@ export function getCultures() {
 		  "epo"
 		]
 	  },
-	  {
+	  "et": {
 		"Name": "Estonian",
 		"DisplayName": "Estonian",
 		"DisplayNativeName": "Eesti",
@@ -530,7 +532,7 @@ export function getCultures() {
 		  "est"
 		]
 	  },
-	  {
+	  "ee": {
 		"Name": "Ewe",
 		"DisplayName": "Ewe",
 		"DisplayNativeName": "Ɛʋɛ",
@@ -540,7 +542,7 @@ export function getCultures() {
 		  "ewe"
 		]
 	  },
-	  {
+	  "fo": {
 		"Name": "Faroese",
 		"DisplayName": "Faroese",
 		"DisplayNativeName": "Føroyskt",
@@ -550,7 +552,7 @@ export function getCultures() {
 		  "fao"
 		]
 	  },
-	  {
+	  "fj": {
 		"Name": "Fijian",
 		"DisplayName": "Fijian",
 		"DisplayNativeName": "Na Vosa Vakaviti",
@@ -560,17 +562,17 @@ export function getCultures() {
 		  "fij"
 		]
 	  },
-	  {
+	  "fil": {
 		"Name": "Filipino",
 		"DisplayName": "Filipino",
 		"DisplayNativeName": "Filipino",
-		"TwoLetterISOLanguageName": "",
+		"TwoLetterISOLanguageName": "fil",
 		"ThreeLetterISOLanguageName": "fil",
 		"ThreeLetterISOLanguageNames": [
 		  "fil"
 		]
 	  },
-	  {
+	  "fi": {
 		"Name": "Finnish",
 		"DisplayName": "Finnish",
 		"DisplayNativeName": "Suomi",
@@ -580,7 +582,7 @@ export function getCultures() {
 		  "fin"
 		]
 	  },
-	  {
+	  "fr": {
 		"Name": "French",
 		"DisplayName": "French",
 		"DisplayNativeName": "Français",
@@ -591,7 +593,7 @@ export function getCultures() {
 		  "fra"
 		],
 	  },
-	  {
+	  "fr-CA": {
 		"Name": "French, Canada",
 		"DisplayName": "French, Canada",
 		"DisplayNativeName": "Français, Canada",
@@ -601,7 +603,7 @@ export function getCultures() {
 		  "frc"
 		]
 	  },
-	  {
+	  "ff": {
 		"Name": "Fulah",
 		"DisplayName": "Fulah",
 		"DisplayNativeName": "Fulfulde",
@@ -611,7 +613,7 @@ export function getCultures() {
 		  "ful"
 		]
 	  },
-	  {
+	  "gd": {
 		"Name": "Gaelic; Scottish Gaelic",
 		"DisplayName": "Gaelic; Scottish Gaelic",
 		"DisplayNativeName": "Gàidhlig",
@@ -621,7 +623,7 @@ export function getCultures() {
 		  "gla"
 		]
 	  },
-	  {
+	  "gl": {
 		"Name": "Galician",
 		"DisplayName": "Galician",
 		"DisplayNativeName": "Galego",
@@ -631,7 +633,7 @@ export function getCultures() {
 		  "glg"
 		]
 	  },
-	  {
+	  "lg": {
 		"Name": "Ganda",
 		"DisplayName": "Ganda",
 		"DisplayNativeName": "Luganda",
@@ -641,7 +643,7 @@ export function getCultures() {
 		  "lug"
 		]
 	  },
-	  {
+	  "ka": {
 		"Name": "Georgian",
 		"DisplayName": "Georgian",
 		"DisplayNativeName": "ქართული",
@@ -652,7 +654,7 @@ export function getCultures() {
 		  "kat"
 		]
 	  },
-	  {
+	  "de": {
 		"Name": "German",
 		"DisplayName": "German",
 		"DisplayNativeName": "Deutsch",
@@ -663,7 +665,7 @@ export function getCultures() {
 		  "deu"
 		]
 	  },
-	  {
+	  "el": {
 		"Name": "Greek, Modern (1453-)",
 		"DisplayName": "Greek, Modern (1453-)",
 		"DisplayNativeName": "Ελληνικά",
@@ -674,7 +676,7 @@ export function getCultures() {
 		  "ell"
 		]
 	  },
-	  {
+	  "gn": {
 		"Name": "Guarani",
 		"DisplayName": "Guarani",
 		"DisplayNativeName": "Avañe'ẽ",
@@ -684,7 +686,7 @@ export function getCultures() {
 		  "grn"
 		]
 	  },
-	  {
+	  "gu": {
 		"Name": "Gujarati",
 		"DisplayName": "Gujarati",
 		"DisplayNativeName": "ગુજરાતી",
@@ -694,7 +696,7 @@ export function getCultures() {
 		  "guj"
 		]
 	  },
-	  {
+	  "ht": {
 		"Name": "Haitian; Haitian Creole",
 		"DisplayName": "Haitian; Haitian Creole",
 		"DisplayNativeName": "Krèyol ayisyen",
@@ -704,7 +706,7 @@ export function getCultures() {
 		  "hat"
 		]
 	  },
-	  {
+	  "ha": {
 		"Name": "Hausa",
 		"DisplayName": "Hausa",
 		"DisplayNativeName": "هَوُسَ",
@@ -714,7 +716,7 @@ export function getCultures() {
 		  "hau"
 		]
 	  },
-	  {
+	  "he": {
 		"Name": "Hebrew",
 		"DisplayName": "Hebrew",
 		"DisplayNativeName": "עברית",
@@ -724,7 +726,7 @@ export function getCultures() {
 		  "heb"
 		]
 	  },
-	  {
+	  "hz": {
 		"Name": "Herero",
 		"DisplayName": "Herero",
 		"DisplayNativeName": "Otsiherero",
@@ -734,7 +736,7 @@ export function getCultures() {
 		  "her"
 		]
 	  },
-	  {
+	  "hi-IN": {
 		"Name": "Hindi",
 		"DisplayName": "Hindi",
 		"DisplayNativeName": "हिन्दी",
@@ -744,7 +746,7 @@ export function getCultures() {
 		  "hin"
 		]
 	  },
-	  {
+	  "ho": {
 		"Name": "Hiri Motu",
 		"DisplayName": "Hiri Motu",
 		"DisplayNativeName": "Hiri Motu",
@@ -754,7 +756,7 @@ export function getCultures() {
 		  "hmo"
 		]
 	  },
-	  {
+	  "hu": {
 		"Name": "Hungarian",
 		"DisplayName": "Hungarian",
 		"DisplayNativeName": "Magyar",
@@ -764,7 +766,7 @@ export function getCultures() {
 		  "hun"
 		]
 	  },
-	  {
+	  "is-IS": {
 		"Name": "Icelandic",
 		"DisplayName": "Icelandic",
 		"DisplayNativeName": "Íslenska",
@@ -775,7 +777,7 @@ export function getCultures() {
 		  "isl"
 		]
 	  },
-	  {
+	  "io": {
 		"Name": "Ido",
 		"DisplayName": "Ido",
 		"DisplayNativeName": "Ido",
@@ -785,7 +787,7 @@ export function getCultures() {
 		  "ido"
 		]
 	  },
-	  {
+	  "ig": {
 		"Name": "Igbo",
 		"DisplayName": "Igbo",
 		"DisplayNativeName": "Igbo",
@@ -795,7 +797,7 @@ export function getCultures() {
 		  "ibo"
 		]
 	  },
-	  {
+	  "id": {
 		"Name": "Indonesian",
 		"DisplayName": "Indonesian",
 		"DisplayNativeName": "Bahasa Indonesia",
@@ -805,7 +807,7 @@ export function getCultures() {
 		  "ind"
 		]
 	  },
-	  {
+	  "ia": {
 		"Name": "Interlingua (International Auxiliary Language Association)",
 		"DisplayName": "Interlingua (International Auxiliary Language Association)",
 		"DisplayNativeName": "Interlingua",
@@ -815,7 +817,7 @@ export function getCultures() {
 		  "ina"
 		]
 	  },
-	  {
+	  "ie": {
 		"Name": "Interlingue; Occidental",
 		"DisplayName": "Interlingue; Occidental",
 		"DisplayNativeName": "Interlingue",
@@ -825,7 +827,7 @@ export function getCultures() {
 		  "ile"
 		]
 	  },
-	  {
+	  "iu": {
 		"Name": "Inuktitut",
 		"DisplayName": "Inuktitut",
 		"DisplayNativeName": "Inuktitut",
@@ -835,7 +837,7 @@ export function getCultures() {
 		  "iku"
 		]
 	  },
-	  {
+	  "ik": {
 		"Name": "Inupiaq",
 		"DisplayName": "Inupiaq",
 		"DisplayNativeName": "Iñupiak",
@@ -845,7 +847,7 @@ export function getCultures() {
 		  "ipk"
 		]
 	  },
-	  {
+	  "ga": {
 		"Name": "Irish",
 		"DisplayName": "Irish",
 		"DisplayNativeName": "Gaeilge",
@@ -855,7 +857,7 @@ export function getCultures() {
 		  "gle"
 		]
 	  },
-	  {
+	  "it": {
 		"Name": "Italian",
 		"DisplayName": "Italian",
 		"DisplayNativeName": "Italiano",
@@ -865,7 +867,7 @@ export function getCultures() {
 		  "ita"
 		]
 	  },
-	  {
+	  "ja": {
 		"Name": "Japanese",
 		"DisplayName": "Japanese",
 		"DisplayNativeName": "日本語",
@@ -875,7 +877,7 @@ export function getCultures() {
 		  "jpn"
 		]
 	  },
-	  {
+	  "jv": {
 		"Name": "Javanese",
 		"DisplayName": "Javanese",
 		"DisplayNativeName": "Basa Jawa",
@@ -885,7 +887,7 @@ export function getCultures() {
 		  "jav"
 		]
 	  },
-	  {
+	  "kl": {
 		"Name": "Kalaallisut; Greenlandic",
 		"DisplayName": "Kalaallisut; Greenlandic",
 		"DisplayNativeName": "Kalaallisut",
@@ -895,7 +897,7 @@ export function getCultures() {
 		  "kal"
 		]
 	  },
-	  {
+	  "kn": {
 		"Name": "Kannada",
 		"DisplayName": "Kannada",
 		"DisplayNativeName": "ಕನ್ನಡ",
@@ -905,7 +907,7 @@ export function getCultures() {
 		  "kan"
 		]
 	  },
-	  {
+	  "kr": {
 		"Name": "Kanuri",
 		"DisplayName": "Kanuri",
 		"DisplayNativeName": "Kanuri",
@@ -915,7 +917,7 @@ export function getCultures() {
 		  "kau"
 		]
 	  },
-	  {
+	  "ks": {
 		"Name": "Kashmiri",
 		"DisplayName": "Kashmiri",
 		"DisplayNativeName": "कॉशुर",
@@ -925,7 +927,7 @@ export function getCultures() {
 		  "kas"
 		]
 	  },
-	  {
+	  "kk": {
 		"Name": "Kazakh",
 		"DisplayName": "Kazakh",
 		"DisplayNativeName": "Қазақша",
@@ -935,7 +937,7 @@ export function getCultures() {
 		  "kaz"
 		]
 	  },
-	  {
+	  "ki": {
 		"Name": "Kikuyu; Gikuyu",
 		"DisplayName": "Kikuyu; Gikuyu",
 		"DisplayNativeName": "Gĩkũyũ",
@@ -945,7 +947,7 @@ export function getCultures() {
 		  "kik"
 		]
 	  },
-	  {
+	  "rw": {
 		"Name": "Kinyarwanda",
 		"DisplayName": "Kinyarwanda",
 		"DisplayNativeName": "Kinyarwandi",
@@ -955,7 +957,7 @@ export function getCultures() {
 		  "kin"
 		]
 	  },
-	  {
+	  "ky": {
 		"Name": "Kirghiz; Kyrgyz",
 		"DisplayName": "Kirghiz; Kyrgyz",
 		"DisplayNativeName": "Кыргызча",
@@ -965,7 +967,7 @@ export function getCultures() {
 		  "kir"
 		]
 	  },
-	  {
+	  "kv": {
 		"Name": "Komi",
 		"DisplayName": "Komi",
 		"DisplayNativeName": "Коми",
@@ -975,7 +977,7 @@ export function getCultures() {
 		  "kom"
 		]
 	  },
-	  {
+	  "kg": {
 		"Name": "Kongo",
 		"DisplayName": "Kongo",
 		"DisplayNativeName": "KiKongo",
@@ -985,7 +987,7 @@ export function getCultures() {
 		  "kon"
 		]
 	  },
-	  {
+	  "ko": {
 		"Name": "Korean",
 		"DisplayName": "Korean",
 		"DisplayNativeName": "한국어",
@@ -995,7 +997,7 @@ export function getCultures() {
 		  "kor"
 		]
 	  },
-	  {
+	  "kj": {
 		"Name": "Kuanyama; Kwanyama",
 		"DisplayName": "Kuanyama; Kwanyama",
 		"DisplayNativeName": "Kuanyama",
@@ -1005,7 +1007,7 @@ export function getCultures() {
 		  "kua"
 		]
 	  },
-	  {
+	  "ku": {
 		"Name": "Kurdish",
 		"DisplayName": "Kurdish",
 		"DisplayNativeName": "Kurdî",
@@ -1015,7 +1017,7 @@ export function getCultures() {
 		  "kur"
 		]
 	  },
-	  {
+	  "lo": {
 		"Name": "Lao",
 		"DisplayName": "Lao",
 		"DisplayNativeName": "Pha xa lao",
@@ -1025,7 +1027,7 @@ export function getCultures() {
 		  "lao"
 		]
 	  },
-	  {
+	  "la": {
 		"Name": "Latin",
 		"DisplayName": "Latin",
 		"DisplayNativeName": "Latina",
@@ -1035,7 +1037,7 @@ export function getCultures() {
 		  "lat"
 		]
 	  },
-	  {
+	  "lv": {
 		"Name": "Latvian",
 		"DisplayName": "Latvian",
 		"DisplayNativeName": "Latviešu",
@@ -1045,7 +1047,7 @@ export function getCultures() {
 		  "lav"
 		]
 	  },
-	  {
+	  "li": {
 		"Name": "Limburgan; Limburger; Limburgish",
 		"DisplayName": "Limburgan; Limburger; Limburgish",
 		"DisplayNativeName": "Limburgs",
@@ -1055,7 +1057,7 @@ export function getCultures() {
 		  "lim"
 		]
 	  },
-	  {
+	  "ln": {
 		"Name": "Lingala",
 		"DisplayName": "Lingala",
 		"DisplayNativeName": "Lingála",
@@ -1065,7 +1067,7 @@ export function getCultures() {
 		  "lin"
 		]
 	  },
-	  {
+	  "lt-LT": {
 		"Name": "Lithuanian",
 		"DisplayName": "Lithuanian",
 		"DisplayNativeName": "Lietuvių",
@@ -1075,7 +1077,7 @@ export function getCultures() {
 		  "lit"
 		]
 	  },
-	  {
+	  "lu": {
 		"Name": "Luba-Katanga",
 		"DisplayName": "Luba-Katanga",
 		"DisplayNativeName": "Luba-Katanga",
@@ -1085,7 +1087,7 @@ export function getCultures() {
 		  "lub"
 		]
 	  },
-	  {
+	  "lb": {
 		"Name": "Luxembourgish; Letzeburgesch",
 		"DisplayName": "Luxembourgish; Letzeburgesch",
 		"DisplayNativeName": "Lëtzebuergesch",
@@ -1095,7 +1097,7 @@ export function getCultures() {
 		  "ltz"
 		]
 	  },
-	  {
+	  "mk": {
 		"Name": "Macedonian",
 		"DisplayName": "Macedonian",
 		"DisplayNativeName": "Македонски",
@@ -1106,7 +1108,7 @@ export function getCultures() {
 		  "mkd"
 		]
 	  },
-	  {
+	  "mg": {
 		"Name": "Malagasy",
 		"DisplayName": "Malagasy",
 		"DisplayNativeName": "Malagasy",
@@ -1116,7 +1118,7 @@ export function getCultures() {
 		  "mlg"
 		]
 	  },
-	  {
+	  "ms": {
 		"Name": "Malay",
 		"DisplayName": "Malay",
 		"DisplayNativeName": "Bahasa Melayu",
@@ -1127,7 +1129,7 @@ export function getCultures() {
 		  "msa"
 		]
 	  },
-	  {
+	  "ml": {
 		"Name": "Malayalam",
 		"DisplayName": "Malayalam",
 		"DisplayNativeName": "മലയാളം",
@@ -1137,7 +1139,7 @@ export function getCultures() {
 		  "mal"
 		]
 	  },
-	  {
+	  "mt": {
 		"Name": "Maltese",
 		"DisplayName": "Maltese",
 		"DisplayNativeName": "bil-Malti ",
@@ -1147,7 +1149,7 @@ export function getCultures() {
 		  "mlt"
 		]
 	  },
-	  {
+	  "gv": {
 		"Name": "Manx",
 		"DisplayName": "Manx",
 		"DisplayNativeName": "Gaelg",
@@ -1157,7 +1159,7 @@ export function getCultures() {
 		  "glv"
 		]
 	  },
-	  {
+	  "mi": {
 		"Name": "Maori",
 		"DisplayName": "Maori",
 		"DisplayNativeName": "Māori",
@@ -1168,7 +1170,7 @@ export function getCultures() {
 		  "mri"
 		]
 	  },
-	  {
+	  "mr": {
 		"Name": "Marathi",
 		"DisplayName": "Marathi",
 		"DisplayNativeName": "मराठी",
@@ -1178,7 +1180,7 @@ export function getCultures() {
 		  "mar"
 		]
 	  },
-	  {
+	  "mh": {
 		"Name": "Marshallese",
 		"DisplayName": "Marshallese",
 		"DisplayNativeName": "Kajin Majel",
@@ -1188,7 +1190,7 @@ export function getCultures() {
 		  "mah"
 		]
 	  },
-	  {
+	  "mn": {
 		"Name": "Mongolian",
 		"DisplayName": "Mongolian",
 		"DisplayNativeName": "Монгол",
@@ -1198,7 +1200,7 @@ export function getCultures() {
 		  "mon"
 		]
 	  },
-	  {
+	  "na": {
 		"Name": "Nauru",
 		"DisplayName": "Nauru",
 		"DisplayNativeName": "Dorerin Naoero",
@@ -1208,7 +1210,7 @@ export function getCultures() {
 		  "nau"
 		]
 	  },
-	  {
+	  "nv": {
 		"Name": "Navajo; Navaho",
 		"DisplayName": "Navajo; Navaho",
 		"DisplayNativeName": "Diné bizaad",
@@ -1218,7 +1220,7 @@ export function getCultures() {
 		  "nav"
 		]
 	  },
-	  {
+	  "nd": {
 		"Name": "Ndebele, North; North Ndebele",
 		"DisplayName": "Ndebele, North; North Ndebele",
 		"DisplayNativeName": "Sindebele",
@@ -1228,7 +1230,7 @@ export function getCultures() {
 		  "nde"
 		]
 	  },
-	  {
+	  "nr": {
 		"Name": "Ndebele, South; South Ndebele",
 		"DisplayName": "Ndebele, South; South Ndebele",
 		"DisplayNativeName": "isiNdebele",
@@ -1238,7 +1240,7 @@ export function getCultures() {
 		  "nbl"
 		]
 	  },
-	  {
+	  "ng": {
 		"Name": "Ndonga",
 		"DisplayName": "Ndonga",
 		"DisplayNativeName": "Oshiwambo",
@@ -1248,7 +1250,7 @@ export function getCultures() {
 		  "ndo"
 		]
 	  },
-	  {
+	  "ne": {
 		"Name": "Nepali",
 		"DisplayName": "Nepali",
 		"DisplayNativeName": "नेपाली",
@@ -1258,7 +1260,7 @@ export function getCultures() {
 		  "nep"
 		]
 	  },
-	  {
+	  "se": {
 		"Name": "Northern Sami",
 		"DisplayName": "Northern Sami",
 		"DisplayNativeName": "Davvisámegiella",
@@ -1268,7 +1270,7 @@ export function getCultures() {
 		  "sme"
 		]
 	  },
-	  {
+	  "no": {
 		"Name": "Norwegian",
 		"DisplayName": "Norwegian",
 		"DisplayNativeName": "Norsk",
@@ -1278,7 +1280,7 @@ export function getCultures() {
 		  "nor"
 		]
 	  },
-	  {
+	  "nn": {
 		"Name": "Norwegian, Nynorsk",
 		"DisplayName": "Norwegian, Nynorsk",
 		"DisplayNativeName": "Norsk, Nynorsk ",
@@ -1288,7 +1290,7 @@ export function getCultures() {
 		  "nno"
 		]
 	  },
-	  {
+	  "nb": {
 		"Name": "Norwegian, Bokmål",
 		"DisplayName": "Norwegian, Bokmål",
 		"DisplayNativeName": "Norsk, Bokmål",
@@ -1298,7 +1300,7 @@ export function getCultures() {
 		  "nob"
 		]
 	  },
-	  {
+	  "oc": {
 		"Name": "Occitan (post 1500); Provençal",
 		"DisplayName": "Occitan (post 1500); Provençal",
 		"DisplayNativeName": "Occitan",
@@ -1308,7 +1310,7 @@ export function getCultures() {
 		  "oci"
 		]
 	  },
-	  {
+	  "oj": {
 		"Name": "Ojibwa",
 		"DisplayName": "Ojibwa",
 		"DisplayNativeName": "Ojibwa",
@@ -1318,7 +1320,7 @@ export function getCultures() {
 		  "oji"
 		]
 	  },
-	  {
+	  "or": {
 		"Name": "Oriya",
 		"DisplayName": "Oriya",
 		"DisplayNativeName": "ଓଡ଼ିଆ",
@@ -1328,7 +1330,7 @@ export function getCultures() {
 		  "ori"
 		]
 	  },
-	  {
+	  "om": {
 		"Name": "Oromo",
 		"DisplayName": "Oromo",
 		"DisplayNativeName": "Oromoo",
@@ -1338,7 +1340,7 @@ export function getCultures() {
 		  "orm"
 		]
 	  },
-	  {
+	  "os": {
 		"Name": "Ossetian; Ossetic",
 		"DisplayName": "Ossetian; Ossetic",
 		"DisplayNativeName": "Иронау",
@@ -1348,7 +1350,7 @@ export function getCultures() {
 		  "oss"
 		]
 	  },
-	  {
+	  "pi": {
 		"Name": "Pali",
 		"DisplayName": "Pali",
 		"DisplayNativeName": "Pāli",
@@ -1358,7 +1360,7 @@ export function getCultures() {
 		  "pli"
 		]
 	  },
-	  {
+	  "pa": {
 		"Name": "Panjabi; Punjabi",
 		"DisplayName": "Panjabi; Punjabi",
 		"DisplayNativeName": "ਪੰਜਾਬੀ",
@@ -1368,7 +1370,7 @@ export function getCultures() {
 		  "pan"
 		]
 	  },
-	  {
+	  "fa": {
 		"Name": "Persian",
 		"DisplayName": "Persian",
 		"DisplayNativeName": "فارسی",
@@ -1379,7 +1381,7 @@ export function getCultures() {
 		  "fas"
 		]
 	  },
-	  {
+	  "pl": {
 		"Name": "Polish",
 		"DisplayName": "Polish",
 		"DisplayNativeName": "Polski",
@@ -1389,7 +1391,7 @@ export function getCultures() {
 		  "pol"
 		]
 	  },
-	  {
+	  "pt-PT": {
 		"Name": "Portuguese",
 		"DisplayName": "Portuguese",
 		"DisplayNativeName": "Português",
@@ -1399,7 +1401,7 @@ export function getCultures() {
 		  "por"
 		]
 	  },
-	  {
+	  "pt-BR": {
 		"Name": "Portuguese, Brazil",
 		"DisplayName": "Portuguese, Brazil",
 		"DisplayNativeName": "Português, Brazil",
@@ -1409,7 +1411,7 @@ export function getCultures() {
 		  "pob"
 		]
 	  },
-	  {
+	  "ps": {
 		"Name": "Pushto; Pashto",
 		"DisplayName": "Pushto; Pashto",
 		"DisplayNativeName": "پښتو",
@@ -1419,7 +1421,7 @@ export function getCultures() {
 		  "pus"
 		]
 	  },
-	  {
+	  "qu": {
 		"Name": "Quechua",
 		"DisplayName": "Quechua",
 		"DisplayNativeName": "Runa Simi",
@@ -1429,7 +1431,7 @@ export function getCultures() {
 		  "que"
 		]
 	  },
-	  {
+	  "ro": {
 		"Name": "Romanian; Moldavian; Moldovan",
 		"DisplayName": "Romanian; Moldavian; Moldovan",
 		"DisplayNativeName": "Română",
@@ -1440,7 +1442,7 @@ export function getCultures() {
 		  "ron"
 		]
 	  },
-	  {
+	  "rm": {
 		"Name": "Romansh",
 		"DisplayName": "Romansh",
 		"DisplayNativeName": "rumantsch",
@@ -1450,7 +1452,7 @@ export function getCultures() {
 		  "roh"
 		]
 	  },
-	  {
+	  "rn": {
 		"Name": "Rundi",
 		"DisplayName": "Rundi",
 		"DisplayNativeName": "kirundi",
@@ -1460,7 +1462,7 @@ export function getCultures() {
 		  "run"
 		]
 	  },
-	  {
+	  "ru": {
 		"Name": "Russian",
 		"DisplayName": "Russian",
 		"DisplayNativeName": "Русский",
@@ -1470,7 +1472,7 @@ export function getCultures() {
 		  "rus"
 		]
 	  },
-	  {
+	  "sm": {
 		"Name": "Samoan",
 		"DisplayName": "Samoan",
 		"DisplayNativeName": "Gagana Samoa",
@@ -1480,7 +1482,7 @@ export function getCultures() {
 		  "smo"
 		]
 	  },
-	  {
+	  "sg": {
 		"Name": "Sango",
 		"DisplayName": "Sango",
 		"DisplayNativeName": "Sängö",
@@ -1490,7 +1492,7 @@ export function getCultures() {
 		  "sag"
 		]
 	  },
-	  {
+	  "sa": {
 		"Name": "Sanskrit",
 		"DisplayName": "Sanskrit",
 		"DisplayNativeName": "संस्कृतम्",
@@ -1500,7 +1502,7 @@ export function getCultures() {
 		  "san"
 		]
 	  },
-	  {
+	  "sc": {
 		"Name": "Sardinian",
 		"DisplayName": "Sardinian",
 		"DisplayNativeName": "Sardu",
@@ -1510,7 +1512,7 @@ export function getCultures() {
 		  "srd"
 		]
 	  },
-	  {
+	  "sr": {
 		"Name": "Serbian",
 		"DisplayName": "Serbian",
 		"DisplayNativeName": "Српски",
@@ -1521,7 +1523,7 @@ export function getCultures() {
 		  "scc"
 		]
 	  },
-	  {
+	  "sn": {
 		"Name": "Shona",
 		"DisplayName": "Shona",
 		"DisplayNativeName": "chiShona",
@@ -1531,7 +1533,7 @@ export function getCultures() {
 		  "sna"
 		]
 	  },
-	  {
+	  "ii": {
 		"Name": "Sichuan Yi; Nuosu",
 		"DisplayName": "Sichuan Yi; Nuosu",
 		"DisplayNativeName": "Sichuan Yi",
@@ -1541,7 +1543,7 @@ export function getCultures() {
 		  "iii"
 		]
 	  },
-	  {
+	  "sd": {
 		"Name": "Sindhi",
 		"DisplayName": "Sindhi",
 		"DisplayNativeName": "سنڌي",
@@ -1551,7 +1553,7 @@ export function getCultures() {
 		  "snd"
 		]
 	  },
-	  {
+	  "si": {
 		"Name": "Sinhala, Sinhalese",
 		"DisplayName": "Sinhala; Sinhalese",
 		"DisplayNativeName": "සිංහල",
@@ -1561,7 +1563,7 @@ export function getCultures() {
 		  "sin"
 		]
 	  },
-	  {
+	  "sk": {
 		"Name": "Slovak",
 		"DisplayName": "Slovak",
 		"DisplayNativeName": "Slovenčina",
@@ -1572,7 +1574,7 @@ export function getCultures() {
 		  "slk"
 		]
 	  },
-	  {
+	  "sl-SI": {
 		"Name": "Slovenian",
 		"DisplayName": "Slovenian",
 		"DisplayNativeName": "Slovenščina",
@@ -1582,7 +1584,7 @@ export function getCultures() {
 		  "slv"
 		]
 	  },
-	  {
+	  "so": {
 		"Name": "Somali",
 		"DisplayName": "Somali",
 		"DisplayNativeName": "Soomaaliga",
@@ -1592,7 +1594,7 @@ export function getCultures() {
 		  "som"
 		]
 	  },
-	  {
+	  "st": {
 		"Name": "Sotho, Southern",
 		"DisplayName": "Sotho, Southern",
 		"DisplayNativeName": "Sesotho",
@@ -1602,7 +1604,7 @@ export function getCultures() {
 		  "sot"
 		]
 	  },
-	  {
+	  "es-AR": {
 		"DisplayName": "Spanish, Argentina",
 		"DisplayNativeName": "Español, República Argentina",
 		"TwoLetterISOLanguageName": "es-AR",
@@ -1611,7 +1613,7 @@ export function getCultures() {
 		  "spa"
 		]
 	  },
-	  {
+	  "es-DO": {
 		"DisplayName": "Spanish, Dominican Republic",
 		"DisplayNativeName": "Español, República Dominicana",
 		"TwoLetterISOLanguageName": "es-DO",
@@ -1620,7 +1622,7 @@ export function getCultures() {
 		  "spa"
 		]
 	  },
-	  {
+	  "es-419": {
 		"DisplayName": "Spanish, Latin America",
 		"DisplayNativeName": "Español, América Latina",
 		"TwoLetterISOLanguageName": "es-419",
@@ -1629,7 +1631,7 @@ export function getCultures() {
 		  "spa"
 		]
 	  },
-	  {
+	  "es-ES": {
 		"Name": "Spanish; Castilian",
 		"DisplayName": "Spanish, Castilian",
 		"DisplayNativeName": "Español, Castilian",
@@ -1639,7 +1641,7 @@ export function getCultures() {
 		  "spa"
 		]
 	  },
-	  {
+	  "es-MX": {
 		"Name": "Spanish; Latin",
 		"DisplayName": "Spanish, Mexico",
 		"DisplayNativeName": "Español, Mexico",
@@ -1649,7 +1651,7 @@ export function getCultures() {
 		  "spa"
 		]
 	  },
-	  {
+	  "su": {
 		"Name": "Sundanese",
 		"DisplayName": "Sundanese",
 		"DisplayNativeName": "Basa Sunda",
@@ -1659,7 +1661,7 @@ export function getCultures() {
 		  "sun"
 		]
 	  },
-	  {
+	  "sw": {
 		"Name": "Swahili",
 		"DisplayName": "Swahili",
 		"DisplayNativeName": "Kiswahili",
@@ -1669,7 +1671,7 @@ export function getCultures() {
 		  "swa"
 		]
 	  },
-	  {
+	  "ss": {
 		"Name": "Swati",
 		"DisplayName": "Swati",
 		"DisplayNativeName": "SiSwati",
@@ -1679,7 +1681,7 @@ export function getCultures() {
 		  "ssw"
 		]
 	  },
-	  {
+	  "sv": {
 		"Name": "Swedish",
 		"DisplayName": "Swedish",
 		"DisplayNativeName": "Svenska",
@@ -1689,17 +1691,17 @@ export function getCultures() {
 		  "swe"
 		]
 	  },
-	  {
+	  "gsw": {
 		"Name": "Swiss German; Alemannic; Alsatian",
 		"DisplayName": "Swiss German; Alemannic; Alsatian",
 		"DisplayNativeName": "Alemannisch",
-		"TwoLetterISOLanguageName": "",
+		"TwoLetterISOLanguageName": "gsw",
 		"ThreeLetterISOLanguageName": "gsw",
 		"ThreeLetterISOLanguageNames": [
 		  "gsw"
 		]
 	  },
-	  {
+	  "tl": {
 		"Name": "Tagalog",
 		"DisplayName": "Tagalog",
 		"DisplayNativeName": "Tagalog",
@@ -1709,7 +1711,7 @@ export function getCultures() {
 		  "tgl"
 		]
 	  },
-	  {
+	  "ty": {
 		"Name": "Tahitian",
 		"DisplayName": "Tahitian",
 		"DisplayNativeName": "Reo Mā`ohi",
@@ -1719,7 +1721,7 @@ export function getCultures() {
 		  "tah"
 		]
 	  },
-	  {
+	  "tg": {
 		"Name": "Tajik",
 		"DisplayName": "Tajik",
 		"DisplayNativeName": "Тоҷикӣ",
@@ -1729,7 +1731,7 @@ export function getCultures() {
 		  "tgk"
 		]
 	  },
-	  {
+	  "ta": {
 		"Name": "Tamil",
 		"DisplayName": "Tamil",
 		"DisplayNativeName": "தமிழ்",
@@ -1739,7 +1741,7 @@ export function getCultures() {
 		  "tam"
 		]
 	  },
-	  {
+	  "tt": {
 		"Name": "Tatar",
 		"DisplayName": "Tatar",
 		"DisplayNativeName": "Tatarça",
@@ -1749,7 +1751,7 @@ export function getCultures() {
 		  "tat"
 		]
 	  },
-	  {
+	  "te": {
 		"Name": "Telugu",
 		"DisplayName": "Telugu",
 		"DisplayNativeName": "తెలుగు",
@@ -1759,7 +1761,7 @@ export function getCultures() {
 		  "tel"
 		]
 	  },
-	  {
+	  "th": {
 		"Name": "Thai",
 		"DisplayName": "Thai",
 		"DisplayNativeName": "ไทย",
@@ -1769,7 +1771,7 @@ export function getCultures() {
 		  "tha"
 		]
 	  },
-	  {
+	  "bo": {
 		"Name": "Tibetan",
 		"DisplayName": "Tibetan",
 		"DisplayNativeName": "Tibetan",
@@ -1780,7 +1782,7 @@ export function getCultures() {
 		  "bod"
 		]
 	  },
-	  {
+	  "ti": {
 		"Name": "Tigrinya",
 		"DisplayName": "Tigrinya",
 		"DisplayNativeName": "ትግርኛ",
@@ -1790,7 +1792,7 @@ export function getCultures() {
 		  "tir"
 		]
 	  },
-	  {
+	  "to": {
 		"Name": "Tonga (Tonga Islands)",
 		"DisplayName": "Tonga (Tonga Islands)",
 		"DisplayNativeName": "Lea Faka-Tonga",
@@ -1800,7 +1802,7 @@ export function getCultures() {
 		  "ton"
 		]
 	  },
-	  {
+	  "ts": {
 		"Name": "Tsonga",
 		"DisplayName": "Tsonga",
 		"DisplayNativeName": "Xitsonga",
@@ -1810,7 +1812,7 @@ export function getCultures() {
 		  "tso"
 		]
 	  },
-	  {
+	  "tn": {
 		"Name": "Tswana",
 		"DisplayName": "Tswana",
 		"DisplayNativeName": "Setswana",
@@ -1820,7 +1822,7 @@ export function getCultures() {
 		  "tsn"
 		]
 	  },
-	  {
+	  "tr": {
 		"Name": "Turkish",
 		"DisplayName": "Turkish",
 		"DisplayNativeName": "Türkçe",
@@ -1830,7 +1832,7 @@ export function getCultures() {
 		  "tur"
 		]
 	  },
-	  {
+	  "tk": {
 		"Name": "Turkmen",
 		"DisplayName": "Turkmen",
 		"DisplayNativeName": "Туркмен",
@@ -1840,7 +1842,7 @@ export function getCultures() {
 		  "tuk"
 		]
 	  },
-	  {
+	  "tw": {
 		"Name": "Twi",
 		"DisplayName": "Twi",
 		"DisplayNativeName": "Twi",
@@ -1850,7 +1852,7 @@ export function getCultures() {
 		  "twi"
 		]
 	  },
-	  {
+	  "ug": {
 		"Name": "Uighur; Uyghur",
 		"DisplayName": "Uighur; Uyghur",
 		"DisplayNativeName": "Uyƣurqə",
@@ -1860,7 +1862,7 @@ export function getCultures() {
 		  "uig"
 		]
 	  },
-	  {
+	  "uk": {
 		"Name": "Ukrainian",
 		"DisplayName": "Ukrainian",
 		"DisplayNativeName": "Українська",
@@ -1870,7 +1872,7 @@ export function getCultures() {
 		  "ukr"
 		]
 	  },
-	  {
+	  "ur-PK": {
 		"Name": "Urdu",
 		"DisplayName": "Urdu",
 		"DisplayNativeName": "اردو",
@@ -1880,7 +1882,7 @@ export function getCultures() {
 		  "urd"
 		]
 	  },
-	  {
+	  "uz": {
 		"Name": "Uzbek",
 		"DisplayName": "Uzbek",
 		"DisplayNativeName": "Ўзбек",
@@ -1890,7 +1892,7 @@ export function getCultures() {
 		  "uzb"
 		]
 	  },
-	  {
+	  "ve": {
 		"Name": "Venda",
 		"DisplayName": "Venda",
 		"DisplayNativeName": "Tshivenḓa",
@@ -1900,7 +1902,7 @@ export function getCultures() {
 		  "ven"
 		]
 	  },
-	  {
+	  "vi": {
 		"Name": "Vietnamese",
 		"DisplayName": "Vietnamese",
 		"DisplayNativeName": "Việtnam",
@@ -1910,7 +1912,7 @@ export function getCultures() {
 		  "vie"
 		]
 	  },
-	  {
+	  "vo": {
 		"Name": "Volapük",
 		"DisplayName": "Volapük",
 		"DisplayNativeName": "Volapük",
@@ -1920,7 +1922,7 @@ export function getCultures() {
 		  "vol"
 		]
 	  },
-	  {
+	  "wa": {
 		"Name": "Walloon",
 		"DisplayName": "Walloon",
 		"DisplayNativeName": "Walon",
@@ -1930,7 +1932,7 @@ export function getCultures() {
 		  "wln"
 		]
 	  },
-	  {
+	  "cy": {
 		"Name": "Welsh",
 		"DisplayName": "Welsh",
 		"DisplayNativeName": "Cymraeg",
@@ -1941,7 +1943,7 @@ export function getCultures() {
 		  "cym"
 		]
 	  },
-	  {
+	  "fy": {
 		"Name": "Western Frisian",
 		"DisplayName": "Western Frisian",
 		"DisplayNativeName": "Frysk",
@@ -1951,7 +1953,7 @@ export function getCultures() {
 		  "fry"
 		]
 	  },
-	  {
+	  "wo": {
 		"Name": "Wolof",
 		"DisplayName": "Wolof",
 		"DisplayNativeName": "Wollof",
@@ -1961,7 +1963,7 @@ export function getCultures() {
 		  "wol"
 		]
 	  },
-	  {
+	  "xh": {
 		"Name": "Xhosa",
 		"DisplayName": "Xhosa",
 		"DisplayNativeName": "isiXhosa",
@@ -1971,7 +1973,7 @@ export function getCultures() {
 		  "xho"
 		]
 	  },
-	  {
+	  "yi": {
 		"Name": "Yiddish",
 		"DisplayName": "Yiddish",
 		"DisplayNativeName": "ייִדיש",
@@ -1981,7 +1983,7 @@ export function getCultures() {
 		  "yid"
 		]
 	  },
-	  {
+	  "yo": {
 		"Name": "Yoruba",
 		"DisplayName": "Yoruba",
 		"DisplayNativeName": "Yorùbá",
@@ -1991,7 +1993,7 @@ export function getCultures() {
 		  "yor"
 		]
 	  },
-	  {
+	  "za": {
 		"Name": "Zhuang; Chuang",
 		"DisplayName": "Zhuang; Chuang",
 		"DisplayNativeName": "壮语",
@@ -2001,7 +2003,7 @@ export function getCultures() {
 		  "zha"
 		]
 	  },
-	  {
+	  "zu": {
 		"Name": "Zulu",
 		"DisplayName": "Zulu",
 		"DisplayNativeName": "isiZulu",
@@ -2011,7 +2013,7 @@ export function getCultures() {
 		  "zul"
 		]
 	  }
-	];
+	};
 }
 
 export default {

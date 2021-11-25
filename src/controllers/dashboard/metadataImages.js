@@ -5,12 +5,11 @@ import globalize from '../../scripts/globalize';
 import '../../components/listview/listview.scss';
 import Dashboard from '../../scripts/clientUtils';
 import settingsHelper from '../../components/settingshelper';
-import cultures from '../../scripts/cultures';
 
 /* eslint-disable indent */
 
     function populateLanguages(select) {        
-		let languages = cultures.getCultures();
+		let languages =  ApiClient.getCultures();
 		let html = '';
 		html += "<option value=''></option>";
 		for (let i = 0, length = languages.length; i < length; i++) {

@@ -4,6 +4,13 @@
             ${Subtitles}
         </h2>
 
+        <div class="checkboxContainer">
+            <label>
+                <input is="emby-checkbox" id="chkPreview" type="checkbox" class="chkPreview" />
+                <span>${Preview}</span>
+            </label>
+        </div>
+		
         <div class="selectContainer">
             <select is="emby-select" id="selectSubtitleLanguage" label="${LabelPreferredSubtitleLanguage}">
 				<option value="Auto">${Auto}</option>
@@ -212,12 +219,6 @@
             <div class="fieldDescription">${SubtitleVerticalPositionHelp}</div>
         </div>
 
-        <div class="checkboxContainer">
-            <label>
-                <input is="emby-checkbox" id="chkPreview" type="checkbox" class="chkPreview" />
-                <span>${Preview}</span>
-            </label>
-        </div>
     </div>
 
     <button is="emby-button" type="submit" class="raised button-submit block btnSave hide">

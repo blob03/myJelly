@@ -12,11 +12,10 @@ import '../../elements/emby-select/emby-select';
 import '../../elements/emby-input/emby-input';
 import template from './libraryoptionseditor.template.html';
 import settingsHelper from '../settingshelper';
-import cultures from '../../scripts/cultures';
 
     function populateLanguages(parent) {
 		return new Promise((resolve, reject) => {
-			let languages = cultures.getCultures();
+			let languages =  ApiClient.getCultures();
 			resolve(languages);
 		}).then( languages => {
 			populateLanguagesIntoSelect(parent.querySelector('#selectLanguage'), languages);

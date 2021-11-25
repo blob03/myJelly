@@ -491,7 +491,7 @@ function onLanguageFieldChange(e) {
 	if (Lang === "Auto")
 		Lang = globalize.getCurrentLocale();
 	else
-		// get the two letters name equivalent needed to obtain a dictionary.
+		// get the two letters name (ISO  639-1) equivalent needed to obtain a dictionary.
 		Lang = subselector.options[subselector.selectedIndex].getAttribute("ISOName2L");
 		
 	if (!Lang)
@@ -502,27 +502,29 @@ function onLanguageFieldChange(e) {
 		return;
 	loading.show();
 	globalize.getCoreDictionary(Lang).then((dictionary) => {
+		let html;
 		if (dictionary) {			
-			let html = dictionary['HeaderSubtitleAppearance'] || '';
+			html = dictionary['HeaderSubtitleAppearance'] || '';
 			if (html) html += '<br>';
 			html += dictionary['TheseSettingsAffectSubtitlesOnThisDevice'] || '';
 			// Case when both keys are missing, first try an alternate key
 			if (!html) 
 				html = dictionary['LabelPreferredSubtitleLanguage'] || '';
-			// If it's not available, use the language DisplayNativeName 
-			if (!html) {
-				let match = cultures.matchCulture(Lang);
-				if (match)
-					html = match.DisplayNativeName || '';
-			}
-			// As a last resort, use the current display language 
-			// and the source language (en-US) if it too fails.
-			if (!html)
-				html = globalize.translate('HeaderSubtitleAppearance') 
-						+ '<br>' 
-						+ globalize.translate('TheseSettingsAffectSubtitlesOnThisDevice');
-			preview.innerHTML = html;
 		}
+		// If it's not available, use the language DisplayNativeName 
+		if (!html) {
+			let match = cultures.matchCulture(Lang);
+			if (match)
+				html = match.DisplayNativeName || '';
+		}
+		// As a last resort, use the current display language 
+		// and the source language (en-US) if it too fails.
+		if (!html)
+			html = globalize.translate('HeaderSubtitleAppearance') 
+					+ '<br>' 
+					+ globalize.translate('TheseSettingsAffectSubtitlesOnThisDevice');
+		preview.innerHTML = html;
+
 		loading.hide();
 	});
 }
