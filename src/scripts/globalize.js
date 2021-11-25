@@ -36,7 +36,7 @@ import { Events } from 'jellyfin-apiclient';
             culture = navigator.languages[0];
 		
 		if (culture) {
-			test = cultures.validateCulture(culture);
+			test = cultures.matchCulture(culture);
 			if (test.TwoLetterISOLanguageName)
 				return test.TwoLetterISOLanguageName;
 			if (test.ThreeLetterISOLanguageName)

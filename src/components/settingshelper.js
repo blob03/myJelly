@@ -9,6 +9,16 @@ import cultures from '../scripts/cultures';
 export function populateLanguages(select, languages, val) {
     let html = '';
 	
+	languages.sort((a, b) => {
+		let fa = a.DisplayNativeName.toLowerCase(),
+			fb = b.DisplayNativeName.toLowerCase();
+		if (fa < fb) 
+			return -1;
+		if (fa > fb) 
+			return 1;
+		return 0;
+	});
+	
 	languages.forEach(language => {
 		let ISOName = language.TwoLetterISOLanguageName;
 		
@@ -23,7 +33,7 @@ export function populateLanguages(select, languages, val) {
 			else
 				html += "<option value='" + ISOName + "'>";
 			
-			html += language.DisplayName + "</option>";
+			html += language.DisplayNativeName + "</option>";
 		}
 	});
     select.innerHTML += html;
@@ -37,21 +47,49 @@ export function populateLanguages(select, languages, val) {
 export function populateSubsLanguages(select, languages, val) {
     let html = '';
 	
+	languages.sort((a, b) => {
+		let fa = a.DisplayNativeName.toLowerCase(),
+			fb = b.DisplayNativeName.toLowerCase();
+		if (fa < fb) 
+			return -1;
+		if (fa > fb) 
+			return 1;
+		return 0;
+	});
+
 	languages.forEach(language => {
 		let ISOName3L = language.ThreeLetterISOLanguageName;
 		let ISOName2L = language.TwoLetterISOLanguageName;
+		
 		if (val && val === ISOName3L) 
-			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "' selected>" + language.DisplayName + "</option>";
+			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "' selected>";
 		else
-			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "'>" + language.DisplayName + "</option>";
+			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "'>";
+		
+		html += language.DisplayNativeName + "</option>";
 	});
     select.innerHTML += html;
 }
 
+/**
+ * Helper for creating a list of available dictionaries.
+ * @module components/settingsHelper
+ */
+ 
 export function populateDictionaries(select, languages, val) {		
 	let html = '';
 	let activeLanguage = { "DisplayName": "", "ISOName": "" };
 	let lang = (val === '')? globalize.getDefaultCulture(): val; 
+	
+	languages.sort((a, b) => {
+		let fa = a.DisplayNativeName.toLowerCase(),
+			fb = b.DisplayNativeName.toLowerCase();
+		if (fa < fb) 
+			return -1;
+		if (fa > fb) 
+			return 1;
+		return 0;
+	});
 	
 	languages.forEach(language => {
 		let ISOName = language.TwoLetterISOLanguageName;
@@ -73,7 +111,7 @@ export function populateDictionaries(select, languages, val) {
 			else
 				html += " value='" + ISOName + "'>";
 			
-			html += language.DisplayName + "</option>";
+			html += language.DisplayNativeName + "</option>";
 		}
 	});
 	select.innerHTML += html;
@@ -83,7 +121,7 @@ export function populateDictionaries(select, languages, val) {
 		let pnode = select.parentNode.parentNode;
 		if (pnode) {	
 			let nodeInfo = pnode.querySelector('.infoDetails');  
-			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLanguage.DisplayName + ' [ ' + activeLanguage.ISOName + ' ]';
+			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLanguage.DisplayNativeName + ' [ ' + activeLanguage.ISOName + ' ]';
 			nodeInfo.querySelector('.infoSourceLanguage').innerHTML = ' ' + items.sourceDisplayName + ' [ ' + items.sourceISOName + ' ]';
 			nodeInfo.querySelector('.infoKeysTranslated').innerHTML = ' ' + items.progress + '% [ ' + items.keys + '/' + items.sourceKeys + ' ]';
 			nodeInfo.querySelector('.infoJellyfinKeysTranslated').innerHTML = ' ' + items.origProgress + '% [ ' + items.origKeys + '/' + items.origSourceKeys + ' ]';

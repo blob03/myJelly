@@ -270,11 +270,16 @@ import viewContainer from '../viewContainer';
 				if (reload !== false) {
 					LibraryMenu.setTitle(globalize.translate(instance.title));
 					LibraryMenu.updateUserInHeader(user);
-					embed(instance.options, instance, newDisplayLanguage);
-				}
-				loading.hide();	
-				if (enableSaveConfirmation) 
-					toast(globalize.translate('SettingsSaved'));}, 2000); 
+					embed(instance.options, instance, newDisplayLanguage).then( () => {
+						loading.hide();	
+						if (enableSaveConfirmation) 
+							toast(globalize.translate('SettingsSaved'));
+					});
+				} else {
+					loading.hide();	
+					if (enableSaveConfirmation) 
+						toast(globalize.translate('SettingsSaved'));
+				}}, 2000); 
 		});
     }
 
@@ -303,7 +308,7 @@ import viewContainer from '../viewContainer';
     }
 	
     function embed(options, self, culture) {
-		globalize.getCoreDictionary(culture).then( () => {
+		return globalize.getCoreDictionary(culture).then( () => {
 			options.element.innerHTML = globalize.translateHtml(template, 'core', culture);
 			options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
 			if (options.enableSaveButton) {

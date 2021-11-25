@@ -509,8 +509,14 @@ function onLanguageFieldChange(e) {
 			// Case when both keys are missing, first try an alternate key
 			if (!html) 
 				html = dictionary['LabelPreferredSubtitleLanguage'] || '';
-			// and as a last resort, try the currently configured display language 
-			// and the source language (en-us) as a fallback if everything else has failed.
+			// If it's not available, use the language DisplayNativeName 
+			if (!html) {
+				let match = cultures.matchCulture(Lang);
+				if (match)
+					html = match.DisplayNativeName || '';
+			}
+			// As a last resort, use the current display language 
+			// and the source language (en-US) if it too fails.
 			if (!html)
 				html = globalize.translate('HeaderSubtitleAppearance') 
 						+ '<br>' 
