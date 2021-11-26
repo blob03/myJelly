@@ -6,7 +6,7 @@
 export function matchCulture(culture) {
 	if (!culture) 
 		return {};
-	let ctrlLst = getCultures();
+	const ctrlLst = getCultures();
 	
 	// First, find an exact match.
 	if (ctrlLst[culture]) 
@@ -505,7 +505,7 @@ export function getCultures() {
 		"DisplayName": "English, Great Britain",
 		"DisplayNativeName": "English, Great Britain",
 		"TwoLetterISOLanguageName": "en-GB",
-		"ThreeLetterISOLanguageName": "eng",
+		"ThreeLetterISOLanguageName": "en-GB",
 		"ThreeLetterISOLanguageNames": [
 		  "eng"
 		]
@@ -1606,7 +1606,7 @@ export function getCultures() {
 		"DisplayName": "Spanish, Argentina",
 		"DisplayNativeName": "Español, República Argentina",
 		"TwoLetterISOLanguageName": "es-AR",
-		"ThreeLetterISOLanguageName": "spa",
+		"ThreeLetterISOLanguageName": "es-AR",
 		"ThreeLetterISOLanguageNames": [
 		  "spa"
 		]
@@ -1615,7 +1615,7 @@ export function getCultures() {
 		"DisplayName": "Spanish, Dominican Republic",
 		"DisplayNativeName": "Español, República Dominicana",
 		"TwoLetterISOLanguageName": "es-DO",
-		"ThreeLetterISOLanguageName": "spa",
+		"ThreeLetterISOLanguageName": "es-DO",
 		"ThreeLetterISOLanguageNames": [
 		  "spa"
 		]
@@ -1624,15 +1624,15 @@ export function getCultures() {
 		"DisplayName": "Spanish, Latin America",
 		"DisplayNativeName": "Español, América Latina",
 		"TwoLetterISOLanguageName": "es-419",
-		"ThreeLetterISOLanguageName": "spa",
+		"ThreeLetterISOLanguageName": "es-419",
 		"ThreeLetterISOLanguageNames": [
 		  "spa"
 		]
 	  },
 	  "es": {
-		"Name": "Spanish; Castilian",
-		"DisplayName": "Spanish, Castilian",
-		"DisplayNativeName": "Español, Castilian",
+		"Name": "Spanish; castellano",
+		"DisplayName": "Spanish, castellano",
+		"DisplayNativeName": "Español, castellano",
 		"TwoLetterISOLanguageName": "es",
 		"ThreeLetterISOLanguageName": "spa",
 		"ThreeLetterISOLanguageNames": [
@@ -1644,7 +1644,7 @@ export function getCultures() {
 		"DisplayName": "Spanish, Mexico",
 		"DisplayNativeName": "Español, Mexico",
 		"TwoLetterISOLanguageName": "es-MX",
-		"ThreeLetterISOLanguageName": "spa",
+		"ThreeLetterISOLanguageName": "es-MX",
 		"ThreeLetterISOLanguageNames": [
 		  "spa"
 		]

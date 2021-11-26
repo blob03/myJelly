@@ -6,7 +6,9 @@ import json
 # Rename a set of dictionaries in order to have them match the codes return by a call to /Localization/cultures
 # This allows to avoid converting them at runtime which is a waste of memory and cycles.
 def rename(langdir, flag):
-	langlst = {'ur_PK': 'ur', 'bg-bg': 'bg', 'be-by': 'be', 'bn_BD': 'bn', 'en-us': 'en', 'hi-in': 'hi', 'lt-lt': 'lt', 'nb': 'no', 'sl-si': 'sl', 'zh-cn': 'zh', 'es_DO': 'es-do', 'es_419': 'es-419'}
+	langlst = {'ur_PK': 'ur-PK', 'bg-bg': 'bg-BG', 'be-by': 'be-BY', 'bn_BD': 'bn-BD', 'en-gb': 'en-GB', 'en-us': 'en-US', 'fr-ca': 'fr-CA', 
+	'hi-in': 'hi-IN', 'is-is': 'is-IS', 'lt-lt': 'lt-LT', 'pt-br': 'pt-BR', 'pt-pt': 'pt-PT', 'sl-si': 'sl-SI', 'zh-tw': 'zh-TW', 'zh-hk': 'zh-HK', 
+	'zh': 'zh-ZH', 'zh-cn': 'zh-CN', 'es_DO': 'es-DO', 'es_419': 'es-419', 'es-ar': 'es-AR', 'es-mx': 'es-MX'}
 	
 	with open('renamed.txt', flag) as out:
 		nbr = 0
@@ -72,11 +74,11 @@ cwd = os.getcwd()
 print('#######################################')
 langdir = cwd + '/../../src/strings/'
 rename(langdir, 'w')
-sort(langdir, 'en.json', 'w')
+sort(langdir, 'en-US.json', 'w')
 print('#######################################')
 # Repeat the process for myJelly files.
 langdir += 'myJelly/'
 rename(langdir, 'a')
-sort(langdir, 'en.json', 'a')
+sort(langdir, 'en-US.json', 'a')
 print('#######################################')
 print('Done.')
