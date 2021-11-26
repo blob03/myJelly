@@ -127,14 +127,14 @@ import viewContainer from '../viewContainer';
 		if (appHost.supports('displaylanguage')) { 
 			let selectLanguage = context.querySelector('#selectLanguage');
 			savedDisplayLanguage = userSettings.language() || '';
-			settingsHelper.populateDictionaries(selectLanguage, allCultures, savedDisplayLanguage);
+			settingsHelper.populateDictionaries(selectLanguage, allCultures, "DisplayNativeName", savedDisplayLanguage);
 			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
 		} else 
 			context.querySelector('.DisplayLanguageArea').classList.add('hide');
 		
 		if (datetime.supportsLocalization()) { 
 			let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
-			settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, userSettings.dateTimeLocale() || '');
+			settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, "DisplayNativeName", userSettings.dateTimeLocale() || '');
 			context.querySelector('.fldDateTimeLocale').classList.remove('hide');
 		} else 
 			context.querySelector('.fldDateTimeLocale').classList.add('hide');

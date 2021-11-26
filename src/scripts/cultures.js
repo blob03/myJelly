@@ -9,17 +9,15 @@ export function matchCulture(culture) {
 	let ctrlLst = getCultures();
 	
 	// First, find an exact match.
-	let lang = Object.keys(ctrlLst)[culture];
-	if (lang)
-		return lang;
+	if (ctrlLst[culture]) 
+		return ctrlLst[culture];
 	
 	// If culture is a child
 	if (culture.indexOf('-') > 1) {
 		let parentCulture = culture.split('-')[0];
 		// find an exact match ot the parent.
-		lang = Object.keys(ctrlLst)[parentCulture]; 
-		if (lang) 
-			return lang;
+		if (ctrlLst[parentCulture]) 
+			return ctrlLst[parentCulture];
 		// find a sister culture, pick the first found.
 		for (var item in ctrlLst) {
 			if (ctrlLst[item].TwoLetterISOLanguageName.split('-')[0] === parentCulture 
@@ -1631,11 +1629,11 @@ export function getCultures() {
 		  "spa"
 		]
 	  },
-	  "es-ES": {
+	  "es": {
 		"Name": "Spanish; Castilian",
 		"DisplayName": "Spanish, Castilian",
 		"DisplayNativeName": "Español, Castilian",
-		"TwoLetterISOLanguageName": "es-ES",
+		"TwoLetterISOLanguageName": "es",
 		"ThreeLetterISOLanguageName": "spa",
 		"ThreeLetterISOLanguageNames": [
 		  "spa"

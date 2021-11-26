@@ -31,7 +31,7 @@ import alert from '../../components/alert';
 					return 1;
 				return 0;
 			});
-			settingsHelper.populateLanguages(selectLanguage, allCultures, config.UICulture);
+			settingsHelper.populateLanguages(selectLanguage, allCultures, "DisplayName", config.UICulture);
 			loading.hide();
 		});
     }

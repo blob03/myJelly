@@ -421,7 +421,8 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 	
 	let allCultures = cultures.getCultures();	
 	let selectSubtitleLanguage = context.querySelector('#selectSubtitleLanguage');
-	settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, user.Configuration.SubtitleLanguagePreference || 'Auto');
+	settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, "DisplayNativeName", 
+					user.Configuration.SubtitleLanguagePreference || 'Auto');
 	selectSubtitleLanguage.dispatchEvent(event_change);
 
 	let selectSubPreset =  context.querySelector('#selectSubtitlePreset');
@@ -491,7 +492,7 @@ function onLanguageFieldChange(e) {
 	if (Lang === "Auto")
 		Lang = globalize.getCurrentLocale();
 	else
-		// get the two letters name (ISO  639-1) equivalent needed to obtain a dictionary.
+		// get the two letters name (ISO  639-1) correspondence needed to obtain a dictionary.
 		Lang = subselector.options[subselector.selectedIndex].getAttribute("ISOName2L");
 		
 	if (!Lang)
@@ -511,7 +512,7 @@ function onLanguageFieldChange(e) {
 			if (!html) 
 				html = dictionary['LabelPreferredSubtitleLanguage'] || '';
 		}
-		// If it's not available, use the language DisplayNativeName 
+		// If it's not available, use the language's native name.
 		if (!html) {
 			let match = cultures.matchCulture(Lang);
 			if (match)

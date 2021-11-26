@@ -71,7 +71,6 @@ export function hdrClock(obj) {
 
 export class UserSettings {
     constructor() {
-		console.log("*** CREATING NEW USERSETTINGS OBJECT !!!!! ****");
     }
 
 	static clockTimer = undefined;

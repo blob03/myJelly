@@ -6,13 +6,13 @@ import cultures from '../scripts/cultures';
  * @module components/settingsHelper
  */
 
-export function populateLanguages(select, languages, val) {
+export function populateLanguages(select, languages, view, val) {
     let html = '';
 	
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
-		let fa = languages[a].DisplayNativeName.toLowerCase(),
-			fb = languages[b].DisplayNativeName.toLowerCase();
+		let fa = languages[a][view].toLowerCase(),
+			fb = languages[b][view].toLowerCase();
 		if (fa < fb) 
 			return -1;
 		if (fa > fb) 
@@ -34,7 +34,7 @@ export function populateLanguages(select, languages, val) {
 			else
 				html += "<option value='" + ISOName + "'>";
 			
-			html += languages[item].DisplayNativeName + "</option>";
+			html += languages[item][view] + "</option>";
 		}
 	});
     select.innerHTML += html;
@@ -45,13 +45,13 @@ export function populateLanguages(select, languages, val) {
  * @module components/settingsHelper
  */
 
-export function populateSubsLanguages(select, languages, val) {
+export function populateSubsLanguages(select, languages, view, val) {
     let html = '';
 	
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
-		let fa = languages[a].DisplayNativeName.toLowerCase(),
-			fb = languages[b].DisplayNativeName.toLowerCase();
+		let fa = languages[a][view].toLowerCase(),
+			fb = languages[b][view].toLowerCase();
 		if (fa < fb) 
 			return -1;
 		if (fa > fb) 
@@ -68,7 +68,7 @@ export function populateSubsLanguages(select, languages, val) {
 		else
 			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "'>";
 		
-		html += languages[item].DisplayNativeName + "</option>";
+		html += languages[item][view] + "</option>";
 	});
     select.innerHTML += html;
 }
@@ -78,15 +78,15 @@ export function populateSubsLanguages(select, languages, val) {
  * @module components/settingsHelper
  */
  
-export function populateDictionaries(select, languages, val) {		
+export function populateDictionaries(select, languages, view, val) {		
 	let html = '';
 	let activeLanguage = { "DisplayName": "", "ISOName": "" };
 	let lang = (val === '')? globalize.getDefaultCulture(): val; 
 	
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
-		let fa = languages[a].DisplayNativeName.toLowerCase(),
-			fb = languages[b].DisplayNativeName.toLowerCase();
+		let fa = languages[a][view].toLowerCase(),
+			fb = languages[b][view].toLowerCase();
 		if (fa < fb) 
 			return -1;
 		if (fa > fb) 
@@ -114,7 +114,7 @@ export function populateDictionaries(select, languages, val) {
 			else
 				html += " value='" + ISOName + "'>";
 			
-			html += languages[item].DisplayNativeName + "</option>";
+			html += languages[item][view] + "</option>";
 		}
 	});
 	select.innerHTML += html;
@@ -124,7 +124,7 @@ export function populateDictionaries(select, languages, val) {
 		let pnode = select.parentNode.parentNode;
 		if (pnode) {	
 			let nodeInfo = pnode.querySelector('.infoDetails');  
-			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLanguage.DisplayNativeName + ' [ ' + activeLanguage.ISOName + ' ]';
+			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLanguage[view] + ' [ ' + activeLanguage.ISOName + ' ]';
 			nodeInfo.querySelector('.infoSourceLanguage').innerHTML = ' ' + items.sourceDisplayName + ' [ ' + items.sourceISOName + ' ]';
 			nodeInfo.querySelector('.infoKeysTranslated').innerHTML = ' ' + items.progress + '% [ ' + items.keys + '/' + items.sourceKeys + ' ]';
 			nodeInfo.querySelector('.infoJellyfinKeysTranslated').innerHTML = ' ' + items.origProgress + '% [ ' + items.origKeys + '/' + items.origSourceKeys + ' ]';
