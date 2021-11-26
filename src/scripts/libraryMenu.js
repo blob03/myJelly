@@ -19,7 +19,7 @@ import Dashboard, { pageClassOn } from './clientUtils';
 import ServerConnections from '../components/ServerConnections';
 import Headroom from 'headroom.js';
 import appSettings from './settings/appSettings';
-import { UserSettings } from '../scripts/settings/userSettings';
+import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 
@@ -59,7 +59,7 @@ import { UserSettings } from '../scripts/settings/userSettings';
 		
 		/* Added: casing for the topbar clock */
 		/* new version uses a disabled flexbox button rather than a mere table */
-		html += '<button id="headerClock" class="headerClockButton headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;">';
+		html += '<button id="headerClock" class="headerClockButton headerClock hide" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;">';
 		html += '<div id="headerClockDate" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTime" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
@@ -217,6 +217,9 @@ import { UserSettings } from '../scripts/settings/userSettings';
 			if (headerLockButton) 
 				headerLockButton.classList.add('hide');
         }
+		
+		if (currentSettings)
+			hdrClock(currentSettings);
         requiresUserRefresh = false;
     }
 	
@@ -1053,7 +1056,6 @@ import { UserSettings } from '../scripts/settings/userSettings';
     }
 
 	function displayFontSizeModifier(apiClient) { 
-		const currentSettings = new UserSettings();
 		const userId = Dashboard.getCurrentUserId();
 		currentSettings.setUserInfo(userId, apiClient).then(function () {
 			const currentResizeRatio = currentSettings.displayFontSize() || 0;

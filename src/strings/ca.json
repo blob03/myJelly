@@ -1427,7 +1427,7 @@
     "Suggestions": "Suggerències",
     "Sunday": "Diumenge",
     "Sync": "Sincronitzar",
-    "SyncPlayAccessHelp": "Seleccioneu el nivell d'accés a aquest usuari ha de la característica SyncPlay. SyncPlay permet la sincronització de reproducció amb altres dispositius.",
+    "SyncPlayAccessHelp": "Seleccioneu el nivell d'accés a aquest usuari ha de la característica SyncPlay. La SyncPlay permet la sincronització de reproducció amb altres dispositius.",
     "SyncPlayGroupDefaultTitle": "Grup {0}'s",
     "SystemDlnaProfilesHelp": "Perfils de el sistema són de només lectura. Els canvis en un perfil de sistema seran emmagatzemades a un nou perfil personalitzat.",
     "TV": "TV",

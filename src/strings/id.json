@@ -636,7 +636,7 @@
     "LabelFormat": "Format :",
     "LabelFriendlyName": "Nama ramah :",
     "LabelGroupMoviesIntoCollections": "Kelompokkan film ke dalam koleksi",
-    "LabelGroupMoviesIntoCollectionsHelp": "Saat menampilkan daftar film, film dalam sebuah koleksi akan ditampilkan sebagai satu item yang dikelompokkan.",
+    "LabelGroupMoviesIntoCollectionsHelp": "Saat menampilkan daftar film, maka film dalam sebuah koleksi akan ditampilkan sebagai satu item yang dikelompokkan.",
     "LabelH264Crf": "H264 encoding CRF:",
     "LabelH265Crf": "H265 encoding CRF:",
     "LabelHDHomerunPortRange": "Rentang port HD Homerun:",

@@ -753,7 +753,7 @@
     "LabelMetadataReaders": "Metaadat olvasók:",
     "LabelMetadataReadersHelp": "Rangsorold az előnyben részesített metaadat forrásokat. Az a forrás kerül sorsolásra, amelyben először találunk információt.",
     "LabelMetadataSavers": "Metaadat mentés:",
-    "LabelMetadataSaversHelp": "A metaadatok mentési fájlformátuma.",
+    "LabelMetadataSaversHelp": "Válaszd ki a metaadatok mentésekor használni kívánt fájlformátumokat.",
     "LabelMethod": "Módszer:",
     "LabelMinAudiobookResume": "A hangoskönyv minimális folytatása percekben:",
     "LabelMinAudiobookResumeHelp": "A címeket nem lejátszottnak tekintjük, ha ez alatt az idő alatt fejezed be.",

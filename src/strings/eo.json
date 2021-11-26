@@ -678,7 +678,7 @@
     "LabelFormat": "Formato:",
     "LabelFriendlyName": "Oportuna nomo:",
     "LabelGroupMoviesIntoCollections": "Grupigi filmojn en kolektoj",
-    "LabelGroupMoviesIntoCollectionsHelp": "Kiam oni montras filmlistojn, filmoj en kolekto estos montrataj kiel unu grupigita aĵo.",
+    "LabelGroupMoviesIntoCollectionsHelp": "Kiam oni montras filmlistojn, tiam filmoj en kolekto estos montrataj kiel unu grupigita aĵo.",
     "LabelH264Crf": "CRF de H.264-kodado:",
     "LabelH265Crf": "CRF de H.265-kodado:",
     "LabelHDHomerunPortRange": "Porda intervalo de HDHomeRun:",

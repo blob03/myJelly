@@ -1393,7 +1393,7 @@
     "Suggestions": "Recomandări",
     "Sunday": "Duminică",
     "Sync": "Sincronizare",
-    "SyncPlayAccessHelp": "Selectați nivelul de acces pe care îl are acest utilizator la funcția SyncPlay. SyncPlay permite sincronizarea redării cu alte dispozitive.",
+    "SyncPlayAccessHelp": "Selectați nivelul de acces pe care îl are acest utilizator la funcția SyncPlay. La SyncPlay permite sincronizarea redării cu alte dispozitive.",
     "SyncPlayGroupDefaultTitle": "Grupul lui {0}",
     "SystemDlnaProfilesHelp": "Profilele de sistem pot fi numai citite. Modificările aduse unui profil de sistem vor fi salvate într-un nou profil personalizat.",
     "TV": "TV",

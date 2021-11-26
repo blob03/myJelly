@@ -21,7 +21,7 @@ const defaultSubtitleAppearanceSettings = {
 	verticalPosition: -1
 };
 
-function hdrClock(obj) {
+export function hdrClock(obj) {
 	const _hdrclck = document.getElementById("headerClock");
 	if (_hdrclck === null)
 		return false;
@@ -71,6 +71,7 @@ function hdrClock(obj) {
 
 export class UserSettings {
     constructor() {
+		console.log("*** CREATING NEW USERSETTINGS OBJECT !!!!! ****");
     }
 
 	static clockTimer = undefined;
@@ -93,12 +94,11 @@ export class UserSettings {
             return Promise.resolve();
         }
 
-        const self = this;
+        const obj = this;
 
         return apiClient.getDisplayPreferences('usersettings', userId, 'emby').then(function (result) {
             result.CustomPrefs = result.CustomPrefs || {};
-            self.displayPrefs = result;
-			hdrClock(self);
+            obj.displayPrefs = result;
         });
     }
 
@@ -122,15 +122,16 @@ export class UserSettings {
     set(name, value, enableOnServer) {
         const userId = this.currentUserId;
         const currentValue = this.get(name, enableOnServer);
-
+		const val = value.toString();
+		
 		if (this.displayPrefs) {
-			this.displayPrefs.CustomPrefs[name] = value == null ? value : value.toString();
+			this.displayPrefs.CustomPrefs[name] = val;
 			if (enableOnServer === true) 
 				saveServerPreferences(this);
 		} else
-			appSettings.set(name, value, userId);
+			appSettings.set(name, val, userId);
 		
-		if (currentValue !== value) 
+		if (currentValue !== val) 
 				Events.trigger(this, 'change', [name]);
 			
         return true;
@@ -315,16 +316,14 @@ export class UserSettings {
      */
 	enableClock(val) {
         if (val !== undefined) {
-			if (val === false) 
-				/* This will stop and hide the clock. */
-				this.set('clock', 'false');
-			else 
-				/* In case the clock isn't running already, this will unhide and start it. */
-				this.set('clock', 'true');
-			setTimeout(() => { hdrClock(this); }, 2000);
+			/* Either hide the clock or unhide and start it. */
+			this.set('clock', val === true);
+		
+			const obj = this;
+			setTimeout(() => { hdrClock(obj); }, 2000);
             return true;
         }
-		val = this.get('clock');
+		val = this.get('clock', false);
         return val === 'true';
     }
 
