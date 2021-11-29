@@ -10,7 +10,7 @@
     "DLNA": "DLNA",
     "Diffused": "Diffused",
     "EnableBackdropsHelp": "Select the source of backdrops to display while browsing the library.",
-    "EnableBlurHashMoreHelp": "Define the quality of blurring on a scale from 2 to 32 or choose the null value in order to disable it.",
+    "EnableBlurHashMoreHelp": "Set the quality of blurring on a scale from 2 to 32 or choose the null value in order to disable it.",
     "EnableBlurHashSomeMoreHelp": "Defining a lower value should provide better performance.",
     "EnableClock": "Clock",
     "EnableClockHelp": "Show local date and time in the top bar.",
@@ -24,7 +24,8 @@
     "LabelStrokeSize": "Text outline size:",
     "LabelSubtitlePresets": "Subtitles style presets:",
     "LabelSwiperDelay": "Slideshows speed:",
-    "LabelSwiperDelayHelp": "Define the delay in seconds between two slides.",
+    "LabelSwiperDelayHelp": "Set the delay in seconds between two slides.",
+    "LabelSwiperFX": "Slideshows animation effect:",
     "LabelTextShadowColor": "Text shadow color:",
     "LabelTextStrokeColor": "Text outline color:",
     "LabelTranslatedKeys": "Translated keys:",
@@ -37,5 +38,11 @@
     "Queue": "Queue",
     "Reload": "Reload this application",
     "Theme": "Theme",
-    "Videos": "Videos"
+    "Videos": "Videos",
+	"SwiperFXHorizontal": "Horizontal sliding",
+	"SwiperFXVertical": "Vertical sliding",
+	"SwiperFXFade": "Fading effect",
+	"SwiperFXFlip": "Flipping effect",
+	"SwiperFXCube": "Cube",
+	"SwiperFXCoverflow": "Coverflow"
 }

@@ -25,6 +25,7 @@
   "LabelSubtitlePresets": "Styles pré-configurés :",
   "LabelSwiperDelay": "Vitesse des diaporamas :",
   "LabelSwiperDelayHelp": "Définir le délai en secondes entre deux diapositives.",
+  "LabelSwiperFX": "Animation des diaporamas :",
   "LabelTextShadowColor": "Teinte de l'ombre portée :",
   "LabelTextStrokeColor": "Couleur de contour du texte :",
   "LabelTranslatedKeys": "Éléments traduits :",
@@ -37,5 +38,11 @@
   "Queue": "Queue",
   "Reload": "Recharger l'application",
   "Theme": "Thème",
-  "Videos": "Vidéos"
+  "Videos": "Vidéos",
+  "SwiperFXHorizontal": "Glisser horizontalement",
+  "SwiperFXVertical": "Glisser verticalement",
+  "SwiperFXFade": "Effacer",
+  "SwiperFXFlip": "Retourner",
+  "SwiperFXCube": "Cube",
+  "SwiperFXCoverflow": "Coverflow"
 }

@@ -12,6 +12,8 @@
 
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection1" label="{section1label}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
                 <option value="librarybuttons">${HeaderMyMediaSmall}</option>
                 <option value="activerecordings">${HeaderActiveRecordings}</option>
@@ -21,11 +23,12 @@
                 <option value="latestmedia">${HeaderLatestMedia}</option>
                 <option value="nextup">${NextUp}</option>
                 <option value="livetv">${LiveTV}</option>
-                <option value="none">${None}</option>
             </select>
         </div>
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection2" label="{section2label}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
                 <option value="librarybuttons">${HeaderMyMediaSmall}</option>
                 <option value="activerecordings">${HeaderActiveRecordings}</option>
@@ -35,11 +38,12 @@
                 <option value="latestmedia">${HeaderLatestMedia}</option>
                 <option value="nextup">${NextUp}</option>
                 <option value="livetv">${LiveTV}</option>
-                <option value="none">${None}</option>
             </select>
         </div>
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection3" label="{section3label}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
                 <option value="librarybuttons">${HeaderMyMediaSmall}</option>
                 <option value="activerecordings">${HeaderActiveRecordings}</option>
@@ -49,11 +53,12 @@
                 <option value="latestmedia">${HeaderLatestMedia}</option>
                 <option value="nextup">${NextUp}</option>
                 <option value="livetv">${LiveTV}</option>
-                <option value="none">${None}</option>
             </select>
         </div>
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection4" label="{section4label}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
                 <option value="librarybuttons">${HeaderMyMediaSmall}</option>
                 <option value="activerecordings">${HeaderActiveRecordings}</option>
@@ -63,11 +68,12 @@
                 <option value="latestmedia">${HeaderLatestMedia}</option>
                 <option value="nextup">${NextUp}</option>
                 <option value="livetv">${LiveTV}</option>
-                <option value="none">${None}</option>
             </select>
         </div>
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection5" label="{section5label}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
                 <option value="librarybuttons">${HeaderMyMediaSmall}</option>
                 <option value="activerecordings">${HeaderActiveRecordings}</option>
@@ -77,11 +83,12 @@
                 <option value="latestmedia">${HeaderLatestMedia}</option>
                 <option value="nextup">${NextUp}</option>
                 <option value="livetv">${LiveTV}</option>
-                <option value="none">${None}</option>
             </select>
         </div>
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection6" label="{section6label}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
                 <option value="librarybuttons">${HeaderMyMediaSmall}</option>
                 <option value="activerecordings">${HeaderActiveRecordings}</option>
@@ -91,11 +98,12 @@
                 <option value="latestmedia">${HeaderLatestMedia}</option>
                 <option value="nextup">${NextUp}</option>
                 <option value="livetv">${LiveTV}</option>
-                <option value="none">${None}</option>
             </select>
         </div>
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection7" label="{section7label}">
+				<option value="none">${None}</option>
+				<option disabled>${OptionDivider}</option>
                 <option value="smalllibrarytiles">${HeaderMyMedia}</option>
                 <option value="librarybuttons">${HeaderMyMediaSmall}</option>
                 <option value="activerecordings">${HeaderActiveRecordings}</option>
@@ -105,7 +113,6 @@
                 <option value="latestmedia">${HeaderLatestMedia}</option>
                 <option value="nextup">${NextUp}</option>
                 <option value="livetv">${LiveTV}</option>
-                <option value="none">${None}</option>
             </select>
         </div>
     </div>
@@ -116,6 +123,14 @@
 		</div>
 		<div class="fieldDescription">${LabelMaxDaysForNextUpHelp}</div>
 	</div>
+	
+	<div class="checkboxContainer checkboxContainer-withDescription fldUseEpisodeImagesInNextUp">
+        <label>
+            <input type="checkbox" is="emby-checkbox" id="chkUseEpisodeImagesInNextUp" />
+            <span>${UseEpisodeImagesInNextUp}</span>
+        </label>
+        <div class="fieldDescription checkboxFieldDescription">${UseEpisodeImagesInNextUpHelp}</div>
+    </div>
 
 	<div class="verticalSection verticalSection-extrabottompadding">
 		<label class="checkboxContainer">

@@ -192,8 +192,8 @@ import viewContainer from '../viewContainer';
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
 		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
+		context.querySelector('#selectSwiperFX').value = userSettings.swiperFX();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
-		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
@@ -254,6 +254,7 @@ import viewContainer from '../viewContainer';
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
+		userSettingsInstance.swiperFX(context.querySelector('#selectSwiperFX').value);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		
 		if (layoutManager.tv) 
@@ -262,7 +263,6 @@ import viewContainer from '../viewContainer';
 			displayFontSizeRset();
 		
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
-		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
      
 		apiClient.updateUserConfiguration(user.localUser.Id, user.localUser.Configuration).then( () => { 
 			userSettingsInstance.commit(); 

@@ -461,7 +461,7 @@
     "HeaderTranscodingProfileHelp": "Las by transkodering profiele om aan te dui watter formate gebruik moet word as transkodering nodig is.",
     "HeaderTunerDevices": "Ontvanger Toestele",
     "HeaderTuners": "Ontvangers",
-    "HeaderTypeImageFetchers": "{0} Beeld gaanhaalers",
+    "HeaderTypeImageFetchers": "Beeld gaanhaalers ({0})",
     "HeaderTypeText": "Voer teks",
     "HeaderUninstallPlugin": "Oninstalleer Plugin",
     "HeaderUpcomingOnTV": "Opkomend op TV",

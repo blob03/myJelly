@@ -451,7 +451,6 @@ export default function (options) {
         }
 
 		let parameters = {
-            direction: 'horizontal',
             // Loop is disabled due to the virtual slides option not supporting it.
             loop: false,
             zoom: {
@@ -465,7 +464,7 @@ export default function (options) {
             slidesPerView: 1,
             slidesPerColumn: 1,
             initialSlide: options.startIndex || 0,
-            speed: 240,
+            speed: 1000,
             navigation: {
                 nextEl: '.btnSlideshowNext',
                 prevEl: '.btnSlideshowPrevious'
@@ -477,11 +476,26 @@ export default function (options) {
                 renderSlide: getSwiperSlideHtml,
                 addSlidesBefore: 1,
                 addSlidesAfter: 1
-            }
-        }
-		let obj = {};
-		obj.delay = userSettings.swiperDelay() * 1000;
-		parameters.autoplay = obj;
+            },
+			autoplay: { delay: userSettings.swiperDelay() * 1000 }
+		};
+		
+		const swiperFX = userSettings.swiperFX() || 'horizontal';
+		switch(swiperFX) {	
+			case 'fade':
+			case 'flip':
+			case 'cube':
+			case 'coverflow':
+				parameters.effect = swiperFX;
+				break;
+				
+			case 'horizontal':
+			case 'vertical':
+			default: 
+				parameters.direction = swiperFX === 'vertical'? 'vertical': 'horizontal';
+				parameters.effect = 'slide';
+				break;	
+		}
 			
 		if (options.interactive)
 			parameters.autoplay = false;

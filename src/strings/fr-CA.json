@@ -460,7 +460,7 @@
     "HeaderTranscodingProfileHelp": "Ajoute des profiles de transcodage indiquant quelle formats utilisé lorsqu'un transcodage est nécessaire.",
     "HeaderTunerDevices": "Syntoniseur",
     "HeaderTuners": "Syntoniseurs",
-    "HeaderTypeImageFetchers": "{0} récupérateurs d'images",
+    "HeaderTypeImageFetchers": "Récupérateurs d'images ({0})",
     "HeaderTypeText": "Entrer le texte",
     "HeaderUninstallPlugin": "Désinstaller l'extension",
     "HeaderUpcomingOnTV": "Bientôt à la télé",

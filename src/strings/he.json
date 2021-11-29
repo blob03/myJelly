@@ -463,7 +463,7 @@
     "HeaderTracks": "רצועות",
     "HeaderTranscodingProfile": "פרופיל קידוד",
     "HeaderTranscodingProfileHelp": "הוסף פרופילי קידוד כדי לציין באילו פורמטים יש להשתמש כאשר דרוש קידוד.",
-    "HeaderTypeImageFetchers": "{0} אוספי תמונות",
+    "HeaderTypeImageFetchers": "אוספי תמונות ({0})",
     "HeaderTypeText": "הזן טקסט",
     "HeaderUninstallPlugin": "הסר תוסף",
     "HeaderUpcomingOnTV": "בקרוב בטלוויזיה",

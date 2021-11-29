@@ -372,6 +372,22 @@ export class UserSettings {
             return swiperDelay;
     }
 	
+	/**
+     * Get or set 'Swiper FX' state.
+     * @param {boolean|undefined} val - Can be horizontal, vertical, fade, cube or flip.
+     * @return {boolean} 'Swiper FX' state.
+     */
+    swiperFX(val) {
+		if (val !== undefined) {
+			val = val.toString();
+            return this.set('swiperFX', val);
+		}
+        
+		val = this.get('swiperFX');
+		val = val.toString();
+        return val || 'horizontal';
+    }
+	
     /**
      * Get or set 'Backdrops' source.
      * @param {string|undefined} val - String to set 'Backdrops' source or undefined.
@@ -645,8 +661,6 @@ export class UserSettings {
         return this.set(key, JSON.stringify(values));
     }
 
-
-
     /**
      * Get subtitle appearance settings.
      * @param {string|undefined} key - Settings key.
@@ -708,6 +722,7 @@ export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSet
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);
+export const swiperFX = currentSettings.swiperFX.bind(currentSettings);
 export const enableBackdrops = currentSettings.enableBackdrops.bind(currentSettings);
 export const displayFontSize = currentSettings.displayFontSize.bind(currentSettings);
 export const detailsBanner = currentSettings.detailsBanner.bind(currentSettings);

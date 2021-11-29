@@ -468,7 +468,7 @@
     "HeaderTranscodingProfileHelp": "Dodaj profile konvertiranja za označavanje koji se formati trebaju koristiti kada je potrebno konvertiranje.",
     "HeaderTunerDevices": "TV/Radio uređaji",
     "HeaderTuners": "TV uređaji",
-    "HeaderTypeImageFetchers": "{0} Hvatatelja slika",
+    "HeaderTypeImageFetchers": "Hvatatelja slika ({0})",
     "HeaderTypeText": "Unesite tekst",
     "HeaderUninstallPlugin": "Ukloni dodatak",
     "HeaderUpcomingOnTV": "Sljedeće na TV-u",

@@ -202,20 +202,15 @@ import template from './homeScreenSettings.template.html';
         for (let i = 1; i <= 7; i++) {
             const select = context.querySelector(`#selectHomeSection${i}`);
             const defaultValue = homeSections.getDefaultSection(i - 1);
-
             const option = select.querySelector(`option[value=${defaultValue}]`) || select.querySelector('option[value=""]');
-
+			option.value = '';
             const userValue = userSettings.get(`homesection${i - 1}`);
 
-            option.value = '';
-
-            if (userValue === defaultValue || !userValue) {
+            if (userValue === defaultValue || !userValue) 
                 select.value = '';
-            } else {
+            else 
                 select.value = userValue;
-            }
         }
-
         context.querySelector('.selectTVHomeScreen').value = userSettings.get('tvhome') || '';
     }
 
@@ -284,22 +279,20 @@ import template from './homeScreenSettings.template.html';
     }
 
     function loadForm(context, user, userSettings, apiClient) {
-        context.querySelector('.chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
 
-        updateHomeSectionValues(context, userSettings);
+		context.querySelector('.chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
+		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
+		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();		
+        
+		updateHomeSectionValues(context, userSettings);
 
         const promise1 = apiClient.getUserViews({ IncludeHidden: true }, user.Id);
         const promise2 = apiClient.getJSON(apiClient.getUrl(`Users/${user.Id}/GroupingOptions`));
 
-		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
-
         Promise.all([promise1, promise2]).then(responses => {
             renderViewOrder(context, user, responses[0]);
-
             renderPerLibrarySettings(context, user, responses[0].Items, userSettings);
-
             renderViews(context, user, responses[1]);
-
             loading.hide();
         });
     }
@@ -369,6 +362,8 @@ import template from './homeScreenSettings.template.html';
 
         user.Configuration.OrderedViews = orderedViews;
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
+		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
+		
         userSettingsInstance.set('tvhome', context.querySelector('.selectTVHomeScreen').value);
         userSettingsInstance.set('homesection0', context.querySelector('#selectHomeSection1').value);
         userSettingsInstance.set('homesection1', context.querySelector('#selectHomeSection2').value);

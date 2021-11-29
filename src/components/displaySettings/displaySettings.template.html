@@ -135,12 +135,28 @@
 		</div>
 	
 	</div>
-	
-	<div class="sliderContainer-settings">
-		<div class="sliderContainer">
-			<input is="emby-slider" id="sliderSwiperDelay" label="${LabelSwiperDelay}" type="range" min="4" max="60" />
+
+	<div class="SwiperArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+		<div class="selectContainer selectSwiperContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
+			<select is="emby-select" id="selectSwiperFX" class="selectSwiperFX" label="${LabelSwiperFX}">
+				<option value="horizontal">${SwiperFXHorizontal}</option>
+				<option value="vertical">${SwiperFXVertical}</option>
+				<option value="fade">${SwiperFXFade}</option>
+				<option value="flip">${SwiperFXFlip}</option>
+				<option value="cube">${SwiperFXCube}</option>
+				<option value="coverflow">${SwiperFXCoverflow}</option>
+			</select>
+			<div class="fieldDescription "></div>
 		</div>
-		<div class="fieldDescription">${LabelSwiperDelayHelp}</div>
+		
+		<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+			<div class="sliderContainer">
+				<input is="emby-slider" id="sliderSwiperDelay" label="${LabelSwiperDelay}" type="range" min="4" max="60" />
+			</div>
+			<div class="fieldDescription">${LabelSwiperDelayHelp}</div>
+		</div>
+		
 	</div>
 	
 	<div class="sliderContainer-settings">
@@ -195,14 +211,6 @@
             <span>${DisplayMissingEpisodesWithinSeasons}</span>
         </label>
         <div class="fieldDescription checkboxFieldDescription">${DisplayMissingEpisodesWithinSeasonsHelp}</div>
-    </div>
-	
-	<div class="checkboxContainer checkboxContainer-withDescription fldUseEpisodeImagesInNextUp">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkUseEpisodeImagesInNextUp" />
-            <span>${UseEpisodeImagesInNextUp}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${UseEpisodeImagesInNextUpHelp}</div>
     </div>
 	
 	<button is="emby-button" type="submit" class="raised button-submit block btnSave hide">
