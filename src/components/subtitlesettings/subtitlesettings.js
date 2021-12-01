@@ -627,7 +627,7 @@ export class SubtitleSettings {
         loading.show();
 
         const userId = self.options.userId;
-        const apiClient = ServerConnections.getApiClient(self.options.serverId);
+        const apiClient = self.options.apiClient;
         const userSettings = self.options.userSettings;
 
         apiClient.getUser(userId).then(function (user) {

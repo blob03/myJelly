@@ -122,6 +122,7 @@
 		<div class="selectContainer selectScreensaverContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
 			<select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}">
 				<option value="none">${None}</option>
+				<option value="any">${OptionRandom}</option>
 				<option disabled>${OptionDivider}</option>
 			</select>
 			<div class="fieldDescription "></div>
@@ -140,6 +141,9 @@
 
 		<div class="selectContainer selectSwiperContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
 			<select is="emby-select" id="selectSwiperFX" class="selectSwiperFX" label="${LabelSwiperFX}">
+				<option value="none">${None}</option>
+				<option value="any">${OptionRandom}</option>
+				<option disabled>${OptionDivider}</option>
 				<option value="horizontal">${SwiperFXHorizontal}</option>
 				<option value="vertical">${SwiperFXVertical}</option>
 				<option value="fade">${SwiperFXFade}</option>

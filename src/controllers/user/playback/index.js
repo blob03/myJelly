@@ -11,17 +11,15 @@ import '../../../components/listview/listview.scss';
 
     export default function (view, params) {
         let settingsInstance;
-
-        const userId = params.userId || ApiClient.getCurrentUserId();
+		const userId = params.userId || ApiClient.getCurrentUserId();
         const currentSettings = userId === ApiClient.getCurrentUserId() ? userSettings : new UserSettings();
-
+		
         view.addEventListener('viewshow', function () {
-            if (settingsInstance) {
-                settingsInstance.loadData();
-            } else {
+            if (!settingsInstance) {
                 settingsInstance = new PlaybackSettings({
                     serverId: ApiClient.serverId(),
                     userId: userId,
+					apiClient: ApiClient,
                     element: view.querySelector('.settingsContainer'),
                     userSettings: currentSettings,
                     enableSaveButton: true,

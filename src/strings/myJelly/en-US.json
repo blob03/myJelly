@@ -37,12 +37,12 @@
     "OptionDivider": "...............................",
     "Queue": "Queue",
     "Reload": "Reload this application",
+    "SwiperFXCoverflow": "Coverflow",
+    "SwiperFXCube": "Cube",
+    "SwiperFXFade": "Fading effect",
+    "SwiperFXFlip": "Flipping effect",
+    "SwiperFXHorizontal": "Horizontal sliding",
+    "SwiperFXVertical": "Vertical sliding",
     "Theme": "Theme",
-    "Videos": "Videos",
-	"SwiperFXHorizontal": "Horizontal sliding",
-	"SwiperFXVertical": "Vertical sliding",
-	"SwiperFXFade": "Fading effect",
-	"SwiperFXFlip": "Flipping effect",
-	"SwiperFXCube": "Cube",
-	"SwiperFXCoverflow": "Coverflow"
+    "Videos": "Videos"
 }

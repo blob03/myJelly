@@ -357,9 +357,28 @@ export class UserSettings {
     }
 
     /**
+     * Get or set 'TVHome' mode.
+     * @param {string|undefined} val - horizontal or vertical.
+     * @return {string} 'TVHome' mode.
+     */
+    TVHome(val) {
+		if (val !== undefined) {
+			val = val.toString();
+            return this.set('tvhome', val === "vertical"? val: "horizontal");
+		}
+        
+		val = this.get('tvhome');
+		val = val.toString();
+		if (val === "vertical")
+			return val;
+		else
+			return "horizontal"; //default to horizontal
+    }
+	
+    /**
      * Get or set 'Swiper delay' state.
-     * @param {boolean|undefined} val - Delay between each image in s.
-     * @return {boolean} 'Swiper delay' state.
+     * @param {int|undefined} val - Delay between each image in s.
+     * @return {int} 'Swiper delay' state.
      */
     swiperDelay(val) {
 		if (val !== undefined) 
@@ -374,18 +393,16 @@ export class UserSettings {
 	
 	/**
      * Get or set 'Swiper FX' state.
-     * @param {boolean|undefined} val - Can be horizontal, vertical, fade, cube or flip.
-     * @return {boolean} 'Swiper FX' state.
+     * @param {string|undefined} val - Can be horizontal, vertical, fade, cube or flip.
+     * @return {string} 'Swiper FX' state.
      */
     swiperFX(val) {
 		if (val !== undefined) {
-			val = val.toString();
-            return this.set('swiperFX', val);
+            return this.set('swiperFX', val.toString());
 		}
         
 		val = this.get('swiperFX');
-		val = val.toString();
-        return val || 'horizontal';
+        return val.toString() || 'horizontal';
     }
 	
     /**
@@ -521,7 +538,7 @@ export class UserSettings {
      */
     dashboardTheme(val) {
         if (val !== undefined) {
-            return this.set('dashboardTheme', val);
+            return this.set('dashboardTheme', val.toString());
         }
 
         return this.get('dashboardTheme');
@@ -534,7 +551,7 @@ export class UserSettings {
      */
     skin(val) {
         if (val !== undefined) {
-            return this.set('skin', val);
+            return this.set('skin', val.toString());
         }
 
         return this.get('skin');
@@ -547,7 +564,7 @@ export class UserSettings {
      */
     theme(val) {
         if (val !== undefined) {
-            return this.set('appTheme', val);
+            return this.set('appTheme', val.toString());
         }
 
         return this.get('appTheme');
@@ -560,7 +577,7 @@ export class UserSettings {
      */
     screensaver(val) {
         if (val !== undefined) {
-            return this.set('screensaver', val);
+            return this.set('screensaver', val.toString());
         }
 
         return this.get('screensaver');
@@ -568,8 +585,8 @@ export class UserSettings {
 
     /**
      * Get or set screensaver minimum time before activation.
-     * @param {string|undefined} val - Screensaver-idletime.
-     * @return {string} Screensaver-idletime.
+     * @param {number|undefined} val - Screensaver-idletime.
+     * @return {number} Screensaver-idletime.
      */
     screensaverTime(val) {
         if (val !== undefined) 
@@ -721,6 +738,7 @@ export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentS
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
+export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);
 export const swiperFX = currentSettings.swiperFX.bind(currentSettings);
 export const enableBackdrops = currentSettings.enableBackdrops.bind(currentSettings);

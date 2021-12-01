@@ -9,16 +9,14 @@ import autoFocuser from '../../../components/autoFocuser';
 
     export default function (view, params) {
         let settingsInstance;
-
-        const userId = params.userId || ApiClient.getCurrentUserId();
+		const userId = params.userId || ApiClient.getCurrentUserId();
         const currentSettings = userId === ApiClient.getCurrentUserId() ? userSettings : new UserSettings();
-
+		
         view.addEventListener('viewshow', function () {
-            if (settingsInstance) {
-                settingsInstance.loadData();
-            } else {
+            if (!settingsInstance) {
                 settingsInstance = new DisplaySettings({
                     serverId: ApiClient.serverId(),
+					apiClient: ApiClient,
                     userId: userId,
                     element: view.querySelector('.settingsContainer'),
                     userSettings: currentSettings,

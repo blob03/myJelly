@@ -7,6 +7,7 @@
 .skinHeader,
 html {
    color: rgb(161, 174, 181);
+   font-family: "Quicksand", sans-serif !important;
 }
 
 .headerLeft, .headerRight {

@@ -37,12 +37,12 @@
   "OptionDivider": "...............................",
   "Queue": "Queue",
   "Reload": "Recharger l'application",
-  "Theme": "Thème",
-  "Videos": "Vidéos",
-  "SwiperFXHorizontal": "Glisser horizontalement",
-  "SwiperFXVertical": "Glisser verticalement",
+  "SwiperFXCoverflow": "Coverflow",
+  "SwiperFXCube": "Cube",
   "SwiperFXFade": "Effacer",
   "SwiperFXFlip": "Retourner",
-  "SwiperFXCube": "Cube",
-  "SwiperFXCoverflow": "Coverflow"
+  "SwiperFXHorizontal": "Glisser horizontalement",
+  "SwiperFXVertical": "Glisser verticalement",
+  "Theme": "Thème",
+  "Videos": "Vidéos"
 }

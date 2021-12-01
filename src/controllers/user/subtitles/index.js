@@ -9,16 +9,14 @@ import autoFocuser from '../../../components/autoFocuser';
 
     export default function (view, params) {
         let subtitleSettingsInstance;
-
-        const userId = params.userId || ApiClient.getCurrentUserId();
+		const userId = params.userId || ApiClient.getCurrentUserId();
         const currentSettings = userId === ApiClient.getCurrentUserId() ? userSettings : new UserSettings();
 
         view.addEventListener('viewshow', function () {
-            if (subtitleSettingsInstance) {
-                subtitleSettingsInstance.loadData();
-            } else {
+            if (!subtitleSettingsInstance) {
                 subtitleSettingsInstance = new SubtitleSettings({
                     serverId: ApiClient.serverId(),
+					apiClient: ApiClient,
                     userId: userId,
                     element: view.querySelector('.settingsContainer'),
                     userSettings: currentSettings,

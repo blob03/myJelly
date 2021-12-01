@@ -42,6 +42,12 @@ function getScreensaverPlugin(isLoggedIn) {
 
     const plugins = pluginManager.ofType('screensaver');
 
+	// If random screensaver was selected.
+	if (option === "any") {
+		let rand = Math.floor(Math.random() * Object.keys(plugins).length);
+		return plugins[rand];
+	}
+		
     for (const plugin of plugins) {
         if (plugin.id === option) {
             return plugin;

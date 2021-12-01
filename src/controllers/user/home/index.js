@@ -10,16 +10,14 @@ import '../../../components/listview/listview.scss';
 
     export default function (view, params) {
         let homescreenSettingsInstance;
-
-        const userId = params.userId || ApiClient.getCurrentUserId();
+		const userId = params.userId || ApiClient.getCurrentUserId();
         const currentSettings = userId === ApiClient.getCurrentUserId() ? userSettings : new UserSettings();
-
+		
         view.addEventListener('viewshow', function () {
-            if (homescreenSettingsInstance) {
-                homescreenSettingsInstance.loadData();
-            } else {
+            if (!homescreenSettingsInstance) {
                 homescreenSettingsInstance = new HomescreenSettings({
                     serverId: ApiClient.serverId(),
+					apiClient: ApiClient,
                     userId: userId,
                     element: view.querySelector('.homeScreenSettingsContainer'),
                     userSettings: currentSettings,

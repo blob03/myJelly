@@ -116,9 +116,6 @@ import template from './playbackSettings.template.html';
     }
 
     function loadForm(context, user, userSettings, apiClient) {
-        const loggedInUserId = apiClient.getCurrentUserId();
-        const userId = user.Id;
-
         showHideQualityFields(context, user, apiClient);
 
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
@@ -137,13 +134,13 @@ import template from './playbackSettings.template.html';
             }
         }).catch( () => {console.log("No cinemamode configuration available on server.")});;
 
-        if (appHost.supports('externalplayerintent') && userId === loggedInUserId) {
+        if (appHost.supports('externalplayerintent')) {
             context.querySelector('.fldExternalPlayer').classList.remove('hide');
         } else {
             context.querySelector('.fldExternalPlayer').classList.add('hide');
         }
 
-        if (userId === loggedInUserId && (user.Policy.EnableVideoPlaybackTranscoding || user.Policy.EnableAudioPlaybackTranscoding)) {
+        if (user.Policy.EnableVideoPlaybackTranscoding || user.Policy.EnableAudioPlaybackTranscoding) {
             context.querySelector('.qualitySections').classList.remove('hide');
 
             if (appHost.supports('chromecast') && user.Policy.EnableVideoPlaybackTranscoding) {
@@ -284,14 +281,13 @@ import template from './playbackSettings.template.html';
             loading.show();
 
             const userId = self.options.userId;
-            const apiClient = ServerConnections.getApiClient(self.options.serverId);
+            const apiClient = self.options.apiClient;
             const userSettings = self.options.userSettings;
 
             apiClient.getUser(userId).then(user => {
 				self.currentUser = user;
                 userSettings.setUserInfo(userId, apiClient).then(() => {
                     self.dataLoaded = true;
-
                     loadForm(context, user, userSettings, apiClient);
                 });
             });

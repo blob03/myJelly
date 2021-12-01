@@ -480,8 +480,22 @@ export default function (options) {
 			autoplay: { delay: userSettings.swiperDelay() * 1000 }
 		};
 		
-		const swiperFX = userSettings.swiperFX() || 'horizontal';
+		let swiperFX = userSettings.swiperFX() || 'horizontal';
+		console.log("SwiperFX = " + swiperFX);
+		if (swiperFX === 'any') {
+			const FX = ['fade', 'flip', 'cube', 'coverflow', 'horizontal', 'vertical'];
+			let rand = Math.floor(Math.random() * (FX.length + 1));
+			swiperFX = FX[rand];
+		}
+		
 		switch(swiperFX) {	
+		
+			case 'none':
+				parameters.speed = 0;
+				parameters.direction = 'horizontal';
+				parameters.effect = 'slide';
+				break;
+				
 			case 'fade':
 			case 'flip':
 			case 'cube':

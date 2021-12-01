@@ -211,7 +211,7 @@ import template from './homeScreenSettings.template.html';
             else 
                 select.value = userValue;
         }
-        context.querySelector('.selectTVHomeScreen').value = userSettings.get('tvhome') || '';
+        context.querySelector('.selectTVHomeScreen').value = userSettings.TVHome();
     }
 
     function getPerLibrarySettingsHtml(item, user, userSettings) {
@@ -364,7 +364,7 @@ import template from './homeScreenSettings.template.html';
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
 		
-        userSettingsInstance.set('tvhome', context.querySelector('.selectTVHomeScreen').value);
+        userSettingsInstance.TVHome(context.querySelector('.selectTVHomeScreen').value);
         userSettingsInstance.set('homesection0', context.querySelector('#selectHomeSection1').value);
         userSettingsInstance.set('homesection1', context.querySelector('#selectHomeSection2').value);
         userSettingsInstance.set('homesection2', context.querySelector('#selectHomeSection3').value);
@@ -468,7 +468,7 @@ import template from './homeScreenSettings.template.html';
             loading.show();
 
             const userId = self.options.userId;
-            const apiClient = ServerConnections.getApiClient(self.options.serverId);
+            const apiClient = self.options.apiClient;
             const userSettings = self.options.userSettings;
 
             apiClient.getUser(userId).then(user => {

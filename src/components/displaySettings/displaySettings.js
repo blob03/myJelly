@@ -328,13 +328,12 @@ import viewContainer from '../viewContainer';
 
         loadData(autoFocus) {
             const self = this;
+			const apiClient = self.options.apiClient;
             const context = self.options.element;
 			const userId = self.options.userId;
 			const userSettings = self.options.userSettings;
 			
             loading.show();
-
-            const apiClient = ServerConnections.getApiClient(self.options.serverId);
             
 			return ServerConnections.user(apiClient).then((user) => {
 				self.currentUser = user;
