@@ -1308,7 +1308,7 @@
     "PlayFromBeginning": "Ludi de komenco",
     "PlayNext": "Ludi sekvan",
     "PlayNextEpisodeAutomatically": "Ludi sekvan epizodon aŭtomate",
-    "PlaybackData": "Ludada Dateno",
+    "PlaybackData": "Informo pri Ludado",
     "PlaybackErrorNoCompatibleStream": "Ĉi tiu kliento ne kongruas kun la plurmedioj kaj la servilo ne sendas kongruan plurmedian formaton.",
     "PlaybackErrorPlaceHolder": "Ĉi tio estas lokokupilo por fizikaj plurmedioj, kiujn Jellyfin ne povas ludi. Enmeti la diskon por ludi.",
     "PlaybackRate": "Ludada Rapido",

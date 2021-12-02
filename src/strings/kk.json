@@ -1308,7 +1308,7 @@
     "PlayFromBeginning": "Basynan oinatu",
     "PlayNext": "Kelesını oinatu",
     "PlayNextEpisodeAutomatically": "Kelesı telebölımdı avtomatty jüktep alu",
-    "PlaybackData": "Oinatu derekterı",
+    "PlaybackData": "Oinatu turaly",
     "PlaybackErrorNoCompatibleStream": "Būl klient tasyğyş derektermen üilesımsız jäne server üilesımdı pışımınde tasyğyş derekterın jıbermedı.",
     "PlaybackErrorPlaceHolder": "Būl Jellyfin oinata almaityn fizikalyq tasyğyştyñ toltyrğyşy. Oinatu üşın diskını salyñyz.",
     "PlaybackRate": "Oinatu qarqyny",

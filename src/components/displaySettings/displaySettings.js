@@ -16,6 +16,7 @@ import '../../elements/emby-button/emby-button';
 import ServerConnections from '../ServerConnections';
 import toast from '../toast/toast';
 import template from './displaySettings.template.html';
+import templateUserMenu from '../../controllers/user/menu/index.html';
 import * as LibraryMenu from '../../scripts/libraryMenu';
 import viewManager from '../viewManager/viewManager';
 import viewContainer from '../viewContainer';
@@ -220,6 +221,14 @@ import viewContainer from '../viewContainer';
         showOrHideMissingEpisodesField(context);
     }
 
+	function translateUserMenu() {
+			// retranslate the menu with a new display language.
+			let old = document.querySelector('.readOnlyContent');
+			let patch = document.createElement('div');
+			patch.innerHTML = globalize.translateHtml(templateUserMenu, 'core');
+			old.innerHTML = patch.querySelector('.readOnlyContent').innerHTML;
+	}
+
     function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
 		let newLayout;
 		let newDisplayLanguage = savedDisplayLanguage;
@@ -271,6 +280,7 @@ import viewContainer from '../viewContainer';
 					embed(instance.options, instance, newDisplayLanguage).then( () => {
 						LibraryMenu.setTitle(globalize.translate(instance.title));
 						LibraryMenu.updateUserInHeader(user);
+						translateUserMenu();
 						loading.hide();	
 						if (enableSaveConfirmation) 
 							toast(globalize.translate('SettingsSaved'));

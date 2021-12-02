@@ -25,13 +25,7 @@ export default function (view, params) {
         // this page can also be used by admins to change user preferences from the user edit page
         const userId = params.userId || Dashboard.getCurrentUserId();
         const page = this;
-	
-		// retranslate the menu with the display language in use.
-		let old = document.querySelector('.readOnlyContent');
-		let patch = document.createElement('div');
-		patch.innerHTML = globalize.translateHtml(template, 'core');
-		old.innerHTML = patch.querySelector('.readOnlyContent').innerHTML;
-	
+		
         document.querySelector('.lnkMyProfile').setAttribute('href', '#!/myprofile.html?userId=' + userId);
         document.querySelector('.lnkDisplayPreferences').setAttribute('href', '#!/mypreferencesdisplay.html?userId=' + userId);
         document.querySelector('.lnkHomePreferences').setAttribute('href', '#!/mypreferenceshome.html?userId=' + userId);
