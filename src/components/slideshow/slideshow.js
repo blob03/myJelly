@@ -481,7 +481,6 @@ export default function (options) {
 		};
 		
 		let swiperFX = userSettings.swiperFX() || 'horizontal';
-		console.log("SwiperFX = " + swiperFX);
 		if (swiperFX === 'any') {
 			const FX = ['fade', 'flip', 'cube', 'coverflow', 'horizontal', 'vertical'];
 			let rand = Math.floor(Math.random() * (FX.length + 1));

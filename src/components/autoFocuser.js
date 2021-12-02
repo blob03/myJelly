@@ -20,6 +20,10 @@ import layoutManager from './layoutManager';
         return layoutManager.tv;
     }
 
+	function onFocusIn(e) {
+            activeElement = e.target;
+    }
+		
     /**
      * Start AutoFocuser.
      */
@@ -28,11 +32,20 @@ import layoutManager from './layoutManager';
             return;
         }
 
-        window.addEventListener('focusin', function (e) {
-            activeElement = e.target;
-        });
-
+        window.addEventListener('focusin', onFocusIn);
         console.debug('AutoFocuser enabled');
+    }
+	
+	/**
+     * Stop AutoFocuser.
+     */
+    export function disable() {
+        if (!isEnabled()) {
+            return;
+        }
+
+        window.removeEventListener('focusin', onFocusIn);
+        console.debug('AutoFocuser disabled');
     }
 
     /**
@@ -100,5 +113,6 @@ import layoutManager from './layoutManager';
 export default {
     isEnabled: isEnabled,
     enable: enable,
+	disable: disable,
     autoFocus: autoFocus
 };

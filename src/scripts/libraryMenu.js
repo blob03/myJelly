@@ -147,7 +147,7 @@ import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
 
 		retranslateUi();
 		
-		if (user === '')
+		if (!user)
 			user = currentUser;
 		
         if (user && user.name) {
