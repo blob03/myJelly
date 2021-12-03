@@ -1308,7 +1308,7 @@
     "PlayFromBeginning": "Lejátszás az elejétől",
     "PlayNext": "Következő lejátszása",
     "PlayNextEpisodeAutomatically": "A következő epizód automatikus lejátszása",
-    "PlaybackData": "Lejátszási adatok",
+    "PlaybackData": "Lejátszási információk",
     "PlaybackErrorNoCompatibleStream": "Ez a kliens nem kompatibilis ezzel a médiával és a szerver nem tud kompatibilis streamet küldeni az eszközre.",
     "PlaybackErrorPlaceHolder": "Ez egy hely a fizikai médiában, amelyet a Jellyfin nem tud lejátszani. Kérjük, helyezze be a lemezt a lejátszáshoz.",
     "PlaybackRate": "Lejátszási sebesség",

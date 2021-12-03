@@ -18,7 +18,7 @@
     "LabelBackdrops": "Backdrops:",
     "LabelChromecastVersion": "Chromecast Version:",
     "LabelDisplayFontSize": "Display font size:",
-    "LabelJellyfin": "Jellyfin:",
+    "LabelJellyfinWeb": "Jellyfin-web:",
     "LabelScreensaverTime": "Delay before activation:",
     "LabelSourceLanguage": "Source language:",
     "LabelStrokeSize": "Text outline size:",

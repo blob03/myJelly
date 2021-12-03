@@ -34,7 +34,7 @@ export function populateLanguages(select, languages, view, val) {
 			else
 				html += "<option value='" + ISOName + "'>";
 			
-			html += languages[item][view] + "</option>";
+			html += languages[item][view] + " [ " + ISOName + " ]</option>";
 		}
 	});
     select.innerHTML += html;
@@ -68,7 +68,7 @@ export function populateSubsLanguages(select, languages, view, val) {
 		else
 			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "'>";
 		
-		html += languages[item][view] + "</option>";
+		html += languages[item][view] + " [ " + ISOName3L + " ]</option>";
 	});
     select.innerHTML += html;
 }
@@ -114,7 +114,7 @@ export function populateDictionaries(select, languages, view, val) {
 			else
 				html += " value='" + ISOName + "'>";
 			
-			html += languages[item][view] + "</option>";
+			html += languages[item][view] + " [ " + ISOName + " ]</option>";
 		}
 	});
 	select.innerHTML += html;
@@ -125,17 +125,14 @@ export function populateDictionaries(select, languages, view, val) {
 		if (pnode) {	
 			let nodeInfo = pnode.querySelector('.infoDetails');  
 			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLanguage[view] + ' [ ' + activeLanguage.ISOName + ' ]';
-			nodeInfo.querySelector('.infoSourceLanguage').innerHTML = ' ' + items.sourceDisplayName + ' [ ' + items.sourceISOName + ' ]';
 			nodeInfo.querySelector('.infoKeysTranslated').innerHTML = ' ' + items.progress + '% [ ' + items.keys + '/' + items.sourceKeys + ' ]';
 			nodeInfo.querySelector('.infoJellyfinKeysTranslated').innerHTML = ' ' + items.origProgress + '% [ ' + items.origKeys + '/' + items.origSourceKeys + ' ]';
 			nodeInfo.querySelector('.infoMyjellyKeysTranslated').innerHTML = ' ' + items.myProgress + '% [ ' + items.myKeys + '/' + items.mySourceKeys + ' ]';
 			
 			if (items.progress > 100 || items.origProgress > 100 || items.myProgress > 100) {
 				nodeInfo.querySelector('.warningIcon').classList.remove('hide');
-				nodeInfo.querySelector('.infoDetailsLegend').classList.remove('hide');
 			} else if (items.progress === 100) {
 				nodeInfo.querySelector('.doneIcon').classList.remove('hide');
-				nodeInfo.querySelector('.infoDetailsLegend').classList.remove('hide');
 			}
 		}		
 	});

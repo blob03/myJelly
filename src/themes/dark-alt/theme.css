@@ -423,7 +423,7 @@ html {
 }
 
 .listItem-border {
-    border-color: rgb(49, 60, 69) !important;
+    border-color: #2b2b2b !important;
 }
 
 .listItem-button:hover:not(:disabled) {
@@ -1086,4 +1086,15 @@ fieldset {
 	font-size: 100%;
 	font-weight: 600;
 	font-style: normal;
+}
+
+.material-icons.doneIcon {
+	color: rgb(167, 172, 176) !important;
+}
+
+.mdl-spinner__layer-1,
+.mdl-spinner__layer-2,
+.mdl-spinner__layer-3,
+.mdl-spinner__layer-4 {
+    border-color: #00a4dc !important;
 }

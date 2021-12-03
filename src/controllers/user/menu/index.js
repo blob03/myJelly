@@ -42,10 +42,10 @@ export default function (view, params) {
 
         document.querySelector('.lnkControlsPreferences').classList.toggle('hide', layoutManager.mobile);
 
-        ApiClient.getQuickConnect('Status')
-            .then(status => {
-                if (status !== 'Unavailable') {
-                    document.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
+        ApiClient.getQuickConnect('Enabled')
+            .then(enabled => {
+                if (enabled === true) {
+                    page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
                 }
             })
             .catch(() => {

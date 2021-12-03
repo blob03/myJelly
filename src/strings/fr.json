@@ -244,7 +244,7 @@
     "EnablePhotos": "Voir les photos",
     "EnablePhotosHelp": "Les images seront détectées et affichées avec les autres fichiers multimédia.",
     "EnablePlugin": "Activer",
-    "EnableQuickConnect": "Activer la connexion rapide sur ce serveur",
+    "EnableQuickConnect": "Activer la fonctionnalité 'Quick Connect' sur ce serveur",
     "EnableStreamLooping": "Reboucler les streaming en direct",
     "EnableStreamLoopingHelp": "Activer cette option si les streaming en direct ne contiennent que quelques secondes de données et doivent être continuellement redemandés. Ne pas activer sans raison car cette option peut causer des problèmes.",
     "EnableThemeSongsHelp": "Lire les thèmes musicaux en arrière-plan pendant la navigation dans la médiathèque.",

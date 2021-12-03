@@ -637,7 +637,7 @@ select option:selected {
 }
 
 .mdl-slider-background-lower {
-	background: linear-gradient(135deg, rgb(42, 3, 68) 0%, rgb(126, 66, 216) 50%, rgb(173, 151, 222) 100%);
+	background: linear-gradient(135deg, rgb(39, 17, 114) 0%, rgb(92, 64, 229) 100%);
 }
 
 .mdl-slider::-moz-range-thumb {
@@ -980,7 +980,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .checkboxIcon-checked {
-	color: #43395b !important;
+	color: #ffa700 !important;
 	padding-left: .2em;
 	padding-bottom: .2em;
 	transform: scale(1.8);
@@ -997,7 +997,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .emby-checkbox + span + .checkboxOutline {
-    border-color: #43395b;
+    border-color: #ffa700;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
@@ -1123,8 +1123,12 @@ fieldset {
 }
 
 .LangDetailsHeader {
-	color: #6b737d;
+	color: #202020;
 	font-size: 100%;
 	font-weight: 600;
 	font-style: normal;
+}
+
+.material-icons.doneIcon {
+	color: #ffa700 !important;
 }
