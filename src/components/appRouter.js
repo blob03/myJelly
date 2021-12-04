@@ -169,29 +169,6 @@ class AppRouter {
         return this.promiseShow;
     }
 	
-	async redirect(path) {
-        if (this.promiseShow) await this.promiseShow;
-
-        // ensure the path does not start with '#!' since the router adds this
-        if (path.startsWith('#!')) {
-            path = path.substring(2);
-        }
-
-        if (path.indexOf('/') !== 0 && path.indexOf('://') === -1) {
-            path = '/' + path;
-        }
-
-        path = path.replace(this.baseUrl(), '');
-
-        this.promiseShow = new Promise((resolve) => {
-            this.resolveOnNextShow = resolve;
-            // Schedule a call to return the promise
-            setTimeout(() => page.replace(path), 0);
-        });
-
-        return this.promiseShow;
-    }
-
     async showDirect(path) {
         if (this.promiseShow) await this.promiseShow;
 

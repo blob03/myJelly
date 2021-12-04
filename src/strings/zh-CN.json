@@ -1308,7 +1308,7 @@
     "PlayFromBeginning": "从头播放",
     "PlayNext": "播放下一个",
     "PlayNextEpisodeAutomatically": "自动播放下一集",
-    "PlaybackData": "播放数据",
+    "PlaybackData": "播放信息",
     "PlaybackErrorNoCompatibleStream": "该客户端与媒体不兼容，服务器未发送兼容的媒体格式。",
     "PlaybackErrorPlaceHolder": "这是 Jellyfin 无法播放的物理媒体的占位符。 请插入光盘播放。",
     "PlaybackRate": "播放速率",

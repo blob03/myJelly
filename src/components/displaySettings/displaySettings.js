@@ -222,11 +222,20 @@ import viewContainer from '../viewContainer';
     }
 
 	function translateUserMenu() {
-			// retranslate the menu with a new display language.
-			let old = document.querySelector('.readOnlyContent');
+		// Force a retranslation of the user menu with the latest display language.
+		let old = document.querySelector('.readOnlyContent');
+		if (old) {
 			let patch = document.createElement('div');
 			patch.innerHTML = globalize.translateHtml(templateUserMenu, 'core');
 			old.innerHTML = patch.querySelector('.readOnlyContent').innerHTML;
+		}
+			
+		let prefs = document.querySelector('#myPreferencesMenuPage');
+		if (prefs)
+			prefs.setAttribute('data-title', globalize.translate('Settings'));
+		prefs = document.querySelector('#displayPreferencesPage');
+		if (prefs)
+			prefs.setAttribute('data-title', globalize.translate('Display'));
 	}
 
     function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {

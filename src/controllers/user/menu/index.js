@@ -26,21 +26,21 @@ export default function (view, params) {
         const userId = params.userId || Dashboard.getCurrentUserId();
         const page = this;
 		
-        document.querySelector('.lnkMyProfile').setAttribute('href', '#!/myprofile.html?userId=' + userId);
-        document.querySelector('.lnkDisplayPreferences').setAttribute('href', '#!/mypreferencesdisplay.html?userId=' + userId);
-        document.querySelector('.lnkHomePreferences').setAttribute('href', '#!/mypreferenceshome.html?userId=' + userId);
-        document.querySelector('.lnkPlaybackPreferences').setAttribute('href', '#!/mypreferencesplayback.html?userId=' + userId);
-        document.querySelector('.lnkSubtitlePreferences').setAttribute('href', '#!/mypreferencessubtitles.html?userId=' + userId);
-        document.querySelector('.lnkQuickConnectPreferences').setAttribute('href', '#!/mypreferencesquickconnect.html');
-        document.querySelector('.lnkControlsPreferences').setAttribute('href', '#!/mypreferencescontrols.html?userId=' + userId);
+        page.querySelector('.lnkMyProfile').setAttribute('href', '#!/myprofile.html?userId=' + userId);
+        page.querySelector('.lnkDisplayPreferences').setAttribute('href', '#!/mypreferencesdisplay.html?userId=' + userId);
+        page.querySelector('.lnkHomePreferences').setAttribute('href', '#!/mypreferenceshome.html?userId=' + userId);
+        page.querySelector('.lnkPlaybackPreferences').setAttribute('href', '#!/mypreferencesplayback.html?userId=' + userId);
+        page.querySelector('.lnkSubtitlePreferences').setAttribute('href', '#!/mypreferencessubtitles.html?userId=' + userId);
+        page.querySelector('.lnkQuickConnectPreferences').setAttribute('href', '#!/mypreferencesquickconnect.html');
+        page.querySelector('.lnkControlsPreferences').setAttribute('href', '#!/mypreferencescontrols.html?userId=' + userId);
 
         const supportsClientSettings = appHost.supports('clientsettings');
-        document.querySelector('.clientSettings').classList.toggle('hide', !supportsClientSettings);
+        page.querySelector('.clientSettings').classList.toggle('hide', !supportsClientSettings);
 
         const supportsMultiServer = appHost.supports('multiserver');
-        document.querySelector('.selectServer').classList.toggle('hide', !supportsMultiServer);
+        page.querySelector('.selectServer').classList.toggle('hide', !supportsMultiServer);
 
-        document.querySelector('.lnkControlsPreferences').classList.toggle('hide', layoutManager.mobile);
+        page.querySelector('.lnkControlsPreferences').classList.toggle('hide', layoutManager.mobile);
 
         ApiClient.getQuickConnect('Enabled')
             .then(enabled => {
@@ -53,19 +53,17 @@ export default function (view, params) {
             });
 
         ApiClient.getUser(userId).then( (user) => {
-			LibraryMenu.updateUserInHeader();
-			LibraryMenu.setTitle(globalize.translate('Settings'));
-            document.querySelector('.headerUsername').innerHTML = user.Name;
+            page.querySelector('.headerUsername').innerHTML = user.Name;
             if (user.Policy.IsAdministrator && !layoutManager.tv) {
-                document.querySelector('.adminSection').classList.remove('hide');
+                page.querySelector('.adminSection').classList.remove('hide');
             }
         });
 
         // Hide the actions if user preferences are being edited for a different user
         if (params.userId && params.userId !== Dashboard.getCurrentUserId) {
-            document.querySelector('.userSection').classList.add('hide');
-            document.querySelector('.adminSection').classList.add('hide');
-            document.querySelector('.lnkControlsPreferences').classList.add('hide');
+            page.querySelector('.userSection').classList.add('hide');
+            page.querySelector('.adminSection').classList.add('hide');
+            page.querySelector('.lnkControlsPreferences').classList.add('hide');
         }
 
         import('../../../components/autoFocuser').then(({default: autoFocuser}) => {
