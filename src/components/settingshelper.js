@@ -7,8 +7,7 @@ import cultures from '../scripts/cultures';
  */
 
 export function populateLanguages(select, languages, view, val) {
-    let html = '';
-	
+   
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
 		let fa = languages[a][view].toLowerCase(),
@@ -22,22 +21,25 @@ export function populateLanguages(select, languages, view, val) {
 	
 	order.forEach(item => {
 		let ISOName = languages[item].TwoLetterISOLanguageName;
+		let w = document.createElement("option");
 		
 		// Some cultures appear to have a three letters code (ISO 639-2) only.
 		// This seems to be the case for swiss German and a few others.
-		if (!ISOName && languages[item].ThreeLetterISOLanguageName)
+		if (!ISOName)
 			ISOName = languages[item].ThreeLetterISOLanguageName;
 		
 		if (ISOName) {
-			if (val && val === ISOName) 
-				html += "<option value='" + ISOName + "' selected>";
-			else
-				html += "<option value='" + ISOName + "'>";
 			
-			html += languages[item][view] + " [ " + ISOName + " ]</option>";
+			w.value = ISOName;
+			w.asideText = `${ISOName}`;
+			
+			if (val && val === ISOName) 
+				w.selected = true;
+			
+			w.text = languages[item][view];
+			select.options.add(w, undefined); 
 		}
 	});
-    select.innerHTML += html;
 }
 
 /**
@@ -46,8 +48,7 @@ export function populateLanguages(select, languages, view, val) {
  */
 
 export function populateSubsLanguages(select, languages, view, val) {
-    let html = '';
-	
+   
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
 		let fa = languages[a][view].toLowerCase(),
@@ -62,15 +63,18 @@ export function populateSubsLanguages(select, languages, view, val) {
 	order.forEach(item => {
 		let ISOName3L = languages[item].ThreeLetterISOLanguageName;
 		let ISOName2L = languages[item].TwoLetterISOLanguageName;
-		
-		if (val && val === ISOName3L) 
-			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "' selected>";
-		else
-			html += "<option ISOName2L='" + ISOName2L + "' value='" + ISOName3L + "'>";
-		
-		html += languages[item][view] + " [ " + ISOName3L + " ]</option>";
+		let w = document.createElement("option");
+				
+		w = document.createElement("option");
+		w.value = ISOName3L;
+		w.asideText = `${ISOName3L}`;
+		w.setAttribute('ISOName2L', ISOName2L);
+		if (val && val === ISOName3L)
+			w.selected = true;
+	
+		w.text = languages[item][view];
+		select.options.add(w, undefined); 
 	});
-    select.innerHTML += html;
 }
 
 /**
@@ -79,9 +83,8 @@ export function populateSubsLanguages(select, languages, view, val) {
  */
  
 export function populateDictionaries(select, languages, view, val) {		
-	let html = '';
 	let activeLanguage = { "DisplayName": "", "ISOName": "" };
-	let lang = (val === '')? globalize.getDefaultCulture(): val; 
+	let lang = val? val: globalize.getDefaultCulture(); 
 	
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
@@ -96,6 +99,7 @@ export function populateDictionaries(select, languages, view, val) {
 	
 	order.forEach(item => {
 		let ISOName = languages[item].TwoLetterISOLanguageName;
+		let w = document.createElement("option");
 		
 		// Some cultures appear to have a three letters code (ISO 639-2) only.
 		// This is the case for swiss German and a few others.
@@ -103,21 +107,21 @@ export function populateDictionaries(select, languages, view, val) {
 			ISOName = languages[item].ThreeLetterISOLanguageName;
 		
 		if (ISOName) {
-			html += "<option";
 			if (lang && lang === ISOName) {
 				activeLanguage = languages[item];
 				activeLanguage.ISOName = ISOName;
 			}
 			
+			w.value = ISOName;
+			w.asideText = `${ISOName}`;
+
 			if (val && val === ISOName)
-				html += " value='" + ISOName + "' class='selected' selected>";
-			else
-				html += " value='" + ISOName + "'>";
+				w.selected = true;
 			
-			html += languages[item][view] + " [ " + ISOName + " ]</option>";
+			w.text = languages[item][view];
+			select.options.add(w, undefined); 
 		}
 	});
-	select.innerHTML += html;
 		
 	globalize.getCoreDictionaryProgress(lang).then( (items) => {
 		
@@ -131,6 +135,9 @@ export function populateDictionaries(select, languages, view, val) {
 			
 			if (items.progress > 100 || items.origProgress > 100 || items.myProgress > 100) {
 				nodeInfo.querySelector('.warningIcon').classList.remove('hide');
+			} else if (items.sourceISOName === lang) {
+				// lang is source.
+				nodeInfo.querySelector('.hubIcon').classList.remove('hide'); 
 			} else if (items.progress === 100) {
 				nodeInfo.querySelector('.doneIcon').classList.remove('hide');
 			}

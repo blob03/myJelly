@@ -8,18 +8,15 @@ import settingsHelper from '../../components/settingshelper';
 
 /* eslint-disable indent */
 
-    function populateLanguages(select) {        
-		let languages =  ApiClient.getCultures();
-		let html = '';
-		html += "<option value=''></option>";
-		for (let i = 0, length = languages.length; i < length; i++) {
-			const culture = languages[i];
-			html += "<option value='" + culture.TwoLetterISOLanguageName + "'>" + culture.DisplayName + '</option>';
-		}
-		select.innerHTML = html;
+    function populateLanguages(selectLanguage) {        
+		loading.show();
+		ApiClient.getCultures().then(allCultures => {
+			settingsHelper.populateLanguages(selectLanguage, allCultures, "DisplayName");
+			loading.hide();
+		});
     }
 
-    function populateCountries(select) {
+    function populateCountries(selectCountry) {
         return ApiClient.getCountries().then(function(allCountries) {
             let html = '';
             html += "<option value=''></option>";
@@ -27,7 +24,7 @@ import settingsHelper from '../../components/settingshelper';
                 const culture = allCountries[i];
                 html += "<option value='" + culture.TwoLetterISORegionName + "'>" + culture.DisplayName + '</option>';
             }
-            select.innerHTML = html;
+            selectCountry.innerHTML = html;
         });
     }
 

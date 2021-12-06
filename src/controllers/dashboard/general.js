@@ -13,6 +13,7 @@ import alert from '../../components/alert';
 /* eslint-disable indent */
 
     function loadPage(page, config, languageOptions, systemInfo) {
+		loading.show();
         page.querySelector('#txtServerName').value = systemInfo.ServerName;
         page.querySelector('#txtCachePath').value = systemInfo.CachePath || '';
         page.querySelector('#chkQuickConnectAvailable').checked = config.QuickConnectAvailable === true;
@@ -22,15 +23,6 @@ import alert from '../../components/alert';
 		let selectLanguage = page.querySelector('#selectLocalizationLanguage');
 		
 		ApiClient.getCultures().then(allCultures => {
-			allCultures.sort((a, b) => {
-				let fa = a.DisplayName.toLowerCase(),
-				fb = b.DisplayName.toLowerCase();
-				if (fa < fb) 
-					return -1;
-				if (fa > fb) 
-					return 1;
-				return 0;
-			});
 			settingsHelper.populateLanguages(selectLanguage, allCultures, "DisplayName", config.UICulture);
 			loading.hide();
 		});

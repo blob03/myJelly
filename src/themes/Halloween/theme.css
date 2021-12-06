@@ -164,22 +164,6 @@ html {
     color: inherit;
 }
 
-
-
-.inputLabel,
-.inputLabelUnfocused,
-.paperListLabel,
-.textareaLabelUnfocused {
-    color: #555;
-}
-
-.button-link,
-.inputLabelFocused,
-.selectLabelFocused,
-.textareaLabelFocused {
-    color: #ffc579 !important;
-}
-
 .button-link:hover {
 	color: #fff !important;
 }
@@ -1129,6 +1113,28 @@ fieldset {
 	font-style: normal;
 }
 
+.material-icons.warningIcon,
+.material-icons.hubIcon,
 .material-icons.doneIcon {
 	color: #ffa700 !important;
+}
+
+.inputLabel,
+.checkboxLabel,
+.selectLabel,
+.inputLabelUnfocused,
+.sliderLabel,
+.paperListLabel,
+.textareaLabelUnfocused {
+    color: #202020;
+}
+
+.button-link,
+.checkboxLabelFocused,
+.selectLabelFocused,
+.inputLabelFocused,
+.sliderLabelFocused,
+.selectLabelFocused,
+.textareaLabelFocused {
+    color: #ffc579 !important;
 }

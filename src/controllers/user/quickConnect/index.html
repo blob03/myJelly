@@ -2,8 +2,9 @@
     <form class="quickConnectSettingsContainer">
         <div class="verticalSection">
             <h2 class="sectionTitle">${QuickConnect}</h2>
-            <div>${QuickConnectDescription}</div>
-            <br />
+			<div class="fieldDescription" style="margin: 2em 0 2em;">
+				${QuickConnectDescription}
+			</div>
             <div class="inputContainer">
                 <input is="emby-input" type="number" min="0" max="999999" required id="txtQuickConnectCode" label="${LabelQuickConnectCode}" autocomplete="off" />
             </div>

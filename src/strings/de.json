@@ -1462,7 +1462,7 @@
     "Suggestions": "Empfehlungen",
     "Sunday": "Sonntag",
     "Sync": "Synchronisation",
-    "SyncPlayAccessHelp": "Wähle die Berechtigungsstufe, die dieser Benutzer auf das SyncPlay-Feature hat. Das SyncPlay ermöglicht die Synchronisierung der Wiedergabe mit anderen Geräten.",
+    "SyncPlayAccessHelp": "Das SyncPlay-Feature ermöglicht die Synchronisierung der Wiedergabe mit anderen Geräten. Wähle die Berechtigungsstufe, die dieser Benutzer auf das SyncPlay hat.",
     "SyncPlayGroupDefaultTitle": "{0}'s Gruppe",
     "SystemDlnaProfilesHelp": "Systemprofile sind schreibgeschützt. Änderungen an einem Systemprofil werden als neues benutzerdefiniertes Profil gespeichert.",
     "TV": "TV",
