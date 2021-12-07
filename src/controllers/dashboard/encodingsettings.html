@@ -12,6 +12,7 @@
                 <div class="selectContainer">
                     <select is="emby-select" id="selectVideoDecoder" label="${LabelHardwareAccelerationType}">
                         <option value="">${None}</option>
+						<option disabled>${OptionDivider}</option>
                         <option value="amf">AMD AMF</option>
                         <option value="qsv">Intel Quick Sync</option>
                         <option value="mediacodec">MediaCodec Android</option>
@@ -42,7 +43,7 @@
                         <div class="checkboxList">
                             <label>
                                 <input type="checkbox" is="emby-checkbox" class="chkDecodeCodec" data-codec="h264" data-types="amf,qsv,nvenc,vaapi,omx,mediacodec,videotoolbox" />
-                                <span>H264</span>
+                                <span>H.264</span>
                             </label>
                             <label>
                                 <input type="checkbox" is="emby-checkbox" class="chkDecodeCodec" data-codec="hevc" data-types="amf,qsv,nvenc,vaapi,mediacodec,videotoolbox" />
@@ -127,7 +128,8 @@
                     </div>
                     <div class="selectContainer">
                         <select is="emby-select" id="selectTonemappingAlgorithm" label="${LabelTonemappingAlgorithm}">
-                            <option value="none">None</option>
+							<option value="none">${None}</option>
+							<option disabled>${OptionDivider}</option>
                             <option value="clip">Clip</option>
                             <option value="linear">Linear</option>
                             <option value="gamma">Gamma</option>
@@ -142,6 +144,7 @@
                     <div class="selectContainer">
                         <select is="emby-select" id="selectTonemappingRange" label="${LabelTonemappingRange}">
                             <option value="auto">${Auto}</option>
+							<option disabled>${OptionDivider}</option>
                             <option value="tv">TV</option>
                             <option value="pc">PC</option>
                         </select>
@@ -167,7 +170,9 @@
 
                 <div class="selectContainer">
                     <select is="emby-select" id="selectThreadCount" label="${LabelTranscodingThreadCount}">
-                        <option value="-1">${Auto}</option>
+						<option value="-1">${Auto}</option>
+						<option value="0">${OptionMax}</option>
+						<option disabled>${OptionDivider}</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -176,7 +181,6 @@
                         <option value="6">6</option>
                         <option value="7">7</option>
                         <option value="8">8</option>
-                        <option value="0">${OptionMax}</option>
                     </select>
                     <div class="fieldDescription">${LabelTranscodingThreadCountHelp}</div>
                 </div>
@@ -229,6 +233,7 @@
                 <div class="selectContainer">
                     <select is="emby-select" id="selectEncoderPreset" label="${LabelEncoderPreset}">
                         <option value="">${Auto}</option>
+						<option disabled>${OptionDivider}</option>
                         <option value="veryslow">veryslow</option>
                         <option value="slower">slower</option>
                         <option value="slow">slow</option>

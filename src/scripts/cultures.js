@@ -589,7 +589,7 @@ export function getCultures() {
 		"ThreeLetterISOLanguageNames": [
 		  "fre",
 		  "fra"
-		],
+		]
 	  },
 	  "fr-CA": {
 		"Name": "French, Canada",
@@ -1389,10 +1389,30 @@ export function getCultures() {
 		  "pol"
 		]
 	  },
-	  "pt-PT": {
+	  "pr": {
+		"Name": "Pirate",
+		"DisplayName": "Pirate",
+		"DisplayNativeName": "Pirate",
+		"TwoLetterISOLanguageName": "pr",
+		"ThreeLetterISOLanguageName": "pir",
+		"ThreeLetterISOLanguageNames": [
+		  "pir"
+		]
+	  },
+	  "pt": {
 		"Name": "Portuguese",
 		"DisplayName": "Portuguese",
 		"DisplayNativeName": "Português",
+		"TwoLetterISOLanguageName": "pt",
+		"ThreeLetterISOLanguageName": "prt",
+		"ThreeLetterISOLanguageNames": [
+		  "por"
+		]
+	  },
+	  "pt-PT": {
+		"Name": "Portuguese",
+		"DisplayName": "Portuguese, Portugal",
+		"DisplayNativeName": "Português, Portugal",
 		"TwoLetterISOLanguageName": "pt-PT",
 		"ThreeLetterISOLanguageName": "por",
 		"ThreeLetterISOLanguageNames": [

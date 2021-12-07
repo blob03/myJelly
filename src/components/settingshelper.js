@@ -84,6 +84,7 @@ export function populateSubsLanguages(select, languages, view, val) {
  
 export function populateDictionaries(select, languages, view, val) {		
 	let activeLanguage = { "DisplayName": "", "ISOName": "" };
+	let sourceLanguage = globalize.getSourceCulture();
 	let lang = val? val: globalize.getDefaultCulture(); 
 	
 	let order = Object.keys(languages);
@@ -114,7 +115,9 @@ export function populateDictionaries(select, languages, view, val) {
 			
 			w.value = ISOName;
 			w.asideText = `${ISOName}`;
-
+			if (sourceLanguage === w.value)
+				w.icon = 'hub';
+			
 			if (val && val === ISOName)
 				w.selected = true;
 			

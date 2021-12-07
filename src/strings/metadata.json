@@ -1,0 +1,732 @@
+{
+    "af": {
+        "Culture": "af",
+        "Filename": "af.json",
+        "displayName": "Afrikaans",
+        "displayNativeName": "Afrikaans",
+        "isSource": false,
+        "Keys#": 792,
+        "Orphans#": 0,
+        "Completed%": 49
+    },
+    "ar": {
+        "Culture": "ar",
+        "Filename": "ar.json",
+        "displayName": "Arabic",
+        "displayNativeName": "العربية",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "as": {
+        "Culture": "as",
+        "Filename": "as.json",
+        "displayName": "Assamese",
+        "displayNativeName": "অসমীয়া",
+        "isSource": false,
+        "Keys#": 2,
+        "Orphans#": 0,
+        "Completed%": 0
+    },
+    "be-BY": {
+        "Culture": "be-BY",
+        "Filename": "be-BY.json",
+        "displayName": "Belarusian",
+        "displayNativeName": "Беларуская",
+        "isSource": false,
+        "Keys#": 19,
+        "Orphans#": 0,
+        "Completed%": 1
+    },
+    "bg-BG": {
+        "Culture": "bg-BG",
+        "Filename": "bg-BG.json",
+        "displayName": "Bulgarian",
+        "displayNativeName": "Български",
+        "isSource": false,
+        "Keys#": 1399,
+        "Orphans#": 0,
+        "Completed%": 87
+    },
+    "bn-BD": {
+        "Culture": "bn-BD",
+        "Filename": "bn-BD.json",
+        "displayName": "Bengali",
+        "displayNativeName": "বাংলা",
+        "isSource": false,
+        "Keys#": 132,
+        "Orphans#": 0,
+        "Completed%": 8
+    },
+    "ca": {
+        "Culture": "ca",
+        "Filename": "ca.json",
+        "displayName": "Catalan; Valencian",
+        "displayNativeName": "Català",
+        "isSource": false,
+        "Keys#": 1549,
+        "Orphans#": 0,
+        "Completed%": 96
+    },
+    "cs": {
+        "Culture": "cs",
+        "Filename": "cs.json",
+        "displayName": "Czech",
+        "displayNativeName": "Česky",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "cy": {
+        "Culture": "cy",
+        "Filename": "cy.json",
+        "displayName": "Welsh",
+        "displayNativeName": "Cymraeg",
+        "isSource": false,
+        "Keys#": 7,
+        "Orphans#": 0,
+        "Completed%": 0
+    },
+    "da": {
+        "Culture": "da",
+        "Filename": "da.json",
+        "displayName": "Danish",
+        "displayNativeName": "Dansk",
+        "isSource": false,
+        "Keys#": 1527,
+        "Orphans#": 0,
+        "Completed%": 95
+    },
+    "de": {
+        "Culture": "de",
+        "Filename": "de.json",
+        "displayName": "German",
+        "displayNativeName": "Deutsch",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "el": {
+        "Culture": "el",
+        "Filename": "el.json",
+        "displayName": "Greek, Modern (1453-)",
+        "displayNativeName": "Ελληνικά",
+        "isSource": false,
+        "Keys#": 1088,
+        "Orphans#": 0,
+        "Completed%": 68
+    },
+    "en-GB": {
+        "Culture": "en-GB",
+        "Filename": "en-GB.json",
+        "displayName": "English, Great Britain",
+        "displayNativeName": "English, Great Britain",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "en-US": {
+        "Culture": "en-US",
+        "Filename": "en-US.json",
+        "displayName": "English",
+        "displayNativeName": "English",
+        "isSource": true,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "eo": {
+        "Culture": "eo",
+        "Filename": "eo.json",
+        "displayName": "Esperanto",
+        "displayNativeName": "Esperanto",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "es-419": {
+        "Culture": "es-419",
+        "Filename": "es-419.json",
+        "displayName": "Spanish, Latin America",
+        "displayNativeName": "Español, América Latina",
+        "isSource": false,
+        "Keys#": 1519,
+        "Orphans#": 0,
+        "Completed%": 95
+    },
+    "es-AR": {
+        "Culture": "es-AR",
+        "Filename": "es-AR.json",
+        "displayName": "Spanish, Argentina",
+        "displayNativeName": "Español, República Argentina",
+        "isSource": false,
+        "Keys#": 1516,
+        "Orphans#": 0,
+        "Completed%": 94
+    },
+    "es-DO": {
+        "Culture": "es-DO",
+        "Filename": "es-DO.json",
+        "displayName": "Spanish, Dominican Republic",
+        "displayNativeName": "Español, República Dominicana",
+        "isSource": false,
+        "Keys#": 20,
+        "Orphans#": 0,
+        "Completed%": 1
+    },
+    "es-MX": {
+        "Culture": "es-MX",
+        "Filename": "es-MX.json",
+        "displayName": "Spanish, Mexico",
+        "displayNativeName": "Español, Mexico",
+        "isSource": false,
+        "Keys#": 1538,
+        "Orphans#": 0,
+        "Completed%": 96
+    },
+    "es": {
+        "Culture": "es",
+        "Filename": "es.json",
+        "displayName": "Spanish, castellano",
+        "displayNativeName": "Español, castellano",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "et": {
+        "Culture": "et",
+        "Filename": "et.json",
+        "displayName": "Estonian",
+        "displayNativeName": "Eesti",
+        "isSource": false,
+        "Keys#": 1586,
+        "Orphans#": 0,
+        "Completed%": 99
+    },
+    "fa": {
+        "Culture": "fa",
+        "Filename": "fa.json",
+        "displayName": "Persian",
+        "displayNativeName": "فارسی",
+        "isSource": false,
+        "Keys#": 1523,
+        "Orphans#": 0,
+        "Completed%": 95
+    },
+    "fi": {
+        "Culture": "fi",
+        "Filename": "fi.json",
+        "displayName": "Finnish",
+        "displayNativeName": "Suomi",
+        "isSource": false,
+        "Keys#": 1418,
+        "Orphans#": 0,
+        "Completed%": 88
+    },
+    "fil": {
+        "Culture": "fil",
+        "Filename": "fil.json",
+        "displayName": "Filipino",
+        "displayNativeName": "Filipino",
+        "isSource": false,
+        "Keys#": 51,
+        "Orphans#": 0,
+        "Completed%": 3
+    },
+    "fr-CA": {
+        "Culture": "fr-CA",
+        "Filename": "fr-CA.json",
+        "displayName": "French, Canada",
+        "displayNativeName": "Français, Canada",
+        "isSource": false,
+        "Keys#": 713,
+        "Orphans#": 0,
+        "Completed%": 44
+    },
+    "fr": {
+        "Culture": "fr",
+        "Filename": "fr.json",
+        "displayName": "French",
+        "displayNativeName": "Français",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "gl": {
+        "Culture": "gl",
+        "Filename": "gl.json",
+        "displayName": "Galician",
+        "displayNativeName": "Galego",
+        "isSource": false,
+        "Keys#": 66,
+        "Orphans#": 0,
+        "Completed%": 4
+    },
+    "gsw": {
+        "Culture": "gsw",
+        "Filename": "gsw.json",
+        "displayName": "Swiss German; Alemannic; Alsatian",
+        "displayNativeName": "Alemannisch",
+        "isSource": false,
+        "Keys#": 125,
+        "Orphans#": 0,
+        "Completed%": 7
+    },
+    "he": {
+        "Culture": "he",
+        "Filename": "he.json",
+        "displayName": "Hebrew",
+        "displayNativeName": "עברית",
+        "isSource": false,
+        "Keys#": 956,
+        "Orphans#": 0,
+        "Completed%": 59
+    },
+    "hi-IN": {
+        "Culture": "hi-IN",
+        "Filename": "hi-IN.json",
+        "displayName": "Hindi",
+        "displayNativeName": "हिन्दी",
+        "isSource": false,
+        "Keys#": 129,
+        "Orphans#": 0,
+        "Completed%": 8
+    },
+    "hr": {
+        "Culture": "hr",
+        "Filename": "hr.json",
+        "displayName": "Croatian",
+        "displayNativeName": "Hrvatski",
+        "isSource": false,
+        "Keys#": 1188,
+        "Orphans#": 0,
+        "Completed%": 74
+    },
+    "hu": {
+        "Culture": "hu",
+        "Filename": "hu.json",
+        "displayName": "Hungarian",
+        "displayNativeName": "Magyar",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "id": {
+        "Culture": "id",
+        "Filename": "id.json",
+        "displayName": "Indonesian",
+        "displayNativeName": "Bahasa Indonesia",
+        "isSource": false,
+        "Keys#": 1112,
+        "Orphans#": 0,
+        "Completed%": 69
+    },
+    "is-IS": {
+        "Culture": "is-IS",
+        "Filename": "is-IS.json",
+        "displayName": "Icelandic",
+        "displayNativeName": "Íslenska",
+        "isSource": false,
+        "Keys#": 448,
+        "Orphans#": 0,
+        "Completed%": 28
+    },
+    "it": {
+        "Culture": "it",
+        "Filename": "it.json",
+        "displayName": "Italian",
+        "displayNativeName": "Italiano",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "ja": {
+        "Culture": "ja",
+        "Filename": "ja.json",
+        "displayName": "Japanese",
+        "displayNativeName": "日本語",
+        "isSource": false,
+        "Keys#": 1490,
+        "Orphans#": 0,
+        "Completed%": 93
+    },
+    "kk": {
+        "Culture": "kk",
+        "Filename": "kk.json",
+        "displayName": "Kazakh",
+        "displayNativeName": "Қазақша",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "ko": {
+        "Culture": "ko",
+        "Filename": "ko.json",
+        "displayName": "Korean",
+        "displayNativeName": "한국어",
+        "isSource": false,
+        "Keys#": 1556,
+        "Orphans#": 0,
+        "Completed%": 97
+    },
+    "lt-LT": {
+        "Culture": "lt-LT",
+        "Filename": "lt-LT.json",
+        "displayName": "Lithuanian",
+        "displayNativeName": "Lietuvių",
+        "isSource": false,
+        "Keys#": 843,
+        "Orphans#": 0,
+        "Completed%": 52
+    },
+    "lv": {
+        "Culture": "lv",
+        "Filename": "lv.json",
+        "displayName": "Latvian",
+        "displayNativeName": "Latviešu",
+        "isSource": false,
+        "Keys#": 1088,
+        "Orphans#": 0,
+        "Completed%": 68
+    },
+    "mk": {
+        "Culture": "mk",
+        "Filename": "mk.json",
+        "displayName": "Macedonian",
+        "displayNativeName": "Македонски",
+        "isSource": false,
+        "Keys#": 19,
+        "Orphans#": 0,
+        "Completed%": 1
+    },
+    "ml": {
+        "Culture": "ml",
+        "Filename": "ml.json",
+        "displayName": "Malayalam",
+        "displayNativeName": "മലയാളം",
+        "isSource": false,
+        "Keys#": 1575,
+        "Orphans#": 0,
+        "Completed%": 98
+    },
+    "mn": {
+        "Culture": "mn",
+        "Filename": "mn.json",
+        "displayName": "Mongolian",
+        "displayNativeName": "Монгол",
+        "isSource": false,
+        "Keys#": 95,
+        "Orphans#": 0,
+        "Completed%": 5
+    },
+    "mr": {
+        "Culture": "mr",
+        "Filename": "mr.json",
+        "displayName": "Marathi",
+        "displayNativeName": "मराठी",
+        "isSource": false,
+        "Keys#": 91,
+        "Orphans#": 0,
+        "Completed%": 5
+    },
+    "ms": {
+        "Culture": "ms",
+        "Filename": "ms.json",
+        "displayName": "Malay",
+        "displayNativeName": "Bahasa Melayu",
+        "isSource": false,
+        "Keys#": 169,
+        "Orphans#": 0,
+        "Completed%": 10
+    },
+    "nb": {
+        "Culture": "nb",
+        "Filename": "nb.json",
+        "displayName": "Norwegian, Bokmål",
+        "displayNativeName": "Norsk, Bokmål",
+        "isSource": false,
+        "Keys#": 1511,
+        "Orphans#": 0,
+        "Completed%": 94
+    },
+    "ne": {
+        "Culture": "ne",
+        "Filename": "ne.json",
+        "displayName": "Nepali",
+        "displayNativeName": "नेपाली",
+        "isSource": false,
+        "Keys#": 16,
+        "Orphans#": 0,
+        "Completed%": 1
+    },
+    "nl": {
+        "Culture": "nl",
+        "Filename": "nl.json",
+        "displayName": "Dutch; Flemish",
+        "displayNativeName": "Nederlands",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "nn": {
+        "Culture": "nn",
+        "Filename": "nn.json",
+        "displayName": "Norwegian, Nynorsk",
+        "displayNativeName": "Norsk, Nynorsk ",
+        "isSource": false,
+        "Keys#": 757,
+        "Orphans#": 0,
+        "Completed%": 47
+    },
+    "pa": {
+        "Culture": "pa",
+        "Filename": "pa.json",
+        "displayName": "Panjabi; Punjabi",
+        "displayNativeName": "ਪੰਜਾਬੀ",
+        "isSource": false,
+        "Keys#": 97,
+        "Orphans#": 0,
+        "Completed%": 6
+    },
+    "pl": {
+        "Culture": "pl",
+        "Filename": "pl.json",
+        "displayName": "Polish",
+        "displayNativeName": "Polski",
+        "isSource": false,
+        "Keys#": 1596,
+        "Orphans#": 0,
+        "Completed%": 99
+    },
+    "pr": {
+        "Culture": "pr",
+        "Filename": "pr.json",
+        "displayName": "Pirate",
+        "displayNativeName": "Pirate",
+        "isSource": false,
+        "Keys#": 58,
+        "Orphans#": 0,
+        "Completed%": 3
+    },
+    "pt-BR": {
+        "Culture": "pt-BR",
+        "Filename": "pt-BR.json",
+        "displayName": "Portuguese, Brazil",
+        "displayNativeName": "Português, Brazil",
+        "isSource": false,
+        "Keys#": 1578,
+        "Orphans#": 0,
+        "Completed%": 98
+    },
+    "pt-PT": {
+        "Culture": "pt-PT",
+        "Filename": "pt-PT.json",
+        "displayName": "Portuguese, Portugal",
+        "displayNativeName": "Português, Portugal",
+        "isSource": false,
+        "Keys#": 1525,
+        "Orphans#": 0,
+        "Completed%": 95
+    },
+    "pt": {
+        "Culture": "pt",
+        "Filename": "pt.json",
+        "displayName": "Portuguese",
+        "displayNativeName": "Português",
+        "isSource": false,
+        "Keys#": 1320,
+        "Orphans#": 0,
+        "Completed%": 82
+    },
+    "ro": {
+        "Culture": "ro",
+        "Filename": "ro.json",
+        "displayName": "Romanian; Moldavian; Moldovan",
+        "displayNativeName": "Română",
+        "isSource": false,
+        "Keys#": 1506,
+        "Orphans#": 0,
+        "Completed%": 94
+    },
+    "ru": {
+        "Culture": "ru",
+        "Filename": "ru.json",
+        "displayName": "Russian",
+        "displayNativeName": "Русский",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "sk": {
+        "Culture": "sk",
+        "Filename": "sk.json",
+        "displayName": "Slovak",
+        "displayNativeName": "Slovenčina",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "sl-SI": {
+        "Culture": "sl-SI",
+        "Filename": "sl-SI.json",
+        "displayName": "Slovenian",
+        "displayNativeName": "Slovenščina",
+        "isSource": false,
+        "Keys#": 1413,
+        "Orphans#": 0,
+        "Completed%": 88
+    },
+    "sq": {
+        "Culture": "sq",
+        "Filename": "sq.json",
+        "displayName": "Albanian",
+        "displayNativeName": "Shqip",
+        "isSource": false,
+        "Keys#": 165,
+        "Orphans#": 0,
+        "Completed%": 10
+    },
+    "sr": {
+        "Culture": "sr",
+        "Filename": "sr.json",
+        "displayName": "Serbian",
+        "displayNativeName": "Српски",
+        "isSource": false,
+        "Keys#": 1520,
+        "Orphans#": 0,
+        "Completed%": 95
+    },
+    "sv": {
+        "Culture": "sv",
+        "Filename": "sv.json",
+        "displayName": "Swedish",
+        "displayNativeName": "Svenska",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "ta": {
+        "Culture": "ta",
+        "Filename": "ta.json",
+        "displayName": "Tamil",
+        "displayNativeName": "தமிழ்",
+        "isSource": false,
+        "Keys#": 1580,
+        "Orphans#": 0,
+        "Completed%": 98
+    },
+    "te": {
+        "Culture": "te",
+        "Filename": "te.json",
+        "displayName": "Telugu",
+        "displayNativeName": "తెలుగు",
+        "isSource": false,
+        "Keys#": 1503,
+        "Orphans#": 0,
+        "Completed%": 94
+    },
+    "th": {
+        "Culture": "th",
+        "Filename": "th.json",
+        "displayName": "Thai",
+        "displayNativeName": "ไทย",
+        "isSource": false,
+        "Keys#": 113,
+        "Orphans#": 0,
+        "Completed%": 7
+    },
+    "tr": {
+        "Culture": "tr",
+        "Filename": "tr.json",
+        "displayName": "Turkish",
+        "displayNativeName": "Türkçe",
+        "isSource": false,
+        "Keys#": 1168,
+        "Orphans#": 0,
+        "Completed%": 73
+    },
+    "uk": {
+        "Culture": "uk",
+        "Filename": "uk.json",
+        "displayName": "Ukrainian",
+        "displayNativeName": "Українська",
+        "isSource": false,
+        "Keys#": 1098,
+        "Orphans#": 0,
+        "Completed%": 68
+    },
+    "ur-PK": {
+        "Culture": "ur-PK",
+        "Filename": "ur-PK.json",
+        "displayName": "Urdu",
+        "displayNativeName": "اردو",
+        "isSource": false,
+        "Keys#": 25,
+        "Orphans#": 0,
+        "Completed%": 1
+    },
+    "vi": {
+        "Culture": "vi",
+        "Filename": "vi.json",
+        "displayName": "Vietnamese",
+        "displayNativeName": "Việtnam",
+        "isSource": false,
+        "Keys#": 1595,
+        "Orphans#": 0,
+        "Completed%": 99
+    },
+    "zh-CN": {
+        "Culture": "zh-CN",
+        "Filename": "zh-CN.json",
+        "displayName": "Chinese",
+        "displayNativeName": "中文",
+        "isSource": false,
+        "Keys#": 1597,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+    "zh-HK": {
+        "Culture": "zh-HK",
+        "Filename": "zh-HK.json",
+        "displayName": "Chinese; Hong Kong",
+        "displayNativeName": "廣東話 (香港)",
+        "isSource": false,
+        "Keys#": 1047,
+        "Orphans#": 0,
+        "Completed%": 65
+    },
+    "zh-TW": {
+        "Culture": "zh-TW",
+        "Filename": "zh-TW.json",
+        "displayName": "Chinese; Traditional",
+        "displayNativeName": "中文(台灣)‬",
+        "isSource": false,
+        "Keys#": 1575,
+        "Orphans#": 0,
+        "Completed%": 98
+    },
+  "zu": {
+    "Culture": "zu",
+    "Filename": "zu.json",
+    "displayName": "Zulu",
+    "displayNativeName": "isiZulu",
+    "isSource": false,
+    "Keys#": 0,
+    "Orphans#": 0,
+    "Completed%": 0
+  }
+}

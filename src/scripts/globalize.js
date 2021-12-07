@@ -22,6 +22,10 @@ import { Events } from 'jellyfin-apiclient';
         return currentDateTimeCulture;
     }
 
+	export function getSourceCulture() {
+		return fallbackCulture;
+	}
+	
     export function getDefaultCulture() {
         let culture;
 		let test = {};
@@ -317,6 +321,7 @@ export default {
     getCurrentLocale,
     getCurrentDateTimeLocale,
 	getDefaultCulture,
+	getSourceCulture,
     register,
     updateCurrentCulture,
 	updateCulture

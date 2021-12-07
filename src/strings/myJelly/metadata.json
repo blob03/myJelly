@@ -1,0 +1,22 @@
+{
+    "en-US": {
+        "Culture": "en-US",
+        "Filename": "en-US.json",
+        "displayName": "English",
+        "displayNativeName": "English",
+        "isSource": true,
+        "Keys#": 46,
+        "Orphans#": 0,
+        "Completed%": 100
+    },
+  "fr": {
+    "Culture": "fr",
+    "Filename": "fr.json",
+    "displayName": "French",
+    "displayNativeName": "Français",
+    "isSource": false,
+    "Keys#": 46,
+    "Orphans#": 0,
+    "Completed%": 100
+  }
+}

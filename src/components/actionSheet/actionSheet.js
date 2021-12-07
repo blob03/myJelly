@@ -131,12 +131,15 @@ export function show(options) {
     let renderIcon = false;
     const icons = [];
     let itemIcon;
+
     for (const item of options.items) {
+		
         itemIcon = item.icon || (item.selected ? 'check' : null);
 
         if (itemIcon) {
             renderIcon = true;
         }
+
         icons.push(itemIcon || '');
     }
 
