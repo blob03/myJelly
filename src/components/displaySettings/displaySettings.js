@@ -123,19 +123,21 @@ import viewContainer from '../viewContainer';
     function loadForm(context, user, userSettings, apiClient) {	
 		let event_change = new Event('change');
 		
-		let allCultures = cultures.getCultures();
+		let allCultures = cultures.getDictionaries();
 	
 		if (appHost.supports('displaylanguage')) { 
 			let selectLanguage = context.querySelector('#selectLanguage');
 			savedDisplayLanguage = userSettings.language() || '';
-			settingsHelper.populateDictionaries(selectLanguage, allCultures, "DisplayNativeName", savedDisplayLanguage);
+			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", savedDisplayLanguage);
+			selectLanguage.addEventListener('change', function(e) { settingsHelper.showDictionaryInfo(e); });
+			selectLanguage.dispatchEvent(event_change);
 			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
 		} else 
 			context.querySelector('.DisplayLanguageArea').classList.add('hide');
 		
 		if (datetime.supportsLocalization()) { 
 			let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
-			settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, "DisplayNativeName", userSettings.dateTimeLocale() || '');
+			settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, "displayNativeName", userSettings.dateTimeLocale() || '');
 			context.querySelector('.fldDateTimeLocale').classList.remove('hide');
 		} else 
 			context.querySelector('.fldDateTimeLocale').classList.add('hide');

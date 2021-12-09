@@ -123,7 +123,7 @@ import template from './playbackSettings.template.html';
 		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
 
 		let allCultures = cultures.getCultures();		
-		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "DisplayNativeName", userSettings.AudioLanguagePreference() || '');
+		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "displayNativeName", userSettings.AudioLanguagePreference() || '');
 	
         // hide cinema mode options if disabled at server level
         apiClient.getNamedConfiguration('cinemamode').then(cinemaConfig => {

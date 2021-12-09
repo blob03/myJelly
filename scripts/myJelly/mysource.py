@@ -4,12 +4,15 @@ import os
 import json
 import math
 
-# Rename a static set of dictionaries so that their names match the codes returned by a call to /Localization/cultures.
+# Rename a static set of dictionaries so that their names match those returned by a call to /Localization/cultures.
 # This saves a conversion at runtime.
-def rename(langdir, flag):
+def rename(subdir, flag):
 	langlst = {'ur_PK': 'ur-PK', 'bg-bg': 'bg-BG', 'be-by': 'be-BY', 'bn_BD': 'bn-BD', 'en-gb': 'en-GB', 'en-us': 'en-US', 'fr-ca': 'fr-CA', 
 	'hi-in': 'hi-IN', 'is-is': 'is-IS', 'lt-lt': 'lt-LT', 'pt-br': 'pt-BR', 'pt-pt': 'pt-PT', 'sl-si': 'sl-SI', 'zh-tw': 'zh-TW', 'zh-hk': 'zh-HK', 
 	'zh': 'zh-ZH', 'zh-cn': 'zh-CN', 'es_DO': 'es-DO', 'es_419': 'es-419', 'es-ar': 'es-AR', 'es-mx': 'es-MX'}
+	cwd = os.getcwd()
+	basedir = cwd + "/../../src/strings/"
+	langdir = basedir + subdir
 	
 	with open('renamed.txt', flag) as out:
 		nbr = 0
@@ -19,84 +22,142 @@ def rename(langdir, flag):
 			if (os.path.isfile(langdir + orig)):
 				if (os.path.isfile(langdir + dest)):
 					os.remove(langdir + dest)
+				print('Renaming \'' + orig + '\' as \'' + dest + '\'.')
 				os.rename(langdir + orig, langdir + dest)			
-				out.write(orig + ' renamed as ' + dest + '\n')
 				nbr += 1
 		out.close()
-		print('Number of file renamed: ' + str(nbr))
+		print('Number of file renamed: ' + str(nbr) + '.')
 		
 # Load all the keys present in the source file.
 # Check whether these keys are defined inside every other translation.
 # Delete keys which only exist in translations if any are found (so called 'orphans').
-def sort(langdir, source, flag):
-	orphans = []
-	metadata = '';
-
-	# Since we are now using a subdir 'myJelly', we must take care to load only files.
-	# Also we conveniently keep the source file (en-US) in the list in order to have it sorted out with the lot.
-	langlst = sorted([f for f in os.listdir(langdir) if (os.path.isfile(os.path.join(langdir, f)) and f != 'metadata.json')])
-	print('\nFiles found: ' + str(len(langlst)))
-	input('\npress ENTER when ready.\n')
+def sort(subdir, source, mod, langlst):
+	cwd = os.getcwd()
+	basedir = cwd + "/../../src/strings/"
+	langdir = basedir + subdir
+	metafilename = "metadata.json"
+	metafile = basedir + metafilename
+	metadata = ''
+	indent = 2
+	metatree = {}
+	sourceFile = source + ".json"
 	
-	with open(langdir + source) as en:
+	try:
+		with open(metafile, 'r') as m:
+			print('Reading existing metadata file \"metafile.json\".')	
+			metatree = json.load(m)
+			m.close()
+	except FileNotFoundError:
+		True
+			
+	with open(langdir + sourceFile) as en:
 		langus = json.load(en)
 		en.close()
-		
-	with open(langdir + 'metadata.json', 'w+') as md, open('cultures.json') as cdata:
-		cultures = json.load(cdata)
-		for lang in langlst:
-			with open(langdir + lang, 'r+') as f:
-				print('checking ... ' + langdir + lang)
-				keys = 0
-				okeys = 0
-				inde = 2
-				if '\n    \"' in f.read():
-					inde = 4
-				f.seek(0)
-				langjson = json.load(f)
-				langjnew = {}
-				for key in langjson:
-					if key in langus:
-						if key not in langjnew:
-							keys += 1
-						langjnew[key] = langjson[key]
-					elif key not in orphans:
-						orphans.append(key)
-						okeys += 1
-				f.seek(0)
-				f.write(json.dumps(langjnew, indent=inde, sort_keys=True, ensure_ascii=False))
-				f.write('\n')
-				f.truncate()
-				f.close()
-			isSource = False
-			if lang == source:
-				isSource = True
-			cultureCode = lang.split('.json')[0];
-			xtraInfo = ''
-			if cultureCode in cultures:
-				xtraInfo = cultures[cultureCode]
-			metadata += json.dumps({cultureCode: {'Culture': cultureCode, 'Filename': lang, 'displayName': xtraInfo['DisplayName'], 'displayNativeName': xtraInfo['DisplayNativeName'], 'isSource': isSource, 'Keys#': keys, 'Orphans#': okeys, 'Completed%': math.floor((keys/len(langus))*100)}}, indent=inde, sort_keys=False, ensure_ascii=False)			
 			
-		metadata = metadata.replace('\n}{', ',')
-		md.write(metadata);
-		
-	print('Orphans found: ' + str(len(orphans)))
-	if len(orphans):
-		print(orphans)
-		with open('orphans.txt', flag) as out:
-			for item in orphans:
-				out.write(item + '\n')
-			out.close()
+	with open('cultures.json') as cdata:
+		print('Loading database of cultures.')
+		cultures = json.load(cdata)
+		cdata.close()
+			
+	for lang in langlst:
+		with open(langdir + lang, 'r+') as f:
+			print('Checking dictionary: ' + langdir + lang)
+			orphans = []
+			keys = 0
+			okeys = 0
+			trans_old = json.load(f)
+			trans_new = {}
+			for key in trans_old:
+				if key in langus:
+					if key not in trans_new:
+						keys += 1
+					trans_new[key] = trans_old[key]
+				elif key not in orphans:
+					orphans.append(key)
+					okeys += 1
+			f.seek(0)
+			f.write(json.dumps(trans_new, indent=indent, sort_keys=True, ensure_ascii=False))
+			f.write('\n')
+			f.truncate()
+			f.close()
+
+			ccode = lang.split('.json')[0];
+
+			try:
+				metatree[ccode]
+			except KeyError:
+				metatree[ccode] = {
+					"ccode": ccode,
+					"ccodeSrc": source,
+					"displayName": "",
+					"displayNativeName": "",
+					"ISO6391": "",
+					"ISO6392": "",
+					"keys#": 0,
+					"completed%": 0,
+					"jellyfinWeb": {
+						"filename": "",
+						"keys#": 0,
+						"orphans#": 0,
+						"orphans": [],
+						"completed%": 0
+					},
+					"myJelly": {
+						"filename": "",
+						"keys#": 0,
+						"orphans#": 0,
+						"orphans": [],
+						"completed%": 0
+					}
+				}	
+			metatree[ccode]['ccode'] = ccode
+			metatree[ccode]['ccodeSrc'] = source
+			if ccode in cultures:
+				metatree[ccode]['displayName'] = cultures[ccode]['DisplayName']
+				metatree[ccode]['displayNativeName'] = cultures[ccode]['DisplayNativeName']
+				metatree[ccode]['ISO6391'] = cultures[ccode]['TwoLetterISOLanguageName']
+				metatree[ccode]['ISO6392'] = cultures[ccode]['ThreeLetterISOLanguageName']
+				
+			metatree[ccode][mod]['filename'] = lang
+			metatree[ccode][mod]['keys#'] = keys
+			metatree[ccode]['keys#'] += keys
+			metatree[ccode][mod]['orphans#'] = okeys
+			metatree[ccode][mod]['orphans'] = orphans
+			metatree[ccode][mod]['completed%'] = float("{:,.2f}".format(keys*100/len(langus)).replace(".00",""))
+			metatree[ccode]['completed%'] = float("{:,.2f}".format(metatree[ccode]['keys#']*100/metatree[source]['keys#']).replace(".00",""))
+	
+	with open(metafile, 'w+') as m:
+		print('Overwriting metadata file \"metafile.json\".')	
+		m.write(json.dumps(metatree, indent=indent, sort_keys=False, ensure_ascii=False))
+		m.close()
+
 
 cwd = os.getcwd()
+basedir = cwd + "/../../src/strings/"
+metafile = basedir + "metadata.json"
+
+if os.path.exists(metafile):
+	os.remove(metafile)
+	
+subdir = ''
+rename(subdir, 'w')
+
 print('#######################################')
-langdir = cwd + '/../../src/strings/'
-rename(langdir, 'w')
-sort(langdir, 'en-US.json', 'w')
+# We check the source file (en-US) first since we need this data to determine the progress of other dictionaries.
+langlst = ["en-US.json"]
+sort('', 'en-US', 'jellyfinWeb', langlst)
+sort('myJelly/', 'en-US', 'myJelly', langlst)
 print('#######################################')
-# Repeat the process for myJelly's files.
-langdir += 'myJelly/'
-rename(langdir, 'a')
-sort(langdir, 'en-US.json', 'a')
 print('#######################################')
+# We take care to load only files and to remove the source file.
+langlst = sorted([f for f in os.listdir(basedir) if (os.path.isfile(os.path.join(basedir, f)))])
+langlst.remove("en-US.json")
+sort('', 'en-US', 'jellyfinWeb', langlst)
+langdir = basedir + 'myJelly/'
+langlst = sorted([f for f in os.listdir(langdir) if (os.path.isfile(os.path.join(langdir, f)))])
+langlst.remove("en-US.json")
+sort('myJelly/', 'en-US', 'myJelly', langlst)
+print('#######################################')	
 print('Done.')
+
+

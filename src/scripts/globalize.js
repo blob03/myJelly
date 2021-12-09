@@ -208,56 +208,6 @@ import { Events } from 'jellyfin-apiclient';
         return val;
     }
 	
-	export function getCoreDictionaryProgress(culture) {
-		culture = culture || getDefaultCulture();
-		
-		return new Promise((resolve) => {
-			let ISOlang = culture;
-			let ISOfallback = fallbackCulture;
-			if (!DicKeysNum[ISOfallback]) {
-				let fallbackDic = getDictionary('core', ISOfallback);
-				if (!fallbackDic)
-					resolve(0);
-				DicKeysNum[ISOfallback] = Object.keys(fallbackDic).length;
-				if (!DicKeysNum[ISOfallback])
-					resolve(0);
-			}			
-			if (!DicKeysNum[ISOlang]) {
-					
-				loadTranslation('core', ISOlang).then( (dic) => {
-					resolve( { 
-						'sourceDisplayName' : fallbackCultureName,
-						'sourceISOName': ISOfallback,
-						'keys' : DicKeysNum[ISOlang],
-						'origKeys' : origKeysNum[ISOlang],
-						'myKeys' : myKeysNum[ISOlang],
-						'sourceKeys' : DicKeysNum[ISOfallback],
-						'origSourceKeys' : origKeysNum[ISOfallback],
-						'mySourceKeys' : myKeysNum[ISOfallback],
-						'progress' : DicKeysNum[ISOfallback]? Math.round(10 * DicKeysNum[ISOlang] / DicKeysNum[ISOfallback] * 100) / 10 : 0,
-						'origProgress' : origKeysNum[ISOfallback]? Math.round(10 * origKeysNum[ISOlang] / origKeysNum[ISOfallback] * 100) / 10 : 0,
-						'myProgress' : myKeysNum[ISOfallback]? Math.round(10 * myKeysNum[ISOlang] / myKeysNum[ISOfallback] * 100) / 10 : 0 
-					} );
-				} );
-			} else {
-				
-				resolve( { 
-					'sourceDisplayName' : fallbackCultureName,
-					'sourceISOName': ISOfallback,
-					'keys' : DicKeysNum[ISOlang],
-					'origKeys' : origKeysNum[ISOlang],
-					'myKeys' : myKeysNum[ISOlang],
-					'sourceKeys' : DicKeysNum[ISOfallback],
-					'origSourceKeys' : origKeysNum[ISOfallback],
-					'mySourceKeys' : myKeysNum[ISOfallback],
-					'progress' : DicKeysNum[ISOfallback]? Math.round(10 * DicKeysNum[ISOlang] / DicKeysNum[ISOfallback] * 100) / 10 : 0,
-					'origProgress' : origKeysNum[ISOfallback]? Math.round(10 * origKeysNum[ISOlang] / origKeysNum[ISOfallback] * 100) / 10 : 0,
-					'myProgress' : myKeysNum[ISOfallback]? Math.round(10 * myKeysNum[ISOlang] / myKeysNum[ISOfallback] * 100) / 10 : 0 
-				} );
-			}
-		});
-	}
-
 	// Function to load a specific language.
 	export function getCoreDictionary(culture) {
 		
@@ -315,7 +265,6 @@ import { Events } from 'jellyfin-apiclient';
 export default {
     translate,
 	getCoreDictionary,
-	getCoreDictionaryProgress,
     translateHtml,
     loadStrings,
     getCurrentLocale,

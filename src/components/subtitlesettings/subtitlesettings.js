@@ -421,7 +421,7 @@ function loadForm(context, user, userSettings, appearanceSettings, apiClient) {
 	
 	let allCultures = cultures.getCultures();	
 	let selectSubtitleLanguage = context.querySelector('#selectSubtitleLanguage');
-	settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, "DisplayNativeName", 
+	settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, "displayNativeName", 
 					user.Configuration.SubtitleLanguagePreference || 'Auto');
 	selectSubtitleLanguage.dispatchEvent(event_change);
 
@@ -492,8 +492,8 @@ function onLanguageFieldChange(e) {
 	if (Lang === "Auto")
 		Lang = globalize.getCurrentLocale();
 	else
-		// get the two letters name (ISO  639-1) correspondence needed to obtain a dictionary.
-		Lang = subselector.options[subselector.selectedIndex].getAttribute("ISOName2L");
+		// get the two letters name (ISO 639-1) correspondence needed to obtain a dictionary.
+		Lang = subselector.options[subselector.selectedIndex].getAttribute("ISO6391");
 		
 	if (!Lang)
 		return;
@@ -516,10 +516,10 @@ function onLanguageFieldChange(e) {
 		if (!html) {
 			let match = cultures.matchCulture(Lang);
 			if (match)
-				html = match.DisplayNativeName || '';
+				html = match.displayNativeName || '';
 		}
 		// As a last resort, use the current display language 
-		// and the source language (en-US) if it too fails.
+		// and the source (fallback) language (en-US) if it too fails.
 		if (!html)
 			html = globalize.translate('HeaderSubtitleAppearance') 
 					+ '<br>' 
