@@ -38,7 +38,7 @@ def sort(subdir, source, mod, langlst):
 	metafilename = "metadata.json"
 	metafile = basedir + metafilename
 	metadata = ''
-	indent = 2
+	indent = 4
 	metatree = {}
 	sourceFile = source + ".json"
 	
