@@ -133,7 +133,6 @@ export function populateDictionaries(select, languages, view, val) {
 // Refresh the window containing the metadata of whatever language is selected.
 export function showDictionaryInfo(e) {		
 	let ccodeSrc = globalize.getSourceCulture();
-	let view = e.target.options[e.target.selectedIndex].text;
 	let val = e.target.options[e.target.selectedIndex].value;
 	let lang = val? val: globalize.getDefaultCulture(); 
 	let activeLang = cultures.getDictionary(lang);
@@ -142,7 +141,7 @@ export function showDictionaryInfo(e) {
 	let pnode = e.target.parentNode.parentNode;
 	if (pnode) {	
 		let nodeInfo = pnode.querySelector('.infoDetails');  
-		nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + view + ' [ ' + activeLang.ISO6391 + ' ]';
+		nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLang["displayNativeName"] + ' [ ' + activeLang["ISO6391"] + ' ]';
 		nodeInfo.querySelector('.infoKeysTranslated').innerHTML = ' ' 
 			+ activeLang["completed%"] + '% [ ' 
 			+ activeLang["keys#"]
