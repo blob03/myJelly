@@ -238,10 +238,11 @@ import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
     }
 	
 	function doReload() {
-		// Reload everything from the server.
-		const z = '#!/home.html';
-		// Move the current URL to the base page before reloading anew.
-		setTimeout(() => { appRouter.redirect(z).then( () => { window.location.reload(true) })}, 1000);
+		// Move to the home page 
+		// before reloading everything anew from the server.
+		appRouter.show("/home.html").then(() => {
+			window.location.reload(true);
+		});
 	}
 	
 	function doLock() {

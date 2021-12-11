@@ -12,14 +12,12 @@
             "filename": "en-US.json",
             "keys#": 1597,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "en-US.json",
             "keys#": 46,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 100.0
         }
     },
@@ -36,14 +34,12 @@
             "filename": "af.json",
             "keys#": 792,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 49.59
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -59,18 +55,13 @@
         "jellyfinWeb": {
             "filename": "ar.json",
             "keys#": 1597,
-            "orphans#": 2,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -87,14 +78,12 @@
             "filename": "as.json",
             "keys#": 2,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0.13
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -111,14 +100,12 @@
             "filename": "be-BY.json",
             "keys#": 19,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 1.19
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -134,20 +121,13 @@
         "jellyfinWeb": {
             "filename": "bg-BG.json",
             "keys#": 1399,
-            "orphans#": 4,
-            "orphans": [
-                "OptionDownloadImagesInAdvance",
-                "LabelSyncPlayTimeOffset",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionAllowContentDownloading"
-            ],
+            "orphans#": 0,
             "completed%": 87.6
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -164,14 +144,12 @@
             "filename": "bn-BD.json",
             "keys#": 132,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 8.27
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -187,17 +165,13 @@
         "jellyfinWeb": {
             "filename": "ca.json",
             "keys#": 1549,
-            "orphans#": 1,
-            "orphans": [
-                "OptionAllowContentDownloading"
-            ],
+            "orphans#": 0,
             "completed%": 96.99
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -213,20 +187,13 @@
         "jellyfinWeb": {
             "filename": "cs.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -243,14 +210,12 @@
             "filename": "cy.json",
             "keys#": 7,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0.44
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -266,19 +231,13 @@
         "jellyfinWeb": {
             "filename": "da.json",
             "keys#": 1527,
-            "orphans#": 3,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp"
-            ],
+            "orphans#": 0,
             "completed%": 95.62
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -294,20 +253,13 @@
         "jellyfinWeb": {
             "filename": "de.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -323,19 +275,13 @@
         "jellyfinWeb": {
             "filename": "el.json",
             "keys#": 1088,
-            "orphans#": 3,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp"
-            ],
+            "orphans#": 0,
             "completed%": 68.13
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -351,20 +297,13 @@
         "jellyfinWeb": {
             "filename": "en-GB.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -381,14 +320,12 @@
             "filename": "eo.json",
             "keys#": 1597,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -404,20 +341,13 @@
         "jellyfinWeb": {
             "filename": "es-419.json",
             "keys#": 1519,
-            "orphans#": 4,
-            "orphans": [
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "OptionAllowContentDownloading",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 95.12
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -433,20 +363,13 @@
         "jellyfinWeb": {
             "filename": "es-AR.json",
             "keys#": 1516,
-            "orphans#": 4,
-            "orphans": [
-                "LabelSyncPlayTimeOffset",
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance"
-            ],
+            "orphans#": 0,
             "completed%": 94.93
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -463,14 +386,12 @@
             "filename": "es-DO.json",
             "keys#": 20,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 1.25
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -486,20 +407,13 @@
         "jellyfinWeb": {
             "filename": "es-MX.json",
             "keys#": 1538,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 96.31
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -515,20 +429,13 @@
         "jellyfinWeb": {
             "filename": "es.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -545,14 +452,12 @@
             "filename": "et.json",
             "keys#": 1586,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 99.31
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -568,20 +473,13 @@
         "jellyfinWeb": {
             "filename": "fa.json",
             "keys#": 1523,
-            "orphans#": 4,
-            "orphans": [
-                "LabelSyncPlayTimeOffset",
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp"
-            ],
+            "orphans#": 0,
             "completed%": 95.37
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -597,19 +495,13 @@
         "jellyfinWeb": {
             "filename": "fi.json",
             "keys#": 1418,
-            "orphans#": 3,
-            "orphans": [
-                "OptionDownloadImagesInAdvance",
-                "OptionAllowContentDownloading",
-                "ImportMissingEpisodesHelp"
-            ],
+            "orphans#": 0,
             "completed%": 88.79
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -626,14 +518,12 @@
             "filename": "fil.json",
             "keys#": 51,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 3.19
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -649,17 +539,13 @@
         "jellyfinWeb": {
             "filename": "fr-CA.json",
             "keys#": 713,
-            "orphans#": 1,
-            "orphans": [
-                "LabelVideo"
-            ],
+            "orphans#": 0,
             "completed%": 44.65
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -675,20 +561,13 @@
         "jellyfinWeb": {
             "filename": "fr.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "fr.json",
             "keys#": 46,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 100.0
         }
     },
@@ -705,14 +584,12 @@
             "filename": "gl.json",
             "keys#": 66,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 4.13
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -729,14 +606,12 @@
             "filename": "gsw.json",
             "keys#": 125,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 7.83
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -753,14 +628,12 @@
             "filename": "he.json",
             "keys#": 956,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 59.86
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -777,14 +650,12 @@
             "filename": "hi-IN.json",
             "keys#": 129,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 8.08
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -800,18 +671,13 @@
         "jellyfinWeb": {
             "filename": "hr.json",
             "keys#": 1188,
-            "orphans#": 2,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance"
-            ],
+            "orphans#": 0,
             "completed%": 74.39
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -827,20 +693,13 @@
         "jellyfinWeb": {
             "filename": "hu.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -856,20 +715,13 @@
         "jellyfinWeb": {
             "filename": "id.json",
             "keys#": 1112,
-            "orphans#": 4,
-            "orphans": [
-                "ButtonSubtitles",
-                "LabelSyncPlayTimeOffset",
-                "ImportMissingEpisodesHelp",
-                "OptionAllowContentDownloading"
-            ],
+            "orphans#": 0,
             "completed%": 69.63
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -886,14 +738,12 @@
             "filename": "is-IS.json",
             "keys#": 448,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 28.05
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -909,20 +759,13 @@
         "jellyfinWeb": {
             "filename": "it.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -938,20 +781,13 @@
         "jellyfinWeb": {
             "filename": "ja.json",
             "keys#": 1490,
-            "orphans#": 4,
-            "orphans": [
-                "LabelSyncPlayTimeOffset",
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance"
-            ],
+            "orphans#": 0,
             "completed%": 93.3
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -967,21 +803,13 @@
         "jellyfinWeb": {
             "filename": "kk.json",
             "keys#": 1597,
-            "orphans#": 5,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "YadifBob",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -997,20 +825,13 @@
         "jellyfinWeb": {
             "filename": "ko.json",
             "keys#": 1556,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 97.43
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1027,14 +848,12 @@
             "filename": "lt-LT.json",
             "keys#": 843,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 52.79
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1050,19 +869,13 @@
         "jellyfinWeb": {
             "filename": "lv.json",
             "keys#": 1088,
-            "orphans#": 3,
-            "orphans": [
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "OptionAllowContentDownloading"
-            ],
+            "orphans#": 0,
             "completed%": 68.13
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1079,16 +892,12 @@
             "filename": "metadata.json",
             "keys#": 0,
             "orphans#": 1,
-            "orphans": [
-                "en-US"
-            ],
             "completed%": 0.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1105,14 +914,12 @@
             "filename": "mk.json",
             "keys#": 19,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 1.19
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1129,14 +936,12 @@
             "filename": "ml.json",
             "keys#": 1575,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 98.62
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1153,14 +958,12 @@
             "filename": "mn.json",
             "keys#": 95,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 5.95
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1177,14 +980,12 @@
             "filename": "mr.json",
             "keys#": 91,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 5.7
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1201,14 +1002,12 @@
             "filename": "ms.json",
             "keys#": 169,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 10.58
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1224,20 +1023,13 @@
         "jellyfinWeb": {
             "filename": "nb.json",
             "keys#": 1511,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 94.61
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1254,14 +1046,12 @@
             "filename": "ne.json",
             "keys#": 16,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 1.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1277,20 +1067,13 @@
         "jellyfinWeb": {
             "filename": "nl.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1307,14 +1090,12 @@
             "filename": "nn.json",
             "keys#": 757,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 47.4
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1331,14 +1112,12 @@
             "filename": "pa.json",
             "keys#": 97,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 6.07
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1354,20 +1133,13 @@
         "jellyfinWeb": {
             "filename": "pl.json",
             "keys#": 1596,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 99.94
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1384,14 +1156,12 @@
             "filename": "pr.json",
             "keys#": 58,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 3.63
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1407,20 +1177,13 @@
         "jellyfinWeb": {
             "filename": "pt-BR.json",
             "keys#": 1578,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 98.81
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1436,20 +1199,13 @@
         "jellyfinWeb": {
             "filename": "pt-PT.json",
             "keys#": 1525,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 95.49
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1465,19 +1221,13 @@
         "jellyfinWeb": {
             "filename": "pt.json",
             "keys#": 1320,
-            "orphans#": 3,
-            "orphans": [
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "OptionAllowContentDownloading"
-            ],
+            "orphans#": 0,
             "completed%": 82.65
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1493,21 +1243,13 @@
         "jellyfinWeb": {
             "filename": "ro.json",
             "keys#": 1506,
-            "orphans#": 5,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "YadifBob",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 94.3
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1523,20 +1265,13 @@
         "jellyfinWeb": {
             "filename": "ru.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1552,20 +1287,13 @@
         "jellyfinWeb": {
             "filename": "sk.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1581,21 +1309,13 @@
         "jellyfinWeb": {
             "filename": "sl-SI.json",
             "keys#": 1413,
-            "orphans#": 5,
-            "orphans": [
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "OptionAllowContentDownloading",
-                "LabelSyncPlayTimeOffset",
-                "YadifBob"
-            ],
+            "orphans#": 0,
             "completed%": 88.48
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1612,14 +1332,12 @@
             "filename": "sq.json",
             "keys#": 165,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 10.33
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1636,14 +1354,12 @@
             "filename": "sr.json",
             "keys#": 1520,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 95.18
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1659,20 +1375,13 @@
         "jellyfinWeb": {
             "filename": "sv.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1688,35 +1397,13 @@
         "jellyfinWeb": {
             "filename": "ta.json",
             "keys#": 1580,
-            "orphans#": 19,
-            "orphans": [
-                "AttributeNew",
-                "ButtonArrowDown",
-                "HeaderNextUp",
-                "HeaderLiveTV",
-                "ButtonArrowUp",
-                "ButtonDownload",
-                "ButtonDown",
-                "ButtonDeleteImage",
-                "ButtonDelete",
-                "ButtonConnect",
-                "ButtonUp",
-                "ButtonSort",
-                "ButtonShuffle",
-                "ButtonNew",
-                "LabelSyncPlayTimeOffset",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "OptionAllowContentDownloading",
-                "YadifBob"
-            ],
+            "orphans#": 0,
             "completed%": 98.94
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1733,14 +1420,12 @@
             "filename": "te.json",
             "keys#": 1503,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 94.11
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1757,14 +1442,12 @@
             "filename": "th.json",
             "keys#": 113,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 7.08
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1780,17 +1463,13 @@
         "jellyfinWeb": {
             "filename": "tr.json",
             "keys#": 1168,
-            "orphans#": 1,
-            "orphans": [
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 73.14
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1806,18 +1485,13 @@
         "jellyfinWeb": {
             "filename": "uk.json",
             "keys#": 1098,
-            "orphans#": 2,
-            "orphans": [
-                "EnableThemeVideos",
-                "EnableThemeSongs"
-            ],
+            "orphans#": 0,
             "completed%": 68.75
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1834,14 +1508,12 @@
             "filename": "ur-PK.json",
             "keys#": 25,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 1.57
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1857,20 +1529,13 @@
         "jellyfinWeb": {
             "filename": "vi.json",
             "keys#": 1595,
-            "orphans#": 4,
-            "orphans": [
-                "LabelSyncPlayTimeOffset",
-                "OptionDownloadImagesInAdvanceHelp",
-                "OptionDownloadImagesInAdvance",
-                "OptionAllowContentDownloading"
-            ],
+            "orphans#": 0,
             "completed%": 99.87
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1886,20 +1551,13 @@
         "jellyfinWeb": {
             "filename": "zh-CN.json",
             "keys#": 1597,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1916,14 +1574,12 @@
             "filename": "zh-HK.json",
             "keys#": 1048,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 65.62
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1939,20 +1595,13 @@
         "jellyfinWeb": {
             "filename": "zh-TW.json",
             "keys#": 1575,
-            "orphans#": 4,
-            "orphans": [
-                "OptionAllowContentDownloading",
-                "OptionDownloadImagesInAdvance",
-                "OptionDownloadImagesInAdvanceHelp",
-                "LabelSyncPlayTimeOffset"
-            ],
+            "orphans#": 0,
             "completed%": 98.62
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     },
@@ -1969,14 +1618,12 @@
             "filename": "zu.json",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
-            "orphans": [],
             "completed%": 0
         }
     }

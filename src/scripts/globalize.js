@@ -41,10 +41,10 @@ import { Events } from 'jellyfin-apiclient';
 		
 		if (culture) {
 			test = cultures.matchCulture(culture);
-			if (test.TwoLetterISOLanguageName)
-				return test.TwoLetterISOLanguageName;
-			if (test.ThreeLetterISOLanguageName)
-				return test.ThreeLetterISOLanguageName;
+			if (test.ISO6391)
+				return test.ISO6391;
+			if (test.ISO6392)
+				return test.ISO6392;
 		}
 		
         return fallbackCulture;
