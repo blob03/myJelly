@@ -117,7 +117,11 @@ html {
 }
 
 .backgroundContainer {
-    background-color: rgba(235, 129, 40, 0.8);
+    /*background: url(bg.jpg) center top no-repeat #033361;*/
+	background: linear-gradient(125deg, rgba(255, 217, 167, 0.4) 0%, rgba(246, 127, 0, 0.4) 40%, rgba(165, 100, 32, 0.4) 70%, rgba(255, 181, 103, 0.4) 100%);
+	background-color: rgba(235, 129, 40, 0.8);
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .backgroundContainer.withBackdrop {
@@ -578,7 +582,7 @@ html {
 }
 
 .emby-select-withcolor:focus {
-	border-color: #fff;
+	border-color: #ffd077;
 }
 
 .emby-select-withcolor > option {
@@ -587,7 +591,7 @@ html {
 }
 
 .emby-select-tv-withcolor:focus {
-    border-color: #fff;
+    border-color: #ffd077;
 }
 
 select option:disabled {
@@ -607,8 +611,8 @@ select option:selected {
 
 .mdl-slider-background,
 .mdl-slider-background-flex  {
-	box-shadow: 0 0 3px #1e1d25;
-	background: #745534;
+	box-shadow: 1px 1px 3px #5e2f06;
+	background: #c4721b;
 }
 
 .mdl-slider:focus,
@@ -621,7 +625,7 @@ select option:selected {
 }
 
 .mdl-slider-background-lower {
-	background: linear-gradient(135deg, rgb(39, 17, 114) 0%, rgb(92, 64, 229) 100%);
+	background: linear-gradient(135deg, #4114e5 0%, #6f53d3 100%);
 }
 
 .mdl-slider::-moz-range-thumb {
@@ -642,19 +646,19 @@ select option:selected {
 .mdl-slider:focus::-moz-range-thumb,
 .mdl-slider:hover:not(:disabled)::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #d3bffc;
+	background: #733ee6;
 }
 
 .mdl-slider:focus::-ms-thumb,
 .mdl-slider:hover:not(:disabled)::-ms-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #d3bffc;
+	background: #733ee6;
 }
 
 .mdl-slider:focus::-webkit-slider-thumb,
 .mdl-slider:hover:not(:disabled)::-webkit-slider-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #d3bffc;
+	background: #733ee6;
 }
 
 .mdl-slider-container {
@@ -967,7 +971,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .checkboxIcon-checked {
-	color: #ffa700 !important;
+	color: #6f53d3 !important;
 	padding-left: .2em;
 	padding-bottom: .3em;
 	transform: scale(1.5);
@@ -984,19 +988,19 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .emby-checkbox + span + .checkboxOutline {
-    border-color: #ffa700;
+    border-color: #6f53d3;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
-	background-color: rgb(157, 97, 3);
+	background-color: rgb(211, 121, 67);
 }
 
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline > .checkboxIcon-checked,
 .emby-checkbox:focus + span + .checkboxOutline,
 .emby-checkbox:focus + span + .checkboxOutline > .checkboxIcon-checked {
-	border-color: #fbc46f !important;
-	color: #fbc46f !important;
+	border-color: #5539b8 !important;
+	color: #5539b8 !important;
 }
 
 /* Pseudo radio widget (a radio button that allows unselects) */
@@ -1010,7 +1014,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
-	color: #ffa700 !important;
+	color: #6f53d3 !important;
 	font-size: 170%;
 	text-shadow: 1px 2px 3px #1e1d25;
 }
@@ -1020,14 +1024,14 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
-	background-color: rgb(157, 97, 3);
+	background-color: rgb(216, 136, 12);
 }
 
 .radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
 .radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
-	color: #d3bffc !important;
+	color: #5539b8 !important;
 }
  
 .headerTop {
@@ -1140,4 +1144,11 @@ fieldset {
 .selectLabelFocused,
 .textareaLabelFocused {
     color: #ffc579 !important;
+}
+
+.mdl-spinner__layer-1,
+.mdl-spinner__layer-2,
+.mdl-spinner__layer-3,
+.mdl-spinner__layer-4 {
+    border-color: #6f53d3 !important;
 }

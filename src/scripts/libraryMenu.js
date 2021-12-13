@@ -54,11 +54,10 @@ import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerSearchButton hide"><span class="material-icons search"></span></button>';
 		
 		// Extra feature thought for the TV layout.
-		// That one locks the top bar and will be useful for owners of a "smart remote" or any TV remote capable of acting like a mouse.
+		// That one locks the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerLockButton hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		/* Added: casing for the topbar clock */
-		/* new version uses a disabled flexbox button rather than a mere table */
 		html += '<button id="headerClock" class="headerClockButton headerClock hide" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;">';
 		html += '<div id="headerClockDate" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTime" class="headerClockTime" style="font-size: 120%;"></div>';
