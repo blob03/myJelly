@@ -6,7 +6,7 @@
 
 .skinHeader,
 html {
-    color: rgb(9, 54, 111);
+    color: #427386;
 }
 
 .headerLeft, .headerRight {
@@ -73,7 +73,11 @@ html {
 }
 
 .backgroundContainer {
-    background-color: rgba(220, 242, 248, 0.9);
+    /*background: url(bg.jpg) center top no-repeat #033361;*/
+	background: linear-gradient(105deg, rgba(229, 242, 235, 0.4) 0%, rgba(60, 152, 126, 0.4) 40%, rgba(38, 112, 148, 0.4) 70%, rgba(185, 217, 219, 0.4) 100%);
+	background-color: rgb(220, 242, 248);
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .backgroundContainer.withBackdrop {
@@ -191,7 +195,7 @@ html {
 }
 
 .listItem-border {
-    border-color: #a7a7a7 !important;
+    border-color: #b9d2d5 !important;
 }
 
 .progressring-spiner {
@@ -356,17 +360,17 @@ html {
 
 .checkboxOutline {
 	overflow: visible;
-	transform: scale(0.7);
-	border: 3px solid rgba(97, 213, 233, 0.8);
-	border-radius: 100%;
+	transform: scale(0.8);
+	border: 3px solid rgb(37, 71, 77);
+	border-radius: 20%;
 }
 
 .emby-checkbox + span + .checkboxOutline {
-    border-color: #a5bdd8;
+    border-color: #5e97ae;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
-	background-color: rgba(155, 167, 196, 0.4);
+	background-color: transparent;
 }
 
 .emby-checkbox:focus + span + .checkboxOutline,
@@ -378,7 +382,7 @@ html {
 	color: #fff !important;
 	padding-left: 5px;
 	padding-bottom: 6px;
-	transform: scale(1.8);
+	transform: scale(1.5);
 	text-shadow: 1px 2px 3px #1e1d25;
 	animation-name: check-in;
 	animation-duration: .15s;
@@ -409,7 +413,7 @@ html {
 }
 
 .listItemBody {
-	color: rgb(134, 167, 179);
+	color: rgb(101, 133, 144);
 }
 
 .listItemBody:hover:not(:disabled) {
@@ -600,7 +604,7 @@ select option:selected {
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(135deg, rgb(151, 225, 241) 0%, rgb(131, 219, 255) 50%, rgb(0, 180, 251) 100%);
+	background: linear-gradient(90deg, rgb(110, 201, 255) 0%, rgb(0, 104, 148) 100%);
 }
 
 .mdl-slider::-moz-range-thumb
@@ -617,12 +621,6 @@ select option:selected {
 .mdl-slider::-webkit-slider-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
 	background: #3f6d9f;
-}
-
-.mdl-slider::-webkit-slider-thumb:hover,
-.mdl-slider::-webkit-slider-thumb:focus {
-	box-shadow: 0px 2px 8px #1e1d25;
-	background: rgba(38, 218, 247, 0.8);
 }
 
 .mdl-slider-container {
@@ -750,7 +748,7 @@ select option:selected {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-	color: #76889f;
+	color: #fff;
 	font-size: 85%;
 }
 
@@ -822,7 +820,7 @@ select option:selected {
 }
 
 .aboutcontent {
-	color: #1da4b8;
+	color: #d3f9ff;
 }
 
 /* upNext dialog box */
@@ -937,14 +935,21 @@ fieldset {
 }
 
 .fieldDescription {
-	color: #86a9c3;
+	color: #527898;
 	font-style: italic;
 	font-size: 85%;
 }
 
 .LangDetailsHeader {
-	color: #6fa6bc;
+	color: #427386;
 	font-size: 100%;
 	font-weight: 600;
 	font-style: normal;
+}
+
+.mdl-spinner__layer-1,
+.mdl-spinner__layer-2,
+.mdl-spinner__layer-3,
+.mdl-spinner__layer-4 {
+    border-color: #527898 !important;
 }

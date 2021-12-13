@@ -124,15 +124,6 @@ import template from './playbackSettings.template.html';
 
 		let allCultures = cultures.getCultures();		
 		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "displayNativeName", userSettings.AudioLanguagePreference() || '');
-	
-        // hide cinema mode options if disabled at server level
-        apiClient.getNamedConfiguration('cinemamode').then(cinemaConfig => {
-            if (cinemaConfig.EnableIntrosForMovies || cinemaConfig.EnableIntrosForEpisodes) {
-                context.querySelector('.cinemaModeOptions').classList.remove('hide');
-            } else {
-                context.querySelector('.cinemaModeOptions').classList.add('hide');
-            }
-        }).catch( () => {console.log("No cinemamode configuration available on server.")});;
 
         if (appHost.supports('externalplayerintent')) {
             context.querySelector('.fldExternalPlayer').classList.remove('hide');
@@ -154,7 +145,6 @@ import template from './playbackSettings.template.html';
         }
 
         context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
-        context.querySelector('.chkEnableCinemaMode').checked = userSettings.enableCinemaMode();
         context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
 		context.querySelector('.chkSetUsingLastTracks').checked = userSettings.enableSetUsingLastTracks();
 		
@@ -212,7 +202,6 @@ import template from './playbackSettings.template.html';
 		userSettingsInstance.enableSetUsingLastTracks(context.querySelector('.chkSetUsingLastTracks').checked);
 		userSettingsInstance.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
         userSettingsInstance.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
-        userSettingsInstance.enableCinemaMode(context.querySelector('.chkEnableCinemaMode').checked);
         userSettingsInstance.enableNextVideoInfoOverlay(context.querySelector('.chkEnableNextVideoOverlay').checked);
         userSettingsInstance.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
         userSettingsInstance.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);

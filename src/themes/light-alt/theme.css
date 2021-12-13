@@ -65,9 +65,16 @@ html {
     background-image: url(../../assets/img/icon-transparent.png);
 }
 
-.backgroundContainer,
 html {
     background-color: #f2f2f2;
+}
+
+.backgroundContainer {
+    /*background: url(bg.jpg) center top no-repeat #033361;*/
+	background: linear-gradient(125deg, rgba(255, 217, 167, 0.4) 0%, rgba(246, 127, 0, 0.4) 40%, rgba(165, 100, 32, 0.4) 70%, rgba(255, 181, 103, 0.4) 100%);
+	background-color: #f2f2f2;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .backgroundContainer.withBackdrop {
