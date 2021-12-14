@@ -1,6 +1,6 @@
 
 * {
-	scrollbar-color: #246b76 #add1e7;
+	scrollbar-color: #246b76 #b8d9d6;
     scrollbar-width: thin;
 }
 
@@ -73,7 +73,7 @@ html {
 }
 
 .backgroundContainer {
-	background: linear-gradient(105deg, rgba(229, 242, 235, 0.4) 0%, rgba(60, 152, 126, 0.4) 40%, rgba(38, 112, 148, 0.4) 70%, rgba(185, 217, 219, 0.4) 100%);
+	background: linear-gradient(105deg, rgba(55, 95, 172, 0.4) 0%, rgba(60, 152, 126, 0.4) 40%, rgba(38, 112, 148, 0.4) 70%, rgba(185, 217, 219, 0.4) 100%);
 	background-color: rgb(220, 242, 248);
     -webkit-background-size: cover;
     background-size: cover;
@@ -84,7 +84,7 @@ html {
 }
 
 .backgroundContainer.withThemeBackdrop {
-   background-color: rgba(220, 242, 248, .2);
+   background-color: transparent;
 }
 
 .dialog,
@@ -106,14 +106,14 @@ html {
 .fab:focus,
 .raised:focus {
     background-color: rgba(66, 126, 139, 0.4);
-	color: rgba(255, 232, 232, 0.8);
+	color: rgb(255, 232, 232);
 }
 
 .button-link,
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: rgb(60, 172, 227);
+    color: rgb(109, 142, 177);
 }
 
 .paperList,
@@ -128,7 +128,6 @@ html {
 .formDialogFooter:not(.formDialogFooter-clear) {
     background-color: #f0f0f0;
     border-top: 1px solid #ddd;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
     color: inherit;
 }
 	
@@ -201,7 +200,7 @@ html {
 
 .emby-input,
 .emby-textarea {
-	color: inherit;
+	color: rgb(101, 133, 144) !important;
 	background: #fff;
 	border: 4px ridge rgb(199, 215, 217);
 	-webkit-border-radius: 0.2em;
@@ -387,10 +386,10 @@ html {
 }
 
 .homeLibraryButton {
-	color: rgba(8, 26, 60, 0.8) !important;
+	color: rgb(186, 199, 223) !important;
 	background-color: rgba(36, 136, 153, 0.4);
-	box-shadow: 0px 0px 8px #a8e6d2;
-	font-weight: 500;
+	box-shadow: 0px 0px 4px #244877;
+	font-weight: 400;
 }
 
 .homeLibraryButton:hover:not(:disabled) {
@@ -491,10 +490,10 @@ html {
 .button-submit {
 	width: 50% !important;
 	margin: 0 auto !important;
-	color: rgba(8, 26, 60, 0.8) !important;
-	background-color: rgba(36, 136, 153, 0.4);
+	background-color: rgb(36, 136, 153);
 	box-shadow: 0px 0px 8px #609295;
-	font-weight: 500;
+	color: rgb(193, 206, 212) !important;
+	font-weight: 600;
 }
 
 .button-submit:hover:not(:disabled) {
@@ -547,9 +546,19 @@ html {
 }
 
 .emby-select-withcolor {
-    color: inherit;
     background: #fff;
     border: 0.07em solid rgba(0, 0, 0, 0.158);
+	font-weight: 400;
+	line-height: 1.35;
+	color: rgb(101, 133, 144) !important;
+}
+
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabel {
+	font-weight: 600;
+	color: #457587;
 }
 
 .emby-select-withcolor:focus {
@@ -774,7 +783,7 @@ select option:selected {
 }
 
 .ratingbutton-icon-withrating {
-    color: #913079 !important;
+    color: #bbf6ae !important
 }
 
 .backdropImage {
@@ -856,7 +865,7 @@ legend {
 }
 
 .radio > * > .checkboxIcon-unchecked {
-	color: #abb2ba !important;
+	color: #5e97ae !important;
 }
 
 .radio > * > .checkboxIcon-checked {

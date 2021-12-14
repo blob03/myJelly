@@ -640,7 +640,7 @@
     "LabelFriendlyName": "Prijateljsko ime:",
     "LabelGroupMoviesIntoCollections": "Grupiraj filmove u kolekciju",
     "LabelGroupMoviesIntoCollectionsHelp": "Kada se prikazuje lista filmova, filmovi koji pripadaju kolekciji biti će prikazani kao jedna stavka.",
-    "LabelH264Crf": "H264 kodiranje CRF:",
+    "LabelH264Crf": "H.264 kodiranje CRF:",
     "LabelHardwareAccelerationType": "Hardversko ubrzanje:",
     "LabelHardwareAccelerationTypeHelp": "Dostupno samo na podržanim sustavima.",
     "LabelHomeNetworkQuality": "Kvaliteta kućne mreže:",

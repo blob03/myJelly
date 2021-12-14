@@ -599,7 +599,7 @@
     "LabelFriendlyName": "Draudzīgs nosaukums:",
     "LabelGroupMoviesIntoCollections": "Grupēt filmas kolekcijās",
     "LabelGroupMoviesIntoCollectionsHelp": "Kad tiks rādīti filmu saraksti, filmas, kuras pieder kolekcijai, tiks attēlotas kā viens grupēts vienums.",
-    "LabelH264Crf": "H264 kodēšanas CRF:",
+    "LabelH264Crf": "H.264 kodēšanas CRF:",
     "LabelHardwareAccelerationType": "Aparatūras paātrināšana:",
     "LabelHardwareAccelerationTypeHelp": "Aparatūras paātrināšanai ir vajadzīga papildus konfigurācija.",
     "LabelHomeNetworkQuality": "Mājas tīkla kvalitāte:",

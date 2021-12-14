@@ -619,7 +619,7 @@
     "LabelFriendlyName": "Лесно име:",
     "LabelGroupMoviesIntoCollections": "Групиране на филмите в поредици",
     "LabelGroupMoviesIntoCollectionsHelp": "Когато се показват списъци с филми, филмите, принадлежащи към поредица, ще бъдат показани като един общ елемент.",
-    "LabelH264Crf": "Значение на CRF H264-кодиране:",
+    "LabelH264Crf": "Значение на CRF H.264-кодиране:",
     "LabelHardwareAccelerationType": "Хардуерно ускорение:",
     "LabelHardwareAccelerationTypeHelp": "Хардуерното ускорение се нуждае от допълнителни настройки.",
     "LabelHomeNetworkQuality": "Качество на домашната мрежа:",
