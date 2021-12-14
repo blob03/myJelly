@@ -11,7 +11,7 @@ import settingsHelper from '../../components/settingshelper';
     function populateLanguages(selectLanguage) {        
 		loading.show();
 		ApiClient.getCultures().then(allCultures => {
-			settingsHelper.populateLanguages(selectLanguage, allCultures, "DisplayName");
+			settingsHelper.populateServerLanguages(selectLanguage, allCultures, "DisplayName");
 			loading.hide();
 		});
     }
