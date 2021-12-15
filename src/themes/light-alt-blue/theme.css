@@ -38,7 +38,7 @@ html {
 }
 
 .skinHeader-withBackground {
-	background: linear-gradient(to right, #fff 0%, #add1d3 18%, #6eb5d8 38%, #a3d4dc 68%, #6fa3b6 81%, #2c687b 100%);
+	background: linear-gradient(105deg, rgb(196, 222, 224) 0%, rgb(159, 177, 213) 20%, rgb(144, 208, 190) 60%, rgb(120, 169, 193) 90%, rgb(196, 222, 224) 100%);
     color: #fff;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -90,7 +90,7 @@ html {
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #f0f0f0;
+    background-color: #b4cbd5;
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -113,7 +113,7 @@ html {
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: rgb(109, 142, 177);
+    color: rgb(86, 121, 158);
 }
 
 .paperList,
@@ -126,8 +126,8 @@ html {
 }
 
 .formDialogFooter:not(.formDialogFooter-clear) {
-    background-color: #f0f0f0;
-    border-top: 1px solid #ddd;
+    background-color: #daeaf4;
+    border-top: 0px solid #ddd;
     color: inherit;
 }
 	
@@ -365,8 +365,11 @@ html {
 }
 
 .emby-checkbox:focus + span + .checkboxOutline,
-.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border-color: rgba(38, 218, 247, 0.8);
+.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked {
+	border-color: rgb(35, 218, 141);
+	color: rgb(35, 218, 141);
 }
 
 .checkboxIcon-checked {
@@ -817,7 +820,9 @@ select option:selected {
 .abouttab {
 	font-family: inherit;
 	font-size: 90%;
-	line-height: 1.25;
+	line-height: 1.35;
+	font-weight: 600;
+	color: #417c85;
 }
 
 .aboutcontent {
@@ -864,21 +869,33 @@ legend {
 	color: #fbfdff;
 }
 
-.radio > * > .checkboxIcon-unchecked {
-	color: #5e97ae !important;
+/* Pseudo radio widget (a radio button that allows unselects) */
+/* based on the checkbox widget */
+
+.radio > .checkboxLabel,
+.radio + .fieldDescription {
+	margin-bottom: .3em !important;
+	margin-left: -.3em !important;
 }
 
-.radio > * > .checkboxIcon-checked {
-	color: #fff !important;
+.radio > * > .checkboxIcon-checked,
+.radio > * > .checkboxIcon-unchecked {
+	font-size: 170%;
+	text-shadow: 1px 2px 3px #1e1d25;
+	color: #5e97ae;
+}
+
+.radio.emby-checkbox + span + .checkboxOutline {
+	border: none !important;
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
-	background-color: rgba(155, 167, 196, 0.4);
+	background-color: transparent;
 }
 
-.radio.emby-checkbox:focus + span + .checkboxOutline,
-.radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border-color: rgba(38, 218, 247, 0.8) !important;
+.radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
+.radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
+	color: white !important;
 }
 
 .radioButtonLabel,
@@ -932,7 +949,7 @@ fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
 	border: 4px groove #fcfcfc !important;
-	border-color: #dbf8ff !important;
+	border-color: #b7e3f4 !important;
 }
 
 .fieldDescription {

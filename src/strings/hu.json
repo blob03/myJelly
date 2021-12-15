@@ -714,7 +714,7 @@
     "LabelKodiMetadataSaveImagePaths": "A képek útvonalának mentése az NFO fájlokban",
     "LabelKodiMetadataSaveImagePathsHelp": "Ez akkor ajánlott, ha olyan képfájlnevek vannak amelyek nem felelnek meg a Kodi irányelveinek.",
     "LabelKodiMetadataUser": "Mentsd el a következő felhasználó megtekintési adatát az NFO-ba:",
-    "LabelKodiMetadataUserHelp": "A kiválasztott felhasználó megtekintési adata elmentésre kerül az NFO fájlokba, melyet azután más alkalmazások használhatnak.",
+    "LabelKodiMetadataUserHelp": "Mentse az időadatokat NFO-fájlokba, hogy más alkalmazások is használhatják.",
     "LabelLanNetworks": "LAN hálózatok:",
     "LabelLanguage": "Nyelv:",
     "LabelLibraryPageSize": "Könyvtár oldalméret:",
