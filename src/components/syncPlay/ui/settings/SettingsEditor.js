@@ -11,6 +11,7 @@ import layoutManager from '../../../layoutManager';
 import loading from '../../../loading/loading';
 import toast from '../../../toast/toast';
 import globalize from '../../../../scripts/globalize';
+
 import { toBoolean, toFloat } from '../../../../scripts/stringUtils';
 
 import 'material-design-icons-iconfont';
@@ -56,14 +57,40 @@ class SettingsEditor {
 
         const { default: editorTemplate } = await import('./editor.html');
         this.context.innerHTML = globalize.translateHtml(editorTemplate, 'core');
-
-        
+ 
         this.context.querySelector('.btnCancel').addEventListener('click', () => {
             dialogHelper.close(this.context);
         });
 
+		loading.show();
         await this.initEditor();
+		loading.hide();
+		
+        return dialogHelper.open(this.context).then(() => {
+            if (layoutManager.tv) {
+                centerFocus(this.context.querySelector('.formDialogContent'), false, false);
+            }
 
+            if (this.context.submitted) {
+                return Promise.resolve();
+            }
+
+            return Promise.reject();
+        });
+    }
+
+    async initEditor() {
+        const { context } = this;
+
+        context.querySelector('#txtExtraTimeOffset').value = toFloat(getSetting('extraTimeOffset'), 0.0);
+        context.querySelector('#chkSyncCorrection').checked = toBoolean(getSetting('enableSyncCorrection'), true);
+        context.querySelector('#txtMinDelaySpeedToSync').value = toFloat(getSetting('minDelaySpeedToSync'), 60.0);
+        context.querySelector('#txtMaxDelaySpeedToSync').value = toFloat(getSetting('maxDelaySpeedToSync'), 3000.0);
+        context.querySelector('#txtSpeedToSyncDuration').value = toFloat(getSetting('speedToSyncDuration'), 1000.0);
+        context.querySelector('#txtMinDelaySkipToSync').value = toFloat(getSetting('minDelaySkipToSync'), 400.0);
+        context.querySelector('#chkSpeedToSync').checked = toBoolean(getSetting('useSpeedToSync'), true);
+        context.querySelector('#chkSkipToSync').checked = toBoolean(getSetting('useSkipToSync'), true);
+		
 		// Set callbacks for form submission
         this.context.querySelector('form').addEventListener('submit', (event) => {
             // Disable default form submission
@@ -113,33 +140,6 @@ class SettingsEditor {
         if (layoutManager.tv) {
             centerFocus(this.context.querySelector('.formDialogContent'), false, true);
         }
-
-        return dialogHelper.open(this.context).then(() => {
-            if (layoutManager.tv) {
-                centerFocus(this.context.querySelector('.formDialogContent'), false, false);
-            }
-
-            if (this.context.submitted) {
-                return Promise.resolve();
-            }
-
-            return Promise.reject();
-        });
-    }
-
-    async initEditor() {
-        const { context } = this;
-
-        context.querySelector('#txtExtraTimeOffset').value = toFloat(getSetting('extraTimeOffset'), 0.0);
-        context.querySelector('#chkSyncCorrection').checked = toBoolean(getSetting('enableSyncCorrection'), true);
-        context.querySelector('#txtMinDelaySpeedToSync').value = toFloat(getSetting('minDelaySpeedToSync'), 60.0);
-        context.querySelector('#txtMaxDelaySpeedToSync').value = toFloat(getSetting('maxDelaySpeedToSync'), 3000.0);
-        context.querySelector('#txtSpeedToSyncDuration').value = toFloat(getSetting('speedToSyncDuration'), 1000.0);
-        context.querySelector('#txtMinDelaySkipToSync').value = toFloat(getSetting('minDelaySkipToSync'), 400.0);
-        context.querySelector('#chkSpeedToSync').checked = toBoolean(getSetting('useSpeedToSync'), true);
-		
-		
-        context.querySelector('#chkSkipToSync').checked = toBoolean(getSetting('useSkipToSync'), true);
     }
 
     onSubmit() {

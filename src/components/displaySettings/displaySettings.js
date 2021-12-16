@@ -71,9 +71,9 @@ import viewContainer from '../viewContainer';
 		let sliderContainerSettings =  pnode.querySelector('.sliderContainer-settings');
 		if (sliderContainerSettings) {
 			if (e.target.value === 'none') 
-				sliderContainerSettings.classList.add('disabled');
+				sliderContainerSettings.classList.add('hide');
 			else 
-				sliderContainerSettings.classList.remove('disabled');
+				sliderContainerSettings.classList.remove('hide');
 		}
 	}
 	

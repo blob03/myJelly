@@ -3,6 +3,7 @@ import sys
 import os
 import json
 import math
+from datetime import datetime
 
 # Rename a static set of dictionaries so that their names match those returned by a call to /Localization/cultures.
 # This saves a conversion at runtime.
@@ -62,6 +63,9 @@ def sort(subdir, source, mod, langlst):
 	for lang in langlst:
 		with open(langdir + lang, 'r+') as f:
 			print('Checking dictionary: ' + langdir + lang)
+			lastm = datetime.fromtimestamp(os.path.getmtime(langdir + lang)).strftime('%Y-%m-%d %H:%M:%S')
+			fsize = os.path.getsize(langdir + lang)
+			print('Last modified: ' + lastm)
 			orphans = []
 			keys = 0
 			okeys = 0
@@ -88,6 +92,8 @@ def sort(subdir, source, mod, langlst):
 			except KeyError:
 				metatree[ccode] = {
 					"ccode": ccode,
+					"lastm": lastm,
+					"fsize": fsize,
 					"ccodeSrc": source,
 					"displayName": "",
 					"displayNativeName": "",
@@ -99,14 +105,14 @@ def sort(subdir, source, mod, langlst):
 						"filename": "",
 						"keys#": 0,
 						"orphans#": 0,
-						"orphans": [],
+						#"orphans": [],
 						"completed%": 0
 					},
 					"myJelly": {
 						"filename": "",
 						"keys#": 0,
 						"orphans#": 0,
-						"orphans": [],
+						#"orphans": [],
 						"completed%": 0
 					}
 				}	
@@ -122,7 +128,7 @@ def sort(subdir, source, mod, langlst):
 			metatree[ccode][mod]['keys#'] = keys
 			metatree[ccode]['keys#'] += keys
 			metatree[ccode][mod]['orphans#'] = okeys
-			metatree[ccode][mod]['orphans'] = orphans
+			#metatree[ccode][mod]['orphans'] = orphans
 			metatree[ccode][mod]['completed%'] = float("{:,.2f}".format(keys*100/len(langus)).replace(".00",""))
 			metatree[ccode]['completed%'] = float("{:,.2f}".format(metatree[ccode]['keys#']*100/metatree[source]['keys#']).replace(".00",""))
 	
@@ -159,5 +165,3 @@ langlst.remove("en-US.json")
 sort('myJelly/', 'en-US', 'myJelly', langlst)
 print('#######################################')	
 print('Done.')
-
-

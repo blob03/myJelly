@@ -61,7 +61,7 @@ html {
 }
 
 .pageTitleWithDefaultLogo {
-    background-image: url(../../assets/img/banner-dark.png);
+    background-image: url(../../assets/img/banner-light.png);
 }
 
 .layout-tv .pageTitleWithDefaultLogo {
@@ -90,7 +90,7 @@ html {
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #b4cbd5;
+    background-color: #d0effc;
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -669,7 +669,8 @@ select option:selected {
 
 .headerClockTime,
 .headerClockDate {
-	color: #dbe1f1;
+	color: #135090;
+	text-shadow: 1px 1px 4px #39392d;
 }
 
 .headerClockTime {
@@ -913,34 +914,6 @@ option.sourceDictionaryOption {
 	color: #fff;
 }
 
-/* disabled slider */
-
-.sliderContainer-settings.disabled > .sliderLabel {
-	color: #abd5d5
-}
-
-.sliderContainer-settings.disabled  .mdl-slider-background, 
-.sliderContainer-settings.disabled  .mdl-slider-background-flex {
-	box-shadow: none;
-	background: #abd5d5
-}
-
-
-.sliderContainer-settings.disabled .fieldDescription,
-.sliderContainer-settings.disabled .sliderBubble {
-	color: #454d59;
-	visibility: hidden;
-}
-
-.sliderContainer-settings.disabled .mdl-slider-background-lower {
-	background: none;
-}
-
-.sliderContainer-settings.disabled .mdl-slider
-{
-	visibility: hidden;
-}
-
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
@@ -1007,3 +980,15 @@ div[data-role="controlgroup"] a.ui-btn-active {
     padding: .5em 1em 1em;
 }
 
+.username {
+	color: #efefef;
+	text-shadow: 1px 1px 3px #1a8489;
+	font-weight: 600;
+}
+
+.actionSheetTitle {
+	color: #4298c1;
+	text-shadow: 1px 1px 3px #83aab6;
+	font-weight: 600;
+	font-size: 1.5em;
+}
