@@ -57,7 +57,14 @@ class SettingsEditor {
         const { default: editorTemplate } = await import('./editor.html');
         this.context.innerHTML = globalize.translateHtml(editorTemplate, 'core');
 
-        // Set callbacks for form submission
+        
+        this.context.querySelector('.btnCancel').addEventListener('click', () => {
+            dialogHelper.close(this.context);
+        });
+
+        await this.initEditor();
+
+		// Set callbacks for form submission
         this.context.querySelector('form').addEventListener('submit', (event) => {
             // Disable default form submission
             if (event) {
@@ -66,16 +73,43 @@ class SettingsEditor {
             return false;
         });
 
-        this.context.querySelector('.btnSave').addEventListener('click', () => {
+		this.context.querySelector('.btnSave').addEventListener('click', () => {
             this.onSubmit();
         });
 
-        this.context.querySelector('.btnCancel').addEventListener('click', () => {
-            dialogHelper.close(this.context);
+		this.context.querySelector('#chkSyncCorrection').addEventListener('change', (ev) => {
+			let me = ev.target;
+             if (me.checked) {
+				this.context.querySelector('#chkSpeedToSync').parentNode.parentNode.classList.remove('hide');
+				this.context.querySelector('#chkSkipToSync').parentNode.parentNode.classList.remove('hide');
+				let event = new Event('change');
+				this.context.querySelector('#chkSpeedToSync').dispatchEvent(event);
+			 } else {
+				this.context.querySelector('#chkSpeedToSync').parentNode.parentNode.classList.add('hide');
+				this.context.querySelector('#chkSkipToSync').parentNode.parentNode.classList.add('hide');
+				this.context.querySelector('#txtMinDelaySpeedToSync').parentNode.classList.add('hide');
+				this.context.querySelector('#txtMaxDelaySpeedToSync').parentNode.classList.add('hide');
+				this.context.querySelector('#txtSpeedToSyncDuration').parentNode.classList.add('hide');
+			 }
         });
 
-        await this.initEditor();
-
+		this.context.querySelector('#chkSpeedToSync').addEventListener('change', (ev) => {
+			let me = ev.target;
+             if (me.checked) {
+				this.context.querySelector('#txtMinDelaySpeedToSync').parentNode.classList.remove('hide');
+				this.context.querySelector('#txtMaxDelaySpeedToSync').parentNode.classList.remove('hide');
+				this.context.querySelector('#txtSpeedToSyncDuration').parentNode.classList.remove('hide');
+			 } else {
+				this.context.querySelector('#txtMinDelaySpeedToSync').parentNode.classList.add('hide');
+				this.context.querySelector('#txtMaxDelaySpeedToSync').parentNode.classList.add('hide');
+				this.context.querySelector('#txtSpeedToSyncDuration').parentNode.classList.add('hide');
+			 }
+        });
+		
+		let event = new Event('change');
+		this.context.querySelector('#chkSpeedToSync').dispatchEvent(event);
+		this.context.querySelector('#chkSyncCorrection').dispatchEvent(event);
+		
         if (layoutManager.tv) {
             centerFocus(this.context.querySelector('.formDialogContent'), false, true);
         }
@@ -103,6 +137,8 @@ class SettingsEditor {
         context.querySelector('#txtSpeedToSyncDuration').value = toFloat(getSetting('speedToSyncDuration'), 1000.0);
         context.querySelector('#txtMinDelaySkipToSync').value = toFloat(getSetting('minDelaySkipToSync'), 400.0);
         context.querySelector('#chkSpeedToSync').checked = toBoolean(getSetting('useSpeedToSync'), true);
+		
+		
         context.querySelector('#chkSkipToSync').checked = toBoolean(getSetting('useSkipToSync'), true);
     }
 

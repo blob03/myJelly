@@ -6,7 +6,7 @@
 
 .skinHeader,
 html {
-    color: #01394e;
+    color: #0a5e9b;
 }
 
 .headerLeft, .headerRight {
@@ -37,8 +37,9 @@ html {
     background-color: #eaeaea;
 }
 
+.formDialogHeader,
 .skinHeader-withBackground {
-	background: linear-gradient(105deg, rgb(196, 222, 224) 0%, rgb(159, 177, 213) 20%, rgb(144, 208, 190) 60%, rgb(120, 169, 193) 90%, rgb(196, 222, 224) 100%);
+	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
     color: #fff;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -67,7 +68,6 @@ html {
     background-image: url(../../assets/img/icon-transparent.png);
 }
 
-.formDialogContent,
 html {
     background-color: #daeaf4;
 }
@@ -126,8 +126,8 @@ html {
 }
 
 .formDialogFooter:not(.formDialogFooter-clear) {
-    background-color: #daeaf4;
-    border-top: 0px solid #ddd;
+    background-color: transparent;
+    border: none;
     color: inherit;
 }
 	
@@ -171,8 +171,9 @@ html {
 }
 
 .alphaPickerButton {
-    color: rgba(0, 0, 0, 0.7);
-    background-color: transparent;
+	color: rgb(76, 140, 171);
+	background-color: transparent;
+	font-weight: 600;
 }
 
 .alphaPickerButton-selected,
@@ -401,9 +402,10 @@ html {
 }
 
 .homeLibraryButton:focus {
-	color: rgba(30, 30, 30, 0.8) !important;
+	color: rgba(28, 72, 119, 0.8) !important;
 	background-color: rgba(123, 152, 184, 0.8) !important;
 	transform: scale(1.1) !important;
+	font-weight: 600;
 }
 
 .listItemBody {
@@ -694,13 +696,6 @@ select option:selected {
 	font-size: 90% !important;
 }
 
-.formDialogHeader {
-	background: linear-gradient(to right, #fff 0%, #add1d3 18%, #6eb5d8 38%, #a3d4dc 68%, #6fa3b6 81%, #2c687b 100%);
-	color: #fff;
-	-webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-	box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-}
-
 .formDialogHeaderTitle,
 .pageTitle {
 	color: #fff !important;
@@ -791,6 +786,7 @@ select option:selected {
 
 .backdropImage {
     background-color: rgb(220, 220, 220) !important;
+	top: 3.9em;
 }
 
 .backdropImage.themeBackdrop {
@@ -997,3 +993,17 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	text-shadow: 1px 1px 3px #1a8489;
 	font-weight: 600;
 }
+
+.libraryPage {
+    padding-top: 4em !important;
+}
+
+.formDialogContent {
+	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
+	background-color: rgb(220, 242, 248);
+}
+
+.dialogContentInner {
+    padding: .5em 1em 1em;
+}
+
