@@ -10,95 +10,120 @@
             <div class="fieldDescription">${LabelPleaseRestart}</div>
         </div>
 
-        <div class="selectContainer">
-            <select is="emby-select" id="selectHomeSection1" label="{section1label}">
-				<option value="none">${None}</option>
-				<option disabled>${OptionDivider}</option>
-                <option value="smalllibrarytiles">${HeaderMyMedia}</option>
-                <option value="librarybuttons">${HeaderMyMediaSmall}</option>
-                <option value="activerecordings">${HeaderActiveRecordings}</option>
-                <option value="resume">${HeaderContinueWatching}</option>
-                <option value="resumeaudio">${HeaderContinueListening}</option>
-                <option value="resumebook">${HeaderContinueReading}</option>
-                <option value="latestmedia">${HeaderLatestMedia}</option>
-                <option value="nextup">${NextUp}</option>
-                <option value="livetv">${LiveTV}</option>
-            </select>
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+				
+			<div class="selectContainer" style="flex-grow: 3;width: 47%;height: auto;">
+				<select is="emby-select" id="selectHomeSection1" label="{section1label}">
+					<option value="none">${None}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="smalllibrarytiles">${HeaderMyMedia}</option>
+					<option value="librarybuttons">${HeaderMyMediaSmall}</option>
+					<option value="activerecordings">${HeaderActiveRecordings}</option>
+					<option value="resume">${HeaderContinueWatching}</option>
+					<option value="resumeaudio">${HeaderContinueListening}</option>
+					<option value="resumebook">${HeaderContinueReading}</option>
+					<option value="latestmedia">${HeaderLatestMedia}</option>
+					<option value="nextup">${NextUp}</option>
+					<option value="livetv">${LiveTV}</option>
+				</select>
+			</div>
+			
+			<div class="selectDashboardThemeContainer" style="width: 6%"></div>
+			
+			<div class="selectContainer selectDashboardThemeContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectHomeSection2" label="{section2label}">
+					<option value="none">${None}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="smalllibrarytiles">${HeaderMyMedia}</option>
+					<option value="librarybuttons">${HeaderMyMediaSmall}</option>
+					<option value="activerecordings">${HeaderActiveRecordings}</option>
+					<option value="resume">${HeaderContinueWatching}</option>
+					<option value="resumeaudio">${HeaderContinueListening}</option>
+					<option value="resumebook">${HeaderContinueReading}</option>
+					<option value="latestmedia">${HeaderLatestMedia}</option>
+					<option value="nextup">${NextUp}</option>
+					<option value="livetv">${LiveTV}</option>
+				</select>
+			</div>
+		
+		</div>
+        
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+				
+			<div class="selectContainer" style="flex-grow: 3;width: 47%;height: auto;">		
+				<select is="emby-select" id="selectHomeSection3" label="{section3label}">
+					<option value="none">${None}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="smalllibrarytiles">${HeaderMyMedia}</option>
+					<option value="librarybuttons">${HeaderMyMediaSmall}</option>
+					<option value="activerecordings">${HeaderActiveRecordings}</option>
+					<option value="resume">${HeaderContinueWatching}</option>
+					<option value="resumeaudio">${HeaderContinueListening}</option>
+					<option value="resumebook">${HeaderContinueReading}</option>
+					<option value="latestmedia">${HeaderLatestMedia}</option>
+					<option value="nextup">${NextUp}</option>
+					<option value="livetv">${LiveTV}</option>
+				</select>
+			</div>
+		
+			<div class="selectDashboardThemeContainer" style="width: 6%"></div>
+			
+			<div class="selectContainer selectDashboardThemeContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectHomeSection4" label="{section4label}">
+					<option value="none">${None}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="smalllibrarytiles">${HeaderMyMedia}</option>
+					<option value="librarybuttons">${HeaderMyMediaSmall}</option>
+					<option value="activerecordings">${HeaderActiveRecordings}</option>
+					<option value="resume">${HeaderContinueWatching}</option>
+					<option value="resumeaudio">${HeaderContinueListening}</option>
+					<option value="resumebook">${HeaderContinueReading}</option>
+					<option value="latestmedia">${HeaderLatestMedia}</option>
+					<option value="nextup">${NextUp}</option>
+					<option value="livetv">${LiveTV}</option>
+				</select>
+			</div>
+			
         </div>
-        <div class="selectContainer">
-            <select is="emby-select" id="selectHomeSection2" label="{section2label}">
-				<option value="none">${None}</option>
-				<option disabled>${OptionDivider}</option>
-                <option value="smalllibrarytiles">${HeaderMyMedia}</option>
-                <option value="librarybuttons">${HeaderMyMediaSmall}</option>
-                <option value="activerecordings">${HeaderActiveRecordings}</option>
-                <option value="resume">${HeaderContinueWatching}</option>
-                <option value="resumeaudio">${HeaderContinueListening}</option>
-                <option value="resumebook">${HeaderContinueReading}</option>
-                <option value="latestmedia">${HeaderLatestMedia}</option>
-                <option value="nextup">${NextUp}</option>
-                <option value="livetv">${LiveTV}</option>
-            </select>
-        </div>
-        <div class="selectContainer">
-            <select is="emby-select" id="selectHomeSection3" label="{section3label}">
-				<option value="none">${None}</option>
-				<option disabled>${OptionDivider}</option>
-                <option value="smalllibrarytiles">${HeaderMyMedia}</option>
-                <option value="librarybuttons">${HeaderMyMediaSmall}</option>
-                <option value="activerecordings">${HeaderActiveRecordings}</option>
-                <option value="resume">${HeaderContinueWatching}</option>
-                <option value="resumeaudio">${HeaderContinueListening}</option>
-                <option value="resumebook">${HeaderContinueReading}</option>
-                <option value="latestmedia">${HeaderLatestMedia}</option>
-                <option value="nextup">${NextUp}</option>
-                <option value="livetv">${LiveTV}</option>
-            </select>
-        </div>
-        <div class="selectContainer">
-            <select is="emby-select" id="selectHomeSection4" label="{section4label}">
-				<option value="none">${None}</option>
-				<option disabled>${OptionDivider}</option>
-                <option value="smalllibrarytiles">${HeaderMyMedia}</option>
-                <option value="librarybuttons">${HeaderMyMediaSmall}</option>
-                <option value="activerecordings">${HeaderActiveRecordings}</option>
-                <option value="resume">${HeaderContinueWatching}</option>
-                <option value="resumeaudio">${HeaderContinueListening}</option>
-                <option value="resumebook">${HeaderContinueReading}</option>
-                <option value="latestmedia">${HeaderLatestMedia}</option>
-                <option value="nextup">${NextUp}</option>
-                <option value="livetv">${LiveTV}</option>
-            </select>
-        </div>
-        <div class="selectContainer">
-            <select is="emby-select" id="selectHomeSection5" label="{section5label}">
-				<option value="none">${None}</option>
-				<option disabled>${OptionDivider}</option>
-                <option value="smalllibrarytiles">${HeaderMyMedia}</option>
-                <option value="librarybuttons">${HeaderMyMediaSmall}</option>
-                <option value="activerecordings">${HeaderActiveRecordings}</option>
-                <option value="resume">${HeaderContinueWatching}</option>
-                <option value="resumeaudio">${HeaderContinueListening}</option>
-                <option value="resumebook">${HeaderContinueReading}</option>
-                <option value="latestmedia">${HeaderLatestMedia}</option>
-                <option value="nextup">${NextUp}</option>
-                <option value="livetv">${LiveTV}</option>
-            </select>
-        </div>
-        <div class="selectContainer">
-            <select is="emby-select" id="selectHomeSection6" label="{section6label}">
-				<option value="none">${None}</option>
-				<option disabled>${OptionDivider}</option>
-                <option value="smalllibrarytiles">${HeaderMyMedia}</option>
-                <option value="librarybuttons">${HeaderMyMediaSmall}</option>
-                <option value="activerecordings">${HeaderActiveRecordings}</option>
-                <option value="resume">${HeaderContinueWatching}</option>
-                <option value="resumeaudio">${HeaderContinueListening}</option>
-                <option value="resumebook">${HeaderContinueReading}</option>
-                <option value="latestmedia">${HeaderLatestMedia}</option>
-                <option value="nextup">${NextUp}</option>
-                <option value="livetv">${LiveTV}</option>
-            </select>
+		
+        <div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+				
+			<div class="selectContainer" style="flex-grow: 3;width: 47%;height: auto;">		
+				<select is="emby-select" id="selectHomeSection5" label="{section5label}">
+					<option value="none">${None}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="smalllibrarytiles">${HeaderMyMedia}</option>
+					<option value="librarybuttons">${HeaderMyMediaSmall}</option>
+					<option value="activerecordings">${HeaderActiveRecordings}</option>
+					<option value="resume">${HeaderContinueWatching}</option>
+					<option value="resumeaudio">${HeaderContinueListening}</option>
+					<option value="resumebook">${HeaderContinueReading}</option>
+					<option value="latestmedia">${HeaderLatestMedia}</option>
+					<option value="nextup">${NextUp}</option>
+					<option value="livetv">${LiveTV}</option>
+				</select>
+			</div>
+		
+			<div class="selectDashboardThemeContainer" style="width: 6%"></div>
+			
+			<div class="selectContainer selectDashboardThemeContainer" style="width: 47%;height: auto;">
+			
+				<select is="emby-select" id="selectHomeSection6" label="{section6label}">
+					<option value="none">${None}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="smalllibrarytiles">${HeaderMyMedia}</option>
+					<option value="librarybuttons">${HeaderMyMediaSmall}</option>
+					<option value="activerecordings">${HeaderActiveRecordings}</option>
+					<option value="resume">${HeaderContinueWatching}</option>
+					<option value="resumeaudio">${HeaderContinueListening}</option>
+					<option value="resumebook">${HeaderContinueReading}</option>
+					<option value="latestmedia">${HeaderLatestMedia}</option>
+					<option value="nextup">${NextUp}</option>
+					<option value="livetv">${LiveTV}</option>
+				</select>
+				
+			</div>
+			
         </div>
         <div class="selectContainer">
             <select is="emby-select" id="selectHomeSection7" label="{section7label}">
@@ -115,30 +140,31 @@
                 <option value="livetv">${LiveTV}</option>
             </select>
         </div>
-    </div>
-
-	<div class="sliderContainer-settings">
-		<div class="sliderContainer">
-			<input is="emby-slider" id="sliderMaxDaysForNextUp" label="${LabelMaxDaysForNextUp}" type="range" min="1" max="365" />
+		
+		<div class="sliderContainer-settings hide">
+			<div class="sliderContainer">
+				<input is="emby-slider" id="sliderMaxDaysForNextUp" label="${LabelMaxDaysForNextUp}" type="range" min="1" max="365" />
+			</div>
+			<div class="fieldDescription">${LabelMaxDaysForNextUpHelp}</div>
 		</div>
-		<div class="fieldDescription">${LabelMaxDaysForNextUpHelp}</div>
-	</div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription fldUseEpisodeImagesInNextUp hide">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkUseEpisodeImagesInNextUp" />
+				<span>${UseEpisodeImagesInNextUp}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${UseEpisodeImagesInNextUpHelp}</div>
+		</div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription fldHidePlayedFromLatest hide">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkHidePlayedFromLatest" />
+				<span>${HideWatchedContentFromLatestMedia}</span>
+			</label>
+		</div>
 	
-	<div class="checkboxContainer checkboxContainer-withDescription fldUseEpisodeImagesInNextUp">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkUseEpisodeImagesInNextUp" />
-            <span>${UseEpisodeImagesInNextUp}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${UseEpisodeImagesInNextUpHelp}</div>
     </div>
 
-	<div class="verticalSection verticalSection-extrabottompadding">
-		<label class="checkboxContainer">
-			<input class="chkHidePlayedFromLatest" type="checkbox" is="emby-checkbox" />
-			<span>${HideWatchedContentFromLatestMedia}</span>
-		</label>
-	</div>
-	
     <div class="verticalSection verticalSection-extrabottompadding">
         <h2 class="sectionTitle">${HeaderLibraryOrder}</h2>
         <div class="paperList viewOrderList"></div>
@@ -149,7 +175,7 @@
     <div class="verticalSection verticalSection-extrabottompadding">
         <h2 class="sectionTitle">${HeaderLibraryFolders}</h2>
         <div>
-            <p>${LabelSelectFolderGroups}</p>
+			<div class="fieldDescription">${LabelSelectFolderGroups}</div>
             <div class="folderGroupList"></div>
             <div class="fieldDescription checkboxFieldDescription">${LabelSelectFolderGroupsHelp}</div>
         </div>

@@ -41,7 +41,7 @@ import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
 		
 		// Extra feature thought for TV and mobile users regardless of the layout in use.
 		// That one acts like a shift + reload with Firefox, requesting a fresh copy of everything from the server.
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerReloadButton hide"><span class="material-icons refresh"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
         html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';
         html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);"></h3>';

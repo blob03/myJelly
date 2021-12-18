@@ -118,7 +118,7 @@ html {
 
 .paperList,
 .visualCardBox {
-    background: rgba(103, 164, 161,.3);
+    background: rgba(103, 164, 161,.1);
 }
 
 .defaultCardBackground1 {
@@ -454,7 +454,6 @@ html {
 
 .emby-tab-button:hover:not(:disabled) {
     color: rgba(143, 225, 229, 0.8);
-	text-shadow: 0 0 6px #144272;
 }
 
 .emby-tab-button-active,
@@ -670,7 +669,7 @@ select option:selected {
 .headerClockTime,
 .headerClockDate {
 	color: #135090;
-	text-shadow: 1px 1px 4px #39392d;
+	text-shadow: 1px 1px 4px #304753;
 }
 
 .headerClockTime {
@@ -700,12 +699,12 @@ select option:selected {
 .formDialogHeaderTitle,
 .pageTitle {
 	color: #fff !important;
-	text-shadow: 1px 1px 4px #39392d;
+	text-shadow: 1px 1px 4px #304753;
 }
 
 .material-icons {
 	color: #135090;
-	text-shadow: 1px 1px 4px #39392d;
+	text-shadow: 1px 1px 4px #304753;
 }
 
 .cardOverlayButton > .material-icons {

@@ -202,14 +202,13 @@ import template from './homeScreenSettings.template.html';
         for (let i = 1; i <= 7; i++) {
             const select = context.querySelector(`#selectHomeSection${i}`);
             const defaultValue = homeSections.getDefaultSection(i - 1);
-            const option = select.querySelector(`option[value=${defaultValue}]`) || select.querySelector('option[value=""]');
-			option.value = '';
+            //const option = select.querySelector(`option[value=${defaultValue}]`) || select.querySelector('option[value=""]');
+			//option.value = '';
             const userValue = userSettings.get(`homesection${i - 1}`);
-
-            if (userValue === defaultValue || !userValue) 
-                select.value = '';
-            else 
-                select.value = userValue;
+            if (!userValue) 
+                userValue = defaultValue;
+            
+            select.value = userValue;
         }
         context.querySelector('.selectTVHomeScreen').value = userSettings.TVHome();
     }
@@ -277,14 +276,49 @@ import template from './homeScreenSettings.template.html';
 
         elem.innerHTML = html;
     }
-
+	
+    function onHomeSectionChange(e) {
+		let nextup = false;
+		let lmedia = false;
+		let resume = false;			
+		let context = e.target.parentNode.parentNode.parentNode;
+		for (let i = 1; i <= 7 ; i++) {
+			if (context.querySelector(`#selectHomeSection${i}`).value === 'nextup')
+				nextup = true;
+			else if (context.querySelector(`#selectHomeSection${i}`).value === 'resume')
+				resume = true;
+			else if (context.querySelector(`#selectHomeSection${i}`).value === 'latestmedia')
+				lmedia = true;
+		}
+				
+		if (nextup)
+			document.querySelector('#sliderMaxDaysForNextUp').parentNode.parentNode.classList.remove('hide');
+		else
+			document.querySelector('#sliderMaxDaysForNextUp').parentNode.parentNode.classList.add('hide');
+		
+		if (nextup || resume) 
+			document.querySelector('#chkUseEpisodeImagesInNextUp').parentNode.parentNode.classList.remove('hide');
+		else 
+			document.querySelector('#chkUseEpisodeImagesInNextUp').parentNode.parentNode.classList.add('hide');
+		
+		if (lmedia) 
+			document.querySelector('#chkHidePlayedFromLatest').parentNode.parentNode.classList.remove('hide');
+		else 
+			document.querySelector('#chkHidePlayedFromLatest').parentNode.parentNode.classList.add('hide');
+	}
+	
     function loadForm(context, user, userSettings, apiClient) {
-
-		context.querySelector('.chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
+		context.querySelector('#chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();		
         
 		updateHomeSectionValues(context, userSettings);
+		
+		let chgevent = new Event('change');
+		for (let i = 1; i <= 7 ; i++)
+			context.querySelector('#selectHomeSection' + i).addEventListener('change', onHomeSectionChange);
+		for (let i = 1; i <= 7 ; i++)
+			context.querySelector('#selectHomeSection' + i).dispatchEvent(chgevent);
 
         const promise1 = apiClient.getUserViews({ IncludeHidden: true }, user.Id);
         const promise2 = apiClient.getJSON(apiClient.getUrl(`Users/${user.Id}/GroupingOptions`));
@@ -341,7 +375,7 @@ import template from './homeScreenSettings.template.html';
     function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
 		const user = instance.currentUser;
 		
-        user.Configuration.HidePlayedInLatest = context.querySelector('.chkHidePlayedFromLatest').checked;
+        user.Configuration.HidePlayedInLatest = context.querySelector('#chkHidePlayedFromLatest').checked;
 
         user.Configuration.LatestItemsExcludes = getCheckboxItems('.chkIncludeInLatest', context, false).map(i => {
             return i.getAttribute('data-folderid'); });
@@ -411,8 +445,9 @@ import template from './homeScreenSettings.template.html';
         }
         return false;
     }
-
+	
     function onChange(e) {
+		
         const chkIncludeInMyMedia = dom.parentWithClass(e.target, 'chkIncludeInMyMedia');
         if (!chkIncludeInMyMedia) {
             return;
@@ -438,6 +473,7 @@ import template from './homeScreenSettings.template.html';
         options.element.innerHTML = globalize.translateHtml(workingTemplate, 'core');
 
         options.element.querySelector('.viewOrderList').addEventListener('click', onSectionOrderListClick);
+		
         options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
         options.element.addEventListener('change', onChange);
 		

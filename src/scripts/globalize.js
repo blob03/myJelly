@@ -28,41 +28,49 @@ import { Events } from 'jellyfin-apiclient';
 	
     export function getDefaultCulture() {
         let culture;
-		let test = {};
+		let match = {};
+		let ret = {'src':'fallback', 'ccode':fallbackCulture};
 		
-		if (document.documentElement.getAttribute('data-culture')) 
-			culture = document.documentElement.getAttribute('data-culture');
-		else if (navigator.language) 
-			culture = navigator.language;
-        else if (navigator.userLanguage) 
-            culture = navigator.userLanguage;
-        else if (navigator.languages && navigator.languages.length) 
-            culture = navigator.languages[0];
-		
-		if (culture) {
-			test = cultures.matchCulture(culture);
-			if (test.ISO6391)
-				return test.ISO6391;
-			if (test.ISO6392)
-				return test.ISO6392;
+		if (document.documentElement.getAttribute('data-culture')) {
+			ret.ccode = document.documentElement.getAttribute('data-culture');
+			ret.src = 'application';
+		} else if (navigator.language) {
+			ret.ccode = navigator.language;
+			ret.src = 'browser/lang';
+        } else if (navigator.userLanguage) {
+            ret.ccode = navigator.userLanguage;
+			ret.src = 'browser/user';
+		} else if (navigator.languages && navigator.languages.length) {
+            ret.ccode = navigator.languages[0];
+			ret.src = 'browser/lang';
 		}
 		
-        return fallbackCulture;
+		if (ret.ccode != fallbackCulture) {
+			match = cultures.matchCulture(ret.ccode);
+			if (match.ISO6391)
+				ret.ccode = match.ISO6391;
+			else if (match.ISO6392)
+				ret.ccode = match.ISO6392;
+			else 
+				ret = {'src':'fallback', 'ccode':fallbackCulture};
+		}
+		
+        return ret;
     }
 
     export function updateCurrentCulture() {
-        currentCulture = userSettings.language() || getDefaultCulture();
+        currentCulture = userSettings.language() || getDefaultCulture().ccode;
 		currentDateTimeCulture = userSettings.dateTimeLocale() || currentCulture;
         ensureTranslations(currentCulture);
     }
 	
 	export function updateCulture(culture) {
-        culture = culture || getDefaultCulture();
+        culture = culture || getDefaultCulture().ccode;
         ensureTranslations(culture);
     }
 
     function ensureTranslations(culture) {
-		culture = culture || getDefaultCulture();
+		culture = culture || getDefaultCulture().ccode;
 		let promises = [];
         for (const i in allTranslations) {
 			promises.push(ensureTranslation(i, allTranslations[i], culture));
@@ -74,7 +82,7 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function ensureTranslation(module, translationInfo, culture) {
-		culture = culture || getDefaultCulture();
+		culture = culture || getDefaultCulture().ccode;
         if (translationInfo.dictionaries[culture]) 
             return Promise.resolve();
 		
@@ -121,7 +129,7 @@ import { Events } from 'jellyfin-apiclient';
 
     function loadTranslation(module, lang) {
 		module = getDefaultModule(); // needs to be fixed.
-		lang = lang || getDefaultCulture();
+		lang = lang || getDefaultCulture().ccode;
 		
 		// already loaded?
 		if (allTranslations[module].dictionaries[lang])
@@ -183,7 +191,7 @@ import { Events } from 'jellyfin-apiclient';
 			
 		// Is culture set to Auto?
 		if (culture === '')
-			culture = getDefaultCulture();
+			culture = getDefaultCulture().ccode;
 		
         let dictionary = getDictionary(module, culture);				
 		if (!dictionary || !dictionary[key]) 
@@ -216,7 +224,7 @@ import { Events } from 'jellyfin-apiclient';
 			
 		// Is culture set to Auto?
 		if (culture === '')
-			culture = getDefaultCulture();
+			culture = getDefaultCulture().ccode;
 		
 		return loadTranslation('core', culture);
 	}
@@ -231,7 +239,7 @@ import { Events } from 'jellyfin-apiclient';
 			
 		// Is culture set to Auto?
 		if (culture === '')
-			culture = getDefaultCulture();
+			culture = getDefaultCulture().ccode;
 			
 		do {
 			let startIndex = html.indexOf('${');

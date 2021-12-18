@@ -19,6 +19,7 @@
     "LabelChromecastVersion": "Chromecast Version:",
     "LabelDisplayFontSize": "Display font size:",
     "LabelJellyfinWeb": "Jellyfin-web:",
+    "LabelLastModified": "Last modified:",
     "LabelScreensaverTime": "Delay before activation:",
     "LabelSourceLanguage": "Source language:",
     "LabelStrokeSize": "Text outline size:",

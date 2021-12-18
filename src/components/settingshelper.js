@@ -1,5 +1,6 @@
 import globalize from '../scripts/globalize';
 import cultures from '../scripts/cultures';
+import datetime from '../scripts/datetime';
  
 /**
  * Helper for handling settings.
@@ -120,7 +121,7 @@ export function populateSubsLanguages(select, languages, view, val) {
 export function populateDictionaries(select, languages, view, val) {		
 	let activeLang = { "DisplayName": "", "ISO6391": "" };
 	let ccodeSrc = globalize.getSourceCulture();
-	let lang = val? val: globalize.getDefaultCulture(); 
+	let lang = val? val: globalize.getDefaultCulture().ccode; 
 	
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
@@ -134,7 +135,7 @@ export function populateDictionaries(select, languages, view, val) {
 	});
 	
 	order.forEach(item => {
-		// We do not offer empty dictionaries.
+		// We do not list empty dictionaries.
 		if (languages[item]['jellyfinWeb']['keys#']) {
 			
 			let ISOName = languages[item].ISO6391;
@@ -169,7 +170,13 @@ export function populateDictionaries(select, languages, view, val) {
 export function showDictionaryInfo(e) {		
 	let ccodeSrc = globalize.getSourceCulture();
 	let val = e.target.options[e.target.selectedIndex].value;
-	let lang = val? val: globalize.getDefaultCulture(); 
+	let auto = '';
+	let lang = val;
+	if (lang === '') {
+		let ret = globalize.getDefaultCulture();
+		lang = ret.ccode;
+		auto = ret.src;
+	}
 	let activeLang = cultures.getDictionary(lang);
 	let srcLang = cultures.getDictionary(ccodeSrc);
 				
@@ -177,16 +184,35 @@ export function showDictionaryInfo(e) {
 	if (pnode) {	
 		let nodeInfo = pnode.querySelector('.infoDetails');  
 		nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLang["displayNativeName"] + ' [ ' + activeLang["ISO6391"] + ' ]';
+		/*
+		if (auto !== '')
+			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML += ' [ ' + auto + ' ]';
+		
+		let x = new Date(1970, 0, 1); 
+		x.setSeconds(activeLang["lastm"]);
+		
+		let datestr = datetime.toLocaleDateString(x, {
+			weekday: 'short',
+		});
+		datestr += "  ";
+		datestr += datetime.toLocaleDateString(x);
+		datestr += "  ";
+		datestr += datetime.toLocaleTimeString(x, {
+			hour: 'numeric',
+			minute: '2-digit'
+		});
+		nodeInfo.querySelector('.infoLastModified').innerHTML = ' ' + datestr;
+		*/
 		nodeInfo.querySelector('.infoKeysTranslated').innerHTML = ' ' 
-			+ activeLang["completed%"] + '% [ ' 
 			+ activeLang["keys#"]
-			+ '/' + srcLang["keys#"] + ' ]';
+			+ '/' + srcLang["keys#"]
+			+ ' [ ' + activeLang["completed%"] + '% ] ';
 		nodeInfo.querySelector('.infoJellyfinKeysTranslated').innerHTML = ' ' 
-			+ activeLang["jellyfinWeb"]["completed%"] + '% [ ' 
-			+ activeLang["jellyfinWeb"]["keys#"] + '/' + srcLang["jellyfinWeb"]["keys#"] + ' ]';
+			+ activeLang["jellyfinWeb"]["keys#"] + '/' + srcLang["jellyfinWeb"]["keys#"]
+			+ ' [ ' + activeLang["jellyfinWeb"]["completed%"] + '% ] ';
 		nodeInfo.querySelector('.infoMyjellyKeysTranslated').innerHTML = ' ' 
-			+ activeLang["myJelly"]["completed%"] + '% [ ' 
-			+ activeLang["myJelly"]["keys#"] + '/' + srcLang["myJelly"]["keys#"] + ' ]';
+			+ activeLang["myJelly"]["keys#"] + '/' + srcLang["myJelly"]["keys#"]
+			+ ' [ ' + activeLang["myJelly"]["completed%"] + '% ] ';
 		
 		nodeInfo.querySelector('.warningIcon').classList.add('hide');
 		nodeInfo.querySelector('.hubIcon').classList.add('hide'); 
