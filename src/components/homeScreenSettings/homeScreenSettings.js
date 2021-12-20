@@ -15,8 +15,6 @@ import template from './homeScreenSettings.template.html';
 
 /* eslint-disable indent */
 
-    const numConfigurableSections = 7;
-
     function renderViews(page, user, result) {
         let folderHtml = '';
 
@@ -199,11 +197,9 @@ import template from './homeScreenSettings.template.html';
     }
 
     function updateHomeSectionValues(context, userSettings) {
-        for (let i = 1; i <= 7; i++) {
+        for (let i = 1; i <= homeSections.numConfigurableSections; i++) {
             const select = context.querySelector(`#selectHomeSection${i}`);
             const defaultValue = homeSections.getDefaultSection(i - 1);
-            //const option = select.querySelector(`option[value=${defaultValue}]`) || select.querySelector('option[value=""]');
-			//option.value = '';
             const userValue = userSettings.get(`homesection${i - 1}`);
             if (!userValue) 
                 userValue = defaultValue;
@@ -280,17 +276,27 @@ import template from './homeScreenSettings.template.html';
     function onHomeSectionChange(e) {
 		let nextup = false;
 		let lmedia = false;
-		let resume = false;			
+		let resume = false;		
 		let context = e.target.parentNode.parentNode.parentNode;
-		for (let i = 1; i <= 7 ; i++) {
-			if (context.querySelector(`#selectHomeSection${i}`).value === 'nextup')
+		let cur = e.target;		
+		for (let i = 1; i <= homeSections.numConfigurableSections; i ++) {
+			let z = context.querySelector(`#selectHomeSection${i}`);
+			if (z.value === 'none')
+				continue;
+			else if (z.value === 'nextup')
 				nextup = true;
-			else if (context.querySelector(`#selectHomeSection${i}`).value === 'resume')
+			else if (z.value === 'resume')
 				resume = true;
-			else if (context.querySelector(`#selectHomeSection${i}`).value === 'latestmedia')
+			else if (z.value === 'latestmedia')
 				lmedia = true;
+			
+			if (z == cur)
+					continue;
+			if (z.value === cur.value) 
+				z.value = 'none';
 		}
-				
+		
+		// Show additionnal options only if they relate to the current selection.
 		if (nextup)
 			document.querySelector('#sliderMaxDaysForNextUp').parentNode.parentNode.classList.remove('hide');
 		else
@@ -315,9 +321,9 @@ import template from './homeScreenSettings.template.html';
 		updateHomeSectionValues(context, userSettings);
 		
 		let chgevent = new Event('change');
-		for (let i = 1; i <= 7 ; i++)
+		for (let i = 1; i <= homeSections.numConfigurableSections; i++)
 			context.querySelector('#selectHomeSection' + i).addEventListener('change', onHomeSectionChange);
-		for (let i = 1; i <= 7 ; i++)
+		for (let i = 1; i <= homeSections.numConfigurableSections; i++)
 			context.querySelector('#selectHomeSection' + i).dispatchEvent(chgevent);
 
         const promise1 = apiClient.getUserViews({ IncludeHidden: true }, user.Id);
@@ -406,6 +412,7 @@ import template from './homeScreenSettings.template.html';
         userSettingsInstance.set('homesection4', context.querySelector('#selectHomeSection5').value);
         userSettingsInstance.set('homesection5', context.querySelector('#selectHomeSection6').value);
         userSettingsInstance.set('homesection6', context.querySelector('#selectHomeSection7').value);
+		userSettingsInstance.set('homesection7', context.querySelector('#selectHomeSection8').value);
 
         const selectLandings = context.querySelectorAll('.selectLanding');
         for (i = 0, length = selectLandings.length; i < length; i++) {
@@ -466,7 +473,7 @@ import template from './homeScreenSettings.template.html';
 
     function embed(options, self) {
         let workingTemplate = template;
-        for (let i = 1; i <= numConfigurableSections; i++) {
+        for (let i = 1; i <= homeSections.numConfigurableSections; i++) {
             workingTemplate = workingTemplate.replace(`{section${i}label}`, globalize.translate('LabelHomeScreenSectionValue', i));
         }
 

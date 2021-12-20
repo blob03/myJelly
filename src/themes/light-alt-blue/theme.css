@@ -135,8 +135,7 @@ html {
     background: rgba(0, 0, 0, 0.14);
 }
 
-.formDialogHeader a,
-.toast {
+.formDialogHeader a {
     color: #fff;
 }
 
@@ -145,8 +144,8 @@ html {
 }
 
 .toast {
-	color: #113c6a;
-	background: #fff;
+	color: white;
+	background: rgb(96, 147, 177);
 }
 
 .appfooter,
@@ -507,7 +506,7 @@ html {
 }
 
 .button-submit:focus {
-	color: rgba(30, 30, 30, 0.8) !important;
+	color: white !important;
 	background-color: rgba(123, 152, 184, 0.8) !important;
 	transform: scale(1.2);
 }
@@ -786,7 +785,7 @@ select option:selected {
 
 .backdropImage {
     background-color: rgb(220, 220, 220) !important;
-	top: 3.9em;
+	top: 3.3em;
 }
 
 .backdropImage.themeBackdrop {

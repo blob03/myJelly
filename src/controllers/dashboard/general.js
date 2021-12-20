@@ -23,7 +23,7 @@ import alert from '../../components/alert';
 		let selectLanguage = page.querySelector('#selectLocalizationLanguage');
 		
 		ApiClient.getCultures().then(allCultures => {
-			settingsHelper.populateLanguages(selectLanguage, allCultures, "DisplayName", config.UICulture);
+			settingsHelper.populateServerLanguages(selectLanguage, allCultures, "DisplayName", config.UICulture);
 			loading.hide();
 		});
     }

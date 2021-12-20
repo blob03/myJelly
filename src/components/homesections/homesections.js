@@ -15,6 +15,8 @@ import ServerConnections from '../ServerConnections';
 
 /* eslint-disable indent */
 
+	export const numConfigurableSections = 8;
+	
     export function getDefaultSection(index) {
         switch (index) {
             case 0:
@@ -32,7 +34,7 @@ import ServerConnections from '../ServerConnections';
             case 6:
                 return 'latestmedia';
             case 7:
-                return 'none';
+                return 'activerecordings';
             default:
                 return '';
         }
@@ -57,7 +59,7 @@ import ServerConnections from '../ServerConnections';
             let html = '';
 
             if (userViews.length) {
-                const sectionCount = 7;
+                const sectionCount = numConfigurableSections;
                 for (let i = 0; i < sectionCount; i++) {
                     html += '<div class="verticalSection section' + i + '"></div>';
                 }
@@ -410,10 +412,11 @@ import ServerConnections from '../ServerConnections';
             if (enableScrollX()) {
                 limit = 12;
             } else {
-                limit = screenWidth >= 1920 ? 8 : (screenWidth >= 1600 ? 8 : (screenWidth >= 1200 ? 9 : 6));
-                limit = Math.min(limit, 5);
+                //limit = screenWidth >= 1920 ? 8 : (screenWidth >= 1600 ? 8 : (screenWidth >= 1200 ? 9 : 6));
+                //limit = Math.min(limit, 5);
+				limit = 5;
             }
-
+			
             const options = {
                 Limit: limit,
                 Recursive: true,
@@ -600,6 +603,7 @@ import ServerConnections from '../ServerConnections';
             const apiClient = ServerConnections.getApiClient(serverId);
             const oldestDateForNextUp = new Date();
             oldestDateForNextUp.setDate(oldestDateForNextUp.getDate() - userSettings.maxDaysForNextUp());
+						
             return apiClient.getNextUpEpisodes({
                 Limit: enableScrollX() ? 24 : 15,
                 Fields: 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo,Path',
@@ -747,6 +751,7 @@ import ServerConnections from '../ServerConnections';
 export default {
     loadLibraryTiles: loadLibraryTiles,
     getDefaultSection: getDefaultSection,
+	numConfigurableSections: numConfigurableSections,
     loadSections: loadSections,
     destroySections: destroySections,
     pause: pause,

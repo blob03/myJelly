@@ -1661,9 +1661,9 @@ var cultures = {
 		]
 	  },
 	  "es": {
-		"name": "Spanish; castellano",
-		"displayName": "Spanish, castellano",
-		"displayNativeName": "Español, castellano",
+		"name": "Spanish, Castilian",
+		"displayName": "Spanish, Castilian",
+		"displayNativeName": "Español, Castellano",
 		"ISO6391": "es",
 		"ISO6392": "spa",
 		"ISO6392alt": [
@@ -1671,7 +1671,7 @@ var cultures = {
 		]
 	  },
 	  "es-MX": {
-		"name": "Spanish; Latin",
+		"name": "Spanish, Mexico",
 		"displayName": "Spanish, Mexico",
 		"displayNativeName": "Español, Mexico",
 		"ISO6391": "es-MX",
