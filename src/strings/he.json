@@ -551,7 +551,7 @@
     "LabelDefaultScreen": "מסך ברירת-מחדל:",
     "LabelDefaultUser": "משתמש ברירת מחדש:",
     "LabelDefaultUserHelp": "מגדיר אילו ספריות משתמש יוצגו במכשירים מחוברים. ניתן לעקוף זאת לכל מכשיר על ידי שימוש בפרופילים.",
-    "LabelDeviceDescription": "תיאור מכשיר",
+    "LabelDeviceDescription": "תיאור מכשיר:",
     "LabelDidlMode": "מצב DIDL:",
     "LabelDiscNumber": "מספר דיסק:",
     "LabelDisplayLanguage": "שפת תצוגה:",

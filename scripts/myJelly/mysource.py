@@ -49,7 +49,7 @@ def sort(subdir, source, mod, langlst):
 			metatree = json.load(m)
 			m.close()
 	except FileNotFoundError:
-		True
+		print('No file \"metafile.json\" found.')	
 			
 	with open(langdir + sourceFile) as en:
 		langus = json.load(en)
@@ -63,9 +63,10 @@ def sort(subdir, source, mod, langlst):
 	for lang in langlst:
 		with open(langdir + lang, 'r+') as f:
 			print('Checking dictionary: ' + langdir + lang)
-			lastm = datetime.fromtimestamp(os.path.getmtime(langdir + lang)).strftime('%Y-%m-%d %H:%M:%S')
+			#lastm = datetime.fromtimestamp(os.path.getmtime(langdir + lang)).strftime('%Y-%m-%d %H:%M:%S')
+			lastm = os.path.getmtime(langdir + lang)
 			fsize = os.path.getsize(langdir + lang)
-			print('Last modified: ' + lastm)
+			print('Last modified: ' + str(lastm))
 			orphans = []
 			keys = 0
 			okeys = 0
@@ -158,6 +159,7 @@ print('#######################################')
 # We take care to load only files and to remove the source file.
 langlst = sorted([f for f in os.listdir(basedir) if (os.path.isfile(os.path.join(basedir, f)))])
 langlst.remove("en-US.json")
+langlst.remove("metadata.json")
 sort('', 'en-US', 'jellyfinWeb', langlst)
 langdir = basedir + 'myJelly/'
 langlst = sorted([f for f in os.listdir(langdir) if (os.path.isfile(os.path.join(langdir, f)))])

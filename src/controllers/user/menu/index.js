@@ -6,6 +6,7 @@ import globalize from '../../../scripts/globalize';
 import * as LibraryMenu from '../../../scripts/libraryMenu';
 import Dashboard from '../../../scripts/clientUtils';
 import template from './index.html';
+import loading from '../../../components/loading/loading';
 
 export default function (view, params) {
 	
@@ -42,14 +43,17 @@ export default function (view, params) {
 
         page.querySelector('.lnkControlsPreferences').classList.toggle('hide', layoutManager.mobile);
 
+		loading.show();
         ApiClient.getQuickConnect('Enabled')
             .then(enabled => {
                 if (enabled === true) {
                     page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
                 }
+				loading.hide();
             })
             .catch(() => {
                 console.debug('Failed to get QuickConnect status');
+				loading.hide();
             });
 
         ApiClient.getUser(userId).then( (user) => {

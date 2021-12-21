@@ -1607,9 +1607,9 @@
 		]
 	  },
 	  "es": {
-		"Name": "Spanish; castellano",
-		"DisplayName": "Spanish, castellano",
-		"DisplayNativeName": "Español, castellano",
+		"Name": "Spanish, Castilian",
+		"DisplayName": "Spanish, Castilian",
+		"DisplayNativeName": "Español, Castellano",
 		"TwoLetterISOLanguageName": "es",
 		"ThreeLetterISOLanguageName": "spa",
 		"ThreeLetterISOLanguageNames": [
@@ -1617,7 +1617,7 @@
 		]
 	  },
 	  "es-MX": {
-		"Name": "Spanish; Latin",
+		"Name": "Spanish, Mexico",
 		"DisplayName": "Spanish, Mexico",
 		"DisplayNativeName": "Español, Mexico",
 		"TwoLetterISOLanguageName": "es-MX",

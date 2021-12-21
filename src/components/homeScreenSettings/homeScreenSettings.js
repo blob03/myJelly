@@ -14,9 +14,10 @@ import toast from '../toast/toast';
 import template from './homeScreenSettings.template.html';
 
 /* eslint-disable indent */
-
+	
     function renderViews(page, user, result) {
         let folderHtml = '';
+		let x = 0;
 
         folderHtml += '<div class="checkboxList">';
         folderHtml += result.map(i => {
@@ -29,16 +30,16 @@ import template from './homeScreenSettings.template.html';
             const checkedHtml = isChecked ? ' checked="checked"' : '';
 
             currentHtml += '<label>';
-            currentHtml += `<input type="checkbox" is="emby-checkbox" class="chkGroupFolder" data-folderid="${i.Id}" id="${id}"${checkedHtml}/>`;
+            currentHtml += `<input type="checkbox" is="emby-checkbox" class="chkGroupFolder" data-folderid="${i.Id}" id="${id}" ${checkedHtml}/>`;
             currentHtml += `<span>${i.Name}</span>`;
             currentHtml += '</label>';
-
+			x += 1;
+			
             return currentHtml;
         }).join('');
 
         folderHtml += '</div>';
-
-        page.querySelector('.folderGroupList').innerHTML = folderHtml;
+		page.querySelector('.folderGroupList').innerHTML = folderHtml;
     }
 
     function getLandingScreenOptions(type) {
@@ -313,6 +314,7 @@ import template from './homeScreenSettings.template.html';
 			document.querySelector('#chkHidePlayedFromLatest').parentNode.parentNode.classList.add('hide');
 	}
 	
+	
     function loadForm(context, user, userSettings, apiClient) {
 		context.querySelector('#chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
@@ -328,7 +330,7 @@ import template from './homeScreenSettings.template.html';
 
         const promise1 = apiClient.getUserViews({ IncludeHidden: true }, user.Id);
         const promise2 = apiClient.getJSON(apiClient.getUrl(`Users/${user.Id}/GroupingOptions`));
-
+	
         Promise.all([promise1, promise2]).then(responses => {
             renderViewOrder(context, user, responses[0]);
             renderPerLibrarySettings(context, user, responses[0].Items, userSettings);

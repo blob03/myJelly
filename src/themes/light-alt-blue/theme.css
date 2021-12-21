@@ -793,7 +793,7 @@ select option:selected {
 }
 
 .backdropImage.themeBackdrop.alt1 {
-	background-image: url(./bg.jpg) !important;
+	background-image: url(./bg-alt1.jpg) !important;
 }
 
 .backdropImage.themeBackdrop.alt2 {
@@ -801,7 +801,7 @@ select option:selected {
 }
 
 .backdropImage.themeBackdrop.alt3 {
-	background-image: url(./bg.jpg) !important;
+	background-image: url(./bg-alt1.jpg) !important;
 }
 
 /* fix for TV Layout */
@@ -817,7 +817,8 @@ select option:selected {
 	font-size: 90%;
 	line-height: 1.35;
 	font-weight: 600;
-	color: #417c85;
+	color: #135090;
+	text-shadow: 1px 1px 4px #304753;
 }
 
 .aboutcontent {
@@ -989,4 +990,10 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	text-shadow: 1px 1px 3px #83aab6;
 	font-weight: 600;
 	font-size: 1.5em;
+}
+
+.listItemIcon:not(.listItemIcon-transparent) {
+    background-color: #81a5b2 !important;
+    border-radius: 50%;
+    color: #fff;
 }
