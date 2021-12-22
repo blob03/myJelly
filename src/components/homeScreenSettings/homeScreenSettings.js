@@ -425,9 +425,12 @@ import template from './homeScreenSettings.template.html';
         apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 
-				loading.hide();
-				if (enableSaveConfirmation) 
-					toast(globalize.translate('SettingsSaved'));}, 1000); 
+				embed(instance.options, instance).then( () => { 
+					loading.hide();	
+					if (enableSaveConfirmation) 
+						toast(globalize.translate('SettingsSaved'));
+				}
+			);}, 2000); 
 		});
     }
 
@@ -496,7 +499,7 @@ import template from './homeScreenSettings.template.html';
             options.element.querySelector('.selectTVHomeScreenContainer').classList.add('hide');
         }
 
-        self.loadData(options.autoFocus);
+        return self.loadData(options.autoFocus);
     }
 
     class HomeScreenSettings {
@@ -516,7 +519,7 @@ import template from './homeScreenSettings.template.html';
             const apiClient = self.options.apiClient;
             const userSettings = self.options.userSettings;
 
-            apiClient.getUser(userId).then(user => {
+            return apiClient.getUser(userId).then(user => {
 				self.currentUser = user;
                 userSettings.setUserInfo(userId, apiClient).then(() => {
                     self.dataLoaded = true;

@@ -73,7 +73,7 @@ html {
 }
 
 .backgroundContainer {
-	background: linear-gradient(105deg, rgba(55, 95, 172, 0.4) 0%, rgba(60, 152, 126, 0.4) 40%, rgba(38, 112, 148, 0.4) 70%, rgba(185, 217, 219, 0.4) 100%);
+	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
 	background-color: rgb(220, 242, 248);
     -webkit-background-size: cover;
     background-size: cover;
@@ -561,7 +561,7 @@ html {
 .checkboxLabel,
 .inputLabel {
 	font-weight: 600;
-	color: #457587;
+	color: rgb(101, 133, 144);
 }
 
 .emby-select-withcolor:focus {
@@ -816,13 +816,19 @@ select option:selected {
 	font-family: inherit;
 	font-size: 90%;
 	line-height: 1.35;
-	font-weight: 600;
-	color: #135090;
-	text-shadow: 1px 1px 4px #304753;
+	font-weight: 400;
+	text-shadow: 1px 1px 4px #749cb0;
+	color: #277499;
+	position: fixed;
+	top: 20%;
+	left: 40%;
+	align-items: flex-start !important;
+	width: auto;
 }
 
 .aboutcontent {
 	color: #d3f9ff;
+	text-shadow: none;
 }
 
 /* upNext dialog box */
