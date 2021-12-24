@@ -607,7 +607,7 @@
     "LabelDateAddedBehavior": "Hành động thêm ngày cho nội dung mới:",
     "LabelDateAddedBehaviorHelp": "Nếu có giá trị dữ liệu mô tả, nó sẽ luôn được sử dụng trước một trong các tùy chọn này.",
     "LabelDateTimeLocale": "Ngày giờ địa phương:",
-    "LabelDay": "Ngày:",
+    "LabelDay": "Ngày trong tuần:",
     "LabelDeathDate": "Ngày mất:",
     "LabelDefaultScreen": "Màn hình mặc định:",
     "LabelDefaultUser": "Người dùng mặc định:",

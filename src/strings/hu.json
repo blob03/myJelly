@@ -607,7 +607,7 @@
     "LabelDateAddedBehavior": "Új tartalom esetén alkalmazandó hozzáadás dátuma mód:",
     "LabelDateAddedBehaviorHelp": "Ha egy metaadat érték jelen van, akkor mindig az lesz előnyben részesítve ezen opciók előtt.",
     "LabelDateTimeLocale": "Dátum és idő formátum:",
-    "LabelDay": "Nap:",
+    "LabelDay": "A hét napja:",
     "LabelDeathDate": "Halálának dátuma:",
     "LabelDefaultScreen": "Alapértelmezett képernyő:",
     "LabelDefaultUser": "Alapértelmezett felhasználó:",

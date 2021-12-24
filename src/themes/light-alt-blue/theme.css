@@ -37,7 +37,6 @@ html {
     background-color: #eaeaea;
 }
 
-.formDialogHeader,
 .skinHeader-withBackground {
 	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
     color: #fff;
@@ -146,14 +145,6 @@ html {
 .toast {
 	color: white;
 	background: rgb(96, 147, 177);
-}
-
-.appfooter,
-.playlistSectionButton {
-	background: linear-gradient(to right, #fff 0%, #add1d3 18%, #6eb5d8 38%, #a3d4dc 68%, #6fa3b6 81%, #2c687b 100%);
-    color: #1d6fa1;
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
 
 .nowPlayingBarSecondaryText {
@@ -407,10 +398,6 @@ html {
 	font-weight: 600;
 }
 
-.listItemBody {
-	color: rgb(101, 133, 144);
-}
-
 .listItemBody:hover:not(:disabled) {
 	color: rgba(244, 245, 247, 0.8) !important;
 	background-color: transparent !important;
@@ -435,8 +422,8 @@ html {
 }
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(177, 224, 239, 0.8) !important;
+	color: rgba(240, 245, 247, 0.8) !important;
+	background-color: rgba(177, 224, 239, 0.3) !important;
 }
 
 .emby-button:active {
@@ -482,43 +469,6 @@ html {
 	background-color: rgba(255, 232, 232, 0.8);
 }
 
-/* Save button */
-
-@keyframes click {
-	from {transform: scale(1.2);}
-	70% {transform: scale(1.4);}
-	to {transform: scale(1.2);}
-}
-
-.button-submit {
-	width: 50% !important;
-	margin: 0 auto !important;
-	background-color: rgb(36, 136, 153);
-	box-shadow: 0px 0px 8px #609295;
-	color: rgb(193, 206, 212) !important;
-	font-weight: 600;
-}
-
-.button-submit:hover:not(:disabled) {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(92, 151, 179, 0.8) !important;
-	transform: scale(1.2);
-}
-
-.button-submit:focus {
-	color: white !important;
-	background-color: rgba(123, 152, 184, 0.8) !important;
-	transform: scale(1.2);
-}
-
-.button-submit:active {
-	background-color: rgba(255, 232, 232, 0.8) !important;
-	color: rgba(255, 255, 255, 1) !important;
-	animation-name: click;
-	animation-duration: .15s;
-	transform: scale(1.2);
-}
-
 /* detail button */
 
 .detailButton {
@@ -554,14 +504,6 @@ html {
 	font-weight: 400;
 	line-height: 1.35;
 	color: rgb(101, 133, 144) !important;
-}
-
-.selectLabel,
-.sliderLabel,
-.checkboxLabel,
-.inputLabel {
-	font-weight: 600;
-	color: rgb(101, 133, 144);
 }
 
 .emby-select-withcolor:focus {
@@ -608,23 +550,26 @@ select option:selected {
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(90deg, rgb(110, 201, 255) 0%, rgb(0, 104, 148) 100%);
+	background: linear-gradient(90deg, rgb(36, 102, 113) 0%, rgb(47, 148, 188) 100%);
 }
 
 .mdl-slider::-moz-range-thumb
  {
-	box-shadow: 0px 2px 8px #1e1d25;
-	background: #3f6d9f;
+	box-shadow: 0px 2px 8px #22546c;
+	background: #98cedb;
+	border-radius: 10% / 50%;
 }
 
 .mdl-slider::-ms-thumb {
-	box-shadow: 0px 2px 8px #1e1d25;
-	background: #3f6d9f;
+	box-shadow: 0px 2px 8px #22546c;
+	background: #98cedb;
+	border-radius: 10% / 50%;
 }
 
 .mdl-slider::-webkit-slider-thumb {
-	box-shadow: 0px 2px 8px #1e1d25;
-	background: #3f6d9f;
+	box-shadow: 0px 2px 8px #22546c;
+	background: #98cedb;
+	border-radius: 10% / 50%;
 }
 
 .mdl-slider-container {
@@ -733,20 +678,18 @@ select option:selected {
 	text-shadow: 0 0 4px #6f7373;
 }
 
-.formDialogHeader:not(.formDialogHeader-clear) {
-	background-color: #edece8;
-    color: rgba(255, 255, 255, 0.87);
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-}
-
 .cardText-secondary,
 .guide-programNameCaret,
-.listItem .secondary,
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
 	color: #fff;
+	font-size: 85%;
+}
+
+.listItem .secondary,
+.actionSheetText {
+	color: #81adbe;
 	font-size: 85%;
 }
 
@@ -927,7 +870,7 @@ fieldset {
 }
 
 .fieldDescription {
-	color: #527898;
+	color: #cce3e4;
 	font-style: italic;
 	font-size: 85%;
 }
@@ -976,11 +919,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
     padding-top: 4em !important;
 }
 
-.formDialogContent {
-	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
-	background-color: rgb(220, 242, 248);
-}
-
 .dialogContentInner {
     padding: .5em 1em 1em;
 }
@@ -1002,4 +940,120 @@ div[data-role="controlgroup"] a.ui-btn-active {
     background-color: #81a5b2 !important;
     border-radius: 50%;
     color: #fff;
+}
+
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabel {
+	font-weight: 600;
+	color: rgb(85, 115, 125);
+}
+
+.listItemBody {
+	font-weight: 600;
+	color: rgb(94, 137, 150);
+}
+
+/* Save/cancel buttons */
+
+@keyframes click {
+	from {transform: scale(1.2);}
+	70% {transform: scale(1.4);}
+	to {transform: scale(1.2);}
+}
+
+.cancel,
+.button-cancel,
+.button-submit {
+	width: 35% !important;
+	margin: .5em auto .5em auto !important;	
+	font-weight: 600;
+	display: block;
+	flex-grow: 0.1 !important;
+}
+
+.button-submit {
+	background-color: rgb(36, 136, 153);
+	box-shadow: 0px 0px 8px #609295;
+	color: rgb(193, 206, 212) !important;
+}
+
+.button-submit:hover:not(:disabled) {
+	color: rgba(255, 255, 255, 0.8) !important;
+	background-color: rgba(92, 151, 179, 0.8) !important;
+	transform: scale(1.2);
+}
+
+.button-submit:focus {
+	color: white !important;
+	background-color: rgba(123, 152, 184, 0.8) !important;
+	transform: scale(1.2);
+}
+
+.button-submit:active {
+	background-color: rgba(255, 232, 232, 0.8) !important;
+	color: rgba(255, 255, 255, 1) !important;
+	animation-name: click;
+	animation-duration: .15s;
+	transform: scale(1.2);
+}
+
+.button-cancel,
+.cancel {
+	background-color: rgb(61, 179, 163);
+	box-shadow: 0px 0px 8px #609295;
+	color: rgb(226, 237, 205) !important;
+}
+
+.button-cancel:hover:not(:disabled),
+.cancel:hover:not(:disabled) {
+	color: rgba(255, 255, 255, 0.8) !important;
+	background-color: rgba(137, 208, 188, 0.8) !important;
+	transform: scale(1.2);
+}
+
+.button-cancel:focus,
+.cancel:focus {
+	color: white !important;
+	background-color: rgba(137, 208, 188, 0.8) !important;
+	transform: scale(1.2);
+}
+
+.button-cancel:active,
+.cancel:active {
+	background-color: rgba(137, 208, 188, 0.8) !important;
+	color: rgba(255, 255, 255, 1) !important;
+	animation-name: click;
+	animation-duration: .15s;
+	transform: scale(1.2);
+}
+
+.appfooter,
+.playlistSectionButton {
+	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
+    color: #1d6fa1;
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.formDialogHeader:not(.formDialogHeader-clear) {
+	background-color: #66a4c1;
+    color: rgba(255, 255, 255, 0.87);
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.formDialogHeader.syncPlay {
+	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
+    color: #fff;
+    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+}
+
+.formDialogContent.syncPlay {
+	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: auto;
+	background-color: rgb(220, 242, 248);
 }

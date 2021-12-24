@@ -1,4 +1,11 @@
 {
+    "Absolute": "Абсалютны",
+    "AccessRestrictedTryAgainLater": "У цяперашні час доступ абмежаваны. Калі ласка паспрабуйце зноў пазней.",
+    "Actor": "Акцёр",
+    "Add": "Дадаць",
+    "AddToCollection": "Дадаць у калекцыю",
+    "AddedOnValue": "Дададзены {0}",
+    "AdditionalNotificationServices": "Праглядзіце каталог убудоў, каб усталяваць дадатковыя службы апавяшчэнняў.",
     "ButtonCancel": "Адмяніць",
     "ButtonOk": "ОК",
     "ButtonQuickStartGuide": "Кіраўніцтва па запуску",

@@ -587,7 +587,7 @@
     "LabelDateAddedBehavior": "Lisäyspäivämääräkäytös uudelle sisällölle:",
     "LabelDateAddedBehaviorHelp": "Jos metatietoarvo on olemassa, sitä käytetään aina näiden vaihtoehtojen sijaan.",
     "LabelDateTimeLocale": "Päivämäärä ja aika:",
-    "LabelDay": "Päivä:",
+    "LabelDay": "Viikonpäivä:",
     "LabelDeathDate": "Kuolinpäivä:",
     "LabelDefaultScreen": "Oletusnäyttö:",
     "LabelDefaultUser": "Oletuskäyttäjä:",
