@@ -125,7 +125,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(235, 129, 40, 0.85);
+    background-color: rgba(235, 129, 40, 0.65);
 }
 
 .backgroundContainer.withThemeBackdrop {
@@ -479,7 +479,7 @@ html {
 .emby-tab-button-active,
 .emby-tab-button-active:focus,
 .emby-tab-button-active:hover:not(:disabled) {
-	text-shadow: 0 0 4px #3e3a35, 0 0 6px #312f2c, 0 0 8px #b689f7, 0 0 16px #a391cd, 0 0 16px #eee2ff, 0 0 24px #caa8fc, 0 0 34px #caa8fc !important;
+	text-shadow: 0 0 4px #756b7d, 0 0 8px #e8e5ed, 0 0 16px #f7f4fa, 0 0 34px #caa8fc !important;
 	color: #282828;
 	transform: scale(1.3) !important;
 }
@@ -1157,23 +1157,22 @@ fieldset {
 
 .button-delete:hover:not(:disabled),
 .button-submit:hover:not(:disabled) {
-	color: #fff !important;
-	box-shadow: 0px 0px 8px #471e05;
+	color: #efaa6c !important;
+	box-shadow: 0px 0px 8px #9b651f;
 	transform: scale(1.2);
 }
 
 .button-delete:focus,
-.button-submit:focus,
-.raised:focus {
-	color: #fff !important;
-	box-shadow: 0px 0px 8px #471e05;
+.button-submit:focus {
+	color: #efaa6c !important;
+	box-shadow: 0px 0px 8px #9b651f;
 	transform: scale(1.2);
 }
 
 .button-delete:active,
 .button-submit:active {
-	color: white !important;
-	box-shadow: 0px 0px 8px #471e05;
+	color: #efaa6c !important;
+	box-shadow: 0px 0px 8px #9b651f;
 	animation-name: click;
 	animation-duration: .15s;
 	transform: scale(1.2);
@@ -1191,7 +1190,7 @@ fieldset {
 	color: rgba(211, 207, 225, 0.8) !important;
 	background-color: rgba(73, 78, 153, 0.8) !important;
 	transform: scale(1.2);
-	box-shadow: 0px 0px 8px #471e05;
+	box-shadow: 0px 0px 8px #9b651f;
 }
 
 .button-cancel:focus,
@@ -1199,7 +1198,7 @@ fieldset {
 	color: rgba(211, 207, 225, 0.8) !important;
 	background-color: rgba(73, 78, 153, 0.8) !important;
 	transform: scale(1.2);
-	box-shadow: 0px 0px 8px #471e05;
+	box-shadow: 0px 0px 8px #9b651f;
 }
 
 .button-cancel:active,
@@ -1207,7 +1206,7 @@ fieldset {
 	color: rgba(211, 207, 225, 0.8) !important;
 	background-color: rgba(73, 78, 153, 0.8) !important;
 	transform: scale(1.2);
-	box-shadow: 0px 0px 8px #471e05;
+	box-shadow: 0px 0px 8px #9b651f;
 	animation-name: click;
 	animation-duration: .15s;
 	transform: scale(1.2);
@@ -1216,27 +1215,27 @@ fieldset {
 .button-alt {
 	background-color: rgb(234, 175, 64);
 	box-shadow: 0px 0px 4px #663e0a;
-	color: rgb(36, 30, 15) !important;
+	color: rgb(242, 227, 198) !important;
 }
 
 .button-alt:hover:not(:disabled) {
-	color: #fbddb6 !important;
+	color: white !important;
 	background-color: rgba(242, 163, 12, 0.8) !important;
-	box-shadow: 0px 0px 8px #663e0a;
+	box-shadow: 0px 0px 8px #9b651f;
 	transform: scale(1.2);
 }
 
 .button-alt:focus {
-	color: #fbddb6 !important;
+	color: #885109 !important;
 	background-color: rgba(242, 163, 12, 0.8) !important;
-	box-shadow: 0px 0px 8px #663e0a;
+	box-shadow: 0px 0px 8px #9b651f;
 	transform: scale(1.2);
 }
 
 .button-alt:active {
-	color: #fbddb6 !important;
+	color: #885109 !important;
 	background-color: rgba(242, 163, 12, 0.8) !important;
-	box-shadow: 0px 0px 8px #663e0a;
+	box-shadow: 0px 0px 8px #9b651f;
 	transform: scale(1.2);
 	animation-name: click;
 	animation-duration: .15s;

@@ -79,7 +79,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-   background-color: rgba(220, 242, 248, .8);
+   background-color: rgba(220, 242, 248, .65);
 }
 
 .backgroundContainer.withThemeBackdrop {
@@ -89,7 +89,7 @@ html {
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #d0effc;
+    background-color: #c1e2e3;
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -728,6 +728,7 @@ select option:selected {
 
 .backdropImage {
     background-color: rgb(220, 220, 220) !important;
+	background-position: 0 0;
 	top: 3.3em;
 }
 
@@ -870,7 +871,7 @@ fieldset {
 }
 
 .fieldDescription {
-	color: #cce3e4;
+	color: #d9e9ea;
 	font-style: italic;
 	font-size: 85%;
 }
@@ -987,7 +988,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .button-delete,
 .button-submit {
 	background-color: rgb(36, 136, 153);
-	box-shadow: 0px 0px 8px #609295;
+	box-shadow: 0px 0px 4px #6e8788;
 	color: rgb(193, 206, 212) !important;
 }
 
@@ -995,6 +996,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .button-submit:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
 	background-color: rgba(92, 151, 179, 0.8) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
@@ -1002,6 +1004,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .button-submit:focus {
 	color: white !important;
 	background-color: rgba(123, 152, 184, 0.8) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
@@ -1009,6 +1012,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .button-submit:active {
 	background-color: rgba(255, 232, 232, 0.8) !important;
 	color: rgba(255, 255, 255, 1) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	animation-name: click;
 	animation-duration: .15s;
 	transform: scale(1.2);
@@ -1017,7 +1021,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .button-cancel,
 .cancel {
 	background-color: rgb(61, 179, 163);
-	box-shadow: 0px 0px 8px #609295;
+	box-shadow: 0px 0px 4px #6e8788;
 	color: rgb(226, 237, 205) !important;
 }
 
@@ -1025,6 +1029,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .cancel:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
 	background-color: rgba(137, 208, 188, 0.8) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
@@ -1032,6 +1037,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .cancel:focus {
 	color: white !important;
 	background-color: rgba(137, 208, 188, 0.8) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
@@ -1039,6 +1045,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .cancel:active {
 	background-color: rgba(137, 208, 188, 0.8) !important;
 	color: rgba(255, 255, 255, 1) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	animation-name: click;
 	animation-duration: .15s;
 	transform: scale(1.2);
@@ -1046,25 +1053,28 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .button-alt {
 	background-color: rgb(61, 179, 163);
-	box-shadow: 0px 0px 8px #609295;
+	box-shadow: 0px 0px 4px #6e8788;
 	color: rgb(226, 237, 205) !important;
 }
 
 .button-alt:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
 	background-color: rgba(137, 208, 188, 0.8) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
 .button-alt:focus {
 	color: white !important;
 	background-color: rgba(137, 208, 188, 0.8) !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
 .button-alt:active {
 	background-color: rgba(137, 208, 188, 0.8) !important;
-	color: rgba(255, 255, 255, 1) !important;
+	color: white !important;
+	box-shadow: 0px 0px 8px #829d9e;
 	animation-name: click;
 	animation-duration: .15s;
 	transform: scale(1.2);
