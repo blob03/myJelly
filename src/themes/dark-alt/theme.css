@@ -383,6 +383,11 @@ html {
 	text-shadow: 1px 1px 4px #39392d;
 }
 
+.material-icons.notifications {
+	background-color: #646c70 !important;
+	color: rgb(175, 184, 193) !important;
+}
+
 .homeLibraryButton > .material-icons {
 	color: #a5a5a5;
 	text-shadow: 0 0 4px #39392d;	
@@ -533,40 +538,6 @@ html {
 	color: #fff;
 }
 
-/* Save button */
-
-@keyframes click {
-	from {transform: scale(1.2);}
-	70% {transform: scale(1.4);}
-	to {transform: scale(1.2);}
-}
-
-.button-submit {
-	color: #747a7f !important;
-	background-color: rgba(57, 57, 57, 0.6);
-	box-shadow: 0 0 2px #857f7f;
-	font-weight: 600;
-	width: 50% !important;
-	margin: 0 auto !important;
-	transform: scale(1.0);
-}
-
-.button-submit:hover:not(:disabled) {
-	color: #d7e9eb !important;
-	background-color: rgba(36, 43, 48, 0.8) !important;
-	box-shadow: 0 0 2px #060606, 0 0 4px #4c4645, 0 0 6px #fff, 0 0 8px #fff, 0 0 17px #fcfcfc, 0 0 25px #fcfcfb, 0 0 38px #bfd2da;
-}
-
-.button-submit:focus {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(60, 60, 60, 0.8) !important;
-}
-
-.button-submit:active {
-	background-color: rgba(255, 232, 232, 0.8) !important;
-	color: rgba(255, 255, 255, 1) !important;
-}
-
 /* select widget */
 
 .selectArrow {
@@ -576,7 +547,7 @@ html {
  
 .emby-select-withcolor {
 	color: #a2a5ae;
-	background: #3e3e3e;
+	background: #454d58;
 	border: 0.07em solid rgb(0, 0, 0);
 	font-weight: 600;
 }
@@ -1084,17 +1055,20 @@ fieldset {
 .mdl-spinner__layer-2,
 .mdl-spinner__layer-3,
 .mdl-spinner__layer-4 {
-    border-color: #00a4dc !important;
+    border-color: rgb(201, 160, 230) !important;
 }
 
-.inputLabel,
-.checkboxLabel,
-.selectLabel,
-.inputLabelUnfocused,
-.sliderLabel,
+.listItemBodyText,
 .paperListLabel,
-.textareaLabelUnfocused {
-    color: #707070;
+.checkboxListLabel,
+.textareaLabelUnfocused,
+.textareaLabel,
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabelUnfocused,
+.inputLabel {
+	color: #858d9f;
 }
 
 .button-link,
@@ -1105,4 +1079,102 @@ fieldset {
 .selectLabelFocused,
 .textareaLabelFocused {
     color: #aaa !important;
+}
+
+/* buttons section */
+
+.button-delete,
+.button-submit {
+	transform: scale(1.0);
+}
+
+.cancel,
+.button-cancel,
+.button-alt,
+.button-delete,
+.button-submit {
+	font-weight: 600;
+}
+
+.cancel,
+.button-cancel,
+.button-delete,
+.button-submit {
+	margin: .5em auto .5em auto !important;	
+	width: 35% !important;
+	flex-grow: 0.1 !important;
+}
+
+.button-delete,
+.button-submit {
+	color: #5e6871 !important;
+	background-color: #35393f;
+	box-shadow: 0 0 4px #222628;
+}
+
+.button-delete:hover:not(:disabled),
+.button-submit:hover:not(:disabled) {
+    color: #d7e9eb !important;
+    background-color: rgba(36, 43, 48, 0.8) !important;
+    box-shadow: 0 0 4px #d7e0e8, 0 0 6px #cccedf, 0 0 17px #b2c3cf, 0 0 38px #a3bec9;
+}
+
+.button-delete:focus,
+.button-submit:focus {
+	color: rgba(255, 255, 255, 0.8) !important;
+	background-color: rgba(60, 60, 60, 0.8) !important;
+}
+
+.button-delete:active,
+.button-submit:active {
+	background-color: rgba(255, 232, 232, 0.8) !important;
+	color: rgba(255, 255, 255, 1) !important;
+}
+
+.button-cancel,
+.cancel {
+	background-color: rgb(82, 99, 109);
+	box-shadow: 0 0 4px #1b1e1f;
+	color: rgb(52, 61, 63) !important;
+}
+
+.button-cancel:hover:not(:disabled),
+.cancel:hover:not(:disabled) {
+	color: rgba(197, 208, 218, 0.8) !important;
+	background-color: rgba(32, 38, 39, 0.8) !important;
+	box-shadow: 0 0 4px #a8cac0, 0 0 6px #95c4b1, 0 0 17px #a0ceb8, 0 0 38px #fcfdfd;
+}
+
+.button-cancel:focus,
+.cancel:focus {
+	color: white !important;
+	background-color: rgba(150, 185, 190, 0.8) !important;
+}
+
+.button-cancel:active,
+.cancel:active {
+	background-color: rgba(150, 185, 190, 0.8) !important;
+	color: white !important;
+}
+
+.button-alt {
+	background-color: rgb(79, 76, 93);
+	box-shadow: 0px 0px 4px #212528;
+	color: rgb(32, 23, 38) !important;
+}
+
+.button-alt:hover:not(:disabled) {
+	color: rgba(229, 222, 233, 0.8) !important;
+	background-color: rgba(33, 31, 39, 0.8) !important;
+	box-shadow: 0 0 4px #dfd3e6, 0 0 6px #d9c6e6, 0 0 17px #d1c4da, 0 0 38px #ebe4ed;
+}
+
+.button-alt:focus {
+	color: white !important;
+	background-color: rgba(144, 106, 16, 0.8) !important;
+}
+
+.button-alt:active {
+	background-color: rgba(144, 106, 16, 0.8) !important;
+	color: white !important;
 }

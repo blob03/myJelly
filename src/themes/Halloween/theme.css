@@ -511,39 +511,6 @@ html {
 	background-color: rgba(133, 84, 204, 0.8);
 }
 
-/* Save button */
-
-@keyframes click {
-	from {transform: scale(1.2);}
-	70% {transform: scale(1.4);}
-	to {transform: scale(1.2);}
-}
-
-.button-submit {
-	width: 50% !important;
-	margin: 0 auto !important;
-	transform: scale(1.0);
-	color: #e68a11; !important;
-	background-color: #282828;
-	box-shadow: 1px 1px 8px #eb740b;
-	font-weight: 600;
-}
-
-.button-submit:hover:not(:disabled) {
-	color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.button-submit:focus,
-.raised:focus {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(220, 98, 8, 0.8) !important;
-}
-
-.button-submit:active {
-	background-color: rgba(255, 232, 232, 0.8) !important;
-	color: rgba(255, 255, 255, 1) !important;
-}
-
 /* detail button */
 
 .detailButton {
@@ -1126,13 +1093,16 @@ fieldset {
 	color: #ffa700 !important;
 }
 
-.inputLabel,
-.checkboxLabel,
-.selectLabel,
-.inputLabelUnfocused,
-.sliderLabel,
+.listItemBodyText,
 .paperListLabel,
-.textareaLabelUnfocused {
+.checkboxListLabel,
+.textareaLabelUnfocused,
+.textareaLabel,
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabelUnfocused,
+.inputLabel {
     color: #202020;
 }
 
@@ -1152,3 +1122,124 @@ fieldset {
 .mdl-spinner__layer-4 {
     border-color: #6f53d3 !important;
 }
+
+/* Save button */
+
+@keyframes click {
+	from {transform: scale(1.2);}
+	70% {transform: scale(1.4);}
+	to {transform: scale(1.2);}
+}
+
+.cancel,
+.button-cancel,
+.button-alt,
+.button-delete,
+.button-submit {
+	font-weight: 600;
+}
+
+.cancel,
+.button-cancel,
+.button-delete,
+.button-submit {
+	margin: .5em auto .5em auto !important;	
+	width: 35% !important;
+	flex-grow: 0.1 !important;
+}
+
+.button-delete,
+.button-submit {
+	color: #e68a11; !important;
+	background-color: #282828;
+	box-shadow: 0px 0px 4px #542a05;
+}
+
+.button-delete:hover:not(:disabled),
+.button-submit:hover:not(:disabled) {
+	color: #fff !important;
+	box-shadow: 0px 0px 8px #471e05;
+	transform: scale(1.2);
+}
+
+.button-delete:focus,
+.button-submit:focus,
+.raised:focus {
+	color: #fff !important;
+	box-shadow: 0px 0px 8px #471e05;
+	transform: scale(1.2);
+}
+
+.button-delete:active,
+.button-submit:active {
+	color: white !important;
+	box-shadow: 0px 0px 8px #471e05;
+	animation-name: click;
+	animation-duration: .15s;
+	transform: scale(1.2);
+}
+
+.button-cancel,
+.cancel {
+	background-color: rgb(74, 67, 121);
+	box-shadow: 0px 0px 4px #471e05;
+	color: rgb(146, 139, 201) !important;
+}
+
+.button-cancel:hover:not(:disabled),
+.cancel:hover:not(:disabled) {
+	color: rgba(211, 207, 225, 0.8) !important;
+	background-color: rgba(73, 78, 153, 0.8) !important;
+	transform: scale(1.2);
+	box-shadow: 0px 0px 8px #471e05;
+}
+
+.button-cancel:focus,
+.cancel:focus {
+	color: rgba(211, 207, 225, 0.8) !important;
+	background-color: rgba(73, 78, 153, 0.8) !important;
+	transform: scale(1.2);
+	box-shadow: 0px 0px 8px #471e05;
+}
+
+.button-cancel:active,
+.cancel:active {
+	color: rgba(211, 207, 225, 0.8) !important;
+	background-color: rgba(73, 78, 153, 0.8) !important;
+	transform: scale(1.2);
+	box-shadow: 0px 0px 8px #471e05;
+	animation-name: click;
+	animation-duration: .15s;
+	transform: scale(1.2);
+}
+
+.button-alt {
+	background-color: rgb(234, 175, 64);
+	box-shadow: 0px 0px 4px #663e0a;
+	color: rgb(36, 30, 15) !important;
+}
+
+.button-alt:hover:not(:disabled) {
+	color: #fbddb6 !important;
+	background-color: rgba(242, 163, 12, 0.8) !important;
+	box-shadow: 0px 0px 8px #663e0a;
+	transform: scale(1.2);
+}
+
+.button-alt:focus {
+	color: #fbddb6 !important;
+	background-color: rgba(242, 163, 12, 0.8) !important;
+	box-shadow: 0px 0px 8px #663e0a;
+	transform: scale(1.2);
+}
+
+.button-alt:active {
+	color: #fbddb6 !important;
+	background-color: rgba(242, 163, 12, 0.8) !important;
+	box-shadow: 0px 0px 8px #663e0a;
+	transform: scale(1.2);
+	animation-name: click;
+	animation-duration: .15s;
+}
+
+

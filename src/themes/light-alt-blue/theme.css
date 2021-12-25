@@ -117,7 +117,7 @@ html {
 
 .paperList,
 .visualCardBox {
-    background: rgba(103, 164, 161,.1);
+    background: rgba(103, 164, 161,.4);
 }
 
 .defaultCardBackground1 {
@@ -689,7 +689,7 @@ select option:selected {
 
 .listItem .secondary,
 .actionSheetText {
-	color: #81adbe;
+	color: #c6dce4;
 	font-size: 85%;
 }
 
@@ -942,6 +942,10 @@ div[data-role="controlgroup"] a.ui-btn-active {
     color: #fff;
 }
 
+.listItemBodyText,
+.paperListLabel,
+.checkboxListLabel,
+.textareaLabel,
 .selectLabel,
 .sliderLabel,
 .checkboxLabel,
@@ -965,32 +969,43 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .cancel,
 .button-cancel,
+.button-alt,
+.button-delete,
 .button-submit {
-	width: 35% !important;
-	margin: .5em auto .5em auto !important;	
 	font-weight: 600;
-	display: block;
+}
+
+.cancel,
+.button-cancel,
+.button-delete,
+.button-submit {
+	margin: .5em auto .5em auto !important;	
+	width: 35% !important;
 	flex-grow: 0.1 !important;
 }
 
+.button-delete,
 .button-submit {
 	background-color: rgb(36, 136, 153);
 	box-shadow: 0px 0px 8px #609295;
 	color: rgb(193, 206, 212) !important;
 }
 
+.button-delete:hover:not(:disabled),
 .button-submit:hover:not(:disabled) {
 	color: rgba(255, 255, 255, 0.8) !important;
 	background-color: rgba(92, 151, 179, 0.8) !important;
 	transform: scale(1.2);
 }
 
+.button-delete:focus,
 .button-submit:focus {
 	color: white !important;
 	background-color: rgba(123, 152, 184, 0.8) !important;
 	transform: scale(1.2);
 }
 
+.button-delete:active,
 .button-submit:active {
 	background-color: rgba(255, 232, 232, 0.8) !important;
 	color: rgba(255, 255, 255, 1) !important;
@@ -1029,6 +1044,32 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	transform: scale(1.2);
 }
 
+.button-alt {
+	background-color: rgb(61, 179, 163);
+	box-shadow: 0px 0px 8px #609295;
+	color: rgb(226, 237, 205) !important;
+}
+
+.button-alt:hover:not(:disabled) {
+	color: rgba(255, 255, 255, 0.8) !important;
+	background-color: rgba(137, 208, 188, 0.8) !important;
+	transform: scale(1.2);
+}
+
+.button-alt:focus {
+	color: white !important;
+	background-color: rgba(137, 208, 188, 0.8) !important;
+	transform: scale(1.2);
+}
+
+.button-alt:active {
+	background-color: rgba(137, 208, 188, 0.8) !important;
+	color: rgba(255, 255, 255, 1) !important;
+	animation-name: click;
+	animation-duration: .15s;
+	transform: scale(1.2);
+}
+
 .appfooter,
 .playlistSectionButton {
 	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
@@ -1044,6 +1085,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
 
+.formDialogHeader.mediaLibraryEditor,
 .formDialogHeader.syncPlay {
 	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
     color: #fff;
@@ -1051,6 +1093,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
 
+.formDialogContent.mediaLibraryEditor,
 .formDialogContent.syncPlay {
 	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
     background-color: rgba(0, 0, 0, 0);
