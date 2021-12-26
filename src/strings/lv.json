@@ -952,7 +952,7 @@
     "OptionParentalRating": "Vecāku Reitings",
     "OptionPlayCount": "Atskaņošanas Skaits",
     "OptionPremiereDate": "Pirmizrādes Datums",
-    "OptionProtocolHls": "HTTP Tiešraides Straumes",
+    "OptionProtocolHls": "HTTP Tiešraides Straumes (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "Nejaušs",
     "OptionRegex": "Regex",

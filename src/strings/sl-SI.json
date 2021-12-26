@@ -1153,7 +1153,7 @@
     "OptionPlainVideoItemsHelp": "Vsi videi so predstavljeni v DIDL kot \"object.item.videoItem\" namesto bolj specifičen tip, kot na primer \"object.item.videoItem.movie\".",
     "OptionPlayCount": "Število predvajanj",
     "OptionPremiereDate": "Datum premiere",
-    "OptionProtocolHls": "HTTP pretakanje v živo",
+    "OptionProtocolHls": "HTTP pretakanje v živo (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "Naključno",
     "OptionRegex": "Regex",

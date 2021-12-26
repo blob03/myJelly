@@ -89,7 +89,7 @@ html {
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #c1e2e3;
+    background-color: rgb(143, 195, 208);
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -499,11 +499,11 @@ html {
 }
 
 .emby-select-withcolor {
-    background: #fff;
-    border: 0.07em solid rgba(0, 0, 0, 0.158);
-	font-weight: 400;
+	background: #fff;
+	border: .1em solid rgb(95, 146, 158);
+	font-weight: 600;
 	line-height: 1.35;
-	color: rgb(101, 133, 144) !important;
+	color: rgb(136, 157, 164) !important;
 }
 
 .emby-select-withcolor:focus {
@@ -871,7 +871,7 @@ fieldset {
 }
 
 .fieldDescription {
-	color: #d9e9ea;
+	color: #edf2f2;
 	font-style: italic;
 	font-size: 85%;
 }
@@ -931,8 +931,8 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .actionSheetTitle {
-	color: #4298c1;
-	text-shadow: 1px 1px 3px #83aab6;
+	color: #ddf2fc;
+	text-shadow: 1px 1px 4px #586e75;
 	font-weight: 600;
 	font-size: 1.5em;
 }
@@ -960,7 +960,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	color: rgb(94, 137, 150);
 }
 
-/* Save/cancel buttons */
+/* buttons */
 
 @keyframes click {
 	from {transform: scale(1.2);}
@@ -972,45 +972,70 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .button-cancel,
 .button-alt,
 .button-delete,
+.btnRefresh,
+#btnRestartServer,
+#btnShutdown,
 .button-submit {
 	font-weight: 600;
+	position: unset;
+}
+
+.cancel,
+.button-cancel,
+.button-delete,
+.btnRefresh,
+#btnRestartServer,
+#btnShutdown,
+.button-submit {
+	margin: .5em auto .5em auto !important;	
 }
 
 .cancel,
 .button-cancel,
 .button-delete,
 .button-submit {
-	margin: .5em auto .5em auto !important;	
 	width: 35% !important;
 	flex-grow: 0.1 !important;
 }
 
 .button-delete,
+.btnRefresh,
+#btnRestartServer,
+#btnShutdown,
 .button-submit {
-	background-color: rgb(36, 136, 153);
+	background-color: rgb(68, 155, 151);
 	box-shadow: 0px 0px 4px #6e8788;
 	color: rgb(193, 206, 212) !important;
 }
 
 .button-delete:hover:not(:disabled),
+.btnRefresh:hover:not(:disabled),
+#btnRestartServer:hover:not(:disabled),
+#btnShutdown:hover:not(:disabled),
 .button-submit:hover:not(:disabled) {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(92, 151, 179, 0.8) !important;
+	color: rgba(255, 255, 255) !important;
+	background-color: rgb(48, 115, 109) !important;
 	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
 .button-delete:focus,
+.btnRefresh:focus,
+#btnRestartServer:focus,
+#btnShutdown:focus,
 .button-submit:focus {
 	color: white !important;
-	background-color: rgba(123, 152, 184, 0.8) !important;
+	background-color: rgb(48, 115, 109) !important;
 	box-shadow: 0px 0px 8px #829d9e;
 	transform: scale(1.2);
 }
 
 .button-delete:active,
+.btnRefresh:active,
+#btnRestartServer:active,
+#btnShutdown:active,
 .button-submit:active {
-	background-color: rgba(255, 232, 232, 0.8) !important;
+	background-color: rgb(48, 115, 109) !important;
 	color: rgba(255, 255, 255, 1) !important;
 	box-shadow: 0px 0px 8px #829d9e;
 	animation-name: click;
@@ -1089,24 +1114,12 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {
-	background-color: #66a4c1;
-    color: rgba(255, 255, 255, 0.87);
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+	background-color: rgb(102, 168, 178);
+	color: #fff;
+	-webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+	box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
 
-.formDialogHeader.mediaLibraryEditor,
-.formDialogHeader.syncPlay {
-	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
-    color: #fff;
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-}
-
-.formDialogContent.mediaLibraryEditor,
-.formDialogContent.syncPlay {
-	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
-    background-color: rgba(0, 0, 0, 0);
-    background-size: auto;
-	background-color: rgb(220, 242, 248);
+.formDialogContent {
+	background-color: rgb(143, 195, 208);
 }

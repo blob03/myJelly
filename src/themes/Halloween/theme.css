@@ -756,6 +756,11 @@ select option:selected {
 	color: #6f53d3;
 }
 
+.material-icons.navMenuOptionIcon.notifications {
+	background-color: transparent !important;
+	color: #6f53d3 !important;
+}
+
 .notifications.material-icons {
 	background-color: #ffb43e !important;
 	color: #282828;
@@ -860,7 +865,8 @@ select option:selected {
 }
 
 .sidebarHeader {
-	color: #8b877f;
+	color: #78718a;
+	font-weight: 600;
 }
 
 .listItemAside {
@@ -1123,7 +1129,7 @@ fieldset {
     border-color: #6f53d3 !important;
 }
 
-/* Save button */
+/* buttons */
 
 @keyframes click {
 	from {transform: scale(1.2);}
@@ -1135,20 +1141,38 @@ fieldset {
 .button-cancel,
 .button-alt,
 .button-delete,
+.btnRefresh,
+#btnRestartServer,
+#btnShutdown,
 .button-submit {
 	font-weight: 600;
+	position: unset;
+	border-color: #ab8665;
+	border-width: 3px;
+}
+
+.cancel,
+.button-cancel,
+.button-delete,
+.btnRefresh,
+#btnRestartServer,
+#btnShutdown,
+.button-submit {
+	margin: .5em auto .5em auto !important;	
 }
 
 .cancel,
 .button-cancel,
 .button-delete,
 .button-submit {
-	margin: .5em auto .5em auto !important;	
 	width: 35% !important;
 	flex-grow: 0.1 !important;
 }
 
 .button-delete,
+.btnRefresh,
+#btnRestartServer,
+#btnShutdown,
 .button-submit {
 	color: #e68a11; !important;
 	background-color: #282828;
@@ -1156,6 +1180,9 @@ fieldset {
 }
 
 .button-delete:hover:not(:disabled),
+.btnRefresh:hover:not(:disabled),
+#btnRestartServer:hover:not(:disabled),
+#btnShutdown:hover:not(:disabled),
 .button-submit:hover:not(:disabled) {
 	color: #efaa6c !important;
 	box-shadow: 0px 0px 8px #9b651f;
@@ -1163,6 +1190,9 @@ fieldset {
 }
 
 .button-delete:focus,
+.btnRefresh:focus,
+#btnRestartServer:focus,
+#btnShutdown:focus,
 .button-submit:focus {
 	color: #efaa6c !important;
 	box-shadow: 0px 0px 8px #9b651f;
@@ -1170,6 +1200,9 @@ fieldset {
 }
 
 .button-delete:active,
+.btnRefresh:active,
+#btnRestartServer:active,
+#btnShutdown:active,
 .button-submit:active {
 	color: #efaa6c !important;
 	box-shadow: 0px 0px 8px #9b651f;

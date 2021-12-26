@@ -303,7 +303,7 @@
     "Guide": "Gvidilo",
     "GuideProviderLogin": "Ensaluto",
     "GuideProviderSelectListings": "Elektu Listarojn",
-    "H264CrfHelp": "La \"Konstanta Rapida Faktoro\" (CRF) estas la defaŭlta kvalita parametro por la x264 kaj x265 kodiloj. Vi povas starigi la valorojn inter 0 kaj 51, kie pli malaltaj valoroj rezultigus pli bonan kvaliton (koste de pli altaj dosiergrandecoj). Sanaj valoroj estas inter 18 kaj 28. La defaŭlta por x264 estas 23, kaj por x265 estas 28, do vi povas uzi ĉi tion kiel komencantan punkton.",
+    "H264CrfHelp": "La \"Faktoro de Konstantaj Taksadoj\" (CRF) estas la defaŭlta kvalita parametro por la x264 kaj x265 kodiloj. Vi povas starigi la valorojn inter 0 kaj 51, kie pli malaltaj valoroj rezultigus pli bonan kvaliton (koste de pli altaj dosiergrandecoj). Sanaj valoroj estas inter 18 kaj 28. La defaŭlta por x264 estas 23, kaj por x265 estas 28, do vi povas uzi ĉi tion kiel komencantan punkton.",
     "HDPrograms": "HD-programoj",
     "HardwareAccelerationWarning": "Ebligi aparataran plirapidigon povas kaŭzi malstabilecon en iuj ĉirkaŭaĵoj. Certigu, ke via operaciumo kaj videopeliloj estas plene ĝisdatigitaj. Se vi havas malfacilaĵojn por ludi videon post ebligi ĉi tion, vi devos ŝanĝi la parametron reen al Nenio.",
     "HeaderAccessSchedule": "Alira Horaro",
