@@ -555,6 +555,7 @@ html {
 	background: #333539;
 	border: 0.05em solid rgb(61, 68, 73);
 	font-weight: 600;
+	padding: .5em 1.9em .5em .5em !important;
 }
 
 .emby-select-withcolor:focus {
@@ -1084,6 +1085,10 @@ fieldset {
 .selectLabelFocused,
 .textareaLabelFocused {
     color: #aaa !important;
+}
+
+.button-link {
+	text-align: left;
 }
 
 /* buttons */

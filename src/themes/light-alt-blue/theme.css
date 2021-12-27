@@ -115,6 +115,10 @@ html {
     color: rgb(86, 121, 158);
 }
 
+.button-link {
+	text-align: left;
+}
+
 .paperList,
 .visualCardBox {
     background: rgba(103, 164, 161,.4);
@@ -187,15 +191,6 @@ html {
 .mediaInfoText {
     color: #333;
     background: #fff;
-}
-
-.emby-input,
-.emby-textarea {
-	color: rgb(101, 133, 144) !important;
-	background: #fff;
-	border: 4px ridge rgb(199, 215, 217);
-	-webkit-border-radius: 0.2em;
-	border-radius: 0.2em;
 }
 
 .itemProgressBarForeground {
@@ -359,8 +354,8 @@ html {
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
 .radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
 .radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked {
-	border-color: rgb(35, 218, 141);
-	color: rgb(35, 218, 141);
+	border-color: white;
+	color: white;
 }
 
 .checkboxIcon-checked {
@@ -498,26 +493,25 @@ html {
 	text-shadow: 2px 2px 3px #1e1d25;
 }
 
+.emby-input,
+.emby-textarea,
 .emby-select-withcolor {
 	background: #fff;
-	border: .1em solid rgb(95, 146, 158);
-	font-weight: 600;
+	border: .1em ridge rgb(95, 146, 158);
+	font-weight: 400;
 	line-height: 1.35;
-	color: rgb(136, 157, 164) !important;
+	color: rgb(90, 121, 133) !important;
 }
 
+.emby-input:focus,
+.emby-textarea:focus,
 .emby-select-withcolor:focus {
-	border-color: rgba(38, 218, 247, 0.8);
+	border-color: white;
 }
 
 .emby-select-withcolor > option {
 	color: #7b87a9;
 	background: #fff;
-}
-
-.emby-select-tv-withcolor:focus {
-    border-color: rgba(38, 218, 247, 0.8);
-    color: #fff;
 }
 
 select option:disabled {
@@ -697,11 +691,6 @@ select option:selected {
 	background: linear-gradient(180deg,hsla(213.8, 35.9%, 30%, 0.85),hsla(240, 100%, 0.2%, 0.05));
 	height: 6.5em;
 	transition: opacity .6s ease-out;
-}
-
-.emby-input:focus,
-.emby-textarea:focus {
-	border-color: rgba(38, 218, 247, 0.8);	
 }
 
 .jstree-default .jstree-wholerow-clicked {
@@ -938,11 +927,12 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .listItemIcon:not(.listItemIcon-transparent) {
-    background-color: #81a5b2 !important;
+    background-color: #5c97a1 !important;
     border-radius: 50%;
     color: #fff;
 }
 
+.label,
 .listItemBodyText,
 .paperListLabel,
 .checkboxListLabel,
@@ -952,7 +942,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .checkboxLabel,
 .inputLabel {
 	font-weight: 600;
-	color: rgb(85, 115, 125);
+	color: rgb(57, 110, 129);
 }
 
 .listItemBody {

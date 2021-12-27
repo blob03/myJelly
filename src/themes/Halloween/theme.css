@@ -539,13 +539,14 @@ html {
 .selectArrow {
 	text-shadow: 2px 2px 3px #1e1d25;
 	color: #fe9001;
-}
- 
+}	
+
 .emby-select-withcolor {
     color: #fe9001;
     background: #282828;
     border: 0.07em solid rgb(0, 0, 0);
 	font-weight: 600;
+	padding: .5em 1.9em .5em .5em !important;
 }
 
 .emby-select-withcolor:focus {
@@ -1120,6 +1121,10 @@ fieldset {
 .selectLabelFocused,
 .textareaLabelFocused {
     color: #ffc579 !important;
+}
+
+.button-link {
+	text-align: left;
 }
 
 .mdl-spinner__layer-1,

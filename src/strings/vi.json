@@ -692,7 +692,7 @@
     "LabelHttpsPort": "Số cổng HTTPS cục bộ:",
     "LabelHttpsPortHelp": "Số cổng TCP cho máy chủ HTTPS.",
     "LabelIconMaxHeight": "Chiều cao tối đa của biểu tượng:",
-    "LabelIconMaxResHelp": "Độ phân giải tối đa của các biểu tượng được hiển thị thông qua thuộc tính 'upnp:icon'",
+    "LabelIconMaxResHelp": "Độ phân giải tối đa của các biểu tượng được hiển thị thông qua thuộc tính 'upnp:icon'.",
     "LabelIconMaxWidth": "Chiều ngang tối đa của biểu tượng:",
     "LabelIdentificationFieldHelp": "Một chuỗi không phân biệt viết hoa/thường hoặc biểu thức chính quy.",
     "LabelImageFetchersHelp": "Kích hoạt và xếp hạng trình tải hình ảnh tự động theo thứ tự ưu tiên.",
