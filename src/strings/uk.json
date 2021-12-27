@@ -1257,7 +1257,7 @@
     "OptionPlainVideoItemsHelp": "Усі відео представлені в DIDL як «object.item.videoItem» замість більш конкретного типу, наприклад «object.item.videoItem.movie».",
     "OptionPlayCount": "Кількість відтворень",
     "OptionPremiereDate": "Дата прем'єри",
-    "OptionProtocolHls": "HTTP Live Streaming",
+    "OptionProtocolHls": "HTTP Live Streaming (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "Випадковий",
     "OptionRegex": "Регулярний вираз",

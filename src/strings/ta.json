@@ -1257,7 +1257,7 @@
     "OptionPlainVideoItemsHelp": "எல்லா வீடியோக்களும் டிஐடிஎல்லில் \"object.item.videoItem\" என குறிப்பிடப்படுகின்றன, அதாவது \"object.item.videoItem.movie\" போன்ற ஒரு குறிப்பிட்ட வகைக்கு பதிலாக.",
     "OptionPlayCount": "ப்ளே கவுண்ட்",
     "OptionPremiereDate": "பிரீமியர் தேதி",
-    "OptionProtocolHls": "HTTP நேரடி ஒளிபரப்பு",
+    "OptionProtocolHls": "HTTP நேரடி ஒளிபரப்பு (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "சீரற்ற",
     "OptionRegex": "ரீஜெக்ஸ்",

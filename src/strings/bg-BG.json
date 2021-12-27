@@ -1116,7 +1116,7 @@
     "OptionPlainVideoItemsHelp": "Всички видеофайлове са представени в DIDL като \"object.item.videoItem\" вместо по-конкретен тип, като например \"object.item.videoItem.movie\".",
     "OptionPlayCount": "Брой пускания",
     "OptionPremiereDate": "Дата на премиера",
-    "OptionProtocolHls": "Директно предаване по HTTP",
+    "OptionProtocolHls": "Директно предаване по HTTP (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "Случаен",
     "OptionRegex": "Регуларен",

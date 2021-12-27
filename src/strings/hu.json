@@ -1257,7 +1257,7 @@
     "OptionPlainVideoItemsHelp": "Az összes videót a DIDL-ben \"object.item.videoItem\" -ként ábrázolja, nem pedig egy specifikusabb típusként, például \"object.item.videoItem.movie\" .",
     "OptionPlayCount": "Lejátszások száma",
     "OptionPremiereDate": "Premier dátuma",
-    "OptionProtocolHls": "HTTP Live Streamelés(HLS)",
+    "OptionProtocolHls": "HTTP Live Streamelés (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "Véletlenszerű",
     "OptionRegex": "Reguláris kifejezések",

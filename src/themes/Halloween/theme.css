@@ -546,7 +546,7 @@ html {
     background: #282828;
     border: 0.07em solid rgb(0, 0, 0);
 	font-weight: 600;
-	padding: .5em 1.9em .5em .5em !important;
+	padding: .5em .5em .5em .5em !important;
 }
 
 .emby-select-withcolor:focus {
@@ -1017,7 +1017,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .libraryPage {
-	padding-top: 5em !important;
+	padding-top: 4.3em !important;
 }
 
 .headerUserButtonRound {
@@ -1279,4 +1279,8 @@ fieldset {
 	animation-duration: .15s;
 }
 
-
+.trackSelectionFieldContainer > .selectLabel,
+.detailsGroupItem > .label {
+	color: black;
+	font-weight: 600;
+}

@@ -598,6 +598,7 @@
     "LabelEmbedAlbumArtDidl": "Intégrer la couverture d'album dans le DIDL",
     "LabelEmbedAlbumArtDidlHelp": "Certains appareils préfèrent cette méthode pour obtenir les couvertures d'album. Certains autres pourraient échouer lors de la lecture avec cette option activée.",
     "LabelEnableAutomaticPortMap": "Active le mappage automatique des ports",
+    "LabelEnableDlnaPlayTo": "Activer la fonction DLNA \"Lire sur\"",
     "LabelFinish": "Terminer",
     "LabelHomeNetworkQuality": "Qualité du réseau local :",
     "LabelHomeScreenSectionValue": "Section {0} de l'accueil :",

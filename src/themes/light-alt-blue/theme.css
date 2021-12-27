@@ -493,6 +493,10 @@ html {
 	text-shadow: 2px 2px 3px #1e1d25;
 }
 
+.emby-select-withcolor {
+	padding: .5em .5em .5em .5em !important;
+}
+
 .emby-input,
 .emby-textarea,
 .emby-select-withcolor {
@@ -1112,4 +1116,9 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .formDialogContent {
 	background-color: rgb(143, 195, 208);
+}
+
+.trackSelectionFieldContainer > .selectLabel,
+.detailsGroupItem > .label {
+	color: white;
 }

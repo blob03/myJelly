@@ -555,7 +555,7 @@ html {
 	background: #333539;
 	border: 0.05em solid rgb(61, 68, 73);
 	font-weight: 600;
-	padding: .5em 1.9em .5em .5em !important;
+	padding: .5em .5em .5em .5em !important;
 }
 
 .emby-select-withcolor:focus {
@@ -959,7 +959,7 @@ legend {
 }
 
 .libraryPage {
-	padding-top: 5em !important;
+	padding-top: 4.3em !important;
 }
 
 .headerUserButtonRound {
@@ -1206,4 +1206,10 @@ fieldset {
 .button-alt:active {
 	color: white !important;
 	background-color: rgba(33, 31, 39, 0.8) !important;
+}
+
+.trackSelectionFieldContainer > .selectLabel,
+.detailsGroupItem > .label {
+	color: white;
+	font-weight: 600;
 }

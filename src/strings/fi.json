@@ -1193,7 +1193,7 @@
     "OptionPlainVideoItemsHelp": "Kaikki videot esitetään DIDL:ssä muodossa \"object.item.videoItem\" tarkemman muodon (kuten \"object.item.videoItem.movie\") sijaan.",
     "OptionPlayCount": "Toistokerrat",
     "OptionPremiereDate": "Ensi-iltapäivä",
-    "OptionProtocolHls": "HTTP Suoratoisto",
+    "OptionProtocolHls": "HTTP Suoratoisto (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "Satunnainen",
     "OptionRegex": "Säännöllinen lausekse",

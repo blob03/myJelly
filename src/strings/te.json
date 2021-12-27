@@ -1191,7 +1191,7 @@
     "OptionPlainVideoItemsHelp": "అన్ని వీడియోలు DIDL లో \"object.item.videoItem\" గా సూచించబడతాయి, \"object.item.videoItem.movie\" వంటి మరింత నిర్దిష్ట రకానికి బదులుగా.",
     "OptionPlayCount": "ప్లే కౌంట్",
     "OptionPremiereDate": "ప్రీమియర్ తేదీ",
-    "OptionProtocolHls": "HTTP లైవ్ స్ట్రీమింగ్",
+    "OptionProtocolHls": "HTTP లైవ్ స్ట్రీమింగ్ (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "యాదృచ్ఛికం",
     "OptionRegex": "రెగెక్స్",

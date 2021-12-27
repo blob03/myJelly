@@ -1221,7 +1221,7 @@
     "OptionPlainVideoItemsHelp": "Todos los videos serán representados en DIDL como «object.item.videoItem» en lugar de un tipo más específico, como «object.item.videoItem.movie».",
     "OptionPlayCount": "Contador de reproducciones",
     "OptionPremiereDate": "Fecha de estreno",
-    "OptionProtocolHls": "Transmisión en vivo por HTTP",
+    "OptionProtocolHls": "Transmisión en vivo por HTTP (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "Aleatorio",
     "OptionRegex": "Expresión regular",

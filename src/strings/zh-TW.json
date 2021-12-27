@@ -1248,7 +1248,7 @@
     "OptionPlainVideoItemsHelp": "所有影片在 DIDL 中顯示為「object.item.videoItem」，而不是一個更具體的類型，如「object.item.videoItem.movie」。",
     "OptionPlayCount": "播放次數",
     "OptionPremiereDate": "首映日期",
-    "OptionProtocolHls": "HTTP 直播串流",
+    "OptionProtocolHls": "HTTP 直播串流 (HLS)",
     "OptionProtocolHttp": "HTTP",
     "OptionRandom": "隨機",
     "OptionRegex": "正則表達式",
