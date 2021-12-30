@@ -7,6 +7,7 @@ import * as LibraryMenu from '../../../scripts/libraryMenu';
 import Dashboard from '../../../scripts/clientUtils';
 import template from './index.html';
 import loading from '../../../components/loading/loading';
+import * as quickConnect from '../quickConnect/helper';
 
 export default function (view, params) {
 	
@@ -43,28 +44,13 @@ export default function (view, params) {
 
         page.querySelector('.lnkControlsPreferences').classList.toggle('hide', layoutManager.mobile);
 
-		loading.show();
-		ApiClient.getQuickConnect('Status')
-            .then(status => {
-                if (status !== 'Unavailable') {
-					page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
-				}
-				loading.hide();
-            })
-            .catch(() => {
-				ApiClient.getQuickConnect('Enabled')
-					.then(enabled => {
-						if (enabled === true) {
-							page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
-						}
-						loading.hide();
-					})
-					.catch(() => {
-						console.debug('Failed to get QuickConnect status');
-						loading.hide();
-					});
-            });
-
+		// Check whether QuickConnect is available/enabled or not.
+		// Backward compatible with pre 10.8 beta
+		quickConnect.isActive().then( (status) => {
+			if (status === true) 
+				page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
+		});
+			
         ApiClient.getUser(userId).then( (user) => {
             page.querySelector('.headerUsername').innerHTML = user.Name;
             if (user.Policy.IsAdministrator && !layoutManager.tv) {

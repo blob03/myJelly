@@ -38,7 +38,23 @@ import alert from '../../components/alert';
             config.CachePath = form.querySelector('#txtCachePath').value;
             config.MetadataPath = $('#txtMetadataPath', form).val();
             config.MetadataNetworkPath = $('#txtMetadataNetworkPath', form).val();
-            config.QuickConnectAvailable = form.querySelector('#chkQuickConnectAvailable').checked;
+            
+			// 10.8.*
+			config.QuickConnectAvailable = form.querySelector('#chkQuickConnectAvailable').checked;
+			// 10.7.7
+			const newStatus = form.querySelector('#chkQuickConnectAvailable').checked ? "Available" : "Unavailable";
+			const url = ApiClient.getUrl('/QuickConnect/Available?Status=' + newStatus);
+			ApiClient.ajax({
+				type: 'POST',
+				url: url
+				}, true).then(() => {
+					//toast(globalize.translate('SettingsSaved'));
+					//setTimeout(updatePage, 500);
+					return true;
+					}).catch((e) => {
+					console.error('Unable to set quick connect status. error:', e);
+					});
+						
             ApiClient.updateServerConfiguration(config).then(function() {
                 ApiClient.getNamedConfiguration(brandingConfigKey).then(function(brandingConfig) {
                     brandingConfig.LoginDisclaimer = form.querySelector('#txtLoginDisclaimer').value;

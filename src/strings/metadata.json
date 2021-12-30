@@ -1,7 +1,7 @@
 {
     "en-US": {
         "ccode": "en-US",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 103854,
         "ccodeSrc": "en-US",
         "displayName": "English",
@@ -25,7 +25,7 @@
     },
     "af": {
         "ccode": "af",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 50889,
         "ccodeSrc": "en-US",
         "displayName": "Afrikaans",
@@ -49,7 +49,7 @@
     },
     "ar": {
         "ccode": "ar",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 141182,
         "ccodeSrc": "en-US",
         "displayName": "Arabic",
@@ -73,7 +73,7 @@
     },
     "as": {
         "ccode": "as",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 82,
         "ccodeSrc": "en-US",
         "displayName": "Assamese",
@@ -97,7 +97,7 @@
     },
     "be-BY": {
         "ccode": "be-BY",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 2432,
         "ccodeSrc": "en-US",
         "displayName": "Belarusian",
@@ -121,7 +121,7 @@
     },
     "bg-BG": {
         "ccode": "bg-BG",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 138906,
         "ccodeSrc": "en-US",
         "displayName": "Bulgarian",
@@ -145,7 +145,7 @@
     },
     "bn-BD": {
         "ccode": "bn-BD",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 12001,
         "ccodeSrc": "en-US",
         "displayName": "Bengali",
@@ -169,7 +169,7 @@
     },
     "ca": {
         "ccode": "ca",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 112834,
         "ccodeSrc": "en-US",
         "displayName": "Catalan; Valencian",
@@ -193,7 +193,7 @@
     },
     "cs": {
         "ccode": "cs",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 113178,
         "ccodeSrc": "en-US",
         "displayName": "Czech",
@@ -217,8 +217,8 @@
     },
     "cy": {
         "ccode": "cy",
-        "lastm": 1640783964.0,
-        "fsize": 15414,
+        "lastm": 1640829956.0,
+        "fsize": 15418,
         "ccodeSrc": "en-US",
         "displayName": "Welsh",
         "displayNativeName": "Cymraeg",
@@ -241,7 +241,7 @@
     },
     "da": {
         "ccode": "da",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 101567,
         "ccodeSrc": "en-US",
         "displayName": "Danish",
@@ -265,7 +265,7 @@
     },
     "de": {
         "ccode": "de",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 115101,
         "ccodeSrc": "en-US",
         "displayName": "German",
@@ -289,7 +289,7 @@
     },
     "el": {
         "ccode": "el",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 107222,
         "ccodeSrc": "en-US",
         "displayName": "Greek, Modern (1453-)",
@@ -313,7 +313,7 @@
     },
     "en-GB": {
         "ccode": "en-GB",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 104553,
         "ccodeSrc": "en-US",
         "displayName": "English, Great Britain",
@@ -337,8 +337,8 @@
     },
     "eo": {
         "ccode": "eo",
-        "lastm": 1640783964.0,
-        "fsize": 108360,
+        "lastm": 1640829956.0,
+        "fsize": 108367,
         "ccodeSrc": "en-US",
         "displayName": "Esperanto",
         "displayNativeName": "Esperanto",
@@ -361,7 +361,7 @@
     },
     "es-419": {
         "ccode": "es-419",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 112986,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Latin America",
@@ -385,7 +385,7 @@
     },
     "es-AR": {
         "ccode": "es-AR",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 111426,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Argentina",
@@ -409,7 +409,7 @@
     },
     "es-DO": {
         "ccode": "es-DO",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 748,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Dominican Republic",
@@ -433,7 +433,7 @@
     },
     "es-MX": {
         "ccode": "es-MX",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 118588,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Mexico",
@@ -457,7 +457,7 @@
     },
     "es": {
         "ccode": "es",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 117931,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Castilian",
@@ -481,7 +481,7 @@
     },
     "et": {
         "ccode": "et",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 102680,
         "ccodeSrc": "en-US",
         "displayName": "Estonian",
@@ -505,7 +505,7 @@
     },
     "fa": {
         "ccode": "fa",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 103782,
         "ccodeSrc": "en-US",
         "displayName": "Persian",
@@ -529,7 +529,7 @@
     },
     "fi": {
         "ccode": "fi",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 94669,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
@@ -553,7 +553,7 @@
     },
     "fil": {
         "ccode": "fil",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 118092,
         "ccodeSrc": "en-US",
         "displayName": "Filipino",
@@ -577,7 +577,7 @@
     },
     "fr-CA": {
         "ccode": "fr-CA",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 48250,
         "ccodeSrc": "en-US",
         "displayName": "French, Canada",
@@ -601,7 +601,7 @@
     },
     "fr": {
         "ccode": "fr",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 120061,
         "ccodeSrc": "en-US",
         "displayName": "French",
@@ -625,7 +625,7 @@
     },
     "gl": {
         "ccode": "gl",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 3145,
         "ccodeSrc": "en-US",
         "displayName": "Galician",
@@ -649,7 +649,7 @@
     },
     "gsw": {
         "ccode": "gsw",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 6825,
         "ccodeSrc": "en-US",
         "displayName": "Swiss German; Alemannic; Alsatian",
@@ -673,7 +673,7 @@
     },
     "he": {
         "ccode": "he",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 64078,
         "ccodeSrc": "en-US",
         "displayName": "Hebrew",
@@ -697,7 +697,7 @@
     },
     "hi-IN": {
         "ccode": "hi-IN",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 14624,
         "ccodeSrc": "en-US",
         "displayName": "Hindi",
@@ -721,7 +721,7 @@
     },
     "hr": {
         "ccode": "hr",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 77470,
         "ccodeSrc": "en-US",
         "displayName": "Croatian",
@@ -745,7 +745,7 @@
     },
     "hu": {
         "ccode": "hu",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 118180,
         "ccodeSrc": "en-US",
         "displayName": "Hungarian",
@@ -769,7 +769,7 @@
     },
     "id": {
         "ccode": "id",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 74995,
         "ccodeSrc": "en-US",
         "displayName": "Indonesian",
@@ -793,7 +793,7 @@
     },
     "is-IS": {
         "ccode": "is-IS",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 20801,
         "ccodeSrc": "en-US",
         "displayName": "Icelandic",
@@ -817,7 +817,7 @@
     },
     "it": {
         "ccode": "it",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 114215,
         "ccodeSrc": "en-US",
         "displayName": "Italian",
@@ -841,7 +841,7 @@
     },
     "ja": {
         "ccode": "ja",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 124754,
         "ccodeSrc": "en-US",
         "displayName": "Japanese",
@@ -865,8 +865,8 @@
     },
     "kk": {
         "ccode": "kk",
-        "lastm": 1640783964.0,
-        "fsize": 116942,
+        "lastm": 1640829956.0,
+        "fsize": 116943,
         "ccodeSrc": "en-US",
         "displayName": "Kazakh",
         "displayNativeName": "Қазақша",
@@ -889,7 +889,7 @@
     },
     "ko": {
         "ccode": "ko",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 112132,
         "ccodeSrc": "en-US",
         "displayName": "Korean",
@@ -913,7 +913,7 @@
     },
     "lt-LT": {
         "ccode": "lt-LT",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 51620,
         "ccodeSrc": "en-US",
         "displayName": "Lithuanian",
@@ -937,7 +937,7 @@
     },
     "lv": {
         "ccode": "lv",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 66669,
         "ccodeSrc": "en-US",
         "displayName": "Latvian",
@@ -961,7 +961,7 @@
     },
     "mk": {
         "ccode": "mk",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 743,
         "ccodeSrc": "en-US",
         "displayName": "Macedonian",
@@ -985,7 +985,7 @@
     },
     "ml": {
         "ccode": "ml",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 231700,
         "ccodeSrc": "en-US",
         "displayName": "Malayalam",
@@ -1009,8 +1009,8 @@
     },
     "mn": {
         "ccode": "mn",
-        "lastm": 1640783964.0,
-        "fsize": 3887,
+        "lastm": 1640829956.0,
+        "fsize": 3903,
         "ccodeSrc": "en-US",
         "displayName": "Mongolian",
         "displayNativeName": "Монгол",
@@ -1033,7 +1033,7 @@
     },
     "mr": {
         "ccode": "mr",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 4768,
         "ccodeSrc": "en-US",
         "displayName": "Marathi",
@@ -1057,7 +1057,7 @@
     },
     "ms": {
         "ccode": "ms",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 10398,
         "ccodeSrc": "en-US",
         "displayName": "Malay",
@@ -1079,9 +1079,33 @@
             "completed%": 0
         }
     },
+    "my": {
+        "ccode": "my",
+        "lastm": 1640829956.0,
+        "fsize": 27020,
+        "ccodeSrc": "en-US",
+        "displayName": "Burmese",
+        "displayNativeName": "Myanmasa",
+        "ISO6391": "my",
+        "ISO6392": "bur",
+        "keys#": 194,
+        "completed%": 11.76,
+        "jellyfinWeb": {
+            "filename": "my.json",
+            "keys#": 194,
+            "orphans#": 0,
+            "completed%": 12.1
+        },
+        "myJelly": {
+            "filename": "",
+            "keys#": 0,
+            "orphans#": 0,
+            "completed%": 0
+        }
+    },
     "nb": {
         "ccode": "nb",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 102145,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Bokmål",
@@ -1105,7 +1129,7 @@
     },
     "ne": {
         "ccode": "ne",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 814,
         "ccodeSrc": "en-US",
         "displayName": "Nepali",
@@ -1129,7 +1153,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 111691,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
@@ -1153,7 +1177,7 @@
     },
     "nn": {
         "ccode": "nn",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 39613,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Nynorsk",
@@ -1177,7 +1201,7 @@
     },
     "pa": {
         "ccode": "pa",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 4019,
         "ccodeSrc": "en-US",
         "displayName": "Panjabi; Punjabi",
@@ -1201,7 +1225,7 @@
     },
     "pl": {
         "ccode": "pl",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 113356,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
@@ -1225,7 +1249,7 @@
     },
     "pr": {
         "ccode": "pr",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 2271,
         "ccodeSrc": "en-US",
         "displayName": "Pirate",
@@ -1249,7 +1273,7 @@
     },
     "pt-BR": {
         "ccode": "pt-BR",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 114423,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese, Brazil",
@@ -1273,7 +1297,7 @@
     },
     "pt-PT": {
         "ccode": "pt-PT",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 110384,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese, Portugal",
@@ -1297,7 +1321,7 @@
     },
     "pt": {
         "ccode": "pt",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 95513,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese",
@@ -1321,7 +1345,7 @@
     },
     "ro": {
         "ccode": "ro",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 109385,
         "ccodeSrc": "en-US",
         "displayName": "Romanian; Moldavian; Moldovan",
@@ -1345,8 +1369,8 @@
     },
     "ru": {
         "ccode": "ru",
-        "lastm": 1640783964.0,
-        "fsize": 166446,
+        "lastm": 1640829956.0,
+        "fsize": 166455,
         "ccodeSrc": "en-US",
         "displayName": "Russian",
         "displayNativeName": "Русский",
@@ -1369,7 +1393,7 @@
     },
     "sk": {
         "ccode": "sk",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 114145,
         "ccodeSrc": "en-US",
         "displayName": "Slovak",
@@ -1393,7 +1417,7 @@
     },
     "sl-SI": {
         "ccode": "sl-SI",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 92867,
         "ccodeSrc": "en-US",
         "displayName": "Slovenian",
@@ -1417,7 +1441,7 @@
     },
     "sq": {
         "ccode": "sq",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 7147,
         "ccodeSrc": "en-US",
         "displayName": "Albanian",
@@ -1441,7 +1465,7 @@
     },
     "sr": {
         "ccode": "sr",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 148114,
         "ccodeSrc": "en-US",
         "displayName": "Serbian",
@@ -1465,7 +1489,7 @@
     },
     "sv": {
         "ccode": "sv",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 108602,
         "ccodeSrc": "en-US",
         "displayName": "Swedish",
@@ -1489,7 +1513,7 @@
     },
     "ta": {
         "ccode": "ta",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 228002,
         "ccodeSrc": "en-US",
         "displayName": "Tamil",
@@ -1513,7 +1537,7 @@
     },
     "te": {
         "ccode": "te",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 202359,
         "ccodeSrc": "en-US",
         "displayName": "Telugu",
@@ -1537,7 +1561,7 @@
     },
     "th": {
         "ccode": "th",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 6335,
         "ccodeSrc": "en-US",
         "displayName": "Thai",
@@ -1561,20 +1585,20 @@
     },
     "tr": {
         "ccode": "tr",
-        "lastm": 1640783964.0,
-        "fsize": 85229,
+        "lastm": 1640829956.0,
+        "fsize": 85264,
         "ccodeSrc": "en-US",
         "displayName": "Turkish",
         "displayNativeName": "Türkçe",
         "ISO6391": "tr",
         "ISO6392": "tur",
-        "keys#": 1233,
-        "completed%": 74.73,
+        "keys#": 1234,
+        "completed%": 74.79,
         "jellyfinWeb": {
             "filename": "tr.json",
-            "keys#": 1233,
+            "keys#": 1234,
             "orphans#": 2,
-            "completed%": 76.92
+            "completed%": 76.98
         },
         "myJelly": {
             "filename": "",
@@ -1585,7 +1609,7 @@
     },
     "uk": {
         "ccode": "uk",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 160404,
         "ccodeSrc": "en-US",
         "displayName": "Ukrainian",
@@ -1609,7 +1633,7 @@
     },
     "ur-PK": {
         "ccode": "ur-PK",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 1051,
         "ccodeSrc": "en-US",
         "displayName": "Urdu",
@@ -1633,7 +1657,7 @@
     },
     "vi": {
         "ccode": "vi",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 127104,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
@@ -1657,8 +1681,8 @@
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "lastm": 1640783964.0,
-        "fsize": 99747,
+        "lastm": 1640829956.0,
+        "fsize": 99804,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
         "displayNativeName": "中文",
@@ -1681,7 +1705,7 @@
     },
     "zh-HK": {
         "ccode": "zh-HK",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 63753,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Hong Kong",
@@ -1705,7 +1729,7 @@
     },
     "zh-TW": {
         "ccode": "zh-TW",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 96924,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Traditional",
@@ -1729,7 +1753,7 @@
     },
     "zu": {
         "ccode": "zu",
-        "lastm": 1640783964.0,
+        "lastm": 1640829956.0,
         "fsize": 3473,
         "ccodeSrc": "en-US",
         "displayName": "Zulu",
