@@ -936,6 +936,10 @@ div[data-role="controlgroup"] a.ui-btn-active {
     color: #fff;
 }
 
+.cardText > .textActionButton {
+		font-weight: 600;
+}
+
 .label,
 .listItemBodyText,
 .paperListLabel,
@@ -1121,4 +1125,14 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .trackSelectionFieldContainer > .selectLabel,
 .detailsGroupItem > .label {
 	color: white;
+}
+
+.pageTabContent {
+    padding-top: 1.5em !important;
+}
+
+.sectionTitle-cards,
+div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
+.sectionTitleContainer-cards {
+		padding-top: 0px;
 }

@@ -1213,3 +1213,13 @@ fieldset {
 	color: white;
 	font-weight: 600;
 }
+
+.pageTabContent {
+    padding-top: 1.5em !important;
+}
+
+.sectionTitle-cards,
+div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
+.sectionTitleContainer-cards {
+		padding-top: 0px;
+}

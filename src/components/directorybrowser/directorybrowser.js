@@ -34,16 +34,12 @@ import alert from '../alert';
 
         const promises = [];
 
-        if (path === 'Network') {
-            promises.push(ApiClient.getNetworkDevices());
-        } else {
-            if (path) {
-                promises.push(ApiClient.getDirectoryContents(path, fileOptions));
-                promises.push(ApiClient.getParentPath(path));
-            } else {
-                promises.push(ApiClient.getDrives());
-            }
-        }
+		if (path) {
+			promises.push(ApiClient.getDirectoryContents(path, fileOptions));
+			promises.push(ApiClient.getParentPath(path));
+		} else {
+			promises.push(ApiClient.getDrives());
+		}
 
         Promise.all(promises).then(
             responses => {
@@ -61,10 +57,6 @@ import alert from '../alert';
                     const folder = folders[i];
                     const cssClass = folder.Type === 'File' ? 'lnkPath lnkFile' : 'lnkPath lnkDirectory';
                     html += getItem(cssClass, folder.Type, folder.Path, folder.Name);
-                }
-
-                if (!path) {
-                    html += getItem('lnkPath lnkDirectory', '', 'Network', globalize.translate('ButtonNetwork'));
                 }
 
                 page.querySelector('.results').innerHTML = html;

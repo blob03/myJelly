@@ -259,14 +259,22 @@ import cardBuilder from '../../../components/cardbuilder/cardBuilder';
 
             const apiClient = getApiClient();
 
-            apiClient.getQuickConnect('Enabled')
-                .then(enabled => {
-                    if (enabled === true) {
-                        view.querySelector('.btnQuick').classList.remove('hide');
+            apiClient.getQuickConnect('Status')
+                .then(status => {
+                    if (status !== 'Unavailable') {
+						view.querySelector('.btnQuick').classList.remove('hide');
                     }
                 })
                 .catch(() => {
-                    console.debug('Failed to get QuickConnect status');
+					apiClient.getQuickConnect('Enabled')
+						.then(enabled => {
+							if (enabled === true) {
+								view.querySelector('.btnQuick').classList.remove('hide');
+							}
+						})
+						.catch(() => {
+							console.debug('Failed to get QuickConnect status');
+						});
                 });
 
             apiClient.getPublicUsers().then(function (users) {
