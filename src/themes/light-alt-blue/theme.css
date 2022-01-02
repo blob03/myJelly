@@ -1,7 +1,8 @@
 
 * {
 	scrollbar-color: #246b76 #b8d9d6;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+	-ms-overflow-style: none;  /* IE and Edge */
 }
 
 .skinHeader,
@@ -79,7 +80,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-   background-color: rgba(220, 242, 248, .65);
+   background-color: rgba(220, 242, 248, .75);
 }
 
 .backgroundContainer.withThemeBackdrop {
@@ -217,7 +218,7 @@ html {
 }
 
 .mainDrawer {
-    background: #fff;
+    background: #81bbc1;
 }
 
 .channelPrograms,
@@ -318,6 +319,7 @@ html {
 .layout-tv ::-webkit-scrollbar {
     width: 1em;
     height: 1em;
+	display: none;
 }
 
 ::-webkit-scrollbar-thumb:horizontal,
@@ -326,7 +328,6 @@ html {
     -webkit-border-radius: 2px;
     background: center no-repeat #083b6b;
 }
-
 
 /* checkbox widget */
 
@@ -377,8 +378,11 @@ html {
 .homeLibraryButton {
 	color: rgb(186, 199, 223) !important;
 	background-color: rgba(36, 136, 153, 0.4);
-	box-shadow: 0px 0px 4px #244877;
+	box-shadow: 0px 0px 6px #273f51;
 	font-weight: 400;
+	border-color: #6dcfcf !important;
+	border-style: ridge !important;
+	border: 2px;
 }
 
 .homeLibraryButton:hover:not(:disabled) {
@@ -584,13 +588,17 @@ select option:selected {
 /* dashboard menu */
 
 .navMenuOption:hover:not(:disabled) {
-	color: rgba(155, 155, 155, 0.8) !important;
-	background-color: rgba(240, 240, 240, 0.8) !important;
+	color: rgba(43, 93, 123, 0.8) !important;
+	background-color: rgba(136, 213, 199, 0.8) !important;
 }
 
 .navMenuOption:focus {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
+	color: rgba(43, 93, 123, 0.8) !important;
+	background-color: rgba(136, 213, 199, 0.8) !important;
+}
+
+h3 {
+	font-weight: 600 !important;
 }
 
 .navMenuOption:active {
@@ -625,7 +633,7 @@ select option:selected {
 .nightClock > .headerClockTime,
 .nightClock > .headerClockDate {
 	color: #fff;
-	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #bcf5ff, 0 0 40px #76e8fb, 0 0 50px #0cfcf1, 0 0 60px #16ffde, 0 0 70px #1cfff4;
+	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -931,9 +939,9 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .listItemIcon:not(.listItemIcon-transparent) {
-    background-color: #5c97a1 !important;
-    border-radius: 50%;
-    color: #fff;
+	background-color: transparent !important;
+	border-radius: 50%;
+	color: #fff;
 }
 
 .cardText > .textActionButton {
