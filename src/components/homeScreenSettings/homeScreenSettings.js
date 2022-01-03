@@ -293,7 +293,9 @@ import template from './homeScreenSettings.template.html';
 			
 			if (z == cur)
 					continue;
-			if (z.value === cur.value) 
+			if (z.value === cur.value 
+			|| (z.value === 'librarybuttons' && cur.value === 'smalllibrarytiles')
+			|| (cur.value === 'librarybuttons' && z.value === 'smalllibrarytiles')) 
 				z.value = 'none';
 		}
 		

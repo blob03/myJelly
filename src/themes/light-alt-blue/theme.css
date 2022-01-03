@@ -844,16 +844,10 @@ legend {
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
 	color: white !important;
 }
-
-.radioButtonLabel,
-.emby-collapsible-button {
-	color: rgb(134, 167, 179) !important;
-	font-size: .9em !important;
- }
  
 .collapseContent {
 	color: rgb(134, 167, 179) !important;
-	background-color: #e1e8e7 !important;
+	background-color: #a9d8e3 !important;
  }
  
 .iconOsdProgressInner {
@@ -945,9 +939,16 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .cardText > .textActionButton {
-		font-weight: 600;
+	font-weight: 600;
 }
 
+.radioButtonLabel,
+.emby-collapsible-button {
+	font-size: .9em !important;
+ }
+
+.radioButtonLabel,
+.emby-collapsible-button,
 .label,
 .listItemBodyText,
 .paperListLabel,
@@ -964,6 +965,14 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .listItemBody {
 	font-weight: 600;
 	color: rgb(94, 137, 150);
+}
+
+.verticalSection {
+	margin-top: 1em;
+}
+
+.h2 {
+	font-size: 1.6em;
 }
 
 /* buttons */

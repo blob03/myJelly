@@ -23,7 +23,7 @@ import '../../elements/emby-button/emby-button';
                         Recursive: true,
                         EnableTotalRecordCount: false
                     },
-                    view: 'Poster'
+                    view: 'PosterCard'
                 };
                 pageData.query.ParentId = params.topParentId;
                 libraryBrowser.loadSavedQueryValues(key, pageData.query);
@@ -111,7 +111,7 @@ import '../../elements/emby-button/emby-button';
                         shape: getPortraitShape(),
                         showTitle: true,
                         scalable: true,
-                        centerText: false,
+                        centerText: true,
                         cardLayout: true,
                         showYear: true
                     });

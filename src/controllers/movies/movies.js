@@ -293,7 +293,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
         };
 
         this.getCurrentViewStyle = function () {
-            return userSettings.get(savedViewKey) || 'Poster';
+            return userSettings.get(savedViewKey) || 'PosterCard';
         };
 
         this.initTab = function () {
