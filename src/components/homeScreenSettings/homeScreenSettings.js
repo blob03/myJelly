@@ -42,6 +42,63 @@ import template from './homeScreenSettings.template.html';
 		page.querySelector('.folderGroupList').innerHTML = folderHtml;
     }
 
+    function getViewOptions(type) {
+        const list = [];
+
+        if (type === 'movies' || type === 'tvshows') {
+            list.push({
+                name: globalize.translate('Banner'),
+                value: 'banner'
+            });
+            list.push({
+                name: globalize.translate('List'),
+                value: 'list'
+            });
+            list.push({
+                name: globalize.translate('Poster'),
+                value: 'poster'
+            });
+            list.push({
+                name: globalize.translate('Poster Card'),
+                value: 'posterCard',
+				isDefault: true
+            });
+            list.push({
+                name: globalize.translate('Thumb'),
+                value: 'thumb'
+            });
+            list.push({
+                name: globalize.translate('Thumb Card'),
+                value: 'thumbCard'
+            });
+        } else if (type === 'music') {
+            list.push({
+                name: globalize.translate('List'),
+                value: 'list'
+            });
+            list.push({
+                name: globalize.translate('Poster'),
+                value: 'poster'
+            });
+            list.push({
+                name: globalize.translate('Poster Card'),
+                value: 'posterCard',
+				isDefault: true
+            });
+        } 
+        return list;
+    }
+	
+	function getViewOptionsHtml(type, userValue) {
+        return getViewOptions(type).map(o => {
+            const selected = userValue === o.value || (o.isDefault && !userValue);
+            const selectedHtml = selected ? ' selected' : '';
+            const optionValue = o.isDefault ? '' : o.value;
+
+            return `<option value="${optionValue}"${selectedHtml}>${o.name}</option>`;
+        }).join('');
+    }
+	
     function getLandingScreenOptions(type) {
         const list = [];
 
@@ -240,12 +297,26 @@ import template from './homeScreenSettings.template.html';
 
         if (item.CollectionType === 'movies' || item.CollectionType === 'tvshows' || item.CollectionType === 'music' || item.CollectionType === 'livetv') {
             const idForLanding = item.CollectionType === 'livetv' ? item.CollectionType : item.Id;
-            html += '<div class="selectContainer">';
+			html += '<div style="display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;">';
+            html += '<div class="selectContainer" style="flex-grow: 3;width: 47%;height: auto;">';
             html += `<select is="emby-select" onchange="this.focus();" class="selectLanding" data-folderid="${idForLanding}" label="${globalize.translate('LabelDefaultScreen')}">`;
             const userValue = userSettings.get(`landing-${idForLanding}`);
             html += getLandingScreenOptionsHtml(item.CollectionType, userValue);
             html += '</select>';
             html += '</div>';
+		
+		/*
+			html += '<div style="width: 6%"></div>';
+	
+			html += '<div class="selectContainer" style="width: 47%;height: auto;">';
+            html += `<select is="emby-select" onchange="this.focus();" class="selectView" data-folderid="${idForLanding}" label="${globalize.translate('LabelDefaultView')}">`;
+            const userValue2 = userSettings.get(`view-${idForLanding}`);
+            html += getViewOptionsHtml(item.CollectionType, userValue2);
+            html += '</select>';
+            html += '</div>';
+		*/
+		
+			html += '</div>';
         }
 
         if (html) {
@@ -423,7 +494,13 @@ import template from './homeScreenSettings.template.html';
             const selectLanding = selectLandings[i];
             userSettingsInstance.set(`landing-${selectLanding.getAttribute('data-folderid')}`, selectLanding.value);
         }
-
+		
+		const selectViews = context.querySelectorAll('.selectView');	
+		for (i = 0, length = selectViews.length; i < length; i++) {
+            const selectView = selectViews[i];
+            userSettingsInstance.set(`view-${selectView.getAttribute('data-folderid')}`, selectView.value);
+        }
+		
         apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 

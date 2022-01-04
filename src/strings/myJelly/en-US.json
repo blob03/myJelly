@@ -17,6 +17,7 @@
     "LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",
     "LabelBackdrops": "Backdrops:",
     "LabelChromecastVersion": "Chromecast Version:",
+    "LabelDefaultView": "Default view:",
     "LabelDisplayFontSize": "Display font size:",
     "LabelJellyfinWeb": "Jellyfin-web:",
     "LabelLastModified": "Last modified:",

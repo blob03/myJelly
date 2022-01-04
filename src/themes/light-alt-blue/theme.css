@@ -7,7 +7,7 @@
 
 .skinHeader,
 html {
-    color: #0a5e9b;
+    color: #3a5365;
 }
 
 .headerLeft, .headerRight {
@@ -118,11 +118,6 @@ html {
 
 .button-link {
 	text-align: left;
-}
-
-.paperList,
-.visualCardBox {
-    background: rgba(103, 164, 161,.4);
 }
 
 .defaultCardBackground1 {
@@ -588,8 +583,8 @@ select option:selected {
 /* dashboard menu */
 
 .navMenuOption:hover:not(:disabled) {
-	color: rgba(43, 93, 123, 0.8) !important;
-	background-color: rgba(136, 213, 199, 0.8) !important;
+	color: rgba(49, 62, 69, 0.8) !important;
+	background-color: rgba(110, 167, 176, 0.8) !important;
 }
 
 .navMenuOption:focus {
@@ -606,8 +601,8 @@ h3 {
 }
 
 .navMenuOption-selected {
-    background-color: rgba(180, 180, 180, 0.8) !important;
-    color: #fff;
+	background-color: rgba(87, 140, 152, 0.8) !important;
+	color: #1d363c;
 }
 
 /* top bar clock style */
@@ -887,7 +882,7 @@ fieldset {
 
 div[data-role="controlgroup"] a[data-role="button"] {
 	background: #cce3e6 !important;
-	color: #fff !important;
+	color: #649294 !important;
 	font-weight: 600 !important;
 }
 
@@ -903,12 +898,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .userProfileImage {
 	border: 6px ridge rgb(81, 107, 116);
-}
-
-.sectionTitle {
-	color: #efefef;
-	text-shadow: 1px 1px 3px #1a8489;
-	font-weight: 600;
 }
 
 .libraryPage {
@@ -940,27 +929,13 @@ div[data-role="controlgroup"] a.ui-btn-active {
 
 .cardText > .textActionButton {
 	font-weight: 600;
+	color: #135090;
 }
 
 .radioButtonLabel,
 .emby-collapsible-button {
 	font-size: .9em !important;
  }
-
-.radioButtonLabel,
-.emby-collapsible-button,
-.label,
-.listItemBodyText,
-.paperListLabel,
-.checkboxListLabel,
-.textareaLabel,
-.selectLabel,
-.sliderLabel,
-.checkboxLabel,
-.inputLabel {
-	font-weight: 600;
-	color: rgb(57, 110, 129);
-}
 
 .listItemBody {
 	font-weight: 600;
@@ -1152,4 +1127,35 @@ div[data-role="controlgroup"] a.ui-btn-active {
 div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .sectionTitleContainer-cards {
 		padding-top: 0px;
+}
+
+.radioButtonLabel,
+.emby-collapsible-button,
+.label,
+.listItemBodyText,
+.paperListLabel,
+.checkboxListLabel,
+.textareaLabel,
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabel {
+	font-weight: 600;
+	color: rgb(57, 110, 129);
+	font-size: 1em !important;
+	margin-bottom: .2em !important;
+}
+
+.detailSectionHeader, 
+.sectionTitle {
+	color: #efefef;
+	text-shadow: 1px 1px 3px #1a8489;
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+
+.paperList,
+.visualCardBox {
+    background: rgba(103, 164, 161,.4);
+	border: 3px ridge #8fcad4;
 }

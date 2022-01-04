@@ -17,6 +17,7 @@
     "LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
     "LabelBackdrops": "Arrière-plans :",
     "LabelChromecastVersion": "Version de Chromecast :",
+    "LabelDefaultView": "Vue par défaut :",
     "LabelDisplayFontSize": "Taille de la police d'affichage :",
     "LabelJellyfinWeb": "Jellyfin-web :",
     "LabelLastModified": "Dernière modification :",

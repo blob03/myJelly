@@ -851,12 +851,6 @@ select option:selected {
     color: #913079 !important;
 }
 
-.sectionTitle {
-	color : #282828;
-	text-shadow: 1px 1px 3px #a25c0f;
-	font-weight: 600;
-}
-
 .cardOverlayContainer {
 	background: rgba(42, 42, 42, 0.8);
 }
@@ -1100,19 +1094,6 @@ fieldset {
 	color: #ffa700 !important;
 }
 
-.listItemBodyText,
-.paperListLabel,
-.checkboxListLabel,
-.textareaLabelUnfocused,
-.textareaLabel,
-.selectLabel,
-.sliderLabel,
-.checkboxLabel,
-.inputLabelUnfocused,
-.inputLabel {
-    color: #202020;
-}
-
 .button-link,
 .checkboxLabelFocused,
 .selectLabelFocused,
@@ -1293,4 +1274,47 @@ fieldset {
 div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .sectionTitleContainer-cards {
 		padding-top: 0px;
+}
+
+.radioButtonLabel,
+.emby-collapsible-button,
+.label,
+.listItemBodyText,
+.paperListLabel,
+.checkboxListLabel,
+.textareaLabel,
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabel {
+	font-weight: 400;
+	color: #202020;
+	font-size: 1em !important;
+}
+
+.radioButtonLabel,
+.emby-collapsible-button,
+.label,
+.paperListLabel,
+.checkboxListLabel,
+.textareaLabel,
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabel {
+	margin-bottom: .4em !important;
+}
+
+.detailSectionHeader, 
+.sectionTitle {
+	color : #282828;
+	text-shadow: 1px 1px 3px #a25c0f;
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+
+.paperList,
+.visualCardBox {
+    background-color: #e68834;
+	border: 3px ridge #ffa25f;
 }

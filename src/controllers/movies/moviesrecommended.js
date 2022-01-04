@@ -259,6 +259,10 @@ import Dashboard from '../../scripts/clientUtils';
                 return 0;
         }
     }
+	
+	function getDefaultView(folderId) {
+        return userSettings.get('view-' + folderId);
+    }
 
     export default function (view, params) {
         function onBeforeTabChange(e) {
