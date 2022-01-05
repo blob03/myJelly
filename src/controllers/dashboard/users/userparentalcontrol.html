@@ -28,25 +28,29 @@
                 <br />
 
                 <div class="verticalSection" style="margin-bottom:2em;">
-                    <div class="detailSectionHeader sectionTitleContainer">
-                        <h2 class="sectionTitle">${LabelBlockContentWithTags}</h2>
-                        <button is="emby-button" type="button" class="fab btnAddBlockedTag submit" style="margin-left:1em;" title="${Add}">
-                            <span class="material-icons add"></span>
-                        </button>
+                    <div>
+						<h3 class="checkboxListLabel">
+							${LabelBlockContentWithTags}
+							<button is="emby-button" type="button" class="fab btnAddBlockedTag submit" style="margin-left:1em;" title="${Add}">
+								<span class="material-icons add"></span>
+							</button>
+						</h3>
                     </div>
                     <div class="blockedTags" style="margin-top:.5em;"></div>
                 </div>
 
                 <div class="accessScheduleSection verticalSection" style="margin-bottom:2em;">
-                    <div class="sectionTitleContainer">
-                        <h2 class="sectionTitle">${HeaderAccessSchedule}</h2>
-                        <button is="emby-button" type="button" class="fab btnAddSchedule submit" style="margin-left:1em;" title="${Add}">
-                            <span class="material-icons add"></span>
-                        </button>
+                    <div>
+						<h3 class="checkboxListLabel">
+							${HeaderAccessSchedule}
+							<button is="emby-button" type="button" class="fab btnAddSchedule submit" style="margin-left:1em;" title="${Add}">
+								<span class="material-icons add"></span>
+							</button>
+						</h3>
                     </div>
 
                     <p class="fieldDescription">${HeaderAccessScheduleHelp}</p>
-                    <div class="accessScheduleList paperList"></div>
+                    <div class="accessScheduleList"></div>
                 </div>
 
                 <div>

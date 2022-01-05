@@ -59,7 +59,7 @@ import template from './homeScreenSettings.template.html';
                 value: 'poster'
             });
             list.push({
-                name: globalize.translate('Poster Card'),
+                name: globalize.translate('PosterCard'),
                 value: 'posterCard',
 				isDefault: true
             });
@@ -68,7 +68,7 @@ import template from './homeScreenSettings.template.html';
                 value: 'thumb'
             });
             list.push({
-                name: globalize.translate('Thumb Card'),
+                name: globalize.translate('ThumbCard'),
                 value: 'thumbCard'
             });
         } else if (type === 'music') {
@@ -81,7 +81,7 @@ import template from './homeScreenSettings.template.html';
                 value: 'poster'
             });
             list.push({
-                name: globalize.translate('Poster Card'),
+                name: globalize.translate('PosterCard'),
                 value: 'posterCard',
 				isDefault: true
             });

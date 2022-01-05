@@ -11,7 +11,7 @@ import toast from '../../../components/toast/toast';
 
     function populateRatings(allParentalRatings, page) {
         let html = '';
-        html += "<option value=''></option>";
+		html += '<option value="">' + globalize.translate('None') + '</option>';
         let rating;
         const ratings = [];
 
@@ -53,7 +53,7 @@ import toast from '../../../components/toast/toast';
             name: globalize.translate('Movies'),
             value: 'Movie'
         }, {
-            name: globalize.translate('Music'),
+            name: globalize.translate('TabMusic'),
             value: 'Music'
         }, {
             name: globalize.translate('Trailers'),
@@ -142,6 +142,7 @@ import toast from '../../../components/toast/toast';
         let index = 0;
         html += schedules.map(function (a) {
             let itemHtml = '';
+			itemHtml += '<div class="paperList">';
             itemHtml += '<div class="liSchedule listItem" data-day="' + a.DayOfWeek + '" data-start="' + a.StartHour + '" data-end="' + a.EndHour + '">';
             itemHtml += '<div class="listItemBody two-line">';
             itemHtml += '<h3 class="listItemBodyText">';
@@ -151,6 +152,7 @@ import toast from '../../../components/toast/toast';
             itemHtml += '</div>';
             itemHtml += '<button type="button" is="paper-icon-button-light" class="btnDelete listItemButton" data-index="' + index + '"><span class="material-icons delete"></span></button>';
             itemHtml += '</div>';
+			itemHtml += '</div>';
             index++;
             return itemHtml;
         }).join('');

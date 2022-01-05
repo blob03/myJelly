@@ -15,18 +15,38 @@ import toast from '../../../components/toast/toast';
 
     function loadMediaFolders(page, user, mediaFolders) {
         let html = '';
-        html += '<h3 class="checkboxListLabel">' + globalize.translate('HeaderLibraries') + '</h3>';
+        
         html += '<div class="checkboxList paperList checkboxList-paperList">';
 
+		html += '<div class="sectioncheckbox">';
+		html += '<label class="checkboxContainer">';
+		html += '<input type="checkbox" is="emby-checkbox" id="chkEnableAllFolders" />';
+		html += '<span>' + globalize.translate('OptionEnableAccessToAllLibraries') + '</span>';
+		html += '</label>';
+		html += '</div>';
+		
+		html += '<div class="folderAccessListContainer">';
+		
         for (let i = 0, length = mediaFolders.length; i < length; i++) {
             const folder = mediaFolders[i];
             const isChecked = user.Policy.EnableAllFolders || user.Policy.EnabledFolders.indexOf(folder.Id) != -1;
             const checkedAttribute = isChecked ? ' checked="checked"' : '';
+			html += '<div class="sectioncheckbox">';
             html += '<label><input type="checkbox" is="emby-checkbox" class="chkFolder" data-id="' + folder.Id + '" ' + checkedAttribute + '><span>' + folder.Name + '</span></label>';
+			html += '</div>';
         }
 
+		html += '</div>';
         html += '</div>';
-        page.querySelector('.folderAccess').innerHTML = html;
+		
+        page.querySelector('.folderAccess').innerHTML += html;
+		page.querySelector('#chkEnableAllFolders').addEventListener('change', function () {
+            if (this.checked) {
+                page.querySelector('.folderAccessListContainer').classList.add('hide');
+            } else {
+                page.querySelector('.folderAccessListContainer').classList.remove('hide');
+            }
+        });
         const chkEnableAllFolders = page.querySelector('#chkEnableAllFolders');
         chkEnableAllFolders.checked = user.Policy.EnableAllFolders;
         triggerChange(chkEnableAllFolders);
@@ -34,18 +54,38 @@ import toast from '../../../components/toast/toast';
 
     function loadChannels(page, user, channels) {
         let html = '';
-        html += '<h3 class="checkboxListLabel">' + globalize.translate('Channels') + '</h3>';
+        
         html += '<div class="checkboxList paperList checkboxList-paperList">';
 
+		html += '<div class="sectioncheckbox">';
+		html += '<label class="checkboxContainer">';
+		html += '<input type="checkbox" is="emby-checkbox" id="chkEnableAllChannels" />';
+		html += '<span>' + globalize.translate('OptionEnableAccessToAllChannels') + '</span>';
+		html += '</label>';
+		html += '</div>';
+		
+		html += '<div class="channelAccessListContainer">';
+		
         for (let i = 0, length = channels.length; i < length; i++) {
             const folder = channels[i];
             const isChecked = user.Policy.EnableAllChannels || user.Policy.EnabledChannels.indexOf(folder.Id) != -1;
             const checkedAttribute = isChecked ? ' checked="checked"' : '';
+			html += '<div class="sectioncheckbox">';
             html += '<label><input type="checkbox" is="emby-checkbox" class="chkChannel" data-id="' + folder.Id + '" ' + checkedAttribute + '><span>' + folder.Name + '</span></label>';
+			html += '</div>';
         }
 
         html += '</div>';
-        $('.channelAccess', page).show().html(html);
+		html += '</div>';
+		page.querySelector('.channelAccess').innerHTML += html;
+		
+		page.querySelector('#chkEnableAllChannels').addEventListener('change', function () {
+            if (this.checked) {
+                page.querySelector('.channelAccessListContainer').classList.add('hide');
+            } else {
+                page.querySelector('.channelAccessListContainer').classList.remove('hide');
+            }
+        });		
 
         if (channels.length) {
             $('.channelAccessContainer', page).show();
@@ -60,17 +100,37 @@ import toast from '../../../components/toast/toast';
 
     function loadDevices(page, user, devices) {
         let html = '';
-        html += '<h3 class="checkboxListLabel">' + globalize.translate('HeaderDevices') + '</h3>';
+        
         html += '<div class="checkboxList paperList checkboxList-paperList">';
 
+		html += '<div class="sectioncheckbox">';
+		html += '<label class="checkboxContainer">';
+		html += '<input type="checkbox" is="emby-checkbox" id="chkEnableAllDevices" />';
+		html += '<span>' + globalize.translate('OptionEnableAccessFromAllDevices') + '</span>';
+		html += '</label>';
+		html += '</div>';
+		
+		html += '<div class="deviceAccessListContainer">';
+		
         for (let i = 0, length = devices.length; i < length; i++) {
             const device = devices[i];
             const checkedAttribute = user.Policy.EnableAllDevices || user.Policy.EnabledDevices.indexOf(device.Id) != -1 ? ' checked="checked"' : '';
+			html += '<div class="sectioncheckbox">';
             html += '<label><input type="checkbox" is="emby-checkbox" class="chkDevice" data-id="' + device.Id + '" ' + checkedAttribute + '><span>' + device.Name + ' - ' + device.AppName + '</span></label>';
+			html += '</div>';
         }
 
+		html += '</div>';
         html += '</div>';
-        $('.deviceAccess', page).show().html(html);
+		page.querySelector('.deviceAccess').innerHTML += html;
+		
+		page.querySelector('#chkEnableAllDevices').addEventListener('change', function () {
+            if (this.checked) {
+                page.querySelector('.deviceAccessListContainer').classList.add('hide');
+            } else {
+                page.querySelector('.deviceAccessListContainer').classList.remove('hide');
+            }
+        });
         const chkEnableAllDevices = page.querySelector('#chkEnableAllDevices');
         chkEnableAllDevices.checked = user.Policy.EnableAllDevices;
         triggerChange(chkEnableAllDevices);
@@ -148,13 +208,7 @@ import toast from '../../../components/toast/toast';
                 $('.channelAccessListContainer', page).show();
             }
         });
-        page.querySelector('#chkEnableAllFolders').addEventListener('change', function () {
-            if (this.checked) {
-                page.querySelector('.folderAccessListContainer').classList.add('hide');
-            } else {
-                page.querySelector('.folderAccessListContainer').classList.remove('hide');
-            }
-        });
+
         $('.userLibraryAccessForm').off('submit', onSubmit).on('submit', onSubmit);
     }).on('pageshow', '#userLibraryAccessPage', function () {
         const page = this;

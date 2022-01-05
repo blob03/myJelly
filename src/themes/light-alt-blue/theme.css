@@ -7,7 +7,7 @@
 
 .skinHeader,
 html {
-    color: #3a5365;
+    color: #135090;
 }
 
 .headerLeft, .headerRight {
@@ -501,9 +501,9 @@ html {
 .emby-select-withcolor {
 	background: #fff;
 	border: .1em ridge rgb(95, 146, 158);
-	font-weight: 400;
+	font-weight: 600;
 	line-height: 1.35;
-	color: rgb(90, 121, 133) !important;
+	color: rgb(154, 181, 191) !important;
 }
 
 .emby-input:focus,
@@ -801,7 +801,7 @@ h3 {
 }
 
 .mediaInfoItem {
-	color: #fff !important;	
+	color: #2e436c !important;	
 }
 
 legend {
