@@ -30,11 +30,14 @@ class HomeView extends TabbedView {
 
     getTabs() {
         return [{
-            name: globalize.translate('Home')
+            /*name: globalize.translate('Home');*/
+			name: '<span class="material-icons home" title="' + globalize.translate('Home') + '" style="color: #c1dede;font-size: 1.5rem;"></span>'
         }, {
-            name: globalize.translate('Favorites')
+            /*name: globalize.translate('Favorites')*/
+			name: '<span class="material-icons favorite" title="' + globalize.translate('Favorites') + '" style="color: #c1dede;font-size: 1.5rem;"></span>'
         }, {
-			name: globalize.translate('About')
+			/*name: globalize.translate('About')*/
+			name: '<span class="material-icons info" title="' + globalize.translate('About') + '" style="color: #c1dede;font-size: 1.5rem;"></span>'
 		}];
     }
 

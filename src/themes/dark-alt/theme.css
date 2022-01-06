@@ -367,8 +367,8 @@ html {
 }
 
 .homeLibraryButton:focus {
-	color: #ccc !important;
-	background-color: rgba(94, 106, 136, 0.6);
+	color: #fff !important;
+	background-color: rgba(94, 106, 136, 0.2) !important;
 	transform: scale(1.1) !important;
 	box-shadow: 0 0 8px #282828, 1px 1px 18px #282828;
 }
@@ -450,27 +450,6 @@ html {
 
 .emby-button:active {
 	color: rgba(255, 255, 255, 0.8);
-}
-
-/* tab buttons */
-
-.emby-tab-button {
-    color: rgb(112, 123, 128);
-	overflow: visible;
-}
-
-.emby-tab-button:hover:not(:disabled) {
-    color: rgb(175, 184, 193);
-}
-
-.emby-tab-button-active,
-.emby-tab-button-active:focus,
-.emby-tab-button-active:hover:not(:disabled) {
-	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01cdfc;
-    color: #fff !important;
-	animation-name: buttonfocus;
-	animation-duration: .15s;
-	transform: scale(1.3) !important;
 }
 
 /* headerButton + detail button */
@@ -1234,7 +1213,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .detailSectionHeader, 
 .sectionTitle {
 	color : #dbe2ea;
-	text-shadow: 1px 1px 3px #a25c0f;
+	text-shadow: 1px 1px 3px #171c1e;
 	font-weight: 600;
 	font-size: 1.5rem;
 }
@@ -1243,4 +1222,32 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .visualCardBox {
     background-color: #333639;
 	border: 3px ridge #3a434c;
+}
+
+/* tab buttons */
+
+.emby-tab-button {
+    color: rgb(112, 123, 128);
+	overflow: visible;
+}
+
+.emby-tab-button:hover:not(:disabled) > * > .material-icons {
+    color: rgb(175, 184, 193) !important;
+}
+
+.emby-tab-button-active > * > .material-icons,
+.emby-tab-button-active:focus > * > .material-icons,
+.emby-tab-button-active:hover:not(:disabled) > * > .material-icons {
+	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01cdfc !important;
+    color: #fff !important;
+	animation-name: buttonfocus !important;
+	animation-duration: .15s !important;
+	transform: scale(1.5) !important;
+}
+
+.emby-tabs-button > * > .material-icons {
+	color: rgb(175, 184, 193) !important;
+	font-size: 1.5rem !important;
+	transform: scale(1) !important;
+	text-shadow: 0 0 5px #060606 !important;
 }
