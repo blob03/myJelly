@@ -114,7 +114,7 @@ html {
 
 .fab,
 .raised {
-	background: #282828;
+	background: #3c3f4b;
     color: inherit;
 }
 
@@ -183,7 +183,7 @@ html {
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
-    background: #f8f8f8;
+    background: #34383c;
 }
 
 .progressring-spiner {

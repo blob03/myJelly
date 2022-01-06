@@ -224,7 +224,7 @@ html {
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
-    background: #f8f8f8;
+    background: #e99254;
 }
 
 .listItem-border {
@@ -869,7 +869,7 @@ select option:selected {
 }
 
 .listItemIcon:not(.listItemIcon-transparent) {
-	background-color: #ffb43e;
+	background-color: #ffb43e !important;
 }
 
 /* fix for TV Layout */

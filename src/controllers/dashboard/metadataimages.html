@@ -1,14 +1,15 @@
 <div id="metadataImagesConfigurationPage" data-role="page" class="page type-interior metadataConfigurationPage withTabs">
 
-    <div>
+    <div class="padded-top padded-bottom">
 
         <div class="content-primary">
 
             <form class="metadataImagesConfigurationForm">
-                <h2 style="margin-top:0;">${HeaderPreferredMetadataLanguage}</h2>
-				<div class="fieldDescription" style="margin: 2em 0 2em;">
+                <h2 class="sectionTitle" style="margin-top:0;">${HeaderPreferredMetadataLanguage}</h2>
+				<div class="fieldDescription">
 					${DefaultMetadataLangaugeDescription}
 				</div>
+				<br />
                 <div class="selectContainer">
                     <select is="emby-select" id="selectLanguage" required="required" label="${LabelLanguage}"></select>
                 </div>

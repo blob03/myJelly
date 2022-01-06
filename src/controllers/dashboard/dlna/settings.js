@@ -16,7 +16,7 @@ import Dashboard from '../../../scripts/clientUtils';
         const usersHtml = users.map(function (u) {
             return '<option value="' + u.Id + '">' + u.Name + '</option>';
         }).join('');
-        $('#selectUser', page).html(usersHtml).val(config.DefaultUserId || '');
+        $('#selectUser', page).html(usersHtml).val(config.DefaultUserId || users[0].Id || '');
         loading.hide();
     }
 

@@ -173,7 +173,7 @@ html {
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
-    background: #f8f8f8;
+    background: #85adc4;
 }
 
 .listItem-border {
@@ -503,7 +503,7 @@ html {
 	border: .1em ridge rgb(95, 146, 158);
 	font-weight: 600;
 	line-height: 1.35;
-	color: rgb(154, 181, 191) !important;
+	color: rgb(126, 161, 173) !important;
 }
 
 .emby-input:focus,
