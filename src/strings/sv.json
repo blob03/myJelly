@@ -66,7 +66,7 @@
     "Banner": "Banderoll",
     "BirthDateValue": "Född: {0}",
     "BirthLocation": "Födelseort",
-    "BirthPlaceValue": "Födelseort:{0}",
+    "BirthPlaceValue": "Födelseort: {0}",
     "Blacklist": "Svartlista",
     "BookLibraryHelp": "Ljud- och textböcker stöds. Läs {0} boknamngivningsguiden {1}.",
     "Books": "Böcker",

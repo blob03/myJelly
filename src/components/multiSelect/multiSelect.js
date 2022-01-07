@@ -175,6 +175,12 @@ import itemHelper from '../itemHelper';
             apiClient.getItem(apiClient.getCurrentUserId(), selectedItems[0]).then(firstItem => {
                 const menuItems = [];
 
+				menuItems.push({
+                    name: globalize.translate('SelectAll'),
+                    id: 'selectall',
+                    icon: 'select_all'
+                });
+				
                 menuItems.push({
                     name: globalize.translate('AddToCollection'),
                     id: 'addtocollection',
@@ -246,6 +252,17 @@ import itemHelper from '../itemHelper';
                             const serverId = apiClient.serverInfo().Id;
 
                             switch (id) {
+								case 'selectall':
+									const elems = document.querySelectorAll('.itemSelectionPanel');
+									for (let i = 0, length = elems.length; i < length; i++) {
+										const chkItemSelect = elems[i].querySelector('.chkItemSelect');
+
+										if (chkItemSelect && !chkItemSelect.classList.contains('checkedInitial') && !chkItemSelect.checked && chkItemSelect.getBoundingClientRect().width != 0) {
+											chkItemSelect.checked = true;
+											updateItemSelection(chkItemSelect, true);
+										}
+									}
+                                    break;
                                 case 'addtocollection':
                                     import('../collectionEditor/collectionEditor').then(({default: collectionEditor}) => {
                                         new collectionEditor({

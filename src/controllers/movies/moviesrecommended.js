@@ -379,6 +379,7 @@ import Dashboard from '../../scripts/clientUtils';
         }
 
         let currentTabIndex = parseInt(params.tab || getDefaultTabIndex(params.topParentId));
+		let currentView = getDefaultView(params.topParentId);
         const suggestionsTabIndex = 1;
 
         this.initTab = function () {

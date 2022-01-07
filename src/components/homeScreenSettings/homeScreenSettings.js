@@ -314,9 +314,9 @@ import template from './homeScreenSettings.template.html';
             html += getViewOptionsHtml(item.CollectionType, userValue2);
             html += '</select>';
             html += '</div>';
-		*/
 		
 			html += '</div>';
+			*/
         }
 
         if (html) {
@@ -499,6 +499,7 @@ import template from './homeScreenSettings.template.html';
 		for (i = 0, length = selectViews.length; i < length; i++) {
             const selectView = selectViews[i];
             userSettingsInstance.set(`view-${selectView.getAttribute('data-folderid')}`, selectView.value);
+			//console.warn(`view-${selectView.getAttribute('data-folderid')}` + " = " + selectView.value);
         }
 		
         apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
