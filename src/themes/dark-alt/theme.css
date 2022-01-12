@@ -517,43 +517,6 @@ html {
 	color: #fff;
 }
 
-/* select widget */
-
-.selectArrow {
-	text-shadow: 2px 2px 3px #1e1d25;
-	color: #909090;
-}
- 
-.emby-select-withcolor {
-	color: #a2a5ae;
-	background: #333539;
-	border: 0.05em solid rgb(61, 68, 73);
-	font-weight: 600;
-	padding: .5em .5em .5em .5em !important;
-}
-
-.emby-select-withcolor:focus {
-	border-color: #fff;
-}
-
-.emby-select-withcolor > option {
-	color: #888;
-	background: #282828;
-}
-
-.emby-select-tv-withcolor:focus {
-    border-color: #fff;
-}
-
-select option:disabled {
-	color: rgb(51, 71, 85);
-}
-
-select option:selected {
-	color: #ffffff !important;
-	background: #282828 !important;
-}
-
 /* slider widget */
 
 .mdl-slider {
@@ -1250,4 +1213,35 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	font-size: 1.5rem !important;
 	transform: scale(1) !important;
 	text-shadow: 0 0 5px #060606 !important;
+}
+
+/* select widget */
+
+[label],
+select option:disabled {
+	color: rgb(76, 94, 106);
+}
+
+.selectArrow {
+	text-shadow: 2px 2px 3px #1e1d25;
+	color: #909090;
+}
+
+option:not(:disabled), 
+.emby-select-withcolor {
+	color: #a2a5ae;
+	background: #333539;
+	border: 0.05em solid rgb(61, 68, 73);
+	font-weight: 600;
+	padding: .5em .5em .5em .5em !important;
+}
+
+.emby-select-withcolor:focus,
+.emby-select-tv-withcolor:focus {
+    border-color: #fff;
+}
+
+select option:selected {
+	color: #ffffff !important;
+	background: #282828 !important;
 }

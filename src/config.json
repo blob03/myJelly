@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-203",
+	"version": "10.7.7-204",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -8,6 +8,31 @@
 	"multiserver": false,
 	"themes": [
 	{
+		"name": "Light alt. 1.33",
+		"id": "light-alt",
+		"color": "#303030",
+		"group": "myJelly"
+	}, {
+		"name": "Light alt. blue 1.63",
+		"id": "light-alt-blue",
+		"color": "#303030",
+		"group": "myJelly"
+	}, {
+		"name": "Halloween 1.81",
+		"id": "Halloween",
+		"color": "#282828",
+		"group": "myJelly"
+	}, {
+		"name": "Dark alt. 1.57",
+		"id": "dark-alt",
+		"color": "#202020",
+		"group": "myJelly"
+	}, {
+		"name": "WMC alt. 1.23",
+		"id": "wmc-alt",
+		"color": "#0c2450",
+		"group": "myJelly"
+	}, {
 		"name": "Apple TV",
 		"id": "appletv",
 		"color": "#bcbcbc"
@@ -25,32 +50,12 @@
 		"id": "light",
 		"color": "#303030"
 	}, {
-		"name": "Light alt. 1.33",
-		"id": "light-alt",
-		"color": "#303030"
-	}, {
-		"name": "Light alt. blue 1.62",
-		"id": "light-alt-blue",
-		"color": "#303030"
-	}, {
-		"name": "Halloween 1.80",
-		"id": "Halloween",
-		"color": "#282828"
-	}, {
-		"name": "Dark alt. 1.56",
-		"id": "dark-alt",
-		"color": "#202020"
-	}, {
 		"name": "Purple Haze",
 		"id": "purplehaze",
 		"color": "#000420"
 	}, {
 		"name": "WMC",
 		"id": "wmc",
-		"color": "#0c2450"
-	},{
-		"name": "WMC alt. 1.23",
-		"id": "wmc-alt",
 		"color": "#0c2450"
 	}],
 	"menuLinks": [],

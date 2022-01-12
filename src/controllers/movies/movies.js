@@ -11,6 +11,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 /* eslint-disable indent */
 
     export default function (view, params, tabContent, options) {
+		
         const onViewStyleChange = () => {
             if (this.getCurrentViewStyle() == 'List') {
                 itemsContainer.classList.add('vertical-list');
@@ -293,7 +294,9 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
         };
 
         this.getCurrentViewStyle = function () {
-            return userSettings.get(savedViewKey) || 'PosterCard';
+            return userSettings.get(savedViewKey) 
+				|| userSettings.get('view-' + params.topParentId) 
+				||  'PosterCard';
         };
 
         this.initTab = function () {

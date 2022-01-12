@@ -10,11 +10,24 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 /* eslint-disable indent */
 
     export default function (view, params, tabContent) {
+		
+		const savedQueryKey = params.topParentId;
+        const savedViewKey = savedQueryKey + '-collection-view';
+		
+		function getCurrentViewStyle() {
+            return userSettings.get(savedViewKey) ||  'PosterCard';
+        };
+
+        function setCurrentViewStyle(viewStyle) {
+			userSettings.set(savedViewKey, viewStyle);
+        };
+		
         function getPageData(context) {
             const key = getSavedQueryKey(context);
             let pageData = data[key];
 
             if (!pageData) {
+				const dflView = getCurrentViewStyle();
                 pageData = data[key] = {
                     query: {
                         SortBy: 'SortName',
@@ -26,7 +39,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                         EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
                         StartIndex: 0
                     },
-                    view: libraryBrowser.getSavedView(key) || 'Poster'
+                    view: dflView
                 };
 
                 if (userSettings.libraryPageSize() > 0) {
@@ -53,7 +66,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
         }
 
         const onViewStyleChange = () => {
-            const viewStyle = this.getCurrentViewStyle();
+            const viewStyle = getCurrentViewStyle();
             const itemsContainer = tabContent.querySelector('.itemsContainer');
 
             if (viewStyle == 'List') {
@@ -72,6 +85,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
             isLoading = true;
             const query = getQuery(page);
             ApiClient.getItems(ApiClient.getCurrentUserId(), query).then((result) => {
+				
                 function onNextPageClick() {
                     if (isLoading) {
                         return;
@@ -106,7 +120,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                     sortButton: false,
                     filterButton: false
                 });
-                const viewStyle = this.getCurrentViewStyle();
+                const viewStyle = getCurrentViewStyle();
                 if (viewStyle == 'Thumb') {
                     html = cardBuilder.getCardsHtml({
                         items: result.Items,
@@ -202,9 +216,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
         const data = {};
         let isLoading = false;
 
-        this.getCurrentViewStyle = function () {
-            return getPageData(tabContent).view;
-        };
+
 
         const initPage = (tabContent) => {
             tabContent.querySelector('.btnSort').addEventListener('click', function (e) {
@@ -235,12 +247,12 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
             });
             const btnSelectView = tabContent.querySelector('.btnSelectView');
             btnSelectView.addEventListener('click', (e) => {
-                libraryBrowser.showLayoutMenu(e.target, this.getCurrentViewStyle(), 'List,Poster,PosterCard,Thumb,ThumbCard'.split(','));
+                libraryBrowser.showLayoutMenu(e.target, getCurrentViewStyle(), 'Banner,List,Poster,PosterCard,Thumb,ThumbCard'.split(','));
             });
             btnSelectView.addEventListener('layoutchange', function (e) {
                 const viewStyle = e.detail.viewStyle;
                 getPageData(tabContent).view = viewStyle;
-                libraryBrowser.saveViewSetting(getSavedQueryKey(tabContent), viewStyle);
+                setCurrentViewStyle(viewStyle);
                 getQuery(tabContent).StartIndex = 0;
                 onViewStyleChange();
                 reloadItems(tabContent);
@@ -258,7 +270,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
         initPage(tabContent);
         onViewStyleChange();
-
+		
         this.renderTab = function () {
             reloadItems(tabContent);
         };

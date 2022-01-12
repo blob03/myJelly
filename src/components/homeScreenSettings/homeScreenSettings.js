@@ -48,41 +48,42 @@ import template from './homeScreenSettings.template.html';
         if (type === 'movies' || type === 'tvshows') {
             list.push({
                 name: globalize.translate('Banner'),
-                value: 'banner'
+                value: 'Banner'
             });
+			
             list.push({
                 name: globalize.translate('List'),
-                value: 'list'
+                value: 'List'
             });
             list.push({
                 name: globalize.translate('Poster'),
-                value: 'poster'
+                value: 'Poster'
             });
             list.push({
                 name: globalize.translate('PosterCard'),
-                value: 'posterCard',
+                value: 'PosterCard',
 				isDefault: true
             });
             list.push({
                 name: globalize.translate('Thumb'),
-                value: 'thumb'
+                value: 'Thumb'
             });
             list.push({
                 name: globalize.translate('ThumbCard'),
-                value: 'thumbCard'
+                value: 'ThumbCard'
             });
         } else if (type === 'music') {
             list.push({
                 name: globalize.translate('List'),
-                value: 'list'
+                value: 'List'
             });
             list.push({
                 name: globalize.translate('Poster'),
-                value: 'poster'
+                value: 'Poster'
             });
             list.push({
                 name: globalize.translate('PosterCard'),
-                value: 'posterCard',
+                value: 'PosterCard',
 				isDefault: true
             });
         } 
@@ -314,9 +315,9 @@ import template from './homeScreenSettings.template.html';
             html += getViewOptionsHtml(item.CollectionType, userValue2);
             html += '</select>';
             html += '</div>';
+		*/
 		
 			html += '</div>';
-			*/
         }
 
         if (html) {
@@ -495,12 +496,13 @@ import template from './homeScreenSettings.template.html';
             userSettingsInstance.set(`landing-${selectLanding.getAttribute('data-folderid')}`, selectLanding.value);
         }
 		
+		/*
 		const selectViews = context.querySelectorAll('.selectView');	
 		for (i = 0, length = selectViews.length; i < length; i++) {
             const selectView = selectViews[i];
             userSettingsInstance.set(`view-${selectView.getAttribute('data-folderid')}`, selectView.value);
-			//console.warn(`view-${selectView.getAttribute('data-folderid')}` + " = " + selectView.value);
-        }
+        } 
+		*/
 		
         apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 			userSettingsInstance.commit(); 

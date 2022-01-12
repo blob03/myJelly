@@ -301,7 +301,9 @@ html {
     border: 0.07em solid transparent;
 }
 
-.emby-select-withcolor > option {
+.emby-select-withcolor > optgroup,
+.emby-select-withcolor > option,
+.emby-select-withcolor > * > option {
     color: inherit;
     background: #222;
 }

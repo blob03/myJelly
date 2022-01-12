@@ -1309,7 +1309,7 @@
     "PlayNext": "Volgende afspelen",
     "PlayNextEpisodeAutomatically": "Speel volgende aflevering automatisch",
     "PlaybackData": "Afspeel Data",
-    "PlaybackErrorNoCompatibleStream": "Dit apparaat ondersteund de afgespeelde media niet en de server verstuurd geen ondersteund formaat.",
+    "PlaybackErrorNoCompatibleStream": "Dit apparaat ondersteunt de afgespeelde media niet en de server verstuurt geen compatibel mediaformaat.",
     "PlaybackErrorPlaceHolder": "Dit is een plaats houder voor fysieke media die Jellyfin niet kan afspelen. Plaats de disc om af te spelen.",
     "PlaybackRate": "Afspeelsnelheid",
     "Played": "Afgespeeld",

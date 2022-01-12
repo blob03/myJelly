@@ -18,6 +18,10 @@
         </div>
     </div>
     <div class="pageTabContent" id="suggestionsTab" data-index="1">
+	    <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom focuscontainer-x">
+            <div class="paging"></div>
+            <button is="paper-icon-button-light" class="btnSelectView autoSize" title="${ButtonSelectView}"><span class="material-icons view_comfy"></span></button>
+        </div>
         <div id="resumableSection" class="verticalSection hide">
             <div class="sectionTitleContainer sectionTitleContainer-cards">
                 <h2 class="sectionTitle sectionTitle-cards padded-left">${HeaderContinueWatching}</h2>
@@ -27,7 +31,7 @@
             </div>
         </div>
 
-        <div class="verticalSection">
+        <div id="latestSection" class="verticalSection hide">
             <div class="sectionTitleContainer sectionTitleContainer-cards">
                 <h2 class="sectionTitle sectionTitle-cards padded-left">${HeaderLatestMovies}</h2>
             </div>
@@ -86,6 +90,10 @@
         </div>
     </div>
     <div class="pageTabContent" id="genresTab" data-index="5">
+		<div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom focuscontainer-x">
+            <div class="paging"></div>
+            <button is="paper-icon-button-light" class="btnSelectView autoSize" title="${ButtonSelectView}"><span class="material-icons view_comfy"></span></button>
+        </div>
         <div id="items"></div>
     </div>
 </div>

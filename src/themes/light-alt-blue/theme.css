@@ -468,6 +468,11 @@ html {
 
 /* select widget */
 
+[label],
+option:disabled {
+    color: rgb(200, 209, 218);
+}
+
 .selectArrow {
 	text-shadow: 2px 2px 3px #1e1d25;
 }
@@ -476,6 +481,7 @@ html {
 	padding: .5em .5em .5em .5em !important;
 }
 
+option:not(:disabled),
 .emby-input,
 .emby-textarea,
 .emby-select-withcolor {
@@ -492,17 +498,8 @@ html {
 	border-color: white;
 }
 
-.emby-select-withcolor > option {
-	color: #7b87a9;
-	background: #fff;
-}
-
-select option:disabled {
-	color: rgb(9, 54, 111);
-}
-
-select option:selected {
-	color: #ffffff !important;
+option:selected {
+	color: #fff !important;
 	background: #898989 !important;
 }
 

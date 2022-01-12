@@ -25,19 +25,57 @@ import viewContainer from '../viewContainer';
 
     function fillThemes(select, selectedTheme) {
         skinManager.getThemes().then(themes => {
-			themes.sort((a, b) => {
-				let fa = a.name.toLowerCase(),
-					fb = b.name.toLowerCase();
-				if (fa < fb) 
-					return -1;
-				if (fa > fb) 
-					return 1;
-				return 0;
+			
+			let groups = {};
+			const dflgroup = "Jellyfin";
+			
+			themes.forEach(x => {
+				let grp = dflgroup;
+				if (x.group)
+					grp = x.group;
+				if (!groups[grp]) {
+					groups[grp] = [];
+					groups[grp].push(x);
+				} else {
+					groups[grp].push(x);
+				}
 			});
-            select.innerHTML += themes.map(t => {
-                return `<option value="${t.id}">${t.name}</option>`;
-            }).join('');
-
+			
+			if (!layoutManager.tv) 
+				select.innerHTML += '<option disabled>' + globalize.translate('OptionDivider') + '</option>';
+			
+			let ngroups = Object.keys(groups);
+			ngroups.forEach( x => {
+				
+				let html = '';
+				
+				if (layoutManager.tv) {
+					let w = document.createElement("option");
+					w.disabled = true;
+					select.options.add(w, undefined);
+				} else
+					html += '<optgroup label="' + x + '">';
+				
+				groups[x].sort((a, b) => {
+					let fa = a.name.toLowerCase(),
+						fb = b.name.toLowerCase();
+					if (fa < fb) 
+						return -1;
+					if (fa > fb) 
+						return 1;
+					return 0;
+				});
+				
+				html += groups[x].map(t => {
+					return `<option value="${t.id}">${t.name}</option>`;
+				}).join('');
+				
+				if (!layoutManager.tv)
+					html += '</optgroup>';
+				
+				select.innerHTML += html;
+			});
+            
 			select.value = selectedTheme;
 			if (selectedTheme === 'Auto' || selectedTheme === 'None')
 				return;
