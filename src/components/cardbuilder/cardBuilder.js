@@ -771,7 +771,8 @@ import ServerConnections from '../ServerConnections';
          * @returns {string} HTML markup of the card's footer text element.
          */
         function getCardFooterText(item, apiClient, options, showTitle, forceName, overlayText, imgUrl, footerClass, progressHtml, logoUrl, isOuterFooter) {
-            let html = '';
+            item = item.ProgramInfo || item;
+			let html = '';
 
             if (logoUrl) {
                 html += '<div class="lazy cardFooterLogo" data-src="' + logoUrl + '"></div>';

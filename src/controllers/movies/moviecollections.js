@@ -11,8 +11,9 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
     export default function (view, params, tabContent) {
 		
-		const savedQueryKey = params.topParentId;
-        const savedViewKey = savedQueryKey + '-collection-view';
+		const savedKey = params.topParentId;
+        const savedViewKey = 'view-collection-' + savedKey;
+		const savedQueryKey = 'query-collection-' + savedKey; 
 		
 		function getCurrentViewStyle() {
             return userSettings.get(savedViewKey) ||  'PosterCard';
@@ -215,8 +216,6 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
         const data = {};
         let isLoading = false;
-
-
 
         const initPage = (tabContent) => {
             tabContent.querySelector('.btnSort').addEventListener('click', function (e) {

@@ -22,8 +22,22 @@ import Dashboard from '../../scripts/clientUtils';
 	
 	export default function (view, params) {
 		
-		const savedQueryKey = params.topParentId;
-        const savedViewKey = savedQueryKey + '-recommended-view';
+		const savedKey = params.topParentId;
+        const savedViewKey = 'view-recommended-' + savedKey;
+		const savedQueryKey = 'query-recommended-' + savedKey; 
+		
+		let query = {
+            SortBy: 'SortName,ProductionYear',
+            SortOrder: 'Ascending',
+            IncludeItemTypes: 'Movie',
+            Recursive: true,
+            Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
+            ImageTypeLimit: 1,
+            EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
+            StartIndex: 0,
+            ParentId: params.topParentId
+        };
+		query = userSettings.loadQuerySettings(savedQueryKey, query);
 		
 		function getCurrentViewStyle() {
             return userSettings.get(savedViewKey) ||  'PosterCard';
@@ -48,15 +62,10 @@ import Dashboard from '../../scripts/clientUtils';
 		function loadLatest(page, userId, parentId) {
 			
 			const screenWidth = dom.getWindowSize().innerWidth;
-			let options = {
-				userId: userId,
-				categoryLimit: 6,
-				IncludeItemTypes: 'Movie',
-				Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
-				ImageTypeLimit: 1,
-				ItemLimit: screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5,
-				EnableImageTypes: 'Primary,Backdrop,Banner,Thumb'
-			};
+			let options = query;
+			options.userId = userId;
+			options.categoryLimit = 6;
+			options.ItemLimit = screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5;
 		
 			const url = ApiClient.getUrl('Users/' + userId + '/Items/Latest', options);
 			
@@ -154,22 +163,15 @@ import Dashboard from '../../scripts/clientUtils';
 
 		function loadResume(page, userId, parentId) {
 			
-			const screenWidth = dom.getWindowSize().innerWidth;
-			const options = {
-				SortBy: 'DatePlayed',
-				SortOrder: 'Descending',
-				IncludeItemTypes: 'Movie',
-				Filters: 'IsResumable',
-				Recursive: true,
-				Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
-				CollapseBoxSetItems: false,
-				ParentId: parentId,
-				ImageTypeLimit: 1,
-				ItemLimit: screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5,
-				EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
-				EnableTotalRecordCount: false
-			};
-						
+			const screenWidth = dom.getWindowSize().innerWidth;			
+			let options = query;
+			options.SortBy = 'DatePlayed';
+			options.SortOrder = 'Descending';
+			options.Filters = 'IsResumable';
+			options.userId = userId;
+			options.categoryLimit = 6;
+			options.ItemLimit = screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5;
+			
 			ApiClient.getItems(userId, options).then(function (result) {
 
 				if (result.Items.length) {
@@ -374,16 +376,12 @@ import Dashboard from '../../scripts/clientUtils';
 		}
 
 		function loadSuggestions(page, userId) {
-			const screenWidth = dom.getWindowSize().innerWidth;
-			let options = {
-				userId: userId,
-				categoryLimit: 6,
-				ItemLimit: screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5,
-				Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
-				ImageTypeLimit: 1,
-				EnableImageTypes: 'Primary,Backdrop,Banner,Thumb'
-			};
-			
+			const screenWidth = dom.getWindowSize().innerWidth;	
+			let options = query;
+			options.userId = userId;
+			options.categoryLimit = 6;
+			options.ItemLimit = screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5;
+		
 			const url = ApiClient.getUrl('Movies/Recommendations', options);
 			ApiClient.getJSON(url).then(function (recommendations) {
 				

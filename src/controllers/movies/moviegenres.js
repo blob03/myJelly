@@ -14,9 +14,22 @@ import '../../elements/emby-button/emby-button';
 
     export default function (view, params, tabContent) {
 		
-		const savedQueryKey = params.topParentId;
-        const savedViewKey = savedQueryKey + '-genres-view';
+		const savedKey = params.topParentId;
+        const savedViewKey = 'view-genres-' + savedKey;
+		const savedQueryKey = 'query-genres-' + savedKey; 
 		
+		let query = {
+			//SortBy: 'Random',
+			SortBy: 'SortName,ProductionYear',
+			SortOrder: 'Ascending',
+			IncludeItemTypes: 'Movie',
+			Recursive: true,
+			Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
+			ImageTypeLimit: 1,
+			EnableTotalRecordCount: false,
+			ParentId: params.topParentId
+        };
+			
 		function getCurrentViewStyle() {
             return userSettings.get(savedViewKey) ||  'PosterCard';
         };
@@ -27,24 +40,17 @@ import '../../elements/emby-button/emby-button';
         };
 		
         function getPageData() {
-            const key = getSavedQueryKey();
             let pageData = data[key];
 			
             if (!pageData) {
 				let dflView = getCurrentViewStyle();
 		
                 pageData = data[key] = {
-                    query: {
-                        SortBy: 'Random',
-                        SortOrder: 'Ascending',
-                        IncludeItemTypes: 'Movie',
-                        Recursive: true,
-                        EnableTotalRecordCount: false
-                    },
+                    query: query,
                     view: dflView
                 };
                 pageData.query.ParentId = params.topParentId;
-                libraryBrowser.loadSavedQueryValues(key, pageData.query);
+                libraryBrowser.loadSavedQueryValues(savedQueryKey, pageData.query);
             }
 
             return pageData;
@@ -52,16 +58,6 @@ import '../../elements/emby-button/emby-button';
 
         function getQuery() {
             return getPageData().query;
-        }
-
-        function getSavedQueryKey() {
-            return libraryBrowser.getSavedQueryKey('moviegenres');
-        }
-
-        function getPromise() {
-            loading.show();
-            const query = getQuery();
-            return ApiClient.getGenres(ApiClient.getCurrentUserId(), query);
         }
 
         function enableScrollX() {
@@ -78,28 +74,14 @@ import '../../elements/emby-button/emby-button';
 
         const fillItemsContainer = (entry) => {
             const elem = entry.target;
-            const id = elem.getAttribute('data-id');
             const viewStyle = getCurrentViewStyle(); 
-            let limit = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 5 : 9;
-
-            if (enableScrollX()) {
-                limit = 10;
-            }
-
-            const enableImageTypes = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 'Primary,Backdrop,Thumb' : 'Primary';
-            const query = {
-                SortBy: 'Random',
-                SortOrder: 'Ascending',
-                IncludeItemTypes: 'Movie',
-                Recursive: true,
-                Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
-                ImageTypeLimit: 1,
-                EnableImageTypes: enableImageTypes,
-                Limit: limit,
-                GenreIds: id,
-                EnableTotalRecordCount: false,
-                ParentId: params.topParentId
-            };
+            
+			query.limit = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 5 : 9;
+            if (enableScrollX()) 
+                query.limit = 10;
+			
+            query.enableImageTypes = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 'Primary,Backdrop,Thumb' : 'Primary';
+			query.GenreIds = elem.getAttribute('data-id');
 			
             ApiClient.getItems(ApiClient.getCurrentUserId(), query).then(function (result) {
 				
@@ -185,25 +167,24 @@ import '../../elements/emby-button/emby-button';
             });
         };
 
-        function reloadItems(context, promise) {
-            const query = getQuery();
-            promise.then(function (result) {
+        function reloadItems(context, genreslst) {
+            genreslst.then(function (result) {
 				
                 const elem = context.querySelector('#items');
                 let html = '';
-                const items = result.Items;
+                const genres = result.Items;
 
-                for (let i = 0, length = items.length; i < length; i++) {
-                    const item = items[i];
+                for (let i = 0, length = genres.length; i < length; i++) {
+                    const genre = genres[i];
 
                     html += '<div class="verticalSection">';
                     html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
-                    html += '<a is="emby-linkbutton" href="' + appRouter.getRouteUrl(item, {
+                    html += '<a is="emby-linkbutton" href="' + appRouter.getRouteUrl(genre, {
                         context: 'movies',
                         parentId: params.topParentId
-                    }) + '" class="more button-flat button-flat-mini sectionTitleTextButton btnMoreFromGenre' + item.Id + '">';
+                    }) + '" class="more button-flat button-flat-mini sectionTitleTextButton btnMoreFromGenre' + genre.Id + '">';
                     html += '<h2 class="sectionTitle sectionTitle-cards">';
-                    html += item.Name;
+                    html += genre.Name;
                     html += '</h2>';
                     html += '<span class="material-icons hide chevron_right"></span>';
                     html += '</a>';
@@ -215,16 +196,16 @@ import '../../elements/emby-button/emby-button';
                             scrollXClass += 'smoothScrollX padded-top-focusscale padded-bottom-focusscale';
                         }
 
-                        html += '<div is="emby-itemscontainer" class="itemsContainer ' + scrollXClass + ' lazy padded-left padded-right hide" data-id="' + item.Id + '">';
+                        html += '<div is="emby-itemscontainer" class="itemsContainer ' + scrollXClass + ' lazy padded-left padded-right hide" data-id="' + genre.Id + '">';
                     } else {
-                        html += '<div is="emby-itemscontainer" class="itemsContainer vertical-wrap lazy padded-left padded-right hide" data-id="' + item.Id + '">';
+                        html += '<div is="emby-itemscontainer" class="itemsContainer vertical-wrap lazy padded-left padded-right hide" data-id="' + genre.Id + '">';
                     } 
 
                     html += '</div>';
                     html += '</div>';
                 }
 
-                if (!result.Items.length) {
+                if (!genres.length) {
                     html = '';
 
                     html += '<div class="noItemsMessage centerMessage">';
@@ -235,13 +216,12 @@ import '../../elements/emby-button/emby-button';
 
                 elem.innerHTML = html;
                 lazyLoader.lazyChildren(elem, fillItemsContainer);
-                libraryBrowser.saveQueryValues(getSavedQueryKey(), query);
+                libraryBrowser.saveQueryValues(savedQueryKey, query);
                 loading.hide();
             });
         }
 
         const fullyReload = () => {
-            this.preRender();
             this.renderTab();
         };
 
@@ -251,28 +231,69 @@ import '../../elements/emby-button/emby-button';
             return 'Poster,PosterCard,Thumb,ThumbCard'.split(',');
         };
 
-        this.enableViewSelection = true;
-        let promise;
-
-        this.preRender = function () {
-            promise = getPromise();
-        };
-
         this.renderTab = function () {
-            reloadItems(tabContent, promise);
+			loading.show();
+            let genreslst = ApiClient.getGenres(ApiClient.getCurrentUserId(), query);
+            reloadItems(tabContent, genreslst);
         };
 		
 		const btnSelectView = tabContent.querySelector('.btnSelectView');
-		
-		btnSelectView.addEventListener('click', (e) => {
-			libraryBrowser.showLayoutMenu(e.target, getCurrentViewStyle(), 'Banner,List,Poster,PosterCard,Thumb,ThumbCard'.split(','));
-		});
-		
-		btnSelectView.addEventListener('layoutchange', function (e) {
-			const viewStyle = e.detail.viewStyle;
-			setCurrentViewStyle(viewStyle);
-		});
-		
+		if (btnSelectView) {
+			btnSelectView.addEventListener('click', (e) => {
+				libraryBrowser.showLayoutMenu(e.target, getCurrentViewStyle(), 'Banner,List,Poster,PosterCard,Thumb,ThumbCard'.split(','));
+			});
+			btnSelectView.addEventListener('layoutchange', function (e) {
+				const viewStyle = e.detail.viewStyle;
+				setCurrentViewStyle(viewStyle);
+			});
+		}
+		const btnSort = tabContent.querySelector('.btnSort');
+		if (btnSort) {
+			btnSort.addEventListener('click', (e) => {
+				libraryBrowser.showSortMenu({
+					items: [
+					//{
+					//	name: globalize.translate('OptionRandom'),
+					//	id: 'Random'
+					//}, 
+					{
+						name: globalize.translate('Name'),
+						id: 'SortName,ProductionYear'
+					}, {
+						name: globalize.translate('OptionImdbRating'),
+						id: 'CommunityRating,SortName,ProductionYear'
+					}, {
+						name: globalize.translate('OptionCriticRating'),
+						id: 'CriticRating,SortName,ProductionYear'
+					}, {
+						name: globalize.translate('OptionDateAdded'),
+						id: 'DateCreated,SortName,ProductionYear'
+					}, {
+						name: globalize.translate('OptionDatePlayed'),
+						id: 'DatePlayed,SortName,ProductionYear'
+					}, {
+						name: globalize.translate('OptionParentalRating'),
+						id: 'OfficialRating,SortName,ProductionYear'
+					}, {
+						name: globalize.translate('OptionPlayCount'),
+						id: 'PlayCount,SortName,ProductionYear'
+					}, {
+						name: globalize.translate('OptionReleaseDate'),
+						id: 'PremiereDate,SortName,ProductionYear'
+					}, {
+						name: globalize.translate('Runtime'),
+						id: 'Runtime,SortName,ProductionYear'
+					}],
+					callback: function () {
+						query.StartIndex = 0;
+						libraryBrowser.saveQueryValues(savedQueryKey, query);
+						fullyReload();
+					},
+					query: query,
+					button: e.target
+				});
+			});
+		}
     }
 
 /* eslint-enable indent */
