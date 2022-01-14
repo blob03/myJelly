@@ -1,8 +1,22 @@
 import * as lazyLoader from '../lazyLoader/lazyLoaderIntersectionObserver';
 import * as userSettings from '../../scripts/settings/userSettings';
-import { decode, isBlurhashValid } from 'blurhash';
 import './style.scss';
-/* eslint-disable indent */
+
+// eslint-disable-next-line compat/compat
+	const worker = new Worker(new URL('./blurhash.worker.ts', import.meta.url));
+	const targetDic = {};
+	worker.addEventListener(
+		'message',
+		({ data: { pixels, hsh, width, height } }) => {
+        const elems = targetDic[hsh];
+        if (elems && elems.length) {
+            for (const elem of elems) {
+                drawBlurhash(elem, pixels, width, height);
+            }
+				delete targetDic[hsh];
+			}
+		}
+	);
 
     export function lazyImage(elem, source = elem.getAttribute('data-src')) {
         if (!source) {
@@ -12,44 +26,48 @@ import './style.scss';
         fillImageElement(elem, source);
     }
 
-    function itemBlurhashing(target, blurhashstr) {
-        if (isBlurhashValid(blurhashstr)) {
+    function drawBlurhash(target, pixels, width, height) {
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        const imgData = ctx.createImageData(width, height);
+
+        imgData.data.set(pixels);
+        ctx.putImageData(imgData, 0, 0);
+
+        requestAnimationFrame(() => {
+			// This class is just an utility class, so users can customize the canvas using their own CSS.
+            canvas.classList.add('blurhash-canvas');
+
+            target.parentNode.insertBefore(canvas, target);
+            target.classList.add('blurhashed');
+            target.removeAttribute('data-blurhash');
+        });
+    }
+
+    function itemBlurhashing(target, hash) {
+        try {
             // Although the default values recommended by Blurhash developers is 32x32, a size of 18x18 seems to be the sweet spot for us,
             // improving the performance and reducing the memory usage, while retaining almost full blur quality.
             // Lower values had more visible pixelation
 			// Nov 2021: The size is now set by the user (display settings) as any value from 0 (disabled) to 32 (max quality).
-			// Also default has been reduced to 8 (8x8) to better accomodate Low resource appliances (such as TVs).
+			// Also default has been reduced to 8 (8x8) to better accomodate Low resource appliances (such as TVs).			
 			const width = userSettings.enableBlurhash();
             const height = width;
-            let pixels;
-            try {
-                pixels = decode(blurhashstr, width, height);
-            } catch (err) {
-                console.error('Blurhash decode error: ', err);
-                target.classList.add('non-blurhashable');
-                return;
-            }
-            const canvas = document.createElement('canvas');
-            canvas.width = width;
-            canvas.height = height;
-            const ctx = canvas.getContext('2d');
-            const imgData = ctx.createImageData(width, height);
+            targetDic[hash] = (targetDic[hash] || []).filter(item => item !== target);
+            targetDic[hash].push(target);
 
-            imgData.data.set(pixels);
-            ctx.putImageData(imgData, 0, 0);
-
-            requestAnimationFrame(() => {
-                canvas.classList.add('blurhash-canvas');
-                if (userSettings.enableFastFadein()) {
-                    canvas.classList.add('lazy-blurhash-fadein-fast');
-                } else {
-                    canvas.classList.add('lazy-blurhash-fadein');
-                }
-
-                target.parentNode.insertBefore(canvas, target);
-                target.classList.add('blurhashed');
-                target.removeAttribute('data-blurhash');
+            worker.postMessage({
+                hash,
+                width,
+                height
             });
+		
+		} catch (err) {
+            console.error(err);
+            target.classList.add('non-blurhashable');
+            return;
         }
     }
 
@@ -67,12 +85,23 @@ import './style.scss';
         }
 
         if (entry.intersectionRatio > 0) {
-            if (source) fillImageElement(target, source);
+            if (source) {
+                fillImageElement(target, source);
+            }
         } else if (!source) {
-            requestAnimationFrame(() => {
-                emptyImageElement(target);
-            });
+            emptyImageElement(target);
         }
+    }
+
+	function onAnimationEnd(event) {
+        const elem = event.target;
+        requestAnimationFrame(() => {
+            const canvas = elem.previousSibling;
+            if (elem.classList.contains('blurhashed') && canvas && canvas.tagName === 'CANVAS') {
+                canvas.classList.add('lazy-hidden');
+            }
+        });
+        elem.removeEventListener('animationend', onAnimationEnd);
     }
 
     function fillImageElement(elem, url) {
@@ -84,7 +113,8 @@ import './style.scss';
         preloaderImg.src = url;
 
         elem.classList.add('lazy-hidden');
-
+        elem.addEventListener('animationend', onAnimationEnd);
+ 
         preloaderImg.addEventListener('load', () => {
             requestAnimationFrame(() => {
                 if (elem.tagName !== 'IMG') {
@@ -100,19 +130,17 @@ import './style.scss';
                 } else {
                     elem.classList.add('lazy-image-fadein');
                 }
-
-                const canvas = elem.previousSibling;
-                if (elem.classList.contains('blurhashed') && canvas && canvas.tagName === 'CANVAS') {
-                    canvas.classList.remove('lazy-image-fadein-fast', 'lazy-image-fadein');
-                    canvas.classList.add('lazy-hidden');
-                }
+				elem.classList.remove('lazy-hidden');
             });
         });
     }
 
     function emptyImageElement(elem) {
-		// block repeated call - requestAnimationFrame twice for one image
-        if (elem.getAttribute('data-src')) return;
+        elem.removeEventListener('animationend', onAnimationEnd);
+        const canvas = elem.previousSibling;
+        if (canvas && canvas.tagName === 'CANVAS') {
+            canvas.classList.remove('lazy-hidden');
+        }
 		
         let url;
 
@@ -127,16 +155,6 @@ import './style.scss';
 
         elem.classList.remove('lazy-image-fadein-fast', 'lazy-image-fadein');
         elem.classList.add('lazy-hidden');
-
-        const canvas = elem.previousSibling;
-        if (canvas && canvas.tagName === 'CANVAS') {
-            canvas.classList.remove('lazy-hidden');
-            if (userSettings.enableFastFadein()) {
-                canvas.classList.add('lazy-image-fadein-fast');
-            } else {
-                canvas.classList.add('lazy-image-fadein');
-            }
-        }
     }
 
     export function lazyChildren(elem) {
@@ -144,7 +162,7 @@ import './style.scss';
             for (const lazyElem of elem.querySelectorAll('.lazy')) {
                 const blurhashstr = lazyElem.getAttribute('data-blurhash');
                 if (!lazyElem.classList.contains('blurhashed', 'non-blurhashable') && blurhashstr) {
-                    itemBlurhashing(lazyElem, blurhashstr);
+                      itemBlurhashing(lazyElem, blurhashstr);
                 } else if (!blurhashstr && !lazyElem.classList.contains('blurhashed')) {
                     lazyElem.classList.add('non-blurhashable');
                 }

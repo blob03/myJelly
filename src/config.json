@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-205",
+	"version": "10.7.7-206",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -8,11 +8,6 @@
 	"multiserver": false,
 	"themes": [
 	{
-		"name": "Light alt. 1.33",
-		"id": "light-alt",
-		"color": "#303030",
-		"group": "myJelly"
-	}, {
 		"name": "Light alt. blue 1.63",
 		"id": "light-alt-blue",
 		"color": "#303030",
@@ -57,7 +52,13 @@
 		"name": "WMC",
 		"id": "wmc",
 		"color": "#0c2450"
-	}],
+	}, {
+		"name": "Light alt. 1.33",
+		"id": "light-alt",
+		"color": "#303030",
+		"group": "myJelly-dev"
+	}
+	],
 	"menuLinks": [],
 	"servers": [],
 	"plugins": [
