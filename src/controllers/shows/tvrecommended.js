@@ -205,7 +205,7 @@ import autoFocuser from '../../components/autoFocuser';
 						});
 					} else if (viewStyle == 'PosterCard') {
 						html += cardBuilder.getCardsHtml(result.Items, {
-							shape: 'auto',
+							shape: 'overflowPortrait',
 							showTitle: true,
 							showYear: true,
 							lazy: true,
@@ -218,7 +218,7 @@ import autoFocuser from '../../components/autoFocuser';
 						});
 					} else {
 						html += cardBuilder.getCardsHtml(result.Items, {
-							shape: 'auto',
+							shape: 'overflowPortrait',
 							overlayMoreButton: true,
 							allowBottomPadding: allowBottomPadding,
 							centerText: true,
@@ -444,7 +444,7 @@ import autoFocuser from '../../components/autoFocuser';
 						});
 					} else if (viewStyle == 'PosterCard') {
 						html += cardBuilder.getCardsHtml(result.Items, {
-							shape: 'auto',
+							shape: 'overflowPortrait',
 							showTitle: true,
 							showSeriesYear: true,
 							lazy: true,
@@ -458,7 +458,7 @@ import autoFocuser from '../../components/autoFocuser';
 						});
 					} else {
 						html += cardBuilder.getCardsHtml(result.Items, {
-							shape: 'auto',
+							shape: 'overflowPortrait',
 							overlayMoreButton: true,
 							allowBottomPadding: allowBottomPadding,
 							centerText: true,

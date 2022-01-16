@@ -167,58 +167,55 @@ import '../../elements/emby-button/emby-button';
             });
         };
 
-        function reloadItems(context, genreslst) {
-            genreslst.then(function (result) {
-				
-                const elem = context.querySelector('#items');
-                let html = '';
-                const genres = result.Items;
+        function reloadItems(context, genres) {
+		
+			const elem = context.querySelector('#items');
+			let html = '';
+		
+			for (let i = 0, length = genres.length; i < length; i++) {
+				const genre = genres[i];
 
-                for (let i = 0, length = genres.length; i < length; i++) {
-                    const genre = genres[i];
+				html += '<div class="verticalSection">';
+				html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
+				html += '<a is="emby-linkbutton" href="' + appRouter.getRouteUrl(genre, {
+					context: 'movies',
+					parentId: params.topParentId
+				}) + '" class="more button-flat button-flat-mini sectionTitleTextButton btnMoreFromGenre' + genre.Id + '">';
+				html += '<h2 class="sectionTitle sectionTitle-cards">';
+				html += genre.Name;
+				html += '</h2>';
+				html += '<span class="material-icons hide chevron_right"></span>';
+				html += '</a>';
+				html += '</div>';
+				if (enableScrollX()) {
+					let scrollXClass = 'scrollX hiddenScrollX';
 
-                    html += '<div class="verticalSection">';
-                    html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
-                    html += '<a is="emby-linkbutton" href="' + appRouter.getRouteUrl(genre, {
-                        context: 'movies',
-                        parentId: params.topParentId
-                    }) + '" class="more button-flat button-flat-mini sectionTitleTextButton btnMoreFromGenre' + genre.Id + '">';
-                    html += '<h2 class="sectionTitle sectionTitle-cards">';
-                    html += genre.Name;
-                    html += '</h2>';
-                    html += '<span class="material-icons hide chevron_right"></span>';
-                    html += '</a>';
-                    html += '</div>';
-                    if (enableScrollX()) {
-                        let scrollXClass = 'scrollX hiddenScrollX';
+					if (layoutManager.tv) {
+						scrollXClass += 'smoothScrollX padded-top-focusscale padded-bottom-focusscale';
+					}
 
-                        if (layoutManager.tv) {
-                            scrollXClass += 'smoothScrollX padded-top-focusscale padded-bottom-focusscale';
-                        }
+					html += '<div is="emby-itemscontainer" class="itemsContainer ' + scrollXClass + ' lazy padded-left padded-right hide" data-id="' + genre.Id + '">';
+				} else {
+					html += '<div is="emby-itemscontainer" class="itemsContainer vertical-wrap lazy padded-left padded-right hide" data-id="' + genre.Id + '">';
+				} 
 
-                        html += '<div is="emby-itemscontainer" class="itemsContainer ' + scrollXClass + ' lazy padded-left padded-right hide" data-id="' + genre.Id + '">';
-                    } else {
-                        html += '<div is="emby-itemscontainer" class="itemsContainer vertical-wrap lazy padded-left padded-right hide" data-id="' + genre.Id + '">';
-                    } 
+				html += '</div>';
+				html += '</div>';
+			}
 
-                    html += '</div>';
-                    html += '</div>';
-                }
+			if (!genres.length) {
+				html = '';
 
-                if (!genres.length) {
-                    html = '';
+				html += '<div class="noItemsMessage centerMessage">';
+				html += '<h1>' + globalize.translate('MessageNothingHere') + '</h1>';
+				html += '<p>' + globalize.translate('MessageNoGenresAvailable') + '</p>';
+				html += '</div>';
+			}
 
-                    html += '<div class="noItemsMessage centerMessage">';
-                    html += '<h1>' + globalize.translate('MessageNothingHere') + '</h1>';
-                    html += '<p>' + globalize.translate('MessageNoGenresAvailable') + '</p>';
-                    html += '</div>';
-                }
-
-                elem.innerHTML = html;
-                lazyLoader.lazyChildren(elem, fillItemsContainer);
-                libraryBrowser.saveQueryValues(savedQueryKey, query);
-                loading.hide();
-            });
+			elem.innerHTML = html;
+			lazyLoader.lazyChildren(elem, fillItemsContainer);
+			libraryBrowser.saveQueryValues(savedQueryKey, query);
+			loading.hide();
         }
 
         const fullyReload = () => {
@@ -231,10 +228,19 @@ import '../../elements/emby-button/emby-button';
             return 'Poster,PosterCard,Thumb,ThumbCard'.split(',');
         };
 
+		const self = this;
+		let genreslst = [];
+		
         this.renderTab = function () {
 			loading.show();
-            let genreslst = ApiClient.getGenres(ApiClient.getCurrentUserId(), query);
-            reloadItems(tabContent, genreslst);
+			if (!genreslst.length) {
+				let genresPromise = ApiClient.getGenres(ApiClient.getCurrentUserId(), query);
+				genresPromise.then(function (result) {
+					genreslst = [].concat(result.Items);
+					reloadItems(tabContent, genreslst);
+				});
+			} else 
+				reloadItems(tabContent, genreslst);
         };
 		
 		const btnSelectView = tabContent.querySelector('.btnSelectView');
@@ -287,7 +293,7 @@ import '../../elements/emby-button/emby-button';
 					callback: function () {
 						query.StartIndex = 0;
 						libraryBrowser.saveQueryValues(savedQueryKey, query);
-						fullyReload();
+						self.renderTab();
 					},
 					query: query,
 					button: e.target
