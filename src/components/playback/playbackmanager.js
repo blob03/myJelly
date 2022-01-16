@@ -3507,7 +3507,7 @@ class PlaybackManager {
         this.seek(ticks, player);
     }
 
-    playTrailers(item) {
+    async playTrailers(item) {
         const player = this._currentPlayer;
 
         if (player && player.playTrailers) {
@@ -3516,33 +3516,30 @@ class PlaybackManager {
 
         const apiClient = ServerConnections.getApiClient(item.ServerId);
 
-        const instance = this;
+        let items;
 
         if (item.LocalTrailerCount) {
-            return apiClient.getLocalTrailers(apiClient.getCurrentUserId(), item.Id).then(function (result) {
-                return instance.play({
-                    items: result
-                });
-            });
-        } else {
-            const remoteTrailers = item.RemoteTrailers || [];
-
-            if (!remoteTrailers.length) {
-                return Promise.reject();
-            }
-
-            return this.play({
-                items: remoteTrailers.map(function (t) {
-                    return {
-                        Name: t.Name || (item.Name + ' Trailer'),
-                        Url: t.Url,
-                        MediaType: 'Video',
-                        Type: 'Trailer',
-                        ServerId: apiClient.serverId()
-                    };
-                })
+            items = await apiClient.getLocalTrailers(apiClient.getCurrentUserId(), item.Id);
+        }
+		
+		if (!items || !items.length) {
+            items = (item.RemoteTrailers || []).map((t) => {
+                return {
+                    Name: t.Name || (item.Name + ' Trailer'),
+                    Url: t.Url,
+                    MediaType: 'Video',
+                    Type: 'Trailer',
+                    ServerId: apiClient.serverId()
+                };
             });
         }
+
+        if (items.length) {
+            return this.play({
+               items
+            });
+        }
+		return Promise.reject();
     }
 
     getSubtitleUrl(textStream, serverId) {
