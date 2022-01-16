@@ -29,7 +29,9 @@ import '../../elements/emby-button/emby-button';
 			EnableTotalRecordCount: false,
 			ParentId: params.topParentId
         };
-			
+		
+		query = userSettings.loadQuerySettings(savedQueryKey, query);
+		
 		function getCurrentViewStyle() {
             return userSettings.get(savedViewKey) ||  'PosterCard';
         };
@@ -38,27 +40,6 @@ import '../../elements/emby-button/emby-button';
 			userSettings.set(savedViewKey, viewStyle);
             fullyReload();
         };
-		
-        function getPageData() {
-            let pageData = data[key];
-			
-            if (!pageData) {
-				let dflView = getCurrentViewStyle();
-		
-                pageData = data[key] = {
-                    query: query,
-                    view: dflView
-                };
-                pageData.query.ParentId = params.topParentId;
-                libraryBrowser.loadSavedQueryValues(savedQueryKey, pageData.query);
-            }
-
-            return pageData;
-        }
-
-        function getQuery() {
-            return getPageData().query;
-        }
 
         function enableScrollX() {
             return !layoutManager.desktop;
@@ -214,7 +195,7 @@ import '../../elements/emby-button/emby-button';
 
 			elem.innerHTML = html;
 			lazyLoader.lazyChildren(elem, fillItemsContainer);
-			libraryBrowser.saveQueryValues(savedQueryKey, query);
+			userSettings.saveQuerySettings(savedQueryKey, query);
 			loading.hide();
         }
 
@@ -292,7 +273,7 @@ import '../../elements/emby-button/emby-button';
 					}],
 					callback: function () {
 						query.StartIndex = 0;
-						libraryBrowser.saveQueryValues(savedQueryKey, query);
+						userSettings.saveQuerySettings(savedQueryKey, query);
 						self.renderTab();
 					},
 					query: query,

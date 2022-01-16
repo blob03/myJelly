@@ -16,7 +16,22 @@ import '../../elements/emby-button/emby-button';
 		
 		const savedKey = params.topParentId;
 		const savedViewKey = 'view-genres-' + savedKey;
+		const savedQueryKey = 'query-genres-' + savedKey; 
 
+		let query = {
+			//SortBy: 'Random',
+			SortBy: 'SortName,ProductionYear',
+			SortOrder: 'Ascending',
+			IncludeItemTypes: 'Series',
+			Recursive: true,
+			Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
+			ImageTypeLimit: 1,
+			EnableTotalRecordCount: false,
+			ParentId: params.topParentId
+		};
+		
+		query = userSettings.loadQuerySettings(savedQueryKey, query);
+		
 		function getCurrentViewStyle() {
 			return userSettings.get(savedViewKey) ||  'PosterCard';
 		};
@@ -24,42 +39,6 @@ import '../../elements/emby-button/emby-button';
 		function setCurrentViewStyle(viewStyle) {
 			userSettings.set(savedViewKey, viewStyle);
 		};
-		
-        function getPageData() {
-            const key = getSavedQueryKey();
-            let pageData = data[key];
-
-            if (!pageData) {
-                pageData = data[key] = {
-                    query: {
-                        SortBy: 'Random',
-                        SortOrder: 'Ascending',
-                        IncludeItemTypes: 'Series',
-                        Recursive: true,
-                        EnableTotalRecordCount: false
-                    },
-                    view: getCurrentViewStyle()
-                };
-                pageData.query.ParentId = params.topParentId;
-                libraryBrowser.loadSavedQueryValues(key, pageData.query);
-            }
-
-            return pageData;
-        }
-
-        function getQuery() {
-            return getPageData().query;
-        }
-
-        function getSavedQueryKey() {
-            return libraryBrowser.getSavedQueryKey('seriesgenres');
-        }
-
-        function getPromise() {
-            loading.show();
-            const query = getQuery();
-            return ApiClient.getGenres(ApiClient.getCurrentUserId(), query);
-        }
 
         function enableScrollX() {
             return !layoutManager.desktop;
@@ -82,25 +61,15 @@ import '../../elements/emby-button/emby-button';
             if (enableScrollX()) {
                 limit = 10;
             }
-			const allowBottomPadding = !enableScrollX();
-			
             const enableImageTypes = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 'Primary,Backdrop,Thumb' : 'Primary';
-            const query = {
-                SortBy: 'Random',
-                SortOrder: 'Ascending',
-                IncludeItemTypes: 'Series',
-                Recursive: true,
-                Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
-                ImageTypeLimit: 1,
-                EnableImageTypes: enableImageTypes,
-                Limit: limit,
-                GenreIds: id,
-                EnableTotalRecordCount: false,
-                ParentId: params.topParentId
-            };
+			query.Limit = limit;
+			query.GenreIds = id;
+			query.EnableImageTypes = enableImageTypes;
+			
             ApiClient.getItems(ApiClient.getCurrentUserId(), query).then(function (result) {
 				
 				let html = "";
+				const allowBottomPadding = !enableScrollX();
 				
 				if (viewStyle == 'Thumb') {
 					html += cardBuilder.getCardsHtml(result.Items, {
@@ -185,58 +154,49 @@ import '../../elements/emby-button/emby-button';
             });
         }
 
-        function reloadItems(context, promise) {
-            const query = getQuery();
-            promise.then(function (result) {
-                const elem = context.querySelector('#items');
-                let html = '';
-                const items = result.Items;
+        function reloadItems(context, genres) {
+			const elem = context.querySelector('#items');
+			let html = '';
 
-                for (const item of items) {
-                    html += '<div class="verticalSection">';
-                    html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
-                    html += '<a is="emby-linkbutton" href="' + appRouter.getRouteUrl(item, {
-                        context: 'tvshows',
-                        parentId: params.topParentId
-                    }) + '" class="more button-flat button-flat-mini sectionTitleTextButton btnMoreFromGenre' + item.Id + '">';
-                    html += '<h2 class="sectionTitle sectionTitle-cards">';
-                    html += item.Name;
-                    html += '</h2>';
-                    html += '<span class="material-icons hide chevron_right"></span>';
-                    html += '</a>';
-                    html += '</div>';
-                    if (enableScrollX()) {
-                        let scrollXClass = 'scrollX hiddenScrollX';
-                        if (layoutManager.tv) {
-                            scrollXClass += 'smoothScrollX padded-top-focusscale padded-bottom-focusscale';
-                        }
-                        html += '<div is="emby-itemscontainer" class="itemsContainer ' + scrollXClass + ' lazy padded-left padded-right" data-id="' + item.Id + '">';
-                    } else {
-                        html += '<div is="emby-itemscontainer" class="itemsContainer vertical-wrap lazy padded-left padded-right" data-id="' + item.Id + '">';
-                    }
-                    html += '</div>';
-                    html += '</div>';
-                }
+			if (genres.length) {
+				for (const genre of genres) {
+					html += '<div class="verticalSection">';
+					html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
+					html += '<a is="emby-linkbutton" href="' + appRouter.getRouteUrl(genre, {
+						context: 'tvshows',
+						parentId: params.topParentId
+					}) + '" class="more button-flat button-flat-mini sectionTitleTextButton btnMoreFromGenre' + genre.Id + '">';
+					html += '<h2 class="sectionTitle sectionTitle-cards">';
+					html += genre.Name;
+					html += '</h2>';
+					html += '<span class="material-icons hide chevron_right"></span>';
+					html += '</a>';
+					html += '</div>';
+					if (enableScrollX()) {
+						let scrollXClass = 'scrollX hiddenScrollX';
+						if (layoutManager.tv) {
+							scrollXClass += 'smoothScrollX padded-top-focusscale padded-bottom-focusscale';
+						}
+						html += '<div is="emby-itemscontainer" class="itemsContainer ' + scrollXClass + ' lazy padded-left padded-right" data-id="' + genre.Id + '">';
+					} else {
+						html += '<div is="emby-itemscontainer" class="itemsContainer vertical-wrap lazy padded-left padded-right" data-id="' + genre.Id + '">';
+					}
+					html += '</div>';
+					html += '</div>';
+				}
+			} else {
+				html = '';
 
-                if (!result.Items.length) {
-                    html = '';
+				html += '<div class="noItemsMessage centerMessage">';
+				html += '<h1>' + globalize.translate('MessageNothingHere') + '</h1>';
+				html += '<p>' + globalize.translate('MessageNoGenresAvailable') + '</p>';
+				html += '</div>';
+			}
 
-                    html += '<div class="noItemsMessage centerMessage">';
-                    html += '<h1>' + globalize.translate('MessageNothingHere') + '</h1>';
-                    html += '<p>' + globalize.translate('MessageNoGenresAvailable') + '</p>';
-                    html += '</div>';
-                }
-
-                elem.innerHTML = html;
-                lazyLoader.lazyChildren(elem, fillItemsContainer);
-                libraryBrowser.saveQueryValues(getSavedQueryKey(), query);
-                loading.hide();
-            });
-        }
-
-        function fullyReload() {
-            self.preRender();
-            self.renderTab();
+			elem.innerHTML = html;
+			lazyLoader.lazyChildren(elem, fillItemsContainer);
+			userSettings.saveQuerySettings(savedQueryKey, query);
+			loading.hide();
         }
 
         const self = this;
@@ -247,20 +207,24 @@ import '../../elements/emby-button/emby-button';
         };
 
         self.setCurrentViewStyle = function (viewStyle) {
-            getPageData().view = viewStyle;
-            libraryBrowser.saveViewSetting(getSavedQueryKey(), viewStyle);
-            fullyReload();
+			userSettings.set(savedViewKey, viewStyle);
+			self.renderTab();
         };
 
         self.enableViewSelection = true;
-        let promise;
 
-        self.preRender = function () {
-            promise = getPromise();
-        };
-
+		let genreslst = [];
+		
         self.renderTab = function () {
-            reloadItems(tabContent, promise);
+			loading.show();
+			if (!genreslst.length) {
+				let genresPromise = ApiClient.getGenres(ApiClient.getCurrentUserId(), query);
+				genresPromise.then(function (result) {
+					genreslst = [].concat(result.Items);
+					reloadItems(tabContent, genreslst);
+				});
+			} else 
+				reloadItems(tabContent, genreslst);
         };
 		
 		const btnSelectView = tabContent.querySelector('.btnSelectView');
@@ -270,8 +234,41 @@ import '../../elements/emby-button/emby-button';
 		btnSelectView.addEventListener('layoutchange', function (e) {
 			const viewStyle = e.detail.viewStyle;
 			setCurrentViewStyle(viewStyle);
-			reloadItems(tabContent, promise);
+			self.renderTab();
 		});
+		const btnSort = tabContent.querySelector('.btnSort');
+		if (btnSort) {
+			btnSort.addEventListener('click', (e) => {
+				libraryBrowser.showSortMenu({
+                    items: [{
+                        name: globalize.translate('Name'),
+                        id: 'SortName'
+                    }, {
+                        name: globalize.translate('OptionImdbRating'),
+                        id: 'CommunityRating,SortName'
+                    }, {
+                        name: globalize.translate('OptionDateAdded'),
+                        id: 'DateCreated,SortName'
+                    }, {
+                        name: globalize.translate('OptionDatePlayed'),
+                        id: 'DatePlayed,SortName'
+                    }, {
+                        name: globalize.translate('OptionParentalRating'),
+                        id: 'OfficialRating,SortName'
+                    }, {
+                        name: globalize.translate('OptionReleaseDate'),
+                        id: 'PremiereDate,SortName'
+                    }],
+					callback: function () {
+						query.StartIndex = 0;
+						userSettings.saveQuerySettings(savedQueryKey, query);
+						self.renderTab();
+					},
+					query: query,
+					button: e.target
+				});
+			});
+		}
     }
 
 /* eslint-enable indent */
