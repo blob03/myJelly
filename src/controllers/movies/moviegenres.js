@@ -1,5 +1,6 @@
 import layoutManager from '../../components/layoutManager';
 import loading from '../../components/loading/loading';
+import { Events } from 'jellyfin-apiclient';
 import libraryBrowser from '../../scripts/libraryBrowser';
 import * as userSettings from '../../scripts/settings/userSettings';
 import cardBuilder from '../../components/cardbuilder/cardBuilder';
@@ -281,6 +282,27 @@ import '../../elements/emby-button/emby-button';
 				});
 			});
 		}
+		const btnFilter = tabContent.querySelector('.btnFilter');
+		if (btnFilter) {
+			btnFilter.addEventListener('click', () => {
+				this.showFilterMenu();
+			});
+		}
+		this.showFilterMenu = function () {
+			import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
+				const filterDialog = new filterDialogFactory({
+					query: query,
+					mode: 'movies',
+					serverId: ApiClient.serverId()
+				});
+				Events.on(filterDialog, 'filterchange', () => {
+					query.StartIndex = 0;
+					userSettings.saveQuerySettings(savedQueryKey, query);
+					self.renderTab();
+					});
+				filterDialog.show();
+			});
+		};
     }
 
 /* eslint-enable indent */

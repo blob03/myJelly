@@ -22,6 +22,7 @@ import Dashboard from '../../scripts/clientUtils';
 	
 	export default function (view, params) {
 		
+		const self = this;
 		const savedKey = params.topParentId;
         const savedViewKey = 'view-recommended-' + savedKey;
 		const savedQueryKey = 'query-recommended-' + savedKey; 
@@ -437,31 +438,15 @@ import Dashboard from '../../scripts/clientUtils';
 			}
 		}
 
-		function loadSuggestionsTab(view, params, tabContent) {
+		function loadSuggestionsTab(params, tabContent) {
 			const parentId = params.topParentId;
 			const userId = ApiClient.getCurrentUserId();
 			
 			loadResume(tabContent, userId, parentId);
 			loadLatest(tabContent, userId, parentId);
 			loadSuggestions(tabContent, userId);
-			
-			const btnSelectView = tabContent.querySelector('.btnSelectView');
-            btnSelectView.addEventListener('click', (e) => {
-                libraryBrowser.showLayoutMenu(e.target, getCurrentViewStyle(), 'Banner,List,Poster,PosterCard,Thumb,ThumbCard'.split(','));
-            });
-            btnSelectView.addEventListener('layoutchange', function (e) {
-                const viewStyle = e.detail.viewStyle;
-				setCurrentViewStyle(viewStyle);
-               
-				const parentId = params.topParentId;
-				const userId = ApiClient.getCurrentUserId();
-				
-				loadResume(tabContent, userId, parentId);
-				loadLatest(tabContent, userId, parentId);
-				loadSuggestions(tabContent, userId);
-            });
 		}
-
+		
 		function getTabs() {
 			return [{
 				name: globalize.translate('Movies')
@@ -613,14 +598,48 @@ import Dashboard from '../../scripts/clientUtils';
         let currentTabIndex = parseInt(params.tab || getDefaultTabIndex(params.topParentId));
         const suggestionsTabIndex = 1;
 
+		const tabContent = view.querySelector(".pageTabContent[data-index='" + suggestionsTabIndex + "']");
+		
+		const btnSelectView = tabContent.querySelector('.btnSelectView');
+		btnSelectView.addEventListener('click', (e) => {
+			libraryBrowser.showLayoutMenu(e.target, getCurrentViewStyle(), 'Banner,List,Poster,PosterCard,Thumb,ThumbCard'.split(','));
+		});
+		btnSelectView.addEventListener('layoutchange', function (e) {
+			const viewStyle = e.detail.viewStyle;
+			setCurrentViewStyle(viewStyle);
+			loadSuggestionsTab(params, tabContent);
+		});
+
+		const btnFilter = tabContent.querySelector('.btnFilter');
+		if (btnFilter) {
+			btnFilter.addEventListener('click', () => {
+				self.showFilterMenu();
+			});
+		}
+			
+		this.showFilterMenu = function () {
+			import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
+				const filterDialog = new filterDialogFactory({
+					query: query,
+					mode: 'movies',
+					serverId: ApiClient.serverId()
+				});
+				Events.on(filterDialog, 'filterchange', () => {
+					query.StartIndex = 0;
+					userSettings.saveQuerySettings(savedQueryKey, query);
+					loadSuggestionsTab(params, tabContent);
+				});
+				filterDialog.show();
+			});
+		};
+		
         this.initTab = function () {
             const tabContent = view.querySelector(".pageTabContent[data-index='" + suggestionsTabIndex + "']");
             initSuggestedTab(view, tabContent);
         };
 
         this.renderTab = function () {
-            const tabContent = view.querySelector(".pageTabContent[data-index='" + suggestionsTabIndex + "']");
-            loadSuggestionsTab(view, params, tabContent);
+            loadSuggestionsTab(params, tabContent);
         };
 
         const tabControllers = [];
