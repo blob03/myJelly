@@ -23,11 +23,31 @@ import autoFocuser from '../../components/autoFocuser';
 
     export default function (view, params) {
 		
+		const self = this;
 		const savedKey = params.topParentId;
 		const savedViewKey = 'view-recommended-' + savedKey;
+		const savedQueryKey = 'query-recommended-' + savedKey; 
+		const screenWidth = dom.getWindowSize().innerWidth;
+		const parentId = params.topParentId;
+		let query = {
+				SortBy: 'DatePlayed',
+				SortOrder: 'Descending',
+				IncludeItemTypes: 'Episode',
+				Filters: 'IsResumable',
+				Limit: screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3,
+				Recursive: true,
+				Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
+				CollapseBoxSetItems: false,
+				ParentId: parentId,
+				ImageTypeLimit: 1,
+				EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
+				EnableTotalRecordCount: false
+			};
 
+		query = userSettings.loadQuerySettings(savedQueryKey, query);
+		
 		function getCurrentViewStyle() {
-			return userSettings.get(savedViewKey) ||  'PosterCard';
+			return userSettings.get(savedViewKey) ||  'ThumbCard';
 		};
 				
 		function setCurrentViewStyle(viewStyle) {
@@ -97,16 +117,17 @@ import autoFocuser from '../../components/autoFocuser';
 				setScrollClasses(containers[i], enableScrollX());
 			}
 		}
-
-		function loadSuggestionsTab(view, params, tabContent) {
+		
+		function loadSuggestionsTab(params, tabContent) {
 			const parentId = params.topParentId;
 			const userId = ApiClient.getCurrentUserId();
-			console.debug('loadSuggestionsTab');
 			loadResume(tabContent, userId, parentId);
 			loadLatest(tabContent, userId, parentId);
 			loadNextUp(tabContent, userId, parentId);
-			
-			const btnSelectView = tabContent.querySelector('.btnSelectView');
+		}
+
+		const tabContent = view.querySelector(".pageTabContent[data-index='1']");
+		const btnSelectView = tabContent.querySelector('.btnSelectView');
 			btnSelectView.addEventListener('click', (e) => {
 				libraryBrowser.showLayoutMenu(e.target, getCurrentViewStyle(), 'Banner,List,Poster,PosterCard,Thumb,ThumbCard'.split(','));
 			});
@@ -114,30 +135,36 @@ import autoFocuser from '../../components/autoFocuser';
 				const viewStyle = e.detail.viewStyle;
 				const parentId = params.topParentId;
 				const userId = ApiClient.getCurrentUserId();
-				
 				setCurrentViewStyle(viewStyle);
-				loadResume(tabContent, userId, parentId);
-				loadLatest(tabContent, userId, parentId);
-				loadNextUp(tabContent, userId, parentId);
+				loadSuggestionsTab(params, tabContent);
 			});
-		}
-
+			
+		tabContent.querySelector('.btnFilter').addEventListener('click', () => {
+			self.showFilterMenu();
+		});
+		
+		self.showFilterMenu = function () {
+			import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
+				const filterDialog = new filterDialogFactory({
+					query: query,
+					mode: 'episodes',
+					serverId: ApiClient.serverId()
+				});
+				Events.on(filterDialog, 'filterchange', function () {
+					query.StartIndex = 0;
+					userSettings.saveQuerySettings(savedQueryKey, query);
+					loadSuggestionsTab(params, tabContent);
+				});
+				filterDialog.show();
+			});
+		};
+		
 		function loadResume(view, userId, parentId) {
-			const screenWidth = dom.getWindowSize().innerWidth;
-			const options = {
-				SortBy: 'DatePlayed',
-				SortOrder: 'Descending',
-				IncludeItemTypes: 'Episode',
-				Filters: 'IsResumable',
-				Limit: screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3,
-				Recursive: true,
-				Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
-				CollapseBoxSetItems: false,
-				ParentId: parentId,
-				ImageTypeLimit: 1,
-				EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
-				EnableTotalRecordCount: false
-			};
+			let options = query;
+			
+			options.SortBy = 'DatePlayed';
+			options.SortOrder = 'Descending';
+			
 			ApiClient.getItems(userId, options).then(function (result) {
 				
 				const section = view.querySelector('#resumableSection');	
@@ -243,15 +270,16 @@ import autoFocuser from '../../components/autoFocuser';
 		}
 
 		function loadLatest(view, userId, parentId) {
-			const options = {
-				userId: userId,
-				IncludeItemTypes: 'Episode',
-				Limit: 30,
-				Fields: 'PrimaryImageAspectRatio,BasicSyncInfo',
-				ParentId: parentId,
-				ImageTypeLimit: 1,
-				EnableImageTypes: 'Primary,Backdrop,Thumb'
-			};
+			let options = query;
+			
+			options.userId = userId;
+			options.IncludeItemTypes = 'Episode';
+			options.Limit = 30;
+			options.Fields = 'PrimaryImageAspectRatio,BasicSyncInfo';
+			options.ParentId = parentId;
+			options.ImageTypeLimit = 1;
+			options.EnableImageTypes = 'Primary,Backdrop,Thumb';
+			
 			ApiClient.getLatestItems(options).then(function (items) {
 				
 				const section = view.querySelector('#latestItemsSection');
@@ -363,17 +391,18 @@ import autoFocuser from '../../components/autoFocuser';
 		}
 
 		function loadNextUp(view, userId, parentId) {
-			const query = {
-				userId: userId,
-				Limit: 24,
-				Fields: 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo',
-				ParentId: parentId,
-				ImageTypeLimit: 1,
-				EnableImageTypes: 'Primary,Backdrop,Thumb',
-				EnableTotalRecordCount: false
-			};
-			query.ParentId = libraryMenu.getTopParentId();
-			ApiClient.getNextUpEpisodes(query).then(function (result) {
+			let options = query;
+			
+			options.userId = userId;
+			options.Limit = 24;
+			options.Fields = 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo';
+			options.ParentId = parentId;
+			options.ImageTypeLimit = 1;
+			options.EnableImageTypes = 'Primary,Backdrop,Thumb';
+			options.EnableTotalRecordCount = false;
+			
+			options.ParentId = libraryMenu.getTopParentId();
+			ApiClient.getNextUpEpisodes(options).then(function (result) {
 				
 				const section = view.querySelector('#nextUpItemsSection');
 				
@@ -608,7 +637,6 @@ import autoFocuser from '../../components/autoFocuser';
             }
         }
 
-        const self = this;
         let currentTabIndex = parseInt(params.tab || getDefaultTabIndex(params.topParentId));
         const suggestionsTabIndex = 1;
 
@@ -619,7 +647,7 @@ import autoFocuser from '../../components/autoFocuser';
 
         self.renderTab = function () {
             const tabContent = view.querySelector(".pageTabContent[data-index='" + suggestionsTabIndex + "']");
-            loadSuggestionsTab(view, params, tabContent);
+            loadSuggestionsTab(params, tabContent);
         };
 
         const tabControllers = [];

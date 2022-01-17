@@ -1,5 +1,6 @@
 import layoutManager from '../../components/layoutManager';
 import loading from '../../components/loading/loading';
+import { Events } from 'jellyfin-apiclient';
 import libraryBrowser from '../../scripts/libraryBrowser';
 import cardBuilder from '../../components/cardbuilder/cardBuilder';
 import imageLoader from '../../components/images/imageLoader';
@@ -265,10 +266,31 @@ import '../../elements/emby-button/emby-button';
 						self.renderTab();
 					},
 					query: query,
+					mode: 'series',
 					button: e.target
 				});
 			});
 		}
+		
+		tabContent.querySelector('.btnFilter').addEventListener('click', () => {
+			self.showFilterMenu();
+		});
+		
+		self.showFilterMenu = function () {
+			import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
+				const filterDialog = new filterDialogFactory({
+					query: query,
+					mode: 'series',
+					serverId: ApiClient.serverId()
+				});
+				Events.on(filterDialog, 'filterchange', function () {
+					query.StartIndex = 0;
+					userSettings.saveQuerySettings(savedQueryKey, query);
+					self.renderTab();
+				});
+				filterDialog.show();
+			});
+		};
     }
 
 /* eslint-enable indent */

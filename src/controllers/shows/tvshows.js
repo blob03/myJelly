@@ -199,25 +199,25 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
         const data = {};
         let isLoading = false;
 
-        this.showFilterMenu = function () {
-            import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
-                const filterDialog = new filterDialogFactory({
-                    query: getQuery(tabContent),
-                    mode: 'series',
-                    serverId: ApiClient.serverId()
-                });
-                Events.on(filterDialog, 'filterchange', function () {
-                    getQuery(tabContent).StartIndex = 0;
-                    reloadItems(tabContent);
-                });
-                filterDialog.show();
-            });
-        };
-
         this.getCurrentViewStyle = function () {
             return getPageData(tabContent).view;
         };
 
+		this.showFilterMenu = function () {
+			import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
+				const filterDialog = new filterDialogFactory({
+					query: getQuery(tabContent),
+					mode: 'series',
+					serverId: ApiClient.serverId()
+				});
+				Events.on(filterDialog, 'filterchange', function () {
+					getQuery(tabContent).StartIndex = 0;
+					reloadItems(tabContent);
+				});
+				filterDialog.show();
+			});
+		};
+		
         const initPage = (tabContent) => {
             const alphaPickerElement = tabContent.querySelector('.alphaPicker');
             const itemsContainer = tabContent.querySelector('.itemsContainer');
@@ -247,6 +247,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
             tabContent.querySelector('.btnFilter').addEventListener('click', () => {
                 this.showFilterMenu();
             });
+		
             tabContent.querySelector('.btnSort').addEventListener('click', function (e) {
                 libraryBrowser.showSortMenu({
                     items: [{
