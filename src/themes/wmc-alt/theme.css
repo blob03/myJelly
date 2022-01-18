@@ -350,11 +350,27 @@ html {
 }
 
 .emby-tab-button {
-    color: #999;
+    color: #61a2c9;
+}
+
+@keyframes tabSelect {
+	from {transform: scale(1);}
+	to {transform: scale(1.3);}
 }
 
 .emby-tab-button-active {
-    color: #fff;
+    color: #fff !important;
+	transform: scale(1.3);
+	animation-name: tabSelect;
+	animation-duration: .15s;
+}
+
+.emby-tab-button > * > .material-icons {
+	color: #61a2c9 !important;
+}
+
+.emby-tab-button-active > * > .material-icons {
+	color: #fff !important;
 }
 
 .emby-tab-button.show-focus:focus {
@@ -645,19 +661,35 @@ fieldset {
 	border: 3px solid #236aa9;
 }
 
+/* Pseudo radio widget (a radio button that allows deselecting) */
+/* based on the checkbox widget */
+
+.radio > .checkboxLabel,
+.radio + .fieldDescription {
+	margin-bottom: .3em !important;
+	margin-left: -.3em !important;
+}
 
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
 	color: #abb2ba !important;
+	font-size: 170%;
+	text-shadow: 1px 2px 3px #1e1d25;
+}
+
+.radio.emby-checkbox + span + .checkboxOutline {
+	border: none !important;
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
 	background-color: #00a4dc;
 }
 
-.radio.emby-checkbox:focus + span + .checkboxOutline,
-.radio.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline {
-	border-color: #fff !important;
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked,
+.radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
+.radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
+	color: #ccc !important;
 }
 
 .radioButtonLabel,

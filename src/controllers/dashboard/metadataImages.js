@@ -9,17 +9,15 @@ import settingsHelper from '../../components/settingshelper';
 /* eslint-disable indent */
 
     function populateLanguages(selectLanguage) {        
-		loading.show();
-		ApiClient.getCultures().then(allCultures => {
+		return ApiClient.getCultures().then(allCultures => {
 			settingsHelper.populateServerLanguages(selectLanguage, allCultures, "DisplayName");
-			loading.hide();
 		});
     }
 
     function populateCountries(selectCountry) {
         return ApiClient.getCountries().then(function(allCountries) {
             let html = '';
-            html += "<option value=''></option>";
+			html += "<option value=''>" + globalize.translate('None') + "</option>";
             for (let i = 0, length = allCountries.length; i < length; i++) {
                 const culture = allCountries[i];
                 html += "<option value='" + culture.TwoLetterISORegionName + "'>" + culture.DisplayName + '</option>';
