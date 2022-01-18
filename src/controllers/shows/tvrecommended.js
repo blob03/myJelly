@@ -27,18 +27,11 @@ import autoFocuser from '../../components/autoFocuser';
 		const savedKey = params.topParentId;
 		const savedViewKey = 'view-recommended-' + savedKey;
 		const savedQueryKey = 'query-recommended-' + savedKey; 
-		const screenWidth = dom.getWindowSize().innerWidth;
-		const parentId = params.topParentId;
 		let query = {
-				SortBy: 'DatePlayed',
-				SortOrder: 'Descending',
 				IncludeItemTypes: 'Episode',
-				Filters: 'IsResumable',
-				Limit: screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3,
 				Recursive: true,
 				Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
 				CollapseBoxSetItems: false,
-				ParentId: parentId,
 				ImageTypeLimit: 1,
 				EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
 				EnableTotalRecordCount: false
@@ -161,9 +154,19 @@ import autoFocuser from '../../components/autoFocuser';
 		
 		function loadResume(view, userId, parentId) {
 			let options = query;
-			
+			const screenWidth = dom.getWindowSize().innerWidth;
+		
+			options.Limit = screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3;
 			options.SortBy = 'DatePlayed';
 			options.SortOrder = 'Descending';
+			options.IncludeItemTypes = 'Episode';
+			options.Filters = 'IsResumable';
+			options.userId = userId;
+			options.Limit = 30;
+			options.Fields = 'PrimaryImageAspectRatio,BasicSyncInfo';
+			options.ParentId = parentId;
+			options.ImageTypeLimit = 1;
+			options.EnableImageTypes = 'Primary,Backdrop,Thumb';
 			
 			ApiClient.getItems(userId, options).then(function (result) {
 				
@@ -271,9 +274,13 @@ import autoFocuser from '../../components/autoFocuser';
 
 		function loadLatest(view, userId, parentId) {
 			let options = query;
-			
+			const screenWidth = dom.getWindowSize().innerWidth;
+		
+			options.Limit = screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3;
+			options.SortBy = 'SortName,ProductionYear';
+			options.SortOrder = 'Ascending';
 			options.userId = userId;
-			options.IncludeItemTypes = 'Episode';
+			options.IncludeItemTypes = 'Episode,Series';
 			options.Limit = 30;
 			options.Fields = 'PrimaryImageAspectRatio,BasicSyncInfo';
 			options.ParentId = parentId;
@@ -392,16 +399,19 @@ import autoFocuser from '../../components/autoFocuser';
 
 		function loadNextUp(view, userId, parentId) {
 			let options = query;
-			
+			const screenWidth = dom.getWindowSize().innerWidth;
+		
+			options.Limit = screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3;
+			options.SortBy = 'SortName,ProductionYear';
+			options.SortOrder = 'Ascending';
 			options.userId = userId;
+			options.IncludeItemTypes = 'Episode';
 			options.Limit = 24;
 			options.Fields = 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo';
 			options.ParentId = parentId;
 			options.ImageTypeLimit = 1;
 			options.EnableImageTypes = 'Primary,Backdrop,Thumb';
-			options.EnableTotalRecordCount = false;
 			
-			options.ParentId = libraryMenu.getTopParentId();
 			ApiClient.getNextUpEpisodes(options).then(function (result) {
 				
 				const section = view.querySelector('#nextUpItemsSection');

@@ -1149,6 +1149,17 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	overflow: visible;
 }
 
+.emby-tab-button:hover,
+.emby-tab-button-active {
+    color: #a7e2ff !important;
+}
+
+.emby-tab-button-active {
+	animation-name: buttonfocus !important;
+	animation-duration: .15s !important;
+	transform: scale(1.4) !important;
+}
+
 .emby-tab-button:hover:not(:disabled) > * > .material-icons {
     color: rgb(143, 225, 229) !important;
 }

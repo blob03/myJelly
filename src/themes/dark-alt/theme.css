@@ -1146,6 +1146,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .radioButtonLabel,
 .emby-collapsible-button,
+.emby-collapsible-title,
 .label,
 .listItemBodyText,
 .paperListLabel,
@@ -1192,6 +1193,17 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .emby-tab-button {
     color: rgb(112, 123, 128);
 	overflow: visible;
+}
+
+.emby-tab-button:hover,
+.emby-tab-button-active {
+    color: #fff !important;
+}
+
+.emby-tab-button-active {
+	animation-name: buttonfocus !important;
+	animation-duration: .15s !important;
+	transform: scale(1.2) !important;
 }
 
 .emby-tab-button:hover:not(:disabled) > * > .material-icons {

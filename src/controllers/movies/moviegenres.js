@@ -71,6 +71,7 @@ import '../../elements/emby-button/emby-button';
 	
 					const allowBottomPadding = !enableScrollX();
 					let html = "";
+					elem.classList.add('hide');
 					
 					if (viewStyle == 'Thumb') {
 						html += cardBuilder.getCardsHtml(result.Items, {
@@ -145,7 +146,7 @@ import '../../elements/emby-button/emby-button';
 					}
 					
 					elem.classList.remove('hide');
-				} 
+				} 				
             });
         };
 

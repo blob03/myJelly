@@ -58,100 +58,105 @@ import '../../elements/emby-button/emby-button';
             const id = elem.getAttribute('data-id');
             const viewStyle = getCurrentViewStyle();
             let limit = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 5 : 9;
-
             if (enableScrollX()) {
                 limit = 10;
             }
             const enableImageTypes = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 'Primary,Backdrop,Thumb' : 'Primary';
+			
 			query.Limit = limit;
 			query.GenreIds = id;
 			query.EnableImageTypes = enableImageTypes;
-			
+				
             ApiClient.getItems(ApiClient.getCurrentUserId(), query).then(function (result) {
 				
-				let html = "";
-				const allowBottomPadding = !enableScrollX();
+				if (result.Items.length) {
+					let html = "";
+					const allowBottomPadding = !enableScrollX();
+					elem.classList.add('hide');
+					
+					if (viewStyle == 'Thumb') {
+						html += cardBuilder.getCardsHtml(result.Items, {
+							shape: 'backdrop',
+							preferThumb: true,
+							overlayMoreButton: true,
+							centerText: true,
+							showTitle: true,
+							lazy: true,
+							scalable: true,
+							allowBottomPadding: allowBottomPadding,
+							showDetailsMenu: true,
+							showYear: true
+						});
+					} else if (viewStyle == 'ThumbCard') {
+						html += cardBuilder.getCardsHtml(result.Items, {
+							shape: 'backdrop',
+							preferThumb: true,
+							overlayMoreButton: true,
+							lazy: true,
+							cardLayout: true,
+							centerText: true,
+							showTitle: true,
+							scalable: true,
+							allowBottomPadding: allowBottomPadding,
+							showDetailsMenu: true,
+							showYear: true
+						});
+					} else if (viewStyle == 'Banner') {
+						html += cardBuilder.getCardsHtml(result.Items, {
+							shape: 'banner',
+							overlayMoreButton: true,
+							preferBanner: true,
+							centerText: true,
+							showTitle: false,
+							allowBottomPadding: allowBottomPadding,
+							showYear: false,
+							showDetailsMenu: true,
+							scalable: true,
+							lazy: true
+						});
+					} else if (viewStyle == 'List') {
+						elem.classList.add('vertical-list');
+						elem.classList.remove('vertical-wrap');
+					
+						html += listView.getListViewHtml({
+							items: result.Items
+						});
+					} else if (viewStyle == 'PosterCard') {
+						html += cardBuilder.getCardsHtml(result.Items, {
+							shape: 'auto',
+							showTitle: true,
+							showYear: true,
+							lazy: true,
+							allowBottomPadding: allowBottomPadding,
+							overlayMoreButton: true,
+							centerText: true,
+							scalable: true,
+							showDetailsMenu: true,
+							cardLayout: true
+						});
+					} else {
+						html += cardBuilder.getCardsHtml(result.Items, {
+							shape: 'auto',
+							overlayMoreButton: true,
+							allowBottomPadding: allowBottomPadding,
+							centerText: true,
+							showYear: true,
+							lazy: true,
+							scalable: true,
+							showDetailsMenu: true,
+							showTitle: true
+						});
+					}
+					
+					elem.innerHTML = html;
+					imageLoader.lazyChildren(elem);
 				
-				if (viewStyle == 'Thumb') {
-					html += cardBuilder.getCardsHtml(result.Items, {
-						shape: 'backdrop',
-						preferThumb: true,
-						overlayMoreButton: true,
-						centerText: true,
-						showTitle: true,
-						lazy: true,
-						scalable: true,
-						allowBottomPadding: allowBottomPadding,
-						showDetailsMenu: true,
-						showYear: true
-					});
-				} else if (viewStyle == 'ThumbCard') {
-					html += cardBuilder.getCardsHtml(result.Items, {
-						shape: 'backdrop',
-						preferThumb: true,
-						overlayMoreButton: true,
-						lazy: true,
-						cardLayout: true,
-						centerText: true,
-						showTitle: true,
-						scalable: true,
-						allowBottomPadding: allowBottomPadding,
-						showDetailsMenu: true,
-						showYear: true
-					});
-				} else if (viewStyle == 'Banner') {
-					html += cardBuilder.getCardsHtml(result.Items, {
-						shape: 'banner',
-						overlayMoreButton: true,
-						preferBanner: true,
-						centerText: true,
-						showTitle: false,
-						allowBottomPadding: allowBottomPadding,
-						showYear: false,
-						showDetailsMenu: true,
-						scalable: true,
-						lazy: true
-					});
-				} else if (viewStyle == 'List') {
-					elem.classList.add('vertical-list');
-					elem.classList.remove('vertical-wrap');
-				
-					html += listView.getListViewHtml({
-						items: result.Items
-					});
-				} else if (viewStyle == 'PosterCard') {
-					html += cardBuilder.getCardsHtml(result.Items, {
-						shape: 'auto',
-						showTitle: true,
-						showYear: true,
-						lazy: true,
-						allowBottomPadding: allowBottomPadding,
-						overlayMoreButton: true,
-						centerText: true,
-						scalable: true,
-						showDetailsMenu: true,
-						cardLayout: true
-					});
-				} else {
-					html += cardBuilder.getCardsHtml(result.Items, {
-						shape: 'auto',
-						overlayMoreButton: true,
-						allowBottomPadding: allowBottomPadding,
-						centerText: true,
-						showYear: true,
-						lazy: true,
-						scalable: true,
-						showDetailsMenu: true,
-						showTitle: true
-					});
+					if (result.Items.length >= query.Limit) {
+						tabContent.querySelector('.btnMoreFromGenre' + id + ' .material-icons').classList.remove('hide');
+					}
+					
+					elem.classList.remove('hide');	
 				}
-				
-				elem.innerHTML = html;
-				imageLoader.lazyChildren(elem);
-			
-                if (result.Items.length >= query.Limit) {
-                    tabContent.querySelector('.btnMoreFromGenre' + id + ' .material-icons').classList.remove('hide');
-                }
             });
         }
 
