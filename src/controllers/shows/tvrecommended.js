@@ -154,16 +154,24 @@ import autoFocuser from '../../components/autoFocuser';
 		
 		function loadResume(view, userId, parentId) {
 			let options = query;
+			let viewStyle = getCurrentViewStyle();
 			const screenWidth = dom.getWindowSize().innerWidth;
 		
-			options.Limit = screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3;
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				options.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					options.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					options.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
+			
 			options.SortBy = 'DatePlayed';
 			options.SortOrder = 'Descending';
 			options.IncludeItemTypes = 'Episode';
 			options.Filters = 'IsResumable';
 			options.userId = userId;
-			options.Limit = 30;
-			options.Fields = 'PrimaryImageAspectRatio,BasicSyncInfo';
+			options.Fields = 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo';
 			options.ParentId = parentId;
 			options.ImageTypeLimit = 1;
 			options.EnableImageTypes = 'Primary,Backdrop,Thumb';
@@ -176,7 +184,6 @@ import autoFocuser from '../../components/autoFocuser';
 					
 					const allowBottomPadding = !enableScrollX();
 					let elem = view.querySelector('#resumableItems');
-					let viewStyle = getCurrentViewStyle();
 					let html = "";
 					
 					if (viewStyle == 'List') {
@@ -274,15 +281,24 @@ import autoFocuser from '../../components/autoFocuser';
 
 		function loadLatest(view, userId, parentId) {
 			let options = query;
+			let viewStyle = getCurrentViewStyle();
 			const screenWidth = dom.getWindowSize().innerWidth;
-		
-			options.Limit = screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3;
+
 			options.SortBy = 'SortName,ProductionYear';
 			options.SortOrder = 'Ascending';
 			options.userId = userId;
-			options.IncludeItemTypes = 'Episode,Series';
-			options.Limit = 30;
-			options.Fields = 'PrimaryImageAspectRatio,BasicSyncInfo';
+			options.IncludeItemTypes = 'Episode';
+			
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				options.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					options.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					options.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
+			
+			options.Fields = 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo';
 			options.ParentId = parentId;
 			options.ImageTypeLimit = 1;
 			options.EnableImageTypes = 'Primary,Backdrop,Thumb';
@@ -295,7 +311,6 @@ import autoFocuser from '../../components/autoFocuser';
 					
 					const allowBottomPadding = !enableScrollX();
 					let elem = section.querySelector('#latestEpisodesItems');
-					let viewStyle = getCurrentViewStyle();
 					
 					let html = "";
 					
@@ -399,14 +414,22 @@ import autoFocuser from '../../components/autoFocuser';
 
 		function loadNextUp(view, userId, parentId) {
 			let options = query;
+			let viewStyle = getCurrentViewStyle();
 			const screenWidth = dom.getWindowSize().innerWidth;
 		
-			options.Limit = screenWidth >= 1920 ? 5 : screenWidth >= 1600 ? 5 : 3;
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				options.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					options.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					options.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
+			
 			options.SortBy = 'SortName,ProductionYear';
 			options.SortOrder = 'Ascending';
 			options.userId = userId;
 			options.IncludeItemTypes = 'Episode';
-			options.Limit = 24;
 			options.Fields = 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo';
 			options.ParentId = parentId;
 			options.ImageTypeLimit = 1;
@@ -421,7 +444,6 @@ import autoFocuser from '../../components/autoFocuser';
 					const allowBottomPadding = !enableScrollX();
 					
 					let elem = section.querySelector('#nextUpItems');
-					let viewStyle = getCurrentViewStyle();
 					let html = "";
 					
 					if (viewStyle == 'List') {

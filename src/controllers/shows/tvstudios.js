@@ -46,7 +46,8 @@ import cardBuilder from '../../components/cardbuilder/cardBuilder';
                 scalable: true,
                 centerText: true,
                 overlayMoreButton: true,
-                context: 'tvshows'
+                context: 'tvshows',
+				cardLayout: true
             });
             loading.hide();
 

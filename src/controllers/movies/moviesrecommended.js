@@ -63,10 +63,19 @@ import Dashboard from '../../scripts/clientUtils';
 		function loadLatest(page, userId, parentId) {
 			
 			const screenWidth = dom.getWindowSize().innerWidth;
+			const viewStyle = getCurrentViewStyle();
 			let options = query;
 			options.userId = userId;
 			options.categoryLimit = 6;
-			options.ItemLimit = screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5;
+			
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				options.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					options.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					options.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
 		
 			const url = ApiClient.getUrl('Users/' + userId + '/Items/Latest', options);
 			
@@ -74,7 +83,6 @@ import Dashboard from '../../scripts/clientUtils';
 				
 				if (items.length) {
 	
-					const viewStyle = getCurrentViewStyle();
 					const allowBottomPadding = !enableScrollX();
 					const elem = page.querySelector('#recentlyAddedItems');
 					let html = "";
@@ -165,19 +173,27 @@ import Dashboard from '../../scripts/clientUtils';
 		function loadResume(page, userId, parentId) {
 			
 			const screenWidth = dom.getWindowSize().innerWidth;			
+			const viewStyle = getCurrentViewStyle();
 			let options = query;
 			options.SortBy = 'DatePlayed';
 			options.SortOrder = 'Descending';
 			options.Filters = 'IsResumable';
 			options.userId = userId;
 			options.categoryLimit = 6;
-			options.ItemLimit = screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5;
+			
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				options.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					options.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					options.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
 			
 			ApiClient.getItems(userId, options).then(function (result) {
 
 				if (result.Items.length) {
 	
-					const viewStyle = getCurrentViewStyle();
 					const allowBottomPadding = !enableScrollX();
 					const elem = page.querySelector('#resumableItems');
 					let html = "";
@@ -377,11 +393,20 @@ import Dashboard from '../../scripts/clientUtils';
 		}
 
 		function loadSuggestions(page, userId) {
-			const screenWidth = dom.getWindowSize().innerWidth;	
+			const screenWidth = dom.getWindowSize().innerWidth;
+			const viewStyle = getCurrentViewStyle();
 			let options = query;
 			options.userId = userId;
 			options.categoryLimit = 6;
-			options.ItemLimit = screenWidth >= 1920 ? 8 : screenWidth >= 1600 ? 8 : screenWidth >= 1200 ? 6 : 5;
+			
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				options.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					options.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					options.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
 		
 			const url = ApiClient.getUrl('Movies/Recommendations', options);
 			ApiClient.getJSON(url).then(function (recommendations) {

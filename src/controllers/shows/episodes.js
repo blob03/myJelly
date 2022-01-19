@@ -12,6 +12,7 @@ import Dashboard from '../../scripts/clientUtils';
 /* eslint-disable indent */
 
     export default function (view, params, tabContent) {
+		
         function getPageData(context) {
             const key = getSavedQueryKey(context);
             let pageData = data[key];
@@ -29,7 +30,7 @@ import Dashboard from '../../scripts/clientUtils';
                         EnableImageTypes: 'Primary,Backdrop,Thumb',
                         StartIndex: 0
                     },
-                    view: libraryBrowser.getSavedView(key) || 'Poster'
+                    view: libraryBrowser.getSavedView(key) || 'ThumbCard'
                 };
 
                 if (userSettings.libraryPageSize() > 0) {
@@ -98,7 +99,7 @@ import Dashboard from '../../scripts/clientUtils';
                 }
 
                 window.scrollTo(0, 0);
-                let html;
+                let html = '';
                 const pagingHtml = libraryBrowser.getQueryPagingHtml({
                     startIndex: query.StartIndex,
                     limit: query.Limit,
@@ -109,23 +110,43 @@ import Dashboard from '../../scripts/clientUtils';
                     sortButton: false,
                     filterButton: false
                 });
+				
                 const viewStyle = self.getCurrentViewStyle();
                 const itemsContainer = tabContent.querySelector('.itemsContainer');
+				
                 if (viewStyle == 'List') {
-                    html = listView.getListViewHtml({
+                    html += listView.getListViewHtml({
                         items: result.Items,
                         sortBy: query.SortBy,
                         showParentTitle: true
                     });
-                } else if (viewStyle == 'PosterCard') {
-                    html = cardBuilder.getCardsHtml({
-                        items: result.Items,
-                        shape: 'backdrop',
-                        showTitle: true,
-                        showParentTitle: true,
-                        scalable: true,
-                        cardLayout: true
-                    });
+				} else if (viewStyle == 'Thumb') {
+					html += cardBuilder.getCardsHtml(result.Items, {
+						shape: 'backdrop',
+						preferThumb: true,
+						overlayMoreButton: true,
+						inheritThumb: !userSettings.useEpisodeImagesInNextUpAndResume(),
+						centerText: true,
+						showTitle: true,
+						lazy: true,
+						scalable: true,
+						showDetailsMenu: true,
+						showYear: true
+					});
+				} else if (viewStyle == 'ThumbCard') {
+					html += cardBuilder.getCardsHtml(result.Items, {
+						shape: 'backdrop',
+						preferThumb: true,
+						overlayMoreButton: true,
+						inheritThumb: !userSettings.useEpisodeImagesInNextUpAndResume(),
+						lazy: true,
+						cardLayout: true,
+						centerText: true,
+						showTitle: true,
+						scalable: true,
+						showDetailsMenu: true,
+						showYear: true
+					});
                 } else {
                     html = cardBuilder.getCardsHtml({
                         items: result.Items,
@@ -135,7 +156,7 @@ import Dashboard from '../../scripts/clientUtils';
                         overlayText: false,
                         centerText: true,
                         scalable: true,
-                        overlayPlayButton: true
+                        overlayMoreButton: true
                     });
                 }
                 let elems;
@@ -229,7 +250,7 @@ import Dashboard from '../../scripts/clientUtils';
             });
             const btnSelectView = tabContent.querySelector('.btnSelectView');
             btnSelectView.addEventListener('click', function (e) {
-                libraryBrowser.showLayoutMenu(e.target, self.getCurrentViewStyle(), 'List,Poster,PosterCard'.split(','));
+				libraryBrowser.showLayoutMenu(e.target, self.getCurrentViewStyle(), 'List,Thumb,ThumbCard'.split(','));
             });
             btnSelectView.addEventListener('layoutchange', function (e) {
                 const viewStyle = e.detail.viewStyle;

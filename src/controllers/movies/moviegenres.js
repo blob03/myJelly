@@ -1,6 +1,7 @@
 import layoutManager from '../../components/layoutManager';
 import loading from '../../components/loading/loading';
 import { Events } from 'jellyfin-apiclient';
+import dom from '../../scripts/dom';
 import libraryBrowser from '../../scripts/libraryBrowser';
 import * as userSettings from '../../scripts/settings/userSettings';
 import cardBuilder from '../../components/cardbuilder/cardBuilder';
@@ -57,10 +58,16 @@ import '../../elements/emby-button/emby-button';
         const fillItemsContainer = (entry) => {
             const elem = entry.target;
             const viewStyle = getCurrentViewStyle(); 
-            
-			query.limit = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 5 : 9;
-            if (enableScrollX()) 
-                query.limit = 10;
+            const screenWidth = dom.getWindowSize().innerWidth;			
+			
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				query.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					query.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					query.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
 			
             query.enableImageTypes = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 'Primary,Backdrop,Thumb' : 'Primary';
 			query.GenreIds = elem.getAttribute('data-id');
@@ -71,7 +78,6 @@ import '../../elements/emby-button/emby-button';
 	
 					const allowBottomPadding = !enableScrollX();
 					let html = "";
-					elem.classList.add('hide');
 					
 					if (viewStyle == 'Thumb') {
 						html += cardBuilder.getCardsHtml(result.Items, {
@@ -141,9 +147,9 @@ import '../../elements/emby-button/emby-button';
 					elem.innerHTML = html;
 					imageLoader.lazyChildren(elem);
 					
-					if (result.Items.length >= query.Limit) {
-						tabContent.querySelector('.btnMoreFromGenre' + id + ' .material-icons').classList.remove('hide');
-					}
+					//if (result.Items.length >= query.Limit) {
+					//	tabContent.querySelector('.btnMoreFromGenre' + id + ' .material-icons').classList.remove('hide');
+					//}
 					
 					elem.classList.remove('hide');
 				} 				

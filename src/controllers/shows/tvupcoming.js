@@ -19,7 +19,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 		const savedViewKey = 'view-upcoming-' + savedKey;
 
 		function getCurrentViewStyle() {
-			return userSettings.get(savedViewKey) ||  'PosterCard';
+			return userSettings.get(savedViewKey) ||  'ThumbCard';
 		};
 				
 		function setCurrentViewStyle(viewStyle) {

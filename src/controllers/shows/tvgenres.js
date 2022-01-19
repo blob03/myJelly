@@ -1,6 +1,7 @@
 import layoutManager from '../../components/layoutManager';
 import loading from '../../components/loading/loading';
 import { Events } from 'jellyfin-apiclient';
+import dom from '../../scripts/dom';
 import libraryBrowser from '../../scripts/libraryBrowser';
 import cardBuilder from '../../components/cardbuilder/cardBuilder';
 import imageLoader from '../../components/images/imageLoader';
@@ -57,13 +58,18 @@ import '../../elements/emby-button/emby-button';
             const elem = entry.target;
             const id = elem.getAttribute('data-id');
             const viewStyle = getCurrentViewStyle();
-            let limit = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 5 : 9;
-            if (enableScrollX()) {
-                limit = 10;
-            }
+            const screenWidth = dom.getWindowSize().innerWidth;			
             const enableImageTypes = viewStyle == 'Thumb' || viewStyle == 'ThumbCard' ? 'Primary,Backdrop,Thumb' : 'Primary';
 			
-			query.Limit = limit;
+			if (viewStyle == 'Thumb' || viewStyle == 'ThumbCard') {
+				query.Limit = screenWidth >= 1920 ? 4 : 3;
+			} else {
+				if (layoutManager.tv)
+					query.Limit = screenWidth >= 1200 ? 6 : 5;
+				else
+					query.Limit = screenWidth >= 1200 ? 7 : 6;
+			}
+			
 			query.GenreIds = id;
 			query.EnableImageTypes = enableImageTypes;
 				
@@ -119,7 +125,9 @@ import '../../elements/emby-button/emby-button';
 						elem.classList.remove('vertical-wrap');
 					
 						html += listView.getListViewHtml({
-							items: result.Items
+							items: result.Items,
+							sortBy: query.SortBy,
+							showParentTitle: true
 						});
 					} else if (viewStyle == 'PosterCard') {
 						html += cardBuilder.getCardsHtml(result.Items, {
