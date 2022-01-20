@@ -139,15 +139,15 @@ import focusManager from '../../components/focusManager';
         label.innerHTML = this.getAttribute('label') || '';
         label.classList.add('selectLabel');
         label.htmlFor = this.id;
-        this.parentNode.insertBefore(label, this);
+        this.parentNode?.insertBefore(label, this);
 
         if (this.classList.contains('emby-select-withcolor')) {
-            this.parentNode.insertAdjacentHTML('beforeend', '<div class="selectArrowContainer"><div style="visibility:hidden;display:none;">0</div><span class="selectArrow material-icons keyboard_arrow_down"></span></div>');
+            this.parentNode?.insertAdjacentHTML('beforeend', '<div class="selectArrowContainer"><div style="visibility:hidden;display:none;">0</div><span class="selectArrow material-icons keyboard_arrow_down"></span></div>');
         }
     };
 
     EmbySelectPrototype.setLabel = function (text) {
-        const label = this.parentNode.querySelector('label');
+        const label = this.parentNode?.querySelector('label');
 
         label.innerHTML = text;
     };

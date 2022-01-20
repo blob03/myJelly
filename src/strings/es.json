@@ -155,6 +155,7 @@
     "ConfirmEndPlayerSession": "¿Quieres cerrar Jellyfin en el dispositivo?",
     "Connect": "Conectar",
     "Console": "Consola",
+    "ContainerBitrateExceedsLimit": "La tasa de bits del video supera el límite",
     "ContainerNotSupported": "El formato de archivo no es compatible",
     "ContinueWatching": "Seguir viendo",
     "Continuing": "Continuando",
