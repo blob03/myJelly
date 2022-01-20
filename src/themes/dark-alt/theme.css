@@ -197,7 +197,7 @@ html {
 
 .emby-input,
 .emby-textarea {
-	color: #2f3238;
+	color: #383e4a !important;
 	font-weight: 600;
 	font-style: italic;
 	background-color: #5d676c;
@@ -1256,4 +1256,24 @@ option:not(:disabled),
 select option:selected {
 	color: #ffffff !important;
 	background: #282828 !important;
+}
+
+.defaultCardBackground1 {
+    background-color: #374b61;
+}
+
+.defaultCardBackground2 {
+    background-color: #23262d;
+}
+
+.defaultCardBackground3 {
+    background-color: #454d56;
+}
+
+.defaultCardBackground4 {
+    background-color: #606970;
+}
+
+.defaultCardBackground5 {
+    background-color: #373f48;
 }

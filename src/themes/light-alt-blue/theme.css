@@ -124,6 +124,22 @@ html {
     background-color: #009688;
 }
 
+.defaultCardBackground2 {
+    background-color: #338abb;
+}
+
+.defaultCardBackground3 {
+    background-color: #71abb4;
+}
+
+.defaultCardBackground4 {
+    background-color: #6db392;
+}
+
+.defaultCardBackground5 {
+    background-color: #63c4a4;
+}
+
 .formDialogFooter:not(.formDialogFooter-clear) {
     background-color: transparent;
     border: none;

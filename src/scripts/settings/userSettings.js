@@ -307,6 +307,20 @@ export class UserSettings {
         val = this.get('useEpisodeImagesInNextUpAndResume');
         return val === 'true';
     }
+	
+	/**
+     * Get or set 'Use Card Layout in Home Sections' state.
+     * @param {string|boolean|undefined} val - Flag to enable 'Use Card Layout in Home Sections' or undefined.
+     * @return {boolean} 'Use Card Layout in Home Sections' state.
+     */
+    useCardLayoutInHomeSections(val) {
+        if (val !== undefined) {
+            return this.set('useCardLayoutInHomeSections', val.toString());
+        }
+
+        val = this.get('useCardLayoutInHomeSections');
+        return val === 'true';
+    }
 
     /**
      * Get or set 'Clock' state.
@@ -745,6 +759,7 @@ export const enableBackdrops = currentSettings.enableBackdrops.bind(currentSetti
 export const displayFontSize = currentSettings.displayFontSize.bind(currentSettings);
 export const detailsBanner = currentSettings.detailsBanner.bind(currentSettings);
 export const useEpisodeImagesInNextUpAndResume = currentSettings.useEpisodeImagesInNextUpAndResume.bind(currentSettings);
+export const useCardLayoutInHomeSections = currentSettings.useCardLayoutInHomeSections.bind(currentSettings);
 export const language = currentSettings.language.bind(currentSettings);
 export const dateTimeLocale = currentSettings.dateTimeLocale.bind(currentSettings);
 export const chromecastVersion = currentSettings.chromecastVersion.bind(currentSettings);

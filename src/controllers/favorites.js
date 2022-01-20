@@ -7,6 +7,7 @@ import layoutManager from '../components/layoutManager';
 import focusManager from '../components/focusManager';
 import '../elements/emby-itemscontainer/emby-itemscontainer';
 import '../elements/emby-scroller/emby-scroller';
+import * as userSettings from '../scripts/settings/userSettings';
 import ServerConnections from '../components/ServerConnections';
 
 /* eslint-disable indent */
@@ -35,8 +36,7 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             showYear: true,
             overlayPlayButton: true,
-            overlayText: false,
-            centerText: true
+            overlayText: false
         }, {
             name: 'Shows',
             types: 'Series',
@@ -44,8 +44,7 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             showYear: true,
             overlayPlayButton: true,
-            overlayText: false,
-            centerText: true
+            overlayText: false
         }, {
             name: 'Episodes',
             types: 'Episode',
@@ -54,8 +53,7 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             showParentTitle: true,
             overlayPlayButton: true,
-            overlayText: false,
-            centerText: true
+            overlayText: false
         }, {
             name: 'Videos',
             types: 'Video',
@@ -63,16 +61,14 @@ import ServerConnections from '../components/ServerConnections';
             preferThumb: true,
             showTitle: true,
             overlayPlayButton: true,
-            overlayText: false,
-            centerText: true
+            overlayText: false
         }, {
             name: 'Collections',
             types: 'BoxSet',
             shape: getPosterShape(),
             showTitle: true,
             overlayPlayButton: true,
-            overlayText: false,
-            centerText: true
+            overlayText: false
         }, {
             name: 'Playlists',
             types: 'Playlist',
@@ -81,7 +77,6 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             overlayText: false,
             showParentTitle: false,
-            centerText: true,
             overlayPlayButton: true,
             coverImage: true
         }, {
@@ -92,7 +87,6 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             overlayText: false,
             showParentTitle: false,
-            centerText: true,
             overlayPlayButton: true,
             coverImage: true
         }, {
@@ -103,7 +97,6 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             overlayText: false,
             showParentTitle: false,
-            centerText: true,
             overlayPlayButton: true,
             coverImage: true
         }, {
@@ -114,7 +107,6 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             overlayText: false,
             showParentTitle: true,
-            centerText: true,
             overlayPlayButton: true,
             coverImage: true
         }, {
@@ -125,7 +117,6 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             overlayText: false,
             showParentTitle: true,
-            centerText: true,
             overlayMoreButton: true,
             action: 'instantmix',
             coverImage: true
@@ -136,8 +127,7 @@ import ServerConnections from '../components/ServerConnections';
             showTitle: true,
             showYear: true,
             overlayPlayButton: true,
-            overlayText: false,
-            centerText: true
+            overlayText: false
         }];
     }
 
@@ -180,8 +170,7 @@ import ServerConnections from '../components/ServerConnections';
 
     function getItemsHtmlFn(section) {
         return function (items) {
-            let cardLayout = appHost.preferVisualCards && section.autoCardLayout && section.showTitle;
-            cardLayout = false;
+			const cardLayout = userSettings.useCardLayoutInHomeSections();
             const serverId = this.apiClient.serverId();
             const leadingButtons = layoutManager.tv ? [{
                 name: globalize.translate('All'),
@@ -207,7 +196,6 @@ import ServerConnections from '../components/ServerConnections';
                 items: items,
                 preferThumb: section.preferThumb,
                 shape: section.shape,
-                centerText: section.centerText && !cardLayout,
                 overlayText: section.overlayText !== false,
                 showTitle: section.showTitle,
                 showYear: section.showYear,
@@ -218,6 +206,7 @@ import ServerConnections from '../components/ServerConnections';
                 overlayMoreButton: section.overlayMoreButton && !cardLayout,
                 action: section.action,
                 allowBottomPadding: !enableScrollX(),
+				centerText: true,
                 cardLayout: cardLayout,
                 leadingButtons: leadingButtons,
                 lines: lines

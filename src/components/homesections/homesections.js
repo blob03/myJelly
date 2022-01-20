@@ -10,6 +10,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 import '../../elements/emby-scroller/emby-scroller';
 import '../../elements/emby-button/emby-button';
 import './homesections.scss';
+import * as userSettings from '../../scripts/settings/userSettings';
 import Dashboard from '../../scripts/clientUtils';
 import ServerConnections from '../ServerConnections';
 
@@ -226,7 +227,7 @@ import ServerConnections from '../ServerConnections';
                 }
             } else {
                 if (collectionType === 'tvshows') {
-                    limit = 5;
+                    limit = 8;
                 } else if (collectionType === 'music') {
                     limit = 9;
                 } else {
@@ -248,7 +249,7 @@ import ServerConnections from '../ServerConnections';
 
     function getLatestItemsHtmlFn(itemType, viewType) {
         return function (items) {
-            const cardLayout = false;
+            const cardLayout = userSettings.useCardLayoutInHomeSections(); 
             let shape;
             if (itemType === 'Channel' || viewType === 'movies' || viewType === 'books' || viewType === 'tvshows') {
                 shape = getPortraitShape();
@@ -266,10 +267,10 @@ import ServerConnections from '../ServerConnections';
                 showChildCountIndicator: true,
                 context: 'home',
                 overlayText: false,
-                centerText: !cardLayout,
+                cardLayout: cardLayout,
+				centerText: true,
                 overlayPlayButton: viewType !== 'photos',
                 allowBottomPadding: !enableScrollX() && !cardLayout,
-                cardLayout: cardLayout,
                 showTitle: viewType !== 'photos',
                 showYear: viewType === 'movies' || viewType === 'tvshows' || !viewType,
                 showParentTitle: viewType === 'music' || viewType === 'tvshows' || !viewType || (cardLayout && (viewType === 'tvshows')),
@@ -341,6 +342,7 @@ import ServerConnections from '../ServerConnections';
 
     export function loadLibraryTiles(elem, apiClient, user, userSettings, shape, userViews) {
         let html = '';
+		const cardLayout = userSettings.useCardLayoutInHomeSections(); 
         if (userViews.length) {
             html += '<h2 class="sectionTitle sectionTitle-cards padded-left">' + globalize.translate('HeaderMyMedia') + '</h2>';
             if (enableScrollX()) {
@@ -354,7 +356,8 @@ import ServerConnections from '../ServerConnections';
                 items: userViews,
                 shape: getThumbShape(),
                 showTitle: true,
-                centerText: true,
+                cardLayout: cardLayout,
+				centerText: true,
                 overlayText: false,
                 lazy: true,
                 transition: false,
@@ -433,7 +436,7 @@ import ServerConnections from '../ServerConnections';
 
     function getItemsToResumeHtmlFn(useEpisodeImages, mediaType) {
         return function (items) {
-            const cardLayout = false;
+            const cardLayout = userSettings.useCardLayoutInHomeSections(); 
             return cardBuilder.getCardsHtml({
                 items: items,
                 preferThumb: true,
@@ -446,9 +449,9 @@ import ServerConnections from '../ServerConnections';
                 showDetailsMenu: true,
                 overlayPlayButton: true,
                 context: 'home',
-                centerText: !cardLayout,
                 allowBottomPadding: false,
                 cardLayout: cardLayout,
+				centerText: true,
                 showYear: true,
                 lines: 2
             });
@@ -471,6 +474,7 @@ import ServerConnections from '../ServerConnections';
     }
 
     function getOnNowItemsHtml(items) {
+		const cardLayout = userSettings.useCardLayoutInHomeSections(); 
         return cardBuilder.getCardsHtml({
             items: items,
             preferThumb: 'auto',
@@ -478,7 +482,8 @@ import ServerConnections from '../ServerConnections';
             shape: (enableScrollX() ? 'autooverflow' : 'auto'),
             showParentTitleOrTitle: true,
             showTitle: true,
-            centerText: true,
+            cardLayout: cardLayout,
+			centerText: true,
             coverImage: true,
             overlayText: false,
             allowBottomPadding: !enableScrollX(),
@@ -624,7 +629,7 @@ import ServerConnections from '../ServerConnections';
 
     function getNextUpItemsHtmlFn(useEpisodeImages) {
         return function (items) {
-            const cardLayout = false;
+            const cardLayout = userSettings.useCardLayoutInHomeSections();
             return cardBuilder.getCardsHtml({
                 items: items,
                 preferThumb: true,
@@ -636,9 +641,9 @@ import ServerConnections from '../ServerConnections';
                 lazy: true,
                 overlayPlayButton: true,
                 context: 'home',
-                centerText: !cardLayout,
                 allowBottomPadding: !enableScrollX(),
-                cardLayout: cardLayout
+                cardLayout: cardLayout,
+				centerText: true,
             });
         };
     }
@@ -698,6 +703,7 @@ import ServerConnections from '../ServerConnections';
 
     function getLatestRecordingItemsHtml(activeRecordingsOnly) {
         return function (items) {
+			const cardLayout = userSettings.useCardLayoutInHomeSections(); 
             return cardBuilder.getCardsHtml({
                 items: items,
                 shape: enableScrollX() ? 'autooverflow' : 'auto',
@@ -706,14 +712,14 @@ import ServerConnections from '../ServerConnections';
                 coverImage: true,
                 lazy: true,
                 showDetailsMenu: true,
-                centerText: true,
                 overlayText: false,
                 showYear: true,
                 lines: 2,
                 overlayPlayButton: !activeRecordingsOnly,
                 allowBottomPadding: !enableScrollX(),
                 preferThumb: true,
-                cardLayout: false,
+                cardLayout: cardLayout,
+				centerText: true,
                 overlayMoreButton: activeRecordingsOnly,
                 action: activeRecordingsOnly ? 'none' : null,
                 centerPlayButton: activeRecordingsOnly

@@ -391,6 +391,7 @@ import template from './homeScreenSettings.template.html';
 	
     function loadForm(context, user, userSettings, apiClient) {
 		context.querySelector('#chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
+		context.querySelector('#chkUseCardLayoutInHomeSections').checked = userSettings.useCardLayoutInHomeSections() || false;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();		
         
@@ -458,7 +459,7 @@ import template from './homeScreenSettings.template.html';
 		const user = instance.currentUser;
 		
         user.Configuration.HidePlayedInLatest = context.querySelector('#chkHidePlayedFromLatest').checked;
-
+		
         user.Configuration.LatestItemsExcludes = getCheckboxItems('.chkIncludeInLatest', context, false).map(i => {
             return i.getAttribute('data-folderid'); });
 
@@ -479,6 +480,7 @@ import template from './homeScreenSettings.template.html';
         user.Configuration.OrderedViews = orderedViews;
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
+		userSettingsInstance.useCardLayoutInHomeSections(context.querySelector('#chkUseCardLayoutInHomeSections').checked);
 		
         userSettingsInstance.TVHome(context.querySelector('.selectTVHomeScreen').value);
         userSettingsInstance.set('homesection0', context.querySelector('#selectHomeSection1').value);

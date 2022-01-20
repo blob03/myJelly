@@ -1334,3 +1334,22 @@ option:selected {
 	background: #282828 !important;
 }
 
+.defaultCardBackground1 {
+    background-color: #ff9f38;
+}
+
+.defaultCardBackground2 {
+    background-color: #fcc45a;
+}
+
+.defaultCardBackground3 {
+    background-color: #df6428;
+}
+
+.defaultCardBackground4 {
+    background-color: #ffb43f;
+}
+
+.defaultCardBackground5 {
+    background-color: #e39b3f;
+}
