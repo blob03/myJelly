@@ -20,7 +20,7 @@ import loading from '../../components/loading/loading';
                         Fields: 'PrimaryImageAspectRatio,SortName,CanDelete',
                         StartIndex: 0
                     },
-                    view: libraryBrowser.getSavedView(key) || 'Poster'
+                    view: libraryBrowser.getSavedView(key) || 'PosterCard'
                 };
                 pageData.query.ParentId = params.topParentId;
                 libraryBrowser.loadSavedQueryValues(key, pageData.query);
@@ -55,7 +55,7 @@ import loading from '../../components/loading/loading';
                     centerText: true,
                     overlayPlayButton: true,
                     allowBottomPadding: true,
-                    cardLayout: false
+                    cardLayout: true
                 });
                 const elem = context.querySelector('#items');
                 elem.innerHTML = html;

@@ -172,14 +172,19 @@ html {
 }
 
 .alphaPickerButton {
-    color: #888;
-    background-color: transparent;
+	color: #888;
+	background-color: transparent;
+	font-weight: 600;
 }
 
-.alphaPickerButton-selected,
-.alphaPickerButton-tv:focus {
-    background-color: #00a4dc;
-    color: #fff !important;
+.alphaPickerButton-selected {
+    background-color: #cecfcf !important;
+    color: #000 !important;
+}
+
+.alphaPickerButton:hover {
+	color: #fff !important;
+	background-color: transparent;
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {

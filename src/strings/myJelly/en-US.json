@@ -46,6 +46,7 @@
     "SwiperFXHorizontal": "Horizontal sliding",
     "SwiperFXVertical": "Vertical sliding",
     "Theme": "Theme",
-	"UseCardLayoutInHomeSections": "Use a card format for the home and favorites screens",
+    "UseCardLayoutInHomeSections": "Show items as cards",
+    "UseCardLayoutInHomeSectionsHelp": "Use a card format to render the 'Home' and 'Favorites' screens.",
     "Videos": "Videos"
 }

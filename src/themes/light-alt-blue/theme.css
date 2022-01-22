@@ -182,10 +182,14 @@ html {
 	font-weight: 600;
 }
 
-.alphaPickerButton-selected,
-.alphaPickerButton-tv:focus {
-    background-color: #00a4dc;
+.alphaPickerButton-selected {
+    background-color: #00a4dc !important;
     color: #fff !important;
+}
+
+.alphaPickerButton:hover {
+	color: #fff !important;
+	background-color: transparent;
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {

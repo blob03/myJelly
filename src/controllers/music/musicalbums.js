@@ -43,7 +43,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                         EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
                         StartIndex: 0
                     },
-                    view: libraryBrowser.getSavedView(key) || 'Poster'
+                    view: libraryBrowser.getSavedView(key) || 'PosterCard'
                 };
 
                 if (userSettings.libraryPageSize() > 0) {
@@ -141,6 +141,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                         coverImage: true,
                         showParentTitle: true,
                         lazy: true,
+						centerText: true,
                         cardLayout: true
                     });
                 } else {

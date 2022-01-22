@@ -739,7 +739,7 @@
     "LabelMaxAudiobookResume": "Verbleibende Minuten des Hörbuches zum Fortsetzen:",
     "LabelMaxAudiobookResumeHelp": "Titel werden als vollständig abgespielt angenommen, wenn beim Stoppen die verbleibende Dauer kleiner als dieser Wert ist.",
     "LabelMaxBackdropsPerItem": "Maximale Anzahl von Hintergründen pro Element:",
-    "LabelMaxChromecastBitrate": "Max Chromcast Datenrate:",
+    "LabelMaxChromecastBitrate": "Chromecast Streaming-Qualität:",
     "LabelMaxDaysForNextUp": "Max. Tage für 'Als Nächstes':",
     "LabelMaxDaysForNextUpHelp": "Legt fest, wie viele Tage eine Sendung maximal in der Liste 'Als Nächstes' bleiben soll, ohne dass sie angesehen wird.",
     "LabelMaxMuxingQueueSize": "Maximale Größe der Muxing-Warteschlange:",

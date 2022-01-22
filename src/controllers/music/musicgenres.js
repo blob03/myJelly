@@ -19,7 +19,7 @@ import loading from '../../components/loading/loading';
                         Fields: 'PrimaryImageAspectRatio,ItemCounts',
                         StartIndex: 0
                     },
-                    view: libraryBrowser.getSavedView(key) || 'Poster'
+                    view: libraryBrowser.getSavedView(key) || 'PosterCard'
                 };
                 pageData.query.ParentId = params.topParentId;
                 libraryBrowser.loadSavedQueryValues(key, pageData.query);
@@ -65,6 +65,7 @@ import loading from '../../components/loading/loading';
                         preferThumb: true,
                         context: 'music',
                         cardLayout: true,
+						centerText: true,
                         showTitle: true
                     });
                 } else if (viewStyle == 'PosterCard') {
@@ -73,6 +74,7 @@ import loading from '../../components/loading/loading';
                         shape: 'auto',
                         context: 'music',
                         cardLayout: true,
+						centerText: true,
                         showTitle: true
                     });
                 } else if (viewStyle == 'Poster') {

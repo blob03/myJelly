@@ -69,7 +69,7 @@ import Dashboard from '../../scripts/clientUtils';
                 centerText: true,
                 overlayPlayButton: true,
                 allowBottomPadding: !enableScrollX(),
-                cardLayout: false,
+                cardLayout: true,
                 coverImage: true
             });
             imageLoader.lazyChildren(elem);
@@ -116,7 +116,7 @@ import Dashboard from '../../scripts/clientUtils';
                 centerText: true,
                 overlayMoreButton: true,
                 allowBottomPadding: !enableScrollX(),
-                cardLayout: false,
+                cardLayout: true,
                 coverImage: true
             });
             imageLoader.lazyChildren(itemsContainer);
@@ -158,7 +158,7 @@ import Dashboard from '../../scripts/clientUtils';
                 centerText: true,
                 overlayMoreButton: true,
                 allowBottomPadding: !enableScrollX(),
-                cardLayout: false,
+                cardLayout: true,
                 coverImage: true
             });
             imageLoader.lazyChildren(itemsContainer);

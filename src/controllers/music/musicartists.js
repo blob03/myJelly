@@ -32,7 +32,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
                 pageData = data[key] = {
                     query: queryValues,
-                    view: libraryBrowser.getSavedView(key) || 'Poster'
+                    view: libraryBrowser.getSavedView(key) || 'PosterCard'
                 };
                 pageData.query.ParentId = params.topParentId;
                 libraryBrowser.loadSavedQueryValues(key, pageData.query);
@@ -124,6 +124,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                         context: 'music',
                         showTitle: true,
                         coverImage: true,
+						centerText: true,
                         cardLayout: true
                     });
                 } else {

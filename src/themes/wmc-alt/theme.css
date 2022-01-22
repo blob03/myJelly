@@ -219,14 +219,19 @@ html {
 }
 
 .alphaPickerButton {
-    color: rgba(255, 255, 255, 0.5);
-    background-color: transparent;
+	color: rgb(77, 166, 209);
+	background-color: transparent;
+	font-weight: 600;
 }
 
-.alphaPickerButton-selected,
-.alphaPickerButton-tv:focus {
-    background-color: #00a4dc;
+.alphaPickerButton-selected {
+    background-color: #00a4dc !important;
     color: #fff !important;
+}
+
+.alphaPickerButton:hover {
+	color: #fff !important;
+	background-color: transparent;
 }
 
 .detailRibbon {

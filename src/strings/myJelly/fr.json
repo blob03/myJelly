@@ -46,6 +46,7 @@
     "SwiperFXHorizontal": "Glisser horizontalement",
     "SwiperFXVertical": "Glisser verticalement",
     "Theme": "Thème",
-	"UseCardLayoutInHomeSections": "Utiliser le format carte pour l'accueil et les favoris",
+    "UseCardLayoutInHomeSections": "Utiliser le format carte",
+    "UseCardLayoutInHomeSectionsHelp": "Présenter les éléments de l'écran d'accueil et des favoris sous la forme de cartes.",
     "Videos": "Vidéos"
 }

@@ -213,14 +213,19 @@ html {
 }
 
 .alphaPickerButton {
-    color: rgba(0, 0, 0, 0.7);
-    background-color: transparent;
+	color: #000;
+	background-color: transparent;
+	font-weight: 600;
 }
 
-.alphaPickerButton-selected,
-.alphaPickerButton-tv:focus {
-    background-color: #00a4dc;
+.alphaPickerButton-selected {
+    background-color: #716ddc !important;
     color: #fff !important;
+}
+
+.alphaPickerButton:hover {
+	color: #fff !important;
+	background-color: transparent;
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
