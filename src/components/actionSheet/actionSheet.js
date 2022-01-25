@@ -194,7 +194,10 @@ export function show(options) {
         const item = options.items[i];
 
         if (item.divider || item.disabled) {
-            html += '<div class="actionsheetDivider"></div>';
+			if (item.divider && item.divider.length)
+				html += '<div class="actionsheetDivider" style="margin: .25em 0;font-size: .6rem;font-style:italic;text-align: right;padding: 1px 20px 1px 20px;height: auto;">' + item.divider + '</div>';
+			else
+				html += '<div class="actionsheetDivider"></div>';
             continue;
         }
 

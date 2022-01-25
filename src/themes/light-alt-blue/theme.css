@@ -145,17 +145,9 @@ html {
     border: none;
     color: inherit;
 }
-	
-.actionsheetDivider {
-    background: rgba(0, 0, 0, 0.14);
-}
 
 .formDialogHeader a {
     color: #fff;
-}
-
-.actionSheetMenuItem:hover {
-    background-color: #ddd;
 }
 
 .toast {
@@ -416,20 +408,6 @@ html {
 	color: rgba(244, 245, 247, 0.8) !important;
 	background-color: transparent !important;
 }
-
-.listItem-button:hover:not(:disabled) {
-	color: rgba(244, 245, 247, 0.8) !important;
-	background-color: rgba(141, 180, 193, 0.8) !important
-}
-
-.listItem-button:focus {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
-}
-
-.listItem-button:active {
-	color: rgba(255, 255, 255, 0.8) !important;
-}
  
 .emby-button:hover:not(:disabled) {
 	color: rgb(4, 103, 162);
@@ -509,7 +487,7 @@ option:not(:disabled),
 	border: .1em ridge rgb(95, 146, 158);
 	font-weight: 600;
 	line-height: 1.35;
-	color: rgb(126, 161, 173) !important;
+	color: rgb(107, 134, 144) !important;
 }
 
 .emby-input:focus,
@@ -1199,4 +1177,35 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	font-size: 1.5rem !important;
 	transform: scale(1) !important;
 	text-shadow: 0 0 5px #060606 !important;
+}
+
+.formDialogFooter {
+	position: relative;
+}
+
+.listItemAside {
+	color: #edeceb;
+}
+
+.listItem-button:focus {
+	color: rgb(255, 255, 255) !important;
+	background-color: rgb(210, 210, 210);
+}
+
+.listItem-button:active {
+	color: rgb(255, 255, 255) !important;
+}
+
+.actionsheetDivider {	
+	color: rgb(183, 213, 239);
+	font-weight: 600;
+	background: rgb(132, 178, 201);
+}
+
+.actionSheetMenuItem:focus {
+    background-color: #77a3b8 !important;
+}
+
+.listItem-button:hover:not(:disabled) {
+	background-color: rgb(141, 180, 193);
 }

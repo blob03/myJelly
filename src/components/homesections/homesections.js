@@ -310,7 +310,7 @@ import ServerConnections from '../ServerConnections';
         html += '</div>';
 
         elem.innerHTML = html;
-
+  
         const itemsContainer = elem.querySelector('.itemsContainer');
         itemsContainer.fetchData = getFetchLatestItemsFn(apiClient.serverId(), parent.Id, parent.CollectionType);
         itemsContainer.getItemsHtml = getLatestItemsHtmlFn(parent.Type, parent.CollectionType);

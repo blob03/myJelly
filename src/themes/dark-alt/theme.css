@@ -421,20 +421,6 @@ html {
 .listItem-border {
     border-color: #2b2b2b !important;
 }
-
-.listItem-button:hover:not(:disabled) {
-	color: #c1c8d4 !important;
-	background-color: #35373b !important;
-}
-
-.listItem-button:focus {
-	color: #c1c8d4 !important;
-	background-color: #404040 !important;
-}
-
-.listItem-button:active {
-	color: #fff !important;
-}
  
  .emby-button {
 	color: #909090;
@@ -764,7 +750,7 @@ html {
 }
 
 .listItemAside {
-	color: #4d6783;;
+	color: #4d6783;
 }
 
 .listItemIcon:not(.listItemIcon-transparent) {
@@ -1281,4 +1267,20 @@ select option:selected {
 
 .defaultCardBackground5 {
     background-color: #373f48;
+}
+
+.actionsheetDivider {	
+	color: rgb(33, 34, 35);
+	font-weight: 600;
+	background: rgb(49, 59, 65);
+}
+
+.listItem-button:hover:not(:disabled) {
+	color: #c1c8d4 !important;
+	background-color: #35373b;
+}
+
+.listItem-button:focus {
+	color: #c1c8d4 !important;
+	background-color: #404040 !important;
 }

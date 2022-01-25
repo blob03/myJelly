@@ -882,7 +882,7 @@
     "LabelSkipIfAudioTrackPresentHelp": "Bỏ chọn mục này để đảm bảo tất cả video đều có phụ đề, bất kể ngôn ngữ âm thanh.",
     "LabelSkipIfGraphicalSubsPresent": "Bỏ qua nếu video đã có phụ đề được nhúng",
     "LabelSkipIfGraphicalSubsPresentHelp": "Việc giữ các phiên bản phụ đề bằng văn bản sẽ giúp phân phối hiệu quả hơn và giảm khả năng chuyển mã video.",
-    "LabelSlowResponseEnabled": "Ghi lại thông báo cảnh báo nếu máy chủ trả lời chậm",
+    "LabelSlowResponseEnabled": "Ghi lại thông báo cảnh báo nếu máy chủ hồi đáp chậm",
     "LabelSlowResponseTime": "Thời gian tính bằng mili giây sau đó phản hồi được coi là chậm:",
     "LabelSonyAggregationFlags": "Cờ tổng hợp của Sony:",
     "LabelSonyAggregationFlagsHelp": "Xác định nội dung của phần tử 'aggregationFlags' trong không gian tên 'urn:schemas-sonycom:av'.",

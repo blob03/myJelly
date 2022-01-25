@@ -742,3 +742,12 @@ option.sourceDictionaryOption {
  {
 	visibility: hidden;
 }
+
+.actionsheetDivider {
+	padding: 1px 20px 1px 20px !important;
+	margin: .5rem 0rem .5rem 0rem !important;
+	
+	color: rgb(17, 54, 87);
+	font-weight: 600;
+	background: rgb(41, 111, 150);
+}

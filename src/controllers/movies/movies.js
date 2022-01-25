@@ -23,7 +23,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
             SortOrder: 'Ascending',
             IncludeItemTypes: 'Movie',
             Recursive: true,
-            Fields: 'PrimaryImageAspectRatio,MediaSourceCount,BasicSyncInfo',
+            Fields: 'PrimaryImageAspectRatio,SortName,MediaSourceCount,BasicSyncInfo',
             ImageTypeLimit: 1,
             EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
             StartIndex: 0,

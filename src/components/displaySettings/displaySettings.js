@@ -24,12 +24,12 @@ import viewContainer from '../viewContainer';
 /* eslint-disable indent */
 
     function fillThemes(select, selectedTheme) {
-        skinManager.getThemes().then(themes => {
+        skinManager.getThemes().then( themes => {
 			
 			let groups = {};
 			const dflgroup = "Jellyfin";
 			
-			themes.forEach(x => {
+			themes.forEach( x => {
 				let grp = dflgroup;
 				if (x.group)
 					grp = x.group;
@@ -47,14 +47,15 @@ import viewContainer from '../viewContainer';
 			let ngroups = Object.keys(groups);
 			ngroups.forEach( x => {
 				
-				let html = '';
+				let y = document.createElement("optgroup");
 				
 				if (layoutManager.tv) {
 					let w = document.createElement("option");
-					w.disabled = true;
+					//w.disabled = true;
+					w.divider = x;
 					select.options.add(w, undefined);
-				} else
-					html += '<optgroup label="' + x + '">';
+				} else 
+					y.label = x;
 				
 				groups[x].sort((a, b) => {
 					let fa = a.name.toLowerCase(),
@@ -66,25 +67,39 @@ import viewContainer from '../viewContainer';
 					return 0;
 				});
 				
-				html += groups[x].map(t => {
-					return `<option value="${t.id}">${t.name}</option>`;
-				}).join('');
-				
+				groups[x].forEach( t => {
+					let z = document.createElement("option");
+					if (t.default)
+						z.icon = 'star';
+					z.value = t.id;
+					z.text = t.name;
+					
+					if (t.version) {
+						if (layoutManager.tv) 		
+							z.asideText = "v" + t.version;
+						else 
+							z.text += "  " + t.version;
+					}
+					
+					if (!layoutManager.tv)
+						y.appendChild(z);
+					else
+						select.options.add(z, undefined); 
+				});
+
 				if (!layoutManager.tv)
-					html += '</optgroup>';
-				
-				select.innerHTML += html;
+					select.appendChild(y);
 			});
             
 			select.value = selectedTheme;
 			if (selectedTheme === 'Auto' || selectedTheme === 'None')
 				return;
 			
-			// If for some reasons selectedTheme doesn't exist anymore (eg. a recent upgrade)
-			// selected value will be set to default theme id as defined by 'config.json'.
+			// If for some reasons selectedTheme doesn't exist anymore (eg. theme was renamed/deleted),
+			// the value field of the selection will be set to the id of the default theme defined in 'config.json'.
 		
 			skinManager.getThemeStylesheetInfo(selectedTheme).then(function (info) {
-				select.value = info.themeId});
+				select.value = info.themeId}); 
         });
     }
 
@@ -115,8 +130,8 @@ import viewContainer from '../viewContainer';
 		}
 	}
 	
-    function loadScreensavers(selector, val) {
-        const options = pluginManager.ofType('screensaver').map(plugin => {
+    function loadScreensavers(select, val) {
+        const options = pluginManager.ofType('screensaver').map( plugin => {
             return {
                 name: plugin.name,
                 value: plugin.id,
@@ -124,11 +139,21 @@ import viewContainer from '../viewContainer';
 				description: plugin.description || ''
             };
         });
-		
-        selector.innerHTML += options.map(o => {
-            return `<option value="${o.value}">${o.name} ${o.version}</option>`;
-        }).join('');
-        selector.value = val;
+				
+		options.forEach( t => {
+			let z = document.createElement("option");
+			z.value = t.value;
+			z.text = t.name;
+
+			if (t.version) {
+				if (layoutManager.tv) 		
+					z.asideText = "v" + t.version;
+				else 
+					z.text += "  " + t.version;
+			}
+
+			select.options.add(z, undefined); 
+		});
     }
 
     function showOrHideMissingEpisodesField(context) {
