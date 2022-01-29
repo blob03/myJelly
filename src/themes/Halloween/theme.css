@@ -1059,6 +1059,7 @@ fieldset {
 .button-alt,
 .button-delete,
 .btnRefresh,
+.btnTryIt,
 #btnRestartServer,
 #btnShutdown,
 .button-submit {
@@ -1072,6 +1073,7 @@ fieldset {
 .button-cancel,
 .button-delete,
 .btnRefresh,
+.btnTryIt
 #btnRestartServer,
 #btnShutdown,
 .button-submit {
@@ -1129,12 +1131,14 @@ fieldset {
 }
 
 .button-cancel,
+.btnTryIt,
 .cancel {
 	background-color: rgb(74, 67, 121);
 	box-shadow: 0px 0px 4px #471e05;
 	color: rgb(146, 139, 201) !important;
 }
 
+.btnTryIt:hover:not(:disabled),
 .button-cancel:hover:not(:disabled),
 .cancel:hover:not(:disabled) {
 	color: rgba(211, 207, 225, 0.8) !important;
@@ -1143,6 +1147,7 @@ fieldset {
 	box-shadow: 0px 0px 8px #9b651f;
 }
 
+.btnTryIt:focus,
 .button-cancel:focus,
 .cancel:focus {
 	color: rgba(211, 207, 225, 0.8) !important;
@@ -1151,6 +1156,7 @@ fieldset {
 	box-shadow: 0px 0px 8px #9b651f;
 }
 
+.btnTryIt:active,
 .button-cancel:active,
 .cancel:active {
 	color: rgba(211, 207, 225, 0.8) !important;
@@ -1360,4 +1366,10 @@ option:selected {
 .listItem-button:focus {
 	color: #fff !important;
 	background-color: rgba(160, 88, 24, .8) !important;
+}
+
+.clockScreenSaver {
+	font-family: "Mystery";
+	color: #f8e5bf;
+	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
 }

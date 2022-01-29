@@ -123,12 +123,15 @@
 			<select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}">
 				<option value="none">${None}</option>
 				<option value="any">${OptionRandom}</option>
-				<option disabled>${OptionDivider}</option>
 			</select>
 			<div class="fieldDescription "></div>
 		</div>
 
-		<div class="sliderContainer-settings hide" style="width: 47%;height: auto;">
+		<button is="emby-button" type="button" class="raised btnTryIt block hide" style="margin:0 0 1.2rem 0;width: 10%;height: auto;">
+			<span>${TryIt}</span>
+		</button>
+	
+		<div class="sliderContainer-settings hide" style="width: 37%;height: auto;">
 			<div class="sliderContainer">
 				<input is="emby-slider" id="sliderScreensaverTime" label="${LabelScreensaverTime}" type="range" min="1" max="30" step="1"/>
 			</div>

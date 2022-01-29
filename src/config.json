@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-220",
+	"version": "10.7.7-221",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -9,25 +9,25 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "1.69",
+		"version": "1.71",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "1.85",
+		"version": "1.87",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "1.61",
+		"version": "1.62",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly"
 	}, {
 		"name": "WMC alt.",
-		"version": "1.26",
+		"version": "1.27",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"
@@ -61,13 +61,16 @@
 		"version": "0.33",
 		"id": "light-alt",
 		"color": "#303030",
-		"group": "myJelly-dev"
+		"group": "myJelly indev"
 	}
 	],
 	"menuLinks": [],
 	"servers": [],
 	"plugins": [
 		"playAccessValidation/plugin",
+		"myJelly/clockScreensaver/plugin",
+		"myJelly/backdropScreensaver/plugin",
+		"myJelly/blackoutScreensaver/plugin",
 		"experimentalWarnings/plugin",
 		"htmlAudioPlayer/plugin",
 		"htmlVideoPlayer/plugin",

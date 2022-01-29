@@ -19,6 +19,7 @@ import template from './displaySettings.template.html';
 import templateUserMenu from '../../controllers/user/menu/index.html';
 import * as LibraryMenu from '../../scripts/libraryMenu';
 import viewManager from '../viewManager/viewManager';
+import * as ssmanager from '../../libraries/screensavermanager';
 import viewContainer from '../viewContainer';
 
 /* eslint-disable indent */
@@ -33,12 +34,9 @@ import viewContainer from '../viewContainer';
 				let grp = dflgroup;
 				if (x.group)
 					grp = x.group;
-				if (!groups[grp]) {
+				if (!groups[grp]) 
 					groups[grp] = [];
-					groups[grp].push(x);
-				} else {
-					groups[grp].push(x);
-				}
+				groups[grp].push(x);
 			});
 			
 			if (!layoutManager.tv) 
@@ -51,7 +49,6 @@ import viewContainer from '../viewContainer';
 				
 				if (layoutManager.tv) {
 					let w = document.createElement("option");
-					//w.disabled = true;
 					w.divider = x;
 					select.options.add(w, undefined);
 				} else 
@@ -105,14 +102,20 @@ import viewContainer from '../viewContainer';
 
 	function onScreenSaverChange(e) {
 		const val = e.target.value;
-	    const options = pluginManager.ofType('screensaver').map(plugin => {
+	    const options = pluginManager.ofType('screensaver').map( plugin => {
             return {
                 value: plugin.id,
 				description: plugin.description || ''
             };
         });
+		let key;
 		let sel = options.filter(option => option.value === val);
-		const key = sel[0]? sel[0].description || '' : '';
+		
+		if (val == 'any')
+			key = 'RandomScreensaverHelp';
+		else 
+			key = sel[0]? sel[0].description || '' : '';
+		
 		const txt = key? globalize.translate(key) || '' : '';
 		
 		let pnode = e.target.parentNode;
@@ -128,6 +131,24 @@ import viewContainer from '../viewContainer';
 			else 
 				sliderContainerSettings.classList.remove('hide');
 		}
+		
+		let btnTryIt =  pnode.querySelector('.btnTryIt');
+		if (btnTryIt) {
+			if (e.target.value === 'none') 
+				btnTryIt.classList.add('hide');
+			else 
+				btnTryIt.classList.remove('hide');
+		}
+	}
+	
+	function onScreenSaverTry(e) {
+		let pnode = document.querySelector('#selectScreensaver');
+		if (!pnode || !pnode.value)
+			return;
+	
+		let currentSS = ssmanager.getScreensaverPluginByName(pnode.value);
+		if (currentSS) 
+			ssmanager.showScreenSaver(currentSS);
 	}
 	
     function loadScreensavers(select, val) {
@@ -136,24 +157,68 @@ import viewContainer from '../viewContainer';
                 name: plugin.name,
                 value: plugin.id,
 				version: plugin.version || '',
-				description: plugin.description || ''
+				description: plugin.description || '',
+				group: plugin.group
             };
         });
-				
-		options.forEach( t => {
-			let z = document.createElement("option");
-			z.value = t.value;
-			z.text = t.name;
+		
+		let groups = {};
+		const dflgroup = "Jellyfin";
 
-			if (t.version) {
-				if (layoutManager.tv) 		
-					z.asideText = "v" + t.version;
-				else 
-					z.text += "  " + t.version;
-			}
-
-			select.options.add(z, undefined); 
+		options.forEach( x => {
+			let grp = dflgroup;
+			if (x.group)
+				grp = x.group;
+			if (!groups[grp])
+				groups[grp] = [];
+			groups[grp].push(x);
 		});
+
+		let ngroups = Object.keys(groups);
+		ngroups.forEach( x => {
+			
+			let y = document.createElement("optgroup");
+			
+			if (layoutManager.tv) {
+				let w = document.createElement("option");
+				w.divider = x;
+				select.options.add(w, undefined);
+			} else 
+				y.label = x;
+
+			groups[x].sort((a, b) => {
+				let fa = a.name.toLowerCase(),
+				fb = b.name.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
+
+			groups[x].forEach( t => {
+				let z = document.createElement("option");
+				z.value = t.value;
+				z.text = t.name;
+
+				if (t.version) {
+					if (layoutManager.tv) 		
+						z.asideText = "v" + t.version;
+					else 
+						z.text += "  " + t.version;
+				}
+
+				select.options.add(z, undefined); 
+				if (!layoutManager.tv)
+					y.appendChild(z);
+				else
+					select.options.add(z, undefined); 
+			});
+			
+			if (!layoutManager.tv)
+				select.appendChild(y);
+		});		
+		select.value = val;
     }
 
     function showOrHideMissingEpisodesField(context) {
@@ -216,6 +281,9 @@ import viewContainer from '../viewContainer';
 			userItem.classList.toggle('hide', !user.localUser.Policy.IsAdministrator);});
 
         if (appHost.supports('screensaver')) {
+			let btnTryIt = context.querySelector('.btnTryIt');
+			btnTryIt.addEventListener('click', onScreenSaverTry);
+			
 			let selectScreensaver = context.querySelector('.selectScreensaver');
 			loadScreensavers(selectScreensaver, userSettings.screensaver() || 'none');
 			selectScreensaver.addEventListener('change', onScreenSaverChange);

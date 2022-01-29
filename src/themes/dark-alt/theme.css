@@ -1284,3 +1284,12 @@ select option:selected {
 	color: #c1c8d4 !important;
 	background-color: #404040 !important;
 }
+
+.clockScreenSaver {
+	color: #d7e2e9;
+	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+}
+
+.ssClockTime {
+	font-family: "Shangai";
+}

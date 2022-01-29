@@ -142,7 +142,7 @@ import { playbackManager } from './playback/playbackmanager';
 
         mapPath(plugin, path, addCacheParam) {
             if (typeof plugin === 'string') {
-                plugin = this.pluginsList.filter((p) => {
+                plugin = this.pluginsList.filter( (p) => {
                     return (p.id || p.packageName) === plugin;
                 })[0];
             }
@@ -151,7 +151,7 @@ import { playbackManager } from './playback/playbackmanager';
 
             if (addCacheParam) {
                 url += url.includes('?') ? '&' : '?';
-                url += 'v=' + cacheParam;
+                url += 'v=' + (plugin.version || cacheParam);
             }
 
             return url;
