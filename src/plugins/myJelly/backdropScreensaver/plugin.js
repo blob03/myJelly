@@ -95,7 +95,8 @@ class BackdropScreensaver {
 			const elem = document.querySelector('.blackout');
 			if (elem) {
 				return new Promise((resolve) => {
-					elem.parentNode.removeChild(elem);
+					if (elem.parentNode)
+						elem.parentNode.removeChild(elem);
 					resolve();
 				});
 			}

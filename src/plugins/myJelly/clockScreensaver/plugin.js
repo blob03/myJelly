@@ -9,7 +9,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.2';
+	self.version = '0.3';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -68,9 +68,12 @@ export default function () {
 			if (TEST) {
 				// Get currently selected Locale.
 				dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
-				// if set to 'auto' then use the language.
+				// If set to 'auto' then use the language.
 				if (dateTimeLocale === "")
 					dateTimeLocale = document.querySelector('.selectLanguage').value;
+				// If display language is also set to 'auto' then request the default value.
+				if (dateTimeLocale === "")
+					dateTimeLocale = globalize.getDefaultCulture();
 			} else 
 				dateTimeLocale = globalize.getCurrentDateTimeLocale();
 			
