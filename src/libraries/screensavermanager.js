@@ -83,24 +83,24 @@ export function ScreenSaverManager() {
     let activeScreenSaver;
 	let self = this;
 	
-	this.showScreenSaver = (screensaver) => {
+	this.showScreenSaver = (ssplugin, TEST) => {
         if (self.activeScreenSaver) 
             throw new Error('An existing screensaver is already active.');
 
-        console.debug('Showing screensaver ' + screensaver.name);
+        console.debug('Showing screensaver ' + ssplugin.name);
         document.body.classList.add('screensaver-noScroll');
 
-        self.activeScreenSaver = screensaver;
-		screensaver.show();
+        self.activeScreenSaver = ssplugin;	
+		ssplugin.show(TEST);
 		
 		setTimeout(() => {
-			if (screensaver.hideOnClick !== false) {
+			if (ssplugin.hideOnClick !== false) {
 				window.addEventListener('click', self.hide, true);
 			}
-			if (!layoutManager.tv && screensaver.hideOnMouse !== false) {
+			if (!layoutManager.tv && ssplugin.hideOnMouse !== false) {
 				window.addEventListener('mousemove', self.hide, true);
 			}
-			if (screensaver.hideOnKey !== false) {
+			if (ssplugin.hideOnKey !== false) {
 				window.addEventListener('keydown', self.hide, true);
 			}
 		}, 1500);
@@ -132,7 +132,7 @@ export function ScreenSaverManager() {
         
         const screensaver = getScreensaverPlugin(isLoggedIn);
         if (screensaver) 
-            self.showScreenSaver(screensaver);
+            self.showScreenSaver(screensaver, false);
     };
 
     const onInterval = () => {

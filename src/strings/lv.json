@@ -916,7 +916,7 @@
     "LabelTonemappingPeakHelp": "Ignorēt signālu/nominālo/atsauces maksimumu ar šo vērtību. Noderīga, ja displeja metadatos iegultā maksimālā informācija nav uzticama vai arī notiek toņu kartēšana no zemāka diapazona uz augstāku diapazonu. Ieteicamās un noklusējuma vērtības ir 100 un 0.",
     "LabelTonemappingRange": "Toņu kartēšanas diapazons:",
     "LabelTonemappingThreshold": "Toņu kartēšanas slieksnis:",
-    "LabelTonemappingThresholdHelp": "Toņu kartēšanas algoritma parametri tiek precīzi noregulēti katrai ainai. Un tiek izmantots slieksnis, lai noteiktu, vai aina ir mainījusies vai nav. Ja attālums starp pašreizējo kadra vidējo spilgtumu un pašreizējo vidējo vidējo spilgtumu pārsniedz sliekšņa vērtību, mēs pārrēķinām ainas vidējo un maksimālo spilgtumu. Ieteicamās un noklusējuma vērtības ir 0.8 un 0.2 .",
+    "LabelTonemappingThresholdHelp": "Toņu kartēšanas algoritma parametri tiek precīzi noregulēti katrai ainai. Un tiek izmantots slieksnis, lai noteiktu, vai aina ir mainījusies vai nav. Ja attālums starp pašreizējo kadra vidējo spilgtumu un pašreizējo vidējo spilgtumu pārsniedz sliekšņa vērtību, mēs pārrēķinām ainas vidējo un maksimālo spilgtumu. Ieteicamās un noklusējuma vērtības ir 0.8 un 0.2 .",
     "LabelTrackNumber": "Celiņa numurs:",
     "LabelTranscodePath": "Trans-kodēšanas ceļš:",
     "LabelTranscodes": "Transkodi:",

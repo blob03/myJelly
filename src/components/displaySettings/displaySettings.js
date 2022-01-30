@@ -148,7 +148,7 @@ import viewContainer from '../viewContainer';
 	
 		let currentSS = ssmanager.getScreensaverPluginByName(pnode.value);
 		if (currentSS) 
-			ssmanager.showScreenSaver(currentSS);
+			ssmanager.showScreenSaver(currentSS, true);
 	}
 	
     function loadScreensavers(select, val) {

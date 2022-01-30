@@ -957,7 +957,7 @@
     "LabelTonemappingPeakHelp": "Osy mänmen signaldy/nominaldy/anyqtamalyq şyñ qaita anyqtalady. Beinelenetın metaderekterge endırılgen şyñdyq aqparat senımdı bolmağan kezde nemese tömengı auqymnan joğary auqymğa ötkızetın tonmapiñ kezınde paidaly. Ūsynylğan jäne ädepkı mänder 100 jäne 0.",
     "LabelTonemappingRange": "Tonmapiñ auqymy:",
     "LabelTonemappingThreshold": "Tonmapiñ şegı:",
-    "LabelTonemappingThresholdHelp": "Tonmapiñ algoritmynyñ parametrlerı är sahnağa säikes baptalady. Al şektık män sahnanyñ özgergen-özgermegenın anyqtau üşın qoldanylady. Eger ağymdyq kadrdyñ ortaşa jaryqtyğy men ağymdyq syrğymaly orta män aralyğy şektık männen asyp ketse, onda bız sahna orta mänı men şyñdyq jaryqtyğyn qaita esepteitın bolamyz. Ūsynylğan jäne ädepkı mänder - 0,8 jäne 0,2 bolady.",
+    "LabelTonemappingThresholdHelp": "Tonmapiñ algoritmynyñ parametrlerı är sahnağa säikes baptalady. Al şektık män sahnanyñ özgergen-özgermegenın anyqtau üşın qoldanylady. Eger ağymdyq kadrdyñ ortaşa jaryqtyğy men ağymdyq syrğymaly orta män aralyğy şektık männen asyp ketse, onda bız sahna orta mänı men şyñdyq jaryqtyğyn qaita esepteitın bolamyz. Ūsynylğan jäne ädepkı mänder - 0.8 jäne 0.2 bolady.",
     "LabelTrackNumber": "Jolşyq nömırı:",
     "LabelTranscodePath": "Qaita kodtau joly:",
     "LabelTranscodes": "Qaita kodtaular:",

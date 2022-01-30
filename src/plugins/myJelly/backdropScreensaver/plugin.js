@@ -5,7 +5,7 @@ import * as userSettings from '../../../scripts/settings/userSettings';
 class BackdropScreensaver {
     constructor() {
         this.name = 'My Backdrop Player';
-		this.version = '1.2';
+		this.version = '1.3';
 		this.group = 'myJelly';
 		this.description = 'MJBackdropScreensaverHelp';
         this.type = 'screensaver';
@@ -13,8 +13,20 @@ class BackdropScreensaver {
         this.supportsAnonymous = false;
     }
 	
-	show() {
-		let type = userSettings.enableBackdrops();
+	show(TEST) {
+		let type;
+		// When tested, use the relevant parameters as they are currently set in the settings page
+		// rather than the saved ones.
+		if (TEST === true) {	
+			// Get currently selected Locale.
+			let srcBackdrops = document.querySelector('#srcBackdrops');
+			if (srcBackdrops)
+				type = srcBackdrops.value;
+		} 
+		
+		if (!type)
+			type = userSettings.enableBackdrops();
+		
 		let types = 'Movie,Series,MusicArtist';
 		let filters = '';
 

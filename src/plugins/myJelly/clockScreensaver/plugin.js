@@ -9,7 +9,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.1';
+	self.version = '0.2';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -17,16 +17,16 @@ export default function () {
 
     let interval;
 	
-	function clock() {
+	function clock(LOCALE) {
 		var _datestr_ = document.getElementById("ssClockDate");
 		var _timestr_ = document.getElementById("ssClockTime");
 		
 		const x = new Date();
-		const _day_ = datetime.toLocaleDateString(x, {
+		const _day_ = x.toLocaleDateString(LOCALE, {
 				weekday: 'short',
 		});
-		const _date_ = datetime.toLocaleDateString(x);
-		const _time_ = datetime.toLocaleTimeString(x, {
+		const _date_ = x.toLocaleDateString(LOCALE);
+		const _time_ = x.toLocaleTimeString(LOCALE, {
 			hour: 'numeric',
 			minute: '2-digit',
 			second: '2-digit',
@@ -36,7 +36,7 @@ export default function () {
 		_timestr_.innerHTML = _time_;
 
 		if (!self.interval)
-			self.interval = setInterval(function() { clock() }, 1000);
+			self.interval = setInterval(function() { clock(LOCALE) }, 1000);
 		return;
 	}
 
@@ -47,7 +47,7 @@ export default function () {
         }
     }
 
-    self.show = function () {
+    self.show = function (TEST) {
         import('./style.scss').then(() => {
             let elem = document.querySelector('.clockScreenSaver');
 
@@ -60,9 +60,22 @@ export default function () {
 				+ '<div id="ssClockTime" class="ssClockTime"></div>';
             }
 
-			globalize.updateCurrentCulture();
-            stopInterval();
-            clock();
+			stopInterval();
+			
+			// When tested, use the relevant parameters as they are currently set in the settings page
+			// rather than the saved ones.
+			let dateTimeLocale = null;
+			if (TEST) {
+				// Get currently selected Locale.
+				dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
+				// if set to 'auto' then use the language.
+				if (dateTimeLocale === "")
+					dateTimeLocale = document.querySelector('.selectLanguage').value;
+			} else 
+				dateTimeLocale = globalize.getCurrentDateTimeLocale();
+			
+			if (dateTimeLocale != null)
+				clock(dateTimeLocale);
         });
     };
 
