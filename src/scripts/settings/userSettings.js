@@ -44,9 +44,8 @@ function hdrClock() {
 
 export class UserSettings {
     constructor() {
+		this.clockTimer = null;
     }
-
-	static clockTimer = null;
 	
     /**
      * Bind UserSettings instance to user.
@@ -304,7 +303,6 @@ export class UserSettings {
         if (val !== undefined) {
 			/* Either hide the clock or unhide and start it. */
 			this.set('clock', val === true);
-			const obj = this;
 			const _hdrclck = document.getElementById("headerClock");
 			_hdrclkdate_span = document.getElementById("headerClockDate");
 			_hdrclktime_span = document.getElementById("headerClockTime");
@@ -313,10 +311,11 @@ export class UserSettings {
 			// clear any existing timer
 			// hide the clock 
 			// return
+			
 			if (val !== true) {
-				if (obj.clockTimer !== null) {
-					clearInterval(obj.clockTimer);
-					obj.clockTimer = null;
+				if (this.clockTimer !== null) {
+					clearInterval(this.clockTimer);
+					this.clockTimer = null;
 				}
 				_hdrclck.classList.add('hide');
 				return true;
@@ -324,10 +323,12 @@ export class UserSettings {
 				
 			_hdrclck.classList.remove('hide');
 			hdrClock();
-			if (obj.clockTimer === null) 
-				obj.clockTimer = setInterval( function() { hdrClock() }, 10000);
+			if (this.clockTimer === null) {
+				this.clockTimer = setInterval( function() { hdrClock() }, 10000);
+			}
             return true;
         }
+		
 		val = this.get('clock', false);
         return val === 'true';
     }
