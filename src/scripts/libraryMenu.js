@@ -19,7 +19,7 @@ import Dashboard, { pageClassOn } from './clientUtils';
 import ServerConnections from '../components/ServerConnections';
 import Headroom from 'headroom.js';
 import appSettings from './settings/appSettings';
-import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
+import { currentSettings, enableClock } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 
@@ -217,8 +217,6 @@ import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
 				headerLockButton.classList.add('hide');
         }
 		
-		if (currentSettings)
-			hdrClock(currentSettings);
         requiresUserRefresh = false;
     }
 	
@@ -1135,6 +1133,7 @@ import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
         ServerConnections.user(currentApiClient).then(function (user) {
             currentUser = user;
             updateUserInHeader(user);
+			enableClock(enableClock());
         });
     });
 
@@ -1160,6 +1159,7 @@ import { currentSettings, hdrClock } from '../scripts/settings/userSettings';
 
     window.LibraryMenu = LibraryMenu;
     renderHeader();
+	
 	
 export default LibraryMenu;
 

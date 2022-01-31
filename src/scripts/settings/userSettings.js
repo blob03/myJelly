@@ -20,52 +20,25 @@ function saveServerPreferences(instance) {
 const defaultSubtitleAppearanceSettings = {
 	verticalPosition: -1
 };
-
-export function hdrClock(obj) {
-	const _hdrclck = document.getElementById("headerClock");
-	if (_hdrclck === null)
-		return false;
-	
-	// If clock is disabled 
-	// clear any pending timer
-	// hide the clock 
-	// return
-	if (obj.enableClock() !== true) {
-		if (obj.clockTimer !== undefined) {
-			clearInterval(obj.clockTimer);
-			obj.clockTimer = undefined;
-		}
-		_hdrclck.classList.add('hide');
-		return;
-	}
-
-	var _hdrclkdate_span = document.getElementById("headerClockDate");
-	if (_hdrclkdate_span == null) {
-		setTimeout(function() { hdrClock(obj) }, 2000);
-		return;
-	}
-	var _hdrclktime_span = document.getElementById("headerClockTime");
-	if (_hdrclktime_span == null) {
-		setTimeout(function() { hdrClock(obj) }, 2000);
-		return;
-	}
+var _hdrclkdate_span;
+var _hdrclktime_span;
+		
+function hdrClock() {
 	globalize.updateCurrentCulture();
 	const x = new Date();
-	const _hdrclk_day = datetime.toLocaleDateString(x, {
-			weekday: 'short',
+	const _hdrclk_date = datetime.toLocaleDateString(x, {
+		weekday: 'short',
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit'	
 	});
-	const _hdrclk_date = datetime.toLocaleDateString(x);
 	const _hdrclk_time = datetime.toLocaleTimeString(x, {
 			hour: 'numeric',
 			minute: '2-digit'
 	});
-	_hdrclkdate_span.innerHTML = _hdrclk_day + " " + _hdrclk_date;
-	_hdrclktime_span.innerHTML = _hdrclk_time;
-	_hdrclck.classList.remove('hide');
-
-	if (!obj.clockTimer)
-		obj.clockTimer = setInterval(function() { hdrClock(obj) }, 10000);
 	
+	_hdrclkdate_span.innerHTML = _hdrclk_date;
+	_hdrclktime_span.innerHTML = _hdrclk_time;
 	return;
 }
 
@@ -73,7 +46,7 @@ export class UserSettings {
     constructor() {
     }
 
-	static clockTimer = undefined;
+	static clockTimer = null;
 	
     /**
      * Bind UserSettings instance to user.
@@ -331,9 +304,28 @@ export class UserSettings {
         if (val !== undefined) {
 			/* Either hide the clock or unhide and start it. */
 			this.set('clock', val === true);
-		
 			const obj = this;
-			setTimeout(() => { hdrClock(obj); }, 2000);
+			const _hdrclck = document.getElementById("headerClock");
+			_hdrclkdate_span = document.getElementById("headerClockDate");
+			_hdrclktime_span = document.getElementById("headerClockTime");
+			
+			// If clock is disabled 
+			// clear any existing timer
+			// hide the clock 
+			// return
+			if (val !== true) {
+				if (obj.clockTimer !== null) {
+					clearInterval(obj.clockTimer);
+					obj.clockTimer = null;
+				}
+				_hdrclck.classList.add('hide');
+				return true;
+			}
+				
+			_hdrclck.classList.remove('hide');
+			hdrClock();
+			if (obj.clockTimer === null) 
+				obj.clockTimer = setInterval( function() { hdrClock() }, 10000);
             return true;
         }
 		val = this.get('clock', false);

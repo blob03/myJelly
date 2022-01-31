@@ -1293,3 +1293,7 @@ select option:selected {
 .ssClockTime {
 	font-family: "Shangai";
 }
+
+.btnTryIt {
+	font-size: 0.9rem;
+}

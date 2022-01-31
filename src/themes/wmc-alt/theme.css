@@ -756,3 +756,7 @@ option.sourceDictionaryOption {
 	color: #fff;
 	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2bd726, 0 0 40px #22ee1d, 0 0 50px #49f00d, 0 0 60px #16da3e, 0 0 70px #00e60e;
 }
+
+.btnTryIt {
+	font-size: 0.9rem;
+}

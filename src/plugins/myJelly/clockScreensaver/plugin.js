@@ -9,35 +9,32 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.3';
+	self.version = '0.4';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
 	self.supportsAnonymous = false;
 
     let interval;
-	
-	function clock(LOCALE) {
-		var _datestr_ = document.getElementById("ssClockDate");
-		var _timestr_ = document.getElementById("ssClockTime");
+	let _datestr_;
+	let _timestr_;
 		
+	function clock(LOCALE) {	
 		const x = new Date();
-		const _day_ = x.toLocaleDateString(LOCALE, {
-				weekday: 'short',
+		const _date_ = x.toLocaleDateString(LOCALE, {
+			weekday: 'long',
+			year: 'numeric',
+			month: 'long',
+			day: '2-digit'	
 		});
-		const _date_ = x.toLocaleDateString(LOCALE);
 		const _time_ = x.toLocaleTimeString(LOCALE, {
 			hour: 'numeric',
 			minute: '2-digit',
 			second: '2-digit',
 			hour12: false
 		});
-		_datestr_.innerHTML = _day_ + " " + _date_;
+		_datestr_.innerHTML = _date_;
 		_timestr_.innerHTML = _time_;
-
-		if (!self.interval)
-			self.interval = setInterval(function() { clock(LOCALE) }, 1000);
-		return;
 	}
 
     function stopInterval() {
@@ -59,6 +56,9 @@ export default function () {
                 elem.innerHTML = '<div id="ssClockDate" class="ssClockDate"></div>'
 				+ '<div id="ssClockTime" class="ssClockTime"></div>';
             }
+			
+			_datestr_ = document.getElementById("ssClockDate");
+			_timestr_ = document.getElementById("ssClockTime");
 
 			stopInterval();
 			
@@ -77,8 +77,10 @@ export default function () {
 			} else 
 				dateTimeLocale = globalize.getCurrentDateTimeLocale();
 			
-			if (dateTimeLocale != null)
+			if (dateTimeLocale != null) {
 				clock(dateTimeLocale);
+				self.interval = setInterval(function() { clock(dateTimeLocale) }, 1000);
+			}
         });
     };
 
