@@ -1219,11 +1219,18 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	background-color: rgb(141, 180, 193);
 }
 
-.clockScreenSaver {
-	color: #fff;
-	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
+.btnTryIt {
+	font-size: 0.8rem;
 }
 
-.btnTryIt {
-	font-size: 0.9rem;
+.clockScreenSaver {
+	background-image: url(./bg.jpg) !important;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.ssForeplane {
+	color: #fff;
+	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
+	background: rgba(10, 10, 10, .8);
 }

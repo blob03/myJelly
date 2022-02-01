@@ -1285,15 +1285,26 @@ select option:selected {
 	background-color: #404040 !important;
 }
 
+.btnTryIt {
+	font-size: 0.8rem;
+}
+
 .clockScreenSaver {
+	background-image: url(./bg.jpg) !important;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.ssForeplane {
 	color: #d7e2e9;
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+	background: rgba(10, 10, 10, .8);
+}
+
+.ssClockDate {
+	margin: 30% 0px 0px 0px;
 }
 
 .ssClockTime {
 	font-family: "Shangai";
-}
-
-.btnTryIt {
-	font-size: 0.9rem;
 }

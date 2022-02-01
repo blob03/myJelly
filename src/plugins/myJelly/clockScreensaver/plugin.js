@@ -9,7 +9,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.4';
+	self.version = '0.5';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -52,9 +52,10 @@ export default function () {
                 elem = document.createElement('div');
                 elem.classList.add('clockScreenSaver');
                 document.body.appendChild(elem);
-
-                elem.innerHTML = '<div id="ssClockDate" class="ssClockDate"></div>'
-				+ '<div id="ssClockTime" class="ssClockTime"></div>';
+				elem.innerHTML = '<div id="ssForeplane" class="ssForeplane">'
+                + '<div id="ssClockDate" class="ssClockDate"></div>'
+				+ '<div id="ssClockTime" class="ssClockTime"></div>'
+				+ '</div>';
             }
 			
 			_datestr_ = document.getElementById("ssClockDate");

@@ -1368,12 +1368,19 @@ option:selected {
 	background-color: rgba(160, 88, 24, .8) !important;
 }
 
+.btnTryIt {
+	font-size: 0.8rem;
+}
+
 .clockScreenSaver {
+	background-image: url(./bg-alt1.jpg) !important;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.ssForeplane {
 	font-family: "Mystery";
 	color: #f8e5bf;
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
-}
-
-.btnTryIt {
-	font-size: 0.9rem;
+	background: rgba(10, 10, 10, .85);
 }
