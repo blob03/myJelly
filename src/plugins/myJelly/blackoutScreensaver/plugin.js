@@ -7,11 +7,14 @@ export default function () {
 
 	self.name = 'Blackout';
 	self.group = 'myJelly';
-	self.version = '0.1';
+	self.version = '0.2';
 	self.description = 'BlackoutScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'blackoutscreensaver';
 	self.supportsAnonymous = false;
+	self.hideOnClick = true;
+	self.hideOnMouse = true;
+	self.hideOnKey = true;
 
     self.show = function () {
         import('./style.scss').then(() => {

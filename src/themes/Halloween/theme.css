@@ -1384,3 +1384,17 @@ option:selected {
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
 	background: rgba(10, 10, 10, .85);
 }
+
+.ssClockDate {
+	font-size: 120% !important;
+}
+
+.ssClockTime {
+	font-size: 260% !important;
+}
+
+.ssClockTime,
+.ssClockDate {
+	top: -30%;
+	position: relative;
+}

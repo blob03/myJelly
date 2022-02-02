@@ -9,11 +9,14 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.5';
+	self.version = '0.6';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
 	self.supportsAnonymous = false;
+	self.hideOnClick = true;
+	self.hideOnMouse = true;
+	self.hideOnKey = true;
 
     let interval;
 	let _datestr_;

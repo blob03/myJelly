@@ -444,12 +444,18 @@ export default function (options) {
      */
     function loadSwiper(dialog, options) {
         let slides;
+		let autoplayDelay;
         if (currentOptions.slides) {
             slides = currentOptions.slides;
         } else {
             slides = currentOptions.items;
         }
 
+		if (options["autoplayDelay"] != null) 
+			autoplayDelay = options["autoplayDelay"] * 1000;
+		else
+			autoplayDelay = userSettings.swiperDelay() * 1000;
+		
 		let parameters = {
             // Loop is disabled due to the virtual slides option not supporting it.
             loop: false,
@@ -477,10 +483,15 @@ export default function (options) {
                 addSlidesBefore: 1,
                 addSlidesAfter: 1
             },
-			autoplay: { delay: userSettings.swiperDelay() * 1000 }
+			autoplay: { delay: autoplayDelay }
 		};
 		
-		let swiperFX = userSettings.swiperFX() || 'horizontal';
+		let swiperFX;
+		if (options["swiperFX"] != null) 
+			swiperFX = options["swiperFX"];
+		else
+			swiperFX = userSettings.swiperFX() || 'horizontal';
+
 		if (swiperFX === 'any') {
 			const FX = ['fade', 'flip', 'cube', 'coverflow', 'horizontal', 'vertical'];
 			let rand = Math.floor(Math.random() * (FX.length + 1));
