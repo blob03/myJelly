@@ -36,6 +36,8 @@ import { playbackManager } from '../components/playback/playbackmanager';
 import SyncPlayNoActivePlayer from '../components/syncPlay/ui/players/NoActivePlayer';
 import SyncPlayHtmlVideoPlayer from '../components/syncPlay/ui/players/HtmlVideoPlayer';
 import SyncPlayHtmlAudioPlayer from '../components/syncPlay/ui/players/HtmlAudioPlayer';
+import { currentSettings } from './settings/userSettings';
+import taskButton from '../scripts/taskbutton';
 
 // TODO: Move this elsewhere
 window.getWindowLocationSearch = function(win) {
@@ -71,6 +73,10 @@ function loadCoreDictionary() {
 }
 
 function init() {
+	// This is used in plugins
+    window.Events = Events;
+    window.TaskButton = taskButton;
+	
     serverAddress().then(server => {
         if (server) {
             ServerConnections.initApiClient(server);
@@ -120,11 +126,11 @@ function loadPlugins() {
     return getPlugins().then(function (list) {
         if (!appHost.supports('remotecontrol')) {
             // Disable remote player plugins if not supported
-            list.splice(list.indexOf('sessionPlayer'), 1);
-            list.splice(list.indexOf('chromecastPlayer'), 1);
+            list = list.filter(plugin => !plugin.startsWith('sessionPlayer')
+                && !plugin.startsWith('chromecastPlayer'));
         } else if (!browser.chrome && !browser.edgeChromium && !browser.opera) {
             // Disable chromecast player in unsupported browsers
-            list.splice(list.indexOf('chromecastPlayer'), 1);
+            list = list.filter(plugin => !plugin.startsWith('chromecastPlayer'));
         }
 
         // add any native plugins

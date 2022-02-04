@@ -7,7 +7,7 @@ export default function () {
 
 	self.name = 'Blackout';
 	self.group = 'myJelly';
-	self.version = '0.2';
+	self.version = '0.3';
 	self.description = 'BlackoutScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'blackoutscreensaver';
@@ -16,7 +16,12 @@ export default function () {
 	self.hideOnMouse = true;
 	self.hideOnKey = true;
 
-    self.show = function () {
+    self.show = function (TEST) {
+		// When being tested, do not exit on mouse motion.
+		if (TEST === true) {	
+			this.hideOnMouse = false;
+		} 
+		
         import('./style.scss').then(() => {
             let elem = document.querySelector('.blackoutScreenSaver');
 

@@ -9,7 +9,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.6';
+	self.version = '0.7';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -70,6 +70,7 @@ export default function () {
 			// rather than the saved ones.
 			let dateTimeLocale = null;
 			if (TEST) {
+				self.hideOnMouse = false;
 				// Get currently selected Locale.
 				dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
 				// If set to 'auto' then use the language.
