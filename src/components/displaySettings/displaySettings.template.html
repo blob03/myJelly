@@ -68,15 +68,18 @@
 				<option value="">${Auto}</option>
 				<option disabled>${OptionDivider}</option>
 			</select>
+			<div class="fieldDescription ">&nbsp;</div>
 		</div>
-				
-		<div class="checkboxContainer checkboxContainer-withDescription" style="width: 47%;height: auto;">
-			<label>
-				<input id="chkClock" type="checkbox" is="emby-checkbox"/>
-				<span>${EnableClock}</span>
-			</label>
-			<div class="fieldDescription checkboxFieldDescription">${EnableClockHelp}</div>
-		</div>	
+		
+		<div class="selectContainer" style="width: 47%;height: auto;">
+			<select is="emby-select" id="selectClock" label="${EnableClock}">
+			<option value=0>${Never}</option>
+			<option value=1>${Anytime}</option>
+			<option value=2>${HeaderNavigation}</option>
+			<option value=3>${HeaderVideos}</option>
+			</select>
+			<div class="fieldDescription ">${EnableClockHelp}</div>
+		</div>
 
 	</div>
 	

@@ -19,7 +19,7 @@ import Dashboard, { pageClassOn } from './clientUtils';
 import ServerConnections from '../components/ServerConnections';
 import Headroom from 'headroom.js';
 import appSettings from './settings/appSettings';
-import { currentSettings, enableClock } from '../scripts/settings/userSettings';
+import { currentSettings, enableClock, showClock } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 
@@ -1133,7 +1133,15 @@ import { currentSettings, enableClock } from '../scripts/settings/userSettings';
         ServerConnections.user(currentApiClient).then(function (user) {
             currentUser = user;
             updateUserInHeader(user);
-			enableClock(enableClock());
+			switch(enableClock()) {
+				case 1:
+				case 2:
+					showClock(true);
+					break;
+					
+				default:
+					showClock(false);
+			}
         });
     });
 

@@ -51,6 +51,8 @@ import ServerConnections from '../ServerConnections';
 					case 'MovieFav':
 					case 'Series':
 					case 'SeriesFav':
+					case 'Artists':
+					case 'ArtistsFav':
 						backdropImage.style.backgroundImage = `url('${url}')`;
 						backdropImage.setAttribute('data-url', url);
 						break;

@@ -22,6 +22,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "LibrariesFav":
 		case "MovieFav":			
 		case "SeriesFav":
+		case "ArtistsFav":
 			filters = 'IsFavorite';
 			break;
 	}
@@ -45,30 +46,69 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
         data = JSON.parse(data);
         return Promise.resolve(data);
     }
+	let options;
+	let images;
 
-    const options = {
-        SortBy: SortBy,
-        Limit: 20,
-        Recursive: true,
-        IncludeItemTypes: types,
-        ImageTypes: ImageTypes,
-        ParentId: parentId,
-		GenreIds: genreIds,
-		Filters: filters,
-        EnableTotalRecordCount: false,
-        MaxOfficialRating: MaxOfficialRating
-    };
-    return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
-        const images = result.Items.map(function (i) {
-            return {
-                Id: i.Id,
-                tag: i.BackdropImageTags[0],
-                ServerId: i.ServerId
-            };
-        });
-        cache[key] = JSON.stringify(images);
-        return images;
-    });
+	switch(type) {	
+		case "Libraries":
+		case "LibrariesFav":
+		case "Movie":
+		case "MovieFav":
+		case "Series":
+		case "SeriesFav":
+		case "Auto":
+			options = {
+				SortBy: SortBy,
+				Limit: 20,
+				Recursive: true,
+				IncludeItemTypes: types,
+				ImageTypes: ImageTypes,
+				ParentId: parentId,
+				GenreIds: genreIds,
+				Filters: filters,
+				EnableTotalRecordCount: false,
+				MaxOfficialRating: MaxOfficialRating
+			};
+			return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
+				if (result.Items.length) {
+					images = result.Items.map(function (i) {
+						return {
+							Id: i.Id,
+							tag: i.BackdropImageTags[0],
+							ServerId: i.ServerId
+						};
+					});
+					cache[key] = JSON.stringify(images);
+					return images;
+				}
+			});
+			break;
+			
+		case "Artists":
+		case "ArtistsFav":
+			options = {
+				SortBy: SortBy,
+				Limit: 20,
+				Recursive: true,
+				ImageTypes: ImageTypes,
+				Filters: filters
+			};
+			return apiClient.getArtists(apiClient.getCurrentUserId(), options).then( (result) => {
+				if (result.Items.length) {	
+					images = result.Items.map(function (i) {
+						return {
+							Id: i.Id,
+							tag: i.BackdropImageTags[0],
+							ServerId: i.ServerId
+						};
+					});
+					cache[key] = JSON.stringify(images);
+					return images;
+				}
+			});
+			break;
+	}
+		
 }
 
 function showBackdrop(type, parentId) {

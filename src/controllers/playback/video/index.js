@@ -1303,6 +1303,15 @@ import { appRouter } from '../../../components/appRouter';
 
         view.addEventListener('viewbeforeshow', function () {
             headerElement.classList.add('osdHeader');
+			switch(userSettings.enableClock()) {
+				case 1:
+				case 3:
+					userSettings.showClock(true);
+					break;
+					
+				default:
+					userSettings.showClock(false);
+			}
             appRouter.setTransparency('full');
         });
         view.addEventListener('viewshow', function () {
@@ -1390,6 +1399,15 @@ import { appRouter } from '../../../components/appRouter';
             }
             stopOsdHideTimer();
             headerElement.classList.remove('osdHeader');
+			switch(userSettings.enableClock()) {
+				case 1:
+				case 2:
+					userSettings.showClock(true);
+					break;
+					
+				default:
+					userSettings.showClock(false);
+			}
             headerElement.classList.remove('osdHeader-hidden');
             /* eslint-disable-next-line compat/compat */
             dom.removeEventListener(document, window.PointerEvent ? 'pointermove' : 'mousemove', onPointerMove, {

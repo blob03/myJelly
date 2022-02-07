@@ -301,37 +301,57 @@ export class UserSettings {
      */
 	enableClock(val) {
         if (val !== undefined) {
-			/* Either hide the clock or unhide and start it. */
-			this.set('clock', val === true);
-			const _hdrclck = document.getElementById("headerClock");
-			_hdrclkdate_span = document.getElementById("headerClockDate");
-			_hdrclktime_span = document.getElementById("headerClockTime");
+			let newval = parseInt(val, 10);
+			if (newval < 0 || newval > 3)
+				newval = 0;
 			
-			// If clock is disabled 
+			// Save the new value. 
+			this.set('clock', newval);
+			
+			// If clock is disabled or enabled only for videos,
 			// clear any existing timer
 			// hide the clock 
-			// return
-			
-			if (val !== true) {
-				if (this.clockTimer !== null) {
-					clearInterval(this.clockTimer);
-					this.clockTimer = null;
-				}
-				_hdrclck.classList.add('hide');
-				return true;
+			// return.
+			switch(newval) {
+				case 0:
+				case 3:
+					showClock(false);
+					break;
+					
+				default:
+					showClock(true);
 			}
-				
+            return true;
+        }
+		
+		const ret = parseInt(this.get('clock'), 10);
+		if (ret < 0 || ret > 3)
+			return 0;
+        return ret;
+    }
+	
+	/* Show or hide the Top bar clock */
+	
+	showClock(val) {
+		const _hdrclck = document.getElementById("headerClock");
+		_hdrclkdate_span = document.getElementById("headerClockDate");
+		_hdrclktime_span = document.getElementById("headerClockTime");
+		
+		if (val === true) {
 			_hdrclck.classList.remove('hide');
 			hdrClock();
 			if (this.clockTimer === null) {
 				this.clockTimer = setInterval( function() { hdrClock() }, 10000);
 			}
-            return true;
-        }
-		
-		val = this.get('clock', false);
-        return val === 'true';
-    }
+		} else {
+			if (this.clockTimer !== null) {
+				clearInterval(this.clockTimer);
+				this.clockTimer = null;
+			}
+			_hdrclck.classList.add('hide');
+		}
+		return true;
+	}
 
     /**
      * Get or set 'Fast Fade-in' state.
@@ -744,6 +764,7 @@ export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSet
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
+export const showClock = currentSettings.showClock.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);
