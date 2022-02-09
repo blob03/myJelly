@@ -20,7 +20,7 @@
     "AllComplexFormats": "所有複雜字幕格式 (ASS、SSA、 VobSub、PGS 、 SUB、IDX 等)",
     "AllEpisodes": "所有集數",
     "AllLanguages": "所有語言",
-    "AllLibraries": "所有媒體",
+    "AllLibraries": "所有媒體庫",
     "AllowFfmpegThrottling": "限制轉檔",
     "AllowFfmpegThrottlingHelp": "當轉檔或重組進度遠超於目前播放進度時，將暫停轉檔節省消耗的資源。在不常跳播的時候最有效。如果遇到播放問題，請關閉此功能。",
     "AllowHWTranscodingHelp": "若啟用，將會允許調諧器同步轉檔，能夠減少伺服器轉檔需求。",
