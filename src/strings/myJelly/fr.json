@@ -40,6 +40,8 @@
     "MoreDiffused": "Plus diffus",
     "Oblique": "Oblique :",
     "OptionDivider": "...............................",
+    "PlaceClock": "Emplacement de l'horloge :",
+    "PlaceClockHelp": "Definir l'emplacement de l'horloge.",
     "Queue": "Queue",
     "RandomScreensaverHelp": "Laisser le système décider.",
     "Reload": "Recharger l'application",

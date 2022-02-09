@@ -19,31 +19,30 @@ import Dashboard, { pageClassOn } from './clientUtils';
 import ServerConnections from '../components/ServerConnections';
 import Headroom from 'headroom.js';
 import appSettings from './settings/appSettings';
-import { currentSettings, enableClock, showClock } from '../scripts/settings/userSettings';
+import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
-
-	function toggleClockMode() {
-		let clockButton = document.getElementById("headerClock");
-		// Switch night-mode ON and OFF.
-		if (clockButton.classList.contains('nightClock')) 
-			clockButton.classList.remove('nightClock');
-		else
-			clockButton.classList.add('nightClock');
-	}
 	
     function renderHeader() {
         let html = '';
         html += '<div class="flex align-items-center flex-grow headerTop">';
         html += '<div class="headerLeft">';
-        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerBackButton hide"><span class="material-icons ' + (browser.safari ? 'chevron_left' : 'arrow_back') + '"></span></button>';
-        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerHomeButton hide barsMenuButton headerButtonLeft"><span class="material-icons home"></span></button>';
-		
 		// Extra feature thought for TV and mobile users regardless of the layout in use.
 		// That one acts like a shift + reload with Firefox, requesting a fresh copy of everything from the server.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
+	
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';	
 		
-        html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';
+		/* Added: Left casing for the topbar clock */
+		html += '<button id="headerClockLeft" class="headerClockButton headerClock hide" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;">';
+		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
+		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 120%;"></div>';
+		html += '</button>';
+		/* ********************************** */
+		
+        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerBackButton hide"><span class="material-icons ' + (browser.safari ? 'chevron_left' : 'arrow_back') + '"></span></button>';
+        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerHomeButton hide barsMenuButton headerButtonLeft"><span class="material-icons home"></span></button>';
+		
         html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);"></h3>';
         html += '</div>';
         html += '<div class="headerRight">';
@@ -58,9 +57,9 @@ import { currentSettings, enableClock, showClock } from '../scripts/settings/use
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerLockButton hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		/* Added: casing for the topbar clock */
-		html += '<button id="headerClock" class="headerClockButton headerClock hide" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;">';
-		html += '<div id="headerClockDate" class="headerClockDate" style="font-size: 70%;"></div>';
-		html += '<div id="headerClockTime" class="headerClockTime" style="font-size: 120%;"></div>';
+		html += '<button id="headerClockRight" class="headerClockButton headerClock hide" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;">';
+		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
+		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
 		/* ********************************** */
 		
@@ -79,8 +78,6 @@ import { currentSettings, enableClock, showClock } from '../scripts/settings/use
         skinHeader.innerHTML = html;
 
         headerBackButton = skinHeader.querySelector('.headerBackButton');
-		headerClockButton = skinHeader.querySelector('.headerClock');
-		headerClockButton.addEventListener('click', toggleClockMode);
         headerHomeButton = skinHeader.querySelector('.headerHomeButton');
         mainDrawerButton = skinHeader.querySelector('.mainDrawerButton');
         headerUserButton = skinHeader.querySelector('.headerUserButton');
@@ -405,6 +402,11 @@ import { currentSettings, enableClock, showClock } from '../scripts/settings/use
 
             html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnSettings" data-itemid="settings" href="#"><span class="material-icons navMenuOptionIcon settings"></span><span class="navMenuOptionText">' + globalize.translate('Settings') + '</span></a>';
             html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnLogout" data-itemid="logout" href="#"><span class="material-icons navMenuOptionIcon exit_to_app"></span><span class="navMenuOptionText">' + globalize.translate('ButtonSignOut') + '</span></a>';
+			
+			if (appHost.supports('exitmenu')) {
+				html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder exitApp" data-itemid="exitapp" href="#"><span class="material-icons navMenuOptionIcon close"></span><span class="navMenuOptionText">' + globalize.translate('ButtonExitApp') + '</span></a>';
+			}
+
             html += '</div>';
         }
 
@@ -421,6 +423,11 @@ import { currentSettings, enableClock, showClock } from '../scripts/settings/use
             btnSettings.addEventListener('click', onSettingsClick);
         }
 
+		const btnExit = navDrawerScrollContainer.querySelector('.exitApp');
+        if (btnExit) {
+            btnExit.addEventListener('click', onExitAppClick);
+        }
+		
         const btnLogout = navDrawerScrollContainer.querySelector('.btnLogout');
         if (btnLogout) {
             btnLogout.addEventListener('click', onLogoutClick);
@@ -808,6 +815,10 @@ import { currentSettings, enableClock, showClock } from '../scripts/settings/use
         Dashboard.navigate('mypreferencesmenu.html');
     }
 
+    function onExitAppClick() {
+        appHost.exit();
+    }
+	
     function onLogoutClick() {
         Dashboard.logout();
     }
@@ -1133,15 +1144,9 @@ import { currentSettings, enableClock, showClock } from '../scripts/settings/use
         ServerConnections.user(currentApiClient).then(function (user) {
             currentUser = user;
             updateUserInHeader(user);
-			switch(enableClock()) {
-				case 1:
-				case 2:
-					showClock(true);
-					break;
-					
-				default:
-					showClock(false);
-			}
+			initClockPlaces();
+			placeClock(placeClock());
+			enableClock(enableClock());
         });
     });
 

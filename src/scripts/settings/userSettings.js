@@ -20,6 +20,7 @@ function saveServerPreferences(instance) {
 const defaultSubtitleAppearanceSettings = {
 	verticalPosition: -1
 };
+
 var _hdrclkdate_span;
 var _hdrclktime_span;
 		
@@ -41,7 +42,7 @@ function hdrClock() {
 	_hdrclktime_span.innerHTML = _hdrclk_time;
 	return;
 }
-
+	
 export class UserSettings {
     constructor() {
 		this.clockTimer = null;
@@ -294,6 +295,30 @@ export class UserSettings {
         return val === 'true';
     }
 
+	toggleClockMode(TOGGLE) {
+		const _hdrclck = document.getElementsByClassName('headerClockActive')[0];
+		if (_hdrclck) {
+			let val = this.get('clock_mode') || '0';
+			if (TOGGLE === true) {
+				switch (val) {
+					case '1':
+						val = '0';
+						break;
+					default:
+						val = '1';
+				}
+				this.set('clock_mode', val, true);
+			}
+			switch (val) {
+				case '1':
+					_hdrclck.classList.add('nightClock');
+					break;
+				default:
+					_hdrclck.classList.remove('nightClock');
+			}
+		}
+	}
+	
     /**
      * Get or set 'Clock' state.
      * @param {boolean|undefined} val - Flag to (en|dis)able 'Clock' (Set) or undefined (Get).
@@ -308,10 +333,12 @@ export class UserSettings {
 			// Save the new value. 
 			this.set('clock', newval);
 			
-			// If clock is disabled or enabled only for videos,
-			// clear any existing timer
-			// hide the clock 
-			// return.
+			/***
+				If clock is disabled or enabled only for videos,
+				clear any existing timer
+				hide the clock 
+				return. 
+			***/
 			switch(newval) {
 				case 0:
 				case 3:
@@ -324,34 +351,99 @@ export class UserSettings {
             return true;
         }
 		
-		const ret = parseInt(this.get('clock'), 10);
+		const ret = parseInt(this.get('clock'), 10) || 0;
 		if (ret < 0 || ret > 3)
 			return 0;
         return ret;
     }
 	
-	/* Show or hide the Top bar clock */
+	/** Show or hide the Top bar clock **/
 	
 	showClock(val) {
-		const _hdrclck = document.getElementById("headerClock");
-		_hdrclkdate_span = document.getElementById("headerClockDate");
-		_hdrclktime_span = document.getElementById("headerClockTime");
+		const _hdrclck = document.getElementsByClassName('headerClockActive')[0];
+		if (_hdrclck) {
+			_hdrclkdate_span = _hdrclck.getElementsByClassName('headerClockDate')[0];
+			_hdrclktime_span = _hdrclck.getElementsByClassName('headerClockTime')[0];	
 		
-		if (val === true) {
-			_hdrclck.classList.remove('hide');
-			hdrClock();
-			if (this.clockTimer === null) {
-				this.clockTimer = setInterval( function() { hdrClock() }, 10000);
+			if (val === true) {
+				/*** Show ***/
+				this.toggleClockMode(false);
+				hdrClock();
+				if (this.clockTimer === null)
+					this.clockTimer = setInterval( function() { hdrClock() }, 10000);
+				_hdrclck.classList.remove('hide');
+			} else {
+				/*** Hide ***/
+				_hdrclck.classList.add('hide');
+				if (this.clockTimer !== null) {
+					clearInterval(this.clockTimer);
+					this.clockTimer = null;
+				}
 			}
-		} else {
-			if (this.clockTimer !== null) {
-				clearInterval(this.clockTimer);
-				this.clockTimer = null;
-			}
-			_hdrclck.classList.add('hide');
 		}
 		return true;
 	}
+	
+	initClockPlaces() {
+		const self = this;
+		let _l_hdrclck = document.getElementById("headerClockLeft");
+		let _r_hdrclck = document.getElementById("headerClockRight");
+		if (_r_hdrclck) 
+			_r_hdrclck.addEventListener('click', () => { self.toggleClockMode(true) });
+		if (_l_hdrclck) 
+			_l_hdrclck.addEventListener('click', () => { self.toggleClockMode(true) });
+	}
+	
+	/**
+     * Get or set 'Clock' location.
+     * @param {boolean|undefined} val - Flag to (en|dis)able 'Clock' (Set) or undefined (Get).
+     * @return {boolean} 'Clock' state (Get) or success/failure status (Set).
+     */
+	placeClock(val) {
+		const self = this;
+        if (val !== undefined) {
+			let newval = parseInt(val, 10) || 0;
+			if (newval < 0 || newval > 1)
+				newval = 0;
+			
+			let _l_hdrclck = document.getElementById("headerClockLeft");
+			let _r_hdrclck = document.getElementById("headerClockRight");
+			
+			switch(newval) {
+				/*** left side ***/
+				case 1:
+					if (_r_hdrclck) {
+						_r_hdrclck.classList.add('hide');
+						_r_hdrclck.classList.remove('headerClockActive');
+					}
+					if (_l_hdrclck) {
+						_l_hdrclck.classList.add('headerClockActive');
+						_l_hdrclck.classList.remove('hide');
+					}
+					break;
+				/*** right side ***/
+				case 0:
+					if (_l_hdrclck) {
+						_l_hdrclck.classList.add('hide');
+						_l_hdrclck.classList.remove('headerClockActive');
+					}
+					if (_r_hdrclck) {
+						_r_hdrclck.classList.add('headerClockActive');
+						_r_hdrclck.classList.remove('hide');
+					}
+					break;
+			}
+			
+			/*** Save the new position. ***/
+			this.set('clock_pos', newval);
+            return true;
+        }
+		
+		const ret = parseInt(this.get('clock_pos'), 10) || 0;
+		if (ret < 0 || ret > 1)
+			return 0;
+        return ret;
+    }
 
     /**
      * Get or set 'Fast Fade-in' state.
@@ -764,7 +856,9 @@ export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSet
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
+export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);
 export const showClock = currentSettings.showClock.bind(currentSettings);
+export const placeClock = currentSettings.placeClock.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);

@@ -100,6 +100,18 @@ import viewContainer from '../viewContainer';
         });
     }
 
+	function onClockChange(e) {
+		const val = e.target.value;
+		
+		let clockSettings = document.querySelector('.clockSettings');
+		if (clockSettings) {
+			if (val != 0)
+				clockSettings.classList.remove('hide');
+			else
+				clockSettings.classList.add('hide');
+		}
+	}
+	
 	function onScreenSaverChange(e) {
 		const val = e.target.value;
 	    const options = pluginManager.ofType('screensaver').map( plugin => {
@@ -116,7 +128,7 @@ import viewContainer from '../viewContainer';
 		else 
 			key = sel[0]? sel[0].description || '' : '';
 		
-		const txt = key? globalize.translate(key) || '' : '';
+		const txt = key? globalize.translate(key) || '&nbsp;' : '&nbsp;';
 		
 		let pnode = e.target.parentNode;
 		if (pnode)	
@@ -322,7 +334,14 @@ import viewContainer from '../viewContainer';
         context.querySelector('.chkDisplayMissingEpisodes').checked = user.localUser.Configuration.DisplayMissingEpisodes || false;
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
-		context.querySelector('#selectClock').value = userSettings.enableClock();
+		
+		let sliderClock = context.querySelector('#selectClock');
+		sliderClock.value = userSettings.enableClock();
+		sliderClock.addEventListener('change', onClockChange);
+		sliderClock.dispatchEvent(event_change);
+		
+		context.querySelector('#selectClockPlace').value = userSettings.placeClock();
+		
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
 		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
@@ -401,7 +420,9 @@ import viewContainer from '../viewContainer';
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
+		userSettingsInstance.placeClock(context.querySelector('#selectClockPlace').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
+		
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
