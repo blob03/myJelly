@@ -335,12 +335,12 @@ import viewContainer from '../viewContainer';
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		
-		let sliderClock = context.querySelector('#selectClock');
-		sliderClock.value = userSettings.enableClock();
-		sliderClock.addEventListener('change', onClockChange);
-		sliderClock.dispatchEvent(event_change);
-		
-		context.querySelector('#selectClockPlace').value = userSettings.placeClock();
+		let selectClock = context.querySelector('#selectClock');
+		selectClock.value = userSettings.enableClock();
+		/*
+		selectClock.addEventListener('change', onClockChange);
+		selectClock.dispatchEvent(event_change);
+		*/
 		
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
@@ -420,7 +420,6 @@ import viewContainer from '../viewContainer';
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
-		userSettingsInstance.placeClock(context.querySelector('#selectClockPlace').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
 		
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);

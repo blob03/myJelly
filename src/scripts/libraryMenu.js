@@ -25,7 +25,7 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 	
     function renderHeader() {
         let html = '';
-        html += '<div class="flex align-items-center flex-grow headerTop">';
+        html += '<div class="flex align-items-center flex-grow headerTop" style="justify-content: center;">';
         html += '<div class="headerLeft">';
 		// Extra feature thought for TV and mobile users regardless of the layout in use.
 		// That one acts like a shift + reload with Firefox, requesting a fresh copy of everything from the server.
@@ -34,10 +34,14 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';	
 		
 		/* Added: Left casing for the topbar clock */
-		html += '<button id="headerClockLeft" class="headerClockButton headerClock hide" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;">';
+		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display:flex;flex-direction:row;">';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button class="headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '</div>';
 		/* ********************************** */
 		
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerBackButton hide"><span class="material-icons ' + (browser.safari ? 'chevron_left' : 'arrow_back') + '"></span></button>';
@@ -45,6 +49,18 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		
         html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);"></h3>';
         html += '</div>';
+		
+		/* Added: Middle casing for the topbar clock */
+		html += '<div class="headerClockButton hide" id="headerClockMiddle" class="headerMiddle" style="position: absolute;display:flex;flex-direction:row;justify-content: center;">';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button class="headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';
+		html += '<div id="headerClockTimeMiddle" class="headerClockTime" style="font-size: 120%;"></div>';
+		html += '</button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '</div>';
+		/* ********************************** */
+		
         html += '<div class="headerRight">';
 		html += '<span class="headerSelectedPlayer"></span>';
         html += '<button is="paper-icon-button-light" class="headerSyncButton syncButton headerButton headerButtonRight hide"><span class="material-icons groups"></span></button>';
@@ -57,10 +73,14 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerLockButton hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		/* Added: casing for the topbar clock */
-		html += '<button id="headerClockRight" class="headerClockButton headerClock hide" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;">';
+		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;">';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button class="headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '</div>';
 		/* ********************************** */
 		
         html += '<button is="paper-icon-button-light" class="headerButton headerButtonRight headerUserButton hide"><span class="material-icons person"></span></button>';			

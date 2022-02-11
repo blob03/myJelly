@@ -45,7 +45,7 @@
     max-height: 3.5em;
 }
 
-.osdHeader .headerButton:not(.headerBackButton):not(.headerCastButton):not(.headerSyncButton) {
+.osdHeader .headerButton:not(.headerBackButton):not(.headerCastButton):not(.headerSyncButton):not(.moveLeftButton):not(.moveRightButton) {
     display: none;
 }
 

@@ -45,7 +45,7 @@ html {
     color: #282828;
 }
 
-.headerLeft, .headerRight {
+.headerLeft, .headerRight, .headerMiddle {
 	overflow: visible !important;
 	margin-right: .5em;
 	margin-left: .5em;

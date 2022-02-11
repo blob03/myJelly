@@ -21,8 +21,7 @@ const defaultSubtitleAppearanceSettings = {
 	verticalPosition: -1
 };
 
-var _hdrclkdate_span;
-var _hdrclktime_span;
+
 		
 function hdrClock() {
 	globalize.updateCurrentCulture();
@@ -38,14 +37,16 @@ function hdrClock() {
 			minute: '2-digit'
 	});
 	
-	_hdrclkdate_span.innerHTML = _hdrclk_date;
-	_hdrclktime_span.innerHTML = _hdrclk_time;
+	this._hdrclkdate_span.innerHTML = _hdrclk_date;
+	this._hdrclktime_span.innerHTML = _hdrclk_time;
 	return;
 }
 	
 export class UserSettings {
     constructor() {
 		this.clockTimer = null;
+		this._hdrclkdate_span;
+		this._hdrclktime_span;
     }
 	
     /**
@@ -342,11 +343,11 @@ export class UserSettings {
 			switch(newval) {
 				case 0:
 				case 3:
-					showClock(false);
+					this.showClock(false);
 					break;
 					
 				default:
-					showClock(true);
+					this.showClock(true);
 			}
             return true;
         }
@@ -358,40 +359,60 @@ export class UserSettings {
     }
 	
 	/** Show or hide the Top bar clock **/
-	
 	showClock(val) {
 		const _hdrclck = document.getElementsByClassName('headerClockActive')[0];
-		if (_hdrclck) {
-			_hdrclkdate_span = _hdrclck.getElementsByClassName('headerClockDate')[0];
-			_hdrclktime_span = _hdrclck.getElementsByClassName('headerClockTime')[0];	
-		
-			if (val === true) {
-				/*** Show ***/
-				this.toggleClockMode(false);
-				hdrClock();
-				if (this.clockTimer === null)
-					this.clockTimer = setInterval( function() { hdrClock() }, 10000);
-				_hdrclck.classList.remove('hide');
-			} else {
-				/*** Hide ***/
-				_hdrclck.classList.add('hide');
-				if (this.clockTimer !== null) {
-					clearInterval(this.clockTimer);
-					this.clockTimer = null;
-				}
+		if (!_hdrclck) {
+			this.placeClock(0);
+			_hdrclck = document.getElementsByClassName('headerClockActive')[0];
+		}			
+		this._hdrclkdate_span = _hdrclck.getElementsByClassName('headerClockDate')[0];
+		this._hdrclktime_span = _hdrclck.getElementsByClassName('headerClockTime')[0];	
+	
+		if (val === true) {
+			/*** Show ***/
+			this.toggleClockMode(false);
+			const self = this;
+			setTimeout( hdrClock.bind(self), 100);
+			if (this.clockTimer === null) 
+				this.clockTimer = setInterval( hdrClock.bind(self), 10000);
+			_hdrclck.parentElement.classList.remove('hide');
+		} else {
+			/*** Hide ***/
+			_hdrclck.parentElement.classList.add('hide');
+			if (this.clockTimer !== null) {
+				clearInterval(this.clockTimer);
+				this.clockTimer = null;
 			}
 		}
+		
 		return true;
 	}
 	
-	initClockPlaces() {
+	initButtons(pos) {
 		const self = this;
+		if (pos) {
+			let elm = pos.getElementsByClassName("headerClock")[0];
+			if (elm)
+				elm.addEventListener('click', () => { self.toggleClockMode(true) });
+			elm = pos.getElementsByClassName("moveLeftButton")[0];
+			if (elm)
+				elm.addEventListener('click', () => { self.placeClock(-1) });
+			elm = pos.getElementsByClassName("moveRightButton")[0];
+			if (elm)
+				elm.addEventListener('click', () => { self.placeClock(1) });
+		}
+	}
+	
+	initClockPlaces() {
 		let _l_hdrclck = document.getElementById("headerClockLeft");
-		let _r_hdrclck = document.getElementById("headerClockRight");
-		if (_r_hdrclck) 
-			_r_hdrclck.addEventListener('click', () => { self.toggleClockMode(true) });
-		if (_l_hdrclck) 
-			_l_hdrclck.addEventListener('click', () => { self.toggleClockMode(true) });
+		let _m_hdrclck = document.getElementById("headerClockRight");
+		let _r_hdrclck = document.getElementById("headerClockMiddle");
+		if (!_l_hdrclck || !_m_hdrclck || !_r_hdrclck)
+			return;
+				
+		this.initButtons(_l_hdrclck);
+		this.initButtons(_m_hdrclck);
+		this.initButtons(_r_hdrclck);
 	}
 	
 	/**
@@ -399,50 +420,70 @@ export class UserSettings {
      * @param {boolean|undefined} val - Flag to (en|dis)able 'Clock' (Set) or undefined (Get).
      * @return {boolean} 'Clock' state (Get) or success/failure status (Set).
      */
+	hideClockPos(pos) {
+		if (pos)
+			pos.classList.add('hide');
+		let elm = pos.getElementsByClassName("headerClock")[0];
+		if (elm)
+			elm.classList.remove('headerClockActive');
+	}
+	 
+	showClockPos(pos) {
+		if (pos)
+			pos.classList.remove('hide');
+		let elm = pos.getElementsByClassName("headerClock")[0];
+		if (elm)
+			elm.classList.add('headerClockActive');
+	}
+	 
 	placeClock(val) {
-		const self = this;
+		let pos = parseInt(this.get('clock_pos'), 10) || 0;
+		
         if (val !== undefined) {
 			let newval = parseInt(val, 10) || 0;
-			if (newval < 0 || newval > 1)
+			if (newval < -1 || newval > 1)
 				newval = 0;
 			
+			pos += newval;
+			if (pos > 2)
+				pos = 0;
+			if (pos < 0)
+				pos = 2;
+		
 			let _l_hdrclck = document.getElementById("headerClockLeft");
+			let _m_hdrclck = document.getElementById("headerClockMiddle");
 			let _r_hdrclck = document.getElementById("headerClockRight");
-			
-			switch(newval) {
+			if (!_l_hdrclck || !_m_hdrclck || !_r_hdrclck)
+				return false;
+		
+			this.hideClockPos(_l_hdrclck);
+			this.hideClockPos(_m_hdrclck);
+			this.hideClockPos(_r_hdrclck);	
+		
+			switch(pos) {
 				/*** left side ***/
-				case 1:
-					if (_r_hdrclck) {
-						_r_hdrclck.classList.add('hide');
-						_r_hdrclck.classList.remove('headerClockActive');
-					}
-					if (_l_hdrclck) {
-						_l_hdrclck.classList.add('headerClockActive');
-						_l_hdrclck.classList.remove('hide');
-					}
+				case 0:
+					this.showClockPos(_l_hdrclck);
+					break;
+				/*** Middle ***/
+				case 1:		
+					this.showClockPos(_m_hdrclck);
 					break;
 				/*** right side ***/
-				case 0:
-					if (_l_hdrclck) {
-						_l_hdrclck.classList.add('hide');
-						_l_hdrclck.classList.remove('headerClockActive');
-					}
-					if (_r_hdrclck) {
-						_r_hdrclck.classList.add('headerClockActive');
-						_r_hdrclck.classList.remove('hide');
-					}
+				case 2:
+					this.showClockPos(_r_hdrclck);
 					break;
 			}
-			
+		
 			/*** Save the new position. ***/
-			this.set('clock_pos', newval);
+			this.set('clock_pos', pos, true);
+			this.showClock(true);
             return true;
         }
 		
-		const ret = parseInt(this.get('clock_pos'), 10) || 0;
-		if (ret < 0 || ret > 1)
+		if (pos < 0 || pos > 2)
 			return 0;
-        return ret;
+        return pos;
     }
 
     /**
