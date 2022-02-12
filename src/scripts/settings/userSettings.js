@@ -94,7 +94,7 @@ export class UserSettings {
      */
     set(name, value, enableOnServer) {
         const userId = this.currentUserId;
-        const currentValue = this.get(name, enableOnServer);
+		const currentValue = this.get(name);
 		const val = value.toString();
 		
 		if (this.displayPrefs) {
@@ -331,7 +331,7 @@ export class UserSettings {
 			if (newval < 0 || newval > 3)
 				newval = 0;
 			
-			// Save the new value. 
+			/*** Save the new value. ***/
 			this.set('clock', newval);
 			
 			/***
@@ -372,7 +372,7 @@ export class UserSettings {
 			/*** Show ***/
 			this.toggleClockMode(false);
 			const self = this;
-			setTimeout( hdrClock.bind(self), 100);
+			setTimeout( hdrClock.bind(self), 10);
 			if (this.clockTimer === null) 
 				this.clockTimer = setInterval( hdrClock.bind(self), 10000);
 			_hdrclck.parentElement.classList.remove('hide');
