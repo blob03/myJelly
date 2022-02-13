@@ -461,8 +461,7 @@ html {
 }
 
 .detailButton:focus,
-.headerButton:focus
- {
+.headerButton:focus {
 	background-color: rgba(231, 123, 7, 0.4);
 	animation-name: buttonfocus;
 	animation-duration: .10s;

@@ -6,7 +6,7 @@ import { pageClassOn } from './clientUtils';
 const cache = {};
 
 function enabled() {
-    return userSettings.enableBackdrops();
+    return userSettings.enableBackdrops() != 'None';
 }
 
 function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
@@ -49,13 +49,14 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let options;
 	let images;
 
-	switch(type) {	
+	switch(type) {
 		case "Libraries":
 		case "LibrariesFav":
 		case "Movie":
 		case "MovieFav":
 		case "Series":
 		case "SeriesFav":
+		case 'Theme':
 		case "Auto":
 			options = {
 				SortBy: SortBy,
@@ -113,10 +114,9 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 
 function showBackdrop(type, parentId) {
     const apiClient = window.ApiClient;
-
     if (apiClient) {
-        getBackdropItemIds(apiClient, apiClient.getCurrentUserId(), type, parentId).then(function (images) {
-            if (images.length) {
+        getBackdropItemIds(apiClient, apiClient.getCurrentUserId(), type, parentId).then( function (images) {
+            if (images && images.length) {
                 backdrop.setBackdrops(images.map(function (i) {
                     i.BackdropImageTags = [i.tag];
                     return i;
@@ -136,7 +136,7 @@ pageClassOn('pageshow', 'page', function () {
             if (enabled()) {
                 const type = page.getAttribute('data-backdroptype');
                 const parentId = page.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
-                showBackdrop(type, parentId);
+				showBackdrop(type, parentId);
             } else {
                 page.classList.remove('backdropPage');
                 backdrop.clearBackdrop();

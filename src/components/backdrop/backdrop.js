@@ -29,6 +29,7 @@ import ServerConnections from '../ServerConnections';
     }
 
     class Backdrop {
+		
         load(url, parent, existingBackdropImage) {
             const img = new Image();
             const self = this;
@@ -45,6 +46,7 @@ import ServerConnections from '../ServerConnections';
 				switch(userSettings.enableBackdrops()) {
 					case 'None':
 						break;
+						
 					case 'Libraries':
 					case 'LibrariesFav':
 					case 'Movie':
@@ -56,12 +58,14 @@ import ServerConnections from '../ServerConnections';
 						backdropImage.style.backgroundImage = `url('${url}')`;
 						backdropImage.setAttribute('data-url', url);
 						break;
+						
 					case 'Theme':
 						let idx = Math.floor(Math.random() * 4);
 						backdropImage.classList.add('themeBackdrop');
 						if (idx)
 							backdropImage.classList.add('alt' + idx);
 						break;
+						
 					default:
 					case 'Auto':
 						idx = Math.floor(Math.random() * 4);
@@ -166,13 +170,14 @@ import ServerConnections from '../ServerConnections';
 			switch(userSettings.enableBackdrops()) {
 				case 'None':
 					break;
+					
 				case 'Theme':
 				case 'Auto':
 					getBackgroundContainer().classList.add('withThemeBackdrop');
 					break;
+					
 				default:
 					getBackgroundContainer().classList.add('withBackdrop');	
-					break;
 			};
         } else {
             getBackgroundContainer().classList.remove('withBackdrop');
