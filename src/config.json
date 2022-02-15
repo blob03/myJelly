@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-235",
+	"version": "10.7.7-236",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -15,7 +15,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "1.89",
+		"version": "1.90",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"

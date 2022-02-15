@@ -599,13 +599,15 @@ html {
 /* top bar clock style */
 
 .headerClockButton {
-	padding:0px 15px;
+	padding:0px;
 }
 
-.headerClockTime,
-.headerClockDate {
-	color: #6f53d3;
+.headerClock,
+.headerClock > .material-icons {
+	color: rgba(230, 138, 57, 0.8) !important;
+	text-shadow: 1px 1px 8px #411c5b !important;
 }
+
 
 .headerClockTime {
 	font-family: "Mystery";
