@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-234",
+	"version": "10.7.7-235",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -9,7 +9,7 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "1.73",
+		"version": "1.74",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"

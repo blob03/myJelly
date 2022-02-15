@@ -35,12 +35,12 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		
 		/* Added: Left casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display:flex;flex-direction:row;">';
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
 		/* ********************************** */
 		
@@ -52,12 +52,12 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		
 		/* Added: Middle casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockMiddle" class="headerMiddle" style="position: absolute;display:flex;flex-direction:row;justify-content: center;">';
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeMiddle" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
 		/* ********************************** */
 		
@@ -74,12 +74,12 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		
 		/* Added: casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;">';
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 120%;"></div>';
 		html += '</button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
 		/* ********************************** */
 		

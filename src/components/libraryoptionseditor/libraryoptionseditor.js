@@ -415,6 +415,12 @@ import settingsHelper from '../settingshelper';
             parent.querySelector('.chkEnableEmbeddedEpisodeInfosContainer').classList.add('hide');
         }
 
+		if (contentType === 'tvshows' || contentType === 'movies' || contentType === 'musicvideos' || contentType === 'mixed') {
+            parent.querySelector('.fldAllowEmbeddedSubtitlesContainer').classList.remove('hide');
+        } else {
+            parent.querySelector('.fldAllowEmbeddedSubtitlesContainer').classList.add('hide');
+        }
+		
         parent.querySelector('.chkAutomaticallyAddToCollectionContainer').classList.toggle('hide', contentType !== 'movies' && contentType !== 'mixed');
 		
         return populateMetadataSettings(parent, contentType);
@@ -513,7 +519,8 @@ import settingsHelper from '../settingshelper';
             AutomaticRefreshIntervalDays: parseInt(parent.querySelector('#selectAutoRefreshInterval').value),
             EnableEmbeddedTitles: parent.querySelector('#chkEnableEmbeddedTitles').checked,
             EnableEmbeddedEpisodeInfos: parent.querySelector('#chkEnableEmbeddedEpisodeInfos').checked,
-            SkipSubtitlesIfEmbeddedSubtitlesPresent: parent.querySelector('#chkSkipIfGraphicalSubsPresent').checked,
+            AllowEmbeddedSubtitles: parent.querySelector('#selectAllowEmbeddedSubtitles').value,
+			SkipSubtitlesIfEmbeddedSubtitlesPresent: parent.querySelector('#chkSkipIfGraphicalSubsPresent').checked,
             SkipSubtitlesIfAudioTrackMatches: parent.querySelector('#chkSkipIfAudioTrackPresent').checked,
             SaveSubtitlesWithMedia: parent.querySelector('#chkSaveSubtitlesLocally').checked,
             RequirePerfectSubtitleMatch: parent.querySelector('#chkRequirePerfectMatch').checked,
@@ -564,7 +571,8 @@ import settingsHelper from '../settingshelper';
         parent.querySelector('#chkSaveLocal').checked = options.SaveLocalMetadata;
         parent.querySelector('.chkAutomaticallyGroupSeries').checked = options.EnableAutomaticSeriesGrouping;
         parent.querySelector('#chkEnableEmbeddedTitles').checked = options.EnableEmbeddedTitles;
-        parent.querySelector('#chkEnableEmbeddedEpisodeInfos').checked = options.EnableEmbeddedEpisodeInfos;
+        parent.querySelector('#chkEnableEmbeddedEpisodeInfos').value = options.EnableEmbeddedEpisodeInfos;
+        parent.querySelector('#selectAllowEmbeddedSubtitles').value = options.AllowEmbeddedSubtitles;
         parent.querySelector('#chkSkipIfGraphicalSubsPresent').checked = options.SkipSubtitlesIfEmbeddedSubtitlesPresent;
         parent.querySelector('#chkSaveSubtitlesLocally').checked = options.SaveSubtitlesWithMedia;
         parent.querySelector('#chkSkipIfAudioTrackPresent').checked = options.SkipSubtitlesIfAudioTrackMatches;

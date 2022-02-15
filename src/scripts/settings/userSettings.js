@@ -391,7 +391,7 @@ export class UserSettings {
 	initButtons(pos) {
 		const self = this;
 		if (pos) {
-			let elm = pos.getElementsByClassName("headerClock")[0];
+			let elm = pos.getElementsByClassName("headerClockMain")[0];
 			if (elm)
 				elm.addEventListener('click', () => { self.toggleClockMode(true) });
 			elm = pos.getElementsByClassName("moveLeftButton")[0];
@@ -423,7 +423,7 @@ export class UserSettings {
 	hideClockPos(pos) {
 		if (pos)
 			pos.classList.add('hide');
-		let elm = pos.getElementsByClassName("headerClock")[0];
+		let elm = pos.getElementsByClassName("headerClockMain")[0];
 		if (elm)
 			elm.classList.remove('headerClockActive');
 	}
@@ -431,7 +431,7 @@ export class UserSettings {
 	showClockPos(pos) {
 		if (pos)
 			pos.classList.remove('hide');
-		let elm = pos.getElementsByClassName("headerClock")[0];
+		let elm = pos.getElementsByClassName("headerClockMain")[0];
 		if (elm)
 			elm.classList.add('headerClockActive');
 	}

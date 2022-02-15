@@ -582,14 +582,15 @@ h3 {
 
 /* top bar clock style */
 
+
 .headerClockButton {
-	padding:0px 15px;
+	padding:0px;
 }
 
-.headerClockTime,
-.headerClockDate {
-	color: #135090;
-	text-shadow: 1px 1px 4px #304753;
+.headerClock,
+.headerClock > .material-icons {
+	color: rgba(178, 248, 255, 0.8) !important;
+	text-shadow: 1px 1px 8px #39708b !important;
 }
 
 .headerClockTime {

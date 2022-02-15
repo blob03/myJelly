@@ -21,6 +21,7 @@
     "AllEpisodes": "Tất cả các tập",
     "AllLanguages": "Tất cả các ngôn ngữ",
     "AllLibraries": "Tất cả thư viện",
+    "AllowEmbeddedSubtitles": "Tắt các loại phụ đề nhúng khác nhau",
     "AllowFfmpegThrottling": "Điều tiết sự chuyển mã",
     "AllowFfmpegThrottlingHelp": "Tạm dừng quá trình chuyển mã hoặc chuyển đổi định dạng để tiết kiệm tài nguyên máy chủ khi việc này đã đủ để phát so với vị trí hiện tại. Nó hữu ích khi xem mà không cần tua. Tắt tính năng này nếu bạn gặp sự cố phát lại.",
     "AllowHWTranscodingHelp": "Cho phép bộ dò chuyển mã phát trực tiếp. Nó có thể giúp giảm tải của máy chủ khi chuyển mã.",
