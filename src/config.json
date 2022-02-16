@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-236",
+	"version": "10.7.7-237",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -21,13 +21,13 @@
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "1.64",
+		"version": "1.65",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly"
 	}, {
 		"name": "WMC alt.",
-		"version": "1.28",
+		"version": "1.29",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"

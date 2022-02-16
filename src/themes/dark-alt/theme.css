@@ -605,13 +605,13 @@ html {
 /* top bar clock style */
 
 .headerClockButton {
-	padding:0px 15px;
-	overflow: visible;
+	padding:0px;
 }
 
-.headerClockTime,
-.headerClockDate {
-	color: #c1c1c1;
+.headerClock,
+.headerClock > .material-icons {
+	color: rgba(121, 135, 144, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
 .headerClockTime {

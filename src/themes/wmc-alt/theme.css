@@ -544,7 +544,13 @@ html {
 /* top bar clock style */
 
 .headerClockButton {
-	padding:0px 15px;
+	padding:0px;
+}
+
+.headerClock,
+.headerClock > .material-icons {
+	color: rgba(98, 186, 149, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
 .headerClockTime {
@@ -553,11 +559,6 @@ html {
 
 .headerClockDate {
 	font-size: 90% !important;
-}
-
-.headerClockTime,
-.headerClockDate {
-	color: #ffffff;
 }
 
 .nightClock > .headerClockTime,

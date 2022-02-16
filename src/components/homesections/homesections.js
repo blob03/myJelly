@@ -616,7 +616,7 @@ import ServerConnections from '../ServerConnections';
 						
             return apiClient.getNextUpEpisodes({
                 Limit: enableScrollX() ? 24 : 15,
-                Fields: 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo,Path',
+				Fields: 'PrimaryImageAspectRatio,DateCreated,BasicSyncInfo,Path,MediaSourceCount',
                 UserId: apiClient.getCurrentUserId(),
                 ImageTypeLimit: 1,
                 EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
