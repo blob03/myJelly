@@ -1040,6 +1040,7 @@
     "MediaInfoSampleRate": "採樣率",
     "MediaInfoSize": "大小",
     "MediaInfoTimestamp": "時間戳",
+    "MediaInfoTitle": "標題",
     "MediaInfoVideoRange": "動態範圍",
     "MediaIsBeingConverted": "媒體正在轉換為相容播放裝置的格式。",
     "Menu": "選單",
