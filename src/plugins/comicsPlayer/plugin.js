@@ -24,7 +24,8 @@ export class ComicsPlayer {
     }
 
     play(options) {
-        this.progress = 0;
+        this.currentPage = 0;
+        this.pageCount = 0;
 
         const elem = this.createMediaElement();
         return this.setCurrentSrc(elem, options);
@@ -32,6 +33,12 @@ export class ComicsPlayer {
 
     stop() {
         this.unbindEvents();
+
+        const stopInfo = {
+            src: this.item
+        };
+
+        Events.trigger(this, 'stopped', [stopInfo]);
 
         this.archiveSource?.release();
 
@@ -42,6 +49,38 @@ export class ComicsPlayer {
         }
 
         loading.hide();
+    }
+
+    destroy() {
+        // Nothing to do here
+    }
+
+    currentTime() {
+        return this.currentPage;
+    }
+
+    duration() {
+        return this.pageCount;
+    }
+
+    currentItem() {
+        return this.item;
+    }
+
+    volume() {
+        return 100;
+    }
+
+    isMuted() {
+        return false;
+    }
+
+    paused() {
+        return false;
+    }
+
+    seekable() {
+        return true;
     }
 
     onDialogClosed() {
@@ -60,8 +99,8 @@ export class ComicsPlayer {
     bindMediaElementEvents() {
         const elem = this.mediaElement;
 
-        elem?.addEventListener('close', this.onDialogClosed, {once: true});
-        elem?.querySelector('.btnExit').addEventListener('click', this.onDialogClosed, {once: true});
+        elem?.addEventListener('close', this.onDialogClosed, { once: true });
+        elem?.querySelector('.btnExit').addEventListener('click', this.onDialogClosed, { once: true });
     }
 
     bindEvents() {
@@ -118,7 +157,15 @@ export class ComicsPlayer {
 
     setCurrentSrc(elem, options) {
         const item = options.items[0];
-        this.currentItem = item;
+        this.item = item;
+        this.streamInfo = {
+            started: true,
+            ended: false,
+            item: this.item,
+            mediaSource: {
+                Id: item.Id
+            }
+        };
 
         loading.show();
 
@@ -134,6 +181,10 @@ export class ComicsPlayer {
 
         return this.archiveSource.load().then(() => {
             loading.hide();
+
+            this.pageCount = this.archiveSource.urls.length;
+            this.currentPage = options.startPositionTicks / 10000 || 0;
+
             this.swiperInstance = new Swiper(elem.querySelector('.slideshowSwiperContainer'), {
                 direction: 'horizontal',
                 // loop is disabled due to the lack of Swiper support in virtual slides
@@ -150,7 +201,7 @@ export class ComicsPlayer {
                 preloadImages: true,
                 slidesPerView: 1,
                 slidesPerColumn: 1,
-                initialSlide: 0,
+                initialSlide: this.currentPage,
                 // reduces memory consumption for large libraries while allowing preloading of images
                 virtual: {
                     slides: this.archiveSource.urls,
@@ -159,6 +210,12 @@ export class ComicsPlayer {
                     addSlidesBefore: 1,
                     addSlidesAfter: 1
                 }
+            });
+
+            // save current page ( a page is an image file inside the archive )
+            this.swiperInstance.on('slideChange', () => {
+                this.currentPage = this.swiperInstance.activeIndex;
+                Events.trigger(this, 'pause');
             });
         });
     }
@@ -184,6 +241,9 @@ export class ComicsPlayer {
     }
 }
 
+// the comic book archive supports any kind of image format as it's just a zip archive
+const supportedFormats = ['jpg', 'jpeg', 'jpe', 'jif', 'jfif', 'jfi', 'png', 'avif', 'gif', 'bmp', 'dib', 'tiff', 'tif'];
+
 class ArchiveSource {
     constructor(url) {
         this.url = url;
@@ -202,7 +262,14 @@ class ArchiveSource {
         this.raw = await this.archive.getFilesArray();
         await this.archive.extractFiles();
 
-        const files = await this.archive.getFilesArray();
+        let files = await this.archive.getFilesArray();
+
+        // metadata files and files without a file extension should not be considered as a page
+        files = files.filter((file) => {
+            const name = file.file.name;
+            const index = name.lastIndexOf('.');
+            return index !== -1 && supportedFormats.includes(name.slice(index + 1));
+        });
         files.sort((a, b) => {
             if (a.file.name < b.file.name) {
                 return -1;
