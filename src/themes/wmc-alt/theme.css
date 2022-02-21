@@ -761,3 +761,7 @@ option.sourceDictionaryOption {
 .btnTryIt {
 	font-size: 0.9rem;
 }
+
+.cardPadder .cardImageIcon {
+    color: rgba(0, 0, 0, 0.5);
+}

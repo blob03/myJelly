@@ -1234,3 +1234,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
 	background: rgba(10, 10, 10, .8);
 }
+
+.cardPadder .cardImageIcon {
+    color: rgba(0, 0, 0, 0.5);
+}

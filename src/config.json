@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7-242",
+	"version": "10.7.7-243",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified Jellyfin-web.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -9,25 +9,25 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "1.75",
+		"version": "1.76",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "1.91",
+		"version": "1.92",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "1.66",
+		"version": "1.67",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly"
 	}, {
 		"name": "WMC alt.",
-		"version": "1.30",
+		"version": "1.31",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"

@@ -990,3 +990,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	font-weight: 600;
 	font-size: 1.5em;
 }
+
+.cardPadder .cardImageIcon {
+    color: rgba(0, 0, 0, 0.5);
+}

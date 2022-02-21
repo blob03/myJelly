@@ -1307,3 +1307,7 @@ select option:selected {
 .ssClockTime {
 	font-family: "Shangai";
 }
+
+.cardPadder .cardImageIcon {
+    color: rgba(0, 0, 0, 0.5);
+}

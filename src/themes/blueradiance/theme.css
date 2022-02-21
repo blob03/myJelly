@@ -476,6 +476,10 @@ a[data-role=button] {
     color: #00a4dc !important;
 }
 
+.cardPadder .cardImageIcon {
+    color: rgba(0, 0, 0, 0.5);
+}
+
 .cardBox:not(.visualCardBox) .cardPadder {
     background-color: rgba(0, 0, 0, 0.5);
 }

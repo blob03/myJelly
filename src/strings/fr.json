@@ -1181,6 +1181,7 @@
     "NextChapter": "Chapitre suivant",
     "NextTrack": "Passer au prochain",
     "NextUp": "À suivre",
+    "NextUpRewatching": "Revoir",
     "No": "Non",
     "NoCreatedLibraries": "Il semble que vous n'ayez pas encore créé de bibliothèques. {0}Voulez-vous en créer une maintenant ?{1}",
     "NoNewDevicesFound": "Aucun nouvel appareil détecté. Pour en ajouter un, fermez cette fenêtre et saisissez les informations de l'appareil manuellement.",
