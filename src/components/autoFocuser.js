@@ -20,10 +20,6 @@ import layoutManager from './layoutManager';
         return layoutManager.tv;
     }
 
-	function onFocusIn(e) {
-            activeElement = e.target;
-    }
-		
     /**
      * Start AutoFocuser.
      */
@@ -32,20 +28,11 @@ import layoutManager from './layoutManager';
             return;
         }
 
-        window.addEventListener('focusin', onFocusIn);
-        console.debug('AutoFocuser enabled');
-    }
-	
-	/**
-     * Stop AutoFocuser.
-     */
-    export function disable() {
-        if (!isEnabled()) {
-            return;
-        }
+        window.addEventListener('focusin', function (e) {
+            activeElement = e.target;
+        });
 
-        window.removeEventListener('focusin', onFocusIn);
-        console.debug('AutoFocuser disabled');
+        console.debug('AutoFocuser enabled');
     }
 
     /**
@@ -77,7 +64,6 @@ import layoutManager from './layoutManager';
             candidates.push(activeElement);
         }
 
-        candidates = candidates.concat(Array.from(container.querySelectorAll('.btnResume')));
         candidates = candidates.concat(Array.from(container.querySelectorAll('.btnPlay')));
 
         let focusedElement;
@@ -113,6 +99,5 @@ import layoutManager from './layoutManager';
 export default {
     isEnabled: isEnabled,
     enable: enable,
-	disable: disable,
     autoFocus: autoFocus
 };

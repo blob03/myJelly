@@ -88,8 +88,12 @@ html {
 
 .fab,
 .raised {
-    background: #082845;
     color: #fff;
+}
+
+.homeLibraryButton {
+	opacity: 60%;
+    background: #082845;	
 }
 
 .fab:focus,
@@ -603,10 +607,6 @@ html {
 
 .mdl-slider-container {
     height: 0.83em !important;
-}
-
-.homeLibraryButton {
-	opacity: 60%;
 }
 
 select option:disabled {

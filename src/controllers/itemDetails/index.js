@@ -1,3 +1,4 @@
+import { intervalToDuration } from 'date-fns';
 import { appHost } from '../../components/apphost';
 import loading from '../../components/loading/loading';
 import { appRouter } from '../../components/appRouter';
@@ -12,7 +13,6 @@ import listView from '../../components/listview/listview';
 import itemContextMenu from '../../components/itemContextMenu';
 import itemHelper from '../../components/itemHelper';
 import dom from '../../scripts/dom';
-import indicators from '../../components/indicators/indicators';
 import imageLoader from '../../components/images/imageLoader';
 import libraryMenu from '../../scripts/libraryMenu';
 import globalize from '../../scripts/globalize';
@@ -31,6 +31,12 @@ import Dashboard from '../../scripts/clientUtils';
 import ServerConnections from '../../components/ServerConnections';
 import confirm from '../../components/confirm/confirm';
 import { download } from '../../scripts/fileDownloader';
+
+function autoFocus(container) {
+    import('../../components/autoFocuser').then(({ default: autoFocuser }) => {
+        autoFocuser.autoFocus(container);
+    });
+}
 
 function getPromise(apiClient, params) {
     const id = params.id;
@@ -337,7 +343,7 @@ function reloadPlayButtons(page, item) {
             hideAll(page, 'btnPlay');
         }
 
-        hideAll(page, 'btnResume');
+        hideAll(page, 'btnReplay');
         hideAll(page, 'btnInstantMix');
         hideAll(page, 'btnShuffle');
     } else if (playbackManager.canPlay(item)) {
@@ -347,22 +353,20 @@ function reloadPlayButtons(page, item) {
         const enableShuffle = item.IsFolder || ['MusicAlbum', 'MusicGenre', 'MusicArtist'].indexOf(item.Type) !== -1;
         hideAll(page, 'btnShuffle', enableShuffle);
         canPlay = true;
- 
+
         const isResumable = item.UserData && item.UserData.PlaybackPositionTicks > 0;
-        hideAll(page, 'btnResume', isResumable);
+        hideAll(page, 'btnReplay', isResumable);
 
-        for (const elem of page.querySelectorAll('.btnPlay')) {
-            const btnPlay = elem.querySelector('.detailButton-icon');
-
+        for (const btnPlay of page.querySelectorAll('.btnPlay')) {
             if (isResumable) {
-                btnPlay.classList.replace('play_arrow', 'replay');
+                btnPlay.title = globalize.translate('ButtonResume');
             } else {
-                btnPlay.classList.replace('replay', 'play_arrow');
+                btnPlay.title = globalize.translate('Play');
             }
         }
     } else {
         hideAll(page, 'btnPlay');
-        hideAll(page, 'btnResume');
+        hideAll(page, 'btnReplay');
         hideAll(page, 'btnInstantMix');
         hideAll(page, 'btnShuffle');
     }
@@ -424,7 +428,6 @@ function getArtistLinksHtml(artists, serverId, context) {
  * @param {Object} context - Application context.
  */
 function renderName(item, container, context) {
-    let parentRoute;
     const parentNameHtml = [];
     let parentNameLast = false;
 
@@ -435,55 +438,19 @@ function renderName(item, container, context) {
         parentNameHtml.push(getArtistLinksHtml(item.ArtistItems, item.ServerId, context));
         parentNameLast = true;
     } else if (item.SeriesName && item.Type === 'Episode') {
-        parentRoute = appRouter.getRouteUrl({
-            Id: item.SeriesId,
-            Name: item.SeriesName,
-            Type: 'Series',
-            IsFolder: true,
-            ServerId: item.ServerId
-        }, {
-            context: context
-        });
-        parentNameHtml.push('<a style="color:inherit;" class="button-link" is="emby-linkbutton" href="' + parentRoute + '">' + item.SeriesName + '</a>');
+        parentNameHtml.push(`<a style="color:inherit;" class="button-link itemAction" is="emby-linkbutton" href="#" data-action="link" data-id="${item.SeriesId}" data-serverid="${item.ServerId}" data-type="Series" data-isfolder="true">${item.SeriesName}</a>`);
     } else if (item.IsSeries || item.EpisodeTitle) {
         parentNameHtml.push(item.Name);
     }
 
     if (item.SeriesName && item.Type === 'Season') {
-        parentRoute = appRouter.getRouteUrl({
-            Id: item.SeriesId,
-            Name: item.SeriesName,
-            Type: 'Series',
-            IsFolder: true,
-            ServerId: item.ServerId
-        }, {
-            context: context
-        });
-        parentNameHtml.push('<a style="color:inherit;" class="button-link" is="emby-linkbutton" href="' + parentRoute + '">' + item.SeriesName + '</a>');
+        parentNameHtml.push(`<a style="color:inherit;" class="button-link itemAction" is="emby-linkbutton" href="#" data-action="link" data-id="${item.SeriesId}" data-serverid="${item.ServerId}" data-type="Series" data-isfolder="true">${item.SeriesName}</a>`);
     } else if (item.ParentIndexNumber != null && item.Type === 'Episode') {
-        parentRoute = appRouter.getRouteUrl({
-            Id: item.SeasonId,
-            Name: item.SeasonName,
-            Type: 'Season',
-            IsFolder: true,
-            ServerId: item.ServerId
-        }, {
-            context: context
-        });
-        parentNameHtml.push('<a style="color:inherit;" class="button-link" is="emby-linkbutton" href="' + parentRoute + '">' + item.SeasonName + '</a>');
+        parentNameHtml.push(`<a style="color:inherit;" class="button-link itemAction" is="emby-linkbutton" href="#" data-action="link" data-id="${item.SeasonId}" data-serverid="${item.ServerId}" data-type="Season" data-isfolder="true">${item.SeasonName}</a>`);
     } else if (item.ParentIndexNumber != null && item.IsSeries) {
         parentNameHtml.push(item.SeasonName || 'S' + item.ParentIndexNumber);
     } else if (item.Album && item.AlbumId && (item.Type === 'MusicVideo' || item.Type === 'Audio')) {
-        parentRoute = appRouter.getRouteUrl({
-            Id: item.AlbumId,
-            Name: item.Album,
-            Type: 'MusicAlbum',
-            IsFolder: true,
-            ServerId: item.ServerId
-        }, {
-            context: context
-        });
-        parentNameHtml.push('<a style="color:inherit;" class="button-link" is="emby-linkbutton" href="' + parentRoute + '">' + item.Album + '</a>');
+        parentNameHtml.push(`<a style="color:inherit;" class="button-link itemAction" is="emby-linkbutton" href="#" data-action="link" data-id="${item.AlbumId}" data-serverid="${item.ServerId}" data-type="MusicAlbum" data-isfolder="true">${item.Album}</a>`);
     } else if (item.Album) {
         parentNameHtml.push(item.Album);
     }
@@ -552,13 +519,19 @@ function renderBackdrop(item) {
 }
 
 function renderDetailPageBackdrop(page, item, apiClient) {
+    // Details banner is disabled in user settings
+    if (!userSettings.detailsBanner()) {
+        return false;
+    }
+
+    // Disable item backdrop for books and people because they only have primary images
+    if (item.Type === 'Person' || item.Type === 'Book') {
+        return false;
+    }
+
     let imgUrl;
     let hasbackdrop = false;
     const itemBackdropElement = page.querySelector('#itemBackdrop');
-
-    if (layoutManager.mobile || !userSettings.detailsBanner()) {
-        return false;
-    }
 
     if (item.BackdropImageTags && item.BackdropImageTags.length) {
         imgUrl = apiClient.getScaledImageUrl(item.Id, {
@@ -593,24 +566,6 @@ function renderDetailPageBackdrop(page, item, apiClient) {
     return hasbackdrop;
 }
 
-function renderPrimaryImage(page, item, apiClient) {
-    if (item?.ImageTags?.Primary) {
-        const imageUrl = apiClient.getScaledImageUrl(item.Id, {
-            type: 'Primary',
-            maxWidth: dom.getScreenWidth(),
-            tag: item.ImageTags.Primary
-        });
-
-        const imageElem = page.querySelector('#primaryImage');
-        imageElem.src = imageUrl;
-        imageElem.alt = item.Name;
-        if (item.PrimaryImageAspectRatio === 1) {
-            imageElem.classList.add('aspect-square');
-        }
-        page.querySelector('.primaryImageWrapper')?.classList.remove('hide');
-    }
-}
-
 function reloadFromItem(instance, page, params, item, user) {
     const apiClient = ServerConnections.getApiClient(item.ServerId);
 
@@ -623,9 +578,7 @@ function reloadFromItem(instance, page, params, item, user) {
         renderLogo(page, item, apiClient);
         renderDetailPageBackdrop(page, item, apiClient);
     }
-    if (layoutManager.mobile) {
-        renderPrimaryImage(page, item, apiClient);
-    }
+
     renderBackdrop(item);
 
     // Render the main information for the item
@@ -668,10 +621,16 @@ function reloadFromItem(instance, page, params, item, user) {
 
     if (item.Type == 'Person' && item.PremiereDate) {
         try {
-            const birthday = datetime.parseISO8601Date(item.PremiereDate, true).toDateString();
+            const birthday = datetime.parseISO8601Date(item.PremiereDate, true);
+            const durationSinceBorn = intervalToDuration({ start: birthday, end: Date.now() });
             itemBirthday.classList.remove('hide');
-            itemBirthday.innerHTML = globalize.translate('BirthDateValue', birthday);
+            if (item.EndDate) {
+                itemBirthday.innerHTML = globalize.translate('BirthDateValue', birthday.toLocaleDateString());
+            } else {
+                itemBirthday.innerHTML = `${globalize.translate('BirthDateValue', birthday.toLocaleDateString())} ${globalize.translate('AgeValue', durationSinceBorn.years)}`;
+            }
         } catch (err) {
+            console.error(err);
             itemBirthday.classList.add('hide');
         }
     } else {
@@ -682,10 +641,18 @@ function reloadFromItem(instance, page, params, item, user) {
 
     if (item.Type == 'Person' && item.EndDate) {
         try {
-            const deathday = datetime.parseISO8601Date(item.EndDate, true).toDateString();
+            const deathday = datetime.parseISO8601Date(item.EndDate, true);
             itemDeathDate.classList.remove('hide');
-            itemDeathDate.innerHTML = globalize.translate('DeathDateValue', deathday);
+            if (item.PremiereDate) {
+                const birthday = datetime.parseISO8601Date(item.PremiereDate, true);
+                const durationSinceBorn = intervalToDuration({ start: birthday, end: deathday });
+
+                itemDeathDate.innerHTML = `${globalize.translate('DeathDateValue', deathday.toLocaleDateString())} ${globalize.translate('AgeValue', durationSinceBorn.years)}`;
+            } else {
+                itemDeathDate.innerHTML = globalize.translate('DeathDateValue', deathday.toLocaleDateString());
+            }
         } catch (err) {
+            console.error(err);
             itemDeathDate.classList.add('hide');
         }
     } else {
@@ -712,9 +679,7 @@ function reloadFromItem(instance, page, params, item, user) {
         hideAll(page, 'btnDownload', true);
     }
 
-    import('../../components/autoFocuser').then(({ default: autoFocuser }) => {
-        autoFocuser.autoFocus(page);
-    });
+    autoFocus(page);
 }
 
 function logoImageUrl(item, apiClient, options) {
@@ -806,8 +771,8 @@ function renderDetailImage(elem, item, imageLoader) {
         overlayText: false,
         transition: false,
         disableIndicators: true,
-        overlayPlayButton: true,
-        action: 'play',
+        overlayPlayButton: layoutManager.desktop,
+        action: layoutManager.desktop ? 'resume' : 'none',
         width: dom.getWindowSize().innerWidth * 0.25
     });
 
@@ -824,18 +789,6 @@ function renderImage(page, item) {
         item,
         imageLoader
     );
-}
-
-function refreshDetailImageUserData(elem, item) {
-    const container = elem.querySelector('.detailImageProgressContainer');
-
-    if (container) {
-        container.innerHTML = indicators.getProgressBarHtml(item);
-    }
-}
-
-function refreshImage(page, item) {
-    refreshDetailImageUserData(page.querySelector('.detailImageContainer'), item);
 }
 
 function setPeopleHeader(page, item) {
@@ -1211,11 +1164,9 @@ function renderMoreFromArtist(view, item, apiClient) {
         };
 
         if (item.Type === 'MusicArtist') {
-            query.ContributingArtistIds = item.Id;
-        } else if (apiClient.isMinServerVersion('3.4.1.18')) {
-            query.AlbumArtistIds = item.AlbumArtists[0].Id;
+            query.AlbumArtistIds = item.Id;
         } else {
-            query.ArtistIds = item.AlbumArtists[0].Id;
+            query.AlbumArtistIds = item.AlbumArtists[0].Id;
         }
 
         apiClient.getItems(apiClient.getCurrentUserId(), query).then(function (result) {
@@ -1744,9 +1695,7 @@ function renderCollectionItems(page, parentItem, types, items) {
 
     // HACK: Call autoFocuser again because btnPlay may be hidden, but focused by reloadFromItem
     // FIXME: Sometimes focus does not move until all (?) sections are loaded
-    import('../../components/autoFocuser').then(({ default: autoFocuser }) => {
-        autoFocuser.autoFocus(page);
-    });
+    autoFocus(page);
 }
 
 function renderCollectionItemType(page, parentItem, type, items) {
@@ -1941,12 +1890,6 @@ export default function (view, params) {
     function playItem(item, startPosition) {
         const playOptions = getPlayOptions(startPosition);
         playOptions.items = [item];
-		
-		//var _debug = document.getElementById("_debug");
-		//if (_debug !== undefined) {
-		//	_debug.innerHTML = 'Starting at tick: ' + playOptions.startPositionTicks;
-		//}
-		
         playbackManager.play(playOptions);
     }
 
@@ -1956,7 +1899,7 @@ export default function (view, params) {
 
     function playCurrentItem(button, mode) {
         const item = currentItem;
-		
+
         if (item.Type === 'Program') {
             const apiClient = ServerConnections.getApiClient(item.ServerId);
             return void apiClient.getLiveTvChannel(item.ChannelId, apiClient.getCurrentUserId()).then(function (channel) {
@@ -1965,19 +1908,12 @@ export default function (view, params) {
                 });
             });
         }
-		
-	//	var _debug = document.getElementById("_debug");
-	//	if (_debug !== undefined) {
-	//		if (item.UserData && mode === 'resume') {
-	//			_debug.innerHTML = 'Starting at tick: ' + item.UserData.PlaybackPositionTicks;
-	//		}
-	//	}
 
         playItem(item, item.UserData && mode === 'resume' ? item.UserData.PlaybackPositionTicks : 0);
     }
 
     function onPlayClick() {
-        playCurrentItem(this, this.getAttribute('data-mode'));
+        playCurrentItem(this, this.getAttribute('data-action'));
     }
 
     function onPosterClick(e) {
@@ -2060,7 +1996,7 @@ export default function (view, params) {
             if (userData) {
                 currentItem.UserData = userData;
                 reloadPlayButtons(view, currentItem);
-                refreshImage(view, currentItem);
+                autoFocus(view);
             }
         }
     }
@@ -2071,26 +2007,8 @@ export default function (view, params) {
     function init() {
         const apiClient = getApiClient();
 
-/*		
-		Removing this section fixes the visual glitch of play/resume buttons overlapping
-		on Lg TVs (at least).		
-*/
-/*
-        const btnResume = view.querySelector('.mainDetailButtons .btnResume');
-        const btnPlay = view.querySelector('.mainDetailButtons .btnPlay');
-        if (layoutManager.tv && !btnResume.classList.contains('hide')) {
-            btnResume.classList.add('fab');
-            btnResume.classList.add('detailFloatingButton');
-        } 
-		else if (layoutManager.tv && btnResume.classList.contains('hide')) {
-            btnPlay.classList.add('fab');
-            btnPlay.classList.add('detailFloatingButton');
-        }
-*/
-
-        view.querySelectorAll('.btnPlay');
         bindAll(view, '.btnPlay', 'click', onPlayClick);
-        bindAll(view, '.btnResume', 'click', onPlayClick);
+        bindAll(view, '.btnReplay', 'click', onPlayClick);
         bindAll(view, '.btnInstantMix', 'click', onInstantMixClick);
         bindAll(view, '.btnShuffle', 'click', onShuffleClick);
         bindAll(view, '.btnPlayTrailer', 'click', onPlayTrailerClick);
@@ -2117,7 +2035,7 @@ export default function (view, params) {
                 if (currentItem) {
                     appRouter.setTitle('');
                     renderTrackSelections(page, self, currentItem, true);
-					renderBackdrop(currentItem);
+                    renderBackdrop(currentItem);
                 }
             } else {
                 reload(self, page, params);
@@ -2125,8 +2043,11 @@ export default function (view, params) {
 
             Events.on(apiClient, 'message', onWebSocketMessage);
             Events.on(playbackManager, 'playerchange', onPlayerChange);
+
+            itemShortcuts.on(view.querySelector('.nameContainer'));
         });
         view.addEventListener('viewbeforehide', function () {
+            itemShortcuts.off(view.querySelector('.nameContainer'));
             Events.off(apiClient, 'message', onWebSocketMessage);
             Events.off(playbackManager, 'playerchange', onPlayerChange);
             libraryMenu.setTransparentMenu(false);
