@@ -300,7 +300,8 @@ export class UserSettings {
 		const _hdrclck = document.getElementsByClassName('headerClockActive')[0];
 		if (_hdrclck) {
 			let val = this.get('clock_mode') || '0';
-			if (TOGGLE === true) {
+			
+			if (TOGGLE === undefined || TOGGLE === true) {
 				switch (val) {
 					case '1':
 						val = '0';
@@ -388,18 +389,36 @@ export class UserSettings {
 		return true;
 	}
 	
+	moveR() {
+		placeClock(+1);
+	}
+	
+	moveL() {
+		placeClock(-1);
+	}
+	
+	doToggle() {
+		toggleClockMode(true);
+	}
+	
 	initButtons(pos) {
 		const self = this;
 		if (pos) {
 			let elm = pos.getElementsByClassName("headerClockMain")[0];
-			if (elm)
-				elm.addEventListener('click', () => { self.toggleClockMode(true) });
+			if (elm) {
+				elm.removeEventListener('click', self.doToggle );
+				elm.addEventListener('click', self.doToggle );
+			}
 			elm = pos.getElementsByClassName("moveLeftButton")[0];
-			if (elm)
-				elm.addEventListener('click', () => { self.placeClock(-1) });
+			if (elm) {
+				elm.removeEventListener('click', self.moveL);
+				elm.addEventListener('click', self.moveL);
+			}
 			elm = pos.getElementsByClassName("moveRightButton")[0];
-			if (elm)
-				elm.addEventListener('click', () => { self.placeClock(1) });
+			if (elm) {
+				elm.removeEventListener('click', self.moveR);
+				elm.addEventListener('click', self.moveR);
+			}
 		}
 	}
 	
@@ -440,6 +459,7 @@ export class UserSettings {
 		let pos = parseInt(this.get('clock_pos'), 10) || 0;
 		
         if (val !== undefined) {
+			
 			let newval = parseInt(val, 10) || 0;
 			if (newval < -1 || newval > 1)
 				newval = 0;
@@ -900,6 +920,7 @@ export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);
 export const showClock = currentSettings.showClock.bind(currentSettings);
 export const placeClock = currentSettings.placeClock.bind(currentSettings);
+export const toggleClockMode = currentSettings.toggleClockMode.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);
