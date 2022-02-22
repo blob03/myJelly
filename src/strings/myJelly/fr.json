@@ -56,5 +56,6 @@
     "TryIt": "Tester",
     "UseCardLayoutInHomeSections": "Utiliser le format carte",
     "UseCardLayoutInHomeSectionsHelp": "Présenter les éléments de l'écran d'accueil et des favoris sous la forme de cartes.",
+    "UseNextUpRewatch": "Générer une section 'Revoir' (Jellyfin 10.8.0+)",
     "Videos": "Vidéos"
 }

@@ -697,17 +697,20 @@ import ServerConnections from '../ServerConnections';
 
     function loadNextUp(elem, apiClient, userSettings) {
         elem.classList.remove('verticalSection');
-
-        for (let i = 0; i <= 1; i++) {
-            const frag = document.createElement('div');
-            frag.classList.add('verticalSection');
-            frag.classList.add('hide');
-            elem.appendChild(frag);
-
-            // 0 pass is regular next up
-            // 1 pass is rewatching next up
-            renderNextUpSection(frag, apiClient, userSettings, i == 1);
-        }
+       
+		const frag1 = document.createElement('div');
+		frag1.classList.add('verticalSection');
+		frag1.classList.add('hide');
+		elem.appendChild(frag1);
+		renderNextUpSection(frag1, apiClient, userSettings, false);
+		
+		if (userSettings.get('chkUseNextUpRewatch') === '1') {
+			const frag2 = document.createElement('div');
+			frag2.classList.add('verticalSection');
+			frag2.classList.add('hide');
+			elem.appendChild(frag2);
+			renderNextUpSection(frag2, apiClient, userSettings, true);
+		}
     }
 	
     function getLatestRecordingsFetchFn(serverId, activeRecordingsOnly) {

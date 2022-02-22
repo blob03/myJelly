@@ -258,12 +258,11 @@ import template from './homeScreenSettings.template.html';
     function updateHomeSectionValues(context, userSettings) {
         for (let i = 1; i <= homeSections.numConfigurableSections; i++) {
             const select = context.querySelector(`#selectHomeSection${i}`);
-            const defaultValue = homeSections.getDefaultSection(i - 1);
-            const userValue = userSettings.get(`homesection${i - 1}`);
-            if (!userValue) 
-                userValue = defaultValue;
+            let val = userSettings.get(`homesection${i - 1}`);
+            if (val == undefined || !val) 
+                val = homeSections.getDefaultSection(i - 1);
             
-            select.value = userValue;
+            select.value = val;
         }
         context.querySelector('.selectTVHomeScreen').value = userSettings.TVHome();
     }
@@ -372,10 +371,13 @@ import template from './homeScreenSettings.template.html';
 		}
 		
 		// Show additionnal options only if they relate to the current selection.
-		if (nextup)
+		if (nextup) {
 			document.querySelector('#sliderMaxDaysForNextUp').parentNode.parentNode.classList.remove('hide');
-		else
+			document.querySelector('#chkUseNextUpRewatch').parentNode.parentNode.classList.remove('hide');
+		} else {
 			document.querySelector('#sliderMaxDaysForNextUp').parentNode.parentNode.classList.add('hide');
+			document.querySelector('#chkUseNextUpRewatch').parentNode.parentNode.classList.add('hide');
+		}
 		
 		if (nextup || resume) 
 			document.querySelector('#chkUseEpisodeImagesInNextUp').parentNode.parentNode.classList.remove('hide');
@@ -393,6 +395,10 @@ import template from './homeScreenSettings.template.html';
 		context.querySelector('#chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
 		context.querySelector('#chkUseCardLayoutInHomeSections').checked = userSettings.useCardLayoutInHomeSections() || false;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;
+		
+		let _rewatch_opt = userSettings.get('chkUseNextUpRewatch') || 0;
+		context.querySelector('#chkUseNextUpRewatch').checked = _rewatch_opt === '1';
+		
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();		
         
 		updateHomeSectionValues(context, userSettings);
@@ -479,6 +485,9 @@ import template from './homeScreenSettings.template.html';
 
         user.Configuration.OrderedViews = orderedViews;
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
+		
+		userSettingsInstance.set('chkUseNextUpRewatch', context.querySelector('#chkUseNextUpRewatch').checked? 1 : 0);
+		
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
 		userSettingsInstance.useCardLayoutInHomeSections(context.querySelector('#chkUseCardLayoutInHomeSections').checked);
 		

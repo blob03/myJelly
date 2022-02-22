@@ -56,5 +56,6 @@
     "TryIt": "Try it",
     "UseCardLayoutInHomeSections": "Show items as cards",
     "UseCardLayoutInHomeSectionsHelp": "Use a card format to render the 'Home' and 'Favorites' screens.",
+    "UseNextUpRewatch": "Generate a 'Rewatching' section (Jellyfin 10.8.0+)",
     "Videos": "Videos"
 }
