@@ -312,12 +312,11 @@ import viewContainer from '../viewContainer';
         } else 
             context.querySelector('.ScreensaverArea').classList.add('hide');
 
-		if (browser.web0s) {
-            context.querySelector('.fldThemeSong').classList.remove('hide');
-        } else if (browser.tizen) {
+		if (browser.tizen) {
             context.querySelector('.fldThemeSong').classList.add('hide');
             context.querySelector('.fldThemeVideo').classList.add('hide');
         } else {
+			context.querySelector('.fldThemeSong').classList.remove('hide');
 			context.querySelector('.fldThemeVideo').classList.remove('hide');
 		}
 		
@@ -337,10 +336,6 @@ import viewContainer from '../viewContainer';
 		
 		let selectClock = context.querySelector('#selectClock');
 		selectClock.value = userSettings.enableClock();
-		/*
-		selectClock.addEventListener('change', onClockChange);
-		selectClock.dispatchEvent(event_change);
-		*/
 		
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
