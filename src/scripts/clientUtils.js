@@ -6,6 +6,7 @@ import baseAlert from '../components/alert';
 import baseConfirm from '../components/confirm/confirm';
 import globalize from '../scripts/globalize';
 import * as webSettings from './settings/webSettings';
+import { enableClock } from '../scripts/settings/userSettings';
 
 export function getCurrentUser() {
     return window.ApiClient.getCurrentUser(false);
@@ -83,6 +84,7 @@ export function onServerChanged(userId, accessToken, apiClient) {
 }
 
 export function logout() {
+	enableClock(0);	// 0 -> Never
     ServerConnections.logout().then(function () {
         webSettings.getMultiServer().then(multi => {
             multi ? navigate('selectserver.html') : navigate('login.html');
