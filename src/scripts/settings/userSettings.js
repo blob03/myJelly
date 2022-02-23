@@ -457,7 +457,6 @@ export class UserSettings {
 	 
 	placeClock(val) {
 		let pos = parseInt(this.get('clock_pos'), 10) || 0;
-		
         if (val !== undefined) {
 			
 			let newval = parseInt(val, 10) || 0;

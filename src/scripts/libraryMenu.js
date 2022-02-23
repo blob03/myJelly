@@ -1165,7 +1165,7 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
             currentUser = user;
             updateUserInHeader(user);
 			initClockPlaces();
-			placeClock(placeClock());
+			placeClock(0);
 			enableClock(enableClock());
         });
     });
