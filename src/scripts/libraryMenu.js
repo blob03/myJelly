@@ -51,7 +51,7 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
         html += '</div>';
 		
 		/* Added: Middle casing for the topbar clock */
-		html += '<div class="headerClockButton hide" id="headerClockMiddle" class="headerMiddle" style="position: absolute;display:flex;flex-direction:row;justify-content: center;">';
+		html += '<div class="headerMiddle headerClockButton hide" id="headerClockMiddle" style="position: absolute;display:flex;flex-direction:row;justify-content: center;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';

@@ -49,7 +49,6 @@ html {
 	overflow: visible !important;
 	margin-right: .5em;
 	margin-left: .5em;
-	margin-bottom: .5em;
 }
 
 ::-moz-selection { 
@@ -934,7 +933,8 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
  
 .headerTop {
-    padding: .54em 0em 0em 0em !important;
+	height: 3rem;
+    padding: .54em 0em .54em 0em !important;
 }
 
 .withTabs .content-primary {
