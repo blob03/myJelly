@@ -1,10 +1,11 @@
+import { UserDto } from '@thornbill/jellyfin-sdk/dist/generated-client';
 import React, { FunctionComponent } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { localeWithSuffix } from '../../../scripts/dfnshelper';
 import globalize from '../../../scripts/globalize';
 import cardBuilder from '../../cardbuilder/cardBuilder';
 
-const createLinkElement = ({ user, renderImgUrl }) => ({
+const createLinkElement = ({ user, renderImgUrl }: { user: UserDto, renderImgUrl: string }) => ({
     __html: `<a
         is="emby-linkbutton"
         class="cardContent"
@@ -20,7 +21,7 @@ const createButtonElement = () => ({
         type="button"
         class="btnUserMenu flex-shrink-zero"
         >
-        <span class="material-icons more_vert"></span>
+        <span class="material-icons more_vert" aria-hidden="true"></span>
     </button>`
 });
 
@@ -28,7 +29,7 @@ type IProps = {
     user?: Record<string, any>;
 }
 
-const getLastSeenText = (lastActivityDate) => {
+const getLastSeenText = (lastActivityDate?: string) => {
     if (lastActivityDate) {
         return globalize.translate('LastSeen', formatDistanceToNow(Date.parse(lastActivityDate), localeWithSuffix));
     }
@@ -64,7 +65,7 @@ const UserCardBox: FunctionComponent<IProps> = ({ user = [] }: IProps) => {
     const renderImgUrl = imgUrl ?
         `<div class='${imageClass}' style='background-image:url(${imgUrl})'></div>` :
         `<div class='${imageClass} ${cardBuilder.getDefaultBackgroundClass(user.Name)} flex align-items-center justify-content-center'>
-            <span class='material-icons cardImageIcon person'></span>
+            <span class='material-icons cardImageIcon person' aria-hidden='true'></span>
         </div>`;
 
     return (
