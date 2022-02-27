@@ -149,7 +149,7 @@ import ServerConnections from '../ServerConnections';
         } else if (section === 'activerecordings') {
             loadLatestLiveTvRecordings(elem, true, apiClient);
         } else if (section === 'nextup') {
-            loadNextUp(elem, apiClient, userSettings);
+            loadNextUp(elem, apiClient, userSettings, false);
         } else if (section === 'onnow' || section === 'livetv') {
             return loadOnNow(elem, apiClient, user);
         } else if (section === 'resumebook') {
@@ -645,7 +645,7 @@ import ServerConnections from '../ServerConnections';
         };
     }
 
-    function renderNextUpSection(elem, apiClient, userSettings, rewatching) {
+    function loadNextUp(elem, apiClient, userSettings, rewatching = false) {
         let html = '';
 
         html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
@@ -655,21 +655,13 @@ import ServerConnections from '../ServerConnections';
                 rewatching: rewatching
             }) + '" class="button-flat button-flat-mini sectionTitleTextButton">';
             html += '<h2 class="sectionTitle sectionTitle-cards">';
-            if (rewatching) {
-                html += globalize.translate('NextUpRewatching');
-            } else {
-                html += globalize.translate('NextUp');
-            }
+            html += globalize.translate('NextUp');
             html += '</h2>';
             html += '<span class="material-icons chevron_right"></span>';
             html += '</a>';
         } else {
             html += '<h2 class="sectionTitle sectionTitle-cards">';
-            if (rewatching) {
-                html += globalize.translate('NextUpRewatching');
-            } else {
-                html += globalize.translate('NextUp');
-            }
+            html += globalize.translate('NextUp');
             html += '</h2>';
         }
         html += '</div>';
@@ -693,24 +685,6 @@ import ServerConnections from '../ServerConnections';
         itemsContainer.fetchData = getNextUpFetchFn(apiClient.serverId(), userSettings, rewatching);
         itemsContainer.getItemsHtml = getNextUpItemsHtmlFn(userSettings.useEpisodeImagesInNextUpAndResume());
         itemsContainer.parentContainer = elem;
-    }
-
-    function loadNextUp(elem, apiClient, userSettings) {
-        elem.classList.remove('verticalSection');
-       
-		const frag1 = document.createElement('div');
-		frag1.classList.add('verticalSection');
-		frag1.classList.add('hide');
-		elem.appendChild(frag1);
-		renderNextUpSection(frag1, apiClient, userSettings, false);
-		
-		if (userSettings.get('chkUseNextUpRewatch') === '1') {
-			const frag2 = document.createElement('div');
-			frag2.classList.add('verticalSection');
-			frag2.classList.add('hide');
-			elem.appendChild(frag2);
-			renderNextUpSection(frag2, apiClient, userSettings, true);
-		}
     }
 	
     function getLatestRecordingsFetchFn(serverId, activeRecordingsOnly) {
