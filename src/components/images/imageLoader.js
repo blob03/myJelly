@@ -98,9 +98,12 @@ import './style.scss';
         const elem = event.target;
         requestAnimationFrame(() => {
             const canvas = elem.previousSibling;
-            if (elem.classList.contains('blurhashed') && canvas && canvas.tagName === 'CANVAS') {
+            if (elem.classList.contains('blurhashed') && canvas?.tagName === 'CANVAS') { 
                 canvas.classList.add('lazy-hidden');
             }
+			
+			// HACK: Hide the content of the card padder
+            elem.parentNode?.querySelector('.cardPadder')?.classList.add('lazy-hidden-children');
         });
         elem.removeEventListener('animationend', onAnimationEnd);
     }
@@ -139,9 +142,12 @@ import './style.scss';
     function emptyImageElement(elem) {
         elem.removeEventListener('animationend', onAnimationEnd);
         const canvas = elem.previousSibling;
-        if (canvas && canvas.tagName === 'CANVAS') {
+        if (canvas?.tagName === 'CANVAS') {
             canvas.classList.remove('lazy-hidden');
         }
+		
+		// HACK: Unhide the content of the card padder
+        elem.parentNode?.querySelector('.cardPadder')?.classList.remove('lazy-hidden-children');
 		
         let url;
 
