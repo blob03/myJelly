@@ -267,8 +267,6 @@ import Dashboard from '../../scripts/clientUtils';
         self.renderTab = function () {
             reloadItems(tabContent);
         };
-
-        self.destroy = function () {};
     }
 
 /* eslint-enable indent */

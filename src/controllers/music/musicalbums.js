@@ -299,8 +299,6 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
             reloadItems();
             this.alphaPicker?.updateControls(getQuery());
         };
-
-        this.destroy = function () {};
     }
 
 /* eslint-enable indent */
