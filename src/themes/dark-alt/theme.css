@@ -1316,8 +1316,8 @@ select option:selected {
 }
 
 .aboutframe {
-	padding: 1em;
-	background: rgba(120, 102, 102, 0.15);
-	font-size: 100%;
-	line-height: 1.65;
+	padding: 1em !important;
+	background: rgba(0, 0, 0, 0.15) !important;
+	font-size: 110% !important;
+	line-height: 1.65 !important;
 }

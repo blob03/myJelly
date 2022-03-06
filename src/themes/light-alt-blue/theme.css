@@ -1222,6 +1222,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	font-size: 0.8rem;
 }
 
+.weatherbotScreenSaver,
 .clockScreenSaver {
 	background-image: url(./bg.jpg) !important;
 	-webkit-background-size: cover;
@@ -1229,7 +1230,8 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .ssFailure,
-.ssForeplane {
+.ssForeplane,
+.ssForeplane > .material-icons {
 	color: #fff;
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
 	background: rgba(10, 10, 10, .0);
@@ -1240,8 +1242,8 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .aboutframe {
-	padding: 1em;
-	background: rgba(123, 159, 197, 0.15);
-	font-size: 100%;
-	line-height: 1.65;
+	padding: 1em !important;
+	background: rgba(123, 159, 197, 0.15) !important;
+	font-size: 100% !important;
+	line-height: 1.65 !important;
 }

@@ -6,12 +6,23 @@ import globalize from '../../../scripts/globalize';
 import datetime from '../../../scripts/datetime';
 import loading from '../../../components/loading/loading';
 
+function show(item, visible) {
+	if (!item || typeof visible != "boolean")
+		return;
+	let els = document.getElementsByClassName(item);
+	if (els.length) {
+		Array.prototype.forEach.call(els, function(el) {
+			visible === true? el.classList.remove('hide') : el.classList.add('hide');
+		});
+	}
+}
+
 export default function () {
     const self = this;
 
 	self.name = 'The Weatherbot';
 	self.group = 'myJelly dev';
-	self.version = '0.1';
+	self.version = '0.2';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -26,15 +37,11 @@ export default function () {
 	let _visistr_;
 	let _windstr_;
 	let _windirstr_;
-	let _apikey_;
+	let _apikey_ = "";
 	let _msgstr_;
 		
 	function weather(LOCALE) {	
 	
-		if (!_apikey_) {
-			
-		}
-		
 		loading.show();
 		
 		// Note that API keys are obtained free of charge by registering at the address below
@@ -50,14 +57,8 @@ export default function () {
 		req.dataType = 'json';
 		
 		ajax(req).then(function (data) {
-			let els = document.getElementsByClassName('ssFailure');
-			Array.prototype.forEach.call(els, function(el) {
-				el.classList.add('hide');
-			});
-			els = document.getElementsByClassName('ssForeplane');
-			Array.prototype.forEach.call(els, function(el) {
-				el.classList.remove('hide');
-			});
+			show('ssFailure', false);
+			show('ssForeplane', true);
 			
 			/*
 			let day = document.getElementById("day");
@@ -81,24 +82,14 @@ export default function () {
 			if (data.current.wind_kph)
 				_windstr_.innerHTML = data.current.wind_kph;
 			if (data.current.wind_dir)
-				_windirstr_.innerHTML += '(' + data.current.wind_dir + ')';
-			
+				_windirstr_.innerHTML = data.current.wind_dir;
 			loading.hide();
 			
 		}).catch(function (data) {
-			let els = document.getElementsByClassName('ssForeplane');
-			Array.prototype.forEach.call(els, function(el) {
-				el.classList.add('hide');
-			});
+			show('ssForeplane', false);
 			_msgstr_.innerHTML = data.statusText + " ( " + data.status + " ) ";
-			els = document.getElementsByClassName('ssFailure');
-			Array.prototype.forEach.call(els, function(el) {
-				el.classList.remove('hide');
-			});
-			
+			show('ssFailure', true);
 			loading.hide();
-			console.debug(data);
-			
 		});
 	}
 
@@ -107,6 +98,8 @@ export default function () {
             clearInterval(self.interval);
             self.interval = null;
         }
+		show('ssFailure', false);
+		show('ssForeplane', false);
     }
 
     self.show = function (TEST) {
@@ -129,7 +122,7 @@ export default function () {
 				+ '<div class="ssForeplane">'
 				+ '<span class="material-icons thermostat"></span>'
 				+ '<span id="ssTemp" class="ssWeatherData"></span>'
-				+ '<span id="unit">&#8451;</span>'
+				+ '<span class="ssWeatherDataUnit">&#8451;</span>'
 				+ '</div>'
 				/*
                 + '<div class="ssForeplane"><span class="material-icons water_drop"></span><span id="ssHum" class="ssWeatherData"></span>'
@@ -140,8 +133,8 @@ export default function () {
 				+ '<div class="ssForeplane">'
 				+ '<span class="material-icons air"></span>'
 				+ '<span id="ssWind" class="ssWeatherData"></span>'
-				+ '<span id="unit">km/h</span>'
-				+ '<span id="ssWindir" class="ssWeatherData"></span>'
+				+ '<span class="ssWeatherDataUnit">km/h</span>'
+				+ '<span id="ssWindir" class="ssWeatherData ssWeatherDataWindir"></span>'
 				+ '</div>'
 				
 				+ '</div>';
@@ -161,11 +154,6 @@ export default function () {
 		
 			if (TEST) {
 				self.hideOnMouse = false;
-				// Get an API key from the form.
-				apikey = document.querySelector('#inputApikey').value;
-				if (apikey && apikey.length >= 31)
-					_apikey_ = apikey;
-		
 				// Get currently selected Locale.
 				dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
 				// If set to 'auto' then use the language.
@@ -174,15 +162,17 @@ export default function () {
 				// If display language is also set to 'auto' then request the default value.
 				if (dateTimeLocale === "")
 					dateTimeLocale = globalize.getDefaultCulture();
+				// Get an API key from the form.
+				apikey = document.querySelector('#inputApikey').value;
 			} else {
 				// get the last saved API key.
 				apikey = userSettings.weatherApiKey();
-				if (apikey && apikey.length >= 31)
-					_apikey_ = apikey;
-		
 				dateTimeLocale = globalize.getCurrentDateTimeLocale();
 			}
 			
+			if (apikey && apikey.length >= 31)
+				_apikey_ = apikey;
+				
 			stopInterval();
 			
 			if (dateTimeLocale != null) {
