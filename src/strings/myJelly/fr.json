@@ -34,6 +34,7 @@
     "LabelTextShadowColor": "Teinte de l'ombre portée :",
     "LabelTextStrokeColor": "Couleur de contour du texte :",
     "LabelTranslatedStrings": "Chaînes traduites :",
+    "LabelWeatherApiKey": "Clef pour Weatherapi :",
     "LabelmyJelly": "myJelly :",
     "LockHeader": "Verrouiller le menu",
     "LogoScreensaverHelp": "Afficher et animer le logo de Jellyfin.",
@@ -55,5 +56,7 @@
     "UseCardLayoutInHomeSections": "Utiliser le format carte",
     "UseCardLayoutInHomeSectionsHelp": "Présenter les éléments de l'écran d'accueil et des favoris sous la forme de cartes.",
     "UseNextUpRewatch": "Générer une section 'Revoir' (Jellyfin 10.8.0+)",
-    "Videos": "Vidéos"
+    "Videos": "Vidéos",
+    "WeatherApiRegistrationHelp": "Voir comment obtenir une clef.",
+    "WeatherbotScreensaverHelp": "Afficher les conditions météorologiques présentes."
 }

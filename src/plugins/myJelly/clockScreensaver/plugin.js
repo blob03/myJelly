@@ -55,9 +55,9 @@ export default function () {
                 elem = document.createElement('div');
                 elem.classList.add('clockScreenSaver');
                 document.body.appendChild(elem);
-				elem.innerHTML = '<div id="ssForeplane" class="ssForeplane">'
-                + '<div id="ssClockDate" class="ssClockDate"></div>'
-				+ '<div id="ssClockTime" class="ssClockTime"></div>'
+				elem.innerHTML = '<div id="ssBackplane" class="ssBackplane">'
+                + '<div id="ssClockDate" class="ssForeplane ssClockDate"></div>'
+				+ '<div id="ssClockTime" class="ssForeplane ssClockTime"></div>'
 				+ '</div>';
             }
 			

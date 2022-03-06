@@ -554,6 +554,19 @@ export class UserSettings {
 			return "horizontal"; //default to horizontal
     }
 	
+	 /**
+     * Get or set rewatching in next up.
+     * @param {boolean|undefined} val - If rewatching items should be included in next up.
+     * @returns {boolean} Rewatching in next up state.
+     */
+    enableRewatchingInNextUp(val) {
+        if (val !== undefined) {
+            return this.set('enableRewatchingInNextUp', val, false);
+        }
+
+        return this.get('enableRewatchingInNextUp', false);
+    }
+	
     /**
      * Get or set 'Swiper delay' state.
      * @param {int|undefined} val - Delay between each image in s.
@@ -599,6 +612,23 @@ export class UserSettings {
 			return enableBackdrops; 
         else 
             return 'Auto'; 
+    }
+	
+	/**
+     * Get or set key for 'Weatherapi'.
+     * @param {string|undefined} val - Key to set or undefined.
+     * @return {string} current 'key'.
+     */
+    weatherApiKey(val) {
+        if (val !== undefined) {
+            return this.set('weatherApiKey', val.toString());
+        }
+		
+		const apikey = this.get('weatherApiKey');
+		if (apikey && typeof(apikey) === 'string') 
+			return apikey; 
+        else 
+            return ""; 
     }
 
     /**
@@ -914,6 +944,7 @@ export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOve
 export const enableSetUsingLastTracks = currentSettings.enableSetUsingLastTracks.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
+export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);
@@ -932,6 +963,7 @@ export const useCardLayoutInHomeSections = currentSettings.useCardLayoutInHomeSe
 export const language = currentSettings.language.bind(currentSettings);
 export const dateTimeLocale = currentSettings.dateTimeLocale.bind(currentSettings);
 export const chromecastVersion = currentSettings.chromecastVersion.bind(currentSettings);
+export const enableRewatchingInNextUp = currentSettings.enableRewatchingInNextUp.bind(currentSettings);
 export const skipBackLength = currentSettings.skipBackLength.bind(currentSettings);
 export const skipForwardLength = currentSettings.skipForwardLength.bind(currentSettings);
 export const dashboardTheme = currentSettings.dashboardTheme.bind(currentSettings);

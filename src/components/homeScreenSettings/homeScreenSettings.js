@@ -393,7 +393,8 @@ import template from './homeScreenSettings.template.html';
 		context.querySelector('#chkUseCardLayoutInHomeSections').checked = userSettings.useCardLayoutInHomeSections() || false;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;	
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();		
-        
+        context.querySelector('#chkRewatchingNextUp').checked = userSettings.enableRewatchingInNextUp();
+		
 		updateHomeSectionValues(context, userSettings);
 		
 		let chgevent = new Event('change');
@@ -478,7 +479,8 @@ import template from './homeScreenSettings.template.html';
 
         user.Configuration.OrderedViews = orderedViews;
 		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
-				
+		userSettingsInstance.enableRewatchingInNextUp(context.querySelector('#chkRewatchingNextUp').checked);
+			
 		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
 		userSettingsInstance.useCardLayoutInHomeSections(context.querySelector('#chkUseCardLayoutInHomeSections').checked);
 		

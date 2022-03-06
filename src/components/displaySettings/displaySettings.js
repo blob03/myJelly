@@ -282,16 +282,17 @@ import viewContainer from '../viewContainer';
 		} else 
 			context.querySelector('.fldDateTimeLocale').classList.add('hide');
 	
-	
-        if (appHost.supports('externallinks')) 
-            context.querySelector('.learnHowToContributeContainer').classList.remove('hide');
-        else 
-            context.querySelector('.learnHowToContributeContainer').classList.add('hide');
+        if (appHost.supports('externallinks')) {	
+			var els = document.getElementsByClassName('hyperlink');
+			Array.prototype.forEach.call(els, function(el) {
+				el.classList.remove('hide');
+			});
+        }
 		
 		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
 		dashboardthemeNodes.forEach( function(userItem) {
 			userItem.classList.toggle('hide', !user.localUser.Policy.IsAdministrator);});
-
+		
         if (appHost.supports('screensaver')) {
 			let btnTryIt = context.querySelector('.btnTryIt');
 			btnTryIt.addEventListener('click', onScreenSaverTry);
@@ -337,6 +338,7 @@ import viewContainer from '../viewContainer';
 		let selectClock = context.querySelector('#selectClock');
 		selectClock.value = userSettings.enableClock();
 		
+		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
 		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
@@ -422,6 +424,7 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
 		userSettingsInstance.swiperFX(context.querySelector('#selectSwiperFX').value);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
+		userSettingsInstance.weatherApiKey(context.querySelector('#inputApikey').value);
 		
 		if (layoutManager.tv) 
 			userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);

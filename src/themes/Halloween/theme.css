@@ -1372,17 +1372,20 @@ option:selected {
 	font-size: 0.8rem;
 }
 
+.weatherbotScreenSaver,
 .clockScreenSaver {
 	background-image: url(./img/bg-alt1.jpg) !important;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
 
-.ssForeplane {
-	font-family: "Mystery";
+.ssFailure,
+.ssForeplane,
+.ssForeplane > .material-icons
+ {
 	color: #f8e5bf;
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
-	background: rgba(10, 10, 10, .85);
+	background: rgba(10, 10, 10, 0);
 }
 
 .ssClockDate {
@@ -1393,12 +1396,25 @@ option:selected {
 	font-size: 260% !important;
 }
 
+.ssWeatherData,
+.ssClockTime,
+.ssClockDate {
+	font-family: "Mystery";
+	position: relative;
+}
+
 .ssClockTime,
 .ssClockDate {
 	top: -30%;
-	position: relative;
 }
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
+}
+
+.aboutframe {
+	padding: 1em;
+	background: rgba(246, 101, 14, 0.15);
+	font-size: 100%;
+	line-height: 1.65;
 }

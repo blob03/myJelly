@@ -1,5 +1,5 @@
 
-.clockScreenSaver {
+.weatherbotScreenSaver {
     background: #101010;
 	color: #fff;
     position: fixed;
@@ -31,16 +31,15 @@
 }
 
 .ssForeplane {
+	display: flex;
+	align-items: center;
 	background: rgba(0, 0, 0, 0);
 	outline: none;
 	height: auto;
 	border: solid 0px;
 }
 
-.ssClockDate {
-	font-size: 140%;
-}
-
-.ssClockTime {
-	font-size: 280%;
+.ssForeplane > .material-icons,
+.ssWeatherData {
+	font-size: 200%;
 }

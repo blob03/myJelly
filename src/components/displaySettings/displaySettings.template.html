@@ -36,7 +36,7 @@
 			</select>
 			<div class="fieldDescription">
 				<div>${LabelDisplayLanguageHelp}</div>
-				<div class="learnHowToContributeContainer hide" style="margin-top: .25em;">
+				<div class="hyperlink hide" style="margin-top: .25em;">
 					<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://github.com/jellyfin/jellyfin" target="_blank">${LearnHowYouCanContribute}</a>
 				</div>
 			</div>
@@ -120,6 +120,17 @@
 		</select>
 		<div class="fieldDescription ">${EnableBackdropsHelp}</div>
 		
+	</div>
+	
+	<div class="inputContainer" style="width: 100%;height: auto;">
+	
+		<input is="emby-input" id="inputApikey" label="${LabelWeatherApiKey}" type="text" placeholder="" autocomplete="off" maxlength="32" size="32">
+		<div class="fieldDescription">
+			<div class="hyperlink hide" style="margin-top: .25em;">
+				<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://www.weatherapi.com/login.aspx" target="_blank">${WeatherApiRegistrationHelp}</a>
+			</div>
+		</div>
+
 	</div>
 	
 	<div class="ScreensaverArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>

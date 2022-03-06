@@ -604,7 +604,7 @@ import ServerConnections from '../ServerConnections';
         });
     }
 
-	function getNextUpFetchFn(serverId, userSettings, rewatching) {
+	function getNextUpFetchFn(serverId, userSettings) {
         return function () {
             const apiClient = ServerConnections.getApiClient(serverId);
             const oldestDateForNextUp = new Date();
@@ -619,7 +619,7 @@ import ServerConnections from '../ServerConnections';
                 EnableTotalRecordCount: false,
                 DisableFirstEpisode: false,
                 NextUpDateCutoff: oldestDateForNextUp.toISOString(),
-                Rewatching: rewatching
+                EnableRewatching: userSettings.enableRewatchingInNextUp()
             });
         };
     }
@@ -645,14 +645,13 @@ import ServerConnections from '../ServerConnections';
         };
     }
 
-    function loadNextUp(elem, apiClient, userSettings, rewatching = false) {
+    function loadNextUp(elem, apiClient, userSettings) {
         let html = '';
 
         html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
         if (!layoutManager.tv) {
             html += '<a is="emby-linkbutton" href="' + appRouter.getRouteUrl('nextup', {
-                serverId: apiClient.serverId(),
-                rewatching: rewatching
+                serverId: apiClient.serverId()
             }) + '" class="button-flat button-flat-mini sectionTitleTextButton">';
             html += '<h2 class="sectionTitle sectionTitle-cards">';
             html += globalize.translate('NextUp');
@@ -682,7 +681,7 @@ import ServerConnections from '../ServerConnections';
         elem.innerHTML = html;
 
         const itemsContainer = elem.querySelector('.itemsContainer');
-        itemsContainer.fetchData = getNextUpFetchFn(apiClient.serverId(), userSettings, rewatching);
+        itemsContainer.fetchData = getNextUpFetchFn(apiClient.serverId(), userSettings);
         itemsContainer.getItemsHtml = getNextUpItemsHtmlFn(userSettings.useEpisodeImagesInNextUpAndResume());
         itemsContainer.parentContainer = elem;
     }

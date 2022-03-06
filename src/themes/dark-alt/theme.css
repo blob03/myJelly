@@ -1288,26 +1288,36 @@ select option:selected {
 	font-size: 0.8rem;
 }
 
+.weatherbotScreenSaver,
 .clockScreenSaver {
 	background-image: url(./bg.jpg) !important;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
 
+.ssFailure,
 .ssForeplane {
 	color: #d7e2e9;
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
-	background: rgba(10, 10, 10, .8);
+	background: rgba(10, 10, 10, 0);
 }
 
 .ssClockDate {
 	margin: 30% 0px 0px 0px;
 }
 
+.ssWeatherData,
 .ssClockTime {
 	font-family: "Shangai";
 }
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
+}
+
+.aboutframe {
+	padding: 1em;
+	background: rgba(120, 102, 102, 0.15);
+	font-size: 100%;
+	line-height: 1.65;
 }

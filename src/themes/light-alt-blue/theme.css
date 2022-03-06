@@ -734,7 +734,6 @@ h3 {
 	font-weight: 400;
 	text-shadow: 1px 1px 4px #749cb0;
 	color: #277499;
-	position: fixed;
 	top: 20%;
 	left: 40%;
 	align-items: flex-start !important;
@@ -1229,12 +1228,20 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	background-size: cover;
 }
 
+.ssFailure,
 .ssForeplane {
 	color: #fff;
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
-	background: rgba(10, 10, 10, .8);
+	background: rgba(10, 10, 10, .0);
 }
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
+}
+
+.aboutframe {
+	padding: 1em;
+	background: rgba(123, 159, 197, 0.15);
+	font-size: 100%;
+	line-height: 1.65;
 }

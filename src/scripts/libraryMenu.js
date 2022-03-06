@@ -47,7 +47,7 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerBackButton hide"><span class="material-icons ' + (browser.safari ? 'chevron_left' : 'arrow_back') + '"></span></button>';
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerHomeButton hide barsMenuButton headerButtonLeft"><span class="material-icons home"></span></button>';
 		
-        html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);"></h3>';
+		html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);" aria-hidden="true"></h3>';
         html += '</div>';
 		
 		/* Added: Middle casing for the topbar clock */
@@ -133,6 +133,16 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
     }
 
     function retranslateUi() {
+		
+		if (headerBackButton)
+            headerBackButton.title = globalize.translate('ButtonBack');
+
+        if (headerHomeButton) 
+            headerHomeButton.title = globalize.translate('Home');
+
+        if (mainDrawerButton) 
+            mainDrawerButton.title = globalize.translate('Menu');
+
         if (headerSyncButton) 
             headerSyncButton.title = globalize.translate('ButtonSyncPlay');
 
@@ -150,12 +160,6 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		
 		if (headerLockButton)
 			headerLockButton.title = globalize.translate('LockHeader');
-	
-		if (headerBackButton) 
-			headerBackButton.title = globalize.translate('ButtonBack');
-		
-		if (headerHomeButton) 
-			headerHomeButton.title = globalize.translate('Home');
     }
 
     export function updateUserInHeader(user) {

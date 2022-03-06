@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-6",
+	"version": "10.7.7.1-7",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified web client for Jellyfin.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -61,7 +61,7 @@
 		"version": "0.34",
 		"id": "light-alt",
 		"color": "#303030",
-		"group": "myJelly indev"
+		"group": "myJelly lab"
 	}
 	],
 	"menuLinks": [],
@@ -69,6 +69,7 @@
 	"plugins": [
 		"playAccessValidation/plugin",
 		"myJelly/clockScreensaver/plugin",
+		"myJelly/weatherScreensaver/plugin",
 		"myJelly/backdropScreensaver/plugin",
 		"myJelly/blackoutScreensaver/plugin",
 		"experimentalWarnings/plugin",

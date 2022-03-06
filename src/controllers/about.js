@@ -17,6 +17,7 @@ class AboutTab {
         this.params = params;
         this.sectionsContainer = view.querySelector('.sections');
 		let html = '<div class="abouttab" style="display: flex !important;width: 100%;height: 10em;flex-direction: column;align-items: center;justify-content: space-around;margin: 3em 0 0 0 !important;">';
+		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(0, 0, 0, 0.15);">';
 		html += '<div> ' + globalize.translate('LabelName') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.name + '</span></div>';
 		html += '<div> ' + globalize.translate('AppDesc') + ' <span style="font-weight:400;font-style: italic;" class="aboutcontent">' + appInfo.description + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
@@ -28,6 +29,7 @@ class AboutTab {
 			html += '<div> ' + globalize.translate('AppRepositoryName') + ' <span><a is="emby-linkbutton" style="font-weight:400;" rel="noopener noreferrer" class="aboutcontent button-link emby-button" target="_blank" href="' + appInfo.repository + '">' + appInfo.repository + '</a></span></div>';
 			html += '<div> ' + globalize.translate('AppContact') + ' <span><a rel="noopener noreferrer" style="font-weight:400;" class="aboutcontent button-link emby-button" href="mailto:' + appInfo.contact + '">' + appInfo.contact + '</a></span></div>';
 		}
+		html += '</div>';
 		html += '</div>';
 		this.sectionsContainer.innerHTML = html;
     }

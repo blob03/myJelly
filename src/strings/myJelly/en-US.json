@@ -34,6 +34,7 @@
     "LabelTextShadowColor": "Text shadow color:",
     "LabelTextStrokeColor": "Text outline color:",
     "LabelTranslatedStrings": "Translated strings:",
+    "LabelWeatherApiKey": "Weatherapi key:",
     "LabelmyJelly": "myJelly:",
     "LockHeader": "Lock the menu bar",
     "LogoScreensaverHelp": "Show the Jellyfin logo in motion.",
@@ -55,5 +56,7 @@
     "UseCardLayoutInHomeSections": "Show items as cards",
     "UseCardLayoutInHomeSectionsHelp": "Use a card format to render the 'Home' and 'Favorites' screens.",
     "UseNextUpRewatch": "Generate a 'Rewatching' section (Jellyfin 10.8.0+)",
-    "Videos": "Videos"
+    "Videos": "Videos",
+    "WeatherApiRegistrationHelp": "See how to get a free key.",
+    "WeatherbotScreensaverHelp": "Print the current weather condition."
 }
