@@ -267,6 +267,8 @@
     "EnablePhotosHelp": "A fényképeket a médiafájlok mellett észleli és megjeleníti.",
     "EnablePlugin": "Engedélyezés",
     "EnableQuickConnect": "Gyors kapcsolódás engedélyezése a szerveren",
+    "EnableRewatchingNextUp": "Engedélyezze az Újranézést a \"Következő rész\"-ben",
+    "EnableRewatchingNextUpHelp": "Engedélyezze a már megtekintett epizódok megjelenítését a „Következő” panelen.",
     "EnableStreamLooping": "Élő műsorfolyamok automatikus újrajátszása",
     "EnableStreamLoopingHelp": "Kapcsold be, ha az élő stream csak néhány másodpercnyi adatot tartalmaz és folyamatosan újra kell kérni. Ennek szükségtelen bekapcsolása problémát okozhat.",
     "EnableThemeSongsHelp": "Főcímdalok lejátszása háttérben a könyvtár böngészése közben.",

@@ -759,7 +759,7 @@
     "LabelMaxAudiobookResumeHelp": "Gli Audiolibri vengono segnati come riprodotti interamente dopo questo tempo.",
     "LabelMaxBackdropsPerItem": "Massimo numero di sfondi per oggetto:",
     "LabelMaxChromecastBitrate": "Qualità streaming su Google Cast:",
-    "LabelMaxDaysForNextUp": "Max giorni in 'Prossimo':",
+    "LabelMaxDaysForNextUp": "Numero massimo di giorni per 'Prossimo':",
     "LabelMaxDaysForNextUpHelp": "Imposta il numero massimo di giorni che uno spettacolo può rimanere nella lista 'Prossimo' senza essere guardato.",
     "LabelMaxMuxingQueueSize": "Massima grandezza della coda di muxing:",
     "LabelMaxMuxingQueueSizeHelp": "Massimo numero di pacchetti che possono essere bufferizzati prima che tutti gli stream vengano inizializzati. Prova ad incrementare il numero se si nota nei messaggi di errore di FFmpeg il messaggio \"Too many packets buffered for output stream\". Il valore raccomandato è 2048.",

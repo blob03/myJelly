@@ -21,8 +21,8 @@ export default function () {
     const self = this;
 
 	self.name = 'The Weatherbot';
-	self.group = 'myJelly dev';
-	self.version = '0.2';
+	self.group = 'myJelly';
+	self.version = '0.3';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -39,17 +39,20 @@ export default function () {
 	let _windirstr_;
 	let _apikey_ = "";
 	let _msgstr_;
-		
+	let _conditionstr_;
+	let _locationstr_;
+	let _location2str_;
+	
 	function weather(LOCALE) {	
 	
 		loading.show();
 		
-		// Note that API keys are obtained free of charge by registering at the address below
+		// Note that API keys can be obtained free of charge by registering at the address below
 		// https://www.weatherapi.com/signup.aspx
 		// Remember to copy any new key into its dedicated field in the display settings.
 		const url_base = 'http://api.weatherapi.com/v1/';
 		const url_apiMethod = 'current.json';
-		const url_params = '?key=' + _apikey_ + '&q=auto:ip&aqi=no';
+		const url_params = '?key=' + _apikey_ + '&q=auto:ip&aqi=no&lang=' + LOCALE;
 		const url = url_base + url_apiMethod + url_params; 
 		
 		let req = {};
@@ -70,7 +73,17 @@ export default function () {
 				night.classList.remove('hide');
 				day.classList.add('hide');
 			}*/
-			
+			if (data.location.name)
+				_locationstr_.innerHTML = data.location.name;
+			_location2str_.innerHTML = "";
+			if (data.location.country)
+				_location2str_.innerHTML += data.location.country;
+			if (data.location.lat)
+				_location2str_.innerHTML += ",&nbsp;Lat.&nbsp;" + data.location.lat + '&deg;';
+			if (data.location.lon)
+				_location2str_.innerHTML += "/&nbsp;Lon.&nbsp;" + data.location.lon + '&deg;';
+			if (data.current.condition)
+				_conditionstr_.innerHTML = data.current.condition.text;
 			if (data.current.temp_c)
 				_tempstr_.innerHTML = data.current.temp_c;
 			/*
@@ -81,8 +94,12 @@ export default function () {
 			*/
 			if (data.current.wind_kph)
 				_windstr_.innerHTML = data.current.wind_kph;
+			
+			_windirstr_.innerHTML = "";
+			if (data.current.wind_degree)
+				_windirstr_.innerHTML += data.current.wind_degree + '&deg;'
 			if (data.current.wind_dir)
-				_windirstr_.innerHTML = data.current.wind_dir;
+				_windirstr_.innerHTML += data.current.wind_dir;
 			loading.hide();
 			
 		}).catch(function (data) {
@@ -120,6 +137,15 @@ export default function () {
 				+ '</div>'
 				*/
 				+ '<div class="ssForeplane">'
+				+ '<span id="ssLoc" class="ssWeatherData"></span>'
+				+ '</div>'
+				+ '<div class="ssForeplane">'
+				+ '<span id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></span>'
+				+ '</div>'
+				+ '<div class="ssForeplane">'
+				+ '<span id="ssCond" class="ssWeatherData"></span>'
+				+ '</div>'
+				+ '<div class="ssForeplane">'
 				+ '<span class="material-icons thermostat"></span>'
 				+ '<span id="ssTemp" class="ssWeatherData"></span>'
 				+ '<span class="ssWeatherDataUnit">&#8451;</span>'
@@ -134,7 +160,7 @@ export default function () {
 				+ '<span class="material-icons air"></span>'
 				+ '<span id="ssWind" class="ssWeatherData"></span>'
 				+ '<span class="ssWeatherDataUnit">km/h</span>'
-				+ '<span id="ssWindir" class="ssWeatherData ssWeatherDataWindir"></span>'
+				+ '<span id="ssWindir" class="ssWeatherData ssWeatherDataSmall"></span>'
 				+ '</div>'
 				
 				+ '</div>';
@@ -146,6 +172,9 @@ export default function () {
 			_windstr_ = document.getElementById("ssWind");
 			_windirstr_ = document.getElementById("ssWindir");
 			_msgstr_ = document.getElementById("ssMsg");
+			_conditionstr_ = document.getElementById("ssCond");
+			_locationstr_ = document.getElementById("ssLoc");
+			_location2str_ = document.getElementById("ssLoc2");
 			
 			// When tested, use the relevant parameters as they are currently set in the settings page
 			// rather than the ones saved.
