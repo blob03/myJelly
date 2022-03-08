@@ -267,6 +267,7 @@
     "EnablePhotosHelp": "图片将被检测到并和其他媒体文件一起显示。",
     "EnablePlugin": "激活",
     "EnableQuickConnect": "在此服务器上启用快速连接",
+    "EnableRewatchingNextUpHelp": "启用在“接下来”模块中显示已观看的剧集。",
     "EnableStreamLooping": "自动循环直播流",
     "EnableStreamLoopingHelp": "如果直播流仅包含了几秒钟的数据并且需要被不断的请求，请启用此项。如果在没有相关问题的情况下启动此项，可能会导致一些问题。",
     "EnableThemeSongsHelp": "浏览媒体库时将主题曲作为背景音乐播放。",

@@ -122,15 +122,29 @@
 		
 	</div>
 	
-	<div class="inputContainer" style="width: 100%;height: auto;">
+	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 	
-		<input is="emby-input" id="inputApikey" label="${LabelWeatherApiKey}" type="text" placeholder="" autocomplete="off" maxlength="32" size="32">
-		<div class="fieldDescription">
-			<div class="hyperlink hide" style="margin-top: .25em;">
-				<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://www.weatherapi.com/signup.aspx" target="_blank">${WeatherApiRegistrationHelp}</a>
+		<div class="inputContainer" style="flex-grow: 3;width: 47%;height: auto;">
+	
+			<input is="emby-input" id="inputApikey" label="${LabelWeatherApiKey}" type="text" placeholder="" autocomplete="off" maxlength="32" size="32">
+			<div class="fieldDescription">
+				<div class="hyperlink hide" style="margin-top: .25em;">
+					<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://www.weatherapi.com/signup.aspx" target="_blank">${WeatherApiRegistrationHelp}</a>
+				</div>
 			</div>
-		</div>
 
+		</div>
+	
+		<div style="width: 6%"></div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription" style="width: 47%;height: auto;">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkuseUSUnits" />
+				<span>${EnableUSUnits}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${EnableUSUnitsHelp}</div>
+		</div>
+		
 	</div>
 	
 	<div class="ScreensaverArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>

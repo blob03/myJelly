@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'The Weatherbot';
 	self.group = 'myJelly';
-	self.version = '0.3';
+	self.version = '0.4';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -30,81 +30,67 @@ export default function () {
 	self.hideOnClick = true;
 	self.hideOnMouse = true;
 	self.hideOnKey = true;
+	self.interval = null;
+	self.opts = {};
+	
+	function weather(self) {	
 
-    let interval;
-	let _tempstr_;
-	let _humstr_;
-	let _visistr_;
-	let _windstr_;
-	let _windirstr_;
-	let _apikey_ = "";
-	let _msgstr_;
-	let _conditionstr_;
-	let _locationstr_;
-	let _location2str_;
-	
-	function weather(LOCALE) {	
-	
 		loading.show();
 		
 		// Note that API keys can be obtained free of charge by registering at the address below
 		// https://www.weatherapi.com/signup.aspx
 		// Remember to copy any new key into its dedicated field in the display settings.
+		let req = {};
+		req.dataType = 'json';
 		const url_base = 'http://api.weatherapi.com/v1/';
 		const url_apiMethod = 'current.json';
-		const url_params = '?key=' + _apikey_ + '&q=auto:ip&aqi=no&lang=' + LOCALE;
-		const url = url_base + url_apiMethod + url_params; 
-		
-		let req = {};
-		req.url = url;
-		req.dataType = 'json';
+		const url_params = '?key=' + self.opts.apikey + '&q=auto:ip&aqi=no&lang=' + self.opts.dateTimeLocale;
+		req.url = url_base + url_apiMethod + url_params; 
 		
 		ajax(req).then(function (data) {
 			show('ssFailure', false);
-			show('ssForeplane', true);
-			
-			/*
-			let day = document.getElementById("day");
-			let night = document.getElementById("night");
-			if (data.current.is_day) {
-				day.classList.remove('hide');
-				night.classList.add('hide');
-			} else {
-				night.classList.remove('hide');
-				day.classList.add('hide');
-			}*/
+
 			if (data.location.name)
-				_locationstr_.innerHTML = data.location.name;
-			_location2str_.innerHTML = "";
+				self.opts.locationstr.innerHTML = data.location.name;
+			self.opts.location2str.innerHTML = "";
 			if (data.location.country)
-				_location2str_.innerHTML += data.location.country;
+				self.opts.location2str.innerHTML += data.location.country;
 			if (data.location.lat)
-				_location2str_.innerHTML += ",&nbsp;Lat.&nbsp;" + data.location.lat + '&deg;';
+				self.opts.location2str.innerHTML += ",&nbsp;Lat.&nbsp;" + data.location.lat + '&deg;';
 			if (data.location.lon)
-				_location2str_.innerHTML += "/&nbsp;Lon.&nbsp;" + data.location.lon + '&deg;';
+				self.opts.location2str.innerHTML += "/&nbsp;Lon.&nbsp;" + data.location.lon + '&deg;';
 			if (data.current.condition)
-				_conditionstr_.innerHTML = data.current.condition.text;
-			if (data.current.temp_c)
-				_tempstr_.innerHTML = data.current.temp_c;
-			/*
-			if (data.current.humidity)
-				_humstr_.innerHTML = data.current.humidity + '%';
-			if (data.current.vis_km)
-				_visistr_.innerHTML = data.current.vis_km + 'km';
-			*/
-			if (data.current.wind_kph)
-				_windstr_.innerHTML = data.current.wind_kph;
+				self.opts.conditionstr.innerHTML = data.current.condition.text;
+			if (self.opts.USUnits)
+				self.opts.tempstr.innerHTML = data.current.temp_f;
+			else
+				self.opts.tempstr.innerHTML = data.current.temp_c;
 			
-			_windirstr_.innerHTML = "";
+			if (data.current.humidity)
+				self.opts.humstr.innerHTML = data.current.humidity;
+			if (self.opts.USUnits)
+				self.opts.visistr.innerHTML = data.current.vis_miles;
+			else
+				self.opts.visistr.innerHTML = data.current.vis_km;
+			
+			if (self.opts.USUnits)
+				self.opts.windstr.innerHTML = data.current.wind_mph;
+			else
+				self.opts.windstr.innerHTML = data.current.wind_kph;
+			
+			self.opts.windirstr.innerHTML = "";
 			if (data.current.wind_degree)
-				_windirstr_.innerHTML += data.current.wind_degree + '&deg;'
+				self.opts.windirstr.innerHTML += data.current.wind_degree + '&deg;'
 			if (data.current.wind_dir)
-				_windirstr_.innerHTML += data.current.wind_dir;
+				self.opts.windirstr.innerHTML += data.current.wind_dir;
+			
+			show('ssForeplane', true);
 			loading.hide();
 			
 		}).catch(function (data) {
 			show('ssForeplane', false);
-			_msgstr_.innerHTML = data.statusText + " ( " + data.status + " ) ";
+			self.opts.msgstr.innerHTML = data.statusText + " ( " + data.status + " ) ";
+			
 			show('ssFailure', true);
 			loading.hide();
 		});
@@ -122,107 +108,121 @@ export default function () {
     self.show = function (TEST) {
 		
         import('./style.scss').then(() => {
-            let elem = document.querySelector('.weatherbotScreenSaver');
-
+			
+			// When tested, use the relevant parameters as they are currently set in the settings page
+			// rather than the ones saved.
+			self.opts = {};
+	
+			if (TEST === true) {
+				self.hideOnMouse = false;
+				// Get currently selected Locale.
+				self.opts.dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
+				// If set to 'auto' then use the language.
+				if (self.opts.dateTimeLocale === "")
+					self.opts.dateTimeLocale = document.querySelector('.selectLanguage').value;
+				// If display language is also set to 'auto' then request the default value.
+				if (self.opts.dateTimeLocale === "")
+					self.opts.dateTimeLocale = globalize.getDefaultCulture();
+				// Get an API key from the form.
+				self.opts.apikey = document.querySelector('#inputApikey').value || "";
+				self.opts.USUnits = document.querySelector('#chkuseUSUnits').checked;
+				
+			} else {
+				self.hideOnMouse = true;
+				// get the last saved API key.
+				self.opts.apikey = userSettings.weatherApiKey() || "";
+				self.opts.dateTimeLocale = globalize.getCurrentDateTimeLocale();
+				self.opts.USUnits = userSettings.enableUSUnits() || false;
+			}
+				
+			stopInterval();
+			
+			let elem = document.querySelector('.weatherbotScreenSaver');
             if (!elem) {
                 elem = document.createElement('div');
                 elem.classList.add('weatherbotScreenSaver');
                 document.body.appendChild(elem);
-				elem.innerHTML = '<div class="ssBackplane">'
-				+ '<div class="ssFailure">'
+				let content ='<div class="ssBackplane">'
+				+ '<div class="ssFailure hide">'
 				+ '<span id="ssMsg" class="ssWeatherData"></span>'
 				+ '</div>'
 				/*
 				+ '<span id="day" class="material-icons light_mode hide"></span><span id="night" class="material-icons dark_mode hide"></span>'
 				+ '</div>'
 				*/
-				+ '<div class="ssForeplane">'
+				+ '<div class="ssForeplane hide">'
 				+ '<span id="ssLoc" class="ssWeatherData"></span>'
 				+ '</div>'
-				+ '<div class="ssForeplane">'
+				+ '<div class="ssForeplane hide">'
 				+ '<span id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></span>'
 				+ '</div>'
-				+ '<div class="ssForeplane">'
+				+ '<div class="ssForeplane hide">'
 				+ '<span id="ssCond" class="ssWeatherData"></span>'
 				+ '</div>'
-				+ '<div class="ssForeplane">'
+				+ '<div class="ssForeplane hide">'
 				+ '<span class="material-icons thermostat"></span>'
-				+ '<span id="ssTemp" class="ssWeatherData"></span>'
-				+ '<span class="ssWeatherDataUnit">&#8451;</span>'
-				+ '</div>'
-				/*
-                + '<div class="ssForeplane"><span class="material-icons water_drop"></span><span id="ssHum" class="ssWeatherData"></span>'
-				+ '</div>'
-				+ '<div class="ssForeplane"><span class="material-icons visibility"></span><span id="ssVisi" class="ssWeatherData"></span>'
-				+ '</div>'
-				*/
-				+ '<div class="ssForeplane">'
-				+ '<span class="material-icons air"></span>'
-				+ '<span id="ssWind" class="ssWeatherData"></span>'
-				+ '<span class="ssWeatherDataUnit">km/h</span>'
-				+ '<span id="ssWindir" class="ssWeatherData ssWeatherDataSmall"></span>'
-				+ '</div>'
+				+ '<span id="ssTemp" class="ssWeatherData"></span>';
 				
+				if (self.opts.USUnits)
+					content += '<span class="ssWeatherDataUnit">&#8457;</span>';
+				else
+					content += '<span class="ssWeatherDataUnit">&#8451;</span>';
+				
+				content += '</div>'
+				+ '<div class="ssForeplane hide">'
+				+ '<span class="material-icons air"></span>'
+				+ '<span id="ssWind" class="ssWeatherData"></span>';
+				
+				if (self.opts.USUnits)
+					content += '<span class="ssWeatherDataUnit">mph</span>';
+				else
+					content += '<span class="ssWeatherDataUnit">km/h</span>';
+				
+				content += '<span id="ssWindir" class="ssWeatherData ssWeatherDataSmall"></span>'
+				+ '</div>'
+                + '<div class="ssForeplane hide"><span class="material-icons water_drop">'
+				+ '</span><span id="ssHum" class="ssWeatherData"></span>'
+				+ '<span class="ssWeatherDataUnit">%</span>'
+				+ '</div>'
+				+ '<div class="ssForeplane hide"><span class="material-icons visibility">'
+				+ '</span><span id="ssVisi" class="ssWeatherData"></span>';	
+				
+				if (self.opts.USUnits)
+					content += '<span class="ssWeatherDataUnit">miles</span>';		
+				else
+					content += '<span class="ssWeatherDataUnit">km</span>';
+					
+				content += '</div>'
 				+ '</div>';
+				
+				elem.innerHTML = content;
             }
 
-			_tempstr_ = document.getElementById("ssTemp");
-			_humstr_ = document.getElementById("ssHum");
-			_visistr_ = document.getElementById("ssVisi");
-			_windstr_ = document.getElementById("ssWind");
-			_windirstr_ = document.getElementById("ssWindir");
-			_msgstr_ = document.getElementById("ssMsg");
-			_conditionstr_ = document.getElementById("ssCond");
-			_locationstr_ = document.getElementById("ssLoc");
-			_location2str_ = document.getElementById("ssLoc2");
-			
-			// When tested, use the relevant parameters as they are currently set in the settings page
-			// rather than the ones saved.
-			let dateTimeLocale = null;
-			let apikey = null;
-		
-			if (TEST) {
-				self.hideOnMouse = false;
-				// Get currently selected Locale.
-				dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
-				// If set to 'auto' then use the language.
-				if (dateTimeLocale === "")
-					dateTimeLocale = document.querySelector('.selectLanguage').value;
-				// If display language is also set to 'auto' then request the default value.
-				if (dateTimeLocale === "")
-					dateTimeLocale = globalize.getDefaultCulture();
-				// Get an API key from the form.
-				apikey = document.querySelector('#inputApikey').value;
-			} else {
-				// get the last saved API key.
-				apikey = userSettings.weatherApiKey();
-				dateTimeLocale = globalize.getCurrentDateTimeLocale();
-			}
-			
-			if (apikey && apikey.length >= 31)
-				_apikey_ = apikey;
-				
-			stopInterval();
-			
-			if (dateTimeLocale != null) {
-				weather(dateTimeLocale);
-				// Refresh every 5 minutes.
-				self.interval = setInterval(function() { weather(dateTimeLocale) }, 300000);
-			}
+			self.opts.tempstr = document.getElementById("ssTemp");
+			self.opts.humstr = document.getElementById("ssHum");
+			self.opts.visistr = document.getElementById("ssVisi");
+			self.opts.windstr = document.getElementById("ssWind");
+			self.opts.windirstr = document.getElementById("ssWindir");
+			self.opts.msgstr = document.getElementById("ssMsg");
+			self.opts.conditionstr = document.getElementById("ssCond");
+			self.opts.locationstr = document.getElementById("ssLoc");
+			self.opts.location2str = document.getElementById("ssLoc2");
+						
+			weather(self);
+			// Refresh every 5 minutes.
+			self.interval = setInterval(function() { weather(self) }, 300000);
         });
     };
 
     self.hide = function () {
         stopInterval();
 		const elem = document.querySelector('.weatherbotScreenSaver');
- 
 		if (elem) {
             return new Promise((resolve) => {
 				elem.parentNode.removeChild(elem);
 				resolve();
             });
         }
-
         return Promise.resolve();
     };
 }

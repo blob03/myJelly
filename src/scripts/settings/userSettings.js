@@ -520,6 +520,20 @@ export class UserSettings {
     }
 
     /**
+     * Get or set 'USUnits' state.
+     * @param {boolean|undefined} val - Flag to enable 'USUnits' or undefined.
+     * @return {boolean} 'USUnits' state.
+     */
+    enableUSUnits(val) {
+        if (val !== undefined) {
+            return this.set('USUnits', val.toString());
+        }
+
+        val = this.get('USUnits');
+        return val === 'true';
+    }
+
+    /**
      * Get or set 'Blurhash quality' state.
      * @param {boolean|undefined} val - Quality level between 0 (disabled) and 32 (max quality) inclusively.
      * @return {boolean} 'Blurhash quality' state.
@@ -946,6 +960,7 @@ export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSet
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
 export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
+export const enableUSUnits = currentSettings.enableUSUnits.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);
 export const showClock = currentSettings.showClock.bind(currentSettings);

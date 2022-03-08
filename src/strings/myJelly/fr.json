@@ -17,6 +17,8 @@
     "EnableBlurHashSomeMoreHelp": "Le cas échéant, baisser la valeur pour améliorer les performances.",
     "EnableClock": "Activer l'horloge :",
     "EnableClockHelp": "Afficher la date et l'heure locale dans la barre du haut.",
+    "EnableUSUnits": "Unités de mesure américaines",
+    "EnableUSUnitsHelp": "Exprimer les valeurs en Fahrenheit et en Miles.",
     "LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
     "LabelBackdrops": "Arrière-plans :",
     "LabelChromecastVersion": "Version de Chromecast :",

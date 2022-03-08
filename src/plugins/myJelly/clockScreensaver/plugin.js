@@ -9,7 +9,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.7';
+	self.version = '0.8';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -69,7 +69,7 @@ export default function () {
 			// When tested, use the relevant parameters as they are currently set in the settings page
 			// rather than the saved ones.
 			let dateTimeLocale = null;
-			if (TEST) {
+			if (TEST === true) {
 				self.hideOnMouse = false;
 				// Get currently selected Locale.
 				dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
@@ -79,8 +79,10 @@ export default function () {
 				// If display language is also set to 'auto' then request the default value.
 				if (dateTimeLocale === "")
 					dateTimeLocale = globalize.getDefaultCulture();
-			} else 
+			} else {
+				self.hideOnMouse = true;
 				dateTimeLocale = globalize.getCurrentDateTimeLocale();
+			}
 			
 			if (dateTimeLocale != null) {
 				clock(dateTimeLocale);

@@ -17,6 +17,8 @@
     "EnableBlurHashSomeMoreHelp": "Defining a lower value should provide better performance.",
     "EnableClock": "Clock:",
     "EnableClockHelp": "Show local date and time in the top bar.",
+    "EnableUSUnits": "Use U.S. units",
+    "EnableUSUnitsHelp": "Use Fahrenheit and Miles as units of measurement.",
     "LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",
     "LabelBackdrops": "Backdrops:",
     "LabelChromecastVersion": "Chromecast Version:",

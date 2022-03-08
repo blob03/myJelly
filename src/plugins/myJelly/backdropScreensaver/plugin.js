@@ -5,7 +5,7 @@ import * as userSettings from '../../../scripts/settings/userSettings';
 class BackdropScreensaver {
     constructor() {
         this.name = 'My Backdrop Player';
-		this.version = '1.6';
+		this.version = '1.7';
 		this.group = 'myJelly';
 		this.description = 'MJBackdropScreensaverHelp';
         this.type = 'screensaver';
@@ -53,7 +53,8 @@ class BackdropScreensaver {
 			// Also get the slideshow delay and animation selected.
 			autoplayDelay = document.querySelector('#sliderSwiperDelay').value;
 			swiperFX = document.querySelector('#selectSwiperFX').value;
-		} 
+		} else 
+			this.hideOnMouse = true;
 		
 		if (type === null)
 			type = userSettings.enableBackdrops();

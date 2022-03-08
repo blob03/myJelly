@@ -339,6 +339,7 @@ import viewContainer from '../viewContainer';
 		selectClock.value = userSettings.enableClock();
 		
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
+		context.querySelector('#chkuseUSUnits').checked = userSettings.enableUSUnits();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
 		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
@@ -419,6 +420,7 @@ import viewContainer from '../viewContainer';
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
 		
+		userSettingsInstance.enableUSUnits(context.querySelector('#chkuseUSUnits').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
