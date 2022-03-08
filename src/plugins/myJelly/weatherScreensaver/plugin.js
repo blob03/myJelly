@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'The Weatherbot';
 	self.group = 'myJelly';
-	self.version = '0.4';
+	self.version = '0.5';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -157,7 +157,7 @@ export default function () {
 				+ '<span id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></span>'
 				+ '</div>'
 				+ '<div class="ssForeplane hide">'
-				+ '<span id="ssCond" class="ssWeatherData"></span>'
+				+ '<span id="ssCond" class="ssWeatherData ssWeatherDataSmall"></span>'
 				+ '</div>'
 				+ '<div class="ssForeplane hide">'
 				+ '<span class="material-icons thermostat"></span>'
@@ -167,6 +167,17 @@ export default function () {
 					content += '<span class="ssWeatherDataUnit">&#8457;</span>';
 				else
 					content += '<span class="ssWeatherDataUnit">&#8451;</span>';
+				
+				content += '&nbsp;<span class="material-icons water_drop">'
+				+ '</span><span id="ssHum" class="ssWeatherData"></span>'
+				+ '<span class="ssWeatherDataUnit">%</span>'
+				+ '&nbsp;<span class="material-icons visibility">'
+				+ '</span><span id="ssVisi" class="ssWeatherData"></span>';	
+				
+				if (self.opts.USUnits)
+					content += '<span class="ssWeatherDataUnit">miles</span>';		
+				else
+					content += '<span class="ssWeatherDataUnit">km</span>';
 				
 				content += '</div>'
 				+ '<div class="ssForeplane hide">'
@@ -180,19 +191,6 @@ export default function () {
 				
 				content += '<span id="ssWindir" class="ssWeatherData ssWeatherDataSmall"></span>'
 				+ '</div>'
-                + '<div class="ssForeplane hide"><span class="material-icons water_drop">'
-				+ '</span><span id="ssHum" class="ssWeatherData"></span>'
-				+ '<span class="ssWeatherDataUnit">%</span>'
-				+ '</div>'
-				+ '<div class="ssForeplane hide"><span class="material-icons visibility">'
-				+ '</span><span id="ssVisi" class="ssWeatherData"></span>';	
-				
-				if (self.opts.USUnits)
-					content += '<span class="ssWeatherDataUnit">miles</span>';		
-				else
-					content += '<span class="ssWeatherDataUnit">km</span>';
-					
-				content += '</div>'
 				+ '</div>';
 				
 				elem.innerHTML = content;

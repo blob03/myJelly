@@ -18,7 +18,7 @@
     "EnableClock": "Activer l'horloge :",
     "EnableClockHelp": "Afficher la date et l'heure locale dans la barre du haut.",
     "EnableUSUnits": "Unités de mesure américaines",
-    "EnableUSUnitsHelp": "Exprimer les valeurs en Fahrenheit et en Miles.",
+    "EnableUSUnitsHelp": "Exprimer les valeurs en degrés Fahrenheit et en miles.",
     "LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
     "LabelBackdrops": "Arrière-plans :",
     "LabelChromecastVersion": "Version de Chromecast :",
