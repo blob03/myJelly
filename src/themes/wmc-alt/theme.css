@@ -565,8 +565,7 @@ html {
 	font-size: 90% !important;
 }
 
-.nightClock > .headerClockTime,
-.nightClock > .headerClockDate {
+.nightClock > * {
 	color: #fff;
 	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2bd726, 0 0 40px #22ee1d, 0 0 50px #49f00d, 0 0 60px #16da3e, 0 0 70px #00e60e;
 }
@@ -662,9 +661,9 @@ legend {
 }
 
 fieldset {
-	padding: 1.5em 2em 0 2em;
-	margin: 0 0 2em 0;
-	border: 3px solid #236aa9;
+	padding: 1.5em 2em 0 2em !important;
+	margin: 0 0 2em 0 !important;
+	border: 2px solid #203f59 !important;
 }
 
 /* Pseudo radio widget (a radio button that allows deselecting) */
@@ -764,4 +763,15 @@ option.sourceDictionaryOption {
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
+}
+
+.headerWthMain {
+	color: rgba(98, 186, 149, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
+}
+
+.headerWthButton > fieldset {
+	margin: .1rem .5rem .1rem .5rem !important;
+	padding: .3rem .6rem .3rem .6rem !important;
+	border: 2px solid #203f59 !important;
 }

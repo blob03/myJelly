@@ -616,8 +616,7 @@ html {
 	font-size: 80% !important;
 }
 
-.nightClock > .headerClockTime,
-.nightClock > .headerClockDate {
+.nightClock > * {
 	color: #f8e5bf;
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
 }
@@ -1003,7 +1002,7 @@ option.sourceDictionaryOption {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 4px groove #eb9d58 !important;
+	border: 3px groove #eb9d58 !important;
 }
 
 .fieldDescription {
@@ -1417,4 +1416,15 @@ option:selected {
 	background: rgba(132, 68, 9, 0.25) !important;
 	font-size: 110% !important;
 	line-height: 1.65 !important;
+}
+
+.headerWthMain {
+	color: rgba(230, 138, 57, 0.8) !important;
+	text-shadow: 1px 1px 8px #411c5b !important;
+}
+
+.headerWthButton > fieldset {
+	margin: .1rem .5rem .1rem .5rem !important;
+	padding: .3rem .6rem .3rem .6rem !important;
+	border: 2px groove #684828 !important;
 }

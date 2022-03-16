@@ -9,7 +9,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.8';
+	self.version = '0.9';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -17,10 +17,9 @@ export default function () {
 	self.hideOnClick = true;
 	self.hideOnMouse = true;
 	self.hideOnKey = true;
-
-    let interval;
-	let _datestr_;
-	let _timestr_;
+    self.interval = null;
+	self._datestr_;
+	self._timestr_;
 		
 	function clock(LOCALE) {	
 		const x = new Date();
@@ -36,8 +35,8 @@ export default function () {
 			second: '2-digit',
 			hour12: false
 		});
-		_datestr_.innerHTML = _date_;
-		_timestr_.innerHTML = _time_;
+		self._datestr_.innerHTML = _date_;
+		self._timestr_.innerHTML = _time_;
 	}
 
     function stopInterval() {
@@ -48,6 +47,11 @@ export default function () {
     }
 
     self.show = function (TEST) {
+		
+		// If another instance is running, return.
+		if (self.interval !== null) 
+			return;
+		
         import('./style.scss').then(() => {
             let elem = document.querySelector('.clockScreenSaver');
 
@@ -61,8 +65,8 @@ export default function () {
 				+ '</div>';
             }
 			
-			_datestr_ = document.getElementById("ssClockDate");
-			_timestr_ = document.getElementById("ssClockTime");
+			self._datestr_ = document.getElementById("ssClockDate");
+			self._timestr_ = document.getElementById("ssClockTime");
 
 			stopInterval();
 			

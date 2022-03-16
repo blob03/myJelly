@@ -2,6 +2,7 @@ import appSettings from './appSettings';
 import { Events } from 'jellyfin-apiclient';
 import globalize from '../globalize';
 import datetime from '../datetime';
+import { ajax } from '../../components/fetchhelper';
 
 function onSaveTimeout() {
     const self = this;
@@ -41,12 +42,69 @@ function hdrClock() {
 	this._hdrclktime_span.innerHTML = _hdrclk_time;
 	return;
 }
+
+
+function hdrWeather() {
+	let req = {};
+	const self = this;
+	req.dataType = 'json';
+	const url_base = 'http://api.openweathermap.org/data/2.5/';
+	const url_apiMethod = 'weather';
+	const _lat = self.getlatitude();
+	const _lon = self.getlongitude();
+	const wapikey = self.weatherApiKey();
+	if (!wapikey) {
+		self._hdrwth_temp.innerHTML = "NO KEY";
+		self._hdrwth_wind.innerHTML = "";
+		console.warn("The weatherbot needs a valid api key.");
+		return;
+	}
+	const url_params = '?appid=' + wapikey
+		+ '&lat=' + _lat + '&lon=' + _lon
+		+ '&units=' + (self.enableUSUnits()?'imperial':'metric') 
+		+ '&lang=' + self.dateTimeLocale();
+		
+	req.url = url_base + url_apiMethod + url_params; 
+	
+	ajax(req).then(function (data) {
+		let _dyn;
+		if (data.main.temp) {
+			_dyn = data.main.temp + '<span class="ssWeatherDataUnit" style="font-size: 60%;padding: 0 0 5% 0;">';
+			if (self.enableUSUnits())
+				_dyn += '&#8457;';
+			else
+				_dyn += '&#8451;';
+			_dyn += '</span>';
+			self._hdrwth_temp.innerHTML = _dyn;
+		}
+		if (data.wind.speed) {
+			let wspeed = data.wind.speed;
+			if (!self.enableUSUnits())
+				wspeed *= 3.6; // m/s -> km/h
+			_dyn = Number(wspeed.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 60%;padding: 0 0 5% 0;">';
+			if (self.enableUSUnits())
+				_dyn += 'mph';
+			else
+				_dyn += 'km/h';
+			self._hdrwth_wind.innerHTML = _dyn;
+		}
+		
+	}).catch(function (data) {
+		self._hdrwth_temp.innerHTML = data.status;
+		self._hdrwth_wind.innerHTML = "";
+	});
+	return;
+}
+
 	
 export class UserSettings {
     constructor() {
 		this.clockTimer = null;
+		this.weatherTimer = null;
 		this._hdrclkdate_span;
 		this._hdrclktime_span;
+		this._hdrwth_temp;
+		this._hdrwth_wind;
     }
 	
     /**
@@ -228,6 +286,34 @@ export class UserSettings {
     }
 	
 	/**
+     * Get or set 'Latitude' coordinate.
+     * @param {boolean|undefined} val - Value to set 'Latitude' or undefined.
+     * @return {boolean} 'Latitude' currently set.
+     */
+    getlatitude(val) {
+        if (val !== undefined) {
+            return this.set('latitude', val.toString()); 
+        }
+
+        val = this.get('latitude');
+        return val.toString();
+    }
+	
+	/**
+     * Get or set 'longitude' coordinate.
+     * @param {boolean|undefined} val - Value to set 'longitude' or undefined.
+     * @return {boolean} 'longitude' currently set.
+     */
+    getlongitude(val) {
+        if (val !== undefined) {
+            return this.set('longitude', val.toString()); 
+        }
+
+        val = this.get('longitude');
+        return val.toString();
+    }
+	
+	/**
      * Get or set 'SetUsingLastTracks' state.
      * @param {boolean|undefined} val - Flag to enable 'SetUsingLastTracks' or undefined.
      * @return {boolean} 'SetUsingLastTracks' state.
@@ -295,30 +381,104 @@ export class UserSettings {
         val = this.get('useCardLayoutInHomeSections');
         return val === 'true';
     }
-
-	toggleClockMode(TOGGLE) {
-		const _hdrclck = document.getElementsByClassName('headerClockActive')[0];
-		if (_hdrclck) {
-			let val = this.get('clock_mode') || '0';
+	
+	    /**
+     * Get or set 'Meteo' state.
+     * @param {boolean|undefined} val - Flag to (en|dis)able 'Meteo' (Set) or undefined (Get).
+     * @return {boolean} 'Meteo' state (Get) or success/failure status (Set).
+     */
+	enableWeatherBot(val) {
+        if (val !== undefined) {
+			let newval = parseInt(val, 10);
+			if (newval < 0 || newval > 3)
+				newval = 0;
 			
-			if (TOGGLE === undefined || TOGGLE === true) {
-				switch (val) {
-					case '1':
-						val = '0';
-						break;
-					default:
-						val = '1';
-				}
-				this.set('clock_mode', val, true);
-			}
-			switch (val) {
-				case '1':
-					_hdrclck.classList.add('nightClock');
+			/*** Save the new value. ***/
+			this.set('weatherbot', newval);
+			
+			/***
+				If weatherbot is disabled or enabled only for videos,
+				clear any existing timer
+				hide the widget
+				return. 
+			***/
+			switch(newval) {
+				case 0:
+				case 3:
+					this.showWeatherBot(false);
 					break;
+					
 				default:
-					_hdrclck.classList.remove('nightClock');
+					this.showWeatherBot(true);
+			}
+            return true;
+        }
+		
+		const ret = parseInt(this.get('weatherbot'), 10) || 0;
+		if (ret < 0 || ret > 3)
+			return 0;
+        return ret;
+    }
+	
+	/** Show or hide the Top bar Weather Widget **/
+	showWeatherBot(val) {
+		const _hdrwtb = document.getElementById('headerWthRight');
+		if (!_hdrwtb) 
+			return;
+		this._hdrwth_temp = document.getElementById('headerWthTempRight');
+		this._hdrwth_wind = document.getElementById('headerWthWindRight');
+		
+		if (val === true) {
+			/*** Show ***/
+			this.toggleClockMode(false);
+			const self = this;
+			setTimeout( hdrWeather.bind(self), 10);
+			if (this.weatherTimer === null) {
+				this.weatherTimer = setInterval( hdrWeather.bind(self), 300000);
+			}
+			_hdrwtb.classList.remove('hide');
+		} else {
+			/*** Hide ***/
+			_hdrwtb.classList.add('hide');
+			if (this.weatherTimer !== null) {
+				clearInterval(this.weatherTimer);
+				this.weatherTimer = null;
 			}
 		}
+		
+		return true;
+	}
+	
+
+	toggleClockMode(TOGGLE) {
+		const _hdrwtb = document.getElementsByClassName('headerWthMain')[0];
+		if (!_hdrwtb) 
+			return;
+		const _hdrclck = document.getElementsByClassName('headerClockActive')[0]; 
+		if (!_hdrclck) 
+			return;
+		
+		let val = this.get('clock_mode') || '0';
+		
+		if (TOGGLE === undefined || TOGGLE === true) {
+			switch (val) {
+				case '1':
+					val = '0';
+					break;
+				default:
+					val = '1';
+			}
+			this.set('clock_mode', val, true);
+		}
+		switch (val) {
+			case '1':
+				_hdrwtb.classList.add('nightClock');
+				_hdrclck.classList.add('nightClock');
+				break;
+			default:
+				_hdrwtb.classList.remove('nightClock');
+				_hdrclck.classList.remove('nightClock');
+		}	
 	}
 	
     /**
@@ -368,14 +528,15 @@ export class UserSettings {
 		}			
 		this._hdrclkdate_span = _hdrclck.getElementsByClassName('headerClockDate')[0];
 		this._hdrclktime_span = _hdrclck.getElementsByClassName('headerClockTime')[0];	
-	
+		
 		if (val === true) {
 			/*** Show ***/
 			this.toggleClockMode(false);
 			const self = this;
 			setTimeout( hdrClock.bind(self), 10);
-			if (this.clockTimer === null) 
+			if (this.clockTimer === null) {
 				this.clockTimer = setInterval( hdrClock.bind(self), 10000);
+			}
 			_hdrclck.parentElement.classList.remove('hide');
 		} else {
 			/*** Hide ***/
@@ -419,6 +580,16 @@ export class UserSettings {
 				elm.removeEventListener('click', self.moveR);
 				elm.addEventListener('click', self.moveR);
 			}
+		}
+	}
+	
+	initWeatherBot() {
+		const self = this;
+		
+		let elm = document.getElementsByClassName("headerWthMain")[0];
+		if (elm) {
+			elm.removeEventListener('click', self.doToggle );
+			elm.addEventListener('click', self.doToggle );
 		}
 	}
 	
@@ -958,12 +1129,17 @@ export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOve
 export const enableSetUsingLastTracks = currentSettings.enableSetUsingLastTracks.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
+export const getlatitude = currentSettings.getlatitude.bind(currentSettings);
+export const getlongitude = currentSettings.getlongitude.bind(currentSettings);
 export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableUSUnits = currentSettings.enableUSUnits.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
+export const enableWeatherBot = currentSettings.enableWeatherBot.bind(currentSettings);
 export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);
+export const initWeatherBot = currentSettings.initWeatherBot.bind(currentSettings);
 export const showClock = currentSettings.showClock.bind(currentSettings);
+export const showWeatherBot = currentSettings.showWeatherBot.bind(currentSettings);
 export const placeClock = currentSettings.placeClock.bind(currentSettings);
 export const toggleClockMode = currentSettings.toggleClockMode.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);

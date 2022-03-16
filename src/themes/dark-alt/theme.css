@@ -622,8 +622,7 @@ html {
 	font-size: 80% !important;
 }
 
-.nightClock > .headerClockTime,
-.nightClock > .headerClockDate {
+.nightClock > * {
 	color: #d7e2e9;
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 }
@@ -957,7 +956,7 @@ option.selected {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 4px groove #34383b !important;
+	border: 3px groove #363d43 !important;
 }
 
 .fieldDescription {
@@ -1320,4 +1319,15 @@ select option:selected {
 	background: rgba(0, 0, 0, 0.15) !important;
 	font-size: 110% !important;
 	line-height: 1.65 !important;
+}
+
+.headerWthMain {
+	color: rgba(121, 135, 144, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
+}
+
+.headerWthButton > fieldset {
+	margin: .1rem .5rem .1rem .5rem !important;
+	padding: .3rem .6rem .3rem .6rem !important;
+	border: 2px groove #363d43 !important;
 }

@@ -21,6 +21,13 @@ function playThemeMedia(items, ownerId) {
         currentThemeIds = currentThemeItems.map(function (i) {
             return i.Id;
         });
+		
+		currentThemeItems.forEach((i) => {
+            i.playOptions = {
+                fullscreen: false,
+                enableRemotePlayers: false
+            };
+        });
 
         playbackManager.play({
             items: currentThemeItems,
@@ -65,12 +72,11 @@ function loadThemeMedia(item) {
 
     const apiClient = ServerConnections.getApiClient(item.ServerId);
     apiClient.getThemeMedia(apiClient.getCurrentUserId(), item.Id, true).then(function (themeMediaResult) {
-        const ownerId = themeMediaResult.ThemeVideosResult.Items.length ? themeMediaResult.ThemeVideosResult.OwnerId : themeMediaResult.ThemeSongsResult.OwnerId;
+        const result = userSettings.enableThemeVideos() && themeMediaResult.ThemeVideosResult.Items.length ? themeMediaResult.ThemeVideosResult : themeMediaResult.ThemeSongsResult;
 
+        const ownerId = result.OwnerId;
         if (ownerId !== currentOwnerId) {
-            const items = themeMediaResult.ThemeVideosResult.Items.length ? themeMediaResult.ThemeVideosResult.Items : themeMediaResult.ThemeSongsResult.Items;
-
-            playThemeMedia(items, ownerId);
+			playThemeMedia(result.Items, ownerId);
         }
     });
 }

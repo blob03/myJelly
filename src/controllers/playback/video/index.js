@@ -1318,6 +1318,15 @@ import { appRouter } from '../../../components/appRouter';
 				default:
 					userSettings.showClock(false);
 			}
+			switch(userSettings.enableWeatherBot()) {
+				case 1:
+				case 3:
+					userSettings.showWeatherBot(true);
+					break;
+					
+				default:
+					userSettings.showWeatherBot(false);
+			}
             appRouter.setTransparency('full');
         });
         view.addEventListener('viewshow', function () {
@@ -1413,6 +1422,15 @@ import { appRouter } from '../../../components/appRouter';
 					
 				default:
 					userSettings.showClock(false);
+			}
+			switch(userSettings.enableWeatherBot()) {
+				case 1:
+				case 2:
+					userSettings.showWeatherBot(true);
+					break;
+					
+				default:
+					userSettings.showWeatherBot(false);
 			}
             headerElement.classList.remove('osdHeader-hidden');
             /* eslint-disable-next-line compat/compat */

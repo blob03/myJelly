@@ -19,7 +19,7 @@ import Dashboard, { pageClassOn } from './clientUtils';
 import ServerConnections from '../components/ServerConnections';
 import Headroom from 'headroom.js';
 import appSettings from './settings/appSettings';
-import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, initWeatherBot, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -82,7 +82,18 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
 		/* ********************************** */
-		
+		/* Added: casing for the topbar weatherbot */
+		html += '<div class="headerWthButton" id="headerWthRight" style="display: flex;flex-direction: row;">';
+		html += '<fieldset style="margin: .1rem .3rem .1rem .3rem;padding: .3rem .6rem .3rem .6rem;border: 2px groove #595653;">';
+		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveLeftButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<div id="headerWthTempRight" class="headerWthTemp" style="display: flex;font-size: 100%;"></div>';
+		html += '<div id="headerWthWindRight" class="headerWthWind" style="display: flex;font-size: 70%;"></div>';
+		html += '</button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveRightButton hide" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '</fieldset>';
+		html += '</div>';
+		/* ********************************** */
         html += '<button is="paper-icon-button-light" class="headerButton headerButtonRight headerUserButton hide"><span class="material-icons person"></span></button>';			
         html += '</div>';
         html += '</div>';
@@ -1171,6 +1182,8 @@ import { currentSettings, enableClock, showClock, placeClock, initClockPlaces } 
 			initClockPlaces();
 			placeClock(0);
 			enableClock(enableClock());
+			initWeatherBot();
+			enableWeatherBot(enableWeatherBot());
         });
     });
 

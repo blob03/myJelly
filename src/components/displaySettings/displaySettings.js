@@ -335,9 +335,11 @@ import viewContainer from '../viewContainer';
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		
-		let selectClock = context.querySelector('#selectClock');
-		selectClock.value = userSettings.enableClock();
+		context.querySelector('#selectClock').value = userSettings.enableClock();
+		context.querySelector('#selectWeatherBot').value = userSettings.enableWeatherBot();
 		
+		context.querySelector('#inputLat').value = userSettings.getlatitude();
+		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
 		context.querySelector('#chkuseUSUnits').checked = userSettings.enableUSUnits();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
@@ -419,6 +421,9 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
+		userSettingsInstance.enableWeatherBot(context.querySelector('#selectWeatherBot').value);
+		userSettingsInstance.getlatitude(context.querySelector('#inputLat').value);
+		userSettingsInstance.getlongitude(context.querySelector('#inputLon').value);
 		
 		userSettingsInstance.enableUSUnits(context.querySelector('#chkuseUSUnits').checked);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);

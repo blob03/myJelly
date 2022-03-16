@@ -744,7 +744,7 @@
     "LabelMaxAudiobookResumeHelp": "남은 시간이 이 값보다 작을 때 정지할 경우 완전히 재생된 것으로 간주합니다.",
     "LabelMaxBackdropsPerItem": "항목별 최대 배경 이미지 수:",
     "LabelMaxChromecastBitrate": "크롬캐스트 스트리밍 퀄리티:",
-    "LabelMaxDaysForNextUp": "'다음' 에 나타나는 최대 일수",
+    "LabelMaxDaysForNextUp": "'다음' 에 나타나는 최대 일수:",
     "LabelMaxDaysForNextUpHelp": "에피소드를 시청하지 않고 '다음' 목록에 머무르는 최대 일 수를 설정합니다.",
     "LabelMaxMuxingQueueSize": "최대 muxing 대기열 크기 :",
     "LabelMaxMuxingQueueSizeHelp": "모든 스트림이 초기화 될 때까지 기다리는 동안 버퍼링 할 수있는 최대 패킷 수입니다. ffmpeg 로그에서 \"출력 스트림에 대해 버퍼링 된 패킷이 너무 많음\"오류가 계속 발생하면이를 늘리십시오. 권장 값은 2048입니다.",

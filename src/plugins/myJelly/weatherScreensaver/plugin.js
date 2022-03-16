@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'The Weatherbot';
 	self.group = 'myJelly';
-	self.version = '0.5';
+	self.version = '0.6';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -38,58 +38,56 @@ export default function () {
 		loading.show();
 		
 		// Note that API keys can be obtained free of charge by registering at the address below
-		// https://www.weatherapi.com/signup.aspx
+		// https://home.openweathermap.org/users/sign_up
 		// Remember to copy any new key into its dedicated field in the display settings.
 		let req = {};
 		req.dataType = 'json';
-		const url_base = 'http://api.weatherapi.com/v1/';
-		const url_apiMethod = 'current.json';
-		const url_params = '?key=' + self.opts.apikey + '&q=auto:ip&aqi=no&lang=' + self.opts.dateTimeLocale;
+		const url_base = 'http://api.openweathermap.org/data/2.5/';
+		const url_apiMethod = 'weather';
+		const url_params = '?appid=' + self.opts.apikey 
+		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
+		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') + '&lang=' + self.opts.dateTimeLocale;
 		req.url = url_base + url_apiMethod + url_params; 
 		
 		ajax(req).then(function (data) {
 			show('ssFailure', false);
 
-			if (data.location.name)
-				self.opts.locationstr.innerHTML = data.location.name;
+			if (data.name)
+				self.opts.locationstr.innerHTML = data.name;
 			self.opts.location2str.innerHTML = "";
-			if (data.location.country)
-				self.opts.location2str.innerHTML += data.location.country;
-			if (data.location.lat)
-				self.opts.location2str.innerHTML += ",&nbsp;Lat.&nbsp;" + data.location.lat + '&deg;';
-			if (data.location.lon)
-				self.opts.location2str.innerHTML += "/&nbsp;Lon.&nbsp;" + data.location.lon + '&deg;';
-			if (data.current.condition)
-				self.opts.conditionstr.innerHTML = data.current.condition.text;
-			if (self.opts.USUnits)
-				self.opts.tempstr.innerHTML = data.current.temp_f;
-			else
-				self.opts.tempstr.innerHTML = data.current.temp_c;
-			
-			if (data.current.humidity)
-				self.opts.humstr.innerHTML = data.current.humidity;
-			if (self.opts.USUnits)
-				self.opts.visistr.innerHTML = data.current.vis_miles;
-			else
-				self.opts.visistr.innerHTML = data.current.vis_km;
-			
-			if (self.opts.USUnits)
-				self.opts.windstr.innerHTML = data.current.wind_mph;
-			else
-				self.opts.windstr.innerHTML = data.current.wind_kph;
-			
+			if (data.sys.country)
+				self.opts.location2str.innerHTML += data.sys.country;
+			if (data.weather["0"].description)
+				self.opts.conditionstr.innerHTML = data.weather["0"].description;
+			if (data.main.temp)
+				self.opts.tempstr.innerHTML = data.main.temp;
+			if (data.main.humidity)
+				self.opts.humstr.innerHTML = data.main.humidity;
+			if (data.visibility) {
+				let vis = data.visibility;
+				if (self.opts.USUnits)
+					vis = vis/1609; // miles
+				else
+					vis = vis/1000; // km
+				self.opts.visistr.innerHTML = Number(vis.toFixed(2));
+			}
+			if (data.wind.speed) {
+				let wspeed = data.wind.speed;
+				if (!self.opts.USUnits)
+					wspeed *= 3.6; // m/s -> km/h
+				self.opts.windstr.innerHTML = Number(wspeed.toFixed(2));
+			}
 			self.opts.windirstr.innerHTML = "";
-			if (data.current.wind_degree)
-				self.opts.windirstr.innerHTML += data.current.wind_degree + '&deg;'
-			if (data.current.wind_dir)
-				self.opts.windirstr.innerHTML += data.current.wind_dir;
+			if (data.wind.deg)
+				self.opts.windirstr.innerHTML += data.wind.deg + '&deg;'
 			
 			show('ssForeplane', true);
 			loading.hide();
 			
 		}).catch(function (data) {
+			console.warn(data);
 			show('ssForeplane', false);
-			self.opts.msgstr.innerHTML = data.statusText + " ( " + data.status + " ) ";
+			self.opts.msgstr.innerHTML = data.status + '<br/>' + data.statusText;
 			
 			show('ssFailure', true);
 			loading.hide();
@@ -106,6 +104,9 @@ export default function () {
     }
 
     self.show = function (TEST) {
+		// If another instance is running, return.
+		if (self.interval !== null) 
+			return;
 		
         import('./style.scss').then(() => {
 			
@@ -126,13 +127,16 @@ export default function () {
 				// Get an API key from the form.
 				self.opts.apikey = document.querySelector('#inputApikey').value || "";
 				self.opts.USUnits = document.querySelector('#chkuseUSUnits').checked;
-				
+				self.opts.lat = document.querySelector('#inputLat').value || '78.69';
+				self.opts.lon = document.querySelector('#inputLon').value || '15.72';
 			} else {
 				self.hideOnMouse = true;
 				// get the last saved API key.
 				self.opts.apikey = userSettings.weatherApiKey() || "";
 				self.opts.dateTimeLocale = globalize.getCurrentDateTimeLocale();
 				self.opts.USUnits = userSettings.enableUSUnits() || false;
+				self.opts.lat = userSettings.getlatitude();
+				self.opts.lon = userSettings.getlongitude();
 			}
 				
 			stopInterval();
@@ -146,10 +150,6 @@ export default function () {
 				+ '<div class="ssFailure hide">'
 				+ '<span id="ssMsg" class="ssWeatherData"></span>'
 				+ '</div>'
-				/*
-				+ '<span id="day" class="material-icons light_mode hide"></span><span id="night" class="material-icons dark_mode hide"></span>'
-				+ '</div>'
-				*/
 				+ '<div class="ssForeplane hide">'
 				+ '<span id="ssLoc" class="ssWeatherData"></span>'
 				+ '</div>'

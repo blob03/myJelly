@@ -600,8 +600,7 @@ h3 {
 	font-size: 90% !important;
 }
 
-.nightClock > .headerClockTime,
-.nightClock > .headerClockDate {
+.nightClock > * {
 	color: #fff;
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
 }
@@ -1247,3 +1246,15 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	font-size: 100% !important;
 	line-height: 1.65 !important;
 }
+
+.headerWthMain {
+	color: rgba(178, 248, 255, 0.8) !important;
+	text-shadow: 1px 1px 8px #39708b !important;
+}
+
+.headerWthButton > fieldset {
+	margin: .1rem .5rem .1rem .5rem !important;
+	padding: .3rem .6rem .3rem .6rem !important;
+	border: 2px groove #b7e3f4 !important;
+}
+
