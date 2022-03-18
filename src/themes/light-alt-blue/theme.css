@@ -478,9 +478,16 @@ option:disabled {
 	padding: .5em .5em .5em .5em !important;
 }
 
-option:not(:disabled),
 .emby-input,
-.emby-textarea,
+.emby-textarea {
+	background: #62b0a9;
+	border: .2rem ridge rgb(152, 200, 211);
+	font-weight: 600;
+	line-height: 1.35;
+	color: rgb(198, 226, 236) !important;
+}
+
+option:not(:disabled),
 .emby-select-withcolor {
 	background: #fff;
 	border: .1em ridge rgb(95, 146, 158);
