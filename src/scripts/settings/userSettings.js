@@ -56,6 +56,7 @@ function hdrWeather() {
 	if (!wapikey) {
 		self._hdrwth_temp.innerHTML = "NO KEY";
 		self._hdrwth_wind.innerHTML = "";
+		self._hdrwth_hum.innerHTML = "";
 		console.warn("The weatherbot needs a valid api key.");
 		return;
 	}
@@ -69,7 +70,7 @@ function hdrWeather() {
 	ajax(req).then(function (data) {
 		let _dyn;
 		if (data.main.temp) {
-			_dyn = data.main.temp + '<span class="ssWeatherDataUnit" style="font-size: 60%;padding: 0 0 5% 0;">';
+			_dyn = data.main.temp + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: .1rem 0 0 0;">';
 			if (self.enableUSUnits())
 				_dyn += '&#8457;';
 			else
@@ -81,15 +82,22 @@ function hdrWeather() {
 			let wspeed = data.wind.speed;
 			if (!self.enableUSUnits())
 				wspeed *= 3.6; // m/s -> km/h
-			_dyn = Number(wspeed.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 60%;padding: 0 0 5% 0;">';
+			_dyn = Number(wspeed.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: .1rem 0 0 0;">';
 			if (self.enableUSUnits())
 				_dyn += 'mph';
 			else
 				_dyn += 'km/h';
 			self._hdrwth_wind.innerHTML = _dyn;
 		}
+		if (data.main.humidity) {
+			let whum = data.main.humidity;
+			_dyn = Number(whum.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: .1rem 0 0 0;">';
+			_dyn += '%';
+			self._hdrwth_hum.innerHTML = _dyn;
+		}
 		
 	}).catch(function (data) {
+		console.warn(data);
 		self._hdrwth_temp.innerHTML = data.status;
 		self._hdrwth_wind.innerHTML = "";
 	});
@@ -105,6 +113,7 @@ export class UserSettings {
 		this._hdrclktime_span;
 		this._hdrwth_temp;
 		this._hdrwth_wind;
+		this._hdrwth_hum;
     }
 	
     /**
@@ -427,6 +436,7 @@ export class UserSettings {
 			return;
 		this._hdrwth_temp = document.getElementById('headerWthTempRight');
 		this._hdrwth_wind = document.getElementById('headerWthWindRight');
+		this._hdrwth_hum = document.getElementById('headerWthHumRight');
 		
 		if (val === true) {
 			/*** Show ***/

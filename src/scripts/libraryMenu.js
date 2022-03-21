@@ -88,7 +88,11 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveLeftButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerWthTempRight" class="headerWthTemp" style="display: flex;font-size: 100%;"></div>';
+		html += '<div style="display: flex;outline: none;flex-direction: row;height: auto;align-items: space-between;">';
+		html += '<div id="headerWthHumRight" class="headerWthHum" style="display: flex;font-size: 70%;"></div>';
+		html += '<div style="width: .3rem;"></div>';
 		html += '<div id="headerWthWindRight" class="headerWthWind" style="display: flex;font-size: 70%;"></div>';
+		html += '</div>';
 		html += '</button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveRightButton hide" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</fieldset>';

@@ -1,3 +1,4 @@
+import escapeHtml from 'escape-html';
 import datetime from '../../scripts/datetime';
 import { Events } from 'jellyfin-apiclient';
 import itemHelper from '../../components/itemHelper';
@@ -524,11 +525,11 @@ import confirm from '../../components/confirm/confirm';
             const html = [];
 
             if (session.UserId) {
-                html.push(session.UserName);
+                 html.push(escapeHtml(session.UserName));
             }
 
             for (let i = 0, length = session.AdditionalUsers.length; i < length; i++) {
-                html.push(session.AdditionalUsers[i].UserName);
+                html.push(escapeHtml(session.AdditionalUsers[i].UserName));
             }
 
             return html.join(', ');

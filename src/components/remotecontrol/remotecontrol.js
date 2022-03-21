@@ -1,3 +1,4 @@
+import escapeHtml from 'escape-html';
 import datetime from '../../scripts/datetime';
 import backdrop from '../backdrop/backdrop';
 import listView from '../listview/listview';
@@ -85,7 +86,7 @@ function showSubtitleMenu(context, player, button) {
 
 function getNowPlayingNameHtml(nowPlayingItem, includeNonNameInfo) {
     return nowPlayingHelper.getNowPlayingNames(nowPlayingItem, includeNonNameInfo).map(function (i) {
-        return i.text;
+        return escapeHtml(i.text);
     }).join('<br/>');
 }
 
@@ -147,7 +148,7 @@ function updateNowPlayingInfo(context, state, serverId) {
                     for (const artist of item.ArtistItems) {
                         const artistName = artist.Name;
                         const artistId = artist.Id;
-                        artistsSeries += `<a class="button-link emby-button" is="emby-linkbutton" href="#!/details?id=${artistId}&serverId=${nowPlayingServerId}">${artistName}</a>`;
+                        artistsSeries += `<a class="button-link emby-button" is="emby-linkbutton" href="#!/details?id=${artistId}&serverId=${nowPlayingServerId}">${escapeHtml(artistName)}</a>`;
                         if (artist !== item.ArtistItems.slice(-1)[0]) {
                             artistsSeries += ', ';
                         }
@@ -169,7 +170,7 @@ function updateNowPlayingInfo(context, state, serverId) {
             }
             context.querySelector('.nowPlayingAlbum').innerHTML = albumName;
             context.querySelector('.nowPlayingArtist').innerHTML = artistsSeries;
-            context.querySelector('.nowPlayingSongName').innerHTML = songName;
+            context.querySelector('.nowPlayingSongName').innerText = item.Name;
         } else if (item.Type == 'Episode') {
             if (item.SeasonName != null) {
                 const seasonName = item.SeasonName;
