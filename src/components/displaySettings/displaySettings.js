@@ -144,7 +144,7 @@ import viewContainer from '../viewContainer';
 				sliderContainerSettings.classList.remove('hide');
 		}
 		
-		let btnTryIt =  pnode.querySelector('.btnTryIt');
+		let btnTryIt =  pnode.querySelector('#btnTryIt');
 		if (btnTryIt) {
 			if (e.target.value === 'none') 
 				btnTryIt.classList.add('hide');
@@ -260,6 +260,21 @@ import viewContainer from '../viewContainer';
 	var savedLayout = '';
 	var savedDisplayLanguage = '';
 	
+	function isSecure() {
+	   return location.protocol == 'https:';
+	}
+
+	function findPosition() {
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(function(position){
+				document.querySelector('#inputLat').value = Number(position.coords.latitude.toFixed(2));
+				document.querySelector('#inputLon').value = Number(position.coords.longitude.toFixed(2));
+			});
+		} else{
+			//alert("Sorry, your browser does not support HTML5 geolocation.");
+		}
+	}
+
     function loadForm(context, user, userSettings, apiClient) {	
 		let event_change = new Event('change');
 		
@@ -293,8 +308,17 @@ import viewContainer from '../viewContainer';
 		dashboardthemeNodes.forEach( function(userItem) {
 			userItem.classList.toggle('hide', !user.localUser.Policy.IsAdministrator);});
 		
+		let btnFindIt =  document.querySelector('#btnFindIt');
+		if (btnFindIt) {
+			if (isSecure()) {
+				btnFindIt.classList.remove('hide');
+				btnFindIt.addEventListener('click', findPosition);
+			} else 
+				btnFindIt.classList.add('hide');
+		}
+		
         if (appHost.supports('screensaver')) {
-			let btnTryIt = context.querySelector('.btnTryIt');
+			let btnTryIt = context.querySelector('#btnTryIt');
 			btnTryIt.addEventListener('click', onScreenSaverTry);
 			
 			let selectScreensaver = context.querySelector('.selectScreensaver');

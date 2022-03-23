@@ -21,6 +21,7 @@
     "EnableUSUnitsHelp": "Exprimer les valeurs en degrés Fahrenheit et en miles.",
     "EnableWeatherBot": "Activer Meteorobot :",
     "EnableWeatherBotHelp": "Afficher les conditions météo dans la barre du haut.",
+    "Find": "Chercher",
     "LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
     "LabelBackdrops": "Arrière-plans :",
     "LabelChromecastVersion": "Version de Chromecast :",

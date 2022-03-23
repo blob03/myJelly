@@ -33,6 +33,10 @@ export default function () {
 	self.interval = null;
 	self.opts = {};
 	
+	function isSecure() {
+		return location.protocol == 'https:';
+	}
+
 	function weather(self) {	
 
 		loading.show();
@@ -43,12 +47,13 @@ export default function () {
 		let req = {};
 		req.dataType = 'json';
 		const url_base = 'http://api.openweathermap.org/data/2.5/';
+		const url_base_SSL = 'https://api.openweathermap.org/data/2.5/';
 		const url_apiMethod = 'weather';
 		const url_params = '?appid=' + self.opts.apikey 
 		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
 		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') + '&lang=' + self.opts.dateTimeLocale;
-		req.url = url_base + url_apiMethod + url_params; 
-		
+		req.url = ( isSecure() ? url_base_SSL : url_base) + url_apiMethod + url_params; 
+	
 		ajax(req).then(function (data) {
 			show('ssFailure', false);
 

@@ -43,12 +43,16 @@ function hdrClock() {
 	return;
 }
 
+function isSecure() {
+   return location.protocol == 'https:';
+}
 
 function hdrWeather() {
 	let req = {};
 	const self = this;
 	req.dataType = 'json';
 	const url_base = 'http://api.openweathermap.org/data/2.5/';
+	const url_base_SSL = 'https://api.openweathermap.org/data/2.5/';
 	const url_apiMethod = 'weather';
 	const _lat = self.getlatitude();
 	const _lon = self.getlongitude();
@@ -57,7 +61,7 @@ function hdrWeather() {
 		self._hdrwth_temp.innerHTML = "NO KEY";
 		self._hdrwth_wind.innerHTML = "";
 		self._hdrwth_hum.innerHTML = "";
-		console.warn("The weatherbot needs a valid api key.");
+		console.warn("Weatherbot needs a valid api key.");
 		return;
 	}
 	const url_params = '?appid=' + wapikey
@@ -65,7 +69,7 @@ function hdrWeather() {
 		+ '&units=' + (self.enableUSUnits()?'imperial':'metric') 
 		+ '&lang=' + self.dateTimeLocale();
 		
-	req.url = url_base + url_apiMethod + url_params; 
+	req.url = ( isSecure() ? url_base_SSL : url_base) + url_apiMethod + url_params; 
 	
 	ajax(req).then(function (data) {
 		let _dyn;
