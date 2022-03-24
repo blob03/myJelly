@@ -661,8 +661,8 @@ legend {
 }
 
 fieldset {
-	padding: 1.5em 2em 0 2em !important;
-	margin: 0 0 2em 0 !important;
+	padding: 1.5em 2em 0 2em;
+	margin: 0 0 2em 0;
 	border: 2px solid #203f59 !important;
 }
 
@@ -772,6 +772,5 @@ option.sourceDictionaryOption {
 
 .headerWthButton > fieldset {
 	margin: .1rem .5rem .1rem .5rem !important;
-	padding: .3rem .6rem .3rem .6rem !important;
 	border: 2px solid #203f59 !important;
 }

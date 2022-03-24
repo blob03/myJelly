@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'The Weatherbot';
 	self.group = 'myJelly';
-	self.version = '0.6';
+	self.version = '0.8';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -46,13 +46,15 @@ export default function () {
 		// Remember to copy any new key into its dedicated field in the display settings.
 		let req = {};
 		req.dataType = 'json';
-		const url_base = 'http://api.openweathermap.org/data/2.5/';
-		const url_base_SSL = 'https://api.openweathermap.org/data/2.5/';
+		const url_proto = 'http://';
+		const url_proto_SSL = 'https://';
+		const url_base_icon = 'openweathermap.org/img/wn/';
+		const url_base = 'api.openweathermap.org/data/2.5/';
 		const url_apiMethod = 'weather';
 		const url_params = '?appid=' + self.opts.apikey 
 		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
 		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') + '&lang=' + self.opts.dateTimeLocale;
-		req.url = ( isSecure() ? url_base_SSL : url_base) + url_apiMethod + url_params; 
+		req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 	
 		ajax(req).then(function (data) {
 			show('ssFailure', false);
@@ -64,6 +66,8 @@ export default function () {
 				self.opts.location2str.innerHTML += data.sys.country;
 			if (data.weather["0"].description)
 				self.opts.conditionstr.innerHTML = data.weather["0"].description;
+			if (data.weather["0"].icon)
+				self.opts.iconstr.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
 			if (data.main.temp)
 				self.opts.tempstr.innerHTML = data.main.temp;
 			if (data.main.humidity)
@@ -162,6 +166,9 @@ export default function () {
 				+ '<span id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></span>'
 				+ '</div>'
 				+ '<div class="ssForeplane hide">'
+				+ '<img id="ssIcon" class="ssWeatherData ssWeatherDataSmall">'
+				+ '</div>'
+				+ '<div class="ssForeplane hide">'
 				+ '<span id="ssCond" class="ssWeatherData ssWeatherDataSmall"></span>'
 				+ '</div>'
 				+ '<div class="ssForeplane hide">'
@@ -210,6 +217,7 @@ export default function () {
 			self.opts.conditionstr = document.getElementById("ssCond");
 			self.opts.locationstr = document.getElementById("ssLoc");
 			self.opts.location2str = document.getElementById("ssLoc2");
+			self.opts.iconstr = document.getElementById("ssIcon");
 						
 			weather(self);
 			// Refresh every 5 minutes.

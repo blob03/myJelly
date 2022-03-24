@@ -51,8 +51,10 @@ function hdrWeather() {
 	let req = {};
 	const self = this;
 	req.dataType = 'json';
-	const url_base = 'http://api.openweathermap.org/data/2.5/';
-	const url_base_SSL = 'https://api.openweathermap.org/data/2.5/';
+	const url_proto = 'http://';
+	const url_proto_SSL = 'https://';
+	const url_base_icon = 'openweathermap.org/img/wn/';
+	const url_base = 'api.openweathermap.org/data/2.5/';
 	const url_apiMethod = 'weather';
 	const _lat = self.getlatitude();
 	const _lon = self.getlongitude();
@@ -61,6 +63,8 @@ function hdrWeather() {
 		self._hdrwth_temp.innerHTML = "NO KEY";
 		self._hdrwth_wind.innerHTML = "";
 		self._hdrwth_hum.innerHTML = "";
+		self._hdrwth_icon.src = "";
+		
 		console.warn("Weatherbot needs a valid api key.");
 		return;
 	}
@@ -69,12 +73,15 @@ function hdrWeather() {
 		+ '&units=' + (self.enableUSUnits()?'imperial':'metric') 
 		+ '&lang=' + self.dateTimeLocale();
 		
-	req.url = ( isSecure() ? url_base_SSL : url_base) + url_apiMethod + url_params; 
+	req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 	
 	ajax(req).then(function (data) {
 		let _dyn;
+		if (data.weather["0"].icon) {
+			self._hdrwth_icon.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
+		}
 		if (data.main.temp) {
-			_dyn = data.main.temp + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: .1rem 0 0 0;">';
+			_dyn = data.main.temp + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
 			if (self.enableUSUnits())
 				_dyn += '&#8457;';
 			else
@@ -86,7 +93,7 @@ function hdrWeather() {
 			let wspeed = data.wind.speed;
 			if (!self.enableUSUnits())
 				wspeed *= 3.6; // m/s -> km/h
-			_dyn = Number(wspeed.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: .1rem 0 0 0;">';
+			_dyn = Number(wspeed.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
 			if (self.enableUSUnits())
 				_dyn += 'mph';
 			else
@@ -95,7 +102,7 @@ function hdrWeather() {
 		}
 		if (data.main.humidity) {
 			let whum = data.main.humidity;
-			_dyn = Number(whum.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: .1rem 0 0 0;">';
+			_dyn = Number(whum.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">';
 			_dyn += '%';
 			self._hdrwth_hum.innerHTML = _dyn;
 		}
@@ -103,6 +110,7 @@ function hdrWeather() {
 	}).catch(function (data) {
 		console.warn(data);
 		self._hdrwth_temp.innerHTML = data.status;
+		self._hdrwth_icon.src = "";
 		self._hdrwth_wind.innerHTML = "";
 	});
 	return;
@@ -116,6 +124,7 @@ export class UserSettings {
 		this._hdrclkdate_span;
 		this._hdrclktime_span;
 		this._hdrwth_temp;
+		this._hdrwth_icon;
 		this._hdrwth_wind;
 		this._hdrwth_hum;
     }
@@ -308,7 +317,7 @@ export class UserSettings {
             return this.set('latitude', val.toString()); 
         }
 
-        val = this.get('latitude');
+        val = this.get('latitude') || 78.69;
         return val.toString();
     }
 	
@@ -322,7 +331,7 @@ export class UserSettings {
             return this.set('longitude', val.toString()); 
         }
 
-        val = this.get('longitude');
+        val = this.get('longitude') || 15.72;
         return val.toString();
     }
 	
@@ -439,6 +448,7 @@ export class UserSettings {
 		if (!_hdrwtb) 
 			return;
 		this._hdrwth_temp = document.getElementById('headerWthTempRight');
+		this._hdrwth_icon = document.getElementById('headerWthIconRight');
 		this._hdrwth_wind = document.getElementById('headerWthWindRight');
 		this._hdrwth_hum = document.getElementById('headerWthHumRight');
 		

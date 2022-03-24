@@ -1425,6 +1425,5 @@ option:selected {
 
 .headerWthButton > fieldset {
 	margin: .1rem .5rem .1rem .5rem !important;
-	padding: .3rem .6rem .3rem .6rem !important;
 	border: 2px groove #684828 !important;
 }
