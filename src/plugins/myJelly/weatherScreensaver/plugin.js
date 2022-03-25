@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'The Weatherbot';
 	self.group = 'myJelly';
-	self.version = '0.8';
+	self.version = '0.9';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -138,6 +138,7 @@ export default function () {
 				self.opts.USUnits = document.querySelector('#chkuseUSUnits').checked;
 				self.opts.lat = document.querySelector('#inputLat').value || '78.69';
 				self.opts.lon = document.querySelector('#inputLon').value || '15.72';
+				self.opts.delay = (document.querySelector('#sliderAPIFrequency').value * 60000) || 300000;
 			} else {
 				self.hideOnMouse = true;
 				// get the last saved API key.
@@ -146,6 +147,7 @@ export default function () {
 				self.opts.USUnits = userSettings.enableUSUnits() || false;
 				self.opts.lat = userSettings.getlatitude();
 				self.opts.lon = userSettings.getlongitude();
+				self.opts.delay = (userSettings.APIDelay()? userSettings.APIDelay() * 60000 : 300000)
 			}
 				
 			stopInterval();
@@ -221,7 +223,8 @@ export default function () {
 						
 			weather(self);
 			// Refresh every 5 minutes.
-			self.interval = setInterval(function() { weather(self) }, 300000);
+			//self.interval = setInterval(function() { weather(self) }, 300000);
+			this.weatherTimer = setInterval( function() { weather(self) }, self.opts.delay);
         });
     };
 

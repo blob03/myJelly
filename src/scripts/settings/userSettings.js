@@ -59,12 +59,14 @@ function hdrWeather() {
 	const _lat = self.getlatitude();
 	const _lon = self.getlongitude();
 	const wapikey = self.weatherApiKey();
+	
+	self._hdrwth_icon.src = "";
+	self._hdrwth_temp.innerHTML = "";
+	self._hdrwth_hum.innerHTML = "";
+	self._hdrwth_wind.innerHTML = "";
+	
 	if (!wapikey) {
-		self._hdrwth_temp.innerHTML = "NO KEY";
-		self._hdrwth_wind.innerHTML = "";
-		self._hdrwth_hum.innerHTML = "";
-		self._hdrwth_icon.src = "";
-		
+		self._hdrwth_hum.innerHTML = "MISSING API KEY ";
 		console.warn("Weatherbot needs a valid api key.");
 		return;
 	}
@@ -109,9 +111,7 @@ function hdrWeather() {
 		
 	}).catch(function (data) {
 		console.warn(data);
-		self._hdrwth_temp.innerHTML = data.status;
-		self._hdrwth_icon.src = "";
-		self._hdrwth_wind.innerHTML = "";
+		self._hdrwth_hum.innerHTML = data.status + '<br/>' + data.statusText;
 	});
 	return;
 }
@@ -452,27 +452,27 @@ export class UserSettings {
 		this._hdrwth_wind = document.getElementById('headerWthWindRight');
 		this._hdrwth_hum = document.getElementById('headerWthHumRight');
 		
+		// is an instance of the widget running already?
+		if (this.weatherTimer !== null) {
+			clearInterval(this.weatherTimer);
+			this.weatherTimer = null;
+		}	
+		
 		if (val === true) {
 			/*** Show ***/
 			this.toggleClockMode(false);
 			const self = this;
+			const delay = (this.APIDelay()? this.APIDelay() * 60000 : 300000);
 			setTimeout( hdrWeather.bind(self), 10);
-			if (this.weatherTimer === null) {
-				this.weatherTimer = setInterval( hdrWeather.bind(self), 300000);
-			}
+			this.weatherTimer = setInterval( hdrWeather.bind(self), delay);
 			_hdrwtb.classList.remove('hide');
 		} else {
 			/*** Hide ***/
 			_hdrwtb.classList.add('hide');
-			if (this.weatherTimer !== null) {
-				clearInterval(this.weatherTimer);
-				this.weatherTimer = null;
-			}
 		}
 		
 		return true;
 	}
-	
 
 	toggleClockMode(TOGGLE) {
 		const _hdrwtb = document.getElementsByClassName('headerWthMain')[0];
@@ -790,6 +790,22 @@ export class UserSettings {
 			return 4; // default to minimum.
         else 
             return swiperDelay;
+    }
+	
+	/**
+     * Get or set 'Weather API call' rate.
+     * @param {int|undefined} val - Delay between each call in mins.
+     * @return {int} 'Weather API call' rate.
+     */
+    APIDelay(val) {
+		if (val !== undefined) 
+            return this.set('APIDelay', parseInt(val, 10));
+        
+		const APIDelay = parseInt(this.get('APIDelay'), 10);
+		if (APIDelay < 1 || APIDelay > 30) 
+			return 5; // default to 5.
+        else 
+            return APIDelay;
     }
 	
 	/**
@@ -1169,6 +1185,7 @@ export const toggleClockMode = currentSettings.toggleClockMode.bind(currentSetti
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);
+export const APIDelay = currentSettings.APIDelay.bind(currentSettings);
 export const swiperFX = currentSettings.swiperFX.bind(currentSettings);
 export const enableBackdrops = currentSettings.enableBackdrops.bind(currentSettings);
 export const displayFontSize = currentSettings.displayFontSize.bind(currentSettings);
