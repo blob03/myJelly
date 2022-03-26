@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-19",
+	"version": "10.7.7.1-20",
 	"contact": "maxla2323@protonmail.com",
 	"description": "A modified web client for Jellyfin.",
 	"repository": "https://github.com/blob03/myJelly",
@@ -21,7 +21,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "1.71",
+		"version": "1.72",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly"

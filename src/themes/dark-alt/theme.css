@@ -1285,6 +1285,12 @@ select option:selected {
 
 .btnTryIt {
 	font-size: 0.8rem;
+	border-radius: 10%;
+	background-color: #333539;
+	background: linear-gradient(105deg, rgb(126, 132, 139) 0%, rgb(139, 150, 159) 30%, rgb(85, 88, 92) 70%, rgb(50, 58, 63) 100%);
+	box-shadow: 0 0 4px #17191a;
+	border: 0.05em solid rgb(61, 68, 73);
+	text-shadow: rgb(30, 38, 43) -1px -1px 1px;
 }
 
 .weatherbotScreenSaver,

@@ -20,7 +20,7 @@ function show(item, visible) {
 export default function () {
     const self = this;
 
-	self.name = 'The Weatherbot';
+	self.name = 'Weatherbot';
 	self.group = 'myJelly';
 	self.version = '0.9';
 	self.description = 'WeatherbotScreensaverHelp';

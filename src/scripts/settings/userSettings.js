@@ -60,14 +60,12 @@ function hdrWeather() {
 	const _lon = self.getlongitude();
 	const wapikey = self.weatherApiKey();
 	
-	self._hdrwth_icon.src = "";
-	self._hdrwth_temp.innerHTML = "";
-	self._hdrwth_hum.innerHTML = "";
-	self._hdrwth_wind.innerHTML = "";
-	
 	if (!wapikey) {
-		self._hdrwth_hum.innerHTML = "MISSING API KEY ";
-		console.warn("Weatherbot needs a valid api key.");
+		self._hdrwth_icon.src = "";
+		self._hdrwth_temp.innerHTML = "";
+		self._hdrwth_wind.innerHTML = "";
+		self._hdrwth_hum.innerHTML = "MISSING API KEY";
+		console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
 		return;
 	}
 	const url_params = '?appid=' + wapikey
@@ -81,36 +79,46 @@ function hdrWeather() {
 		let _dyn;
 		if (data.weather["0"].icon) {
 			self._hdrwth_icon.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
-		}
+		} else
+			self._hdrwth_icon.src = "";
+		
 		if (data.main.temp) {
-			_dyn = data.main.temp + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
+			_dyn = Number(data.main.temp.toFixed(2));
+			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
 			if (self.enableUSUnits())
-				_dyn += '&#8457;';
+				_dyn += '&#8457;</span>';
 			else
-				_dyn += '&#8451;';
-			_dyn += '</span>';
+				_dyn += '&#8451;</span>';
 			self._hdrwth_temp.innerHTML = _dyn;
-		}
+		} else
+			self._hdrwth_temp.innerHTML = "";
+		
 		if (data.wind.speed) {
 			let wspeed = data.wind.speed;
 			if (!self.enableUSUnits())
 				wspeed *= 3.6; // m/s -> km/h
-			_dyn = Number(wspeed.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
+			_dyn = Number(wspeed.toFixed(2));
+			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
 			if (self.enableUSUnits())
-				_dyn += 'mph';
+				_dyn += 'mph</span>';
 			else
-				_dyn += 'km/h';
+				_dyn += 'km/h</span>';
 			self._hdrwth_wind.innerHTML = _dyn;
-		}
+		} else
+			self._hdrwth_wind.innerHTML = "";
+		
 		if (data.main.humidity) {
-			let whum = data.main.humidity;
-			_dyn = Number(whum.toFixed(2)) + '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">';
-			_dyn += '%';
+			_dyn = Number(data.main.humidity.toFixed(2));
+			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">%</span>';
 			self._hdrwth_hum.innerHTML = _dyn;
-		}
+		} else
+			self._hdrwth_hum.innerHTML = "";
 		
 	}).catch(function (data) {
 		console.warn(data);
+		self._hdrwth_icon.src = "";
+		self._hdrwth_temp.innerHTML = "";
+		self._hdrwth_wind.innerHTML = "";
 		self._hdrwth_hum.innerHTML = data.status + '<br/>' + data.statusText;
 	});
 	return;

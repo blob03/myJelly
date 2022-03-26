@@ -84,16 +84,15 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
 		html += '<div class="headerWthButton" id="headerWthRight" style="display: flex;flex-direction: row;">';
-		html += '<fieldset style="margin: .1rem .3rem .1rem .3rem;padding: .2rem .6rem .2rem .3rem;border: 2px groove #595653;">';
+		html += '<fieldset style="margin: .1rem .3rem .1rem .3rem;padding: .2rem .3rem .2rem .3rem;border: 2px groove #595653;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveLeftButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: flex-end;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: space-between;width: 100%;">';
 		html += '<img id="headerWthIconRight" class="headerWthIcon" style="width: 1.6em">';
 		html += '<div id="headerWthTempRight" class="headerWthTemp" style="display: flex;align-items: center;font-size: 100%;"></div>';
 		html += '</div>';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: space-around;width: 100%;">';
 		html += '<div id="headerWthHumRight" class="headerWthHum" style="display: flex;align-items: center;font-size: 70%;"></div>';
-		html += '<div style="width: .3rem;"></div>';
 		html += '<div id="headerWthWindRight" class="headerWthWind" style="display: flex;align-items: center;font-size: 70%;"></div>';
 		html += '</div>';
 		html += '</button>';
