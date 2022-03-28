@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '0.9';
+	self.version = '1.0';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -39,8 +39,6 @@ export default function () {
 
 	function weather(self) {	
 
-		loading.show();
-		
 		// Note that API keys can be obtained free of charge by registering at the address below
 		// https://home.openweathermap.org/users/sign_up
 		// Remember to copy any new key into its dedicated field in the display settings.
@@ -50,12 +48,22 @@ export default function () {
 		const url_proto_SSL = 'https://';
 		const url_base_icon = 'openweathermap.org/img/wn/';
 		const url_base = 'api.openweathermap.org/data/2.5/';
-		const url_apiMethod = 'weather';
-		const url_params = '?appid=' + self.opts.apikey 
+		const url_apiMethod = 'weather';	
+		const wapikey = self.opts.apikey;	
+		if (!wapikey) {
+			console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
+			show('ssForeplane', false);
+			self.opts.msgstr.innerHTML = globalize.translate('MissingAPIKey');
+			show('ssFailure', true);
+			return;
+		}
+		const url_params = '?appid=' +  wapikey
 		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
 		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') + '&lang=' + self.opts.dateTimeLocale;
 		req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
-	
+		
+		loading.show();	
+		
 		ajax(req).then(function (data) {
 			show('ssFailure', false);
 
@@ -97,7 +105,6 @@ export default function () {
 			console.warn(data);
 			show('ssForeplane', false);
 			self.opts.msgstr.innerHTML = data.status + '<br/>' + data.statusText;
-			
 			show('ssFailure', true);
 			loading.hide();
 		});
@@ -222,8 +229,7 @@ export default function () {
 			self.opts.iconstr = document.getElementById("ssIcon");
 						
 			weather(self);
-			// Refresh every 5 minutes.
-			//self.interval = setInterval(function() { weather(self) }, 300000);
+			// Refresh every x minutes.
 			this.weatherTimer = setInterval( function() { weather(self) }, self.opts.delay);
         });
     };

@@ -64,7 +64,7 @@ function hdrWeather() {
 		self._hdrwth_icon.src = "";
 		self._hdrwth_temp.innerHTML = "";
 		self._hdrwth_wind.innerHTML = "";
-		self._hdrwth_hum.innerHTML = "MISSING API KEY";
+		self._hdrwth_hum.innerHTML = globalize.translate('MissingAPIKey');
 		console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
 		return;
 	}
@@ -93,11 +93,18 @@ function hdrWeather() {
 		} else
 			self._hdrwth_temp.innerHTML = "";
 		
+		if (data.main.humidity) {
+			_dyn = Number(data.main.humidity.toFixed(2));
+			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">%</span>';
+			self._hdrwth_hum.innerHTML = _dyn;
+		} else
+			self._hdrwth_hum.innerHTML = "";
+		
 		if (data.wind.speed) {
 			let wspeed = data.wind.speed;
 			if (!self.enableUSUnits())
 				wspeed *= 3.6; // m/s -> km/h
-			_dyn = Number(wspeed.toFixed(2));
+			_dyn = "&nbsp;&nbsp;&nbsp;" + Number(wspeed.toFixed(2));
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
 			if (self.enableUSUnits())
 				_dyn += 'mph</span>';
@@ -106,13 +113,6 @@ function hdrWeather() {
 			self._hdrwth_wind.innerHTML = _dyn;
 		} else
 			self._hdrwth_wind.innerHTML = "";
-		
-		if (data.main.humidity) {
-			_dyn = Number(data.main.humidity.toFixed(2));
-			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">%</span>';
-			self._hdrwth_hum.innerHTML = _dyn;
-		} else
-			self._hdrwth_hum.innerHTML = "";
 		
 	}).catch(function (data) {
 		console.warn(data);

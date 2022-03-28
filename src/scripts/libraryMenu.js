@@ -91,7 +91,7 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 		html += '<img id="headerWthIconRight" class="headerWthIcon" style="width: 1.6em">';
 		html += '<div id="headerWthTempRight" class="headerWthTemp" style="display: flex;align-items: center;font-size: 100%;"></div>';
 		html += '</div>';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: space-around;width: 100%;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: flex-end;width: 100%;">';
 		html += '<div id="headerWthHumRight" class="headerWthHum" style="display: flex;align-items: center;font-size: 70%;"></div>';
 		html += '<div id="headerWthWindRight" class="headerWthWind" style="display: flex;align-items: center;font-size: 70%;"></div>';
 		html += '</div>';

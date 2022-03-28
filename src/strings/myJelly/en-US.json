@@ -48,6 +48,7 @@
     "LockHeader": "Lock the menu bar",
     "LogoScreensaverHelp": "Show the Jellyfin logo in motion.",
     "MJBackdropScreensaverHelp": "Show the backdrops from the source defined above.",
+    "MissingAPIKey": "API KEY MISSING",
     "MoreDiffused": "More diffused",
     "Oblique": "Oblique:",
     "OptionDivider": "...............................",

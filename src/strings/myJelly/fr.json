@@ -48,6 +48,7 @@
     "LockHeader": "Verrouiller le menu",
     "LogoScreensaverHelp": "Afficher et animer le logo de Jellyfin.",
     "MJBackdropScreensaverHelp": "Afficher les arrière-plans définis au-dessus.",
+    "MissingAPIKey": "CLEF API MANQUANTE",
     "MoreDiffused": "Plus diffus",
     "Oblique": "Oblique :",
     "OptionDivider": "...............................",

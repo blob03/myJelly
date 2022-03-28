@@ -480,11 +480,11 @@ option:disabled {
 
 .emby-input,
 .emby-textarea {
-	background: #62b0a9;
-	border: .2rem ridge rgb(152, 200, 211);
+	background: #8cbec6;
+	border: .2rem ridge rgb(109, 157, 169);
 	font-weight: 600;
 	line-height: 1.35;
-	color: rgb(198, 226, 236) !important;
+	color: rgb(170, 232, 254) !important;
 }
 
 option:not(:disabled),
