@@ -33,8 +33,8 @@ Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin
    ```sh
    npm install
    ```
-
-3.  (facultative) Run the web client with webpack for local development.
+   
+3. (facultative) Run the web client with webpack for local development.
 
    ```sh
    npm start
