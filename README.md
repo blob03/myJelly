@@ -45,16 +45,16 @@ Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin
    ```sh
    npm run build:development
    ```
-
+   
 ## Installation
 
-5.	Make a backup of the web client installed.
+5. Make a backup of the web client installed.
 
    ```sh
    sudo mv /usr/share/jellyfin/web /usr/share/jellyfin/web.bak
    ```
-
-6.	Overwrite it with the modified client.
+   
+6. Overwrite it with the modified client.
 
    ```sh
    Please note that the "dist" directory is automatically created at step #4.
