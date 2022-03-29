@@ -44,6 +44,8 @@ Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin
 
    ```sh
    npm run build:development
+   or
+   npm run build:production
    ```
    
 ## Installation
