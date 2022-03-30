@@ -1,8 +1,8 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-21",
+	"version": "10.7.7.1-26",
 	"contact": "maxla2323@protonmail.com",
-	"description": "A modified web client for Jellyfin.",
+	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
 	"includeCorsCredentials": false,
 	"multiserver": false,

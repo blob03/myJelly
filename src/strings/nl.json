@@ -192,6 +192,7 @@
     "Desktop": "Bureaublad",
     "DetectingDevices": "Apparaten detecteren",
     "DeviceAccessHelp": "Dit geldt alleen voor apparaten die uniek geïdentificeerd kunnen worden en voorkomen niet toegang via een webbrowser. Filteren van apparaat toegang voor gebruikers voorkomt dat zij nieuwe apparaten gebruiken totdat deze hier zijn goedgekeurd.",
+    "Digital": "Digitaal",
     "DirectPlayHelp": "Het bronbestand is volledig compatibel met deze client, en de sessie ontvangt het bestand zonder wijzigingen.",
     "DirectPlaying": "Direct afspelen",
     "DirectStreamHelp1": "De resolutie en codec wordt ondersteund door het apparaat, maar het audioformaat (DTS, Dolby TrueHD, etc.) of nummer van audiokanalen wordt niet ondersteund. De stream zal zonder kwaliteitsverlies worden verpakt voor deze naar het apparaat gestuurd wordt. Alleen de audio wordt geconverteerd.",

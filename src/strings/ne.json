@@ -4,6 +4,7 @@
     "Books": "पुस्तकहरु",
     "Channels": "च्यानलहरू",
     "Collections": "संग्रह",
+    "Default": "पूर्वनिर्धारित",
     "Favorites": "मनपर्ने",
     "Folders": "फोल्डरहरू",
     "Genres": "विधाहरू",
@@ -14,5 +15,7 @@
     "Photos": "तस्बिरहरु",
     "Playlists": "प्लेलिस्टहरू",
     "Shows": "शोहरू",
-    "Songs": "गीतहरू"
+    "Songs": "गीतहरू",
+    "Sync": "समकालीन",
+    "ValueSpecialEpisodeName": "विशेष - {0}"
 }
