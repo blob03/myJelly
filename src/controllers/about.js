@@ -13,7 +13,7 @@ import '../elements/emby-scroller/emby-scroller';
 import ServerConnections from '../components/ServerConnections';
 import { pageClassOn } from '../scripts/clientUtils';
 import appInfo from '../config.json';
-
+ 
 function isSecure() {
 	return location.protocol == 'https:';
 }
