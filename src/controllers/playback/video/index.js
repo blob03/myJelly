@@ -22,6 +22,7 @@ import ServerConnections from '../../../components/ServerConnections';
 import shell from '../../../scripts/shell';
 import SubtitleSync from '../../../components/subtitlesync/subtitlesync';
 import { appRouter } from '../../../components/appRouter';
+import LibraryMenu from '../../../scripts/libraryMenu';
 
 /* eslint-disable indent */
 
@@ -149,7 +150,7 @@ import { appRouter } from '../../../components/appRouter';
             currentItem = item;
             if (!item) {
                 updateRecordingButton(null);
-                appRouter.setTitle('');
+                LibraryMenu.setTitle('');
                 nowPlayingVolumeSlider.disabled = true;
                 nowPlayingPositionSlider.disabled = true;
                 btnFastForward.disabled = true;
@@ -205,7 +206,7 @@ import { appRouter } from '../../../components/appRouter';
                 itemName = parentName || '';
             }
 
-            appRouter.setTitle(itemName);
+             LibraryMenu.setTitle(itemName);
 
             const documentTitle = parentName || (item ? item.Name : null);
 

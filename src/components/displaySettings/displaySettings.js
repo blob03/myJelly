@@ -19,7 +19,7 @@ import template from './displaySettings.template.html';
 import templateUserMenu from '../../controllers/user/menu/index.html';
 import * as LibraryMenu from '../../scripts/libraryMenu';
 import viewManager from '../viewManager/viewManager';
-import * as ssmanager from '../../libraries/screensavermanager';
+import * as ssmanager from '../../scripts/screensavermanager';
 import viewContainer from '../viewContainer';
 
 /* eslint-disable indent */

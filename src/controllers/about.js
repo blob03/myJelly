@@ -13,39 +13,6 @@ import '../elements/emby-scroller/emby-scroller';
 import ServerConnections from '../components/ServerConnections';
 import { pageClassOn } from '../scripts/clientUtils';
 import appInfo from '../config.json';
- 
-function isSecure() {
-	return location.protocol == 'https:';
-}
-
-function checkUpdates() {
-	let req = {};
-	req.dataType = 'json';
-	const url_proto_SSL = 'https://';
-	const url_base = 'blob03.github.io/myJelly/src/config.json';	
-	req.url = url_proto_SSL + url_base; 
-	const au = document.querySelector('#aboutupdate');
-	if (!au)
-		return;
-	au.innerHTML = globalize.translate('LabelUpdateSearching');
-	
-	loading.show();	
-	
-	ajax(req).then(function (data) {
-		if (appInfo.version >= data.version) {
-			au.style.fontWeight = "400";
-			au.innerHTML = globalize.translate('LabelUpdateOK');
-		} else {
-			au.style.fontWeight = "600";
-			au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
-		}
-		loading.hide();
-	}).catch(function (data) {
-		au.style.fontWeight = "600";
-		au.innerHTML = globalize.translate('LabelUpdateERR');
-		loading.hide();
-	});
-}
 
 function getHostVersion(browser) {
 	if (browser.web0s) 
@@ -68,6 +35,7 @@ function getHostVersion(browser) {
 
 class AboutTab {
     constructor(view, params) {
+		this._check = false;
         this.view = view;
         this.params = params;
         this.sectionsContainer = view.querySelector('.sections');
@@ -91,10 +59,14 @@ class AboutTab {
     }
 	
 	onResume(options) {
-		checkUpdates();
+		if (this._check === true)
+			loading.show();	
+		else
+			this.checkUpdates();
 	}
 	
 	onPause() {
+		loading.hide();
     }
 		
     destroy() {
@@ -102,6 +74,41 @@ class AboutTab {
         this.params = null;
         this.sectionsContainer = null;
     }
+	
+	checkUpdates() {
+		let req = {};
+		req.dataType = 'json';
+		const url_proto_SSL = 'https://';
+		const url_base = 'blob03.github.io/myJelly/src/config.json';	
+		//const url_cacheBuster = '?_=' + Date.now().toString();
+		const url_cacheBuster = '';
+		req.url = url_proto_SSL + url_base + url_cacheBuster; 
+		const au = document.querySelector('#aboutupdate');
+		if (!au)
+			return;
+		au.innerHTML = globalize.translate('LabelUpdateSearching');
+		
+		this._check = true;
+		const self = this;
+		loading.show();	
+		
+		ajax(req).then(function (data) {
+			if (appInfo.version >= data.version) {
+				au.style.fontWeight = "400";
+				au.innerHTML = globalize.translate('LabelUpdateOK');
+			} else {
+				au.style.fontWeight = "600";
+				au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
+			}
+			self._check = false;
+			loading.hide();
+		}).catch(function (data) {
+			au.style.fontWeight = "600";
+			au.innerHTML = globalize.translate('LabelUpdateERR');
+			self._check = false;
+			loading.hide();
+		});
+	}
 }
 
 export default AboutTab;

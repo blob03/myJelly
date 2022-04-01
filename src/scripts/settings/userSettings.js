@@ -119,7 +119,12 @@ function hdrWeather() {
 		self._hdrwth_icon.src = "";
 		self._hdrwth_temp.innerHTML = "";
 		self._hdrwth_wind.innerHTML = "";
-		self._hdrwth_hum.innerHTML = data.status + '<br/>' + data.statusText;
+		if (data.status) {
+			let _msg = data.status;
+			if (data.statusText)
+				_msg += '<br/>' + data.statusText;
+			self._hdrwth_hum.innerHTML = _msg; 
+		}
 	});
 	return;
 }
