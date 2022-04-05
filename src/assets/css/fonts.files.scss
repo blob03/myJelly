@@ -4,6 +4,10 @@
 	for any non profit project such as Jellyfin.
 */
 
+@font-face {font-family: "Quicksand";
+    src: url("/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf") format("truetype"); /* chrome firefox */
+}
+
 @font-face {font-family: "DSWeiss";
     src: url("/assets/fonts/DSWeiss/DSWeiss-GotischAlt.ttf") format("truetype"); /* chrome firefox */
 }

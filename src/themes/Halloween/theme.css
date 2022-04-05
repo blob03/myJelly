@@ -1274,6 +1274,12 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	transform: scale(1.4) !important;
 }
 
+.aboutContent.material-icons {
+	color: #282828 !important;
+	font-size: 1.5rem !important;
+	transform: scale(1);
+}
+
 .emby-tab-button > * > .material-icons {
 	color: #6f53d3 !important;
 	font-size: 1.5rem !important;

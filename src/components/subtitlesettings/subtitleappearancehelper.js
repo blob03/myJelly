@@ -111,6 +111,10 @@ function getTextStyles(settings, preview) {
             list.push({ name: 'font-family', value: 'Impact' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
+		case 'Quicksand':
+            list.push({ name: 'font-family', value: 'Quicksand' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
 		case 'Orange':
             list.push({ name: 'font-family', value: 'Orange' });
             list.push({ name: 'font-variant', value: 'none' });

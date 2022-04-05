@@ -1155,6 +1155,7 @@
     "MessageSyncPlayUserLeft": "Uživatel {0} opustil skupinu.",
     "MessageTheFollowingLocationWillBeRemovedFromLibrary": "Z vaší knihovny budou odstraněny následující zdroje médií:",
     "MessageUnableToConnectToServer": "Nejsme schopni se připojit k vybranému serveru právě teď. Prosím, ujistěte se, že je spuštěn a zkuste to znovu.",
+    "MessageUnauthorizedUser": "Momentálně nemáte oprávnění k přístupu na server. Pro více informací kontaktujte Vašeho správce serveru.",
     "MessageUnsetContentHelp": "Obsah je zobrazen pomocí prostých složek. Pro dosažení nejlepších výsledků pomocí Správce metadat nastavte typy obsahu pod-složek.",
     "MessageYouHaveVersionInstalled": "V současné době máte instalovánu verzi {0}.",
     "Metadata": "Metadata",

@@ -374,6 +374,7 @@ html {
 	animation-duration: .15s;
 }
 
+.aboutContent.material-icons,
 .emby-tab-button > * > .material-icons {
 	color: #61a2c9 !important;
 }
