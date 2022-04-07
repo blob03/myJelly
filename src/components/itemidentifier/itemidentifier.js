@@ -5,6 +5,7 @@
  * @module components/itemidentifier/itemidentifier
  */
 
+import escapeHtml from 'escape-html';
 import dialogHelper from '../dialogHelper/dialogHelper';
 import loading from '../loading/loading';
 import globalize from '../../scripts/globalize';
@@ -245,7 +246,7 @@ import template from './itemidentifier.template.html';
             } else {
                 html += '<div class="cardText cardText-secondary cardTextCentered">';
             }
-            html += lines[i] || '&nbsp;';
+            html += escapeHtml(lines[i] || '') || '&nbsp;';
             html += '</div>';
         }
 

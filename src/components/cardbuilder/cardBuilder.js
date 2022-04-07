@@ -5,6 +5,7 @@
  * @module components/cardBuilder/cardBuilder
  */
 
+import escapeHtml from 'escape-html';
 import datetime from '../../scripts/datetime';
 import imageLoader from '../images/imageLoader';
 import itemHelper from '../itemHelper';
@@ -948,7 +949,7 @@ import ServerConnections from '../ServerConnections';
 
                         }, item.ChannelName));
                     } else {
-                        lines.push(item.ChannelName || '&nbsp;');
+                        lines.push(escapeHtml(item.ChannelName || '') || '&nbsp;');
                     }
                 }
 
@@ -980,7 +981,7 @@ import ServerConnections from '../ServerConnections';
                     if (item.RecordAnyChannel) {
                         lines.push(globalize.translate('AllChannels'));
                     } else {
-                        lines.push(item.ChannelName || globalize.translate('OneChannel'));
+                         lines.push(escapeHtml(item.ChannelName || '') || globalize.translate('OneChannel'));
                     }
                 }
 

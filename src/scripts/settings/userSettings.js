@@ -83,7 +83,7 @@ function hdrWeather() {
 			self._hdrwth_icon.src = "";
 		
 		if (data.main.temp) {
-			_dyn = Number(data.main.temp.toFixed(2));
+			_dyn = Number(data.main.temp.toFixed(1));
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
 			if (self.enableUSUnits())
 				_dyn += '&#8457;</span>';
@@ -94,7 +94,7 @@ function hdrWeather() {
 			self._hdrwth_temp.innerHTML = "";
 		
 		if (data.main.humidity) {
-			_dyn = Number(data.main.humidity.toFixed(2));
+			_dyn = Number(data.main.humidity.toFixed(1));
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">%</span>';
 			self._hdrwth_hum.innerHTML = _dyn;
 		} else
@@ -104,7 +104,7 @@ function hdrWeather() {
 			let wspeed = data.wind.speed;
 			if (!self.enableUSUnits())
 				wspeed *= 3.6; // m/s -> km/h
-			_dyn = "&nbsp;&nbsp;&nbsp;" + Number(wspeed.toFixed(2));
+			_dyn = "&nbsp;&nbsp;&nbsp;" + Number(wspeed.toFixed(1));
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
 			if (self.enableUSUnits())
 				_dyn += 'mph</span>';
@@ -124,7 +124,8 @@ function hdrWeather() {
 			if (data.statusText)
 				_msg += '<br/>' + data.statusText;
 			self._hdrwth_hum.innerHTML = _msg; 
-		}
+		} else
+			self._hdrwth_hum.innerHTML = globalize.translate('NoConnectivity');
 	});
 	return;
 }
@@ -786,7 +787,7 @@ export class UserSettings {
             return this.set('enableRewatchingInNextUp', val, false);
         }
 
-        return this.get('enableRewatchingInNextUp', false);
+        return this.get('enableRewatchingInNextUp', false) === 'true';
     }
 	
     /**

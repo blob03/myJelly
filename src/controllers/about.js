@@ -42,7 +42,7 @@ class AboutTab {
 		let html = '<div class="abouttab" style="display: flex !important;width: 100%;height: 10em;flex-direction: column;align-items: center;justify-content: space-around;margin: 6rem 0 0 0 !important;">';
 		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(0, 0, 0, 0.15);">';
 		html += '<div><center><span style="font-weight: 400;font-size: 200%;font-family: quicksand;" class="aboutcontent">' + appInfo.name + '</span></center></div>';
-		html += '<div><center><span style="font-weight: 400;font-style: italic;" class="aboutcontent">' + globalize.translate(appInfo.description) + '</span></center></div>';
+		html += '<div><center><span style="font-weight: 400;font-style: italic;font-family: quicksand;" class="aboutcontent">' + globalize.translate(appInfo.description) + '</span></center></div>';
 		html += '<br>';
 		html += '<div> ' + globalize.translate('LabelAppHost') + ' <span style="font-weight:400;" class="aboutcontent">' + appHost.deviceName() + ' - ' + getHostVersion(browser)  + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelAppVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
@@ -62,7 +62,7 @@ class AboutTab {
     }
 	
 	onResume(options) {
-		if (this._check === true)
+		if (this._busy === true)
 			loading.show();	
 		else
 			this.checkUpdates();
@@ -91,7 +91,7 @@ class AboutTab {
 			return;
 		au.innerHTML = globalize.translate('LabelUpdateSearching');
 		
-		this._check = true;
+		this._busy = true;
 		const self = this;
 		loading.show();	
 		
@@ -103,12 +103,11 @@ class AboutTab {
 				au.style.fontWeight = "600";
 				au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
 			}
-			self._check = false;
-			loading.hide();
 		}).catch(function (data) {
 			au.style.fontWeight = "600";
 			au.innerHTML = globalize.translate('LabelUpdateERR');
-			self._check = false;
+		}).finally(() => {
+			self._busy = false;
 			loading.hide();
 		});
 	}

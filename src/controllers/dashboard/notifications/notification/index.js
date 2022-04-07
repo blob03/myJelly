@@ -1,6 +1,8 @@
 import 'jquery';
+import escapeHtml from 'escape-html';
 import '../../../../elements/emby-checkbox/emby-checkbox';
 import Dashboard from '../../../../scripts/clientUtils';
+import { getParameterByName } from '../../../../utils/url.ts';
 
 function fillItems(elem, items, cssClass, idPrefix, currentList, isEnabledList) {
     let html = '<div class="checkboxList paperList" style="padding: .5em 1em;">';
@@ -37,7 +39,7 @@ function reload(page) {
             $('.monitorUsers', page).hide();
         }
 
-        $('.notificationType', page).html(typeInfo.Name || 'Unknown Notification');
+        $('.notificationType', page).html(escapeHtml(typeInfo.Name || '') || 'Unknown Notification');
 
         if (!notificationConfig) {
             notificationConfig = {

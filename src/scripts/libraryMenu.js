@@ -18,6 +18,7 @@ import '../assets/css/flexstyles.scss';
 import Dashboard, { pageClassOn } from './clientUtils';
 import ServerConnections from '../components/ServerConnections';
 import Headroom from 'headroom.js';
+import { getParameterByName } from '../utils/url.ts';
 import appSettings from './settings/appSettings';
 import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, initWeatherBot, initClockPlaces } from '../scripts/settings/userSettings';
 

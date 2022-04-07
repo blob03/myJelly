@@ -41,35 +41,6 @@ import SyncPlayHtmlAudioPlayer from '../components/syncPlay/ui/players/HtmlAudio
 import { currentSettings } from './settings/userSettings';
 import taskButton from './taskbutton';
 
-// TODO: Move this elsewhere
-window.getWindowLocationSearch = function(win) {
-    let search = (win || window).location.search;
-
-    if (!search) {
-        const index = window.location.href.indexOf('?');
-
-        if (index != -1) {
-            search = window.location.href.substring(index);
-        }
-    }
-
-    return search || '';
-};
-
-// TODO: Move this elsewhere
-window.getParameterByName = function(name, url) {
-    name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-    const regexS = '[\\?&]' + name + '=([^&#]*)';
-    const regex = new RegExp(regexS, 'i');
-    const results = regex.exec(url || getWindowLocationSearch());
-
-    if (results == null) {
-        return '';
-    }
-
-    return decodeURIComponent(results[1].replace(/\+/g, ' '));
-};
-
 function loadCoreDictionary() {
     return globalize.loadStrings('core');
 }

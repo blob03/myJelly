@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.0';
+	self.version = '1.1';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -76,23 +76,27 @@ export default function () {
 				self.opts.conditionstr.innerHTML = data.weather["0"].description;
 			if (data.weather["0"].icon)
 				self.opts.iconstr.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
-			if (data.main.temp)
-				self.opts.tempstr.innerHTML = data.main.temp;
-			if (data.main.humidity)
-				self.opts.humstr.innerHTML = data.main.humidity;
+			if (data.main.temp) {
+				let _data = data.main.temp;
+				self.opts.tempstr.innerHTML = Number(_data.toFixed(1));
+			}
+			if (data.main.humidity) {
+				let _data = data.main.humidity;
+				self.opts.humstr.innerHTML = Number(_data.toFixed(1));
+			}
 			if (data.visibility) {
-				let vis = data.visibility;
+				let _data = data.visibility;
 				if (self.opts.USUnits)
-					vis = vis/1609; // miles
+					_data = _data/1609; // miles
 				else
-					vis = vis/1000; // km
-				self.opts.visistr.innerHTML = Number(vis.toFixed(2));
+					_data = _data/1000; // km
+				self.opts.visistr.innerHTML = Number(_data.toFixed(1));
 			}
 			if (data.wind.speed) {
-				let wspeed = data.wind.speed;
+				let _data = data.wind.speed;
 				if (!self.opts.USUnits)
-					wspeed *= 3.6; // m/s -> km/h
-				self.opts.windstr.innerHTML = Number(wspeed.toFixed(2));
+					_data *= 3.6; // m/s -> km/h
+				self.opts.windstr.innerHTML = Number(_data.toFixed(1));
 			}
 			self.opts.windirstr.innerHTML = "";
 			if (data.wind.deg)
