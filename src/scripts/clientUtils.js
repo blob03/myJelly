@@ -6,7 +6,12 @@ import baseAlert from '../components/alert';
 import baseConfirm from '../components/confirm/confirm';
 import globalize from '../scripts/globalize';
 import * as webSettings from './settings/webSettings';
+import datetime from '../scripts/datetime';
+import DirectoryBrowser from '../components/directorybrowser/directorybrowser';
+import dialogHelper from '../components/dialogHelper/dialogHelper';
+import itemIdentifier from '../components/itemidentifier/itemidentifier';
 import { enableClock } from '../scripts/settings/userSettings';
+import { getLocationSearch } from '../utils/url.ts';
 
 export function getCurrentUser() {
     return window.ApiClient.getCurrentUser(false);
@@ -96,12 +101,18 @@ export function getPluginUrl(name) {
     return 'configurationpage?name=' + encodeURIComponent(name);
 }
 
+export function getConfigurationResourceUrl(name) {
+    return ApiClient.getUrl('web/ConfigurationPage', {
+        name: name
+    });
+}
+
 export function navigate(url, preserveQueryString) {
     if (!url) {
         throw new Error('url cannot be null or empty');
     }
 
-    const queryString = window.location.search;
+    const queryString = getLocationSearch();
 
     if (preserveQueryString && queryString) {
         url += queryString;
@@ -206,6 +217,7 @@ const Dashboard = {
     capabilities,
     confirm,
     getPluginUrl,
+    getConfigurationResourceUrl,
     getCurrentUser,
     getCurrentUserId,
     hideLoadingMsg,
@@ -217,7 +229,11 @@ const Dashboard = {
     processServerConfigurationUpdateResult,
     selectServer,
     serverAddress,
-    showLoadingMsg
+    showLoadingMsg,
+    datetime,
+    DirectoryBrowser,
+    dialogHelper,
+    itemIdentifier
 };
 
 // This is used in plugins and templates, so keep it defined for now.
