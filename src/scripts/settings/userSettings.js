@@ -21,9 +21,7 @@ function saveServerPreferences(instance) {
 const defaultSubtitleAppearanceSettings = {
 	verticalPosition: -1
 };
-
-
-		
+	
 function hdrClock() {
 	globalize.updateCurrentCulture();
 	const x = new Date();

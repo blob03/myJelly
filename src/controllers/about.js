@@ -12,7 +12,7 @@ import '../elements/emby-itemscontainer/emby-itemscontainer';
 import '../elements/emby-scroller/emby-scroller';
 import ServerConnections from '../components/ServerConnections';
 import { pageClassOn } from '../scripts/clientUtils';
-import appInfo from '../config.json';
+import appInfo from '../version.json';
 
 function getHostVersion(browser) {
 	if (browser.web0s) 
@@ -39,13 +39,17 @@ class AboutTab {
         this.view = view;
         this.params = params;
         this.sectionsContainer = view.querySelector('.sections');
+		
 		let html = '<div class="abouttab" style="display: flex !important;width: 100%;height: 10em;flex-direction: column;align-items: center;justify-content: space-around;margin: 6rem 0 0 0 !important;">';
-		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(0, 0, 0, 0.15);">';
+		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(0, 0, 0, 0.15);position: fixed;top: 20%;left: 0%;right: 0px;width: 30rem;">';
 		html += '<div><center><span style="font-weight: 400;font-size: 200%;font-family: quicksand;" class="aboutcontent">' + appInfo.name + '</span></center></div>';
 		html += '<div><center><span style="font-weight: 400;font-style: italic;font-family: quicksand;" class="aboutcontent">' + globalize.translate(appInfo.description) + '</span></center></div>';
 		html += '<br>';
 		html += '<div> ' + globalize.translate('LabelAppHost') + ' <span style="font-weight:400;" class="aboutcontent">' + appHost.deviceName() + ' - ' + getHostVersion(browser)  + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelAppVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
+		if (appInfo.releaseNotes[appInfo.version]) {
+			html += '<div><textarea readonly is="emby-textarea" id="txtReleaseNotes" label="' + globalize.translate('LabelReleaseNotes') + '" class="textarea-mono emby-textarea" style="overflow-y: hidden; width: 95%;resize: vertical;font-size: 90%;font-family: Courier">' + appInfo.releaseNotes[appInfo.version] + '</textarea></div>';			
+		}
 		html += '<div> ' + globalize.translate('LabelUpdate') + ' <span style="font-weight:400;" id="aboutupdate" class="aboutcontent">' + '</span></div>';
 		if (browser.tv || layoutManager.tv) {
 			html += '<div> ' + globalize.translate('LabelAppRepositoryName') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.repository + '</span></div>';
@@ -59,6 +63,12 @@ class AboutTab {
 		html += '</div>';
 		html += '</div>';
 		this.sectionsContainer.innerHTML = html;
+		const txtarea = this.sectionsContainer.querySelector('#txtReleaseNotes');
+		if (txtarea) {			
+			const rnlines = appInfo.releaseNotes[appInfo.version].split(/\r\n|\r|\n/).length;
+			txtarea.rows = rnlines;	
+		}
+		this.au = view.querySelector('#aboutupdate');
     }
 	
 	onResume(options) {
@@ -82,14 +92,13 @@ class AboutTab {
 		let req = {};
 		req.dataType = 'json';
 		const url_proto_SSL = 'https://';
-		const url_base = 'blob03.github.io/myJelly/src/config.json';	
+		const url_base = 'blob03.github.io/myJelly/src/version.json';	
 		//const url_cacheBuster = '?_=' + Date.now().toString();
 		const url_cacheBuster = '';
 		req.url = url_proto_SSL + url_base + url_cacheBuster; 
-		const au = document.querySelector('#aboutupdate');
-		if (!au)
+		if (!this.au)
 			return;
-		au.innerHTML = globalize.translate('LabelUpdateSearching');
+		this.au.innerHTML = globalize.translate('LabelUpdateSearching');
 		
 		this._busy = true;
 		const self = this;
@@ -97,15 +106,15 @@ class AboutTab {
 		
 		ajax(req).then(function (data) {
 			if (appInfo.version >= data.version) {
-				au.style.fontWeight = "400";
-				au.innerHTML = globalize.translate('LabelUpdateOK');
+				self.au.style.fontWeight = "400";
+				self.au.innerHTML = globalize.translate('LabelUpdateOK');
 			} else {
-				au.style.fontWeight = "600";
-				au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
+				self.au.style.fontWeight = "600";
+				self.au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
 			}
 		}).catch(function (data) {
-			au.style.fontWeight = "600";
-			au.innerHTML = globalize.translate('LabelUpdateERR');
+			self.au.style.fontWeight = "600";
+			self.au.innerHTML = globalize.translate('LabelUpdateERR');
 		}).finally(() => {
 			self._busy = false;
 			loading.hide();

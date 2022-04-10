@@ -1413,7 +1413,7 @@
     "RemuxHelp1": "该媒体的载体（mkv、avi、wmv 等）不被设备支持，但视频流和音频流均与您的设备兼容，因此媒体在串流至您的设备之前将被即时无损地再封装。",
     "RemuxHelp2": "转封装只占用很少的 CPU 资源并且媒体将被完全无损地传输。",
     "Remuxing": "转封装",
-    "Repeat": "重播",
+    "Repeat": "循环模式",
     "RepeatAll": "全部循环",
     "RepeatEpisodes": "重复剧集",
     "RepeatMode": "循环模式",
