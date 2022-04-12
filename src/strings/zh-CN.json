@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "在项目详细信息页面的顶部显示横幅图片。",
     "EnableDisplayMirroring": "显示镜像",
     "EnableEnhancedNvdecDecoder": "启用增强的 NVDEC 解码器",
+    "EnableEnhancedNvdecDecoderHelp": "实验性的 NVDEC 实现，除非你遇到了解码错误，否则不要启用此选项。",
     "EnableExternalVideoPlayers": "外部播放器",
     "EnableExternalVideoPlayersHelp": "当你开始播放视频时，将会显示一个外部播放器菜单。",
     "EnableFallbackFont": "启用备用字体",

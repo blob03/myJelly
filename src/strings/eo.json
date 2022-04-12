@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Montri standardan bildon supre de la paĝo pri detaloj de la aĵo.",
     "EnableDisplayMirroring": "Ekrana spegulado",
     "EnableEnhancedNvdecDecoder": "Ebligi plibonigitan NVDEC-malkodilon",
+    "EnableEnhancedNvdecDecoderHelp": "Eksperimenta NVDEC-efektivigo, ne ebligu ĉi tiun opcion krom se vi renkontas malkodajn erarojn.",
     "EnableExternalVideoPlayers": "Eksteraj videoludiloj",
     "EnableExternalVideoPlayersHelp": "Menuo de ekstera ludilo montriĝos kiam vi komencos videan ludadon.",
     "EnableFallbackFont": "Ebligi anstataŭigajn tiparojn",

@@ -1,5 +1,6 @@
 import appSettings from './appSettings';
 import { Events } from 'jellyfin-apiclient';
+import { toBoolean } from '../../utils/string.ts';
 import globalize from '../globalize';
 import datetime from '../datetime';
 import { ajax } from '../../components/fetchhelper';
@@ -273,8 +274,7 @@ export class UserSettings {
             return this.set('preferFmp4HlsContainer', val.toString());
         }
 
-        val = this.get('preferFmp4HlsContainer');
-        return val === 'true';
+        return toBoolean(this.get('preferFmp4HlsContainer', false), false);
     }
 
     /**
@@ -287,8 +287,7 @@ export class UserSettings {
             return this.set('enableCinemaMode', val.toString());
         }
 
-        val = this.get('enableCinemaMode');
-        return val === 'true';
+        return toBoolean(this.get('enableCinemaMode', false), true);
     }
 	
 	/**
@@ -315,8 +314,7 @@ export class UserSettings {
             return this.set('nextVideoInfoOverlay', val.toString()); 
         }
 
-        val = this.get('nextVideoInfoOverlay');
-        return val === 'true';
+        return toBoolean(this.get('enableNextVideoInfoOverlay', false), true);
     }
 	
 	/**
@@ -357,7 +355,7 @@ export class UserSettings {
             return this.set('enableSetUsingLastTracks', val.toString());
         }
 
-        return this.get('enableSetUsingLastTracks', false) !== 'false';
+        return toBoolean(this.get('enableSetUsingLastTracks', false), true);
     }
 
     /**
@@ -370,8 +368,7 @@ export class UserSettings {
             return this.set('enableThemeSongs', val.toString());
         }
 
-        val = this.get('enableThemeSongs');
-        return val === 'true';
+        return toBoolean(this.get('enableThemeSongs', false), false);
     }
 
     /**
@@ -384,8 +381,7 @@ export class UserSettings {
             return this.set('enableThemeVideos', val.toString());
         }
 
-        val = this.get('enableThemeVideos');
-        return val === 'true';
+        return toBoolean(this.get('enableThemeVideos', false), false);
     }
 	
 	/**
@@ -398,8 +394,7 @@ export class UserSettings {
             return this.set('useEpisodeImagesInNextUpAndResume', val.toString());
         }
 
-        val = this.get('useEpisodeImagesInNextUpAndResume');
-        return val === 'true';
+        return toBoolean(this.get('useEpisodeImagesInNextUpAndResume', true), false);
     }
 	
 	/**
@@ -722,8 +717,7 @@ export class UserSettings {
             return this.set('fastFadein', val.toString());
         }
 
-        val = this.get('fastFadein');
-        return val === 'true';
+        return toBoolean(this.get('fastFadein', false), true);
     }
 
     /**
@@ -785,7 +779,7 @@ export class UserSettings {
             return this.set('enableRewatchingInNextUp', val, false);
         }
 
-        return this.get('enableRewatchingInNextUp', false) === 'true';
+         return toBoolean(this.get('enableRewatchingInNextUp', false), false);
     }
 	
     /**
@@ -878,8 +872,7 @@ export class UserSettings {
             return this.set('detailsBanner', val.toString());
         }
 
-        val = this.get('detailsBanner');
-        return val === 'true';
+        return toBoolean(this.get('detailsBanner', false), true);
     }
 
     /**

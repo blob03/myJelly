@@ -2,7 +2,8 @@ import 'jquery';
 import loading from '../../../components/loading/loading';
 import libraryMenu from '../../../scripts/libraryMenu';
 import globalize from '../../../scripts/globalize';
-import Dashboard from '../../../scripts/clientUtils';
+import Dashboard from '../../../utils/dashboard';
+import { getParameterByName } from '../../../utils/url.ts';
 import toast from '../../../components/toast/toast';
 
 /* eslint-disable indent */

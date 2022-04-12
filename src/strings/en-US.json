@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Display a banner image at the top of the item details page.",
     "EnableDisplayMirroring": "Display mirroring",
     "EnableEnhancedNvdecDecoder": "Enable enhanced NVDEC decoder",
+    "EnableEnhancedNvdecDecoderHelp": "Experimental NVDEC implementation, do not enable this option unless you encounter decoding errors.",
     "EnableExternalVideoPlayers": "External video players",
     "EnableExternalVideoPlayersHelp": "An external player menu will be shown when starting video playback.",
     "EnableFallbackFont": "Enable fallback fonts",

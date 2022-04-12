@@ -12,7 +12,7 @@ import loading from '../../../loading/loading';
 import toast from '../../../toast/toast';
 import globalize from '../../../../scripts/globalize';
 
-import { toBoolean, toFloat } from '../../../../scripts/stringUtils';
+import { toBoolean, toFloat } from '../../../../utils/string.ts';
 
 import 'material-design-icons-iconfont';
 import '../../../../elements/emby-input/emby-input';

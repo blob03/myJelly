@@ -39,6 +39,7 @@ class AboutTab {
         this.view = view;
         this.params = params;
         this.sectionsContainer = view.querySelector('.sections');
+		this.rnote = appInfo.releaseNotes[appInfo.version];
 		
 		let html = '<div class="abouttab" style="display: flex !important;width: 100%;height: 10em;flex-direction: column;align-items: center;justify-content: space-around;margin: 6rem 0 0 0 !important;">';
 		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(0, 0, 0, 0.15);position: fixed;top: 20%;left: 0%;right: 0px;width: 30rem;">';
@@ -47,8 +48,8 @@ class AboutTab {
 		html += '<br>';
 		html += '<div> ' + globalize.translate('LabelAppHost') + ' <span style="font-weight:400;" class="aboutcontent">' + appHost.deviceName() + ' - ' + getHostVersion(browser)  + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelAppVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
-		if (appInfo.releaseNotes[appInfo.version]) {
-			html += '<div><textarea readonly is="emby-textarea" id="txtReleaseNotes" label="' + globalize.translate('LabelReleaseNotes') + '" class="textarea-mono emby-textarea" style="overflow-y: hidden; width: 95%;resize: vertical;font-size: 90%;font-family: Courier">' + appInfo.releaseNotes[appInfo.version] + '</textarea></div>';			
+		if (this.rnote) {
+			html += '<div><textarea readonly is="emby-textarea" id="txtReleaseNotes" label="' + globalize.translate('LabelReleaseNotes') + '" class="textarea-mono emby-textarea" style="overflow-y: hidden; width: 95%;resize: vertical;font-size: .85rem;font-family: Courier">' + this.rnote + '</textarea></div>';			
 		}
 		html += '<div> ' + globalize.translate('LabelUpdate') + ' <span style="font-weight:400;" id="aboutupdate" class="aboutcontent">' + '</span></div>';
 		if (browser.tv || layoutManager.tv) {
@@ -65,7 +66,7 @@ class AboutTab {
 		this.sectionsContainer.innerHTML = html;
 		const txtarea = this.sectionsContainer.querySelector('#txtReleaseNotes');
 		if (txtarea) {			
-			const rnlines = appInfo.releaseNotes[appInfo.version].split(/\r\n|\r|\n/).length;
+			const rnlines = this.rnote.split(/\r\n|\r|\n/).length;
 			txtarea.rows = rnlines;	
 		}
 		this.au = view.querySelector('#aboutupdate');

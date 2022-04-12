@@ -4,7 +4,7 @@ import '../../../elements/emby-button/emby-button';
 import layoutManager from '../../../components/layoutManager';
 import globalize from '../../../scripts/globalize';
 import * as LibraryMenu from '../../../scripts/libraryMenu';
-import Dashboard from '../../../scripts/clientUtils';
+import Dashboard from '../../../utils/dashboard';
 import template from './index.html';
 import loading from '../../../components/loading/loading';
 import * as quickConnect from '../quickConnect/helper';

@@ -1,6 +1,6 @@
 import globalize from '../../../scripts/globalize';
 import toast from '../../../components/toast/toast';
-import Dashboard from '../../../scripts/clientUtils';
+import Dashboard from '../../../utils/dashboard';
 import loading from '../../../components/loading/loading';
 
 export function isNewVersion() {
