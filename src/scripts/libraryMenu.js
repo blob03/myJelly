@@ -770,7 +770,8 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
         if (!user) {
             showBySelector('.libraryMenuDownloads', false);
             showBySelector('.lnkSyncToOtherDevices', false);
-            return void showBySelector('.userMenuOptions', false);
+            showBySelector('.userMenuOptions', false);
+            return;
         }
 
         if (user.Policy.EnableContentDownloading) {
@@ -1083,7 +1084,8 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 
     export function setTitle (title) {
         if (title == null) {
-            return void LibraryMenu.setDefaultTitle();
+            LibraryMenu.setDefaultTitle();
+            return;
         }
 
         if (title === '-') {

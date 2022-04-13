@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Megjelenít egy banner képet a részletes információoldal tetején.",
     "EnableDisplayMirroring": "Kijelzőtükrözés",
     "EnableEnhancedNvdecDecoder": "Engedélyezze a továbbfejlesztett NVDEC dekódert",
+    "EnableEnhancedNvdecDecoderHelp": "Kísérleti NVDEC implementáció, csak akkor engedélyezze ezt a lehetőséget, ha dekódolási hibákat észlel.",
     "EnableExternalVideoPlayers": "Külső videolejátszók",
     "EnableExternalVideoPlayersHelp": "A külső lejátszó menü a videó indításakor jelenik meg.",
     "EnableFallbackFont": "Engedélyezze a tartalék betűtípusokat",

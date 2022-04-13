@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Afficher une image de bannière en haut de la page de détails de l'article.",
     "EnableDisplayMirroring": "Affichage en miroir",
     "EnableEnhancedNvdecDecoder": "Activer le décodeur NVDEC amélioré",
+    "EnableEnhancedNvdecDecoderHelp": "Implémentation expérimentale de NVDEC, à n'utiliser que si des erreurs apparaissent lors du décodage.",
     "EnableExternalVideoPlayers": "Lecteurs vidéo externes",
     "EnableExternalVideoPlayersHelp": "Une liste des lecteurs externes sera affichée au lancement de la lecture d'une vidéo.",
     "EnableFallbackFont": "Activer les polices de secours",
