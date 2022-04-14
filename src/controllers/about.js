@@ -49,7 +49,7 @@ class AboutTab {
 		html += '<div> ' + globalize.translate('LabelAppHost') + ' <span style="font-weight:400;" class="aboutcontent">' + appHost.deviceName() + ' - ' + getHostVersion(browser)  + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelAppVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
 		if (this.rnote) {
-			html += '<div><textarea readonly is="emby-textarea" id="txtReleaseNotes" label="' + globalize.translate('LabelReleaseNotes') + '" class="textarea-mono emby-textarea" style="overflow-y: hidden; width: 95%;resize: vertical;font-size: .85rem;font-family: Courier">' + this.rnote + '</textarea></div>';			
+			html += '<div><textarea readonly is="emby-textarea" id="txtReleaseNotes" label="' + globalize.translate('LabelReleaseNotes') + '" class="textarea-mono emby-textarea" style="width: 95%;resize: vertical;font-size: .85rem;font-family: Courier">' + this.rnote + '</textarea></div>';			
 		}
 		html += '<div> ' + globalize.translate('LabelUpdate') + ' <span style="font-weight:400;" id="aboutupdate" class="aboutcontent">' + '</span></div>';
 		if (browser.tv || layoutManager.tv) {

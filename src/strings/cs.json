@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Zobrazí obrázek ve vrchní části detailu položky.",
     "EnableDisplayMirroring": "Zrcadlení obrazu",
     "EnableEnhancedNvdecDecoder": "Povolit vylepšený dekodér NVDEC",
+    "EnableEnhancedNvdecDecoderHelp": "Experimentální implementace NVDEC. Používejte jen v případě, že dochází při dekódování k chybám.",
     "EnableExternalVideoPlayers": "Externí video přehrávače",
     "EnableExternalVideoPlayersHelp": "Při spuštění přehrávání videa se zobrazí nabídka externího přehrávače.",
     "EnableFallbackFont": "Povolit záložní písma",

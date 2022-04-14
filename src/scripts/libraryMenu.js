@@ -1187,6 +1187,7 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 
         ServerConnections.user(currentApiClient).then(function (user) {
             currentUser = user;
+			globalize.updateCurrentCulture();
             updateUserInHeader(user);
 			initClockPlaces();
 			placeClock(0);

@@ -74,7 +74,10 @@ function hdrWeather() {
 		
 	req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 	
+	let _contimeout = setTimeout(() => {self._hdrwth_hum.innerHTML = globalize.translate('Connecting');}, 3000);
+	
 	ajax(req).then(function (data) {
+		clearInterval(_contimeout);
 		let _dyn;
 		if (data.weather["0"].icon) {
 			self._hdrwth_icon.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
@@ -114,6 +117,7 @@ function hdrWeather() {
 			self._hdrwth_wind.innerHTML = "";
 		
 	}).catch(function (data) {
+		clearInterval(_contimeout);
 		console.warn(data);
 		self._hdrwth_icon.src = "";
 		self._hdrwth_temp.innerHTML = "";
@@ -407,8 +411,7 @@ export class UserSettings {
             return this.set('useCardLayoutInHomeSections', val.toString());
         }
 
-        val = this.get('useCardLayoutInHomeSections');
-        return val === 'true';
+		return toBoolean(this.get('useCardLayoutInHomeSections'), true);
     }
 	
 	    /**
@@ -730,8 +733,7 @@ export class UserSettings {
             return this.set('USUnits', val.toString());
         }
 
-        val = this.get('USUnits');
-        return val === 'true';
+		return toBoolean(this.get('USUnits'), false);
     }
 
     /**

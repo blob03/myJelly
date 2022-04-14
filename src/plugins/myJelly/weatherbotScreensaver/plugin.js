@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.1';
+	self.version = '1.2';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -63,8 +63,10 @@ export default function () {
 		req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 		
 		loading.show();	
+		let _contimeout = setTimeout(() => {show('ssForeplane', false);self.opts.msgstr.innerHTML = globalize.translate('Connecting');show('ssFailure', true);}, 3000);
 		
 		ajax(req).then(function (data) {
+			clearInterval(_contimeout);
 			show('ssFailure', false);
 
 			if (data.name)
@@ -101,17 +103,24 @@ export default function () {
 			self.opts.windirstr.innerHTML = "";
 			if (data.wind.deg)
 				self.opts.windirstr.innerHTML += data.wind.deg + '&deg;'
-			
 			show('ssForeplane', true);
-			loading.hide();
 			
 		}).catch(function (data) {
-			console.warn(data);
+			clearInterval(_contimeout);
 			show('ssForeplane', false);
-			self.opts.msgstr.innerHTML = data.status + '<br/>' + data.statusText;
+			
+			if (data.status) {
+				let _msg = data.status;
+				if (data.statusText)
+					_msg += '<br/>' + data.statusText;
+				self.opts.msgstr.innerHTML = _msg; 
+			} else
+				self.opts.msgstr.innerHTML = globalize.translate('NoConnectivity');
 			show('ssFailure', true);
+
+		}).finally(() => {
 			loading.hide();
-		});
+		});;
 	}
 
     function stopInterval() {

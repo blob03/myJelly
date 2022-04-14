@@ -63,7 +63,7 @@
 	"plugins": [
 		"playAccessValidation/plugin",
 		"myJelly/clockScreensaver/plugin",
-		"myJelly/weatherScreensaver/plugin",
+		"myJelly/weatherbotScreensaver/plugin",
 		"myJelly/backdropScreensaver/plugin",
 		"myJelly/blackoutScreensaver/plugin",
 		"experimentalWarnings/plugin",
