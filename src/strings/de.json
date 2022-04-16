@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Zeigt ein Bannerbild im oberen Bereich der Detailansicht.",
     "EnableDisplayMirroring": "Displayspiegelung",
     "EnableEnhancedNvdecDecoder": "Erweiterten NVDEC-Decoder einschalten",
+    "EnableEnhancedNvdecDecoderHelp": "Experimentelle NVDEC-Implementierung, nur aktiviere, falls es zu Dekodierungsfehlern kommt.",
     "EnableExternalVideoPlayers": "Externe Videoplayer",
     "EnableExternalVideoPlayersHelp": "Ein Menü für externe Videoplayer wird beim Starten der Videowiedergabe angezeigt.",
     "EnableFallbackFont": "Ausweichschriftarten aktivieren",

@@ -55,6 +55,10 @@ function getTextStyles(settings, preview) {
             list.push({ name: 'font-family', value: 'ACharmingFont' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
+		case 'Inconsolata':
+            list.push({ name: 'font-family', value: 'Inconsolata' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
 		case 'Yippy':
             list.push({ name: 'font-family', value: 'Yippy' });
             list.push({ name: 'font-variant', value: 'none' });
@@ -91,6 +95,10 @@ function getTextStyles(settings, preview) {
             list.push({ name: 'font-family', value: 'JACobbler' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
+		case 'JACobbler-Solid':
+            list.push({ name: 'font-family', value: 'JACobbler-Solid' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
 		case 'JRosalie':
             list.push({ name: 'font-family', value: 'JRosalie' });
             list.push({ name: 'font-variant', value: 'none' });
@@ -111,8 +119,20 @@ function getTextStyles(settings, preview) {
             list.push({ name: 'font-family', value: 'Impact' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
+		case 'Impact-Reversed':
+            list.push({ name: 'font-family', value: 'Impact-Reversed' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
 		case 'Quicksand':
             list.push({ name: 'font-family', value: 'Quicksand' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
+		case 'Quicksand-Bold':
+            list.push({ name: 'font-family', value: 'Quicksand-Bold' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
+		case 'Quicksand-Medium':
+            list.push({ name: 'font-family', value: 'Quicksand-Medium' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
 		case 'Orange':

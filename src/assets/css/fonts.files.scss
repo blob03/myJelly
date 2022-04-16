@@ -8,6 +8,14 @@
     src: url("/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf") format("truetype"); /* chrome firefox */
 }
 
+@font-face {font-family: "Quicksand-Bold";
+    src: url("/assets/fonts/Quicksand/static/Quicksand-Bold.ttf") format("truetype"); /* chrome firefox */
+}
+
+@font-face {font-family: "Quicksand-Medium";
+    src: url("/assets/fonts/Quicksand/static/Quicksand-Medium.ttf") format("truetype"); /* chrome firefox */
+}
+
 @font-face {font-family: "DSWeiss";
     src: url("/assets/fonts/DSWeiss/DSWeiss-GotischAlt.ttf") format("truetype"); /* chrome firefox */
 }
@@ -56,12 +64,24 @@
     src: url("/assets/fonts/Impact Label/Impact Label.ttf") format("truetype"); /* chrome firefox */
 }
 
+@font-face {font-family: "Impact-Reversed";
+    src: url("/assets/fonts/Impact Label/Impact Label Reversed.ttf") format("truetype"); /* chrome firefox */
+}
+
+@font-face {font-family: "Inconsolata";
+    src: url("/assets/fonts/Inconsolata/Inconsolata-VariableFont_wdth,wght.ttf") format("truetype"); /* chrome firefox */
+}
+
 @font-face {font-family: "JECasual";
     src: url("/assets/fonts/Janda Everyday Casual/JandaEverydayCasual.ttf") format("truetype"); /* chrome firefox */
 }
 
 @font-face {font-family: "JACobbler";
     src: url("/assets/fonts/Janda Apple Cobbler/JandaAppleCobbler.ttf") format("truetype"); /* chrome firefox */
+}
+
+@font-face {font-family: "JACobbler-Solid";
+    src: url("/assets/fonts/Janda Apple Cobbler/JandaAppleCobblerSolid.ttf") format("truetype"); /* chrome firefox */
 }
 
 @font-face {font-family: "JRosalie";

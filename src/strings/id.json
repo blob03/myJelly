@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Tampilkan gambar spanduk di bagian atas halaman detail item.",
     "EnableDisplayMirroring": "Tampilan mirroring",
     "EnableEnhancedNvdecDecoder": "Aktifkan dekoder NVDEC yang disempurnakan",
+    "EnableEnhancedNvdecDecoderHelp": "Ujicoba implementasi NVDEC, jangan aktifkan opsi ini kecuali mengalami masalah sewaktu decoding.",
     "EnableExternalVideoPlayers": "Pemutar video eksternal",
     "EnableExternalVideoPlayersHelp": "Menu pemutar eksternal akan ditampilkan saat memulai pemutaran video.",
     "EnableFallbackFont": "Aktifkan fallback fonts",
