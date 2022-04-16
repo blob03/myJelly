@@ -68,8 +68,16 @@
     src: url("/assets/fonts/Impact Label/Impact Label Reversed.ttf") format("truetype"); /* chrome firefox */
 }
 
+@font-face {font-family: "Inconsolata-Light";
+    src: url("/assets/fonts/Inconsolata/static/Inconsolata/Inconsolata-Light.ttf") format("truetype"); /* chrome firefox */
+}
+
 @font-face {font-family: "Inconsolata";
-    src: url("/assets/fonts/Inconsolata/Inconsolata-VariableFont_wdth,wght.ttf") format("truetype"); /* chrome firefox */
+    src: url("/assets/fonts/Inconsolata/static/Inconsolata/Inconsolata-Medium.ttf") format("truetype"); /* chrome firefox */
+}
+
+@font-face {font-family: "Inconsolata-Bold";
+    src: url("/assets/fonts/Inconsolata/static/Inconsolata/Inconsolata-Bold.ttf") format("truetype"); /* chrome firefox */
 }
 
 @font-face {font-family: "JECasual";

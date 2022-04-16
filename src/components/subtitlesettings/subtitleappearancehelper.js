@@ -59,6 +59,14 @@ function getTextStyles(settings, preview) {
             list.push({ name: 'font-family', value: 'Inconsolata' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
+		case 'Inconsolata-Light':
+            list.push({ name: 'font-family', value: 'Inconsolata-Light' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
+		case 'Inconsolata-Bold':
+            list.push({ name: 'font-family', value: 'Inconsolata-Bold' });
+            list.push({ name: 'font-variant', value: 'none' });
+            break;
 		case 'Yippy':
             list.push({ name: 'font-family', value: 'Yippy' });
             list.push({ name: 'font-variant', value: 'none' });
