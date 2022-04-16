@@ -1319,7 +1319,7 @@ option:not(:disabled),
     background: #282828;
     border: 0.07em solid rgb(0, 0, 0);
 	font-weight: 600;
-	padding: .5em .5em .5em .5em !important;
+	padding: .5em 1.9em .5em .5em !important;
 }
 
 .emby-select-tv-withcolor:focus,

@@ -1234,7 +1234,7 @@ option:not(:disabled),
 	background: #333539;
 	border: 0.05em solid rgb(61, 68, 73);
 	font-weight: 600;
-	padding: .5em .5em .5em .5em !important;
+	padding: .5em 1.9em .5em .5em !important;
 }
 
 .emby-select-withcolor:focus,

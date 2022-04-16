@@ -4,16 +4,16 @@
 	for any non profit project such as Jellyfin.
 */
 
-@font-face {font-family: "Quicksand";
-    src: url("/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf") format("truetype"); /* chrome firefox */
+@font-face {font-family: "Quicksand-Regular";
+    src: url("/assets/fonts/Quicksand/static/Quicksand-Regular.ttf") format("truetype"); /* chrome firefox */
 }
 
 @font-face {font-family: "Quicksand-Bold";
     src: url("/assets/fonts/Quicksand/static/Quicksand-Bold.ttf") format("truetype"); /* chrome firefox */
 }
 
-@font-face {font-family: "Quicksand-Medium";
-    src: url("/assets/fonts/Quicksand/static/Quicksand-Medium.ttf") format("truetype"); /* chrome firefox */
+@font-face {font-family: "Quicksand-Light";
+    src: url("/assets/fonts/Quicksand/static/Quicksand-Light.ttf") format("truetype"); /* chrome firefox */
 }
 
 @font-face {font-family: "DSWeiss";
@@ -72,8 +72,8 @@
     src: url("/assets/fonts/Inconsolata/static/Inconsolata/Inconsolata-Light.ttf") format("truetype"); /* chrome firefox */
 }
 
-@font-face {font-family: "Inconsolata";
-    src: url("/assets/fonts/Inconsolata/static/Inconsolata/Inconsolata-Medium.ttf") format("truetype"); /* chrome firefox */
+@font-face {font-family: "Inconsolata-Regular";
+    src: url("/assets/fonts/Inconsolata/static/Inconsolata/Inconsolata-Regular.ttf") format("truetype"); /* chrome firefox */
 }
 
 @font-face {font-family: "Inconsolata-Bold";

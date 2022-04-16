@@ -55,8 +55,8 @@ function getTextStyles(settings, preview) {
             list.push({ name: 'font-family', value: 'ACharmingFont' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
-		case 'Inconsolata':
-            list.push({ name: 'font-family', value: 'Inconsolata' });
+		case 'Inconsolata-Regular':
+            list.push({ name: 'font-family', value: 'Inconsolata-Regular' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
 		case 'Inconsolata-Light':
@@ -131,16 +131,16 @@ function getTextStyles(settings, preview) {
             list.push({ name: 'font-family', value: 'Impact-Reversed' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
-		case 'Quicksand':
-            list.push({ name: 'font-family', value: 'Quicksand' });
+		case 'Quicksand-Regular':
+            list.push({ name: 'font-family', value: 'Quicksand-Regular' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
 		case 'Quicksand-Bold':
             list.push({ name: 'font-family', value: 'Quicksand-Bold' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
-		case 'Quicksand-Medium':
-            list.push({ name: 'font-family', value: 'Quicksand-Medium' });
+		case 'Quicksand-Light':
+            list.push({ name: 'font-family', value: 'Quicksand-Light' });
             list.push({ name: 'font-variant', value: 'none' });
             break;
 		case 'Orange':
