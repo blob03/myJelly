@@ -29,21 +29,20 @@ export default function (view) {
 	}
 
     function renderPage(newCode, view) {
+		const btn = view.querySelector('#btnQuickConnectActivate');
+		const container = view.querySelector('.quickConnectSettingsContainer');
+		
 		if (newCode) {
-			// New code comes pre-activated.
-			view.querySelector('.quickConnectSettingsContainer').classList.remove('hide');
-			view.querySelector('#btnQuickConnectActivate').classList.add('hide');
+			// New code does not require activation.
+			btn.classList.add('hide');
+			container.classList.remove('hide');
 		} else {
-			view.querySelector('#btnQuickConnectActivate').removeEventListener("click", doActivation);
-			view.querySelector('#btnQuickConnectActivate').addEventListener('click', doActivation);
-			view.querySelector('#btnQuickConnectActivate').classList.remove('hide');
+			btn.removeEventListener("click", doActivation);
+			btn.addEventListener('click', doActivation);
+			btn.classList.remove('hide');
 			
 			ApiClient.getQuickConnect('Status').then((status) => {
-				const btn = view.querySelector('#btnQuickConnectActivate');
-				const container = view.querySelector('.quickConnectSettingsContainer');
-
-				// The activation button should only be visible when quick connect is unavailable (with the text replaced with an error) or when it is available (so it can be activated)
-				// The authorization container is only usable when quick connect is active, so it should be hidden otherwise
+				// The authorization container is only usable when quick connect is active, so it should be hidden otherwise.
 				container.style.display = 'none';
 				
 				// With legacy code, check whether or not we are in active state.
@@ -53,7 +52,7 @@ export default function (view) {
 					btn.classList.remove('button-submit');
 					btn.classList.add('button');
 				} else if (status === 'Active') {
-					view.querySelector('.quickConnectSettingsContainer').classList.remove('hide');
+					container.classList.remove('hide');
 					container.style.display = '';
 					btn.style.display = 'none';
 				}
