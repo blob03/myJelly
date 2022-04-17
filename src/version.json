@@ -1,15 +1,16 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-40",
+	"version": "10.7.7.1-41",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
 	"releaseNotes": {
-		"10.7.7.1-34": "\n\nFixed updates auto-check routine not reporting in some cases.\nTranslations synchronized with master.",
-		"10.7.7.1-35": "\n\nApplied patch 'nvdec-tips'.\nApplied patch 'string-to-boolean'.\nApplied patch 'move-util-files'.\nApplied patch 'remove-approuter-param'.\nApplied patch 'Move clientUtils and rename'.\nApplied patch 'Move string utils and migrate to typescript'.\nTranslations synchronized with master.",
-		"10.7.7.1-36": "\n\nApplied patch 'eslint-novoid'.\nTranslations synchronized with master.",
-		"10.7.7.1-37": "\n\nTranslations synchronized with master.\nWeatherbot (widget & SS) reports back when reaching the OpenWeather API servers takes more than a few seconds.\nSS Weatherbot update 1.2.\nApplied patch 'who-lints-the-linters'.",
-		"10.7.7.1-38": "\n\nTranslations synchronized with master.\nJanda Apple Cobbler Solid, Impact Label Reversed, Quicksand Medium, Quicksand Bold, Inconsolata now available as subtitles fonts.\nFixed minor layout issues in tab 'About'.",
-		"10.7.7.1-40": "Removed unused font files.\nFixed long labels of select elements glitching with themes 'Dark alt.', 'Light alt. Blue', 'Halloween'."
+		"10.7.7.1-34": "Fixed updates auto-check routine not reporting in some cases.\nTranslations synchronized with master.",
+		"10.7.7.1-35": "Applied patch 'nvdec-tips'.\nApplied patch 'string-to-boolean'.\nApplied patch 'move-util-files'.\nApplied patch 'remove-approuter-param'.\nApplied patch 'Move clientUtils and rename'.\nApplied patch 'Move string utils and migrate to typescript'.\nTranslations synchronized with master.",
+		"10.7.7.1-36": "Applied patch 'eslint-novoid'.\nTranslations synchronized with master.",
+		"10.7.7.1-37": "Translations synchronized with master.\nWeatherbot (widget & SS) reports back when reaching the OpenWeather API servers takes more than a few seconds.\nSS Weatherbot update 1.2.\nApplied patch 'who-lints-the-linters'.",
+		"10.7.7.1-38": "Translations synchronized with master.\nJanda Apple Cobbler Solid, Impact Label Reversed, Quicksand Medium, Quicksand Bold, Inconsolata now available as subtitles fonts.\nFixed minor layout issues in tab 'About'.",
+		"10.7.7.1-40": "Removed unused font files.\nFixed long labels of select elements glitching with themes 'Dark alt.', 'Light alt. Blue', 'Halloween'.",
+		"10.7.7.1-41": "Translations synchronized with master.\nHide unused QuickConnect Activation button when connecting 10.8.0+ servers."
 	}
 }

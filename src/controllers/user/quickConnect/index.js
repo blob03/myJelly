@@ -21,25 +21,23 @@ export default function (view) {
         });
 		
 		// Check if we are running the 10.8.0beta+ code before the call to renderPage().
-		isNewVersion().then( (ret) => {
-			if (ret === false) {
-				view.querySelector('#btnQuickConnectActivate').addEventListener('click', () => {
-					activate().then(() => {
-						renderPage(false, view);
-					});
-				});
-				renderPage(false, view);
-			} else {
-				renderPage(true, view);
-			}
-		});
+		isNewVersion().then( (ret) => { renderPage(ret, view); });
     });
+
+	function doActivation() {
+		activate().then(() => { renderPage(false, view); });
+	}
 
     function renderPage(newCode, view) {
 		if (newCode) {
 			// New code comes pre-activated.
 			view.querySelector('.quickConnectSettingsContainer').classList.remove('hide');
+			view.querySelector('#btnQuickConnectActivate').classList.add('hide');
 		} else {
+			view.querySelector('#btnQuickConnectActivate').removeEventListener("click", doActivation, true);
+			view.querySelector('#btnQuickConnectActivate').addEventListener('click', doActivation);
+			view.querySelector('#btnQuickConnectActivate').classList.remove('hide');
+			
 			ApiClient.getQuickConnect('Status').then((status) => {
 				const btn = view.querySelector('#btnQuickConnectActivate');
 				const container = view.querySelector('.quickConnectSettingsContainer');

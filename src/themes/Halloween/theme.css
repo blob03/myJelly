@@ -244,7 +244,7 @@ html {
 	color: #635c54;
 	font-weight: 600;
 	font-style: italic;
-	background-color: #d68a39;
+	background-color: rgba(242, 150, 31, 0.6);
 	border: 6px ridge rgb(229, 164, 81);
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
