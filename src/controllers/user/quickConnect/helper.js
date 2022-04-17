@@ -8,19 +8,19 @@ export function isNewVersion() {
 	return new Promise((resolve) => {
 		ApiClient.getQuickConnect('Status')
 			.then(avail => {
-				loading.hide();
 				resolve(false);
 			})
 			.catch(() => {
 				ApiClient.getQuickConnect('Enabled')
 					.then(status => {
-						loading.hide();
 						resolve(true);
 					})
 					.catch(() => {
-						loading.hide();
 						resolve(false);
-					});
+					})
+			})
+			.finally(() => {
+				loading.hide();
 			});
 	});
 }
@@ -30,7 +30,6 @@ export function isActive() {
 	return new Promise((resolve) => {
 		ApiClient.getQuickConnect('Status')
 			.then(status => {
-				loading.hide();
 				if (status === "Available" || status === "Active")
 					resolve(true);
 				resolve(false);
@@ -38,14 +37,15 @@ export function isActive() {
 			.catch(() => {
 				ApiClient.getQuickConnect('Enabled')
 					.then(status => {
-						loading.hide();
 						resolve(status);
 					})
 					.catch(() => {
 						console.debug('Failed to get Quick Connect status');
-						loading.hide();
 						resolve(false);
 					});
+			})
+			.finally(() => {
+				loading.hide();
 			});
 	});
 }
@@ -77,7 +77,7 @@ export const activate = () => {
         console.error('Error activating Quick Connect. Error:', e);
         Dashboard.alert({
             title: globalize.translate('HeaderError'),
-            message: globalize.translate('DefaultErrorMessage')
+            message: globalize.translate('QuickConnectActivationFail')
         });
 
         throw e;

@@ -34,7 +34,7 @@ export default function (view) {
 			view.querySelector('.quickConnectSettingsContainer').classList.remove('hide');
 			view.querySelector('#btnQuickConnectActivate').classList.add('hide');
 		} else {
-			view.querySelector('#btnQuickConnectActivate').removeEventListener("click", doActivation, true);
+			view.querySelector('#btnQuickConnectActivate').removeEventListener("click", doActivation);
 			view.querySelector('#btnQuickConnectActivate').addEventListener('click', doActivation);
 			view.querySelector('#btnQuickConnectActivate').classList.remove('hide');
 			

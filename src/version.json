@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-41",
+	"version": "10.7.7.1-42",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -11,6 +11,7 @@
 		"10.7.7.1-37": "Translations synchronized with master.\nWeatherbot (widget & SS) reports back when reaching the OpenWeather API servers takes more than a few seconds.\nSS Weatherbot update 1.2.\nApplied patch 'who-lints-the-linters'.",
 		"10.7.7.1-38": "Translations synchronized with master.\nJanda Apple Cobbler Solid, Impact Label Reversed, Quicksand Medium, Quicksand Bold, Inconsolata now available as subtitles fonts.\nFixed minor layout issues in tab 'About'.",
 		"10.7.7.1-40": "Removed unused font files.\nFixed long labels of select elements glitching with themes 'Dark alt.', 'Light alt. Blue', 'Halloween'.",
-		"10.7.7.1-41": "Translations synchronized with master.\nHide unused QuickConnect Activation button when connecting 10.8.0+ servers."
+		"10.7.7.1-41": "Translations synchronized with master.\nHide unused QuickConnect Activation button when connecting 10.8.0+ servers.",
+		"10.7.7.1-42": "Added missing Quick Connect translation key.\nQuickConnect Activation button now hidden by default.\nFixed missing closing div tag in Quick Connect HTML page.\nMade some clean up to Quick Connect helper code."
 	}
 }
