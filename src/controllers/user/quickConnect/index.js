@@ -1,6 +1,7 @@
 import { activate, authorize, isNewVersion, isActive } from './helper';
 import globalize from '../../../scripts/globalize';
 import toast from '../../../components/toast/toast';
+import loading from '../../../components/loading/loading';
 
 export default function (view) {
     view.addEventListener('viewshow', function () {
@@ -20,12 +21,12 @@ export default function (view) {
             e.preventDefault();
         });
 		
-		// Check if we are running the 10.8.0beta+ code before the call to renderPage().
+		// Check if server is running the 10.8.0beta+ code before doing the call to renderPage().
 		isNewVersion().then( (ret) => { renderPage(ret, view); });
     });
 
 	function doActivation() {
-		activate().then(() => { renderPage(false, view); });
+		activate().then(() => { renderPage(false, document); });
 	}
 
     function renderPage(newCode, view) {
@@ -33,7 +34,7 @@ export default function (view) {
 		const container = view.querySelector('.quickConnectSettingsContainer');
 		
 		if (newCode) {
-			// New code does not require activation.
+			// New code does not require an activation.
 			btn.classList.add('hide');
 			container.classList.remove('hide');
 		} else {
@@ -41,25 +42,28 @@ export default function (view) {
 			btn.addEventListener('click', doActivation);
 			btn.classList.remove('hide');
 			
+			loading.show();
 			ApiClient.getQuickConnect('Status').then((status) => {
-				// The authorization container is only usable when quick connect is active, so it should be hidden otherwise.
-				container.style.display = 'none';
+				// The authorization container is only usable once Quick Connect has been activated
+				// and should be kept hidden until then.
+				container.classList.add('hide');
 				
-				// With legacy code, check whether or not we are in active state.
+				// With legacy code, check whether or not QC has been activated.
 				if (status === 'Unavailable') {
 					btn.textContent = globalize.translate('QuickConnectNotAvailable');
 					btn.disabled = true;
 					btn.classList.remove('button-submit');
 					btn.classList.add('button');
 				} else if (status === 'Active') {
+					btn.classList.add('hide');
 					container.classList.remove('hide');
-					container.style.display = '';
-					btn.style.display = 'none';
 				}
 
 				return true;
 			}).catch((e) => {
 				throw e;
+			}).finally(() => {
+				loading.hide();
 			});
 		}
     }
