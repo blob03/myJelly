@@ -1,4 +1,4 @@
-import { activate, authorize, isNewVersion, isActive } from './helper';
+import { activate, authorize, isActive } from './helper';
 import globalize from '../../../scripts/globalize';
 import toast from '../../../components/toast/toast';
 import loading from '../../../components/loading/loading';
@@ -22,7 +22,10 @@ export default function (view) {
         });
 		
 		// Check if server is running the 10.8.0beta+ code before doing the call to renderPage().
-		isNewVersion().then( (ret) => { renderPage(ret, view); });
+		isActive().then( (ret) => { 
+			if (ret > 0)
+				renderPage(ret == 2? true: false, view); 
+		});
     });
 
 	function doActivation() {

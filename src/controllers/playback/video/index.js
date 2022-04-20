@@ -23,6 +23,7 @@ import shell from '../../../scripts/shell';
 import SubtitleSync from '../../../components/subtitlesync/subtitlesync';
 import { appRouter } from '../../../components/appRouter';
 import LibraryMenu from '../../../scripts/libraryMenu';
+import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components/backdrop/backdrop';
 
 /* eslint-disable indent */
 
@@ -1330,7 +1331,7 @@ import LibraryMenu from '../../../scripts/libraryMenu';
 				default:
 					userSettings.showWeatherBot(false);
 			}
-            appRouter.setTransparency('full');
+            setBackdropTransparency(TRANSPARENCY_LEVEL.Full);
         });
         view.addEventListener('viewshow', function () {
             try {

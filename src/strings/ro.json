@@ -252,6 +252,7 @@
     "EnableDetailsBannerHelp": "Afișați o imagine de bandou în partea de sus a paginii cu detalii ale articolului.",
     "EnableDisplayMirroring": "Afișează in oglinda",
     "EnableEnhancedNvdecDecoder": "Activați decodorul NVDEC îmbunătățit",
+    "EnableEnhancedNvdecDecoderHelp": "Implementare experimentală a NVDEC. Activați această opțiune doar dacă întâmpinați erori de decodare.",
     "EnableExternalVideoPlayers": "Playere video externe",
     "EnableExternalVideoPlayersHelp": "Un meniu al player-ului extern va fi afișat la începerea redării video.",
     "EnableFallbackFont": "Activați fonturile alternative",

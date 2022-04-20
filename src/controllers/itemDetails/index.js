@@ -1,5 +1,6 @@
 import { intervalToDuration } from 'date-fns';
 import escapeHtml from 'escape-html';
+import isEqual from 'lodash-es/isEqual';
 import { appHost } from '../../components/apphost';
 import loading from '../../components/loading/loading';
 import { appRouter } from '../../components/appRouter';
@@ -9,7 +10,7 @@ import * as userSettings from '../../scripts/settings/userSettings';
 import cardBuilder from '../../components/cardbuilder/cardBuilder';
 import datetime from '../../scripts/datetime';
 import mediaInfo from '../../components/mediainfo/mediainfo';
-import backdrop from '../../components/backdrop/backdrop';
+import { clearBackdrop, setBackdrops } from '../../components/backdrop/backdrop';
 import listView from '../../components/listview/listview';
 import itemContextMenu from '../../components/itemContextMenu';
 import itemHelper from '../../components/itemHelper';
@@ -517,9 +518,9 @@ function setTrailerButtonVisibility(page, item) {
 
 function renderBackdrop(item) {
     if (dom.getWindowSize().innerWidth >= 1000) {
-        backdrop.setBackdrops([item]);
+        setBackdrops([item]);
     } else {
-        backdrop.clearBackdrop();
+        clearBackdrop();
     }
 }
 
@@ -788,7 +789,7 @@ function renderDetailImage(elem, item, imageLoader) {
     imageLoader.lazyChildren(elem);
 
     // Avoid breaking the design by preventing focus of the poster using the keyboard.
-    elem.querySelector('button').tabIndex = -1;
+    elem.querySelector('a').tabIndex = -1;
 }
 
 function renderImage(page, item) {
@@ -1368,10 +1369,9 @@ function renderChildren(page, item) {
         const childrenItemsContainer = page.querySelector('.childrenItemsContainer');
 
         if (item.Type == 'MusicAlbum') {
-            const equalSet = (arr1, arr2) => arr1.every(x => arr2.indexOf(x) !== -1) && arr1.length === arr2.length;
             let showArtist = false;
             for (const track of result.Items) {
-                if (!equalSet(track.ArtistItems.map(x => x.Id), track.AlbumArtists.map(x => x.Id))) {
+                 if (!isEqual(track.ArtistItems.map(x => x.Id).sort(), track.AlbumArtists.map(x => x.Id).sort())) {
                     showArtist = true;
                     break;
                 }

@@ -3,45 +3,23 @@ import toast from '../../../components/toast/toast';
 import Dashboard from '../../../utils/dashboard';
 import loading from '../../../components/loading/loading';
 
-export function isNewVersion() {
-	loading.show();
-	return new Promise((resolve) => {
-		ApiClient.getQuickConnect('Status')
-			.then(avail => {
-				resolve(false);
-			})
-			.catch(() => {
-				ApiClient.getQuickConnect('Enabled')
-					.then(status => {
-						resolve(true);
-					})
-					.catch(() => {
-						resolve(false);
-					})
-			})
-			.finally(() => {
-				loading.hide();
-			});
-	});
-}
-
 export function isActive() {
 	loading.show();
 	return new Promise((resolve) => {
 		ApiClient.getQuickConnect('Status')
 			.then(status => {
 				if (status === "Available" || status === "Active")
-					resolve(true);
-				resolve(false);
+					resolve(1);
+				resolve(0);
 			})
 			.catch(() => {
 				ApiClient.getQuickConnect('Enabled')
 					.then(status => {
-						resolve(status);
+						resolve(2);
 					})
 					.catch(() => {
 						console.debug('Failed to get Quick Connect status');
-						resolve(false);
+						resolve(0);
 					});
 			})
 			.finally(() => {

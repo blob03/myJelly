@@ -555,7 +555,7 @@ export class UserSettings {
 	
 	/** Show or hide the Top bar clock **/
 	showClock(val) {
-		const _hdrclck = document.getElementsByClassName('headerClockActive')[0];
+		let _hdrclck = document.getElementsByClassName('headerClockActive')[0];
 		if (!_hdrclck) {
 			this.placeClock(0);
 			_hdrclck = document.getElementsByClassName('headerClockActive')[0];
