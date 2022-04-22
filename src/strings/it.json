@@ -251,6 +251,7 @@
     "EnableDetailsBannerHelp": "Mostra il banner nella parte superiore della pagina di dettaglio dell'elemento.",
     "EnableDisplayMirroring": "Visualizzazione remota",
     "EnableEnhancedNvdecDecoder": "Abilita l'enhanced NVDEC decoder",
+    "EnableEnhancedNvdecDecoderHelp": "Implementazione sperimentale NVDEC, da abilitare solo se esistono errori di decodifica.",
     "EnableExternalVideoPlayers": "Lettori video esterni",
     "EnableExternalVideoPlayersHelp": "Quando viene avviata la riproduzione video, verrà visualizzato un menu del riproduttore esterno .",
     "EnableFallbackFont": "Abilita i font di riserva",
