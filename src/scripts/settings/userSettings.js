@@ -429,10 +429,10 @@ export class UserSettings {
 			this.set('weatherbot', newval);
 			
 			/***
-				If weatherbot is disabled or enabled only for videos,
+				If weatherbot is disabled or enabled only for video,
 				clear any existing timer
-				hide the widget
-				return. 
+				then hide the widget
+				and return. 
 			***/
 			switch(newval) {
 				case 0:

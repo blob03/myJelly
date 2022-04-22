@@ -669,6 +669,10 @@ html {
 	color: #e88b13;
 }
 
+.cardOverlayButtonIcon.material-icons:hover  {
+	background-color: rgba(116, 46, 217, 0.4) !important;
+}
+
 .iconOsd > .material-icons,
 .osdMediaStatus > .material-icons,
 .imageEditor-buttons > * > .material-icons,
