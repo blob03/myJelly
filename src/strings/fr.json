@@ -537,6 +537,7 @@
     "Hide": "Cacher",
     "HideWatchedContentFromLatestMedia": "Masquer le contenu déjà vu dans 'Ajouts récents'",
     "Home": "Accueil",
+    "HomeVideosPhotos": "Vidéos et photos personnelles",
     "Horizontal": "Horizontal",
     "HttpsRequiresCert": "Pour activer les connexions sécurisées, il est demandé de fournir un certificat SSL vérifié comme ceux fournis par 'Let's Encrypt'. Fournir ce certificat ou désactiver les connexions sécurisées.",
     "Identify": "Identifier",

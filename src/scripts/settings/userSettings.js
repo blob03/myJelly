@@ -70,7 +70,7 @@ function hdrWeather() {
 	const url_params = '?appid=' + wapikey
 		+ '&lat=' + _lat + '&lon=' + _lon
 		+ '&units=' + (self.enableUSUnits()?'imperial':'metric') 
-		+ '&lang=' + self.dateTimeLocale();
+		+ '&lang=' + self.language();
 		
 	req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 	
@@ -81,6 +81,8 @@ function hdrWeather() {
 		let _dyn;
 		if (data.weather["0"].icon) {
 			self._hdrwth_icon.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
+			if (data.weather["0"].description)
+				self._hdrwth_icon.title = data.weather["0"].description;
 		} else
 			self._hdrwth_icon.src = "";
 		

@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-48",
+	"version": "10.7.7.1-49",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -18,6 +18,7 @@
 		"10.7.7.1-45": "Translations synchronized with master.\nFixed a 'Write to read-only var' bug in the clock widget code.\nApplied patch 'Migrate-NavigationDrawer-to-es6'.\nApplied patch 'remove-equality-funcs'.\nApplied patch 'buttons-arent-for-links'.\nApplied patch 'Fix underline in card images'.\nApplied patch 'refactor-transparency'.",
 		"10.7.7.1-46": "Fixed a bug introduced by patch 'buttons-arent-for-links' causing the client to break in TV mode.",
 		"10.7.7.1-47": "Applied patch 'mp2-support'.\nApplied patch 'history-router'.",
-		"10.7.7.1-48": "Translations synchronized with master.\nApplied patch 'fix-item-details-selector'.\nApplied patch 'home-videos'."
+		"10.7.7.1-48": "Translations synchronized with master.\nApplied patch 'fix-item-details-selector'.\nApplied patch 'home-videos'.",
+		"10.7.7.1-49": "Weatherbot (SS & widget) now sends configured language rather than 'datetime' locale.\nWeatherbot (widget only) makes plaintext description available through the weather icon's title.\nTranslations synchronized with master.\nThemes updated."
 	}
 }

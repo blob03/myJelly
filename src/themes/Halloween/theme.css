@@ -255,6 +255,14 @@ html {
 	color: #9f7019;
 }
 
+.emby-input:focus,
+.emby-textarea:focus {
+	border-color: rgb(253, 142, 0);	
+	outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
 .itemProgressBar {
 	height: .4em;
 }
@@ -755,11 +763,6 @@ html {
 	height: 4.5em;
 	transition: opacity .6s ease-out;
 	color: #fe9001;
-}
- 
-.emby-input:focus,
-.emby-textarea:focus {
-	border-color: rgb(253, 142, 0);	
 }
 
 .jstree-default .jstree-wholerow-clicked {

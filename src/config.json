@@ -4,25 +4,25 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "1.81",
+		"version": "1.82",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.0",
+		"version": "2.1",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "1.74",
+		"version": "1.75",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly"
 	}, {
 		"name": "WMC alt.",
-		"version": "1.35",
+		"version": "1.36",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"

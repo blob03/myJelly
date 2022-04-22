@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.2';
+	self.version = '1.21';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -59,7 +59,7 @@ export default function () {
 		}
 		const url_params = '?appid=' +  wapikey
 		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
-		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') + '&lang=' + self.opts.dateTimeLocale;
+		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') + '&lang=' + self.opts.language;
 		req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 		
 		loading.show();	
@@ -145,14 +145,11 @@ export default function () {
 	
 			if (TEST === true) {
 				self.hideOnMouse = false;
-				// Get currently selected Locale.
-				self.opts.dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
-				// If set to 'auto' then use the language.
-				if (self.opts.dateTimeLocale === "")
-					self.opts.dateTimeLocale = document.querySelector('.selectLanguage').value;
-				// If display language is also set to 'auto' then request the default value.
-				if (self.opts.dateTimeLocale === "")
-					self.opts.dateTimeLocale = globalize.getDefaultCulture();
+				// Get currently selected Language.
+				self.opts.language = document.querySelector('.selectLanguage').value;
+				// If display language is set to 'auto' then request the default value.
+				if (self.opts.language === "")
+					self.opts.language = globalize.getDefaultCulture();
 				// Get an API key from the form.
 				self.opts.apikey = document.querySelector('#inputApikey').value || "";
 				self.opts.USUnits = document.querySelector('#chkuseUSUnits').checked;
@@ -163,7 +160,7 @@ export default function () {
 				self.hideOnMouse = true;
 				// get the last saved API key.
 				self.opts.apikey = userSettings.weatherApiKey() || "";
-				self.opts.dateTimeLocale = globalize.getCurrentDateTimeLocale();
+				self.opts.language = globalize.getCurrentLocale();
 				self.opts.USUnits = userSettings.enableUSUnits() || false;
 				self.opts.lat = userSettings.getlatitude();
 				self.opts.lon = userSettings.getlongitude();

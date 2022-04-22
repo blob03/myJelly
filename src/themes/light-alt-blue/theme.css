@@ -500,6 +500,9 @@ option:not(:disabled),
 .emby-textarea:focus,
 .emby-select-withcolor:focus {
 	border-color: white;
+	outline: 0px !important;
+	-webkit-appearance: none;
+	box-shadow: none !important;
 }
 
 option:selected {

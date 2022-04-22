@@ -215,6 +215,14 @@ html {
   color: #b4b3b1;
 }
 
+.emby-input:focus,
+.emby-textarea:focus {
+	border-color: #ccc;
+	outline: 0px !important;
+	-webkit-appearance: none;
+	box-shadow: none !important;
+}
+
 .itemProgressBarForeground {
     background-color: #e2dec6;
 }
@@ -707,11 +715,6 @@ html {
 	background: linear-gradient(180deg,hsla(0, 9.1%, 2.2%, 0.55),hsla(0,0%,6%,0));
 	height: 6.5em;
 	transition: opacity .6s ease-out;
-}
-
-.emby-input:focus,
-.emby-textarea:focus {
-	border-color: #ccc;	
 }
 
 .jstree-default .jstree-wholerow-clicked {
