@@ -30,6 +30,7 @@
     "LabelChromecastVersion": "Chromecast Version:",
     "LabelDefaultView": "Default view:",
     "LabelDisplayFontSize": "Display font size:",
+    "LabelEmail": "Email address",
     "LabelJellyfinWeb": "Jellyfin-web:",
     "LabelLastModified": "Last modified:",
     "LabelLatitude": "Latitude:",

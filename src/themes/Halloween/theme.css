@@ -1440,3 +1440,8 @@ option:selected {
 	margin: .1rem .5rem .1rem .5rem !important;
 	border: 2px groove #684828 !important;
 }
+
+.headerWthTemp {
+	font-family: "Mystery";
+	font-size: 120% !important;
+}

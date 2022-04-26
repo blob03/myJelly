@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-49",
+	"version": "10.7.7.1-50",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -19,6 +19,7 @@
 		"10.7.7.1-46": "Fixed a bug introduced by patch 'buttons-arent-for-links' causing the client to break in TV mode.",
 		"10.7.7.1-47": "Applied patch 'mp2-support'.\nApplied patch 'history-router'.",
 		"10.7.7.1-48": "Translations synchronized with master.\nApplied patch 'fix-item-details-selector'.\nApplied patch 'home-videos'.",
-		"10.7.7.1-49": "Weatherbot (SS & widget) now sends configured language rather than 'datetime' locale.\nWeatherbot (widget only) makes plaintext description available through the weather icon's title.\nTranslations synchronized with master.\nThemes updated."
+		"10.7.7.1-49": "Weatherbot (SS & widget) now sends configured language rather than 'datetime' locale.\nWeatherbot (widget only) makes plaintext description available through the weather icon's title.\nTranslations synchronized with master.\nThemes updated.",
+		"10.7.7.1-50": "Translations synchronized with master.\nThemes 'Halloween' and 'Dark-alt' updated.\nFixed title of Email icon (tab 'About').\nApplied patch 'rm-deprecated-substr'.\nApplied patch 'moar-router-cleanup'.\nApplied patch 'master'."
 	}
 }

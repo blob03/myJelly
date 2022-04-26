@@ -1344,3 +1344,8 @@ select option:selected {
 	margin: .1rem .5rem .1rem .5rem !important;
 	border: 2px groove #363d43 !important;
 }
+
+.headerWthTemp {
+	font-family: "Shangai";
+	font-size: 120% !important;
+}

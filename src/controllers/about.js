@@ -55,11 +55,11 @@ class AboutTab {
 		if (browser.tv || layoutManager.tv) {
 			html += '<div> ' + globalize.translate('LabelAppRepositoryName') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.repository + '</span></div>';
 			html += '<br>';
-			html += '<div style="display:flex;align-items:center;justify-content: center;font-size: 80%;"><span class="aboutContent material-icons email" title="Favoris" style="color: #c1dede;font-size: 1.5rem;margin: 0 .5rem 0 0;"></span><br><span style="font-weight:400;" class="aboutcontent">' + appInfo.contact + '</span></div>';
+			html += '<div style="display:flex;align-items:center;justify-content: center;font-size: 80%;"><span class="aboutContent material-icons email" title="' + globalize.translate('LabelEmail') + '" style="color: #c1dede;font-size: 1.5rem;margin: 0 .5rem 0 0;"></span><br><span style="font-weight:400;" class="aboutcontent">' + appInfo.contact + '</span></div>';
 		} else {
 			html += '<div> ' + globalize.translate('LabelAppRepositoryName') + ' <span><a is="emby-linkbutton" style="font-weight:400;" rel="noopener noreferrer" class="aboutcontent button-link emby-button" target="_blank" href="' + appInfo.repository + '">' + appInfo.repository + '</a></span></div>';
 			html += '<br>';
-			html += '<div style="display:flex;align-items:center;justify-content: center;font-size: 80%;"><span class="aboutContent material-icons email" title="Favoris" style="color: #c1dede;font-size: 1.5rem;margin: 0 .5rem 0 0;"></span><br><span><a rel="noopener noreferrer" style="font-weight:400;" class="aboutcontent button-link emby-button" href="mailto:' + appInfo.contact + '">' + appInfo.contact + '</a></span></div>';
+			html += '<div style="display:flex;align-items:center;justify-content: center;font-size: 80%;"><span class="aboutContent material-icons email" title="' + globalize.translate('LabelEmail') + '" style="color: #c1dede;font-size: 1.5rem;margin: 0 .5rem 0 0;"></span><br><span><a rel="noopener noreferrer" style="font-weight:400;" class="aboutcontent button-link emby-button" href="mailto:' + appInfo.contact + '">' + appInfo.contact + '</a></span></div>';
 		}
 		html += '</div>';
 		html += '</div>';

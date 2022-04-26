@@ -149,7 +149,11 @@ function onAppReady() {
     if (browser.iOS) {
         import('../assets/css/ios.scss');
     }
-
+	
+	Events.on(appHost, 'resume', () => {
+        ServerConnections.currentApiClient()?.ensureWebSocket();
+    });
+	
     appRouter.start();
 
     if (!browser.tv && !browser.xboxOne && !browser.ps4) {
