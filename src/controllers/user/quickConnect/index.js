@@ -13,8 +13,9 @@ export default function (view) {
                 return;
             }
 
-            const code = codeElement.value;
-            authorize(code);
+            // Remove spaces from code
+            const normalizedCode = codeElement.value.replace(/\s/g, '');
+            authorize(normalizedCode);
         });
 
         view.querySelector('.quickConnectSettingsContainer').addEventListener('submit', (e) => {

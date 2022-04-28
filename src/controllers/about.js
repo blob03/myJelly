@@ -39,19 +39,35 @@ class AboutTab {
         this.view = view;
         this.params = params;
         this.sectionsContainer = view.querySelector('.sections');
-		this.rnote = appInfo.releaseNotes[appInfo.version];
 		
 		let html = '<div class="abouttab" style="display: flex !important;width: 100%;height: 10em;flex-direction: column;align-items: center;justify-content: space-around;margin: 6rem 0 0 0 !important;">';
 		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(0, 0, 0, 0.15);position: fixed;top: 20%;left: 0%;right: 0px;width: 30rem;">';
-		html += '<div><center><span style="font-weight: 400;font-size: 200%;font-family: quicksand;" class="aboutcontent">' + appInfo.name + '</span></center></div>';
-		html += '<div><center><span style="font-weight: 400;font-style: italic;font-family: quicksand;" class="aboutcontent">' + globalize.translate(appInfo.description) + '</span></center></div>';
+		html += '<div><center><span style="font-weight: 400;font-size: 200%;font-family: Quicksand-Regular;" class="aboutcontent">' + appInfo.name + '</span></center></div>';
+		html += '<div><center><span style="font-weight: 400;font-style: italic;font-family: Quicksand-Regular;" class="aboutcontent">' + globalize.translate(appInfo.description) + '</span></center></div>';
 		html += '<br>';
 		html += '<div> ' + globalize.translate('LabelAppHost') + ' <span style="font-weight:400;" class="aboutcontent">' + appHost.deviceName() + ' - ' + getHostVersion(browser)  + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelAppVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
-		if (this.rnote) {
-			html += '<div><textarea readonly is="emby-textarea" id="txtReleaseNotes" label="' + globalize.translate('LabelReleaseNotes') + '" class="textarea-mono emby-textarea" style="box-sizing: border-box;width: 100%;padding: .3rem .5rem .3rem .5rem;resize: vertical;font-size: .85rem;font-family: Inconsolata-Light">' + this.rnote + '</textarea></div>';			
-		}
 		html += '<div> ' + globalize.translate('LabelUpdate') + ' <span style="font-weight:400;" id="aboutupdate" class="aboutcontent">' + '</span></div>';
+		
+		html += '<div class="selectContainer" style="width: 100%;height: auto;margin-bottom: 0.5rem !important;">';
+		html += '<label class="selectLabel" for="selectReleaseNotes">' + globalize.translate('LabelReleaseNotes') + '</label>';
+		html += '<select is="emby-select" id="selectReleaseNotes" class="emby-select-withcolor emby-select">';
+		
+		let vers = Object.keys(appInfo.releaseNotes);
+		vers.reverse().forEach(_ver => {
+			html += '<option';
+			html += (_ver === appInfo.version)? ' selected ': ' ';
+			html += 'value="' + _ver + '">' + _ver + '</option>';
+		});
+		
+		html += '</select>';
+		html += '<div class="selectArrowContainer">';
+		html += '<div style="visibility:hidden;display:none;">0</div>';
+		html += '<span class="selectArrow material-icons keyboard_arrow_down"></span>';
+		html += '</div>';
+		html += '</div>';
+		html += '<div><textarea readonly is="emby-textarea" id="txtRNotes" class="textarea-mono emby-textarea" style="box-sizing: border-box;width: 100%;padding: .3rem .5rem .3rem .5rem;resize: vertical;font-size: .85rem;font-family: Inconsolata-Light;"></textarea></div>';			
+		
 		if (browser.tv || layoutManager.tv) {
 			html += '<div> ' + globalize.translate('LabelAppRepositoryName') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.repository + '</span></div>';
 			html += '<br>';
@@ -64,12 +80,24 @@ class AboutTab {
 		html += '</div>';
 		html += '</div>';
 		this.sectionsContainer.innerHTML = html;
-		const txtarea = this.sectionsContainer.querySelector('#txtReleaseNotes');
-		if (txtarea) {			
-			const rnlines = this.rnote.split(/\r\n|\r|\n/).length + 1;
-			txtarea.rows = rnlines;	
-		}
+		this.vers = view.querySelector('#selectReleaseNotes');
 		this.au = view.querySelector('#aboutupdate');
+		this.releaseNotes = appInfo.releaseNotes;
+		
+		const selectRnotes = this.sectionsContainer.querySelector('#selectReleaseNotes');
+		const self = this;
+		
+		selectRnotes.addEventListener('change', function(e) { 
+			let _version = e.target.value;
+			let _txtarea = self.view.querySelector('#txtRNotes');
+			if (_txtarea && self.releaseNotes[_version]) {
+				_txtarea.rows = self.releaseNotes[_version].split(/\r\n|\r|\n/).length + 1;			
+				_txtarea.value = self.releaseNotes[_version];
+			}
+		});
+		
+		let event_change = new Event('change');
+		selectRnotes.dispatchEvent(event_change);
     }
 	
 	onResume(options) {
@@ -97,7 +125,7 @@ class AboutTab {
 		//const url_cacheBuster = '?_=' + Date.now().toString();
 		const url_cacheBuster = '';
 		req.url = url_proto_SSL + url_base + url_cacheBuster; 
-		if (!this.au)
+		if (!this.au || !this.vers)
 			return;
 		this.au.innerHTML = globalize.translate('LabelUpdateSearching');
 		
@@ -106,14 +134,26 @@ class AboutTab {
 		loading.show();	
 		
 		ajax(req).then(function (data) {
-			if (appInfo.version >= data.version) {
-				self.au.style.fontWeight = "400";
-				self.au.innerHTML = globalize.translate('LabelUpdateOK');
-			} else {
+			if (data.version > appInfo.version) {
 				self.au.style.fontWeight = "600";
 				self.au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
+				self.releaseNotes = data.releaseNotes;
+				let _nhist = '';
+				let _notes = Object.keys(data.releaseNotes);
+				_notes.reverse().forEach(_ver => {
+					_nhist += '<option';
+					_nhist += (_ver === data.version)? ' selected ': ' ';
+					_nhist += 'value="' + _ver + '">' + _ver + '</option>';
+				});
+				self.vers.innerHTML = _nhist;
+				let echange = new Event('change');
+				self.vers.dispatchEvent(echange);
+			} else {
+				self.au.style.fontWeight = "400";
+				self.au.innerHTML = globalize.translate('LabelUpdateOK');
 			}
 		}).catch(function (data) {
+			console.warn(data);
 			self.au.style.fontWeight = "600";
 			self.au.innerHTML = globalize.translate('LabelUpdateERR');
 		}).finally(() => {

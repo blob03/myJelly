@@ -1271,7 +1271,7 @@
     "OptionHlsSegmentedSubtitles": "Subtitrare segmentată HLS",
     "OptionIgnoreTranscodeByteRangeRequests": "Ignorați solicitările pentru transcodarea intervalului de octeți",
     "OptionIgnoreTranscodeByteRangeRequestsHelp": "Aceste solicitări vor fi respectate, dar vor ignora antetul intervalului de octeți.",
-    "OptionImdbRating": "Rating IMDb",
+    "OptionImdbRating": "Evaluare IMDb",
     "OptionIsHD": "HD",
     "OptionIsSD": "SD",
     "OptionLikes": "Like-uri",

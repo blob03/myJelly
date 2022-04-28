@@ -74,7 +74,12 @@ function hdrWeather() {
 		
 	req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 	
-	let _contimeout = setTimeout(() => {self._hdrwth_hum.innerHTML = globalize.translate('Connecting');}, 3000);
+	let _contimeout = setTimeout(() => {
+		self._hdrwth_icon.src = "";
+		self._hdrwth_temp.innerHTML = "";
+		self._hdrwth_wind.innerHTML = "";
+		self._hdrwth_hum.innerHTML = globalize.translate('Connecting');
+	}, 3000);
 	
 	ajax(req).then(function (data) {
 		clearInterval(_contimeout);
