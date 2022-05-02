@@ -70,7 +70,7 @@ function hdrWeather() {
 	const url_params = '?appid=' + wapikey
 		+ '&lat=' + _lat + '&lon=' + _lon
 		+ '&units=' + (self.enableUSUnits()?'imperial':'metric') 
-		+ '&lang=' + self.language();
+		+ '&lang=' + self.convertCountryCode(self.language());
 		
 	req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 	
@@ -152,6 +152,46 @@ export class UserSettings {
 		this._hdrwth_wind;
 		this._hdrwth_hum;
     }
+	
+	/**
+     * Convert country codes between jellyfin and the OpenWeather API.
+     */
+	convertCountryCode(code) {
+		let ret = code || 'en';
+		
+		switch(ret) {
+			case 'nb':
+			case 'nn':
+				ret = 'no';
+				break;
+			case 'fr-CA':
+				ret = 'fr';
+				break;
+			case 'en-US':
+			case 'en-GB':
+				ret = 'en';
+				break;
+			case 'es-419':
+			case 'es-MX':
+			case 'es-AR':
+			case 'es-DO':
+				ret = 'es';
+				break;
+			case 'pt-PT':
+				ret = 'pt';
+				break;
+			case 'pt-BR':
+				ret = 'pt_br';
+				break;
+			case 'zh-TW':
+				ret = 'zh_tw';
+				break;
+			case 'zh-CN':
+				ret = 'zh_cn';
+				break;
+		}
+		return ret;
+	}
 	
     /**
      * Bind UserSettings instance to user.
@@ -1183,6 +1223,7 @@ export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOve
 export const enableSetUsingLastTracks = currentSettings.enableSetUsingLastTracks.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
+export const convertCountryCode = currentSettings.convertCountryCode.bind(currentSettings);
 export const getlatitude = currentSettings.getlatitude.bind(currentSettings);
 export const getlongitude = currentSettings.getlongitude.bind(currentSettings);
 export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);

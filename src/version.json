@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-51",
+	"version": "10.7.7.1-52",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -21,6 +21,7 @@
 		"10.7.7.1-48": "Translations synchronized with master.\nApplied patch 'fix-item-details-selector'.\nApplied patch 'home-videos'.",
 		"10.7.7.1-49": "Weatherbot (SS & widget) now sends configured language rather than 'datetime' locale.\nWeatherbot (widget only) makes plaintext description available through the weather icon's title.\nTranslations synchronized with master.\nThemes updated.",
 		"10.7.7.1-50": "Translations synchronized with master.\nThemes 'Halloween' and 'Dark-alt' updated.\nFixed title of Email icon (tab 'About').\nApplied patch 'rm-deprecated-substr'.\nApplied patch 'moar-router-cleanup'.\nApplied patch 'master'.",
-		"10.7.7.1-51": "Clear Weatherbot's pannel before printing a status.\nAllow to browse past and latest release notes in tab 'About'.\nTranslations synchronized with master.\nFixed misspelled font family 'Quicksand-Regular' in tab 'About'.\nApplied patch 'qc-text-input'.\nApplied patch 'fix-repositories-xss'.\nApplied patch 'fix-sd-filter-backport'."
+		"10.7.7.1-51": "Clear Weatherbot's pannel before printing a status.\nAllow to browse past and latest release notes in tab 'About'.\nTranslations synchronized with master.\nFixed misspelled font family 'Quicksand-Regular' in tab 'About'.\nApplied patch 'qc-text-input'.\nApplied patch 'fix-repositories-xss'.\nApplied patch 'fix-sd-filter-backport'.",
+		"10.7.7.1-52": "Enhanced conversion of country codes between Jellyfin and the OpenWeather API.\nTranslations synchronized with master."
 	}
 }

@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.21';
+	self.version = '1.22';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -59,7 +59,8 @@ export default function () {
 		}
 		const url_params = '?appid=' +  wapikey
 		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
-		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') + '&lang=' + self.opts.language;
+		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') 
+		+ '&lang=' + userSettings.convertCountryCode(self.opts.language);
 		req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
 		
 		loading.show();	
