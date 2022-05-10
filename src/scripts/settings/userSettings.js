@@ -236,22 +236,21 @@ export class UserSettings {
      * @param {mixed} value - Value of setting.
      * @param {boolean} enableOnServer - Flag to save preferences on server.
      */
-    set(name, value, enableOnServer) {
+	set(name, value, enableOnServer) {
         const userId = this.currentUserId;
-		const currentValue = this.get(name);
-		const val = value.toString();
-		
-		if (this.displayPrefs) {
-			this.displayPrefs.CustomPrefs[name] = val;
-			if (enableOnServer === true) 
-				saveServerPreferences(this);
-		} else
-			appSettings.set(name, val, userId);
-		
-		if (currentValue !== val) 
-				Events.trigger(this, 'change', [name]);
-			
-        return true;
+        const currentValue = this.get(name, enableOnServer);
+        const result = appSettings.set(name, value, userId);
+
+        if (enableOnServer !== false && this.displayPrefs) {
+            this.displayPrefs.CustomPrefs[name] = value == null ? value : value.toString();
+            saveServerPreferences(this);
+        }
+
+        if (currentValue !== value) {
+            Events.trigger(this, 'change', [name]);
+        }
+
+        return result;
     }
 	
 	/**
@@ -270,20 +269,13 @@ export class UserSettings {
      * @param {boolean} enableOnServer - Flag to return preferences from server (cached).
      * @return {string} Value of setting or ''.
      */
-    get(name, enableOnServer) {
+	get(name, enableOnServer) {
         const userId = this.currentUserId;
-		const apiClient = this.currentApiClient;
-		
-		if (this.displayPrefs) {
-			if (enableOnServer === true) {
-				// Fetch all user preferences directly from the server and return the one requested.
-				const savedPreferences = apiClient.getDisplayPreferences('usersettings', userId, 'emby');
-				return savedPreferences[name] || '';
-			}
-			return this.displayPrefs.CustomPrefs[name] || '';
-		}
-		
-		return appSettings.get(name, userId) || '';
+        if (enableOnServer !== false && this.displayPrefs) {
+            return this.displayPrefs.CustomPrefs[name];
+        }
+
+        return appSettings.get(name, userId);
     }
 
     /**
@@ -327,7 +319,7 @@ export class UserSettings {
 
         return toBoolean(this.get('preferFmp4HlsContainer', false), false);
     }
-
+	
     /**
      * Get or set 'Cinema Mode' state.
      * @param {boolean|undefined} val - Flag to enable 'Cinema Mode' or undefined.

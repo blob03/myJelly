@@ -31,6 +31,14 @@ class AppSettings {
 
         return toBoolean(this.get('enableGamepad'), false);
     }
+	
+	enableAutosearch(val) {
+		if (val !== undefined) {
+			return this.set('autoSearch', val.toString());
+        }
+		
+		return toBoolean(this.get('autoSearch'), true);
+	}
 
     enableSystemExternalPlayers(val) {
         if (val !== undefined) {

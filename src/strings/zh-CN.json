@@ -537,6 +537,7 @@
     "Hide": "隐藏",
     "HideWatchedContentFromLatestMedia": "隐藏来自“最新媒体”的观看内容",
     "Home": "首页",
+    "HomeVideosPhotos": "主页视频及照片",
     "Horizontal": "横向",
     "HttpsRequiresCert": "要启用安全连接, 您需要提供一个受信任的 SSL 证书, 如 \"Let's Encrypt\"。请提供证书或禁用安全连接。",
     "Identify": "识别",

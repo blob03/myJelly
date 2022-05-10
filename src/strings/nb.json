@@ -1364,7 +1364,7 @@
     "PreferEmbeddedTitlesOverFileNamesHelp": "Bestem standard visningstittel når det ikke er noen metadata tilgjengelig lokalt eller fra internet.",
     "PreferFmp4HlsContainer": "Foretrekk fMP4-HLS mediabeholder",
     "PreferFmp4HlsContainerHelp": "Foretrekk bruk av fMP4 som standard mediabeholder for HLS, noe som gjør det mulig å direktestrømme HEVC-innhold til støttede enheter.",
-    "PreferSystemNativeHwDecoder": "Foretrekk operativsystemets egne DXVA eller VA-API maskinvare-dekodere.",
+    "PreferSystemNativeHwDecoder": "Foretrekk operativsystemets egne DXVA eller VA-API maskinvare-dekodere",
     "Premiere": "Premiere",
     "Premieres": "Premierer",
     "Preview": "Forhåndsvis",

@@ -51,6 +51,7 @@
     "LabelUpdateNOK": "Version {0} is available.",
     "LabelUpdateOK": "myJelly is up-to-date.",
     "LabelUpdateSearching": "Searching...",
+    "LabelUpdatesAutoCheck": "Automatic lookup",
     "LabelWeatherApiKey": "OpenWeather API key:",
     "LabelmyJelly": "myJelly:",
     "LockHeader": "Lock the menu bar",

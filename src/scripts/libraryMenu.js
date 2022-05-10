@@ -67,11 +67,11 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
         html += '<button is="paper-icon-button-light" class="headerSyncButton syncButton headerButton headerButtonRight hide"><span class="material-icons groups"></span></button>';
         html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
         html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
-        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerSearchButton hide"><span class="material-icons search"></span></button>';
+        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
 		
 		// Extra feature thought for the TV layout.
 		// That one locks the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonRight headerLockButton hide"><span id="lock" class="material-icons lock_open"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		/* Added: casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;">';
@@ -220,14 +220,17 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 			
 			if (layoutManager.tv && !browser.mobile) {	
 				headerLockButton.classList.remove('hide');
-				if (appSettings.get('lockHeader', user.localUser.Id) === 'true') {
-					skinHeader.classList.add('locked');
-					document.getElementById("lock").classList.remove('lock_open');
-					document.getElementById("lock").classList.add('lock');
-				} else {
-					skinHeader.classList.remove('locked');
-					document.getElementById("lock").classList.remove('lock');
-					document.getElementById("lock").classList.add('lock_open');
+				const lockIcon = document.getElementById("lock");
+				if (lockIcon) {
+					if (appSettings.get('lockHeader', user.localUser.Id) === 'true') {
+						skinHeader.classList.add('locked');
+						lockIcon.classList.remove('lock_open');
+						lockIcon.classList.add('lock');
+					} else {
+						skinHeader.classList.remove('locked');
+						lockIcon.classList.remove('lock');
+						lockIcon.classList.add('lock_open');
+					}
 				}
 			} else 
 				headerLockButton.classList.add('hide');
@@ -282,19 +285,22 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 	}
 	
 	function doLock() {
-		if (skinHeader.classList.contains('locked')) {
-			// remove feature
-			skinHeader.classList.remove('locked');
-			// update icon
-			document.getElementById("lock").classList.remove('lock');
-			document.getElementById("lock").classList.add('lock_open');
-			// make new setting persistent
-			appSettings.set('lockHeader', 'false', currentUser.localUser.Id);
-		} else {
-			skinHeader.classList.add('locked');
-			document.getElementById("lock").classList.remove('lock_open');
-			document.getElementById("lock").classList.add('lock');
-			appSettings.set('lockHeader', 'true', currentUser.localUser.Id);
+		const lockIcon = document.getElementById("lock");
+		if (lockIcon) {
+			if (skinHeader.classList.contains('locked')) {
+				// remove feature
+				skinHeader.classList.remove('locked');
+				// update icon
+				lockIcon.classList.remove('lock');
+				lockIcon.classList.add('lock_open');
+				// make new setting persistent
+				appSettings.set('lockHeader', 'false', currentUser.localUser.Id);
+			} else {
+				skinHeader.classList.add('locked');
+				lockIcon.classList.remove('lock_open');
+				lockIcon.classList.add('lock');
+				appSettings.set('lockHeader', 'true', currentUser.localUser.Id);
+			}
 		}
 	}
 

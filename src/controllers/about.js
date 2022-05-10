@@ -1,17 +1,13 @@
-import { appRouter } from '../components/appRouter';
-import cardBuilder from '../components/cardbuilder/cardBuilder';
-import dom from '../scripts/dom';
 import globalize from '../scripts/globalize';
 import { appHost } from '../components/apphost';
 import layoutManager from '../components/layoutManager';
 import { ajax } from '../components/fetchhelper';
 import loading from '../components/loading/loading';
 import browser from '../scripts/browser';
-import focusManager from '../components/focusManager';
 import '../elements/emby-itemscontainer/emby-itemscontainer';
 import '../elements/emby-scroller/emby-scroller';
 import ServerConnections from '../components/ServerConnections';
-import { pageClassOn } from '../scripts/clientUtils';
+import appSettings from '../scripts/settings/appSettings';
 import appInfo from '../version.json';
 
 function getHostVersion(browser) {
@@ -34,11 +30,14 @@ function getHostVersion(browser) {
 }
 
 class AboutTab {
+	
     constructor(view, params) {
 		this._check = false;
         this.view = view;
         this.params = params;
         this.sectionsContainer = view.querySelector('.sections');
+		this.currentUser = '';
+		const self = this;
 		
 		let html = '<div class="abouttab" style="display: flex !important;width: 100%;height: 10em;flex-direction: column;align-items: center;justify-content: space-around;margin: 6rem 0 0 0 !important;">';
 		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(0, 0, 0, 0.15);position: fixed;top: 20%;left: 0%;right: 0px;width: 30rem;">';
@@ -47,20 +46,19 @@ class AboutTab {
 		html += '<br>';
 		html += '<div> ' + globalize.translate('LabelAppHost') + ' <span style="font-weight:400;" class="aboutcontent">' + appHost.deviceName() + ' - ' + getHostVersion(browser)  + '</span></div>';
 		html += '<div> ' + globalize.translate('LabelAppVersion') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.version + '</span></div>';
-		html += '<div> ' + globalize.translate('LabelUpdate') + ' <span style="font-weight:400;" id="aboutupdate" class="aboutcontent">' + '</span></div>';
+		
+		html += '<div> ';
+		html += '<button type="button" is="emby-button" class="emby-button headerButton autosearchButton" style="padding: 0;margin: 0;background: none;">';
+		html += '<span id="autosearch" class="aboutContent material-icons search" title="';
+		html += globalize.translate('LabelUpdatesAutoCheck') + '" style="color: #c1dede;font-size: 1.5rem;margin: 0 .5rem 0 0;"></span></button>';
+		html += globalize.translate('LabelUpdate') + ' <span style="font-weight:400;" id="aboutupdate" class="aboutcontent"></span>';
+		html += '</div> ';
 		
 		html += '<div class="selectContainer" style="width: 100%;height: auto;margin-bottom: 0.5rem !important;">';
 		html += '<label class="selectLabel" for="selectReleaseNotes">' + globalize.translate('LabelReleaseNotes') + '</label>';
 		html += '<select is="emby-select" id="selectReleaseNotes" class="emby-select-withcolor emby-select">';
-		
-		let vers = Object.keys(appInfo.releaseNotes);
-		vers.reverse().forEach(_ver => {
-			html += '<option';
-			html += (_ver === appInfo.version)? ' selected ': ' ';
-			html += 'value="' + _ver + '">' + _ver + '</option>';
-		});
-		
 		html += '</select>';
+		
 		html += '<div class="selectArrowContainer">';
 		html += '<div style="visibility:hidden;display:none;">0</div>';
 		html += '<span class="selectArrow material-icons keyboard_arrow_down"></span>';
@@ -80,31 +78,91 @@ class AboutTab {
 		html += '</div>';
 		html += '</div>';
 		this.sectionsContainer.innerHTML = html;
-		this.vers = view.querySelector('#selectReleaseNotes');
-		this.au = view.querySelector('#aboutupdate');
-		this.releaseNotes = appInfo.releaseNotes;
 		
-		const selectRnotes = this.sectionsContainer.querySelector('#selectReleaseNotes');
-		const self = this;
-		
-		selectRnotes.addEventListener('change', function(e) { 
-			let _version = e.target.value;
-			let _txtarea = self.view.querySelector('#txtRNotes');
-			if (_txtarea && self.releaseNotes[_version]) {
-				_txtarea.rows = self.releaseNotes[_version].split(/\r\n|\r|\n/).length + 1;			
-				_txtarea.value = self.releaseNotes[_version];
+		const currentApiClient = ServerConnections.getLocalApiClient();
+		ServerConnections.user(currentApiClient).then(function (user) {
+            self.currentUser = user;
+			self.au = self.sectionsContainer.querySelector('#aboutupdate');
+			self.releaseNotes = appInfo.releaseNotes;
+			const selectRnotes = self.sectionsContainer.querySelector('#selectReleaseNotes');
+			self.vers = selectRnotes;
+			
+			self.updateReleaseNotes(appInfo);
+			
+			let headerAutosearchButton = self.sectionsContainer.querySelector('.autosearchButton');
+			if (headerAutosearchButton) {
+				self.refreshAutosearch();
+				headerAutosearchButton.addEventListener('click', self.switchAutosearch.bind(self));
 			}
+			
+			selectRnotes.addEventListener('change', function(e) { 
+				let _version = e.target.value;
+				let _txtarea = self.view.querySelector('#txtRNotes');
+				if (_txtarea && self.releaseNotes[_version]) {
+					_txtarea.rows = self.releaseNotes[_version].split(/\r\n|\r|\n/).length + 1;			
+					_txtarea.value = self.releaseNotes[_version];
+				}
+			});
+			
+			let event_change = new Event('change');
+			selectRnotes.dispatchEvent(event_change);
 		});
-		
-		let event_change = new Event('change');
-		selectRnotes.dispatchEvent(event_change);
     }
+
+	switchAutosearch() {
+		const autosearchIcon = document.getElementById("autosearch");
+		if (autosearchIcon) {
+			if (appSettings.enableAutosearch() === false) {
+				autosearchIcon.classList.remove('search_off');
+				autosearchIcon.classList.add('search');
+				appSettings.enableAutosearch(true);
+				this.checkUpdates();
+			} else {
+				if (this._contimeout)
+					clearInterval(this._contimeout);
+				this.au.innerHTML = '';
+				autosearchIcon.classList.remove('search');
+				autosearchIcon.classList.add('search_off');
+				appSettings.enableAutosearch(false);
+				this.updateReleaseNotes(appInfo);
+			}
+		}					
+	}
+	
+	updateReleaseNotes(src) {
+		let _html = '';
+		let _releases = Object.keys(src.releaseNotes);
+		_releases.reverse().forEach(_version => {
+			_html += '<option';
+			_html += (_version === src.version)? ' selected ': ' ';
+			_html += 'value="' + _version + '">' + _version + '</option>';
+		});
+		this.vers.innerHTML = _html;
+	}
+
+	refreshAutosearch() {
+		const autosearchIcon = document.getElementById("autosearch");
+		if (autosearchIcon) {
+			if (appSettings.enableAutosearch() === false) {
+				autosearchIcon.classList.remove('search');
+				autosearchIcon.classList.add('search_off');
+			} else {
+				autosearchIcon.classList.remove('search_off');
+				autosearchIcon.classList.add('search');
+			}
+		}
+	}
 	
 	onResume(options) {
-		if (this._busy === true)
-			loading.show();	
-		else
-			this.checkUpdates();
+		const currentApiClient = ServerConnections.getLocalApiClient();
+		const self = this;
+		ServerConnections.user(currentApiClient).then(function (user) {
+			self.currentUser = user;			
+			if (appSettings.enableAutosearch() === false)
+				self.au.innerHTML = '';
+			else
+				self.checkUpdates();
+		});
 	}
 	
 	onPause() {
@@ -127,35 +185,37 @@ class AboutTab {
 		req.url = url_proto_SSL + url_base + url_cacheBuster; 
 		if (!this.au || !this.vers)
 			return;
-		this.au.innerHTML = globalize.translate('LabelUpdateSearching');
 		
+		loading.show();	
+		if (this._busy === true)
+			return;
 		this._busy = true;
 		const self = this;
-		loading.show();	
+		this._contimeout = setTimeout(() => {
+			self.au.innerHTML = globalize.translate('LabelUpdateSearching');}, 3000);
 		
 		ajax(req).then(function (data) {
-			if (data.version > appInfo.version) {
-				self.au.style.fontWeight = "600";
-				self.au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
-				self.releaseNotes = data.releaseNotes;
-				let _nhist = '';
-				let _notes = Object.keys(data.releaseNotes);
-				_notes.reverse().forEach(_ver => {
-					_nhist += '<option';
-					_nhist += (_ver === data.version)? ' selected ': ' ';
-					_nhist += 'value="' + _ver + '">' + _ver + '</option>';
-				});
-				self.vers.innerHTML = _nhist;
-				let echange = new Event('change');
-				self.vers.dispatchEvent(echange);
-			} else {
-				self.au.style.fontWeight = "400";
-				self.au.innerHTML = globalize.translate('LabelUpdateOK');
+			clearInterval(self._contimeout);
+			if (appSettings.enableAutosearch() !== false) {
+				if (data.version > appInfo.version) {
+					self.au.style.fontWeight = "600";
+					self.au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
+					self.releaseNotes = data.releaseNotes;
+					self.updateReleaseNotes(data);
+					let echange = new Event('change');
+					self.vers.dispatchEvent(echange);
+				} else {
+					self.au.style.fontWeight = "400";
+					self.au.innerHTML = globalize.translate('LabelUpdateOK');
+				}
 			}
 		}).catch(function (data) {
-			console.warn(data);
-			self.au.style.fontWeight = "600";
-			self.au.innerHTML = globalize.translate('LabelUpdateERR');
+			clearInterval(self._contimeout);
+			if (appSettings.enableAutosearch() !== false) {
+				console.warn(data);
+				self.au.style.fontWeight = "600";
+				self.au.innerHTML = globalize.translate('LabelUpdateERR');
+			}
 		}).finally(() => {
 			self._busy = false;
 			loading.hide();
