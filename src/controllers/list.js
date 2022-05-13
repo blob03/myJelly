@@ -540,6 +540,7 @@ class ItemsView {
 
             let posterOptions = {
                 shape: shape,
+				cardLayout: settings.cardLayout,
                 showTitle: settings.showTitle,
                 showYear: settings.showTitle,
                 centerText: true,
@@ -1174,7 +1175,7 @@ class ItemsView {
 
     getVisibleViewSettings() {
         const item = (this.params, this.currentItem);
-        const fields = ['showTitle'];
+        const fields = ['showTitle', 'cardLayout'];
 
         if (!item || item.Type !== 'PhotoAlbum' && item.Type !== 'ChannelFolderItem') {
             fields.push('imageType');
@@ -1189,7 +1190,13 @@ class ItemsView {
         const params = this.params;
         const item = this.currentItem;
         let showTitle = userSettings.get(basekey + '-showTitle');
+		let cardLayout = userSettings.get(basekey + '-cardLayout');
 
+		if (cardLayout === 'true')
+			cardLayout = true; 
+		else
+			cardLayout = false;
+		
         if (showTitle === 'true') {
             showTitle = true;
         } else if (showTitle === 'false') {
@@ -1212,6 +1219,7 @@ class ItemsView {
 
         return {
             showTitle: showTitle,
+			cardLayout: cardLayout,
             showYear: userSettings.get(basekey + '-showYear') !== 'false',
             imageType: imageType || 'primary',
             viewType: userSettings.get(basekey + '-viewType') || 'images'

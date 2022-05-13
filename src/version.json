@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-54",
+	"version": "10.7.7.1-55",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -24,6 +24,7 @@
 		"10.7.7.1-51": "Clear Weatherbot's pannel before printing a status.\nAllow to browse past and latest release notes in tab 'About'.\nTranslations synchronized with master.\nFixed misspelled font family 'Quicksand-Regular' in tab 'About'.\nApplied patch 'qc-text-input'.\nApplied patch 'fix-repositories-xss'.\nApplied patch 'fix-sd-filter-backport'.",
 		"10.7.7.1-52": "Enhanced conversion of country codes between Jellyfin and the OpenWeather API.\nTranslations synchronized with master.",
 		"10.7.7.1-53": "Translations synchronized with master.\nAdded a button to disable/enable automatic update lookup in tab 'About'.\nFixed issues with UserSettings' methods 'set' and 'get' which caused filtering and sorting of videos/photos libraries to malfunction.",
-		"10.7.7.1-54": "Translations synchronized with master.\nApplied patch 'Append year to title of content in video playback if possible'."
+		"10.7.7.1-54": "Translations synchronized with master.\nApplied patch 'Append year to title of content in video playback if possible'.",
+		"10.7.7.1-55": "Translations synchronized with master.\nCard layout option added to the view settings of videos/photos libraries.\nApplied patch 'Refactoring-duplicate-code'."
 	}
 }

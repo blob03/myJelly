@@ -5,6 +5,7 @@
     "AppDescription": "Le client web modifié de Jellyfin.",
     "BackdropScreensaverHelp": "Afficher tous les arrière-plans disponibles.",
     "BlackoutScreensaverHelp": "Juste un écran noir.",
+    "CardLayout": "Format carte",
     "ClockScreensaverHelp": "Afficher la date et l'heure locale.",
     "Colon": " :",
     "Connecting": "CONNEXION EN COURS...",

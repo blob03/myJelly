@@ -5,6 +5,7 @@
     "AppDescription": "The Jellyfin web client modified.",
     "BackdropScreensaverHelp": "Show all the backdrops available.",
     "BlackoutScreensaverHelp": "Just a black screen.",
+    "CardLayout": "Card layout",
     "ClockScreensaverHelp": "Show localized date and time.",
     "Colon": ":",
     "Connecting": "CONNECTING API SERVER...",

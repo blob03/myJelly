@@ -51,13 +51,13 @@ function showIfAllowed(context, selector, visible) {
     if (visible && !elem.classList.contains('hiddenFromViewSettings')) {
         elem.classList.remove('hide');
     } else {
-        elem.classList.add('hide');
+		elem.classList.add('hide');
     }
 }
 
 class ViewSettings {
-    constructor() {
-    }
+    constructor() {}
+	
     show(options) {
         return new Promise(function (resolve, reject) {
             const dialogOptions = {
@@ -65,27 +65,23 @@ class ViewSettings {
                 scrollY: false
             };
 
-            if (layoutManager.tv) {
+            if (layoutManager.tv) 
                 dialogOptions.size = 'fullscreen';
-            } else {
+            else 
                 dialogOptions.size = 'small';
-            }
 
             const dlg = dialogHelper.createDialog(dialogOptions);
-
             dlg.classList.add('formDialog');
 
             let html = '';
-
             html += '<div class="formDialogHeader">';
-            html += `<button is="paper-icon-button-light" class="btnCancel hide-mouse-idle-tv" tabindex="-1" title="${globalize.translate('ButtonBack')}"><span class="material-icons arrow_back" aria-hidden="true"></span></button>`;
-            html += '<h3 class="formDialogHeaderTitle">${Settings}</h3>';
-
+            html += '<button is="paper-icon-button-light" class="btnCancel hide-mouse-idle-tv" tabindex="-1"';
+			html += 'title="' + globalize.translate('ButtonBack') + '"><span class="material-icons arrow_back" aria-hidden="true"></span></button>';
+            html += '<h3 class="formDialogHeaderTitle">' + globalize.translate('Settings') + '</h3>';
             html += '</div>';
+            html += globalize.translateHtml(template, 'core');
 
-            html += template;
-
-            dlg.innerHTML = globalize.translateHtml(html, 'core');
+            dlg.innerHTML = html;
 
             const settingElements = dlg.querySelectorAll('.viewSetting');
             for (const settingElement of settingElements) {
@@ -99,19 +95,20 @@ class ViewSettings {
             }
 
             initEditor(dlg, options.settings);
-
-            dlg.querySelector('.selectImageType').addEventListener('change', function () {
-                showIfAllowed(dlg, '.chkTitleContainer', this.value !== 'list');
-                showIfAllowed(dlg, '.chkYearContainer', this.value !== 'list');
+			
+            dlg.querySelector('.selectImageType').addEventListener('change', function (e) {
+				const val = e.target.value;
+                showIfAllowed(dlg, '.chkTitleContainer', val !== 'list');
+				showIfAllowed(dlg, '.chkCardFormatContainer', val !== 'list');
+                showIfAllowed(dlg, '.chkYearContainer', val !== 'list');
             });
 
             dlg.querySelector('.btnCancel').addEventListener('click', function () {
                 dialogHelper.close(dlg);
             });
 
-            if (layoutManager.tv) {
+            if (layoutManager.tv)
                 centerFocus(dlg.querySelector('.formDialogContent'), false, true);
-            }
 
             let submitted;
 
@@ -122,9 +119,8 @@ class ViewSettings {
             }, true);
 
             dialogHelper.open(dlg).then(function () {
-                if (layoutManager.tv) {
+                if (layoutManager.tv) 
                     centerFocus(dlg.querySelector('.formDialogContent'), false, false);
-                }
 
                 if (submitted) {
                     saveValues(dlg, options.settings, options.settingsKey);
