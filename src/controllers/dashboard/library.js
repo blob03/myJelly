@@ -216,34 +216,34 @@ import cardBuilder from '../../components/cardbuilder/cardBuilder';
 
     function getCollectionTypeOptions() {
         return [{
-            name: '',
-            value: ''
-        }, {
             name: globalize.translate('Movies'),
             value: 'movies',
             message: getLink('MovieLibraryHelp', 'https://docs.jellyfin.org/general/server/media/movies.html')
         }, {
+			name: globalize.translate('Shows'),
+            value: 'tvshows',
+            message: getLink('TvLibraryHelp', 'https://docs.jellyfin.org/general/server/media/shows.html')
+		}, {
+			name: globalize.translate('MixedMoviesShows'),
+            value: 'mixed',
+            message: globalize.translate('MessageUnsetContentHelp')
+        }, {
             name: globalize.translate('TabMusic'),
             value: 'music',
             message: getLink('MusicLibraryHelp', 'https://docs.jellyfin.org/general/server/media/music.html')
+		}, {
+            name: globalize.translate('MusicVideos'),
+            value: 'musicvideos'
         }, {
-            name: globalize.translate('Shows'),
-            value: 'tvshows',
-            message: getLink('TvLibraryHelp', 'https://docs.jellyfin.org/general/server/media/shows.html')
-        }, {
+            name: globalize.translate('HomeVideosPhotos'),
+            value: 'homevideos'
+		}, {
             name: globalize.translate('Books'),
             value: 'books',
             message: getLink('BookLibraryHelp', 'https://docs.jellyfin.org/general/server/media/books.html')
         }, {
-            name: globalize.translate('HomeVideosPhotos'),
-            value: 'homevideos'
-        }, {
-            name: globalize.translate('MusicVideos'),
-            value: 'musicvideos'
-        }, {
-			name: globalize.translate('MixedMoviesShows'),
-            value: 'mixed',
-            message: globalize.translate('MessageUnsetContentHelp')
+			name: globalize.translate('Other'),
+            value: ''
         }];
     }
 

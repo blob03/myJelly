@@ -25,7 +25,9 @@ import { appRouter } from '../../../components/appRouter';
 import LibraryMenu from '../../../scripts/libraryMenu';
 import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components/backdrop/backdrop';
 
-/* eslint-disable indent */
+	/* eslint-disable indent */
+	const TICKS_PER_MINUTE = 600000000;
+    const TICKS_PER_SECOND = 10000000;
 
     function getOpenedDialog() {
         return document.querySelector('.dialogContainer .dialog.opened');
@@ -514,11 +516,13 @@ import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components
         }
 
         function onBeginFetch() {
-            document.querySelector('.osdMediaStatus').classList.remove('hide');
+			if (document.querySelector('.osdMediaStatus'))
+				document.querySelector('.osdMediaStatus').classList.remove('hide');
         }
 
         function onEndFetch() {
-            document.querySelector('.osdMediaStatus').classList.add('hide');
+			if (document.querySelector('.osdMediaStatus'))
+				document.querySelector('.osdMediaStatus').classList.add('hide');
         }
 
         function bindToPlayer(player) {
@@ -591,13 +595,16 @@ import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components
 				// runtime > 50min then show the window at END - 40s
 				// runtime > 40min then show it up at END - 35s
 				// or else at END - 30s.
-                const showAtSecondsLeft = runtimeTicks >= 3e10 ? 40 : runtimeTicks >= 24e9 ? 35 : 30;
-                const showAtTicks = runtimeTicks - showAtSecondsLeft * 1e7;
+                let showAtSecondsLeft = 30;
+                if (runtimeTicks >= 50 * TICKS_PER_MINUTE) {
+                    showAtSecondsLeft = 40;
+                } else if (runtimeTicks >= 40 * TICKS_PER_MINUTE) {
+                    showAtSecondsLeft = 35;
+                }
+                const showAtTicks = runtimeTicks - showAtSecondsLeft * TICKS_PER_SECOND;
                 const timeRemainingTicks = runtimeTicks - currentTimeTicks;
 
-				// 10 millions ticks in one second hence 2e8 ticks convert into 20s.
-				// 6e9 into 10min.
-                if (currentTimeTicks >= showAtTicks && runtimeTicks >= 6e9 && timeRemainingTicks >= 2e8) {
+				if (currentTimeTicks >= showAtTicks && runtimeTicks >= (10 * TICKS_PER_MINUTE) && timeRemainingTicks >= (20 * TICKS_PER_SECOND)) {
                     showComingUpNext(player);
                 } 
             }

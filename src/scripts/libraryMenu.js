@@ -921,7 +921,12 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
     }
 
     function updateMenuForPageType(isDashboardPage, isLibraryPage) {
-        const newPageType = isDashboardPage ? 2 : isLibraryPage ? 1 : 3;
+        let newPageType = 3;
+        if (isDashboardPage) {
+            newPageType = 2;
+        } else if (isLibraryPage) {
+            newPageType = 1;
+        }
 
         if (currentPageType !== newPageType) {
             currentPageType = newPageType;

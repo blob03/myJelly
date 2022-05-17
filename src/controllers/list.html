@@ -4,10 +4,10 @@
      <div class="padded-left padded-right padded-bottom-page">
         <div class="flex align-items-center focuscontainer-x itemsViewSettingsContainer padded-top padded-bottom flex-wrap-wrap">
 			<div class="paging"></div>
-            <button is="emby-button" class="btnPlay button-flat hide listTextButton-autohide">
+            <!-- button is="emby-button" class="btnPlay button-flat hide listTextButton-autohide">
                 <span>${HeaderPlayAll}</span>
-            </button>
-            <button is="paper-icon-button-light" class="btnPlay listIconButton-autohide" title="${HeaderPlayAll}">
+            </button -->
+            <button is="paper-icon-button-light" class="btnPlay" title="${HeaderPlayAll}">
                 <span class="material-icons play_arrow"></span>
             </button>
             <button is="emby-button" class="btnQueue button-flat hide listTextButton-autohide">
@@ -16,10 +16,10 @@
              <button is="paper-icon-button-light" class="btnQueue hide listIconButton-autohide" title="${AddToPlayQueue}">
                 <span class="material-icons playlist_add"></span>
             </button>
-            <button is="emby-button" class="btnShuffle button-flat hide listTextButton-autohide">
+            <!-- button is="emby-button" class="btnShuffle button-flat hide listTextButton-autohide">
                 <span>${Shuffle}</span>
-            </button>
-            <button is="paper-icon-button-light" class="btnShuffle hide listIconButton-autohide" title="${Shuffle}">
+            </button -->
+            <button is="paper-icon-button-light" class="btnShuffle hide" title="${Shuffle}">
                 <span class="material-icons shuffle"></span>
             </button>
             <button is="emby-button" class="btnNewItem hide button-flat listTextButton-autohide">
@@ -29,23 +29,23 @@
                 <span class="material-icons add"></span>
             </button>
 
-            <button is="emby-button" class="btnSort hide button-flat listTextButton-autohide">
+            <!-- button is="emby-button" class="btnSort hide button-flat listTextButton-autohide">
                 <span class="btnSortText"></span>
                 <span class="material-icons btnSortIcon arrow_upward"></span>
+            </button -->
+             <button is="paper-icon-button-light" class="btnSort hide" title="${Sort}">
+                <span class="material-icons sort_by_alpha"></span>
             </button>
-             <button is="paper-icon-button-light" class="btnSort hide listIconButton-autohide" title="${Sort}">
-                <span class="material-icons sort"></span>
-            </button>
-            <button is="emby-button" class="btnFilter button-flat listTextButton-autohide">
+            <!-- button is="emby-button" class="btnFilter button-flat listTextButton-autohide">
                 <span>${Filter}</span>
-            </button>
-             <button is="paper-icon-button-light" class="btnFilter listIconButton-autohide" data-ripple="false" style="overflow:visible;" title="${Filter}">
+            </button -->
+             <button is="paper-icon-button-light" class="btnFilter" data-ripple="false" style="overflow:visible;" title="${Filter}">
                 <span class="material-icons filter_list"></span>
             </button>
-            <button is="emby-button" class="btnViewSettings button-flat listTextButton-autohide" title="${ButtonMore}">
+            <!-- button is="emby-button" class="btnViewSettings button-flat listTextButton-autohide" title="${ButtonMore}">
                 <span class="material-icons more_vert"></span>
-            </button>
-            <button is="paper-icon-button-light" class="btnViewSettings listIconButton-autohide" title="${ButtonMore}">
+            </button -->
+            <button is="paper-icon-button-light" class="btnViewSettings" title="${ButtonMore}">
                 <span class="material-icons more_vert"></span>
             </button>
         </div>
