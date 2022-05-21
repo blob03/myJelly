@@ -35,6 +35,11 @@
     src: url(./fonts/MysteryQuest-Regular.ttf) format("truetype"); 
 }
 
+@font-face {
+	font-family: "HSpirits";
+    src: url(./fonts/HalloweenSpirits/HalloweenSpirits-K7aAl.ttf) format("truetype"); 
+}
+
 * {
     scrollbar-color: #fe9001 #282828;
     scrollbar-width: thin;
@@ -658,10 +663,17 @@ html {
 }
 
 .headerButton > .material-icons.home::before {
-	font-family: "Halloween";
+	font-family: "HSpirits";
 	font-size: 100%;
 	font-weight: 100;
-	content: "s";
+	content: "r";
+}
+
+.emby-tab-button > * > .material-icons.home::before {
+	font-family: "HSpirits";
+	font-size: 100%;
+	font-weight: 100;
+	content: "r";
 }
 
 .material-icons {

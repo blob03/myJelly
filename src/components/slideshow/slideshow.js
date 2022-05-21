@@ -415,6 +415,7 @@ export default function (options) {
             zoomImage.style.width = zoomImage.style.height = scale * 100 + '%';
 
             if (scale > 1) {
+
                 if (zoomImage.classList.contains('swiper-zoom-fakeimg-hidden')) {
                     // Await for Swiper style changes
                     setTimeout(() => {
@@ -464,6 +465,7 @@ export default function (options) {
             loop: false,
             zoom: {
                 minRatio: 1,
+				maxRatio: 3,
                 toggle: true
             },
             keyboard: {

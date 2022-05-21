@@ -19,8 +19,8 @@ function reloadList(page) {
             noneElement: page.querySelector('#none'),
             repositories: repositories
         });
-    }).catch(() => {
-        console.error('error loading repositories');
+    }).catch(e => {
+        console.error('error loading repositories', e);
         page.querySelector('#none').classList.remove('hide');
         loading.hide();
     });
@@ -35,8 +35,8 @@ function saveList(page) {
         contentType: 'application/json'
     }).then(() => {
         reloadList(page);
-    }).catch(() => {
-        console.error('error saving repositories');
+    }).catch(e => {
+        console.error('error saving repositories', e);
         loading.hide();
     });
 }
@@ -64,9 +64,8 @@ function getRepositoryElement(repository) {
     const listItem = document.createElement('div');
     listItem.className = 'listItem listItem-border';
 
-    const repoLink = document.createElement('a');
-    repoLink.setAttribute('is', 'emby-linkbutton');
-    repoLink.className = 'clearLink listItemIconContainer';
+    const repoLink = document.createElement('a', 'emby-linkbutton');
+    repoLink.classList.add('clearLink', 'listItemIconContainer');
     repoLink.style.margin = '0';
     repoLink.style.padding = '0';
     repoLink.rel = 'noopener noreferrer';
@@ -90,10 +89,9 @@ function getRepositoryElement(repository) {
 
     listItem.appendChild(body);
 
-    const button = document.createElement('button');
+	const button = document.createElement('button', 'paper-icon-button-light');
     button.type = 'button';
-    button.setAttribute('is', 'paper-icon-button-light');
-    button.className = 'btnDelete';
+    button.classList.add('btnDelete');
     button.id = repository.Url;
     button.title = globalize.translate('Delete');
     button.innerHTML = '<span class="material-icons delete" aria-hidden="true"></span>';

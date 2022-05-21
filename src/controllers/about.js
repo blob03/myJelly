@@ -99,7 +99,9 @@ class AboutTab {
 				let _version = e.target.value;
 				let _txtarea = self.view.querySelector('#txtRNotes');
 				if (_txtarea && self.releaseNotes[_version]) {
-					_txtarea.rows = self.releaseNotes[_version].split(/\r\n|\r|\n/).length + 1;			
+					let _rows = self.releaseNotes[_version].split(/\r\n|\r|\n/).length + 1;
+					_rows = _rows < 10 ? _rows : 10;
+					_txtarea.rows = _rows;
 					_txtarea.value = self.releaseNotes[_version];
 				}
 			});
