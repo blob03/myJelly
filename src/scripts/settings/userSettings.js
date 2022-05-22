@@ -887,6 +887,32 @@ export class UserSettings {
     }
 	
 	/**
+     * Get or set 'disableCustomCss' state.
+     * @param {boolean|undefined} val - Flag to enable 'disableCustomCss' or undefined.
+     * @return {boolean} 'disableCustomCss' state.
+     */
+    disableCustomCss(val) {
+        if (val !== undefined) {
+            return this.set('disableCustomCss', val.toString(), false);
+        }
+
+        return toBoolean(this.get('disableCustomCss', false), false);
+    }
+	
+	/**
+     * Get or set customCss.
+     * @param {string|undefined} val - Language.
+     * @return {string} Language.
+     */
+    customCss(val) {
+        if (val !== undefined) {
+            return this.set('customCss', val.toString(), false);
+        }
+
+        return this.get('customCss', false);
+    }
+	
+	/**
      * Get or set key for 'Weatherapi'.
      * @param {string|undefined} val - Key to set or undefined.
      * @return {string} current 'key'.
@@ -1259,3 +1285,5 @@ export const getSubtitleAppearanceSettings = currentSettings.getSubtitleAppearan
 export const setSubtitleAppearanceSettings = currentSettings.setSubtitleAppearanceSettings.bind(currentSettings);
 export const setFilter = currentSettings.setFilter.bind(currentSettings);
 export const getFilter = currentSettings.getFilter.bind(currentSettings);
+export const customCss = currentSettings.customCss.bind(currentSettings);
+export const disableCustomCss = currentSettings.disableCustomCss.bind(currentSettings);

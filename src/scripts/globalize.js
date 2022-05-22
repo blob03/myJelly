@@ -1,4 +1,4 @@
-import * as userSettings from './settings/userSettings';
+import { currentSettings as userSettings } from './settings/userSettings';
 import cultures from './cultures';
 import { Events } from 'jellyfin-apiclient';
 
@@ -90,7 +90,7 @@ import { Events } from 'jellyfin-apiclient';
     }
 	
     function getDictionary(module, culture) {
-        module = module || getDefaultModule();
+        module = module || defaultModule();
 		if (!culture)
 			return {};
         const translations = allTranslations[module];
@@ -112,7 +112,7 @@ import { Events } from 'jellyfin-apiclient';
         const promises = [];
         let optionsName;
 		if (!options)
-			optionsName = getDefaultModule();
+			optionsName = defaultModule();
         else if (typeof options === 'string')
 			optionsName = options;
         else 
@@ -128,7 +128,7 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     function loadTranslation(module, lang) {
-		module = getDefaultModule(); // needs to be fixed.
+		module = defaultModule(); // needs to be fixed.
 		lang = lang || getDefaultCulture().ccode;
 		
 		// already loaded?
@@ -183,7 +183,7 @@ import { Events } from 'jellyfin-apiclient';
 
     function translateKeyFromModule(key, module, culture) {
 		if (!key) return '';
-		module = module || getDefaultModule();
+		module = module || defaultModule();
 		
 		// No parameter was passed.
 		if (culture === undefined) 
@@ -231,7 +231,7 @@ import { Events } from 'jellyfin-apiclient';
 
     export function translateHtml(html, module, culture) {
         html = html.default || html;
-		module = module || getDefaultModule();
+		module = module || defaultModule();
 		
 		// No parameter was passed.
 		if (culture === undefined) 
@@ -258,8 +258,12 @@ import { Events } from 'jellyfin-apiclient';
 		} while(1)
     }
 
-    function getDefaultModule(val) {
-        return fallbackModule;
+    let _defaultModule;
+    export function defaultModule(val) {
+        if (val) {
+            _defaultModule = val;
+        }
+        return _defaultModule;
     }
 
     updateCurrentCulture();
@@ -275,6 +279,7 @@ export default {
 	getCoreDictionary,
     translateHtml,
     loadStrings,
+	defaultModule,
     getCurrentLocale,
     getCurrentDateTimeLocale,
 	getDefaultCulture,

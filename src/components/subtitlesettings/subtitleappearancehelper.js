@@ -38,127 +38,16 @@ function getTextStyles(settings, preview) {
 	list.push({ name: 'background-color', value: settings.textBackground || 'transparent' });
     list.push({ name: 'color', value: settings.textColor || 'White' });
     list.push({ name: '-webkit-text-stroke', value: (settings.strokeSize ? (settings.strokeSize + 'px ') : '1px ') + (settings.textStroke ? settings.textStroke : '#000')});
-	
-	
 	list.push({ name: 'border-radius', value: settings.borderradius || '50%' });
 	
-    switch (settings.font || '') {
-        case 'VTypewriter':
-            list.push({ name: 'font-family', value: 'VTypewriter' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'DSWeiss':
-            list.push({ name: 'font-family', value: 'DSWeiss' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'ACharmingFont':
-            list.push({ name: 'font-family', value: 'ACharmingFont' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Inconsolata-Regular':
-            list.push({ name: 'font-family', value: 'Inconsolata-Regular' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Inconsolata-Light':
-            list.push({ name: 'font-family', value: 'Inconsolata-Light' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Inconsolata-Bold':
-            list.push({ name: 'font-family', value: 'Inconsolata-Bold' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Yippy':
-            list.push({ name: 'font-family', value: 'Yippy' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'MGothisch':
-            list.push({ name: 'font-family', value: 'MGothisch' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-        case 'Monserga':
-            list.push({ name: 'font-family', value: 'Monserga' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Ubuntu-M':
-            list.push({ name: 'font-family', value: 'Ubuntu-M' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Ubuntu-C':
-            list.push({ name: 'font-family', value: 'Ubuntu-C' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Ubuntu-R':
-            list.push({ name: 'font-family', value: 'Ubuntu-R' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Ubuntu-L':
-            list.push({ name: 'font-family', value: 'Ubuntu-L' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-        case 'JECasual':
-            list.push({ name: 'font-family', value: 'JECasual' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'JACobbler':
-            list.push({ name: 'font-family', value: 'JACobbler' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'JACobbler-Solid':
-            list.push({ name: 'font-family', value: 'JACobbler-Solid' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'JRosalie':
-            list.push({ name: 'font-family', value: 'JRosalie' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'AText':
-            list.push({ name: 'font-family', value: 'AText' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
+    switch (settings.font || 'inherit') {
         case 'smallcaps':
             list.push({ name: 'font-family', value: 'Copperplate Gothic,Copperplate Gothic Bold,Copperplate,system-ui,-apple-system,BlinkMacSystemFont,sans-serif' });
             list.push({ name: 'font-variant', value: 'small-caps' });
             break;
-        case 'OogieBoogie':
-            list.push({ name: 'font-family', value: 'OogieBoogie' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Impact':
-            list.push({ name: 'font-family', value: 'Impact' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Impact-Reversed':
-            list.push({ name: 'font-family', value: 'Impact-Reversed' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Quicksand-Regular':
-            list.push({ name: 'font-family', value: 'Quicksand-Regular' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Quicksand-Bold':
-            list.push({ name: 'font-family', value: 'Quicksand-Bold' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Quicksand-Light':
-            list.push({ name: 'font-family', value: 'Quicksand-Light' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Orange':
-            list.push({ name: 'font-family', value: 'Orange' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'Chewy':
-            list.push({ name: 'font-family', value: 'Chewy' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
-		case 'YouAreLoved':
-            list.push({ name: 'font-family', value: 'YouAreLoved' });
-            list.push({ name: 'font-variant', value: 'none' });
-            break;
         default:
-            list.push({ name: 'font-family', value: 'inherit' });
+			list.push({ name: 'font-family', value: settings.font });
             list.push({ name: 'font-variant', value: 'none' });
-            break;
     }
 
     if (!preview) {

@@ -42,14 +42,25 @@ import { currentSettings } from './settings/userSettings';
 import taskButton from './taskbutton';
 
 function loadCoreDictionary() {
-    return globalize.loadStrings('core');
+    const languages = ['af', 'ar', 'be-by', 'bg-bg', 'bn_bd', 'ca', 'cs', 'cy', 'da', 'de', 'el', 'en-gb', 'en-us', 'eo', 'es', 'es-419', 'es-ar', 'es_do', 'es-mx', 'et', 'fa', 'fi', 'fil', 'fr', 'fr-ca', 'gl', 'gsw', 'he', 'hi-in', 'hr', 'hu', 'id', 'it', 'ja', 'kk', 'ko', 'lt-lt', 'lv', 'mr', 'ms', 'nb', 'nl', 'nn', 'pl', 'pr', 'pt', 'pt-br', 'pt-pt', 'ro', 'ru', 'sk', 'sl-si', 'sq', 'sv', 'ta', 'th', 'tr', 'uk', 'ur_pk', 'vi', 'zh-cn', 'zh-hk', 'zh-tw'];
+    const translations = languages.map(function (language) {
+        return {
+            lang: language,
+            path: language + '.json'
+        };
+    });
+    globalize.defaultModule('core');
+    return globalize.loadStrings({
+        name: 'core',
+        translations: translations
+    });
 }
 
 function init() {
-	// This is used in plugins
+    // This is used in plugins
     window.Events = Events;
     window.TaskButton = taskButton;
-	
+
     serverAddress().then(server => {
         if (server) {
             ServerConnections.initApiClient(server);
@@ -139,9 +150,11 @@ function initSyncPlay() {
 
     // FIXME: Multiple apiClients?
     Events.on(ServerConnections, 'apiclientcreated', (e, newApiClient) => SyncPlay.Manager.init(newApiClient));
+    Events.on(ServerConnections, 'localusersignedin', () => SyncPlay.Manager.updateApiClient(ServerConnections.currentApiClient()));
+    Events.on(ServerConnections, 'localusersignedout', () => SyncPlay.Manager.updateApiClient(ServerConnections.currentApiClient()));
 }
 
-function onAppReady() {
+async function onAppReady() {
     console.debug('begin onAppReady');
 
     console.debug('onAppReady: loading dependencies');
@@ -149,11 +162,11 @@ function onAppReady() {
     if (browser.iOS) {
         import('../assets/css/ios.scss');
     }
-	
-	Events.on(appHost, 'resume', () => {
+
+    Events.on(appHost, 'resume', () => {
         ServerConnections.currentApiClient()?.ensureWebSocket();
     });
-	
+
     appRouter.start();
 
     if (!browser.tv && !browser.xboxOne && !browser.ps4) {
@@ -185,27 +198,76 @@ function onAppReady() {
 
     const apiClient = ServerConnections.currentApiClient();
     if (apiClient) {
-        fetch(apiClient.getUrl('Branding/Css'))
+        const updateStyle = (css) => {
+            let style = document.querySelector('#cssBranding');
+            if (!style) {
+                // Inject the branding css as a dom element in body so it will take
+                // precedence over other stylesheets
+                style = document.createElement('style');
+                style.id = 'cssBranding';
+                document.body.appendChild(style);
+            }
+            style.textContent = css;
+        };
+
+        const style = fetch(apiClient.getUrl('Branding/Css'))
             .then(function(response) {
                 if (!response.ok) {
                     throw new Error(response.status + ' ' + response.statusText);
                 }
                 return response.text();
             })
-            .then(function(css) {
-                let style = document.querySelector('#cssBranding');
-                if (!style) {
-                    // Inject the branding css as a dom element in body so it will take
-                    // precedence over other stylesheets
-                    style = document.createElement('style');
-                    style.id = 'cssBranding';
-                    document.body.appendChild(style);
-                }
-                style.textContent = css;
-            })
             .catch(function(err) {
                 console.warn('Error applying custom css', err);
             });
+
+        const handleStyleChange = async () => {
+            if (currentSettings.disableCustomCss()) {
+                updateStyle('');
+            } else {
+                updateStyle(await style);
+            }
+
+            const localCss = currentSettings.customCss();
+            let localStyle = document.querySelector('#localCssBranding');
+            if (localCss) {
+                if (!localStyle) {
+                    // Inject the branding css as a dom element in body so it will take
+                    // precedence over other stylesheets
+                    localStyle = document.createElement('style');
+                    localStyle.id = 'localCssBranding';
+                    document.body.appendChild(localStyle);
+                }
+                localStyle.textContent = localCss;
+            } else {
+                if (localStyle) {
+                    localStyle.textContent = '';
+                }
+            }
+        };
+
+        const handleLanguageChange = () => {
+            const locale = globalize.getCurrentLocale();
+
+            document.documentElement.setAttribute('lang', locale);
+        };
+
+        const handleUserChange = () => {
+            handleStyleChange();
+            handleLanguageChange();
+        };
+
+        Events.on(ServerConnections, 'localusersignedin', handleUserChange);
+        Events.on(ServerConnections, 'localusersignedout', handleUserChange);
+        Events.on(currentSettings, 'change', (e, prop) => {
+            if (prop == 'disableCustomCss' || prop == 'customCss') {
+                handleStyleChange();
+            } else if (prop == 'language') {
+                handleLanguageChange();
+            }
+        });
+
+        style.then(updateStyle);
     }
 }
 
