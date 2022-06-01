@@ -203,7 +203,7 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 
         if (!hasImage) 
             updateHeaderUserButton(null);
-
+		
         if (user && user.localUser) {
             if (headerHomeButton) 
                 headerHomeButton.classList.remove('hide');

@@ -710,7 +710,7 @@
     "LabelFormat": "Formát:",
     "LabelFriendlyName": "Priateľský názov:",
     "LabelGroupMoviesIntoCollections": "Zoskupiť filmy do kolekcií",
-    "LabelGroupMoviesIntoCollectionsHelp": "Pri zobrazení zoznamu filmov budú filmy v box setoch zobrazené ako jedna položka.",
+    "LabelGroupMoviesIntoCollectionsHelp": "Pri zobrazení zoznamu filmov budú filmy v kolekcií budú zobrazené ako jedna položka.",
     "LabelH264Crf": "H.264 kódovanie CRF:",
     "LabelH265Crf": "H.265 kódovanie CRF:",
     "LabelHDHomerunPortRange": "Rozsah portov HDHomeRun:",

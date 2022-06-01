@@ -110,7 +110,6 @@ import './emby-scroller.scss';
         }
 
         const horizontal = this.getAttribute('data-horizontal') !== 'false';
-
         const slider = this.querySelector('.scrollSlider');
 
         if (horizontal) {
@@ -118,8 +117,9 @@ import './emby-scroller.scss';
         }
 
         const scrollFrame = this;
-        const enableScrollButtons = layoutManager.desktop && horizontal && this.getAttribute('data-scrollbuttons') !== 'false';
-
+        //const enableScrollButtons = layoutManager.desktop && horizontal && this.getAttribute('data-scrollbuttons') !== 'false';
+		const enableScrollButtons = (layoutManager.desktop || browser.web0s) && horizontal && this.getAttribute('data-scrollbuttons') !== 'false';
+		
         const options = {
             horizontal: horizontal,
             mouseDragging: 1,

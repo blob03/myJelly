@@ -292,7 +292,7 @@ import ServerConnections from '../ServerConnections';
         }
         html += '</div>';
 
-        if (enableScrollX()) {
+        if (enableScrollX()) { 
             html += '<div is="emby-scroller" class="padded-top-focusscale padded-bottom-focusscale" data-centerfocus="true">';
             html += '<div is="emby-itemscontainer" class="itemsContainer scrollSlider focuscontainer-x">';
         } else {

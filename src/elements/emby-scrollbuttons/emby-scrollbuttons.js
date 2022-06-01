@@ -1,7 +1,9 @@
 import './emby-scrollbuttons.scss';
 import 'webcomponents.js/webcomponents-lite';
 import '../emby-button/paper-icon-button-light';
+import browser from '../../scripts/browser';
 import globalize from '../../scripts/globalize';
+import { currentSettings as userSettings } from '../../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 
@@ -52,7 +54,8 @@ const EmbyScrollButtonsPrototype = Object.create(HTMLDivElement.prototype);
         }
 
         const scrollPosEnd = scrollPos + scrollSize;
-        if (scrollWidth > 0 && scrollPosEnd >= scrollWidth) {
+		
+        if (scrollWidth > 0 && scrollPosEnd >= scrollWidth) { 
             scrollButtons.scrollButtonsRight.disabled = true;
         } else {
             scrollButtons.scrollButtonsRight.disabled = false;
@@ -121,7 +124,6 @@ const EmbyScrollButtonsPrototype = Object.create(HTMLDivElement.prototype);
 
     function onScrollButtonClick() {
         const scroller = this.parentNode.nextSibling;
-
         const direction = this.getAttribute('data-direction');
         const scrollSize = getScrollSize(scroller);
         const scrollPos = getScrollPosition(scroller);
@@ -132,8 +134,8 @@ const EmbyScrollButtonsPrototype = Object.create(HTMLDivElement.prototype);
         } else {
             newPos = scrollPos + scrollSize;
         }
-
-        scroller.scrollToPosition(newPos, false);
+	
+        scroller.scrollToPosition(newPos, userSettings.enableFastFadein());
     }
 
     EmbyScrollButtonsPrototype.attachedCallback = function () {

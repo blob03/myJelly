@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.7.7.1-59",
+	"version": "10.7.7.1-60",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -29,6 +29,7 @@
 		"10.7.7.1-56": "Translations synchronized with master.\nApplied patch 'movie-shuffle-button'.",
 		"10.7.7.1-57": "Translations synchronized with master.\nButtons show up as icons in the settings menu of videos/photos/books libraries.\nList of selectable types reordered for library creation.\nApplied patch 'eslint-no-nested-ternary'.",
 		"10.7.7.1-58": "Translations synchronized with master.\nTheme 'Halloween' update 2.12.\nApplied patch 'fix-channel-cards'.\nApplied patch 'unhighlight-play'.\nApplied patch 'disable_auto_collection'.\nApplied patch 'fix-tizen5'.\nApplied patch 'add-webp'.\nApplied patch 'fix-ssa-font'.\nApplied patch 'actually-fix-artist-albums'.\nApplied patch 'restore-external-links'.\nApplied patch 'fix-backdrop-mobile' modified.\nApplied patch 'fix-ipados-icon'.\nApplied patch 'fix-undefined-streaminfo-url'.\nApplied patch 'fix-custom-elements' modified.\nApplied patch 'strm-display-fix'.",
-		"10.7.7.1-59": "Translations synchronized with master.\nApplied patch 'font-family-by-language'.\nApplied patch 'unused-languages'."
+		"10.7.7.1-59": "Translations synchronized with master.\nApplied patch 'font-family-by-language'.\nApplied patch 'unused-languages'.",
+		"10.7.7.1-60": "Translations synchronized with master.\nEnabled scroller buttons for LG WebOS and their magic remote.\nScrolling speed can be changed with switch 'faster animation' from display settings."
 	}
 }

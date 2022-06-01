@@ -4,8 +4,6 @@ import layoutManager from '../components/layoutManager';
 import { ajax } from '../components/fetchhelper';
 import loading from '../components/loading/loading';
 import browser from '../scripts/browser';
-import '../elements/emby-itemscontainer/emby-itemscontainer';
-import '../elements/emby-scroller/emby-scroller';
 import ServerConnections from '../components/ServerConnections';
 import appSettings from '../scripts/settings/appSettings';
 import appInfo from '../version.json';
