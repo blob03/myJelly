@@ -626,6 +626,19 @@ html {
 	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
+.headerClockMode0 > .headerClockTime {
+	font-size: 170% !important;
+}
+
+.headerClockMode1 > .headerClockTime {
+	font-size: 220% !important;
+}
+	
+.headerClockTime {
+	font-family: "Shangai";
+	font-size: 170% !important;
+}
+
 .headerClockTime {
 	font-family: "Shangai";
 	font-size: 170% !important;
@@ -635,7 +648,7 @@ html {
 	font-size: 80% !important;
 }
 
-.nightClock > * {
+.nightMode > * {
 	color: #d7e2e9;
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 }

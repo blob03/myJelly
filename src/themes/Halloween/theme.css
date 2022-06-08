@@ -619,6 +619,13 @@ html {
 	text-shadow: 1px 1px 8px #411c5b !important;
 }
 
+.headerClockMode0 > .headerClockTime {
+	font-size: 170% !important;
+}
+
+.headerClockMode1 > .headerClockTime {
+	font-size: 220% !important;
+}
 
 .headerClockTime {
 	font-family: "Mystery";
@@ -629,7 +636,7 @@ html {
 	font-size: 80% !important;
 }
 
-.nightClock > * {
+.nightMode > * {
 	color: #f8e5bf;
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
 }

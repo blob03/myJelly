@@ -710,7 +710,7 @@
     "LabelFormat": "الصيغة:",
     "LabelFriendlyName": "اسم مخصوص لك:",
     "LabelGroupMoviesIntoCollections": "تجميع الأفلام إلى مجاميع",
-    "LabelGroupMoviesIntoCollectionsHelp": "عند استعراض قوائم الأفلام، مجموعة واحدة ستظهر كعنصر جامع.",
+    "LabelGroupMoviesIntoCollectionsHelp": "الأفلام الموجودة في مجموعات ستظهر موحدة عندما تظهر في قوائم الأفلام",
     "LabelH264Crf": "قيمة CRF لتشفير H264:",
     "LabelH265Crf": "H.265 ترميز CRF:",
     "LabelHDHomerunPortRange": "نطاق منفذ HD Homerun:",

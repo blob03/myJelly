@@ -24,21 +24,44 @@ const defaultSubtitleAppearanceSettings = {
 };
 	
 function hdrClock() {
+	let _weekday;
+	let _month;
 	globalize.updateCurrentCulture();
+	let _opts_date = {year: 'numeric', day: '2-digit'};
+	
+	switch (this._clkmode) {
+		case 2: 
+			_opts_date['weekday'] = 'long';
+			_opts_date['month'] = 'long';
+			break;
+		
+		case 3: 
+			_opts_date['weekday'] = 'short';
+			_opts_date['month'] = '2-digit';
+			_opts_date['timeZoneName'] = 'shortOffset';
+			break;
+			
+		default:
+			_opts_date['weekday'] = 'short';
+			_opts_date['month'] = '2-digit';
+	}
 	const x = new Date();
-	const _hdrclk_date = datetime.toLocaleDateString(x, {
-		weekday: 'short',
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit'	
-	});
+	const _hdrclk_date = datetime.toLocaleDateString(x, _opts_date);
 	const _hdrclk_time = datetime.toLocaleTimeString(x, {
 			hour: 'numeric',
 			minute: '2-digit'
-	});
+	}); 
 	
-	this._hdrclkdate_span.innerHTML = _hdrclk_date;
-	this._hdrclktime_span.innerHTML = _hdrclk_time;
+	switch (this._clkmode) {
+		case 1:
+			this._hdrclkdate_span.innerHTML = '';
+			this._hdrclktime_span.innerHTML = _hdrclk_time;
+			break;
+			
+		default:
+			this._hdrclkdate_span.innerHTML = _hdrclk_date;
+			this._hdrclktime_span.innerHTML = _hdrclk_time;
+	}
 	return;
 }
 
@@ -50,8 +73,7 @@ function hdrWeather() {
 	let req = {};
 	const self = this;
 	req.dataType = 'json';
-	const url_proto = 'http://';
-	const url_proto_SSL = 'https://';
+	const url_proto = isSecure() ? 'https://' : 'http://' ;
 	const url_base_icon = 'openweathermap.org/img/wn/';
 	const url_base = 'api.openweathermap.org/data/2.5/';
 	const url_apiMethod = 'weather';
@@ -72,7 +94,7 @@ function hdrWeather() {
 		+ '&units=' + (self.enableUSUnits()?'imperial':'metric') 
 		+ '&lang=' + self.convertCountryCode(self.language());
 		
-	req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
+	req.url = url_proto + url_base + url_apiMethod + url_params; 
 	
 	let _contimeout = setTimeout(() => {
 		self._hdrwth_icon.src = "";
@@ -85,7 +107,7 @@ function hdrWeather() {
 		clearInterval(_contimeout);
 		let _dyn;
 		if (data.weather["0"].icon) {
-			self._hdrwth_icon.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
+			self._hdrwth_icon.src = url_proto + url_base_icon + data.weather["0"].icon + '.png';
 			if (data.weather["0"].description)
 				self._hdrwth_icon.title = data.weather["0"].description;
 		} else
@@ -99,6 +121,7 @@ function hdrWeather() {
 			else
 				_dyn += '&#8451;</span>';
 			self._hdrwth_temp.innerHTML = _dyn;
+			self._hdrwth_temp.title = globalize.translate('Temperature');
 		} else
 			self._hdrwth_temp.innerHTML = "";
 		
@@ -106,6 +129,7 @@ function hdrWeather() {
 			_dyn = Number(data.main.humidity.toFixed(1));
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">%</span>';
 			self._hdrwth_hum.innerHTML = _dyn;
+			self._hdrwth_hum.title = globalize.translate('Humidity');
 		} else
 			self._hdrwth_hum.innerHTML = "";
 		
@@ -120,6 +144,7 @@ function hdrWeather() {
 			else
 				_dyn += 'km/h</span>';
 			self._hdrwth_wind.innerHTML = _dyn;
+			self._hdrwth_wind.title = globalize.translate('WindSpeed');
 		} else
 			self._hdrwth_wind.innerHTML = "";
 		
@@ -145,6 +170,7 @@ export class UserSettings {
     constructor() {
 		this.clockTimer = null;
 		this.weatherTimer = null;
+		this._clkmode = 2;
 		this._hdrclkdate_span;
 		this._hdrclktime_span;
 		this._hdrwth_temp;
@@ -509,7 +535,7 @@ export class UserSettings {
 		
 		if (val === true) {
 			/*** Show ***/
-			this.toggleClockMode(false);
+			this.toggleNightMode(false);
 			const self = this;
 			const delay = (this.APIDelay()? this.APIDelay() * 60000 : 300000);
 			setTimeout( hdrWeather.bind(self), 10);
@@ -523,35 +549,40 @@ export class UserSettings {
 		return true;
 	}
 
-	toggleClockMode(TOGGLE) {
+	toggleNightMode(TOGGLE) {
 		const _hdrwtb = document.getElementsByClassName('headerWthMain')[0];
 		if (!_hdrwtb) 
 			return;
 		const _hdrclck = document.getElementsByClassName('headerClockActive')[0]; 
 		if (!_hdrclck) 
 			return;
+		const _hdrnmb = document.getElementsByClassName('headerNightmodeButton')[0]; 
+		if (!_hdrnmb)
+			return;
+		const _icon = _hdrnmb.getElementsByClassName('material-icons')[0];
+		if (!_icon)
+			return;
 		
-		let val = this.get('clock_mode') || '0';
-		
+		let val = appSettings.enableNightMode() || false;
+
 		if (TOGGLE === undefined || TOGGLE === true) {
-			switch (val) {
-				case '1':
-					val = '0';
-					break;
-				default:
-					val = '1';
-			}
-			this.set('clock_mode', val, true);
+			val = !val;
+			appSettings.enableNightMode(val);
 		}
+		
 		switch (val) {
-			case '1':
-				_hdrwtb.classList.add('nightClock');
-				_hdrclck.classList.add('nightClock');
+			case true:
+				_icon.classList.add('light_mode');
+				_icon.classList.remove('dark_mode');
+				_hdrwtb.classList.remove('nightMode');
+				_hdrclck.classList.remove('nightMode');
 				break;
 			default:
-				_hdrwtb.classList.remove('nightClock');
-				_hdrclck.classList.remove('nightClock');
-		}	
+				_icon.classList.add('dark_mode');
+				_icon.classList.remove('light_mode');
+				_hdrwtb.classList.add('nightMode');
+				_hdrclck.classList.add('nightMode');
+		}
 	}
 	
     /**
@@ -604,9 +635,9 @@ export class UserSettings {
 		
 		if (val === true) {
 			/*** Show ***/
-			this.toggleClockMode(false);
+			this.toggleNightMode(false);
 			const self = this;
-			setTimeout( hdrClock.bind(self), 10);
+			setTimeout(hdrClock.bind(self), 10);
 			if (this.clockTimer === null) {
 				this.clockTimer = setInterval( hdrClock.bind(self), 10000);
 			}
@@ -631,23 +662,65 @@ export class UserSettings {
 		placeClock(-1);
 	}
 	
-	doToggle() {
-		toggleClockMode(true);
-	}
-	
 	initButtons(pos) {
 		const self = this;
+		let elm;
 		if (pos) {
-			let elm = pos.getElementsByClassName("headerClockMain")[0];
-			if (elm) {
-				elm.removeEventListener('click', self.doToggle );
-				elm.addEventListener('click', self.doToggle );
+			var nextClockMode = function(self) {
+				return function curried(e) {
+					const elms = document.getElementsByClassName("headerClockMain");
+					if (elms.length) {
+						self._clkmode = (self._clkmode + 1) % 4;
+						switch (self._clkmode) {
+							case 0:					
+								for (let elm of elms) {
+									elm.classList.add('headerClockMode0');
+									elm.classList.remove('headerClockMode1');
+									elm.classList.remove('headerClockMode2');
+									elm.classList.remove('headerClockMode3');
+								}
+								break;
+							case 1:
+								for (let elm of elms) {
+									elm.classList.add('headerClockMode1');
+									elm.classList.remove('headerClockMode0');
+									elm.classList.remove('headerClockMode2');
+									elm.classList.remove('headerClockMode3');
+								}
+								break;
+							case 2:
+								for (let elm of elms) {
+									elm.classList.add('headerClockMode2');
+									elm.classList.remove('headerClockMode0');
+									elm.classList.remove('headerClockMode1');
+									elm.classList.remove('headerClockMode3');
+								}
+								break;
+							case 3:
+								for (let elm of elms) {
+									elm.classList.add('headerClockMode3');
+									elm.classList.remove('headerClockMode0');
+									elm.classList.remove('headerClockMode1');
+									elm.classList.remove('headerClockMode2');
+								}
+								break;
+						}
+						setTimeout(hdrClock.bind(self), 10);
+					}
+				}
 			}
+			elm = pos.getElementsByClassName("headerClockMain")[0];
+			if (elm) {
+				elm.removeEventListener('click', nextClockMode(self));
+				elm.addEventListener('click', nextClockMode(self));
+			}
+			
 			elm = pos.getElementsByClassName("moveLeftButton")[0];
 			if (elm) {
 				elm.removeEventListener('click', self.moveL);
 				elm.addEventListener('click', self.moveL);
 			}
+			
 			elm = pos.getElementsByClassName("moveRightButton")[0];
 			if (elm) {
 				elm.removeEventListener('click', self.moveR);
@@ -659,11 +732,11 @@ export class UserSettings {
 	initWeatherBot() {
 		const self = this;
 		
-		let elm = document.getElementsByClassName("headerWthMain")[0];
-		if (elm) {
-			elm.removeEventListener('click', self.doToggle );
-			elm.addEventListener('click', self.doToggle );
-		}
+		//let elm = document.getElementsByClassName("headerWthMain")[0];
+		//if (elm) {
+		//	elm.removeEventListener('click', self.doToggle );
+		//	elm.addEventListener('click', self.doToggle );
+		//}
 	}
 	
 	initClockPlaces() {
@@ -1254,7 +1327,7 @@ export const initWeatherBot = currentSettings.initWeatherBot.bind(currentSetting
 export const showClock = currentSettings.showClock.bind(currentSettings);
 export const showWeatherBot = currentSettings.showWeatherBot.bind(currentSettings);
 export const placeClock = currentSettings.placeClock.bind(currentSettings);
-export const toggleClockMode = currentSettings.toggleClockMode.bind(currentSettings);
+export const toggleNightMode = currentSettings.toggleNightMode.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);

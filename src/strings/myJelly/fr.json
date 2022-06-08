@@ -5,6 +5,7 @@
     "AppDescription": "Le client web modifié de Jellyfin.",
     "BackdropScreensaverHelp": "Afficher tous les arrière-plans disponibles.",
     "BlackoutScreensaverHelp": "Juste un écran noir.",
+    "ButtonNightmode": "Mode nuit",
     "CardLayout": "Format carte",
     "ClockScreensaverHelp": "Afficher la date et l'heure locale.",
     "Colon": " :",
@@ -21,6 +22,7 @@
     "EnableWeatherBot": "Activer Météorobot :",
     "EnableWeatherBotHelp": "Afficher les conditions météo dans la barre du haut.",
     "Find": "Chercher",
+    "Humidity": "Humidité",
     "LabelAPIFrequency": "Délai des sondages météo :",
     "LabelAPIFrequencyHelp": "Délai en minutes entre deux appels successifs à l'API météo.",
     "LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
@@ -73,11 +75,13 @@
     "SwiperFXFlip": "Retourner",
     "SwiperFXHorizontal": "Glisser horizontalement",
     "SwiperFXVertical": "Glisser verticalement",
+    "Temperature": "Température",
     "Theme": "Thème",
     "TryIt": "Tester",
     "UseCardLayoutInHomeSectionsHelp": "Présenter les éléments de l'écran d'accueil et des favoris sous la forme de cartes.",
     "UseNextUpRewatch": "Générer une section 'Revoir' (Jellyfin 10.8.0+)",
     "Videos": "Vidéos",
     "WeatherApiRegistrationHelp": "Voir comment obtenir une clef.",
-    "WeatherbotScreensaverHelp": "Afficher les conditions météorologiques présentes."
+    "WeatherbotScreensaverHelp": "Afficher les conditions météorologiques présentes.",
+    "WindSpeed": "Vent"
 }

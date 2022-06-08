@@ -22,7 +22,7 @@ import '../assets/css/scrollstyles.scss';
 import '../assets/css/flexstyles.scss';
 
 import appSettings from './settings/appSettings';
-import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, initWeatherBot, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showClock, placeClock, initWeatherBot, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -69,6 +69,9 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
         html += '<button is="paper-icon-button-light" class="headerSyncButton syncButton headerButton headerButtonRight hide"><span class="material-icons groups"></span></button>';
         html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
         html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
+		
+		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
+		
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
 		
 		// Extra feature thought for the TV layout.
@@ -122,6 +125,7 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
         mainDrawerButton = skinHeader.querySelector('.mainDrawerButton');
         headerUserButton = skinHeader.querySelector('.headerUserButton');
         headerCastButton = skinHeader.querySelector('.headerCastButton');
+		headerNightmodeButton = skinHeader.querySelector('.headerNightmodeButton');
         headerAudioPlayerButton = skinHeader.querySelector('.headerAudioPlayerButton');
         headerSearchButton = skinHeader.querySelector('.headerSearchButton');
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
@@ -153,31 +157,24 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
     }
 
     function retranslateUi() {
-		
 		if (headerBackButton)
             headerBackButton.title = globalize.translate('ButtonBack');
-
         if (headerHomeButton) 
             headerHomeButton.title = globalize.translate('Home');
-
         if (mainDrawerButton) 
             mainDrawerButton.title = globalize.translate('Menu');
-
         if (headerSyncButton) 
             headerSyncButton.title = globalize.translate('ButtonSyncPlay');
-
         if (headerAudioPlayerButton) 
             headerAudioPlayerButton.title = globalize.translate('ButtonPlayer');
-        
         if (headerCastButton) 
             headerCastButton.title = globalize.translate('ButtonCast');
-
+		if (headerNightmodeButton) 
+            headerNightmodeButton.title = globalize.translate('ButtonNightmode');
         if (headerSearchButton)
             headerSearchButton.title = globalize.translate('Search');
-		
 		if (headerReloadButton) 
 			headerReloadButton.title = globalize.translate('Reload');
-		
 		if (headerLockButton)
 			headerLockButton.title = globalize.translate('LockHeader');
     }
@@ -207,6 +204,8 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
         if (user && user.localUser) {
             if (headerHomeButton) 
                 headerHomeButton.classList.remove('hide');
+			if (headerNightmodeButton)
+				headerNightmodeButton.classList.remove('hide');
             if (headerSearchButton)
                 headerSearchButton.classList.remove('hide');
 			if (mainDrawerButton) {
@@ -252,6 +251,7 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
 			mainDrawerButton.classList.add('hide');
             headerHomeButton.classList.add('hide');
             headerCastButton.classList.add('hide');
+			headerNightmodeButton.classList.add('hide');
             headerSyncButton.classList.add('hide');
             if (headerSearchButton) 
                 headerSearchButton.classList.add('hide');
@@ -345,6 +345,10 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
         if (headerCastButton) {
             headerCastButton.addEventListener('click', onCastButtonClicked);
         }
+		
+		if (headerNightmodeButton) {
+            headerNightmodeButton.addEventListener('click', onNightmodeButtonClicked);
+        }
 
         headerAudioPlayerButton.addEventListener('click', showAudioPlayer);
         headerSyncButton.addEventListener('click', onSyncButtonClicked);
@@ -376,6 +380,10 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
         import('../components/playback/playerSelectionMenu').then((playerSelectionMenu) => {
             playerSelectionMenu.show(btn);
         });
+    }
+	
+	function onNightmodeButtonClicked() {
+		toggleNightMode(true);
     }
 
     function onSyncButtonClicked() {
@@ -1057,6 +1065,7 @@ import { currentSettings, enableClock, enableWeatherBot, showClock, placeClock, 
     let headerUserButton;
     let currentUser;
     let headerCastButton;
+	let headerNightmodeButton;
     let headerSearchButton;
 	let headerReloadButton;
 	let headerLockButton;

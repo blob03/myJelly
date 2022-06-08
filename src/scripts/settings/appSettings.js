@@ -39,6 +39,14 @@ class AppSettings {
 		
 		return toBoolean(this.get('autoSearch'), true);
 	}
+	
+	enableNightMode(val) {
+		if (val !== undefined) {
+			return this.set('clock_mode', val.toString());
+        }
+		
+		return toBoolean(this.get('clock_mode'), false);
+	}
 
     enableSystemExternalPlayers(val) {
         if (val !== undefined) {

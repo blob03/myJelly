@@ -1113,7 +1113,7 @@ function tryRemoveElement(elem) {
                 resizeVariation: 0.2,
                 renderAhead: 90
             };
-            import('libass-wasm').then(({default: SubtitlesOctopus}) => {
+            import('@jellyfin/libass-wasm').then(({default: SubtitlesOctopus}) => {
                 Promise.all([
                     apiClient.getNamedConfiguration('encoding'),
                     // Worker in Tizen 5 doesn't resolve relative path with async request
