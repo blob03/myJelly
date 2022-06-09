@@ -1174,7 +1174,7 @@ class ItemsView {
     }
 
     getVisibleViewSettings() {
-        const item = (this.params, this.currentItem);
+        const item = this.currentItem;
         const fields = ['showTitle', 'cardLayout'];
 
         if (!item || item.Type !== 'PhotoAlbum' && item.Type !== 'ChannelFolderItem') {

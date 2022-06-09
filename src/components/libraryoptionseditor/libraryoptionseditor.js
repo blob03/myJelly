@@ -67,7 +67,12 @@ import settingsHelper from '../settingshelper';
         let html = '';
         const elem = page.querySelector('.metadataReaders');
 
-        if (plugins.length < 1) return elem.innerHTML = '', elem.classList.add('hide'), !1;
+        if (plugins.length < 1) {
+            elem.innerHTML = '';
+            elem.classList.add('hide');
+            return false;
+        }
+
         html += `<h3 class="checkboxListLabel">${globalize.translate('LabelMetadataReaders')}</h3>`;
         html += '<div class="checkboxList paperList checkboxList-paperList">';
         for (let i = 0; i < plugins.length; i++) {
@@ -100,7 +105,11 @@ import settingsHelper from '../settingshelper';
     function renderMetadataSavers(page, metadataSavers) {
         let html = '';
         const elem = page.querySelector('.metadataSavers');
-        if (!metadataSavers.length) return elem.innerHTML = '', elem.classList.add('hide'), false;
+        if (!metadataSavers.length) {
+            elem.innerHTML = '';
+            elem.classList.add('hide');
+            return false;
+        }
         html += `<h3 class="checkboxListLabel">${globalize.translate('LabelMetadataSavers')}</h3>`;
         html += '<div class="checkboxList paperList checkboxList-paperList">';
         for (let i = 0; i < metadataSavers.length; i++) {
