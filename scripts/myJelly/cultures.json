@@ -602,11 +602,21 @@
 		"Name": "Georgian",
 		"DisplayName": "Georgian",
 		"DisplayNativeName": "ქართული",
-		"TwoLetterISOLanguageName": "ka",
+		"TwoLetterISOLanguageName": "kab",
 		"ThreeLetterISOLanguageName": "geo",
 		"ThreeLetterISOLanguageNames": [
 		  "geo",
 		  "kat"
+		]
+	  },
+	  "kab": {
+		"Name": "Kabyle",
+		"DisplayName": "Kabyle",
+		"DisplayNativeName": "ⵜⴰⵇⴱⴰⵢⵍⵉⵜ",
+		"TwoLetterISOLanguageName": "kab",
+		"ThreeLetterISOLanguageName": "kab",
+		"ThreeLetterISOLanguageNames": [
+		  "kab"
 		]
 	  },
 	  "de": {
