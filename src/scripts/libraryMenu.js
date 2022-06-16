@@ -92,15 +92,44 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<div class="headerWthButton" id="headerWthRight" style="display: flex;flex-direction: row;">';
 		html += '<fieldset style="margin: .1rem .3rem .1rem .3rem;padding: .2rem .3rem .2rem .3rem;border: 2px groove #595653;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveLeftButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
+		
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: space-between;width: 100%;">';
-		html += '<img id="headerWthIconRight" class="headerWthIcon" style="width: 1.6em">';
-		html += '<div id="headerWthTempRight" class="headerWthTemp" style="display: flex;align-items: center;font-size: 100%;"></div>';
+		
+		html += '<div id="headerWthMsg" class="headerWthMsg" style="font-size: 80%;"></div>';
+		
+		html += '<div class="WBScreen WBScreen0" style="width: 7em;height: 3.2em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
+		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.3em;margin-right: .2em;">';
+		html += '<div id="headerWthTemp" class="headerWthTemp" style="display: flex;align-items: center;font-size: 140%;margin-left: .2em;"></div>';
 		html += '</div>';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: flex-end;width: 100%;">';
-		html += '<div id="headerWthHumRight" class="headerWthHum" style="display: flex;align-items: center;font-size: 70%;"></div>';
-		html += '<div id="headerWthWindRight" class="headerWthWind" style="display: flex;align-items: center;font-size: 70%;"></div>';
+		html += '<div id="headerWthCity" class="headerWthCity" style="font-size: 60%;"></div>';
 		html += '</div>';
+		
+		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
+		html += '<div id="headerWthWind" class="headerWthWind" style="display: flex;align-items: center;"></div>';
+		html += '<div id="headerWthWindDir" class="headerWthWindDir" style="display: flex;align-items: center;"></div>';
+		html += '<span id="headerWthWindDirCode" style="font-size: 50%"></span>';
+		html += '</div>';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
+		html += '<div id="headerWthHum" class="headerWthHum" style="display: flex;align-items: center;"></div>';
+		html += '</div>';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
+		html += '<div id="headerWthPressure" class="headerWthPressure" style="display: flex;align-items: center;"></div>';
+		html += '</div>';
+		html += '</div>';
+		
+		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
+		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 130%;"></span>';
+		html += '<div id="headerWthSunrise" class="headerWthSunrise" style="display: flex;align-items: center;"></div>';
+		html += '</div>';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
+		html += '<span class="material-icons bedtime" style="color: white;font-size: 130%;"></span>';
+		html += '<div id="headerWthSunset" class="headerWthSunset" style="display: flex;align-items: center;"></div>';
+		html += '</div>';
+		html += '</div>';
+		
 		html += '</button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveRightButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</fieldset>';

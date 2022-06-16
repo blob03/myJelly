@@ -224,14 +224,13 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
             if (btnSort) {
                 btnSort.addEventListener('click', function (e) {
                     libraryBrowser.showSortMenu({
-                        items: [
-						//{
-						//	name: globalize.translate('OptionRandom'),
-						//	id: 'Random'
-						//}, 
+                        items: [ 
 						{
                             name: globalize.translate('Name'),
                             id: 'SortName,ProductionYear'
+						}, {
+                            name: globalize.translate('OptionRandom'),
+                            id: 'Random'
                         }, {
                             name: globalize.translate('OptionImdbRating'),
                             id: 'CommunityRating,SortName,ProductionYear'

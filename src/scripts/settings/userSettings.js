@@ -47,98 +47,200 @@ function isSecure() {
    return location.protocol == 'https:';
 }
 
+function WB_clear(self) {
+		self._hdrwth.icon.src = '';
+		self._hdrwth.icon.title = '';
+		self._hdrwth.temp.innerHTML = '';
+		self._hdrwth.city.innerHTML = '';
+		self._hdrwth.wind.innerHTML = '';
+		self._hdrwth.windDir.innerHTML = '';
+		self._hdrwth.windDirCode.innerHTML = '';
+		self._hdrwth.hum.innerHTML = '';
+		self._hdrwth.pressure.innerHTML = '';
+		self._hdrwth.msg.innerHTML = '';
+		self._hdrwth.city.innerHTML = '';	
+		self._hdrwth.sunrise.innerHTML = '';
+		self._hdrwth.sunset.innerHTML = '';
+}
+
 function hdrWeather() {
-	let req = {};
 	const self = this;
-	req.dataType = 'json';
-	const url_proto = isSecure() ? 'https://' : 'http://' ;
-	const url_base_icon = 'openweathermap.org/img/wn/';
-	const url_base = 'api.openweathermap.org/data/2.5/';
-	const url_apiMethod = 'weather';
-	const _lat = self.getlatitude();
-	const _lon = self.getlongitude();
-	const wapikey = self.weatherApiKey();
+	const _lat = this.getlatitude();
+	const _lon = this.getlongitude();
+	const wapikey = this.weatherApiKey();
 	
 	if (!wapikey) {
-		self._hdrwth_icon.src = "";
-		self._hdrwth_temp.innerHTML = "";
-		self._hdrwth_wind.innerHTML = "";
-		self._hdrwth_hum.innerHTML = globalize.translate('MissingAPIKey');
+		WB_clear(this);
+		this._hdrwth_msg.innerHTML = globalize.translate('MissingAPIKey');
 		console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
 		return;
 	}
-	const url_params = '?appid=' + wapikey
+	
+	let url = {};
+	url.proto = isSecure() ? 'https://' : 'http://' ;
+	url.base_icon = 'openweathermap.org/img/wn/';
+	url.base = 'api.openweathermap.org/data/2.5/';
+	url.apiMethod = 'weather';
+	url.params = '?appid=' + wapikey
 		+ '&lat=' + _lat + '&lon=' + _lon
-		+ '&units=' + (self.enableUSUnits()?'imperial':'metric') 
-		+ '&lang=' + self.convertCountryCode(self.language());
-		
-	req.url = url_proto + url_base + url_apiMethod + url_params; 
+		+ '&units=' + (this.enableUSUnits()?'imperial':'metric') 
+		+ '&mode=xml'
+		+ '&lang=' + this.convertCountryCode(this.language());
+	
+	let req = {};
+	req.dataType = 'text';	
+	req.url = url.proto + url.base + url.apiMethod + url.params; 
 	
 	let _contimeout = setTimeout(() => {
-		self._hdrwth_icon.src = "";
-		self._hdrwth_temp.innerHTML = "";
-		self._hdrwth_wind.innerHTML = "";
-		self._hdrwth_hum.innerHTML = globalize.translate('Connecting');
+		WB_clear(self);
+		self._hdrwth_msg.innerHTML = globalize.translate('Connecting');
 	}, 3000);
 	
-	ajax(req).then(function (data) {
+	ajax(req).then(function (data) { 
 		clearInterval(_contimeout);
+		WB_clear(self);
+		let _xmlDoc;
+		let _root;
+		let _parser;
 		let _dyn;
-		if (data.weather["0"].icon) {
-			self._hdrwth_icon.src = url_proto + url_base_icon + data.weather["0"].icon + '.png';
-			if (data.weather["0"].description)
-				self._hdrwth_icon.title = data.weather["0"].description;
-		} else
-			self._hdrwth_icon.src = "";
+		let _data = {};
 		
-		if (data.main.temp) {
-			_dyn = Number(data.main.temp.toFixed(1));
+		if (window.DOMParser) {
+			_parser = new DOMParser();
+			if (_parser) {
+				_xmlDoc = _parser.parseFromString(data, "text/xml");
+				if (_xmlDoc) 
+					_root = _xmlDoc.getElementsByTagName("current")[0];
+			}
+		}
+		
+		if (_root) {
+			if (_root.getElementsByTagName("weather")[0]) {
+				_data.icon = _root.getElementsByTagName("weather")[0].getAttribute("icon");
+				_data.title = _root.getElementsByTagName("weather")[0].getAttribute("value");
+			}
+		
+			if (_root.getElementsByTagName("temperature")[0])
+				_data.temp = _root.getElementsByTagName("temperature")[0].getAttribute("value");
+		
+			if (_root.getElementsByTagName("city")[0])
+				_data.name = _root.getElementsByTagName("city")[0].getAttribute("name");
+			
+			if (_root.getElementsByTagName("humidity")[0])
+				_data.hum = _root.getElementsByTagName("humidity")[0].getAttribute("value");
+			
+			if (_root.getElementsByTagName("pressure")[0]) {
+				_data.pressure = _root.getElementsByTagName("pressure")[0].getAttribute("value");
+				_data.pressureUnit = _root.getElementsByTagName("pressure")[0].getAttribute("unit");
+			}
+			
+			if (_root.getElementsByTagName("wind")[0]) {
+				_data.speed = _root.getElementsByTagName("wind")[0].getElementsByTagName("speed")[0].getAttribute("value");
+				_data.dir = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("value");
+				_data.code = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("code");
+			}
+			
+			if (_root.getElementsByTagName("city")[0]) {
+				_data.sunrise = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("rise");
+				_data.sunset = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("set");
+				_data.country = _root.getElementsByTagName("city")[0].getElementsByTagName("country")[0].textContent;
+			}
+		}
+		
+		if (_data.icon) {
+			self._hdrwth.icon.src = url.proto + url.base_icon + _data.icon + '.png';
+			if (_data.title)
+				self._hdrwth.icon.title = _data.title;
+		} 
+		
+		if (_data.temp) {
+			_dyn = Number(_data.temp).toFixed(1);
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
-			if (self.enableUSUnits())
-				_dyn += '&#8457;</span>';
-			else
-				_dyn += '&#8451;</span>';
-			self._hdrwth_temp.innerHTML = _dyn;
-			self._hdrwth_temp.title = globalize.translate('Temperature');
-		} else
-			self._hdrwth_temp.innerHTML = "";
+			_dyn += (self.enableUSUnits()? '&#8457;' : '&#8451;') + '</span>';
+			self._hdrwth.temp.innerHTML = _dyn;
+			self._hdrwth.temp.title = globalize.translate('Temperature');
+		}
 		
-		if (data.main.humidity) {
-			_dyn = Number(data.main.humidity.toFixed(1));
+		if (_data.name) {
+			self._hdrwth.city.innerHTML = _data.name;
+			if (_data.country)
+				self._hdrwth.city.title = _data.country;
+		}
+		
+		if (_data.hum) {
+			_dyn = Number(_data.hum).toFixed(1);
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">%</span>';
-			self._hdrwth_hum.innerHTML = _dyn;
-			self._hdrwth_hum.title = globalize.translate('Humidity');
-		} else
-			self._hdrwth_hum.innerHTML = "";
+			self._hdrwth.hum.innerHTML = _dyn;
+			self._hdrwth.hum.title = globalize.translate('Humidity');
+		}
 		
-		if (data.wind.speed) {
-			let wspeed = data.wind.speed;
+		if (_data.pressure) {
+			_dyn = Number(_data.pressure).toFixed(1);
+			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">';
+			if (_data.pressureUnit)
+				_dyn += _data.pressureUnit;
+			else
+				_dyn += 'hPa';
+			_dyn += '</span>';
+			self._hdrwth.pressure.innerHTML = _dyn;
+			self._hdrwth.pressure.title = globalize.translate('Pressure');
+		}
+		
+		if (_data.speed) {
+			let wspeed = _data.speed;
 			if (!self.enableUSUnits())
 				wspeed *= 3.6; // m/s -> km/h
-			_dyn = "&nbsp;&nbsp;&nbsp;" + Number(wspeed.toFixed(1));
+			_dyn = Number(wspeed).toFixed(1);
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
-			if (self.enableUSUnits())
-				_dyn += 'mph</span>';
-			else
-				_dyn += 'km/h</span>';
-			self._hdrwth_wind.innerHTML = _dyn;
-			self._hdrwth_wind.title = globalize.translate('WindSpeed');
-		} else
-			self._hdrwth_wind.innerHTML = "";
+			_dyn += (self.enableUSUnits()? 'mph' : 'km/h') + '</span>';
+			self._hdrwth.wind.innerHTML = _dyn;
+			if (self._hdrwth.wind.parentNode)
+				self._hdrwth.wind.parentNode.title = globalize.translate('WindSpeed');
+		}
+		
+		if (_data.dir) {
+			_dyn = "&nbsp;" + _data.dir;
+			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">&deg;</span>';
+			self._hdrwth.windDir.innerHTML = _dyn;
+			if (_data.code)
+				self._hdrwth.windDirCode.innerHTML = "&nbsp;" + _data.code;
+		}
+		
+		if (_data.sunrise) {
+			 if (_data.sunrise.charAt(_data.sunrise.length - 1).toUpperCase() !== 'Z')
+				_data.sunrise += 'Z';
+			let _date = new Date(_data.sunrise);
+			let _srise = _date.getHours().toString().padStart(2, "0") + ":";
+			_srise += _date.getMinutes().toString().padStart(2, "0");
+			_dyn = "&nbsp;&nbsp;&nbsp;" + _srise;
+			self._hdrwth.sunrise.innerHTML = _dyn;
+			if (self._hdrwth.sunrise.parentNode)
+				self._hdrwth.sunrise.parentNode.title = globalize.translate('Sunrise');
+		}
+		
+		if (_data.sunset) {
+			if (_data.sunset.charAt(_data.sunset.length - 1).toUpperCase() !== 'Z')
+				_data.sunset += 'Z';
+			let _date = new Date(_data.sunset);
+			let _sset = _date.getHours().toString().padStart(2, "0") + ":";
+			_sset += _date.getMinutes().toString().padStart(2, "0");
+			_dyn = "&nbsp;&nbsp;&nbsp;" + _sset;
+			self._hdrwth.sunset.innerHTML = _dyn;
+			if (self._hdrwth.sunset.parentNode)
+				self._hdrwth.sunset.parentNode.title = globalize.translate('Sunset');
+		}
 		
 	}).catch(function (data) {
 		clearInterval(_contimeout);
 		console.warn(data);
-		self._hdrwth_icon.src = "";
-		self._hdrwth_temp.innerHTML = "";
-		self._hdrwth_wind.innerHTML = "";
+		WB_clear(self);
 		if (data.status) {
 			let _msg = data.status;
 			if (data.statusText)
 				_msg += '<br/>' + data.statusText;
-			self._hdrwth_hum.innerHTML = _msg; 
+			self._hdrwth.msg.innerHTML = _msg; 
 		} else
-			self._hdrwth_hum.innerHTML = globalize.translate('NoConnectivity');
+			self._hdrwth.msg.innerHTML = globalize.translate('NoConnectivity');
 	});
 	return;
 }
@@ -150,11 +252,9 @@ export class UserSettings {
 		this.weatherTimer = null;
 		this._hdrclkdate_span;
 		this._hdrclktime_span;
-		this._hdrwth_temp;
-		this._hdrwth_icon;
-		this._hdrwth_wind;
-		this._hdrwth_hum;
+		this._hdrwth = {};
 		this._clkmode = 2;
+		this._wbmode = 0;
 		this._opts_date = {year: 'numeric', day: '2-digit', weekday: 'long', month: 'long', timeZoneName: undefined};
 		this._opts_time = {hour: 'numeric', minute: '2-digit'};
     }
@@ -502,10 +602,17 @@ export class UserSettings {
 		const _hdrwtb = document.getElementById('headerWthRight');
 		if (!_hdrwtb) 
 			return;
-		this._hdrwth_temp = document.getElementById('headerWthTempRight');
-		this._hdrwth_icon = document.getElementById('headerWthIconRight');
-		this._hdrwth_wind = document.getElementById('headerWthWindRight');
-		this._hdrwth_hum = document.getElementById('headerWthHumRight');
+		this._hdrwth.temp = document.getElementById('headerWthTemp');
+		this._hdrwth.city = document.getElementById('headerWthCity');
+		this._hdrwth.sunrise = document.getElementById('headerWthSunrise');
+		this._hdrwth.sunset = document.getElementById('headerWthSunset');
+		this._hdrwth.icon = document.getElementById('headerWthIcon');
+		this._hdrwth.wind = document.getElementById('headerWthWind');
+		this._hdrwth.windDir = document.getElementById('headerWthWindDir');
+		this._hdrwth.windDirCode = document.getElementById('headerWthWindDirCode');
+		this._hdrwth.hum = document.getElementById('headerWthHum');
+		this._hdrwth.pressure = document.getElementById('headerWthPressure');
+		this._hdrwth.msg = document.getElementById('headerWthMsg');
 		
 		// is an instance of the widget running already?
 		if (this.weatherTimer !== null) {
@@ -727,16 +834,6 @@ export class UserSettings {
 		}
 	}
 	
-	initWeatherBot() {
-		const self = this;
-		
-		//let elm = document.getElementsByClassName("headerWthMain")[0];
-		//if (elm) {
-		//	elm.removeEventListener('click', self.doToggle );
-		//	elm.addEventListener('click', self.doToggle );
-		//}
-	}
-	
 	initClockPlaces() {
 		let _l_hdrclck = document.getElementById("headerClockLeft");
 		let _m_hdrclck = document.getElementById("headerClockRight");
@@ -747,6 +844,41 @@ export class UserSettings {
 		this.initButtons(_l_hdrclck);
 		this.initButtons(_m_hdrclck);
 		this.initButtons(_r_hdrclck);
+	}
+
+	WB_initButtons() {
+		const self = this;
+		let elm;
+		
+		var WB_nextMode = function(self) {
+			return function WB_curried(e) {
+				const elms = document.getElementsByClassName("WBScreen");
+				
+				if (elms.length) {
+					self._wbmode = (self._wbmode + 1) % 3;
+					
+					for (let elm of elms) {
+						elm.classList.add('hide');
+						elm.classList.add('hide');
+						elm.classList.add('hide');
+					}
+					if (elms[self._wbmode])
+						elms[self._wbmode].classList.remove('hide');	
+				}
+			}
+		}
+		
+		elm = document.getElementsByClassName("headerWthMain")[0];
+		if (elm) {
+			elm.removeEventListener('click', WB_nextMode(self));
+			elm.addEventListener('click', WB_nextMode(self));
+		}	
+	}
+	
+	initWeatherBot() {
+		const self = this;
+		
+		this.WB_initButtons();
 	}
 	
 	/**

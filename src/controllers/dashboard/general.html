@@ -71,13 +71,20 @@
                         <textarea is="emby-textarea" id="txtLoginDisclaimer" label="${LabelLoginDisclaimer}" class="textarea-mono"></textarea>
                         <div class="fieldDescription">${LabelLoginDisclaimerHelp}</div>
                     </div>
-                    <div class="inputContainer customCssContainer">
+                    
                         <textarea is="emby-textarea" id="txtCustomCss" label="${LabelCustomCss}" class="textarea-mono"></textarea>
                         <div class="fieldDescription">${LabelCustomCssHelp}</div>
+                    
+					<br />
+					
+					<div>
+                        <label>
+                            <input type="checkbox" is="emby-checkbox" id="chkSplashScreenAvailable" />
+                            <span>${EnableSplashScreen}</span>
+                        </label>
                     </div>
                 </div>
-                <br>
-				<br>
+                <br />
                 <div>
                     <button is="emby-button" type="submit" class="raised button-submit block">
                         <span>${Save}</span>

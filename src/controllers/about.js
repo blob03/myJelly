@@ -96,9 +96,9 @@ class AboutTab {
 			selectRnotes.addEventListener('change', function(e) { 
 				let _version = e.target.value;
 				let _txtarea = self.view.querySelector('#txtRNotes');
-				if (_txtarea && self.releaseNotes[_version]) {
+				if (_txtarea && typeof self.releaseNotes[_version] === 'string') {
 					let _rows = self.releaseNotes[_version].split(/\r\n|\r|\n/).length + 1;
-					_rows = _rows < 10 ? _rows : 10;
+					_rows = Math.min(_rows, 7);
 					_txtarea.rows = _rows;
 					_txtarea.value = self.releaseNotes[_version];
 				}

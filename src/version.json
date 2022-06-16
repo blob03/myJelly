@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.0-0",
+	"version": "10.8.0-1",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -35,6 +35,7 @@
 		"10.7.7.1-62": "Added Kabyle translations.\nApplied patch 'eslint-no-sequences'.\nFixed unrecognized 'timeZoneName' in date format (WebOs).\nClock applet code optimized further for speed.",
 		"10.7.7.1-63": "Applied patch 'update-dialog-routing'.\nApplied patch 'Update dialog history state when in invalid state'.",
 		"10.7.7.1-64": "Restored correct Georgian two letters ISO code.",
-		"10.8.0-0": "Kabyle autonym rewritten in Latin script.\nApplied patch 'show-play-settings'.\nTranslations synchronized with master."
+		"10.8.0-0": "Kabyle autonym rewritten in Latin script.\nApplied patch 'show-play-settings'.\nTranslations synchronized with master.",
+		"10.8.0-1": "Clicking the Weather applet allows to browse through more weather reports.\nTranslations synchronized with master.\nApplied patch 'sort-random-master'.\nApplied patch 'ItemsByName-&-PlaylistViewer'.\nApplied patch 'Cleanup-Screenshot'.\nApplied patch 'disable-splashscreen'.\nApplied patch 'patch-1'.\nApplied patch 'release-10.8.z'."
 	}
 }
