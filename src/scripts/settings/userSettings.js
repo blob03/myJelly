@@ -47,22 +47,6 @@ function isSecure() {
    return location.protocol == 'https:';
 }
 
-function WB_clear(self) {
-		self._hdrwth.icon.src = '';
-		self._hdrwth.icon.title = '';
-		self._hdrwth.temp.innerHTML = '';
-		self._hdrwth.city.innerHTML = '';
-		self._hdrwth.wind.innerHTML = '';
-		self._hdrwth.windDir.innerHTML = '';
-		self._hdrwth.windDirCode.innerHTML = '';
-		self._hdrwth.hum.innerHTML = '';
-		self._hdrwth.pressure.innerHTML = '';
-		self._hdrwth.msg.innerHTML = '';
-		self._hdrwth.city.innerHTML = '';	
-		self._hdrwth.sunrise.innerHTML = '';
-		self._hdrwth.sunset.innerHTML = '';
-}
-
 function hdrWeather() {
 	const self = this;
 	const _lat = this.getlatitude();
@@ -70,9 +54,9 @@ function hdrWeather() {
 	const wapikey = this.weatherApiKey();
 	
 	if (!wapikey) {
-		WB_clear(this);
-		this._hdrwth_msg.innerHTML = globalize.translate('MissingAPIKey');
 		console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
+		this._hdrwth.msg.innerHTML = globalize.translate('MissingAPIKey');
+		this.WB_setButtons(0);
 		return;
 	}
 	
@@ -92,13 +76,12 @@ function hdrWeather() {
 	req.url = url.proto + url.base + url.apiMethod + url.params; 
 	
 	let _contimeout = setTimeout(() => {
-		WB_clear(self);
-		self._hdrwth_msg.innerHTML = globalize.translate('Connecting');
+		self._hdrwth.msg.innerHTML = globalize.translate('Connecting');
+		self.WB_setButtons(0);
 	}, 3000);
 	
 	ajax(req).then(function (data) { 
 		clearInterval(_contimeout);
-		WB_clear(self);
 		let _xmlDoc;
 		let _root;
 		let _parser;
@@ -230,10 +213,11 @@ function hdrWeather() {
 				self._hdrwth.sunset.parentNode.title = globalize.translate('Sunset');
 		}
 		
+		self.WB_setButtons();
+		
 	}).catch(function (data) {
 		clearInterval(_contimeout);
 		console.warn(data);
-		WB_clear(self);
 		if (data.status) {
 			let _msg = data.status;
 			if (data.statusText)
@@ -241,6 +225,7 @@ function hdrWeather() {
 			self._hdrwth.msg.innerHTML = _msg; 
 		} else
 			self._hdrwth.msg.innerHTML = globalize.translate('NoConnectivity');
+		self.WB_setButtons(0);
 	});
 	return;
 }
@@ -254,7 +239,8 @@ export class UserSettings {
 		this._hdrclktime_span;
 		this._hdrwth = {};
 		this._clkmode = 2;
-		this._wbmode = 0;
+		this._wbmode = 1;
+		this._pwrButtons = false;
 		this._opts_date = {year: 'numeric', day: '2-digit', weekday: 'long', month: 'long', timeZoneName: undefined};
 		this._opts_time = {hour: 'numeric', minute: '2-digit'};
     }
@@ -845,40 +831,40 @@ export class UserSettings {
 		this.initButtons(_m_hdrclck);
 		this.initButtons(_r_hdrclck);
 	}
-
-	WB_initButtons() {
-		const self = this;
-		let elm;
-		
-		var WB_nextMode = function(self) {
-			return function WB_curried(e) {
-				const elms = document.getElementsByClassName("WBScreen");
-				
-				if (elms.length) {
-					self._wbmode = (self._wbmode + 1) % 3;
-					
-					for (let elm of elms) {
-						elm.classList.add('hide');
-						elm.classList.add('hide');
-						elm.classList.add('hide');
-					}
-					if (elms[self._wbmode])
-						elms[self._wbmode].classList.remove('hide');	
-				}
-			}
+	
+	WB_setButtons(nb) {
+		const elms = document.getElementsByClassName("WBScreen");				
+		if (elms.length) {	
+			for (let elm of elms) 
+				elm.classList.add('hide');
+			if (nb === 0)
+				this._pwrButtons = false;
+			else
+				this._pwrButtons = true;
+			
+			const act = (nb !== undefined)? nb: this._wbmode;
+			if (elms[act])
+				elms[act].classList.remove('hide');	
 		}
-		
-		elm = document.getElementsByClassName("headerWthMain")[0];
-		if (elm) {
-			elm.removeEventListener('click', WB_nextMode(self));
-			elm.addEventListener('click', WB_nextMode(self));
-		}	
 	}
 	
 	initWeatherBot() {
 		const self = this;
-		
-		this.WB_initButtons();
+		var WB_nextMode = function(self) {
+			return function WB_curried(e) {
+				if (self._pwrButtons === true) {
+					self._wbmode --;
+					self._wbmode = (self._wbmode + 1) % 3;	
+					self._wbmode ++;
+					self.WB_setButtons();
+				}
+			}
+		}	
+		let elm = document.getElementsByClassName("headerWthMain")[0];
+		if (elm) {
+			elm.removeEventListener('click', WB_nextMode(self));
+			elm.addEventListener('click', WB_nextMode(self));
+		}
 	}
 	
 	/**

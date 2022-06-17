@@ -85,14 +85,6 @@ class AboutTab {
 			const selectRnotes = self.sectionsContainer.querySelector('#selectReleaseNotes');
 			self.vers = selectRnotes;
 			
-			self.updateReleaseNotes(appInfo);
-			
-			let headerAutosearchButton = self.sectionsContainer.querySelector('.autosearchButton');
-			if (headerAutosearchButton) {
-				self.refreshAutosearch();
-				headerAutosearchButton.addEventListener('click', self.switchAutosearch.bind(self));
-			}
-			
 			selectRnotes.addEventListener('change', function(e) { 
 				let _version = e.target.value;
 				let _txtarea = self.view.querySelector('#txtRNotes');
@@ -104,8 +96,13 @@ class AboutTab {
 				}
 			});
 			
-			let event_change = new Event('change');
-			selectRnotes.dispatchEvent(event_change);
+			let headerAutosearchButton = self.sectionsContainer.querySelector('.autosearchButton');
+			if (headerAutosearchButton) {
+				self.refreshAutosearch();
+				headerAutosearchButton.addEventListener('click', self.switchAutosearch.bind(self));
+			}
+			
+			self.updateReleaseNotes(appInfo);
 		});
     }
 
@@ -138,6 +135,8 @@ class AboutTab {
 			_html += 'value="' + _version + '">' + _version + '</option>';
 		});
 		this.vers.innerHTML = _html;
+		const _changeEvt = new Event('change');
+		this.vers.dispatchEvent(_changeEvt);
 	}
 
 	refreshAutosearch() {
@@ -202,8 +201,6 @@ class AboutTab {
 					self.au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
 					self.releaseNotes = data.releaseNotes;
 					self.updateReleaseNotes(data);
-					let echange = new Event('change');
-					self.vers.dispatchEvent(echange);
 				} else {
 					self.au.style.fontWeight = "400";
 					self.au.innerHTML = globalize.translate('LabelUpdateOK');

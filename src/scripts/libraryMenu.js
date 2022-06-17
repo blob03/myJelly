@@ -95,9 +95,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		
-		html += '<div id="headerWthMsg" class="headerWthMsg" style="font-size: 80%;"></div>';
+		html += '<div class="WBScreen WBScreen0" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;">';
+		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
+		html += '</div>';
 		
-		html += '<div class="WBScreen WBScreen0" style="width: 7em;height: 3.2em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
+		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;height: 3.2em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
 		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
 		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.3em;margin-right: .2em;">';
 		html += '<div id="headerWthTemp" class="headerWthTemp" style="display: flex;align-items: center;font-size: 140%;margin-left: .2em;"></div>';
@@ -105,7 +107,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<div id="headerWthCity" class="headerWthCity" style="font-size: 60%;"></div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
 		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
 		html += '<div id="headerWthWind" class="headerWthWind" style="display: flex;align-items: center;"></div>';
 		html += '<div id="headerWthWindDir" class="headerWthWindDir" style="display: flex;align-items: center;"></div>';
@@ -119,7 +121,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '</div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
 		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
 		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 130%;"></span>';
 		html += '<div id="headerWthSunrise" class="headerWthSunrise" style="display: flex;align-items: center;"></div>';
