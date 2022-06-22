@@ -602,12 +602,8 @@ h3 {
 	text-shadow: 1px 1px 8px #39708b !important;
 }
 
-.headerClockMode0 > .headerClockTime {
-	font-size: 140% !important;
-}
-
-.headerClockMode1 > .headerClockTime {
-	font-size: 200% !important;
+.headerClockMode1 {
+	font-size: 150% !important;
 }
 
 .headerClockTime {

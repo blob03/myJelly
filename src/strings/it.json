@@ -272,6 +272,7 @@
     "EnableQuickConnect": "Attiva Quick Connect su questo server",
     "EnableRewatchingNextUp": "Abilita Vedere Di Nuovo Nei Prossimi",
     "EnableRewatchingNextUpHelp": "Abilita la visualizzazione degli episodi già visti nelle sezioni 'Prossimi'.",
+    "EnableSplashScreen": "Abilita la schermata di avvio",
     "EnableStreamLooping": "Auto-loop streaming in diretta",
     "EnableStreamLoopingHelp": "Abilita questo se gli streaming in diretta contengono solo pochi secondi di dati e devono essere costantemente richiesti. L'abilitazione di questa funzione quando non è servita può causare problemi.",
     "EnableThemeSongsHelp": "Riproduci le sigle in sottofondo durante la visualizzazione della libreria.",

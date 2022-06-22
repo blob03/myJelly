@@ -249,16 +249,11 @@ import viewContainer from '../viewContainer';
 	
 	function onDisplayFontSizeChange(e) { 		
 		document.body.style.fontSize = 1 + (e.target.value/100) + "rem"; 
-		//document.body.style.lineHeight = 1 + (e.target.value/100) + "rem"; 
 	}
 	
 	function displayFontSizeRset() { 		
 		document.body.style.fontSize = "1rem";
-		//document.body.style.lineHeight = "1rem";
 	}
-
-	var savedLayout = '';
-	var savedDisplayLanguage = '';
 	
 	function isSecure() {
 	   return location.protocol == 'https:';
@@ -271,19 +266,22 @@ import viewContainer from '../viewContainer';
 				document.querySelector('#inputLon').value = Number(position.coords.longitude.toFixed(2));
 			});
 		} else{
-			//alert("Sorry, your browser does not support HTML5 geolocation.");
+			console.warn("Sorry but it appears your browser does not support HTML5 geolocation.");
 		}
 	}
 
-    function loadForm(context, user, userSettings, apiClient) {	
+	function loadForm(self) {
+		let context = self.options.element;
+		let user = self.currentUser;
+		let userSettings = self.options.userSettings;;
+		let apiClient = self.options.apiClient;
 		let event_change = new Event('change');
-		
 		let allCultures = cultures.getDictionaries();
 	
 		if (appHost.supports('displaylanguage')) { 
 			let selectLanguage = context.querySelector('#selectLanguage');
-			savedDisplayLanguage = userSettings.language() || '';
-			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", savedDisplayLanguage);
+			self._savedDisplayLang = userSettings.language() || '';
+			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", self._savedDisplayLang);
 			selectLanguage.addEventListener('change', function(e) { settingsHelper.showDictionaryInfo(e); });
 			selectLanguage.dispatchEvent(event_change);
 			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
@@ -331,7 +329,6 @@ import viewContainer from '../viewContainer';
 			sliderScreensaverTime.value = (userSettings.screensaverTime()/60000) || 3;
 			sliderScreensaverTime.addEventListener('input', onScreensaverTimeChange);
 			sliderScreensaverTime.addEventListener('change', onScreensaverTimeChange);
-			
 			sliderScreensaverTime.dispatchEvent(event_change);
 			selectScreensaver.dispatchEvent(event_change);
         } else 
@@ -359,8 +356,8 @@ import viewContainer from '../viewContainer';
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		
-		context.querySelector('#selectClock').value = userSettings.enableClock();
-		context.querySelector('#selectWeatherBot').value = userSettings.enableWeatherBot();
+		self._savedClock =context.querySelector('#selectClock').value = userSettings.enableClock();
+		self._savedWBot = context.querySelector('#selectWeatherBot').value = userSettings.enableWeatherBot();
 		
 		context.querySelector('#inputLat').value = userSettings.getlatitude();
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
@@ -374,7 +371,7 @@ import viewContainer from '../viewContainer';
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
-		savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
+		self._savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 			
 		if (browser.web0s || appHost.supports('displaymode')) 	
 			context.querySelector('.fldDisplayMode').classList.remove('hide');
@@ -399,7 +396,7 @@ import viewContainer from '../viewContainer';
     }
 
 	function translateUserMenu() {
-		// Force a retranslation of the user menu with the latest display language.
+		// Refresh the translation of the user settings main page.
 		let old = document.querySelector('.readOnlyContent');
 		if (old) {
 			let patch = document.createElement('div');
@@ -415,22 +412,29 @@ import viewContainer from '../viewContainer';
 			prefs.setAttribute('data-title', globalize.translate('Display'));
 	}
 
-    function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
-		let newLayout;
-		let newDisplayLanguage = savedDisplayLanguage;
+    function saveUser(self) {
+		const user = self.currentUser;
+		const enableSaveConfirmation = self.options.enableSaveConfirmation;
+		const userSettingsInstance = self.options.userSettings;
+		const context = self.options.element;
+		const apiClient = self.options.apiClient;
+		let newDisplayLanguage = self._savedDisplayLang;
 		let reload = false;
-		const user = instance.currentUser;
-		
-		newLayout = context.querySelector('.selectLayout').value;
-		if (newLayout !== savedLayout) {
+		let newLayout = context.querySelector('.selectLayout').value;
+		if (newLayout !== self._savedLayout) {
 			layoutManager.setLayout(newLayout, true);		
-			savedLayout = newLayout;
+			self._savedLayout = newLayout;
+			reload = true;
+		}
+		
+		if ((self._savedClock != context.querySelector('#selectClock').value) ||
+				(self._savedWBot != context.querySelector('#selectWeatherBot').value)) {
 			reload = true;
 		}
 		
         if (appHost.supports('displaylanguage')) {	
 			newDisplayLanguage = context.querySelector('#selectLanguage').value;
-			if (newDisplayLanguage !== savedDisplayLanguage) {
+			if (newDisplayLanguage !== self._savedDisplayLang) {
 				userSettingsInstance.language(newDisplayLanguage);
 				reload = true;
 			}
@@ -446,14 +450,11 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
-		
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
-		
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
 		userSettingsInstance.swiperFX(context.querySelector('#selectSwiperFX').value);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
-		
 		userSettingsInstance.APIDelay(context.querySelector('#sliderAPIFrequency').value);
 		userSettingsInstance.getlatitude(context.querySelector('#inputLat').value);
 		userSettingsInstance.getlongitude(context.querySelector('#inputLon').value);
@@ -472,8 +473,8 @@ import viewContainer from '../viewContainer';
 			userSettingsInstance.commit(); 
 			setTimeout(() => { 
 				if (reload !== false) {
-					embed(instance.options, instance, newDisplayLanguage).then( () => {
-						LibraryMenu.setTitle(globalize.translate(instance.title));
+					embed(self, newDisplayLanguage).then( () => {
+						LibraryMenu.setTitle(globalize.translate(self.title));
 						LibraryMenu.updateUserInHeader(user);
 						translateUserMenu();
 						loading.hide();	
@@ -488,23 +489,11 @@ import viewContainer from '../viewContainer';
 		});
     }
 
-    function save(instance, context, userSettings, apiClient, enableSaveConfirmation) {
-        loading.show();
-		saveUser(instance, context, userSettings, apiClient, enableSaveConfirmation);
-		Events.trigger(instance, 'saved'); 			
-    }
-
     function onSubmit(e) {
-        const self = this;
-        const apiClient = ServerConnections.getApiClient(self.options.serverId);
-        const userId = self.options.userId;
-        const userSettings = self.options.userSettings;
-
-        userSettings.setUserInfo(userId, apiClient).then(() => {
-            const enableSaveConfirmation = self.options.enableSaveConfirmation;
-            save(self, self.options.element, userSettings, apiClient, enableSaveConfirmation);
-        });
-
+		loading.show();
+		saveUser(this);
+		Events.trigger(this, 'saved'); 
+		
         // Disable default form submission
         if (e) 
             e.preventDefault();
@@ -512,43 +501,40 @@ import viewContainer from '../viewContainer';
         return false;
     }
 	
-    function embed(options, self, culture) {
+    function embed(self, culture) {
 		return globalize.getCoreDictionary(culture).then( () => {
-			options.element.innerHTML = globalize.translateHtml(template, 'core', culture);
-			options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
-			if (options.enableSaveButton) {
-				options.element.querySelector('.btnSave').classList.remove('hide');
+			self.options.element.innerHTML = globalize.translateHtml(template, 'core', culture);
+			self.options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
+			if (self.options.enableSaveButton) {
+				self.options.element.querySelector('.btnSave').classList.remove('hide');
 			}
-			self.loadData(options.autoFocus);
+			self.loadData(self.options.autoFocus);
 		});
 	}
 
     class DisplaySettings {
         constructor(options) {
             this.options = options;
-			this.currentUser = null;
 			this.title = 'Display';
-            embed(options, this);
+			this._savedDisplayLang = '';
+			this._savedLayout = '';
+			this._savedWBot = '';
+			this._savedClock = '';
+            embed(this);
         }
 
         loadData(autoFocus) {
             const self = this;
-			const apiClient = self.options.apiClient;
-            const context = self.options.element;
-			const userId = self.options.userId;
-			const userSettings = self.options.userSettings;
-			
+           
             loading.show();
             
-			return ServerConnections.user(apiClient).then((user) => {
-				self.currentUser = user;
-                return userSettings.setUserInfo(userId, apiClient).then(() => {
-                    self.dataLoaded = true;
-                    loadForm(context, user, userSettings, apiClient);
-                    if (autoFocus) 
-                        focusManager.autoFocus(context);
-					loading.hide();
-                });	
+			return ServerConnections.user(this.options.apiClient).then((user) => {
+				self.currentUser = user;               
+				self.dataLoaded = true;
+				loadForm(self);
+				if (autoFocus) 
+					focusManager.autoFocus(self.options.element);
+				loading.hide();
 			});
         }
 

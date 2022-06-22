@@ -561,16 +561,12 @@ html {
 	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
-.headerClockMode0 > .headerClockTime {
-	font-size: 140% !important;
+.headerClock {
+	font-size: 100% !important;
 }
 
-.headerClockMode1 > .headerClockTime {
-	font-size: 200% !important;
-}
-
-.headerClockTime {
-	font-size: 140% !important;
+.headerClockMode1 {
+	font-size: 150% !important;
 }
 
 .headerClockDate {

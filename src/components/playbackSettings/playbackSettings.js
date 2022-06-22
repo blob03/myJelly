@@ -53,7 +53,6 @@ import template from './playbackSettings.template.html';
 
     function fillChromecastQuality(select) {
         const options = qualityoptions.getVideoQualityOptions({
-
             currentMaxBitrate: appSettings.maxChromecastBitrate(),
             isAutomaticBitrateEnabled: !appSettings.maxChromecastBitrate(),
             enableAuto: true
@@ -71,27 +70,24 @@ import template from './playbackSettings.template.html';
         if (select.value) {
             appSettings.maxStreamingBitrate(isInNetwork, mediatype, select.value);
             appSettings.enableAutomaticBitrateDetection(isInNetwork, mediatype, false);
-        } else {
+        } else
             appSettings.enableAutomaticBitrateDetection(isInNetwork, mediatype, true);
-        }
     }
 
     function showHideQualityFields(context, user, apiClient) {
-        if (user.Policy.EnableVideoPlaybackTranscoding) {
+        if (user.Policy.EnableVideoPlaybackTranscoding)
             context.querySelector('.videoQualitySection').classList.remove('hide');
-        } else {
+        else
             context.querySelector('.videoQualitySection').classList.add('hide');
-        }
 
         if (appHost.supports('multiserver')) {
             context.querySelector('.fldVideoInNetworkQuality').classList.remove('hide');
             context.querySelector('.fldVideoInternetQuality').classList.remove('hide');
 
-            if (user.Policy.EnableAudioPlaybackTranscoding) {
+            if (user.Policy.EnableAudioPlaybackTranscoding) 
                 context.querySelector('.musicQualitySection').classList.remove('hide');
-            } else {
+            else 
                 context.querySelector('.musicQualitySection').classList.add('hide');
-            }
 
             return;
         }
@@ -106,16 +102,20 @@ import template from './playbackSettings.template.html';
 
                 context.querySelector('.fldVideoInternetQuality').classList.remove('hide');
 
-                if (user.Policy.EnableAudioPlaybackTranscoding) {
+                if (user.Policy.EnableAudioPlaybackTranscoding)
                     context.querySelector('.musicQualitySection').classList.remove('hide');
-                } else {
+                else 
                     context.querySelector('.musicQualitySection').classList.add('hide');
-                }
             }
         });
     }
 
-    function loadForm(context, user, userSettings, apiClient) {
+	function loadForm(self) {
+		const apiClient = self.options.apiClient;
+        const userSettings = self.options.userSettings;
+		const context = self.options.element;
+		const user = self.currentUser;
+
         showHideQualityFields(context, user, apiClient);
 
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
@@ -156,15 +156,15 @@ import template from './playbackSettings.template.html';
         context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
 
 		// Following two options (checkboxes) are mutually exclusive.
-		// chkEnableNextVideoOverlay has precedence if somehow both are checked in configuration.
+		// chkEnableNextVideoOverlay has precedence if both happen to be set in the configuration.
 		let chkEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay');
 		let chkEnableNextVideoOverlay = context.querySelector('.chkEnableNextVideoOverlay');
+		
 		chkEnableNextVideoOverlay.checked = userSettings.enableNextVideoInfoOverlay();
-		chkEpisodeAutoPlay.checked = user.Configuration.EnableNextEpisodeAutoPlay && !chkEnableNextVideoOverlay.checked;
-		chkEpisodeAutoPlay.addEventListener('change', function() {  if (this.checked) chkEnableNextVideoOverlay.checked = false });
-		chkEnableNextVideoOverlay.addEventListener('change', function() {  if (this.checked) chkEpisodeAutoPlay.checked = false });
-		 
-		/* if (browser.tizen || browser.web0s) { */
+		chkEpisodeAutoPlay.checked = userSettings.enableNextEpisodeAutoPlay() && !chkEnableNextVideoOverlay.checked;
+		chkEpisodeAutoPlay.addEventListener('change', function(ev) {  if (ev.target.checked) chkEnableNextVideoOverlay.checked = false });
+		chkEnableNextVideoOverlay.addEventListener('change', function(ev) {  if (ev.target.checked) chkEpisodeAutoPlay.checked = false });
+		
 		if (browser.tizen) {
             context.querySelector('.fldEpisodeAutoPlay').classList.add('hide');	
 			context.querySelector('.fldEnableNextVideoOverlay').classList.add('hide');
@@ -184,12 +184,14 @@ import template from './playbackSettings.template.html';
 		sliderSkipBack.addEventListener('change', onSkipLengthChange);
         sliderSkipBack.value = userSettings.skipBackLength()/1000 || 30;
 		sliderSkipBack.dispatchEvent(event);
-
-        loading.hide();
     }
 
-    function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
-		const user = instance.currentUser;
+	function saveUser(self) {
+		let user = self.currentUser;
+		const apiClient = self.options.apiClient;
+        let userSettings = self.options.userSettings;
+		const context = self.options.element;
+		const enableSaveConfirmation = self.options.enableSaveConfirmation;
 		
         appSettings.enableSystemExternalPlayers(context.querySelector('.chkExternalVideoPlayer').checked);
         appSettings.maxChromecastBitrate(context.querySelector('.selectChromecastVideoQuality').value);
@@ -198,87 +200,76 @@ import template from './playbackSettings.template.html';
         setMaxBitrateFromField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
         setMaxBitrateFromField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
 
-        user.Configuration.EnableNextEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay').checked;
-		userSettingsInstance.enableSetUsingLastTracks(context.querySelector('.chkSetUsingLastTracks').checked);
-		userSettingsInstance.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
-        userSettingsInstance.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
-        userSettingsInstance.enableNextVideoInfoOverlay(context.querySelector('.chkEnableNextVideoOverlay').checked);
-        userSettingsInstance.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
-        userSettingsInstance.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);
-        userSettingsInstance.skipBackLength(context.querySelector('#sliderSkipBackLength').value * 1000);
-		userSettingsInstance.AudioLanguagePreference(context.querySelector('#selectAudioLanguage').value);
+		userSettings.enableNextVideoInfoOverlay(context.querySelector('.chkEnableNextVideoOverlay').checked);
+        userSettings.enableNextEpisodeAutoPlay(context.querySelector('.chkEpisodeAutoPlay').checked);
+		userSettings.enableSetUsingLastTracks(context.querySelector('.chkSetUsingLastTracks').checked);
+		userSettings.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
+        userSettings.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
+        userSettings.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
+        userSettings.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);
+        userSettings.skipBackLength(context.querySelector('#sliderSkipBackLength').value * 1000);
+		userSettings.AudioLanguagePreference(context.querySelector('#selectAudioLanguage').value);
 		
 		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
-			userSettingsInstance.commit(); 
+			userSettings.commit(); 
 			setTimeout(() => { 
 				loading.hide();
 				if (enableSaveConfirmation) 
 					toast(globalize.translate('SettingsSaved'));}, 1000);
 		});
-    }
-
-    function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
-        loading.show();
-		saveUser(instance, context, userSettings, apiClient, enableSaveConfirmation);
-		Events.trigger(instance, 'saved');
+		
+		Events.trigger(self, 'saved');
     }
 
     function onSubmit(e) {
         const self = this;
-        const apiClient = ServerConnections.getApiClient(self.options.serverId);
-        const userId = self.options.userId;
-        const userSettings = self.options.userSettings;
+        const apiClient = this.options.apiClient;
+        const userId = this.options.userId;
+        const userSettings = this.options.userSettings;
 
-        userSettings.setUserInfo(userId, apiClient).then(() => {
-            const enableSaveConfirmation = self.options.enableSaveConfirmation;
-            save(self, self.options.element, userId, userSettings, apiClient, enableSaveConfirmation);
-        });
+		loading.show();
+		saveUser(self);
 
         // Disable default form submission
-        if (e) {
+        if (e)
             e.preventDefault();
-        }
         return false;
     }
 
-    function embed(options, self) {
-        options.element.innerHTML = globalize.translateHtml(template, 'core');
-        options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
+    function embed(self) {
+        self.options.element.innerHTML = globalize.translateHtml(template, 'core');
+        self.options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
 		
-        if (options.enableSaveButton) {
-            options.element.querySelector('.btnSave').classList.remove('hide');
-        }
+        if (self.options.enableSaveButton)
+            self.options.element.querySelector('.btnSave').classList.remove('hide');
 
         self.loadData();
 
-        if (options.autoFocus) {
-            focusManager.autoFocus(options.element);
-        }
+        if (self.options.autoFocus) 
+            focusManager.autoFocus(self.options.element);
     }
 
     class PlaybackSettings {
         constructor(options) {
             this.options = options;
 			this.currentUser = null;
-            embed(options, this);
+            embed(this);
         }
 
         loadData() {
             const self = this;
-            const context = self.options.element;
 
             loading.show();
 
-            const userId = self.options.userId;
-            const apiClient = self.options.apiClient;
-            const userSettings = self.options.userSettings;
+            const userId = this.options.userId;
+            const apiClient = this.options.apiClient;
+            const userSettings = this.options.userSettings;
 
             apiClient.getUser(userId).then(user => {
-				self.currentUser = user;
-                userSettings.setUserInfo(userId, apiClient).then(() => {
-                    self.dataLoaded = true;
-                    loadForm(context, user, userSettings, apiClient);
-                });
+				self.currentUser = user;				
+				self.dataLoaded = true;
+				loadForm(self);
+				loading.hide();
             });
         }
 

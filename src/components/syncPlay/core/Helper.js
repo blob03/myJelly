@@ -4,6 +4,7 @@
  */
 
 import { Events } from 'jellyfin-apiclient';
+import * as userSettings from '../../../scripts/settings/userSettings';
 
 /**
  * Constants
@@ -190,7 +191,7 @@ export function translateItemsForPlayback(apiClient, items, options) {
     } else if (firstItem.Type === 'Episode' && items.length === 1) {
         promise = new Promise(function (resolve, reject) {
             apiClient.getCurrentUser().then(function (user) {
-                if (!user.Configuration.EnableNextEpisodeAutoPlay || !firstItem.SeriesId) {
+                if (!userSettings.enableNextEpisodeAutoPlay() || !firstItem.SeriesId) {
                     resolve(null);
                     return;
                 }

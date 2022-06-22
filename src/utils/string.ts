@@ -5,6 +5,8 @@
  * @returns {boolean} The value.
  */
 export function toBoolean(value: string | undefined | null, defaultValue = false) {
+	if (value)
+		value = value.toLowerCase();
     if (value !== 'true' && value !== 'false') {
         return defaultValue;
     } else {

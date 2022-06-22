@@ -626,19 +626,10 @@ html {
 	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
-.headerClockMode0 > .headerClockTime {
-	font-size: 170% !important;
-}
-
-.headerClockMode1 > .headerClockTime {
-	font-size: 220% !important;
+.headerClockMode1 {
+	font-size: 150% !important;
 }
 	
-.headerClockTime {
-	font-family: "Shangai";
-	font-size: 170% !important;
-}
-
 .headerClockTime {
 	font-family: "Shangai";
 	font-size: 170% !important;
@@ -1362,3 +1353,8 @@ select option:selected {
 	font-family: "Shangai";
 	font-size: 170% !important;
 }
+
+.headerWthIconBg {
+	background: rgba(238, 245, 255, 0.3) !important;
+}
+

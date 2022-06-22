@@ -619,12 +619,8 @@ html {
 	text-shadow: 1px 1px 8px #411c5b !important;
 }
 
-.headerClockMode0 > .headerClockTime {
-	font-size: 170% !important;
-}
-
-.headerClockMode1 > .headerClockTime {
-	font-size: 220% !important;
+.headerClockMode1 {
+	font-size: 150% !important;
 }
 
 .headerClockTime {
@@ -1463,4 +1459,8 @@ option:selected {
 .headerWthTemp {
 	font-family: "Mystery";
 	font-size: 170% !important;
+}
+
+.headerWthIconBg {
+	background: rgba(244, 196, 134, 0.5) !important;
 }

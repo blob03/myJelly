@@ -1848,7 +1848,7 @@ class PlaybackManager {
                     const apiClient = ServerConnections.getApiClient(firstItem.ServerId);
 
                     apiClient.getCurrentUser().then(function (user) {
-                        if (!user.Configuration.EnableNextEpisodeAutoPlay || !firstItem.SeriesId) {
+                        if (!userSettings.enableNextEpisodeAutoPlay() || !firstItem.SeriesId) {
                             resolve(null);
                             return;
                         }

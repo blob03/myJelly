@@ -41,7 +41,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
-		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 120%;"></div>';
+		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
@@ -58,7 +58,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';
-		html += '<div id="headerClockTimeMiddle" class="headerClockTime" style="font-size: 120%;"></div>';
+		html += '<div id="headerClockTimeMiddle" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
@@ -83,7 +83,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
-		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 120%;"></div>';
+		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
@@ -95,19 +95,21 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		
-		html += '<div class="WBScreen WBScreen0" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;">';
+		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;">';
 		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;height: 3.2em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
-		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.3em;margin-right: .2em;">';
+		html += '<div class="hide WBScreen WBScreen1" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .2em;">';
+		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="margin-right: .2em;background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.3em;width: 2.3em;">';
+		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.3em;">';
+		html += '</div>';
 		html += '<div id="headerWthTemp" class="headerWthTemp" style="display: flex;align-items: center;font-size: 140%;margin-left: .2em;"></div>';
 		html += '</div>';
 		html += '<div id="headerWthCity" class="headerWthCity" style="font-size: 60%;"></div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div class="hide WBScreen WBScreen2" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
 		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
 		html += '<div id="headerWthWind" class="headerWthWind" style="display: flex;align-items: center;"></div>';
 		html += '<div id="headerWthWindDir" class="headerWthWindDir" style="display: flex;align-items: center;"></div>';
@@ -121,13 +123,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '</div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
-		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 130%;"></span>';
+		html += '<div class="hide WBScreen WBScreen3" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin: .1em;">';
+		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunrise" class="headerWthSunrise" style="display: flex;align-items: center;"></div>';
 		html += '</div>';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;">';
-		html += '<span class="material-icons bedtime" style="color: white;font-size: 130%;"></span>';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin: .1em;">';
+		html += '<span class="material-icons bedtime" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunset" class="headerWthSunset" style="display: flex;align-items: center;"></div>';
 		html += '</div>';
 		html += '</div>';
@@ -235,8 +237,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         if (user && user.localUser) {
             if (headerHomeButton) 
                 headerHomeButton.classList.remove('hide');
-			if (headerNightmodeButton)
+			if (headerNightmodeButton && (enableClock() == 1 || enableClock() == 2 || enableWeatherBot() == 1 || enableWeatherBot() == 2))
 				headerNightmodeButton.classList.remove('hide');
+			else
+				headerNightmodeButton.classList.add('hide');
             if (headerSearchButton)
                 headerSearchButton.classList.remove('hide');
 			if (mainDrawerButton) {
@@ -397,12 +401,18 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         } else {
             headerAudioPlayerButton.classList.add('hide');
         }
+		
+		if (headerNightmodeButton && playbackManager.isPlayingVideo() && (enableClock() == 3 || enableWeatherBot() == 3))
+			headerNightmodeButton.classList.remove('hide');
     }
 
     function onPlaybackStop(e, stopInfo) {
         if (stopInfo.nextMediaType != 'Audio') {
             headerAudioPlayerButton.classList.add('hide');
         }
+		
+		if (headerNightmodeButton && playbackManager.isPlayingVideo() && (enableClock() == 3 || enableWeatherBot() == 3))
+			headerNightmodeButton.classList.add('hide');
     }
 
     function onCastButtonClicked() {

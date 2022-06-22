@@ -22,11 +22,8 @@ import template from './homeScreenSettings.template.html';
         folderHtml += '<div class="checkboxList">';
         folderHtml += result.map(i => {
             let currentHtml = '';
-
             const id = `chkGroupFolder${i.Id}`;
-
             const isChecked = user.Configuration.GroupedFolders.includes(i.Id);
-
             const checkedHtml = isChecked ? ' checked="checked"' : '';
 
             currentHtml += '<label>';
@@ -221,7 +218,6 @@ import template from './homeScreenSettings.template.html';
             const selected = userValue === o.value || (o.isDefault && !userValue);
             const selectedHtml = selected ? ' selected' : '';
             const optionValue = o.isDefault ? '' : o.value;
-
             return `<option value="${optionValue}"${selectedHtml}>${o.name}</option>`;
         }).join('');
     }
@@ -231,24 +227,16 @@ import template from './homeScreenSettings.template.html';
 
         html += result.Items.map((view) => {
             let currentHtml = '';
-
             currentHtml += `<div class="listItem viewItem" data-viewid="${view.Id}">`;
-
             currentHtml += '<span class="material-icons listItemIcon folder_open"></span>';
-
             currentHtml += '<div class="listItemBody">';
-
             currentHtml += '<div>';
             currentHtml += view.Name;
             currentHtml += '</div>';
-
             currentHtml += '</div>';
-
             currentHtml += `<button type="button" is="paper-icon-button-light" class="btnViewItemUp btnViewItemMove autoSize" title="${globalize.translate('Up')}"><span class="material-icons keyboard_arrow_up"></span></button>`;
             currentHtml += `<button type="button" is="paper-icon-button-light" class="btnViewItemDown btnViewItemMove autoSize" title="${globalize.translate('Down')}"><span class="material-icons keyboard_arrow_down"></span></button>`;
-
             currentHtml += '</div>';
-
             return currentHtml;
         }).join('');
 
@@ -304,29 +292,15 @@ import template from './homeScreenSettings.template.html';
             html += getLandingScreenOptionsHtml(item.CollectionType, userValue);
             html += '</select>';
             html += '</div>';
-		
-		/*
-			html += '<div style="width: 6%"></div>';
-	
-			html += '<div class="selectContainer" style="width: 47%;height: auto;">';
-            html += `<select is="emby-select" onchange="this.focus();" class="selectView" data-folderid="${idForLanding}" label="${globalize.translate('LabelDefaultView')}">`;
-            const userValue2 = userSettings.get(`view-${idForLanding}`);
-            html += getViewOptionsHtml(item.CollectionType, userValue2);
-            html += '</select>';
-            html += '</div>';
-		*/
-		
 			html += '</div>';
         }
 
         if (html) {
             let prefix = '';
             prefix += '<div class="verticalSection">';
-
             prefix += '<h2 class="sectionTitle">';
             prefix += item.Name;
             prefix += '</h2>';
-
             html = prefix + html;
             html += '</div>';
         }
@@ -387,14 +361,17 @@ import template from './homeScreenSettings.template.html';
 			document.querySelector('#chkHidePlayedFromLatest').parentNode.parentNode.classList.add('hide');
 	}
 	
-	
-    function loadForm(context, user, userSettings, apiClient) {
+	function loadForm(self) {
+		const context = self.options.element;
+		const apiClient = self.options.apiClient;
+		const userSettings = self.options.userSettings;
+		const user = self.currentUser;
+		
 		context.querySelector('#chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
 		context.querySelector('#chkUseCardLayoutInHomeSections').checked = userSettings.useCardLayoutInHomeSections() || false;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;	
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();		
         context.querySelector('#chkRewatchingNextUp').checked = userSettings.enableRewatchingInNextUp();
-		
 		updateHomeSectionValues(context, userSettings);
 		
 		let chgevent = new Event('change');
@@ -447,143 +424,113 @@ import template from './homeScreenSettings.template.html';
         const list = [];
 
         for (let i = 0, length = inputs.length; i < length; i++) {
-            if (inputs[i].checked === isChecked) {
+            if (inputs[i].checked === isChecked)
                 list.push(inputs[i]);
-            }
         }
-
         return list;
     }
 
-    function saveUser(instance, context, userSettingsInstance, apiClient, enableSaveConfirmation) {
-		const user = instance.currentUser;
+	function save(self) {
+		const user = self.currentUser;
+		const apiClient = self.options.apiClient;
+        const userSettings = self.options.userSettings;
+		const enableSaveConfirmation = self.options.enableSaveConfirmation;
+		const context = self.options.element;
+		
+		loading.show();
 		
         user.Configuration.HidePlayedInLatest = context.querySelector('#chkHidePlayedFromLatest').checked;
-		
         user.Configuration.LatestItemsExcludes = getCheckboxItems('.chkIncludeInLatest', context, false).map(i => {
             return i.getAttribute('data-folderid'); });
-
         user.Configuration.MyMediaExcludes = getCheckboxItems('.chkIncludeInMyMedia', context, false).map(i => {
             return i.getAttribute('data-folderid'); });
-
         user.Configuration.GroupedFolders = getCheckboxItems('.chkGroupFolder', context, true).map(i => {
             return i.getAttribute('data-folderid'); });
 
         const viewItems = context.querySelectorAll('.viewItem');
         const orderedViews = [];
-        let i;
-        let length;
-        for (i = 0, length = viewItems.length; i < length; i++) {
+        for (let i = 0, length = viewItems.length; i < length; i++)
             orderedViews.push(viewItems[i].getAttribute('data-viewid'));
-        }
 
         user.Configuration.OrderedViews = orderedViews;
-		userSettingsInstance.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
-		userSettingsInstance.enableRewatchingInNextUp(context.querySelector('#chkRewatchingNextUp').checked);
-			
-		userSettingsInstance.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
-		userSettingsInstance.useCardLayoutInHomeSections(context.querySelector('#chkUseCardLayoutInHomeSections').checked);
-		
-        userSettingsInstance.TVHome(context.querySelector('.selectTVHomeScreen').value);
-        userSettingsInstance.set('homesection0', context.querySelector('#selectHomeSection1').value);
-        userSettingsInstance.set('homesection1', context.querySelector('#selectHomeSection2').value);
-        userSettingsInstance.set('homesection2', context.querySelector('#selectHomeSection3').value);
-        userSettingsInstance.set('homesection3', context.querySelector('#selectHomeSection4').value);
-        userSettingsInstance.set('homesection4', context.querySelector('#selectHomeSection5').value);
-        userSettingsInstance.set('homesection5', context.querySelector('#selectHomeSection6').value);
-        userSettingsInstance.set('homesection6', context.querySelector('#selectHomeSection7').value);
-		userSettingsInstance.set('homesection7', context.querySelector('#selectHomeSection8').value);
+		userSettings.maxDaysForNextUp(context.querySelector('#sliderMaxDaysForNextUp').value);
+		userSettings.enableRewatchingInNextUp(context.querySelector('#chkRewatchingNextUp').checked);
+		userSettings.useEpisodeImagesInNextUpAndResume(context.querySelector('#chkUseEpisodeImagesInNextUp').checked);
+		userSettings.useCardLayoutInHomeSections(context.querySelector('#chkUseCardLayoutInHomeSections').checked);
+        userSettings.TVHome(context.querySelector('.selectTVHomeScreen').value);
+        userSettings.set('homesection0', context.querySelector('#selectHomeSection1').value);
+        userSettings.set('homesection1', context.querySelector('#selectHomeSection2').value);
+        userSettings.set('homesection2', context.querySelector('#selectHomeSection3').value);
+        userSettings.set('homesection3', context.querySelector('#selectHomeSection4').value);
+        userSettings.set('homesection4', context.querySelector('#selectHomeSection5').value);
+        userSettings.set('homesection5', context.querySelector('#selectHomeSection6').value);
+        userSettings.set('homesection6', context.querySelector('#selectHomeSection7').value);
+		userSettings.set('homesection7', context.querySelector('#selectHomeSection8').value);
 
         const selectLandings = context.querySelectorAll('.selectLanding');
-        for (i = 0, length = selectLandings.length; i < length; i++) {
+        for (let i = 0, length = selectLandings.length; i < length; i++) {
             const selectLanding = selectLandings[i];
-            userSettingsInstance.set(`landing-${selectLanding.getAttribute('data-folderid')}`, selectLanding.value);
+            userSettings.set(`landing-${selectLanding.getAttribute('data-folderid')}`, selectLanding.value);
         }
 		
-		/*
-		const selectViews = context.querySelectorAll('.selectView');	
-		for (i = 0, length = selectViews.length; i < length; i++) {
-            const selectView = selectViews[i];
-            userSettingsInstance.set(`view-${selectView.getAttribute('data-folderid')}`, selectView.value);
-        } 
-		*/
-		
         apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
-			userSettingsInstance.commit(); 
+			userSettings.commit(); 
 			setTimeout(() => { 
-				embed(instance.options, instance).then( () => { 
+				embed(self).then( () => { 
 					loading.hide();	
 					if (enableSaveConfirmation) 
 						toast(globalize.translate('SettingsSaved'));
+					Events.trigger(self, 'saved');
 				}
 			);}, 2000); 
 		});
     }
 
-    function save(instance, context, userId, userSettings, apiClient, enableSaveConfirmation) {
-        loading.show();
-		saveUser(instance, context, userSettings, apiClient, enableSaveConfirmation);
-		Events.trigger(instance, 'saved');
-    }
-
     function onSubmit(e) {
         const self = this;
-        const apiClient = ServerConnections.getApiClient(self.options.serverId);
-        const userId = self.options.userId;
-        const userSettings = self.options.userSettings;
-
-        userSettings.setUserInfo(userId, apiClient).then(() => {
-            const enableSaveConfirmation = self.options.enableSaveConfirmation;
-            save(self, self.options.element, userId, userSettings, apiClient, enableSaveConfirmation);
-        });
+		
+		save(self);
 
         // Disable default form submission
-        if (e) {
+        if (e)
             e.preventDefault();
-        }
+		
         return false;
     }
 	
     function onChange(e) {
-		
         const chkIncludeInMyMedia = dom.parentWithClass(e.target, 'chkIncludeInMyMedia');
-        if (!chkIncludeInMyMedia) {
+        if (!chkIncludeInMyMedia)
             return;
-        }
 
         const section = dom.parentWithClass(chkIncludeInMyMedia, 'verticalSection');
         const fldIncludeInLatest = section.querySelector('.fldIncludeInLatest');
         if (fldIncludeInLatest) {
-            if (chkIncludeInMyMedia.checked) {
+            if (chkIncludeInMyMedia.checked)
                 fldIncludeInLatest.classList.remove('hide');
-            } else {
+            else
                 fldIncludeInLatest.classList.add('hide');
-            }
         }
     }
 
-    function embed(options, self) {
+    function embed(self) {
+		const options = self.options;
         let workingTemplate = template;
-        for (let i = 1; i <= homeSections.numConfigurableSections; i++) {
+		
+        for (let i = 1; i <= homeSections.numConfigurableSections; i++) 
             workingTemplate = workingTemplate.replace(`{section${i}label}`, globalize.translate('LabelHomeScreenSectionValue', i));
-        }
 
         options.element.innerHTML = globalize.translateHtml(workingTemplate, 'core');
-
         options.element.querySelector('.viewOrderList').addEventListener('click', onSectionOrderListClick);
-		
         options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
         options.element.addEventListener('change', onChange);
 		
-        if (options.enableSaveButton) {
+        if (options.enableSaveButton)
             options.element.querySelector('.btnSave').classList.remove('hide');
-        }
-
-        if (layoutManager.tv) {
+        if (layoutManager.tv)
             options.element.querySelector('.selectTVHomeScreenContainer').classList.remove('hide');
-        } else {
+        else
             options.element.querySelector('.selectTVHomeScreenContainer').classList.add('hide');
-        }
 
         return self.loadData(options.autoFocus);
     }
@@ -592,30 +539,22 @@ import template from './homeScreenSettings.template.html';
         constructor(options) {
             this.options = options;
 			this.currentUser = null;
-            embed(options, this);
+            embed(this);
         }
 
         loadData(autoFocus) {
             const self = this;
-            const context = self.options.element;
-
+			const userId = this.options.userId;
+            const apiClient = this.options.apiClient;
+			
             loading.show();
-
-            const userId = self.options.userId;
-            const apiClient = self.options.apiClient;
-            const userSettings = self.options.userSettings;
 
             return apiClient.getUser(userId).then(user => {
 				self.currentUser = user;
-                userSettings.setUserInfo(userId, apiClient).then(() => {
-                    self.dataLoaded = true;
-
-                    loadForm(context, user, userSettings, apiClient);
-
-                    if (autoFocus) {
-                        focusManager.autoFocus(context);
-                    }
-                });
+				self.dataLoaded = true;
+				loadForm(self);
+				if (autoFocus)
+					focusManager.autoFocus(self.options.element);
             });
         }
 

@@ -409,7 +409,7 @@ export class UserSettings {
             return this.set('preferFmp4HlsContainer', val.toString());
         }
 
-        return toBoolean(this.get('preferFmp4HlsContainer', false), false);
+        return toBoolean(this.get('preferFmp4HlsContainer'), false);
     }
 	
     /**
@@ -422,7 +422,7 @@ export class UserSettings {
             return this.set('enableCinemaMode', val.toString());
         }
 
-        return toBoolean(this.get('enableCinemaMode', false), true);
+        return toBoolean(this.get('enableCinemaMode'), true);
     }
 	
 	/**
@@ -446,10 +446,23 @@ export class UserSettings {
      */
     enableNextVideoInfoOverlay(val) {
         if (val !== undefined) {
-            return this.set('nextVideoInfoOverlay', val.toString()); 
+            return this.set('enableNextVideoInfoOverlay', val.toString()); 
         }
 
-        return toBoolean(this.get('enableNextVideoInfoOverlay', false), true);
+        return toBoolean(this.get('enableNextVideoInfoOverlay'), false);
+    }
+	
+	/**
+     * Get or set 'Next Video autoplay' state.
+     * @param {boolean|undefined} val - Flag to enable 'Next Video autoplay' or undefined.
+     * @return {boolean} 'Next Video autoplay' state.
+     */
+    enableNextEpisodeAutoPlay(val) {
+        if (val !== undefined) {
+            return this.set('enableNextEpisodeAutoPlay', val.toString()); 
+        }
+
+        return toBoolean(this.get('enableNextEpisodeAutoPlay'), false);
     }
 	
 	/**
@@ -490,7 +503,7 @@ export class UserSettings {
             return this.set('enableSetUsingLastTracks', val.toString());
         }
 
-        return toBoolean(this.get('enableSetUsingLastTracks', false), true);
+        return toBoolean(this.get('enableSetUsingLastTracks'), true);
     }
 
     /**
@@ -503,7 +516,7 @@ export class UserSettings {
             return this.set('enableThemeSongs', val.toString());
         }
 
-        return toBoolean(this.get('enableThemeSongs', false), false);
+        return toBoolean(this.get('enableThemeSongs'), false);
     }
 
     /**
@@ -516,7 +529,7 @@ export class UserSettings {
             return this.set('enableThemeVideos', val.toString());
         }
 
-        return toBoolean(this.get('enableThemeVideos', false), false);
+        return toBoolean(this.get('enableThemeVideos'), false);
     }
 	
 	/**
@@ -529,7 +542,7 @@ export class UserSettings {
             return this.set('useEpisodeImagesInNextUpAndResume', val.toString());
         }
 
-        return toBoolean(this.get('useEpisodeImagesInNextUpAndResume', true), false);
+        return toBoolean(this.get('useEpisodeImagesInNextUpAndResume'), false);
     }
 	
 	/**
@@ -743,7 +756,7 @@ export class UserSettings {
 				return function curried(e) {
 					const elms = document.getElementsByClassName("headerClockMain");
 					if (elms.length) {
-						self._clkmode = (self._clkmode + 1) % 4;
+						self._clkmode = (self._clkmode + 1) % 5;
 						
 						delete self._opts_date['weekday'];
 						delete self._opts_date['month'];
@@ -760,8 +773,9 @@ export class UserSettings {
 									elm.classList.remove('headerClockMode1');
 									elm.classList.remove('headerClockMode2');
 									elm.classList.remove('headerClockMode3');
+									elm.classList.remove('headerClockMode4');
+									elm.style.fontSize = "100%";
 								}
-								self._opts_date['weekday'] = 'short';
 								self._opts_date['month'] = '2-digit';
 								break;
 							case 1:
@@ -770,6 +784,8 @@ export class UserSettings {
 									elm.classList.remove('headerClockMode0');
 									elm.classList.remove('headerClockMode2');
 									elm.classList.remove('headerClockMode3');
+									elm.classList.remove('headerClockMode4');
+									elm.style.fontSize = "150%";
 								}
 								delete self._opts_date['year'];
 								delete self._opts_date['day'];
@@ -780,6 +796,8 @@ export class UserSettings {
 									elm.classList.remove('headerClockMode0');
 									elm.classList.remove('headerClockMode1');
 									elm.classList.remove('headerClockMode3');
+									elm.classList.remove('headerClockMode4');
+									elm.style.fontSize = "100%";
 								}
 								self._opts_date['weekday'] = 'long';
 								self._opts_date['month'] = 'long';
@@ -790,10 +808,24 @@ export class UserSettings {
 									elm.classList.remove('headerClockMode0');
 									elm.classList.remove('headerClockMode1');
 									elm.classList.remove('headerClockMode2');
+									elm.classList.remove('headerClockMode4');
+									elm.style.fontSize = "100%";
 								}
 								self._opts_date['weekday'] = 'short';
 								self._opts_date['month'] = '2-digit';
 								self._opts_date['timeZoneName'] = 'short';
+								break;
+							case 4:
+								for (let elm of elms) {
+									elm.classList.add('headerClockMode4');
+									elm.classList.remove('headerClockMode0');
+									elm.classList.remove('headerClockMode1');
+									elm.classList.remove('headerClockMode2');
+									elm.classList.remove('headerClockMode3');
+									elm.style.fontSize = "100%";
+								}
+								self._opts_date['weekday'] = 'short';
+								self._opts_date['month'] = '2-digit';
 								break;
 						}
 						setTimeout(hdrClock.bind(self), 10);
@@ -948,7 +980,7 @@ export class UserSettings {
             return this.set('fastFadein', val.toString());
         }
 
-        return toBoolean(this.get('fastFadein', false), true);
+        return toBoolean(this.get('fastFadein'), true);
     }
 
     /**
@@ -1128,7 +1160,7 @@ export class UserSettings {
             return this.set('detailsBanner', val.toString());
         }
 
-        return toBoolean(this.get('detailsBanner', false), true);
+        return toBoolean(this.get('detailsBanner'), true);
     }
 
     /**
@@ -1427,6 +1459,7 @@ export const preferFmp4HlsContainer = currentSettings.preferFmp4HlsContainer.bin
 export const enableCinemaMode = currentSettings.enableCinemaMode.bind(currentSettings);
 export const AudioLanguagePreference = currentSettings.AudioLanguagePreference.bind(currentSettings);
 export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOverlay.bind(currentSettings);
+export const enableNextEpisodeAutoPlay = currentSettings.enableNextEpisodeAutoPlay.bind(currentSettings);
 export const enableSetUsingLastTracks = currentSettings.enableSetUsingLastTracks.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);

@@ -269,6 +269,7 @@
     "EnableQuickConnect": "Bật Kết Nối Nhanh trên máy chủ này",
     "EnableRewatchingNextUp": "Bật Xem Lại trong Kế Tiếp",
     "EnableRewatchingNextUpHelp": "Bật hiển thị các tập đã xem trong phần 'Kế Tiếp'.",
+    "EnableSplashScreen": "Bật màn hình giật gân",
     "EnableStreamLooping": "Tự động lặp phát trực tiếp",
     "EnableStreamLoopingHelp": "Bật tùy chọn này nếu luồng trực tiếp chỉ chứa vài giây dữ liệu và cần được yêu cầu liên tục. Bật tính năng này khi không cần thiết có thể gây ra sự cố.",
     "EnableThemeSongsHelp": "Phát những bài hát chủ đề khi lướt qua thư viện nội dung.",
