@@ -186,10 +186,10 @@ import template from './playbackSettings.template.html';
 		sliderSkipBack.dispatchEvent(event);
     }
 
-	function saveUser(self) {
-		let user = self.currentUser;
+	function save(self) {
+		const user = self.currentUser;
 		const apiClient = self.options.apiClient;
-        let userSettings = self.options.userSettings;
+        const userSettings = self.options.userSettings;
 		const context = self.options.element;
 		const enableSaveConfirmation = self.options.enableSaveConfirmation;
 		
@@ -216,9 +216,8 @@ import template from './playbackSettings.template.html';
 				loading.hide();
 				if (enableSaveConfirmation) 
 					toast(globalize.translate('SettingsSaved'));}, 1000);
+				Events.trigger(self, 'saved');
 		});
-		
-		Events.trigger(self, 'saved');
     }
 
     function onSubmit(e) {
@@ -228,7 +227,7 @@ import template from './playbackSettings.template.html';
         const userSettings = this.options.userSettings;
 
 		loading.show();
-		saveUser(self);
+		save(self);
 
         // Disable default form submission
         if (e)

@@ -90,7 +90,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
 		html += '<div class="headerWthButton" id="headerWthRight" style="display: flex;flex-direction: row;">';
-		html += '<fieldset style="margin: .1rem .3rem .1rem .3rem;padding: .2rem .3rem .2rem .3rem;border: 2px groove #595653;">';
+		html += '<fieldset style="margin: .1rem .3rem .1rem .3rem;padding: .2rem .3rem .2rem .3rem;border: .1em groove #99a5ad;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveLeftButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
 		
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';

@@ -27,19 +27,9 @@ function hdrClock() {
 	globalize.updateCurrentCulture();
 	const x = new Date();
 	const _hdrclk_time = datetime.toLocaleTimeString(x, this._opts_time); 
-		
-	switch (this._clkmode) {
-		case 1:
-			this._hdrclkdate_span.innerHTML = '';
-			this._hdrclktime_span.innerHTML = _hdrclk_time;
-			break;
-			
-		default:
-			const _hdrclk_date = datetime.toLocaleDateString(x, this._opts_date);
-			this._hdrclkdate_span.innerHTML = _hdrclk_date;
-			this._hdrclktime_span.innerHTML = _hdrclk_time;
-	}
-	
+	const _hdrclk_date = datetime.toLocaleDateString(x, this._opts_date);
+	this._hdrclkdate_span.innerHTML = _hdrclk_date;
+	this._hdrclktime_span.innerHTML = _hdrclk_time;
 	return;
 }
 
@@ -238,7 +228,7 @@ export class UserSettings {
 		this._hdrclkdate_span;
 		this._hdrclktime_span;
 		this._hdrwth = {};
-		this._clkmode = 2;
+		this._clkmode = 4;
 		this._wbmode = 1;
 		this._pwrButtons = false;
 		this._opts_date = {year: 'numeric', day: '2-digit', weekday: 'long', month: 'long', timeZoneName: undefined};
@@ -756,7 +746,7 @@ export class UserSettings {
 				return function curried(e) {
 					const elms = document.getElementsByClassName("headerClockMain");
 					if (elms.length) {
-						self._clkmode = (self._clkmode + 1) % 5;
+						self._clkmode = (self._clkmode + 1) % 7;
 						
 						delete self._opts_date['weekday'];
 						delete self._opts_date['month'];
@@ -765,64 +755,75 @@ export class UserSettings {
 						self._opts_date['day'] = '2-digit';
 						self._opts_time['hour'] = 'numeric';
 						self._opts_time['minute'] = '2-digit';
-						
+									
 						switch (self._clkmode) {
 							case 0:					
 								for (let elm of elms) {
+									for (let _x = 0;_x < 7; _x ++)
+										elm.classList.remove('headerClockMode' + _x);
 									elm.classList.add('headerClockMode0');
-									elm.classList.remove('headerClockMode1');
-									elm.classList.remove('headerClockMode2');
-									elm.classList.remove('headerClockMode3');
-									elm.classList.remove('headerClockMode4');
 									elm.style.fontSize = "100%";
+									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 								}
 								self._opts_date['month'] = '2-digit';
 								break;
 							case 1:
 								for (let elm of elms) {
+									elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
+									for (let _x = 0;_x < 7; _x ++)
+										elm.classList.remove('headerClockMode' + _x);
 									elm.classList.add('headerClockMode1');
-									elm.classList.remove('headerClockMode0');
-									elm.classList.remove('headerClockMode2');
-									elm.classList.remove('headerClockMode3');
-									elm.classList.remove('headerClockMode4');
-									elm.style.fontSize = "150%";
+									elm.style.fontSize = "120%";
 								}
-								delete self._opts_date['year'];
-								delete self._opts_date['day'];
 								break;
 							case 2:
 								for (let elm of elms) {
+									elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
+									for (let _x = 0;_x < 7; _x ++)
+										elm.classList.remove('headerClockMode' + _x);
 									elm.classList.add('headerClockMode2');
-									elm.classList.remove('headerClockMode0');
-									elm.classList.remove('headerClockMode1');
-									elm.classList.remove('headerClockMode3');
-									elm.classList.remove('headerClockMode4');
+									elm.style.fontSize = "140%";
+								}
+								break;
+							case 3:
+								for (let elm of elms) {
+									elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
+									for (let _x = 0;_x < 7; _x ++)
+										elm.classList.remove('headerClockMode' + _x);
+									elm.classList.add('headerClockMode3');
+									elm.style.fontSize = "160%";
+								}
+								break;
+							case 4:
+								for (let elm of elms) {
+									for (let _x = 0;_x < 7; _x ++)
+										elm.classList.remove('headerClockMode' + _x);
+									elm.classList.add('headerClockMode4');
 									elm.style.fontSize = "100%";
+									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 								}
 								self._opts_date['weekday'] = 'long';
 								self._opts_date['month'] = 'long';
 								break;
-							case 3:
+							case 5:
 								for (let elm of elms) {
-									elm.classList.add('headerClockMode3');
-									elm.classList.remove('headerClockMode0');
-									elm.classList.remove('headerClockMode1');
-									elm.classList.remove('headerClockMode2');
-									elm.classList.remove('headerClockMode4');
+									for (let _x = 0;_x < 7; _x ++)
+										elm.classList.remove('headerClockMode' + _x);
+									elm.classList.add('headerClockMode5');
 									elm.style.fontSize = "100%";
+									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 								}
 								self._opts_date['weekday'] = 'short';
 								self._opts_date['month'] = '2-digit';
 								self._opts_date['timeZoneName'] = 'short';
 								break;
-							case 4:
+							case 6:
 								for (let elm of elms) {
-									elm.classList.add('headerClockMode4');
-									elm.classList.remove('headerClockMode0');
-									elm.classList.remove('headerClockMode1');
-									elm.classList.remove('headerClockMode2');
-									elm.classList.remove('headerClockMode3');
+									for (let _x = 0;_x < 7; _x ++)
+										elm.classList.remove('headerClockMode' + _x);
+									elm.classList.add('headerClockMode6');
 									elm.style.fontSize = "100%";
+									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 								}
 								self._opts_date['weekday'] = 'short';
 								self._opts_date['month'] = '2-digit';
@@ -1422,7 +1423,7 @@ export class UserSettings {
      */
     setSubtitleAppearanceSettings(value, key) {
         key = key || 'localplayersubtitleappearance3';
-        return this.set(key, JSON.stringify(value), true);
+        return this.set(key, JSON.stringify(value));
     }
 
     /**

@@ -603,7 +603,15 @@ h3 {
 }
 
 .headerClockMode1 {
-	font-size: 150% !important;
+	font-size: 120% !important;
+}
+
+.headerClockMode2 {
+	font-size: 140% !important;
+}
+
+.headerClockMode3 {
+	font-size: 160% !important;
 }
 
 .headerClockTime {

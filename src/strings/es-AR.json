@@ -270,6 +270,7 @@
     "EnableQuickConnect": "Habilitar la Conexión Rápida en este servidor",
     "EnableRewatchingNextUp": "Habilitar \"Volver a mirar\" en \"Siguiente\"",
     "EnableRewatchingNextUpHelp": "Habilite 'Mostrar episodios ya vistos' en las secciones 'Siguiente'.",
+    "EnableSplashScreen": "Habilitar pantalla de inicio",
     "EnableStreamLooping": "Repetir automáticamente transmisiones en vivo",
     "EnableStreamLoopingHelp": "Habilita esto sí las transmisiones en vivo sólo contienen unos cuantos segundos y es necesario solicitarlos continuamente. Habilitar esto cuando no es necesario puede causar problemas.",
     "EnableThemeSongsHelp": "Reproduce los sonidos del tema de fondo cuando navegas por la biblioteca.",
