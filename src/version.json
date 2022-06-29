@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.0-7",
+	"version": "10.8.1-0",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -42,6 +42,7 @@
 		"10.8.0-4": "Subtitles settings script cleanup & optimization.\nAdded more presets to the clock applet.\nTranslations synchronized with master.\nFixed player's broken previous/next episode buttons which caused the client to break.",
 		"10.8.0-5": "Translations synchronized with master.\nApplied patch 'fix_resume_webos'.\nApplied patch 'fix-audio-ch'.\nApplied patch 'SeriesImageDownload'.\nApplied patch 'fix-stream-autoselect'.",
 		"10.8.0-6": "Applied patch 'device-logo-fix'.\nApplied patch 'dovi-meta'.\nApplied patch 'resolution'.\nApplied patch 'mimetype'.\nApplied patch 'vpp-tm-configs'.\nApplied patch 'video-range-condition'.",
-		"10.8.0-7": "Translations synchronized with master.\nApplied patch 'react-router-3'."
+		"10.8.0-7": "Translations synchronized with master.\nApplied patch 'react-router-3'.",
+		"10.8.1-0": "Translations synchronized with master.\nFixed a minor issue in the layout of the playback settings page."
 	}
 }

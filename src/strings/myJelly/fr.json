@@ -25,7 +25,6 @@
     "Humidity": "Humidité",
     "LabelAPIFrequency": "Délai des sondages météo :",
     "LabelAPIFrequencyHelp": "Délai en minutes entre deux appels successifs à l'API météo.",
-    "LabelAllowedAudioChannels": "Nombre maximum de canaux audio autorisés :",
     "LabelAppHost": "Système hôte :",
     "LabelAppRepositoryName": "Adresse du dépôt :",
     "LabelAppVersion": "Version installée :",

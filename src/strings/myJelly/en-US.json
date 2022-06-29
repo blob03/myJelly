@@ -25,7 +25,6 @@
     "Humidity": "Humidity",
     "LabelAPIFrequency": "Weather requests timing:",
     "LabelAPIFrequencyHelp": "Set a delay in minutes between two successive API calls.",
-    "LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",
     "LabelAppHost": "Host:",
     "LabelAppRepositoryName": "Repository Name:",
     "LabelAppVersion": "Installed version:",
