@@ -1457,8 +1457,6 @@
     "ServerNameIsShuttingDown": "Serwer za {0} zostanie wyłączony.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin będzie wymagał ponownego uruchomienia po zainstalowaniu wtyczki.",
     "ServerUpdateNeeded": "Ten serwer wymaga aktualizacji. Aby pobrać najnowszą wersję, odwiedź stronę {0}",
-    "SetUsingLastTracks": "Ustawianie ścieżek napisów/dźwięku z poprzednią pozycją",
-    "SetUsingLastTracksHelp": "Spróbuj ustawić ścieżkę napisów/dźwięku na najbardziej zbliżoną do ostatniego wideo.",
     "Settings": "Ustawienia",
     "SettingsSaved": "Ustawienia zapisane.",
     "SettingsWarning": "Zmiana tych wartości może spowodować niestabilność lub awarię połączenia. Jeśli wystąpią jakiekolwiek problemy, zalecamy powrót do ustawień ich na domyślne.",

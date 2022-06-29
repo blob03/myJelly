@@ -1438,8 +1438,6 @@
     "ServerNameIsShuttingDown": "{0} ko zerbitzaria itzaltzen ari da.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin berriz hasi beharko da osagarri bat instalatu ondoren.",
     "ServerUpdateNeeded": "Zerbitzaria eguneratu egin behar da. Azken bertsioa deskargatzeko, mesedez bisitatu {0}",
-    "SetUsingLastTracks": "Audioko/azpitituluetako pista aurreko itemarekin ezartzea",
-    "SetUsingLastTracksHelp": "Aurreko bideoaren antzekoena den audio/azpitituluen pista ezartzen saiatzea.",
     "Settings": "Doikuntzak",
     "SettingsSaved": "Konfigurazio gordea.",
     "SettingsWarning": "Balio horiek aldatzeak ezegonkortasuna edo konektagarritasun-akatsak eragin ditzake. Arazoren bat izanez gero, berriz ere bere balio lehenetsira aldatzea gomendatzen dizugu.",

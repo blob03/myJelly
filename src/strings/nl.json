@@ -1443,8 +1443,6 @@
     "ServerNameIsShuttingDown": "De server op {0} wordt afgesloten.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin moet opnieuw worden opgestart na het installeren van een plug-in.",
     "ServerUpdateNeeded": "Deze server moet worden bijgewerkt. Ga naar {0} om de nieuwste versie te downloaden",
-    "SetUsingLastTracks": "Ondertitel/Audio-sporen instellen met vorig item",
-    "SetUsingLastTracksHelp": "Probeer de ondertiteling/het audiospoor in te stellen op de video die het meest overeenkomt met de laatste video.",
     "Settings": "Instellingen",
     "SettingsSaved": "Instellingen opgeslagen.",
     "SettingsWarning": "Het veranderen van deze waarden kunnen instabiliteit of connectiviteit storingen veroorzaken. Als u problemen ondervindt, raden wij aan de veranderingen terug te zetten naar standaard.",

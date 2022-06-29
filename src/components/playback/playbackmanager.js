@@ -2284,7 +2284,7 @@ class PlaybackManager {
                     score += 1;
                 if (prevRelIndex == newRelIndex)
                     score += 1;
-                if (prevStream.Title && prevStream.Title == stream.Title)
+				if (prevStream.DisplayTitle && prevStream.DisplayTitle == stream.DisplayTitle)
                     score += 2;
                 if (prevStream.Language && prevStream.Language != 'und' && prevStream.Language == stream.Language)
                     score += 2;
@@ -2309,7 +2309,7 @@ class PlaybackManager {
             }
         }
 
-        function autoSetNextTracks(prevSource, mediaSource) {
+		function autoSetNextTracks(prevSource, mediaSource, audio, subtitle) {
             try {
 				
 				console.debug('Inside autoSetNextTracks.');					
@@ -2323,21 +2323,15 @@ class PlaybackManager {
                     console.warn('AutoSet - No mediaSource');
                     return;
                 }
-
-				if (typeof prevSource.DefaultAudioStreamIndex === 'number' && 
-					typeof mediaSource.DefaultAudioStreamIndex === 'number')
-					rankStreamType(prevSource.DefaultAudioStreamIndex, prevSource, mediaSource, 'Audio');	
-				else
-					console.debug('AutoSet - Missing Audio stream index in given sources.');					
 				
-                if (typeof prevSource.DefaultSubtitleStreamIndex === 'number' && 
-					typeof mediaSource.DefaultSubtitleStreamIndex === 'number')
+				if (audio && typeof prevSource.DefaultAudioStreamIndex == 'number') {
+					rankStreamType(prevSource.DefaultAudioStreamIndex, prevSource, mediaSource, 'Audio');
+				}
+				
+				if (subtitle && typeof prevSource.DefaultSubtitleStreamIndex == 'number') {
                     rankStreamType(prevSource.DefaultSubtitleStreamIndex, prevSource, mediaSource, 'Subtitle');
-				else
-					console.debug('AutoSet - Missing Subtitles stream index in given sources.');					
- 
-                return;
-                
+                }
+	
             } catch (e) {
                 console.error(`AutoSet - Caught unexpected error: ${e}`);
             }
@@ -2401,10 +2395,10 @@ class PlaybackManager {
                 // this reference was only needed by sendPlaybackListToPlayer
                 playOptions.items = null;
 
-                return getPlaybackMediaSource(player, apiClient, deviceProfile, maxBitrate, item, startPosition, mediaSourceId, audioStreamIndex, subtitleStreamIndex).then(function (mediaSource) {
-                    if (userSettings.enableSetUsingLastTracks())
-                        autoSetNextTracks(prevSource, mediaSource);
- 
+				return getPlaybackMediaSource(player, apiClient, deviceProfile, maxBitrate, item, startPosition, mediaSourceId, audioStreamIndex, subtitleStreamIndex).then(async (mediaSource) => {
+					const user = await apiClient.getCurrentUser();
+					autoSetNextTracks(prevSource, mediaSource, user.Configuration.RememberAudioSelections, user.Configuration.RememberSubtitleSelections);
+
                     const streamInfo = createStreamInfo(apiClient, item.MediaType, item, mediaSource, startPosition, player);
 
                     streamInfo.fullscreen = playOptions.fullscreen;

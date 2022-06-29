@@ -218,8 +218,6 @@ function loadColors(context) {
 	const subSTRcolor = context.querySelector('#inputTextStroke');
 	const subSHAcolor = context.querySelector('#inputShadowColor');
 	
-	var i = 0;
-	
 	for (const COLOR of CSS_COLOR_NAMES) {
 		let w = document.createElement("option");
 		let x = document.createElement("option");

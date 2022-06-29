@@ -312,7 +312,7 @@ import browser from './browser';
         return -1;
     }
 
-    function getPhysicalAudioChannels(options) {
+    function getPhysicalAudioChannels(options, videoTestElement) {
         const allowedAudioChannels = parseInt(userSettings.allowedAudioChannels(), 10);
 
         if (allowedAudioChannels > 0) {
@@ -324,8 +324,14 @@ import browser from './browser';
         }
 
         const isSurroundSoundSupportedBrowser = browser.safari || browser.chrome || browser.edgeChromium || browser.firefox || browser.tv || browser.ps4 || browser.xboxOne;
+		const isAc3Eac3Supported = supportsAc3(videoTestElement) || supportsEac3(videoTestElement);
         const speakerCount = getSpeakerCount();
 
+		// AC3/EAC3 hinted that device is able to play dolby surround sound.
+        if (isAc3Eac3Supported && isSurroundSoundSupportedBrowser) {
+            return speakerCount > 6 ? speakerCount : 6;
+        }
+		
         if (speakerCount > 2) {
             if (isSurroundSoundSupportedBrowser) {
                 return speakerCount;
@@ -348,11 +354,9 @@ import browser from './browser';
     export default function (options) {
         options = options || {};
 
-		const physicalAudioChannels = getPhysicalAudioChannels(options);
         const bitrateSetting = getMaxBitrate();
-
         const videoTestElement = document.createElement('video');
-
+		const physicalAudioChannels = getPhysicalAudioChannels(options, videoTestElement);
         const canPlayVp8 = videoTestElement.canPlayType('video/webm; codecs="vp8"').replace(/no/, '');
         const canPlayVp9 = videoTestElement.canPlayType('video/webm; codecs="vp9"').replace(/no/, '');
         const webmAudioCodecs = ['vorbis'];

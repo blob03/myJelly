@@ -1409,8 +1409,6 @@
     "ServerNameIsShuttingDown": "Server seadmes {0} seiskub.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin tuleb pärast plugina paigaldamist taaskäivitada.",
     "ServerUpdateNeeded": "Seda serverit tuleb värskendada. Uusima versiooni allalaadimiseks külasta aadressi {0}",
-    "SetUsingLastTracks": "Sea subtiitri-ja helirajad eelmise üksuse järgi",
-    "SetUsingLastTracksHelp": "Proovi seada subtiitri- ja heliriba vastama viimasele videole.",
     "Settings": "Seaded",
     "SettingsSaved": "Seaded salvestatud.",
     "SettingsWarning": "Nende väärtuste muutmine võib põhjustada ebastabiilsust või ühenduvushäireid. Kui koged probleeme, soovitame need vaikeseadetele tagasi muuta.",

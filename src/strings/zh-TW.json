@@ -1418,8 +1418,6 @@
     "ServerNameIsShuttingDown": "伺服器將於 {0} 後關閉。",
     "ServerRestartNeededAfterPluginInstall": "安裝附加元件後，Jellyfin 伺服器需要重啟使其生效。",
     "ServerUpdateNeeded": "伺服器需要更新，請至 {0} 取得最新版本",
-    "SetUsingLastTracks": "以前一個項目設定字幕/音軌",
-    "SetUsingLastTracksHelp": "嘗試用最接近前一個影片的設定去設定字幕與音軌。",
     "Settings": "設定",
     "SettingsSaved": "設置已保存。",
     "SettingsWarning": "更改這些值可能會導致不穩定或連線故障。如果您遇到任何問題，建議將它們重新更改為預設值。",

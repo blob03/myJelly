@@ -482,19 +482,6 @@ export class UserSettings {
         val = this.get('longitude') || 15.72;
         return val.toString();
     }
-	
-	/**
-     * Get or set 'SetUsingLastTracks' state.
-     * @param {boolean|undefined} val - Flag to enable 'SetUsingLastTracks' or undefined.
-     * @return {boolean} 'SetUsingLastTracks' state.
-     */
-    enableSetUsingLastTracks(val) {
-        if (val !== undefined) {
-            return this.set('enableSetUsingLastTracks', val.toString());
-        }
-
-        return toBoolean(this.get('enableSetUsingLastTracks'), true);
-    }
 
     /**
      * Get or set 'Theme Songs' state.
@@ -1461,7 +1448,6 @@ export const enableCinemaMode = currentSettings.enableCinemaMode.bind(currentSet
 export const AudioLanguagePreference = currentSettings.AudioLanguagePreference.bind(currentSettings);
 export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOverlay.bind(currentSettings);
 export const enableNextEpisodeAutoPlay = currentSettings.enableNextEpisodeAutoPlay.bind(currentSettings);
-export const enableSetUsingLastTracks = currentSettings.enableSetUsingLastTracks.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
 export const convertCountryCode = currentSettings.convertCountryCode.bind(currentSettings);

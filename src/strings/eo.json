@@ -1459,8 +1459,6 @@
     "ServerNameIsShuttingDown": "La servilo ĉe {0} malŝaltas.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin devos esti relanĉita post instalado de kromprogramo.",
     "ServerUpdateNeeded": "Ĉi tiu servilo devas esti ĝisdatigita. Por elŝuti la plej novan version, viziti {0}",
-    "SetUsingLastTracks": "Agordi Subtekstaj/Aŭdiaj Trakojn per Antaŭa Aĵo",
-    "SetUsingLastTracksHelp": "Provi starigi la Subtekstan/Aŭdian trakon al la plej proksima kongruo al la lasta video.",
     "Settings": "Parametroj",
     "SettingsSaved": "Parametroj estis konservitaj.",
     "SettingsWarning": "Ŝanĝi ĉi tiujn valorojn povas kaŭzi malstabilecon aŭ konektecajn malsukcesojn. Se vi spertas iujn problemojn, ni rekomendas ŝanĝi ilin al defaŭlto.",

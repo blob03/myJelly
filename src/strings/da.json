@@ -1455,8 +1455,6 @@
     "ServerNameIsShuttingDown": "Serveren bag {0} lukker ned.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin skal genstartes efter installation af en tilføjelse.",
     "ServerUpdateNeeded": "Denne server bør opdateres. For at hente den nyeste version besøg venligst {0}",
-    "SetUsingLastTracks": "Sæt undertekster/lydspor via tidligere element",
-    "SetUsingLastTracksHelp": "Prøv at sætte undertekster/lydspor til det nærmeste match ift. den sidste video.",
     "Settings": "Indstillinger",
     "SettingsSaved": "Indstillinger er gemt.",
     "SettingsWarning": "Ændring af disse værdier kan resultere i instabilitet eller forbindelsesfejl. Hvis du oplever fejl, anbefaler vi at du skifter til standardværdier.",

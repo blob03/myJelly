@@ -1459,8 +1459,6 @@
     "ServerNameIsShuttingDown": "Server {0} sa vypína.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin bude nutné po inštalácií zásuvného modulu reštartovať.",
     "ServerUpdateNeeded": "Tento server je nutné aktualizovať. Pokiaľ chcete stiahnuť najnovšiu verziu, navštívte prosím {0}",
-    "SetUsingLastTracks": "Nastaviť titulky/zvuk podľa predchádzajúcej položky",
-    "SetUsingLastTracksHelp": "Pokúsiť sa nastaviť titulky/zvuk tak, aby sa čo najviac zhodovali s posledným videom.",
     "Settings": "Nastavenia",
     "SettingsSaved": "Nastavenia uložené.",
     "SettingsWarning": "Zmenou týchto hodnôt je možné spôsobiť nestabilitu alebo zlyhanie pripojenia. Pokiaľ máte akékoľvek problémy, odporúčame toto nastavenie vrátiť na predvolenú hodnotu.",

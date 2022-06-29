@@ -1459,8 +1459,6 @@
     "ServerNameIsShuttingDown": "A szerver leáll itt: {0}.",
     "ServerRestartNeededAfterPluginInstall": "A bővítmény telepítése után újra kell indítani a Jellyfint.",
     "ServerUpdateNeeded": "A Jellyfint frissíteni kell. A legújabb verzió letöltéséhez kérjük, látogass el ide {0}",
-    "SetUsingLastTracks": "Állítsa be a felirat-/hanganyagokat az előző tétellel",
-    "SetUsingLastTracksHelp": "Próbálja meg a felirat/audio sávot az utolsó videóhoz legközelebb eső értékre állítani.",
     "Settings": "Beállítások",
     "SettingsSaved": "Beállítások mentve.",
     "SettingsWarning": "Ezen értékek módosítása instabilitást vagy csatlakozási hibákat okozhat. Ha bármilyen probléma merül fel javasoljuk, hogy állítsd vissza őket az alapértelmezettre.",

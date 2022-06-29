@@ -1458,8 +1458,6 @@
     "ServerNameIsShuttingDown": "O servidor em {0} está desligando.",
     "ServerRestartNeededAfterPluginInstall": "O Jellyfin precisa ser reiniciado após a instalação de um plugin.",
     "ServerUpdateNeeded": "Este servidor precisa ser atualizado. Para fazer download da versão mais recente, por favor visite {0}",
-    "SetUsingLastTracks": "Definir legenda/trilhas de áudio com o item anterior",
-    "SetUsingLastTracksHelp": "Tenta definir as trilhas de legenda/áudio para a correspondência mais próxima do último vídeo.",
     "Settings": "Configurações",
     "SettingsSaved": "Configurações salvas.",
     "SettingsWarning": "Alterar estes valores pode causar instabilidade ou falhas de conectividade. Se tiver algum problema, recomendamos retornar ao padrão.",

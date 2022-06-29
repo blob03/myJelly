@@ -1437,8 +1437,6 @@
     "ServerNameIsShuttingDown": "Ang server sa {0} ay nagsasara.",
     "ServerRestartNeededAfterPluginInstall": "Kailangang i-restart ang Jellyfin pagkatapos mag-install ng plugin.",
     "ServerUpdateNeeded": "Kailangang ma-update ang server na ito. Upang i-download ang pinakabagong bersyon, pakibisita ang {0}",
-    "SetUsingLastTracks": "Itakda ang Subtitle/Audio Tracks na may Nakaraang Item",
-    "SetUsingLastTracksHelp": "Subukang itakda ang Subtitle/Audio track sa pinakamalapit na tugma sa huling video.",
     "Settings": "Mga setting",
     "SettingsSaved": "Na-save ang mga setting.",
     "SettingsWarning": "Ang pagbabago sa mga halagang ito ay maaaring magdulot ng kawalang-tatag o pagkabigo sa pagkakakonekta. Kung nakakaranas ka ng anumang mga problema, inirerekomenda naming baguhin ang mga ito pabalik sa default.",

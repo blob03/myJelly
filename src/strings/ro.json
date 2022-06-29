@@ -1456,8 +1456,6 @@
     "ServerNameIsShuttingDown": "Serverul de pe {0} se oprește.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin va trebui să fie repornit după instalarea unui plugin.",
     "ServerUpdateNeeded": "Acest server trebuie actualizat. Pentru a descărca cea mai recentă versiune, accesați {0}",
-    "SetUsingLastTracks": "Setați subtitrarea/Pistele audio cu elementul anterior",
-    "SetUsingLastTracksHelp": "Încercați să setați subtitrarea/pista audio la cea mai apropiată potrivire cu ultimul videoclip.",
     "Settings": "Setări",
     "SettingsSaved": "Setări salvate.",
     "SettingsWarning": "Modificarea acestor valori poate provoca instabilități sau eșecuri de conectivitate. Dacă întâmpinați probleme, vă recomandăm să le schimbați înapoi cu cele din modul implicit.",

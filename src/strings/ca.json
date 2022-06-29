@@ -1454,8 +1454,6 @@
     "ServerNameIsShuttingDown": "El servidor en {0} s'està tancant.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin haurà de ser reiniciat després d'instal·lar un plugin.",
     "ServerUpdateNeeded": "El Servidor necessita ser actualitzat. Per descarregar la darrera versió, si et plau, visita {0}",
-    "SetUsingLastTracks": "Establiu pistes de subtítols/àudio amb l'element anterior",
-    "SetUsingLastTracksHelp": "Intenta configurar la pista de subtítols/àudio amb la coincidència més semblant a l'últim vídeo.",
     "Settings": "Preferències",
     "SettingsSaved": "Preferències desades.",
     "SettingsWarning": "El canvi d'aquests valors pot causar errors d'inestabilitat o de connectivitat. Si teniu algun problema, es recomana canviar-les per defecte.",

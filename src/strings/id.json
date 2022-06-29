@@ -1455,8 +1455,6 @@
     "ServerNameIsShuttingDown": "Server di {0} sedang dimatikan.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin perlu direstart setelah menginstal plugin.",
     "ServerUpdateNeeded": "Server ini perlu diperbarui. Untuk mengunduh versi terbaru, kunjungi {0}",
-    "SetUsingLastTracks": "Atur Subtitle/Trek Audio dengan Item Sebelumnya",
-    "SetUsingLastTracksHelp": "Coba atur trek Subtitle/Audio ke yang paling cocok dengan video terakhir.",
     "Settings": "Pengaturan",
     "SettingsSaved": "Pengaturan disimpan.",
     "SettingsWarning": "Mengubah nilai ini dapat menyebabkan ketidakstabilan atau kegagalan konektivitas. Jika Anda mengalami masalah, kami sarankan untuk mengubahnya kembali ke default.",

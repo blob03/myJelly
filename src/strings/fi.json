@@ -1459,8 +1459,6 @@
     "ServerNameIsShuttingDown": "Palvelin laitteella \"{0}\" sammuu.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin on käynnistettävä lisäosan asennuksen jälkeen uudelleen.",
     "ServerUpdateNeeded": "Palvelin on päivitettävä. Lataa uusin versio osoitteesta {0}",
-    "SetUsingLastTracks": "Aseta tekstitys- ja ääniraita edellisen kohteen mukaan",
-    "SetUsingLastTracksHelp": "Pyri asettanaan tekstitys- ja ääniraita parhaiten edellistä videota vastaaviksi.",
     "Settings": "Asetukset",
     "SettingsSaved": "Asetukset tallennettu.",
     "SettingsWarning": "Näiden arvojen muutos voi aiheuttaa epävakautta tai yhteysongelmia. Jos havaitset ongelmia, kannattaa palauttaa ne takaisin oletusarvoihin.",

@@ -1459,8 +1459,6 @@
     "ServerNameIsShuttingDown": "The server at {0} is shutting down.",
     "ServerRestartNeededAfterPluginInstall": "Jellyfin will need to be restarted after installing a plugin.",
     "ServerUpdateNeeded": "This server needs to be updated. To download the latest version, please visit {0}",
-    "SetUsingLastTracks": "Set Subtitle/Audio Tracks with Previous Item",
-    "SetUsingLastTracksHelp": "Try to set the Subtitle/Audio track to the closest match to the last video.",
     "Settings": "Settings",
     "SettingsSaved": "Settings saved.",
     "SettingsWarning": "Changing these values may cause instability or connectivity failures. If you experience any problems, we recommend changing them back to default.",
