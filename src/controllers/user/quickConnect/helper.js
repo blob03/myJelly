@@ -6,26 +6,14 @@ import loading from '../../../components/loading/loading';
 export function isActive() {
 	loading.show();
 	return new Promise((resolve) => {
-		ApiClient.getQuickConnect('Status')
-			.then(status => {
-				if (status === "Available" || status === "Active")
-					resolve(1);
-				resolve(0);
-			})
+		ApiClient.getQuickConnect('Enabled')
+			.then(status => { resolve(status); })
 			.catch(() => {
-				ApiClient.getQuickConnect('Enabled')
-					.then(status => {
-						resolve(2);
-					})
-					.catch(() => {
-						console.debug('Failed to get Quick Connect status');
-						resolve(0);
-					});
+				console.debug('Failed to get Quick Connect status');
+				resolve(false);
 			})
-			.finally(() => {
-				loading.hide();
-			});
-	});
+			.finally(() => { loading.hide(); });
+	})
 }
 
 export const authorize = (code) => {
@@ -41,23 +29,4 @@ export const authorize = (code) => {
 
     // prevent bubbling
     return false;
-};
-
-export const activate = () => {
-    const url = ApiClient.getUrl('/QuickConnect/Activate');
-    return ApiClient.ajax({
-        type: 'POST',
-        url: url
-    }).then(() => {
-        toast(globalize.translate('QuickConnectActivationSuccessful'));
-        return true;
-    }).catch((e) => {
-        console.error('Error activating Quick Connect. Error:', e);
-        Dashboard.alert({
-            title: globalize.translate('HeaderError'),
-            message: globalize.translate('QuickConnectActivationFail')
-        });
-
-        throw e;
-    });
 };

@@ -47,9 +47,8 @@ export default function (view, params) {
         page.querySelector('.lnkControlsPreferences').classList.toggle('hide', layoutManager.mobile);
 
 		// Check whether QuickConnect is active or not.
-		// Test is backward compatible with the pre 10.8 beta version.
 		quickConnect.isActive().then( (ret) => {
-			if (ret > 0) 
+			if (ret === true) 
 				page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
 		});
 			
