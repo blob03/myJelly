@@ -42,7 +42,7 @@ html {
 
 .layout-tv .skinHeader.semiTransparent {
     background: none;
-	color: inherit;
+    color: inherit;
 }
 
 .pageTitleWithDefaultLogo {
@@ -179,6 +179,7 @@ a[data-role=button] {
 
 .layout-tv .formDialogFooter:not(.formDialogFooter-clear) {
     background-color: transparent;
+    border: none;
 }
 
 .cardText-secondary,
@@ -255,7 +256,7 @@ a[data-role=button] {
 
 .layout-tv .detailRibbon {
     background: none;
-	color: inherit;
+    color: inherit;
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
@@ -267,7 +268,7 @@ a[data-role=button] {
 }
 
 .listItem:focus {
-	    background: #bbb;
+    background: #bbb;
 }
 
 .listItem:hover {

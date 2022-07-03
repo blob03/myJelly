@@ -9,8 +9,6 @@ html {
     color: rgba(255, 255, 255, 0.8);
 }
 
-
-
 .wizardStartForm,
 .ui-corner-all,
 .ui-shadow {
@@ -226,10 +224,6 @@ html {
 
 .layout-tv .detailRibbon {
     background: none;
-}
-
-.noBackdrop .detailRibbon {
-    background: #202020;
 }
 
 .listItem-border {
@@ -487,4 +481,3 @@ html {
     background-color: #f2f2f2;
     color: #00a4dc;
 }
-

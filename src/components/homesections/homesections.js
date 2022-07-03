@@ -186,7 +186,9 @@ import ServerConnections from '../ServerConnections';
         let html = '';
 
         html += '<div class="verticalSection verticalSection-extrabottompadding">';
-        html += '<h2 class="sectionTitle sectionTitle-cards padded-left">' + globalize.translate('HeaderMyMedia') + '</h2>';
+		html += '<div class="sectionTitleContainer sectionTitleContainer-cards padded-left">';
+        html += '<h2 class="sectionTitle sectionTitle-cards">' + globalize.translate('HeaderMyMedia') + '</h2>';
+		html += '</div>';
 
         html += '<div is="emby-itemscontainer" class="itemsContainer padded-left padded-right vertical-wrap focuscontainer-x" data-multiselect="false">';
 

@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.1-1",
+	"version": "10.8.1-2",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -44,6 +44,7 @@
 		"10.8.0-6": "Applied patch 'device-logo-fix'.\nApplied patch 'dovi-meta'.\nApplied patch 'resolution'.\nApplied patch 'mimetype'.\nApplied patch 'vpp-tm-configs'.\nApplied patch 'video-range-condition'.",
 		"10.8.0-7": "Translations synchronized with master.\nApplied patch 'react-router-3'.",
 		"10.8.1-0": "Translations synchronized with master.\nFixed a minor issue in the layout of the playback settings page.",
-		"10.8.1-1": "Translations synchronized with master.\nRemoved backward compatibility with Quick Connect pre v10.8.x."
+		"10.8.1-1": "Translations synchronized with master.\nRemoved backward compatibility with Quick Connect pre v10.8.0.",
+		"10.8.1-2": "Translations synchronized with master.\nThemes 'Light-alt-blue' & 'WMC-alt' updated.\nCompatibility with Jellyfin's themes improved.\nRemoved no longer used Quick Connect code."
 	}
 }

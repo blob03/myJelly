@@ -54,8 +54,12 @@
     overflow: hidden;
 }
 
-.libraryPage {
-    padding-top: 7em !important;
+.libraryPage.noSecondaryNavPage {
+    padding-top: 5em !important;
+}
+
+.libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 8.5em !important;
 }
 
 .itemDetailPage {
@@ -76,10 +80,6 @@
 
 .wizardPage {
     padding-top: 7em !important;
-}
-
-.libraryPage:not(.noSecondaryNavPage) {
-    padding-top: 7.5em !important;
 }
 
 .absolutePageTabContent {
@@ -1078,6 +1078,10 @@ div.itemDetailGalleryLink.defaultCardBackground {
     margin-bottom: 1em;
 }
 
+.verticalSection {
+    margin-top: 2em;
+}
+
 .sectionTitleButton,
 .sectionTitleIconButton {
     margin-right: 0 !important;
@@ -1098,7 +1102,7 @@ div.itemDetailGalleryLink.defaultCardBackground {
 /* these next two rules are for the scroller element headers */
 .sectionTitleContainer-cards {
     margin: 0;
-    padding-top: 1.25em;
+    /*padding-top: 1.25em;*/
 }
 
 div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {

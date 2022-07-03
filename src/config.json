@@ -4,7 +4,7 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "1.83",
+		"version": "1.84",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
@@ -22,7 +22,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "WMC alt.",
-		"version": "1.38",
+		"version": "1.39",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"

@@ -126,9 +126,9 @@ import viewContainer from '../viewContainer';
 		if (val == 'any')
 			key = 'RandomScreensaverHelp';
 		else 
-			key = sel[0]? sel[0].description || '' : '';
+			key = sel[0]?.description;
 		
-		const txt = key? globalize.translate(key) || '&nbsp;' : '&nbsp;';
+		const txt = key? globalize.translate(key): '';
 		
 		let pnode = e.target.parentNode;
 		if (pnode)	

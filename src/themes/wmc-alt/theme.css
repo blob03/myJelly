@@ -790,3 +790,12 @@ option.sourceDictionaryOption {
 	margin: .1rem .5rem .1rem .5rem !important;
 	border: 2px solid #203f59 !important;
 }
+
+.libraryPage {
+    padding-top: 4.3em !important;
+}
+
+.withTabs .content-primary {
+    margin-top: 1.5em !important;
+}
+

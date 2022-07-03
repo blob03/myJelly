@@ -307,9 +307,7 @@ a[data-role=button] {
     border-color: #00a4dc;
 }
 
-.emby-select-withcolor > option,
-.emby-select-withcolor > optgroup,
-.emby-select-withcolor > * > option {
+.emby-select-withcolor > option {
     color: #000;
     background: #fff;
 }

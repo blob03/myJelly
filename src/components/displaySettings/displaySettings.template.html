@@ -1,298 +1,305 @@
 <form style="margin: 0 auto;">
-    <h2 class="sectionTitle">
-        ${Localization}
-    </h2>
 
-	<div class="DisplayLanguageArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+	<div class="verticalSection">
+		<h2 class="sectionTitle">
+			${Localization}
+		</h2>
 
-		<div class="selectContainer languageSection" style='width: 47%;height: auto'>
-			<select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
-				<option value="">${Auto}</option>
-				<option disabled>${OptionDivider}</option>
-			</select>
-			<div class="fieldDescription">
-				<div>${LabelDisplayLanguageHelp}</div>
-				<div class="hyperlink hide" style="margin-top: .25em;">
-					<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://github.com/jellyfin/jellyfin" target="_blank">${LearnHowYouCanContribute}</a>
+		<div class="DisplayLanguageArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+			<div class="selectContainer languageSection" style='width: 47%;height: auto'>
+				<select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
+					<option value="">${Auto}</option>
+					<option disabled>${OptionDivider}</option>
+				</select>
+				<div class="fieldDescription">
+					<div>${LabelDisplayLanguageHelp}</div>
+					<div class="hyperlink hide" style="margin-top: .25em;">
+						<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://github.com/jellyfin/jellyfin" target="_blank">${LearnHowYouCanContribute}</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		
-		<fieldset class="selectContainer infoDetails" style="width: 45%;height: auto;border: 1px solid #000;padding: 10px !important;font-size: 90%;">
-			<div class="DisplayLanguageInfo fieldDescription" style='width: 100%;height: auto;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
-				<div><span class="LangDetailsHeader">${LabelDisplayLanguage}</span><span class="infoDisplayLanguage"></span></div>
-				<!-- div><span class="LangDetailsHeader">${LabelLastModified}</span><span class="infoLastModified"></span></div -->
-				<div>
-					<span class="LangDetailsHeader">${LabelTranslatedStrings}</span>
-					<span class="infoKeysTranslated"></span>
-					<span class="material-icons hub hubIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
-					<span class="material-icons warning warningIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
-					<span class="material-icons done doneIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
+			
+			<fieldset class="selectContainer infoDetails" style="width: 45%;height: auto;border: 1px solid #000;padding: 10px !important;font-size: 90%;">
+				<div class="DisplayLanguageInfo fieldDescription" style='width: 100%;height: auto;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
+					<div><span class="LangDetailsHeader">${LabelDisplayLanguage}</span><span class="infoDisplayLanguage"></span></div>
+					<!-- div><span class="LangDetailsHeader">${LabelLastModified}</span><span class="infoLastModified"></span></div -->
+					<div>
+						<span class="LangDetailsHeader">${LabelTranslatedStrings}</span>
+						<span class="infoKeysTranslated"></span>
+						<span class="material-icons hub hubIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
+						<span class="material-icons warning warningIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
+						<span class="material-icons done doneIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
+					</div>
+					<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelJellyfinWeb}<span class="infoJellyfinKeysTranslated"></span></li></div>
+					<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelmyJelly}<span class="infoMyjellyKeysTranslated"></span></li></div>
 				</div>
-				<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelJellyfinWeb}<span class="infoJellyfinKeysTranslated"></span></li></div>
-				<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelmyJelly}<span class="infoMyjellyKeysTranslated"></span></li></div>
-			</div>
-		
-		</fieldset>
+			
+			</fieldset>
 
-	</div>
+		</div>
 
-	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-		
-		<div class="selectContainer fldDateTimeLocale hide" style="width: 47%;height: auto;">
-			<select is="emby-select" id="selectDateTimeLocale" class="selectDateTimeLocale" label="${LabelDateTimeLocale}">
-				<option value="">${Auto}</option>
-				<option disabled>${OptionDivider}</option>
-			</select>
-			<div class="fieldDescription ">&nbsp;</div>
-		</div>
-		
-		<div class="selectContainer" style="width: 47%;height: auto;">
-			<select is="emby-select" id="selectClock" label="${EnableClock}">
-			<option value=0>${Never}</option>
-			<option value=1>${Always}</option>
-			<option value=2>${HeaderNavigation}</option>
-			<option value=3>${HeaderVideos}</option>
-			</select>
-			<div class="fieldDescription ">${EnableClockHelp}</div>
-		</div>
-		
-	</div>
-	
-	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
-	
-		<div class="inputContainer" style="display: flex;align-items: center;justify-content: space-between;flex-grow: 0;width: 47%;height: auto;">
-		
-			<button is="emby-button" type="button" id="btnFindIt" class="raised btnTryIt block emby-button hide" style="width: auto;height: 50%;">
-				<span>${Find}</span>
-			</button>			
-			<div style="flex-grow: 0;width: 33%;height: auto;">
-				<input is="emby-input" id="inputLat" label="${LabelLatitude}" type="number" min=-90 max=90 step="0.01" placeholder="78.69" autocomplete="off">
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+			
+			<div class="selectContainer fldDateTimeLocale hide" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectDateTimeLocale" class="selectDateTimeLocale" label="${LabelDateTimeLocale}">
+					<option value="">${Auto}</option>
+					<option disabled>${OptionDivider}</option>
+				</select>
 				<div class="fieldDescription ">&nbsp;</div>
 			</div>
-			<div style="flex-grow: 0;width: 33%;height: auto;">
-				<input is="emby-input" id="inputLon" label="${LabelLongitude}" type="number" min=-180 max=180 step="0.01" placeholder="15.72" autocomplete="off">
-				<div class="fieldDescription ">&nbsp;</div>
+			
+			<div class="selectContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectClock" label="${EnableClock}">
+				<option value=0>${Never}</option>
+				<option value=1>${Always}</option>
+				<option value=2>${HeaderNavigation}</option>
+				<option value=3>${HeaderVideos}</option>
+				</select>
+				<div class="fieldDescription ">${EnableClockHelp}</div>
 			</div>
-		
+			
 		</div>
 		
-		<div class="selectContainer" style="width: 47%;height: auto;">
-			<select is="emby-select" id="selectWeatherBot" label="${EnableWeatherBot}">
-			<option value=0>${Never}</option>
-			<option value=1>${Always}</option>
-			<option value=2>${HeaderNavigation}</option>
-			<option value=3>${HeaderVideos}</option>
-			</select>
-			<div class="fieldDescription ">${EnableWeatherBotHelp}</div>
-		</div>
-				
-	</div>
-	
-	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-	
-		<div class="inputContainer" style="flex-grow: 3;width: 47%;height: auto;">
-	
-			<input is="emby-input" id="inputApikey" label="${LabelWeatherApiKey}" type="text" placeholder="" autocomplete="off" maxlength="32" size="32">
-			<div class="fieldDescription">
-				<div class="hyperlink hide" style="margin-top: .25em;">
-					<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://home.openweathermap.org/users/sign_up" target="_blank">${WeatherApiRegistrationHelp}</a>
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
+		
+			<div class="inputContainer" style="display: flex;align-items: center;justify-content: space-between;flex-grow: 0;width: 47%;height: auto;">
+			
+				<button is="emby-button" type="button" id="btnFindIt" class="raised btnTryIt block emby-button hide" style="width: auto;height: 50%;">
+					<span>${Find}</span>
+				</button>			
+				<div style="flex-grow: 0;width: 33%;height: auto;">
+					<input is="emby-input" id="inputLat" label="${LabelLatitude}" type="number" min=-90 max=90 step="0.01" placeholder="78.69" autocomplete="off">
+					<div class="fieldDescription ">&nbsp;</div>
 				</div>
+				<div style="flex-grow: 0;width: 33%;height: auto;">
+					<input is="emby-input" id="inputLon" label="${LabelLongitude}" type="number" min=-180 max=180 step="0.01" placeholder="15.72" autocomplete="off">
+					<div class="fieldDescription ">&nbsp;</div>
+				</div>
+			
+			</div>
+			
+			<div class="selectContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectWeatherBot" label="${EnableWeatherBot}">
+				<option value=0>${Never}</option>
+				<option value=1>${Always}</option>
+				<option value=2>${HeaderNavigation}</option>
+				<option value=3>${HeaderVideos}</option>
+				</select>
+				<div class="fieldDescription ">${EnableWeatherBotHelp}</div>
+			</div>
+					
+		</div>
+		
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+		
+			<div class="inputContainer" style="flex-grow: 3;width: 47%;height: auto;">
+		
+				<input is="emby-input" id="inputApikey" label="${LabelWeatherApiKey}" type="text" placeholder="" autocomplete="off" maxlength="32" size="32">
+				<div class="fieldDescription">
+					<div class="hyperlink hide" style="margin-top: .25em;">
+						<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://home.openweathermap.org/users/sign_up" target="_blank">${WeatherApiRegistrationHelp}</a>
+					</div>
+				</div>
+
+			</div>
+		
+			<div style="width: 6%"></div>
+			
+			<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderAPIFrequency" label="${LabelAPIFrequency}" type="range" min="1" max="30" />
+				</div>
+				<div class="fieldDescription">${LabelAPIFrequencyHelp}</div>
+			</div>
+			
+		</div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription" style="width: 47%;height: auto;">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkuseUSUnits" />
+				<span>${EnableUSUnits}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${EnableUSUnitsHelp}</div>
+		</div>
+	</div>
+	
+	<div class="verticalSection">
+		<h2 class="sectionTitle">
+			${Display}
+		</h2>
+
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+			<div class="selectContainer fldDisplayMode hide" style='flex-grow: 3;width: 47%;height: auto;'>
+				<select is="emby-select" id="selectLayout" class="selectLayout" label="${LabelDisplayMode}">
+					<option value="">${Auto}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="desktop">${Desktop}</option>
+					<option value="mobile">${Mobile}</option>
+					<option value="tv">${TV}</option>
+				</select>
+				<div class="fieldDescription">${DisplayModeHelp}</div>
+			</div>
+			
+			<div class="fldDisplaySeparator hide" style="width: 6%"></div>
+			
+			<div class="sliderContainer-settings fldDisplayFontSize hide" style="flex-grow: 2;width: 47%;height: auto;">
+				<div class="sliderContainer" style="width:100%">
+					<input is="emby-slider" id="sliderDisplayFontSize" label="${LabelDisplayFontSize}" type="range" min="-20" max="20" step="2"/>
+				</div>
+				<div class="fieldDescription" style="float:right"></div>
 			</div>
 
 		</div>
-	
-		<div style="width: 6%"></div>
 		
-		<div class="sliderContainer-settings" style="width: 47%;height: auto;">
-			<div class="sliderContainer">
-				<input is="emby-slider" id="sliderAPIFrequency" label="${LabelAPIFrequency}" type="range" min="1" max="30" />
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+		
+			<div class="selectContainer" style="flex-grow: 3;width: 47%;height: auto;"> 
+				<select id="selectTheme" is="emby-select" label="${LabelTheme}">
+					<option value="None">${None}</option>
+				</select>
 			</div>
-			<div class="fieldDescription">${LabelAPIFrequencyHelp}</div>
-		</div>
-		
-	</div>
-	
-	<div class="checkboxContainer checkboxContainer-withDescription" style="width: 47%;height: auto;">
-		<label>
-			<input type="checkbox" is="emby-checkbox" id="chkuseUSUnits" />
-			<span>${EnableUSUnits}</span>
-		</label>
-		<div class="fieldDescription checkboxFieldDescription">${EnableUSUnitsHelp}</div>
-	</div>
 
-    <h2 class="sectionTitle">
-        ${Display}
-    </h2>
-
-	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-
-		<div class="selectContainer fldDisplayMode hide" style='flex-grow: 3;width: 47%;height: auto;'>
-			<select is="emby-select" id="selectLayout" class="selectLayout" label="${LabelDisplayMode}">
-				<option value="">${Auto}</option>
-				<option disabled>${OptionDivider}</option>
-				<option value="desktop">${Desktop}</option>
-				<option value="mobile">${Mobile}</option>
-				<option value="tv">${TV}</option>
-			</select>
-			<div class="fieldDescription">${DisplayModeHelp}</div>
-		</div>
-		
-		<div class="fldDisplaySeparator hide" style="width: 6%"></div>
-		
-		<div class="sliderContainer-settings fldDisplayFontSize hide" style="flex-grow: 2;width: 47%;height: auto;">
-			<div class="sliderContainer" style="width:100%">
-				<input is="emby-slider" id="sliderDisplayFontSize" label="${LabelDisplayFontSize}" type="range" min="-20" max="20" step="2"/>
+			<div class="selectDashboardThemeContainer hide" style="width: 6%"></div>
+			
+			<div class="selectContainer selectDashboardThemeContainer hide" style="width: 47%;height: auto;">
+				<select id="selectDashboardTheme" is="emby-select" label="${LabelDashboardTheme}">
+					<option value="Auto">${Auto}</option>
+					<option value="None">${None}</option>
+				</select>
 			</div>
-			<div class="fieldDescription" style="float:right"></div>
-		</div>
 
-	</div>
-	
-	<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-	
-		<div class="selectContainer" style="flex-grow: 3;width: 47%;height: auto;"> 
-			<select id="selectTheme" is="emby-select" label="${LabelTheme}">
-				<option value="None">${None}</option>
-			</select>
 		</div>
-
-		<div class="selectDashboardThemeContainer hide" style="width: 6%"></div>
 		
-		<div class="selectContainer selectDashboardThemeContainer hide" style="width: 47%;height: auto;">
-			<select id="selectDashboardTheme" is="emby-select" label="${LabelDashboardTheme}">
+		<div class="selectContainer" style="width: 100%;height: auto;">
+		
+			<select is="emby-select" id="srcBackdrops" label="${LabelBackdrops}">
 				<option value="Auto">${Auto}</option>
 				<option value="None">${None}</option>
-			</select>
-		</div>
-
-	</div>
-	
-	<div class="selectContainer" style="width: 100%;height: auto;">
-	
-		<select is="emby-select" id="srcBackdrops" label="${LabelBackdrops}">
-			<option value="Auto">${Auto}</option>
-			<option value="None">${None}</option>
-			<option disabled>${OptionDivider}</option>
-			<option value="Theme">${Theme}</option>
-			<option value="Libraries">${HeaderLibraries}</option>
-			<option value="LibrariesFav">${HeaderLibraries} - ${Favorites}</option>
-			<option value="Movie">${HeaderLibraries} - ${Movies}</option>
-			<option value="MovieFav">${HeaderLibraries} - ${Movies} - ${Favorites}</option>
-			<option value="Series">${HeaderLibraries} - ${Series}</option>
-			<option value="SeriesFav">${HeaderLibraries} - ${Series} - ${Favorites}</option>
-			<option value="Artists">${HeaderLibraries} - ${Artists}</option>
-			<option value="ArtistsFav">${HeaderLibraries} - ${Artists} - ${Favorites}</option>
-		</select>
-		<div class="fieldDescription ">${EnableBackdropsHelp}</div>
-		
-	</div>
-	
-	<div class="ScreensaverArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-
-		<div class="selectContainer selectScreensaverContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
-			<select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}">
-				<option value="none">${None}</option>
-				<option value="any">${OptionRandom}</option>
-			</select>
-			<div class="fieldDescription"></div>
-		</div>
-
-		<button is="emby-button" type="button" id="btnTryIt" class="raised btnTryIt block hide" style="margin:0 0 1.4rem 0;width: auto;height: auto;">
-			<span>${TryIt}</span>
-		</button>
-	
-		<div class="sliderContainer-settings hide" style="width: 37%;height: auto;">
-			<div class="sliderContainer">
-				<input is="emby-slider" id="sliderScreensaverTime" label="${LabelScreensaverTime}" type="range" min="1" max="30" step="1"/>
-			</div>
-			<div class="fieldDescription" style="float:right"></div>
-		</div>
-	
-	</div>
-
-	<div class="SwiperArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-
-		<div class="selectContainer selectSwiperContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
-			<select is="emby-select" id="selectSwiperFX" class="selectSwiperFX" label="${LabelSwiperFX}">
-				<option value="none">${None}</option>
-				<option value="any">${OptionRandom}</option>
 				<option disabled>${OptionDivider}</option>
-				<option value="horizontal">${SwiperFXHorizontal}</option>
-				<option value="vertical">${SwiperFXVertical}</option>
-				<option value="fade">${SwiperFXFade}</option>
-				<option value="flip">${SwiperFXFlip}</option>
-				<option value="cube">${SwiperFXCube}</option>
-				<option value="coverflow">${SwiperFXCoverflow}</option>
+				<option value="Theme">${Theme}</option>
+				<option value="Libraries">${HeaderLibraries}</option>
+				<option value="LibrariesFav">${HeaderLibraries} - ${Favorites}</option>
+				<option value="Movie">${HeaderLibraries} - ${Movies}</option>
+				<option value="MovieFav">${HeaderLibraries} - ${Movies} - ${Favorites}</option>
+				<option value="Series">${HeaderLibraries} - ${Series}</option>
+				<option value="SeriesFav">${HeaderLibraries} - ${Series} - ${Favorites}</option>
+				<option value="Artists">${HeaderLibraries} - ${Artists}</option>
+				<option value="ArtistsFav">${HeaderLibraries} - ${Artists} - ${Favorites}</option>
 			</select>
+			<div class="fieldDescription ">${EnableBackdropsHelp}</div>
+			
 		</div>
 		
-		<div class="sliderContainer-settings" style="width: 47%;height: auto;">
-			<div class="sliderContainer">
-				<input is="emby-slider" id="sliderSwiperDelay" label="${LabelSwiperDelay}" type="range" min="4" max="60" />
+		<div class="ScreensaverArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+			<div class="selectContainer selectScreensaverContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
+				<select is="emby-select" id="selectScreensaver" class="selectScreensaver" label="${LabelScreensaver}">
+					<option value="none">${None}</option>
+					<option value="any">${OptionRandom}</option>
+				</select>
+				<div class="fieldDescription"></div>
 			</div>
-			<div class="fieldDescription">${LabelSwiperDelayHelp}</div>
+
+			<button is="emby-button" type="button" id="btnTryIt" class="raised btnTryIt block hide" style="margin:0 0 1.4rem 0;width: auto;height: auto;">
+				<span>${TryIt}</span>
+			</button>
+		
+			<div class="sliderContainer-settings hide" style="width: 37%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderScreensaverTime" label="${LabelScreensaverTime}" type="range" min="1" max="30" step="1"/>
+				</div>
+				<div class="fieldDescription" style="float:right"></div>
+			</div>
+		
+		</div>
+
+		<div class="SwiperArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
+
+			<div class="selectContainer selectSwiperContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
+				<select is="emby-select" id="selectSwiperFX" class="selectSwiperFX" label="${LabelSwiperFX}">
+					<option value="none">${None}</option>
+					<option value="any">${OptionRandom}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="horizontal">${SwiperFXHorizontal}</option>
+					<option value="vertical">${SwiperFXVertical}</option>
+					<option value="fade">${SwiperFXFade}</option>
+					<option value="flip">${SwiperFXFlip}</option>
+					<option value="cube">${SwiperFXCube}</option>
+					<option value="coverflow">${SwiperFXCoverflow}</option>
+				</select>
+			</div>
+			
+			<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderSwiperDelay" label="${LabelSwiperDelay}" type="range" min="4" max="60" />
+				</div>
+				<div class="fieldDescription">${LabelSwiperDelayHelp}</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="verticalSection">
+		<h2 class="sectionTitle">
+			${HeaderLibraries}
+		</h2>
+		
+		<div class="sliderContainer-settings">
+			<div class="sliderContainer">
+				<input is="emby-slider" id="sliderLibraryPageSize" label="${LabelLibraryPageSize}" type="range" min="0" max="128" />
+			</div>
+			<div class="fieldDescription">${LabelLibraryPageSizeHelp}</div>
+		</div>
+
+		<div class="sliderContainer-settings">
+			<div class="sliderContainer">
+				<input is="emby-slider" id="sliderBlurhash" label="${EnableBlurHash}${Colon}" type="range" step="2" min="0" max="32" />
+			</div>
+			<div class="fieldDescription">${EnableBlurHashHelp}&nbsp;${EnableBlurHashMoreHelp}&nbsp;${EnableBlurHashSomeMoreHelp}</div>
 		</div>
 		
-	</div>
-	
-	<h2 class="sectionTitle">
-        ${HeaderLibraries}
-    </h2>
-	
-	<div class="sliderContainer-settings">
-		<div class="sliderContainer">
-			<input is="emby-slider" id="sliderLibraryPageSize" label="${LabelLibraryPageSize}" type="range" min="0" max="128" />
+		<div class="checkboxContainer checkboxContainer-withDescription">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkFadein" />
+				<span>${EnableFasterAnimations}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${EnableFasterAnimationsHelp}</div>
 		</div>
-		<div class="fieldDescription">${LabelLibraryPageSizeHelp}</div>
-	</div>
-
-	<div class="sliderContainer-settings">
-		<div class="sliderContainer">
-			<input is="emby-slider" id="sliderBlurhash" label="${EnableBlurHash}${Colon}" type="range" step="2" min="0" max="32" />
+		
+		<div class="checkboxContainer checkboxContainer-withDescription fldDetailsBanner hide">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkDetailsBanner" />
+				<span>${EnableDetailsBanner}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${EnableDetailsBannerHelp}</div>
 		</div>
-		<div class="fieldDescription">${EnableBlurHashHelp}&nbsp;${EnableBlurHashMoreHelp}&nbsp;${EnableBlurHashSomeMoreHelp}</div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription fldThemeSong hide">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkThemeSong" />
+				<span>${ThemeSongs}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${EnableThemeSongsHelp}</div>
+		</div>
+
+		<div class="checkboxContainer checkboxContainer-withDescription fldThemeVideo hide">
+			<label>
+				<input type="checkbox" is="emby-checkbox" id="chkThemeVideo" />
+				<span>${ThemeVideos}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${EnableThemeVideosHelp}</div>
+		</div>
+
+		<div class="checkboxContainer checkboxContainer-withDescription fldDisplayMissingEpisodes hide">
+			<label>
+				<input type="checkbox" is="emby-checkbox" class="chkDisplayMissingEpisodes" />
+				<span>${DisplayMissingEpisodesWithinSeasons}</span>
+			</label>
+			<div class="fieldDescription checkboxFieldDescription">${DisplayMissingEpisodesWithinSeasonsHelp}</div>
+		</div>
 	</div>
-	
-    <div class="checkboxContainer checkboxContainer-withDescription">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkFadein" />
-            <span>${EnableFasterAnimations}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${EnableFasterAnimationsHelp}</div>
-    </div>
-	
-    <div class="checkboxContainer checkboxContainer-withDescription fldDetailsBanner hide">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkDetailsBanner" />
-            <span>${EnableDetailsBanner}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${EnableDetailsBannerHelp}</div>
-    </div>
-	
-    <div class="checkboxContainer checkboxContainer-withDescription fldThemeSong hide">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkThemeSong" />
-            <span>${ThemeSongs}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${EnableThemeSongsHelp}</div>
-    </div>
-
-    <div class="checkboxContainer checkboxContainer-withDescription fldThemeVideo hide">
-        <label>
-            <input type="checkbox" is="emby-checkbox" id="chkThemeVideo" />
-            <span>${ThemeVideos}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${EnableThemeVideosHelp}</div>
-    </div>
-
-    <div class="checkboxContainer checkboxContainer-withDescription fldDisplayMissingEpisodes hide">
-        <label>
-            <input type="checkbox" is="emby-checkbox" class="chkDisplayMissingEpisodes" />
-            <span>${DisplayMissingEpisodesWithinSeasons}</span>
-        </label>
-        <div class="fieldDescription checkboxFieldDescription">${DisplayMissingEpisodesWithinSeasonsHelp}</div>
-    </div>
 	
 	<button is="emby-button" type="submit" class="raised button-submit block btnSave hide">
 		<span>${Save}</span>

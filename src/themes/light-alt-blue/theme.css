@@ -895,10 +895,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	border: 6px ridge rgb(81, 107, 116);
 }
 
-.libraryPage {
-    padding-top: 4em !important;
-}
-
 .dialogContentInner {
     padding: .5em 1em 1em;
 }
@@ -935,10 +931,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .listItemBody {
 	font-weight: 600;
 	color: rgb(94, 137, 150);
-}
-
-.verticalSection {
-	margin-top: 1em;
 }
 
 .h2 {
@@ -1263,10 +1255,12 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .aboutframe {
-	padding: 1em !important;
+	padding: .2em 1em .2em 1em !important;
 	background: rgba(123, 159, 197, 0.15) !important;
 	font-size: 100% !important;
 	line-height: 1.65 !important;
+	position: relative !important;
+	top: 4em !important;
 }
 
 .headerWthMain {
@@ -1279,3 +1273,14 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	border: 4px groove #8cbdc8 !important;
 }
 
+.homePage {
+    padding-top: 9.5em !important;
+}
+
+.libraryPage {
+    padding-top: 5.5em !important;
+}
+
+.withTabs .content-primary {
+    margin-top: 1.5em !important;
+}
