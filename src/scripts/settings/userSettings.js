@@ -42,6 +42,7 @@ function hdrWeather() {
 	const _lat = this.getlatitude();
 	const _lon = this.getlongitude();
 	const wapikey = this.weatherApiKey();
+	const enableUSUnits = (globalize.getCurrentDateTimeLocale() === 'en-US')? true: false;
 	
 	if (!wapikey) {
 		console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
@@ -57,7 +58,7 @@ function hdrWeather() {
 	url.apiMethod = 'weather';
 	url.params = '?appid=' + wapikey
 		+ '&lat=' + _lat + '&lon=' + _lon
-		+ '&units=' + (this.enableUSUnits()?'imperial':'metric') 
+		+ '&units=' + (enableUSUnits? 'imperial': 'metric')
 		+ '&mode=xml'
 		+ '&lang=' + this.convertCountryCode(this.language());
 	
@@ -129,7 +130,7 @@ function hdrWeather() {
 		if (_data.temp) {
 			_dyn = Number(_data.temp).toFixed(1);
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
-			_dyn += (self.enableUSUnits()? '&#8457;' : '&#8451;') + '</span>';
+			_dyn += (enableUSUnits? '&#8457;': '&#8451;') + '</span>';
 			self._hdrwth.temp.innerHTML = _dyn;
 			self._hdrwth.temp.title = globalize.translate('Temperature');
 		}
@@ -161,11 +162,11 @@ function hdrWeather() {
 		
 		if (_data.speed) {
 			let wspeed = _data.speed;
-			if (!self.enableUSUnits())
+			if (!enableUSUnits)
 				wspeed *= 3.6; // m/s -> km/h
 			_dyn = Number(wspeed).toFixed(1);
 			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
-			_dyn += (self.enableUSUnits()? 'mph' : 'km/h') + '</span>';
+			_dyn += (enableUSUnits? 'mph': 'km/h') + '</span>';
 			self._hdrwth.wind.innerHTML = _dyn;
 			if (self._hdrwth.wind.parentNode)
 				self._hdrwth.wind.parentNode.title = globalize.translate('WindSpeed');
@@ -972,19 +973,6 @@ export class UserSettings {
     }
 
     /**
-     * Get or set 'USUnits' state.
-     * @param {boolean|undefined} val - Flag to enable 'USUnits' or undefined.
-     * @return {boolean} 'USUnits' state.
-     */
-    enableUSUnits(val) {
-        if (val !== undefined) {
-            return this.set('USUnits', val.toString());
-        }
-
-		return toBoolean(this.get('USUnits'), false);
-    }
-
-    /**
      * Get or set 'Blurhash quality' state.
      * @param {boolean|undefined} val - Quality level between 0 (disabled) and 32 (max quality) inclusively.
      * @return {boolean} 'Blurhash quality' state.
@@ -1455,7 +1443,6 @@ export const getlatitude = currentSettings.getlatitude.bind(currentSettings);
 export const getlongitude = currentSettings.getlongitude.bind(currentSettings);
 export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
-export const enableUSUnits = currentSettings.enableUSUnits.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableWeatherBot = currentSettings.enableWeatherBot.bind(currentSettings);
 export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);

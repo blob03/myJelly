@@ -362,7 +362,6 @@ import viewContainer from '../viewContainer';
 		context.querySelector('#inputLat').value = userSettings.getlatitude();
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
-		context.querySelector('#chkuseUSUnits').checked = userSettings.enableUSUnits();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
 		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
@@ -458,7 +457,6 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.APIDelay(context.querySelector('#sliderAPIFrequency').value);
 		userSettingsInstance.getlatitude(context.querySelector('#inputLat').value);
 		userSettingsInstance.getlongitude(context.querySelector('#inputLon').value);
-		userSettingsInstance.enableUSUnits(context.querySelector('#chkuseUSUnits').checked);
 		userSettingsInstance.weatherApiKey(context.querySelector('#inputApikey').value);
 		userSettingsInstance.enableWeatherBot(context.querySelector('#selectWeatherBot').value);
 		

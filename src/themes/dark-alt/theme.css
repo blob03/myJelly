@@ -1366,3 +1366,6 @@ select option:selected {
 	background: rgba(238, 245, 255, 0.3) !important;
 }
 
+.infoDetails {
+	font-size: 90% !important;
+}

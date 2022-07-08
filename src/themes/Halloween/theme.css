@@ -1472,3 +1472,7 @@ option:selected {
 .headerWthIconBg {
 	background: rgba(244, 196, 134, 0.5) !important;
 }
+
+.infoDetails {
+	font-size: 90% !important;
+}

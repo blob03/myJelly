@@ -37,7 +37,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';	
 		
 		/* Added: Left casing for the topbar clock */
-		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display:flex;flex-direction:row;">';
+		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
@@ -54,7 +54,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         html += '</div>';
 		
 		/* Added: Middle casing for the topbar clock */
-		html += '<div class="headerMiddle headerClockButton hide" id="headerClockMiddle" style="position: absolute;display:flex;flex-direction:row;justify-content: center;">';
+		html += '<div class="headerMiddle headerClockButton hide" id="headerClockMiddle" style="display: flex;flex-direction: row;justify-content: center;position: absolute;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';
@@ -78,7 +78,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		// That one locks the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
-		/* Added: casing for the topbar clock */
+		/* Added: Right most casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';

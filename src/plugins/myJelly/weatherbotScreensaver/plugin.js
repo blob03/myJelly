@@ -153,7 +153,15 @@ export default function () {
 					self.opts.language = globalize.getDefaultCulture();
 				// Get an API key from the form.
 				self.opts.apikey = document.querySelector('#inputApikey').value || "";
-				self.opts.USUnits = document.querySelector('#chkuseUSUnits').checked;
+				
+				self.opts.USUnits = false;
+				if (document.querySelector('#selectDateTimeLocale').value === 'en-US') 
+					self.opts.USUnits = true;
+				else if (document.querySelector('#selectDateTimeLocale').value === '') {
+					if (self.opts.language === 'en-US')
+						self.opts.USUnits = true;
+				}
+			
 				self.opts.lat = document.querySelector('#inputLat').value || '78.69';
 				self.opts.lon = document.querySelector('#inputLon').value || '15.72';
 				self.opts.delay = (document.querySelector('#sliderAPIFrequency').value * 60000) || 300000;
@@ -162,7 +170,7 @@ export default function () {
 				// get the last saved API key.
 				self.opts.apikey = userSettings.weatherApiKey() || "";
 				self.opts.language = globalize.getCurrentLocale();
-				self.opts.USUnits = userSettings.enableUSUnits() || false;
+				self.opts.USUnits = (globalize.getCurrentDateTimeLocale() === 'en-US')? true: false;
 				self.opts.lat = userSettings.getlatitude();
 				self.opts.lon = userSettings.getlongitude();
 				self.opts.delay = (userSettings.APIDelay()? userSettings.APIDelay() * 60000 : 300000)
