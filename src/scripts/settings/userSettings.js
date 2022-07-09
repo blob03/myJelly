@@ -1000,7 +1000,7 @@ export class UserSettings {
 		}
         
 		val = this.get('tvhome');
-		val = val.toString();
+		val = val?.toString() || '';
 		if (val === "vertical")
 			return val;
 		else
@@ -1063,7 +1063,7 @@ export class UserSettings {
 		}
         
 		val = this.get('swiperFX');
-        return val.toString() || 'horizontal';
+        return val?.toString() || 'horizontal';
     }
 	
     /**

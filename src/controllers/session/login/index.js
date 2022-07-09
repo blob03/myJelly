@@ -263,23 +263,15 @@ import './login.scss';
 
             const apiClient = getApiClient();
 
-            apiClient.getQuickConnect('Status')
-                .then(status => {
-                    if (status !== 'Unavailable') {
+            apiClient.getQuickConnect('Enabled')
+				.then(enabled => {
+					if (enabled === true) {
 						view.querySelector('.btnQuick').classList.remove('hide');
-                    }
-                })
-                .catch(() => {
-					apiClient.getQuickConnect('Enabled')
-						.then(enabled => {
-							if (enabled === true) {
-								view.querySelector('.btnQuick').classList.remove('hide');
-							}
-						})
-						.catch(() => {
-							console.debug('Failed to get QuickConnect status');
-						});
-                });
+					}
+				})
+				.catch(() => {
+					console.debug('Failed to get QuickConnect status');
+				});
 
             apiClient.getPublicUsers().then(function (users) {
                 if (users.length) {

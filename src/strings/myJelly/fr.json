@@ -17,8 +17,6 @@
     "EnableBlurHashSomeMoreHelp": "Le cas échéant, baisser la valeur pour améliorer les performances.",
     "EnableClock": "Activer l'horloge :",
     "EnableClockHelp": "Afficher l'horloge dans la barre du haut.",
-    "EnableUSUnits": "Unités de mesure américaines",
-    "EnableUSUnitsHelp": "Exprimer les valeurs en Fahrenheit et en miles.",
     "EnableWeatherBot": "Activer Météorobot :",
     "EnableWeatherBotHelp": "Afficher les conditions météo dans la barre du haut.",
     "Find": "Chercher",
