@@ -3,6 +3,7 @@ import sys
 import os
 import json
 import math
+import re
 from datetime import datetime
 
 # Rename a static set of dictionaries so that their names match those returned by a call to /Localization/cultures.
@@ -24,13 +25,13 @@ def rename(subdir, flag):
 				if (os.path.isfile(langdir + dest)):
 					os.remove(langdir + dest)
 				print('Renaming \'' + orig + '\' as \'' + dest + '\'.')
-				os.rename(langdir + orig, langdir + dest)			
+				os.rename(langdir + orig, langdir + dest)
 				nbr += 1
 		out.close()
 		print('Number of file renamed: ' + str(nbr) + '.')
 		
 # Load all the keys present in the source file.
-# Check whether these keys are defined inside every other translation.
+# Check whether these keys are defined inside every translation.
 # Delete keys which only exist in translations if any are found (so called 'orphans').
 def sort(subdir, source, mod, langlst):
 	cwd = os.getcwd()
@@ -45,11 +46,11 @@ def sort(subdir, source, mod, langlst):
 	
 	try:
 		with open(metafile, 'r') as m:
-			print('Reading existing metadata file \"metafile.json\".')	
+			print('Reading existing metadata file \"metafile.json\".')
 			metatree = json.load(m)
 			m.close()
 	except FileNotFoundError:
-		print('No file \"metafile.json\" found.')	
+		print('No file \"metafile.json\" found.')
 			
 	with open(langdir + sourceFile) as en:
 		langus = json.load(en)
@@ -70,12 +71,24 @@ def sort(subdir, source, mod, langlst):
 			orphans = []
 			keys = 0
 			okeys = 0
+			dup = 0
+			nbsp = 0
 			trans_old = json.load(f)
 			trans_new = {}
 			for key in trans_old:
 				if key in langus:
 					if key not in trans_new:
 						keys += 1
+					else:
+						dup += 1
+					# For French dictionaries,
+					# replace every found regular space or tabulation preceding a special set of punctuation marks 
+					# with a non-breakable space.
+					if lang == 'fr.json':
+						x = len(re.findall("[\x20\t]+[:?!;]", trans_old[key]))
+						if x > 0:
+							trans_old[key] = re.sub("[\x20\t]+([:?!;])", '\xa0' + r'\1', trans_old[key])
+							nbsp += x
 					trans_new[key] = trans_old[key]
 				elif key not in orphans:
 					orphans.append(key)
@@ -86,6 +99,13 @@ def sort(subdir, source, mod, langlst):
 			f.truncate()
 			f.close()
 
+			if (dup):
+				print('Duplicates: ' + str(dup))
+			if (nbsp):
+				print('Non breakable space replacement: ' + str(nbsp))
+			if (okeys):
+				print('Orphan keys removed: ' + str(okeys))
+				
 			ccode = lang.split('.json')[0];
 
 			try:
@@ -134,7 +154,7 @@ def sort(subdir, source, mod, langlst):
 			metatree[ccode]['completed%'] = float("{:,.2f}".format(metatree[ccode]['keys#']*100/metatree[source]['keys#']).replace(".00",""))
 	
 	with open(metafile, 'w+') as m:
-		print('Overwriting metadata file \"metafile.json\".')	
+		print('Overwriting metadata file \"metafile.json\".')
 		m.write(json.dumps(metatree, indent=indent, sort_keys=False, ensure_ascii=False))
 		m.close()
 
@@ -165,5 +185,5 @@ langdir = basedir + 'myJelly/'
 langlst = sorted([f for f in os.listdir(langdir) if (os.path.isfile(os.path.join(langdir, f)))])
 langlst.remove("en-US.json")
 sort('myJelly/', 'en-US', 'myJelly', langlst)
-print('#######################################')	
+print('#######################################')
 print('Done.')

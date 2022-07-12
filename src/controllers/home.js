@@ -31,13 +31,13 @@ class HomeView extends TabbedView {
     getTabs() {
         return [{
             /*name: globalize.translate('Home');*/
-			name: '<span class="material-icons home" title="' + globalize.translate('Home') + '" style="color: #c1dede;font-size: 1.5rem;"></span>'
+			name: '<span class="material-icons home skinHeader-withBackground" title="' + globalize.translate('Home') + '" style="box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;background: rgba(0,0,0,0) !important;font-size: 1.5rem;"></span>'
         }, {
             /*name: globalize.translate('Favorites')*/
-			name: '<span class="material-icons favorite" title="' + globalize.translate('Favorites') + '" style="color: #c1dede;font-size: 1.5rem;"></span>'
+			name: '<span class="material-icons favorite skinHeader-withBackground" title="' + globalize.translate('Favorites') + '" style="box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;background: rgba(0,0,0,0) !important;font-size: 1.5rem;"></span>'
         }, {
 			/*name: globalize.translate('About')*/
-			name: '<span class="material-icons info" title="' + globalize.translate('About') + '" style="color: #c1dede;font-size: 1.5rem;"></span>'
+			name: '<span class="material-icons info skinHeader-withBackground" title="' + globalize.translate('About') + '" style="box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;background: rgba(0,0,0,0) !important;font-size: 1.5rem;"></span>'
 		}];
     }
 

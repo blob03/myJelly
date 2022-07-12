@@ -39,20 +39,23 @@ import viewContainer from '../viewContainer';
 				groups[grp].push(x);
 			});
 			
-			if (!layoutManager.tv) 
-				select.innerHTML += '<option disabled>' + globalize.translate('OptionDivider') + '</option>';
+			//if (!layoutManager.tv) 
+			//	select.innerHTML += '<option disabled>' + globalize.translate('OptionDivider') + '</option>';
 			
 			let ngroups = Object.keys(groups);
 			ngroups.forEach( x => {
-				
-				let y = document.createElement("optgroup");
 				
 				if (layoutManager.tv) {
 					let w = document.createElement("option");
 					w.divider = x;
 					select.options.add(w, undefined);
-				} else 
-					y.label = x;
+				} else {
+					let w = document.createElement("option");
+					w.text = "-------------\u00A0\u00A0\u00A0" + x;
+					w.disabled = true;
+					w.style.fontWeight = "bold";
+					select.options.add(w, undefined);
+				}
 				
 				groups[x].sort((a, b) => {
 					let fa = a.name.toLowerCase(),
@@ -70,22 +73,15 @@ import viewContainer from '../viewContainer';
 						z.icon = 'star';
 					z.value = t.id;
 					z.text = t.name;
-					
 					if (t.version) {
-						if (layoutManager.tv) 		
+						if (layoutManager.tv)
 							z.asideText = "v" + t.version;
-						else 
+						else
 							z.text += "  " + t.version;
 					}
 					
-					if (!layoutManager.tv)
-						y.appendChild(z);
-					else
-						select.options.add(z, undefined); 
+					select.options.add(z, undefined); 
 				});
-
-				if (!layoutManager.tv)
-					select.appendChild(y);
 			});
             
 			select.value = selectedTheme;
@@ -189,14 +185,17 @@ import viewContainer from '../viewContainer';
 		let ngroups = Object.keys(groups);
 		ngroups.forEach( x => {
 			
-			let y = document.createElement("optgroup");
-			
 			if (layoutManager.tv) {
 				let w = document.createElement("option");
 				w.divider = x;
 				select.options.add(w, undefined);
-			} else 
-				y.label = x;
+			} else {
+				let w = document.createElement("option");
+				w.text = "-------------\u00A0\u00A0\u00A0" + x;
+				w.disabled = true;
+				w.style.fontWeight = "bold";
+				select.options.add(w, undefined);
+			}
 
 			groups[x].sort((a, b) => {
 				let fa = a.name.toLowerCase(),
@@ -214,21 +213,15 @@ import viewContainer from '../viewContainer';
 				z.text = t.name;
 
 				if (t.version) {
-					if (layoutManager.tv) 		
+					if (layoutManager.tv)
 						z.asideText = "v" + t.version;
 					else 
 						z.text += "  " + t.version;
 				}
 
 				select.options.add(z, undefined); 
-				if (!layoutManager.tv)
-					y.appendChild(z);
-				else
-					select.options.add(z, undefined); 
 			});
 			
-			if (!layoutManager.tv)
-				select.appendChild(y);
 		});		
 		select.value = val;
     }

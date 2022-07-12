@@ -22,7 +22,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.22';
+	self.version = '1.23';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
