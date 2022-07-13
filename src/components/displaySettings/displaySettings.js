@@ -28,7 +28,7 @@ import viewContainer from '../viewContainer';
         skinManager.getThemes().then( themes => {
 			
 			let groups = {};
-			const dflgroup = "Jellyfin";
+			const dflgroup = "Jellyfin-web";
 			
 			themes.forEach( x => {
 				let grp = dflgroup;
@@ -38,9 +38,6 @@ import viewContainer from '../viewContainer';
 					groups[grp] = [];
 				groups[grp].push(x);
 			});
-			
-			//if (!layoutManager.tv) 
-			//	select.innerHTML += '<option disabled>' + globalize.translate('OptionDivider') + '</option>';
 			
 			let ngroups = Object.keys(groups);
 			ngroups.forEach( x => {
@@ -53,7 +50,9 @@ import viewContainer from '../viewContainer';
 					let w = document.createElement("option");
 					w.text = "-------------\u00A0\u00A0\u00A0" + x;
 					w.disabled = true;
-					w.style.fontWeight = "bold";
+					//w.style.fontWeight = "bold";
+					w.style.fontSize = "120%";
+					w.style.fontFamily = "quicksand";
 					select.options.add(w, undefined);
 				}
 				
@@ -171,7 +170,7 @@ import viewContainer from '../viewContainer';
         });
 		
 		let groups = {};
-		const dflgroup = "Jellyfin";
+		const dflgroup = "Jellyfin-web";
 
 		options.forEach( x => {
 			let grp = dflgroup;
@@ -193,7 +192,9 @@ import viewContainer from '../viewContainer';
 				let w = document.createElement("option");
 				w.text = "-------------\u00A0\u00A0\u00A0" + x;
 				w.disabled = true;
-				w.style.fontWeight = "bold";
+				//w.style.fontWeight = "bold";
+				w.style.fontSize = "120%";
+				w.style.fontFamily = "quicksand";
 				select.options.add(w, undefined);
 			}
 

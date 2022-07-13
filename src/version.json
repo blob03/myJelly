@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.1-6",
+	"version": "10.8.1-7",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -48,6 +48,7 @@
 		"10.8.1-2": "Translations synchronized with master.\nThemes 'Light-alt-blue' & 'WMC-alt' updated.\nCompatibility with Jellyfin's themes improved.\nRemoved obsolete Quick Connect code.",
 		"10.8.1-3": "Translations synchronized with master.\nApplied patch 'shuffle-all-songs'.\nThemes updated.\nU.S units (Weather applet & SS) now settable through the locale parameter of the display settings.\nCompatibility with Jellyfin's themes improved.",
 		"10.8.1-5": "Translations synchronized with master.\nFixed undefined 'swiperFX' parameter causing an error with new accounts.\nRemoved obsolete Quick Connect compatibility code from the login page.\nLayout of the display settings page rearranged.",
-		"10.8.1-6": "Translations synchronized with master.\nCompatibility with Jellyfin's themes improved.\nTranslations' janitor script 'mysource.py' updated."
+		"10.8.1-6": "Translations synchronized with master.\nCompatibility with Jellyfin's themes improved.\nTranslations' janitor script 'mysource.py' updated.",
+		"10.8.1-7": "Translations synchronized with master.\nCompatibility with Jellyfin's themes improved.\nApplied patch 'fix-json-rejection'."
 	}
 }

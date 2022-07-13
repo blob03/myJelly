@@ -1,7 +1,7 @@
 {
     "en-US": {
         "ccode": "en-US",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 107230,
         "ccodeSrc": "en-US",
         "displayName": "English",
@@ -14,18 +14,20 @@
             "filename": "en-US.json",
             "keys#": 1665,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "en-US.json",
             "keys#": 85,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 100.0
         }
     },
     "af": {
         "ccode": "af",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 51605,
         "ccodeSrc": "en-US",
         "displayName": "Afrikaans",
@@ -38,18 +40,23 @@
             "filename": "af.json",
             "keys#": 812,
             "orphans#": 2,
+            "orphans": [
+                "ButtonNetwork",
+                "Screenshot"
+            ],
             "completed%": 48.77
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ar": {
         "ccode": "ar",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 145945,
         "ccodeSrc": "en-US",
         "displayName": "Arabic",
@@ -62,18 +69,30 @@
             "filename": "ar.json",
             "keys#": 1665,
             "orphans#": 9,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "Screenshot",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "Screenshots"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "as": {
         "ccode": "as",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 82,
         "ccodeSrc": "en-US",
         "displayName": "Assamese",
@@ -86,18 +105,20 @@
             "filename": "as.json",
             "keys#": 2,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0.12
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "be-BY": {
         "ccode": "be-BY",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 2515,
         "ccodeSrc": "en-US",
         "displayName": "Belarusian",
@@ -110,18 +131,20 @@
             "filename": "be-BY.json",
             "keys#": 30,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 1.8
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "bg-BG": {
         "ccode": "bg-BG",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 144723,
         "ccodeSrc": "en-US",
         "displayName": "Bulgarian",
@@ -134,18 +157,30 @@
             "filename": "bg-BG.json",
             "keys#": 1447,
             "orphans#": 9,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionDownloadImagesInAdvance",
+                "Screenshot",
+                "Screenshots",
+                "ButtonNetwork",
+                "LabelSyncPlayTimeOffset",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionAllowContentDownloading"
+            ],
             "completed%": 86.91
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "bn-BD": {
         "ccode": "bn-BD",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 41131,
         "ccodeSrc": "en-US",
         "displayName": "Bengali",
@@ -158,18 +193,22 @@
             "filename": "bn-BD.json",
             "keys#": 324,
             "orphans#": 1,
+            "orphans": [
+                "ButtonNetwork"
+            ],
             "completed%": 19.46
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ca": {
         "ccode": "ca",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 119382,
         "ccodeSrc": "en-US",
         "displayName": "Catalan; Valencian",
@@ -182,18 +221,29 @@
             "filename": "ca.json",
             "keys#": 1638,
             "orphans#": 8,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "Screenshots",
+                "ButtonNetwork",
+                "Screenshot",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 98.38
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "cs": {
         "ccode": "cs",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 117258,
         "ccodeSrc": "en-US",
         "displayName": "Czech",
@@ -206,18 +256,33 @@
             "filename": "cs.json",
             "keys#": 1665,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "cy": {
         "ccode": "cy",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 22243,
         "ccodeSrc": "en-US",
         "displayName": "Welsh",
@@ -230,18 +295,24 @@
             "filename": "cy.json",
             "keys#": 593,
             "orphans#": 3,
+            "orphans": [
+                "ButtonNetwork",
+                "Screenshots",
+                "Screenshot"
+            ],
             "completed%": 35.62
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "da": {
         "ccode": "da",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 110479,
         "ccodeSrc": "en-US",
         "displayName": "Danish",
@@ -254,18 +325,31 @@
             "filename": "da.json",
             "keys#": 1639,
             "orphans#": 10,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshots",
+                "Screenshot",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 98.44
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "de": {
         "ccode": "de",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 119371,
         "ccodeSrc": "en-US",
         "displayName": "German",
@@ -278,18 +362,33 @@
             "filename": "de.json",
             "keys#": 1659,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 99.64
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "el": {
         "ccode": "el",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 116454,
         "ccodeSrc": "en-US",
         "displayName": "Greek, Modern (1453-)",
@@ -302,18 +401,29 @@
             "filename": "el.json",
             "keys#": 1163,
             "orphans#": 8,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "ButtonNetwork"
+            ],
             "completed%": 69.85
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "en-GB": {
         "ccode": "en-GB",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 108369,
         "ccodeSrc": "en-US",
         "displayName": "English, Great Britain",
@@ -326,18 +436,33 @@
             "filename": "en-GB.json",
             "keys#": 1665,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "Screenshots",
+                "Screenshot",
+                "OptionAllowContentDownloading",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "LabelMaxScreenshotsPerItem",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "eo": {
         "ccode": "eo",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 110771,
         "ccodeSrc": "en-US",
         "displayName": "Esperanto",
@@ -350,18 +475,29 @@
             "filename": "eo.json",
             "keys#": 1644,
             "orphans#": 8,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "ButtonNetwork",
+                "Screenshots",
+                "Screenshot",
+                "SetUsingLastTracks",
+                "SetUsingLastTracksHelp",
+                "NextUpRewatching"
+            ],
             "completed%": 98.74
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "es-419": {
         "ccode": "es-419",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 113070,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Latin America",
@@ -374,18 +510,30 @@
             "filename": "es-419.json",
             "keys#": 1528,
             "orphans#": 9,
+            "orphans": [
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "OptionAllowContentDownloading",
+                "LabelSyncPlayTimeOffset",
+                "Screenshots",
+                "Screenshot",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "ButtonNetwork"
+            ],
             "completed%": 91.77
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "es-AR": {
         "ccode": "es-AR",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 120691,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Argentina",
@@ -398,18 +546,32 @@
             "filename": "es-AR.json",
             "keys#": 1637,
             "orphans#": 11,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelSyncPlayTimeOffset",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "Screenshots",
+                "Screenshot",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 98.32
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "es-DO": {
         "ccode": "es-DO",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 781,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Dominican Republic",
@@ -422,18 +584,20 @@
             "filename": "es-DO.json",
             "keys#": 21,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 1.26
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "es-MX": {
         "ccode": "es-MX",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 119615,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Mexico",
@@ -446,18 +610,33 @@
             "filename": "es-MX.json",
             "keys#": 1605,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 96.4
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "es": {
         "ccode": "es",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 121533,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Castilian",
@@ -470,18 +649,33 @@
             "filename": "es.json",
             "keys#": 1642,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 98.62
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "et": {
         "ccode": "et",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 102928,
         "ccodeSrc": "en-US",
         "displayName": "Estonian",
@@ -494,18 +688,28 @@
             "filename": "et.json",
             "keys#": 1589,
             "orphans#": 7,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "Screenshots",
+                "Screenshot",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 95.44
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "eu": {
         "ccode": "eu",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 114701,
         "ccodeSrc": "en-US",
         "displayName": "Basque",
@@ -518,18 +722,27 @@
             "filename": "eu.json",
             "keys#": 1616,
             "orphans#": 6,
+            "orphans": [
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "Screenshots",
+                "Screenshot",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem"
+            ],
             "completed%": 97.06
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "fa": {
         "ccode": "fa",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 130994,
         "ccodeSrc": "en-US",
         "displayName": "Persian",
@@ -542,18 +755,30 @@
             "filename": "fa.json",
             "keys#": 1579,
             "orphans#": 9,
+            "orphans": [
+                "ButtonNetwork",
+                "Screenshots",
+                "Screenshot",
+                "LabelSyncPlayTimeOffset",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth"
+            ],
             "completed%": 94.83
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "fi": {
         "ccode": "fi",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 114049,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
@@ -566,18 +791,31 @@
             "filename": "fi.json",
             "keys#": 1659,
             "orphans#": 10,
+            "orphans": [
+                "ButtonNetwork",
+                "OptionDownloadImagesInAdvance",
+                "LabelMinScreenshotDownloadWidth",
+                "Screenshots",
+                "Screenshot",
+                "OptionAllowContentDownloading",
+                "LabelMaxScreenshotsPerItem",
+                "ImportMissingEpisodesHelp",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 99.64
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "fil": {
         "ccode": "fil",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 119391,
         "ccodeSrc": "en-US",
         "displayName": "Filipino",
@@ -590,18 +828,29 @@
             "filename": "fil.json",
             "keys#": 1620,
             "orphans#": 8,
+            "orphans": [
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "Screenshots",
+                "Screenshot",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "ButtonNetwork",
+                "NextUpRewatching"
+            ],
             "completed%": 97.3
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "fr-CA": {
         "ccode": "fr-CA",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 65851,
         "ccodeSrc": "en-US",
         "displayName": "French, Canada",
@@ -614,19 +863,25 @@
             "filename": "fr-CA.json",
             "keys#": 937,
             "orphans#": 3,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelVideo",
+                "Screenshots"
+            ],
             "completed%": 56.28
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "fr": {
         "ccode": "fr",
-        "lastm": 1657545740.0,
-        "fsize": 124500,
+        "lastm": 1657646540.0,
+        "fsize": 124626,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
@@ -638,18 +893,33 @@
             "filename": "fr.json",
             "keys#": 1665,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "fr.json",
             "keys#": 85,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 100.0
         }
     },
     "gl": {
         "ccode": "gl",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 5640,
         "ccodeSrc": "en-US",
         "displayName": "Galician",
@@ -662,18 +932,20 @@
             "filename": "gl.json",
             "keys#": 146,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 8.77
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "gsw": {
         "ccode": "gsw",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 6908,
         "ccodeSrc": "en-US",
         "displayName": "Swiss German; Alemannic; Alsatian",
@@ -686,18 +958,20 @@
             "filename": "gsw.json",
             "keys#": 127,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 7.63
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "he": {
         "ccode": "he",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 65005,
         "ccodeSrc": "en-US",
         "displayName": "Hebrew",
@@ -710,18 +984,26 @@
             "filename": "he.json",
             "keys#": 975,
             "orphans#": 5,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "Screenshots",
+                "ButtonNetwork",
+                "Screenshot"
+            ],
             "completed%": 58.56
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "hi-IN": {
         "ccode": "hi-IN",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 14714,
         "ccodeSrc": "en-US",
         "displayName": "Hindi",
@@ -734,18 +1016,22 @@
             "filename": "hi-IN.json",
             "keys#": 130,
             "orphans#": 1,
+            "orphans": [
+                "ButtonNetwork"
+            ],
             "completed%": 7.81
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "hr": {
         "ccode": "hr",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 77506,
         "ccodeSrc": "en-US",
         "displayName": "Croatian",
@@ -758,18 +1044,27 @@
             "filename": "hr.json",
             "keys#": 1184,
             "orphans#": 6,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "Screenshots"
+            ],
             "completed%": 71.11
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "hu": {
         "ccode": "hu",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 123132,
         "ccodeSrc": "en-US",
         "displayName": "Hungarian",
@@ -782,18 +1077,33 @@
             "filename": "hu.json",
             "keys#": 1661,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 99.76
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "id": {
         "ccode": "id",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 111818,
         "ccodeSrc": "en-US",
         "displayName": "Indonesian",
@@ -806,18 +1116,32 @@
             "filename": "id.json",
             "keys#": 1656,
             "orphans#": 11,
+            "orphans": [
+                "ButtonNetwork",
+                "ButtonSubtitles",
+                "LabelSyncPlayTimeOffset",
+                "ImportMissingEpisodesHelp",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "OptionAllowContentDownloading",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "Screenshots",
+                "Screenshot"
+            ],
             "completed%": 99.46
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "is-IS": {
         "ccode": "is-IS",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 20846,
         "ccodeSrc": "en-US",
         "displayName": "Icelandic",
@@ -830,18 +1154,24 @@
             "filename": "is-IS.json",
             "keys#": 446,
             "orphans#": 3,
+            "orphans": [
+                "ButtonNetwork",
+                "Screenshots",
+                "Screenshot"
+            ],
             "completed%": 26.79
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "it": {
         "ccode": "it",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 116632,
         "ccodeSrc": "en-US",
         "displayName": "Italian",
@@ -854,18 +1184,33 @@
             "filename": "it.json",
             "keys#": 1643,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 98.68
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ja": {
         "ccode": "ja",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 126577,
         "ccodeSrc": "en-US",
         "displayName": "Japanese",
@@ -878,18 +1223,30 @@
             "filename": "ja.json",
             "keys#": 1558,
             "orphans#": 9,
+            "orphans": [
+                "ButtonNetwork",
+                "Screenshot",
+                "Screenshots",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "LabelSyncPlayTimeOffset",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance"
+            ],
             "completed%": 93.57
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "kab": {
         "ccode": "kab",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 244,
         "ccodeSrc": "en-US",
         "displayName": "Kabyle",
@@ -902,18 +1259,20 @@
             "filename": "kab.json",
             "keys#": 9,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0.54
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "kk": {
         "ccode": "kk",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 120037,
         "ccodeSrc": "en-US",
         "displayName": "Kazakh",
@@ -926,18 +1285,34 @@
             "filename": "kk.json",
             "keys#": 1649,
             "orphans#": 13,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "YadifBob",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 99.04
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "kn": {
         "ccode": "kn",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 6454,
         "ccodeSrc": "en-US",
         "displayName": "Kannada",
@@ -950,18 +1325,20 @@
             "filename": "kn.json",
             "keys#": 9,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0.54
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ko": {
         "ccode": "ko",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 113962,
         "ccodeSrc": "en-US",
         "displayName": "Korean",
@@ -974,18 +1351,30 @@
             "filename": "ko.json",
             "keys#": 1577,
             "orphans#": 9,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "Screenshots",
+                "Screenshot",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "LabelSyncPlayTimeOffset"
+            ],
             "completed%": 94.71
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "lt-LT": {
         "ccode": "lt-LT",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 51624,
         "ccodeSrc": "en-US",
         "displayName": "Lithuanian",
@@ -998,18 +1387,25 @@
             "filename": "lt-LT.json",
             "keys#": 839,
             "orphans#": 4,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "Screenshots",
+                "ButtonNetwork"
+            ],
             "completed%": 50.39
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "lv": {
         "ccode": "lv",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 86916,
         "ccodeSrc": "en-US",
         "displayName": "Latvian",
@@ -1022,18 +1418,27 @@
             "filename": "lv.json",
             "keys#": 1272,
             "orphans#": 6,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "OptionAllowContentDownloading",
+                "LabelMaxScreenshotsPerItem"
+            ],
             "completed%": 76.4
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "mk": {
         "ccode": "mk",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 743,
         "ccodeSrc": "en-US",
         "displayName": "Macedonian",
@@ -1046,18 +1451,20 @@
             "filename": "mk.json",
             "keys#": 19,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 1.14
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ml": {
         "ccode": "ml",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 232520,
         "ccodeSrc": "en-US",
         "displayName": "Malayalam",
@@ -1070,18 +1477,28 @@
             "filename": "ml.json",
             "keys#": 1580,
             "orphans#": 7,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "Screenshot",
+                "LabelMinScreenshotDownloadWidth",
+                "Screenshots",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 94.89
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "mn": {
         "ccode": "mn",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 3968,
         "ccodeSrc": "en-US",
         "displayName": "Mongolian",
@@ -1094,18 +1511,20 @@
             "filename": "mn.json",
             "keys#": 97,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 5.83
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "mr": {
         "ccode": "mr",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 43635,
         "ccodeSrc": "en-US",
         "displayName": "Marathi",
@@ -1118,18 +1537,24 @@
             "filename": "mr.json",
             "keys#": 665,
             "orphans#": 3,
+            "orphans": [
+                "ButtonNetwork",
+                "Screenshot",
+                "Screenshots"
+            ],
             "completed%": 39.94
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ms": {
         "ccode": "ms",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 10415,
         "ccodeSrc": "en-US",
         "displayName": "Malay",
@@ -1142,18 +1567,22 @@
             "filename": "ms.json",
             "keys#": 198,
             "orphans#": 1,
+            "orphans": [
+                "ButtonNetwork"
+            ],
             "completed%": 11.89
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "my": {
         "ccode": "my",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 36979,
         "ccodeSrc": "en-US",
         "displayName": "Burmese",
@@ -1166,18 +1595,20 @@
             "filename": "my.json",
             "keys#": 257,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 15.44
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "nb": {
         "ccode": "nb",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 111297,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Bokmål",
@@ -1190,18 +1621,32 @@
             "filename": "nb.json",
             "keys#": 1640,
             "orphans#": 11,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "Screenshots",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 98.5
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ne": {
         "ccode": "ne",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 1715,
         "ccodeSrc": "en-US",
         "displayName": "Nepali",
@@ -1214,18 +1659,20 @@
             "filename": "ne.json",
             "keys#": 34,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 2.04
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "nl": {
         "ccode": "nl",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 113481,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
@@ -1238,18 +1685,32 @@
             "filename": "nl.json",
             "keys#": 1621,
             "orphans#": 11,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracks",
+                "SetUsingLastTracksHelp"
+            ],
             "completed%": 97.36
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "nn": {
         "ccode": "nn",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 39636,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Nynorsk",
@@ -1262,18 +1723,24 @@
             "filename": "nn.json",
             "keys#": 754,
             "orphans#": 3,
+            "orphans": [
+                "Screenshots",
+                "Screenshot",
+                "ButtonNetwork"
+            ],
             "completed%": 45.29
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "pa": {
         "ccode": "pa",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 4019,
         "ccodeSrc": "en-US",
         "displayName": "Panjabi; Punjabi",
@@ -1286,42 +1753,61 @@
             "filename": "pa.json",
             "keys#": 96,
             "orphans#": 1,
+            "orphans": [
+                "ButtonNetwork"
+            ],
             "completed%": 5.77
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "pl": {
         "ccode": "pl",
-        "lastm": 1657545740.0,
-        "fsize": 115989,
+        "lastm": 1657646540.0,
+        "fsize": 117781,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
         "displayNativeName": "Polski",
         "ISO6391": "pl",
         "ISO6392": "pol",
-        "keys#": 1641,
-        "completed%": 93.77,
+        "keys#": 1665,
+        "completed%": 95.14,
         "jellyfinWeb": {
             "filename": "pl.json",
-            "keys#": 1641,
+            "keys#": 1665,
             "orphans#": 12,
-            "completed%": 98.56
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "pr": {
         "ccode": "pr",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 2839,
         "ccodeSrc": "en-US",
         "displayName": "Pirate",
@@ -1334,18 +1820,20 @@
             "filename": "pr.json",
             "keys#": 67,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 4.02
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "pt-BR": {
         "ccode": "pt-BR",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 118521,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese, Brazil",
@@ -1358,18 +1846,32 @@
             "filename": "pt-BR.json",
             "keys#": 1647,
             "orphans#": 11,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 98.92
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "pt-PT": {
         "ccode": "pt-PT",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 111334,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese, Portugal",
@@ -1382,18 +1884,30 @@
             "filename": "pt-PT.json",
             "keys#": 1538,
             "orphans#": 9,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshots",
+                "Screenshot",
+                "OptionDownloadImagesInAdvance",
+                "LabelSyncPlayTimeOffset"
+            ],
             "completed%": 92.37
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "pt": {
         "ccode": "pt",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 97578,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese",
@@ -1406,18 +1920,29 @@
             "filename": "pt.json",
             "keys#": 1347,
             "orphans#": 8,
+            "orphans": [
+                "Screenshots",
+                "Screenshot",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "OptionAllowContentDownloading",
+                "ButtonNetwork"
+            ],
             "completed%": 80.9
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ro": {
         "ccode": "ro",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 119536,
         "ccodeSrc": "en-US",
         "displayName": "Romanian; Moldavian; Moldovan",
@@ -1430,19 +1955,34 @@
             "filename": "ro.json",
             "keys#": 1640,
             "orphans#": 12,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "ButtonNetwork",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "Screenshots",
+                "Screenshot",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "YadifBob",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 98.5
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ru": {
         "ccode": "ru",
-        "lastm": 1657545740.0,
-        "fsize": 172540,
+        "lastm": 1657646540.0,
+        "fsize": 172520,
         "ccodeSrc": "en-US",
         "displayName": "Russian",
         "displayNativeName": "Русский",
@@ -1454,18 +1994,33 @@
             "filename": "ru.json",
             "keys#": 1665,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "sk": {
         "ccode": "sk",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 119263,
         "ccodeSrc": "en-US",
         "displayName": "Slovak",
@@ -1478,18 +2033,33 @@
             "filename": "sk.json",
             "keys#": 1665,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "Screenshot",
+                "Screenshots",
+                "OptionDownloadImagesInAdvanceHelp",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "sl-SI": {
         "ccode": "sl-SI",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 97866,
         "ccodeSrc": "en-US",
         "displayName": "Slovenian",
@@ -1502,18 +2072,31 @@
             "filename": "sl-SI.json",
             "keys#": 1474,
             "orphans#": 10,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "OptionAllowContentDownloading",
+                "LabelSyncPlayTimeOffset",
+                "Screenshot",
+                "Screenshots",
+                "YadifBob"
+            ],
             "completed%": 88.53
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "sq": {
         "ccode": "sq",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 9330,
         "ccodeSrc": "en-US",
         "displayName": "Albanian",
@@ -1526,18 +2109,22 @@
             "filename": "sq.json",
             "keys#": 178,
             "orphans#": 1,
+            "orphans": [
+                "ButtonNetwork"
+            ],
             "completed%": 10.69
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "sr": {
         "ccode": "sr",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 148548,
         "ccodeSrc": "en-US",
         "displayName": "Serbian",
@@ -1550,18 +2137,26 @@
             "filename": "sr.json",
             "keys#": 1520,
             "orphans#": 5,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "Screenshots",
+                "Screenshot"
+            ],
             "completed%": 91.29
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "sv": {
         "ccode": "sv",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 111788,
         "ccodeSrc": "en-US",
         "displayName": "Swedish",
@@ -1574,18 +2169,32 @@
             "filename": "sv.json",
             "keys#": 1643,
             "orphans#": 11,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshot",
+                "Screenshots",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 98.68
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ta": {
         "ccode": "ta",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 234361,
         "ccodeSrc": "en-US",
         "displayName": "Tamil",
@@ -1598,18 +2207,48 @@
             "filename": "ta.json",
             "keys#": 1640,
             "orphans#": 27,
+            "orphans": [
+                "AttributeNew",
+                "ButtonArrowDown",
+                "HeaderNextUp",
+                "HeaderLiveTV",
+                "ButtonArrowUp",
+                "ButtonDownload",
+                "ButtonDown",
+                "ButtonDeleteImage",
+                "ButtonDelete",
+                "ButtonConnect",
+                "ButtonUp",
+                "ButtonSort",
+                "ButtonShuffle",
+                "ButtonNew",
+                "ButtonNetwork",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "LabelSyncPlayTimeOffset",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "OptionAllowContentDownloading",
+                "Screenshots",
+                "Screenshot",
+                "YadifBob",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 98.5
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "te": {
         "ccode": "te",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 202508,
         "ccodeSrc": "en-US",
         "displayName": "Telugu",
@@ -1622,18 +2261,26 @@
             "filename": "te.json",
             "keys#": 1500,
             "orphans#": 5,
+            "orphans": [
+                "Screenshots",
+                "Screenshot",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "ButtonNetwork"
+            ],
             "completed%": 90.09
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "th": {
         "ccode": "th",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 9180,
         "ccodeSrc": "en-US",
         "displayName": "Thai",
@@ -1646,18 +2293,20 @@
             "filename": "th.json",
             "keys#": 142,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 8.53
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "tr": {
         "ccode": "tr",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 104852,
         "ccodeSrc": "en-US",
         "displayName": "Turkish",
@@ -1670,18 +2319,27 @@
             "filename": "tr.json",
             "keys#": 1528,
             "orphans#": 6,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelSyncPlayTimeOffset",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "Screenshots",
+                "Screenshot"
+            ],
             "completed%": 91.77
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ug": {
         "ccode": "ug",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 286,
         "ccodeSrc": "en-US",
         "displayName": "Uighur; Uyghur",
@@ -1694,18 +2352,20 @@
             "filename": "ug.json",
             "keys#": 8,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0.48
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "uk": {
         "ccode": "uk",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 167027,
         "ccodeSrc": "en-US",
         "displayName": "Ukrainian",
@@ -1718,18 +2378,30 @@
             "filename": "uk.json",
             "keys#": 1665,
             "orphans#": 9,
+            "orphans": [
+                "ButtonNetwork",
+                "EnableThemeVideos",
+                "EnableThemeSongs",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "Screenshot",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "Screenshots"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "ur-PK": {
         "ccode": "ur-PK",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 1107,
         "ccodeSrc": "en-US",
         "displayName": "Urdu",
@@ -1742,18 +2414,20 @@
             "filename": "ur-PK.json",
             "keys#": 28,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 1.68
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "uz": {
         "ccode": "uz",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 44334,
         "ccodeSrc": "en-US",
         "displayName": "Uzbek",
@@ -1766,18 +2440,20 @@
             "filename": "uz.json",
             "keys#": 651,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 39.1
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "vi": {
         "ccode": "vi",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 130680,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
@@ -1790,18 +2466,32 @@
             "filename": "vi.json",
             "keys#": 1654,
             "orphans#": 11,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMinScreenshotDownloadWidth",
+                "LabelMaxScreenshotsPerItem",
+                "LabelSyncPlayTimeOffset",
+                "OptionDownloadImagesInAdvanceHelp",
+                "OptionDownloadImagesInAdvance",
+                "OptionAllowContentDownloading",
+                "Screenshots",
+                "Screenshot",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 99.34
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 103546,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
@@ -1814,18 +2504,33 @@
             "filename": "zh-CN.json",
             "keys#": 1665,
             "orphans#": 12,
+            "orphans": [
+                "ButtonNetwork",
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "OptionAllowContentDownloading",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "Screenshots",
+                "Screenshot",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks",
+                "NextUpRewatching"
+            ],
             "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "zh-HK": {
         "ccode": "zh-HK",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 64611,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Hong Kong",
@@ -1838,18 +2543,24 @@
             "filename": "zh-HK.json",
             "keys#": 1078,
             "orphans#": 3,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "ButtonNetwork"
+            ],
             "completed%": 64.74
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "zh-TW": {
         "ccode": "zh-TW",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 97755,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Traditional",
@@ -1862,18 +2573,32 @@
             "filename": "zh-TW.json",
             "keys#": 1582,
             "orphans#": 11,
+            "orphans": [
+                "LabelMaxScreenshotsPerItem",
+                "LabelMinScreenshotDownloadWidth",
+                "ButtonNetwork",
+                "Screenshots",
+                "OptionAllowContentDownloading",
+                "Screenshot",
+                "OptionDownloadImagesInAdvance",
+                "OptionDownloadImagesInAdvanceHelp",
+                "LabelSyncPlayTimeOffset",
+                "SetUsingLastTracksHelp",
+                "SetUsingLastTracks"
+            ],
             "completed%": 95.02
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     },
     "zu": {
         "ccode": "zu",
-        "lastm": 1657545740.0,
+        "lastm": 1657646540.0,
         "fsize": 3481,
         "ccodeSrc": "en-US",
         "displayName": "Zulu",
@@ -1886,12 +2611,16 @@
             "filename": "zu.json",
             "keys#": 114,
             "orphans#": 1,
+            "orphans": [
+                "ButtonNetwork"
+            ],
             "completed%": 6.85
         },
         "myJelly": {
             "filename": "",
             "keys#": 0,
             "orphans#": 0,
+            "orphans": [],
             "completed%": 0
         }
     }

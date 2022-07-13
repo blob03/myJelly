@@ -93,6 +93,7 @@ def sort(subdir, source, mod, langlst):
 				elif key not in orphans:
 					orphans.append(key)
 					okeys += 1
+				
 			f.seek(0)
 			f.write(json.dumps(trans_new, indent=indent, sort_keys=True, ensure_ascii=False))
 			f.write('\n')
@@ -105,6 +106,8 @@ def sort(subdir, source, mod, langlst):
 				print('Non breakable space replacement: ' + str(nbsp))
 			if (okeys):
 				print('Orphan keys removed: ' + str(okeys))
+				# for orphan in orphans:
+				#	print('		' + str(orphan))
 				
 			ccode = lang.split('.json')[0];
 
@@ -126,14 +129,14 @@ def sort(subdir, source, mod, langlst):
 						"filename": "",
 						"keys#": 0,
 						"orphans#": 0,
-						#"orphans": [],
+						"orphans": [],
 						"completed%": 0
 					},
 					"myJelly": {
 						"filename": "",
 						"keys#": 0,
 						"orphans#": 0,
-						#"orphans": [],
+						"orphans": [],
 						"completed%": 0
 					}
 				}	
@@ -149,7 +152,7 @@ def sort(subdir, source, mod, langlst):
 			metatree[ccode][mod]['keys#'] = keys
 			metatree[ccode]['keys#'] += keys
 			metatree[ccode][mod]['orphans#'] = okeys
-			#metatree[ccode][mod]['orphans'] = orphans
+			metatree[ccode][mod]['orphans'] = orphans
 			metatree[ccode][mod]['completed%'] = float("{:,.2f}".format(keys*100/len(langus)).replace(".00",""))
 			metatree[ccode]['completed%'] = float("{:,.2f}".format(metatree[ccode]['keys#']*100/metatree[source]['keys#']).replace(".00",""))
 	
