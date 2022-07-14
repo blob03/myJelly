@@ -55,7 +55,7 @@
 }
 
 .libraryPage.noSecondaryNavPage {
-    padding-top: 5em !important;
+    padding-top: 4.3em !important;
 }
 
 .libraryPage:not(.noSecondaryNavPage) {
@@ -197,6 +197,7 @@
 }
 
 .headerTop {
+	height: 3rem;
     padding: 0.54em 0;
 }
 
@@ -388,11 +389,11 @@
 }
 
 .detailLogo {
-    width: 25vw;
     height: 16vh;
     position: absolute;
-    top: 10vh;
-    right: 25vw;
+    top: 5vh;
+    right: 0%;
+	left: 0%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -667,7 +668,7 @@
 }
 
 .layout-desktop .detailRibbon {
-    margin-top: -7.2em;
+    margin-top: 1em;
     height: 7.2em;
 }
 
@@ -745,13 +746,13 @@
 
     .layout-desktop & {
         left: 3.3%;
-        top: 10%;
+        top: 1em;
         width: 25vw;
     }
 
     .layout-tv & {
         left: 5%;
-        top: 50%;
+        top: 21em;
         width: 25vw;
         transform: translateY(-50%);
     }
@@ -810,9 +811,8 @@ div.itemDetailGalleryLink.defaultCardBackground {
     .layout-desktop .itemBackdrop {
         height: 40vh;
     }
-
-    .layout-desktop .detailPageWrapperContainer,
-    .layout-tv .detailPageWrapperContainer {
+    
+	.layout-tv .detailPageWrapperContainer {
         margin-top: 0.1em;
     }
 
@@ -1048,10 +1048,8 @@ div.itemDetailGalleryLink.defaultCardBackground {
     margin: 0 auto;
 }
 
-@media all and (max-height: 31.25em) {
-    .itemBackdrop {
-        height: 52vh;
-    }
+.itemBackdrop {
+	height: 12em;
 }
 
 .listViewUserDataButtons {

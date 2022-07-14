@@ -1136,7 +1136,7 @@ export class UserSettings {
             return this.set('detailsBanner', val.toString());
         }
 
-        return toBoolean(this.get('detailsBanner'), true);
+        return toBoolean(this.get('detailsBanner'), false);
     }
 
     /**

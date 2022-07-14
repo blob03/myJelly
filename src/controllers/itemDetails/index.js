@@ -523,11 +523,19 @@ function renderBackdrop(item) {
 }
 
 function renderDetailPageBackdrop(page, item, apiClient) {
+	
+	const itemBackdropElement = page.querySelector('#itemBackdrop');
+	
     // Details banner is disabled in user settings
     if (!userSettings.detailsBanner()) {
+		if (itemBackdropElement)
+			itemBackdropElement.classList.add("hide");
         return false;
     }
 
+	if (itemBackdropElement)
+		itemBackdropElement.classList.remove("hide");
+		
     // Disable item backdrop for books and people because they only have primary images
     if (item.Type === 'Person' || item.Type === 'Book') {
         return false;
@@ -535,8 +543,7 @@ function renderDetailPageBackdrop(page, item, apiClient) {
 
     let imgUrl;
     let hasbackdrop = false;
-    const itemBackdropElement = page.querySelector('#itemBackdrop');
-
+    
     if (item.BackdropImageTags && item.BackdropImageTags.length) {
         imgUrl = apiClient.getScaledImageUrl(item.Id, {
             type: 'Backdrop',

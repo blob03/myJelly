@@ -1180,14 +1180,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 	}
 	
     function setTransparentMenu (transparent) {
-		// Temporary, to work around an apparent lack of support of semitransparent headers from base themes
-		// (TV layout).
+		// Temporary, to work around an apparent lack of support of semitransparent header from base themes
         //if (transparent) {
-		if (transparent && !layoutManager.tv) {
-            skinHeader.classList.add('semiTransparent');
-        } else {
+        //    skinHeader.classList.add('semiTransparent');
+        //} else {
             skinHeader.classList.remove('semiTransparent');
-        }
+       // }
     }
 
     let currentPageType;
