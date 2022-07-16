@@ -197,7 +197,7 @@ import { Events } from 'jellyfin-apiclient';
 		if (!dictionary || !dictionary[key]) 
 			dictionary = getDictionary(module, fallbackCulture);			
 		if (!dictionary || !dictionary[key]) {
-			console.error(`Translation key is missing from dictionary: ${key}`);
+			console.warn(`Translation key is missing from dictionary: ${key}`);
 			return key;
 		}
 		

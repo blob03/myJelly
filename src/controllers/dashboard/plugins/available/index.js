@@ -22,19 +22,15 @@ function reloadList(page) {
 }
 
 function getHeaderText(category) {
-    category = category.replace(' ', '');
-    // TODO: Replace with switch
-    if (category === 'Channel') {
-        category = 'Channels';
-    } else if (category === 'Theme') {
-        category = 'Themes';
-    } else if (category === 'LiveTV') {
-        category = 'LiveTV';
-    } else if (category === 'ScreenSaver') {
-        category = 'HeaderScreenSavers';
-    }
-
-    return globalize.translate(category);
+    category = category? (category.replace(' ', '')) : '';
+	
+	switch(category) {
+		case 'Channel':
+			category = 'Channels';
+			break;
+	}
+	
+	return globalize.translate(category);
 }
 
 function populateList(options) {

@@ -1281,10 +1281,6 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
     padding-top: 5.5em !important;
 }
 
-.withTabs .content-primary {
-    margin-top: 1.5em !important;
-}
-
 .infoDetails {
 	font-size: 90% !important;
 }
