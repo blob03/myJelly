@@ -174,6 +174,20 @@ class AboutTab {
         this.sectionsContainer = null;
     }
 	
+	cmp(x, y) {
+		const remote = x.split('-');
+		const local = y.split('-');
+		
+		if (remote[0] > local[0])
+			return true;
+		if (remote[0] === local[0]) {
+			if (parseInt(remote[1] || '0', 10) > parseInt(local[1] || '0', 10))
+				return true;
+			return false;
+		}
+		return false;
+	}
+	
 	checkUpdates() {
 		let req = {};
 		req.dataType = 'json';
@@ -196,7 +210,7 @@ class AboutTab {
 		ajax(req).then(function (data) {
 			clearInterval(self._contimeout);
 			if (appSettings.enableAutosearch() !== false) {
-				if (data.version > appInfo.version) {
+				if (self.cmp(data.version, appInfo.version)) {
 					self.au.style.fontWeight = "600";
 					self.au.innerHTML = globalize.translate('LabelUpdateNOK', data.version);
 					self.releaseNotes = data.releaseNotes;

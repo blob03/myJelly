@@ -37,7 +37,7 @@ import Dashboard from '../../utils/dashboard';
             name: globalize.translate('Transcoding')
         }, {
             href: '#!/playbackconfiguration.html',
-            name: globalize.translate('ButtonResume')
+            name: globalize.translate('HeaderResume')
         }, {
             href: '#!/streamingsettings.html',
             name: globalize.translate('TabStreaming')

@@ -21,6 +21,7 @@
     "EnableWeatherBot": "Activer Météorobot :",
     "EnableWeatherBotHelp": "Afficher les conditions météo dans la barre du haut.",
     "Find": "Chercher",
+    "HeaderResume": "Reprise",
     "Humidity": "Humidité",
     "LabelAPIFrequency": "Délai des sondages météo :",
     "LabelAPIFrequencyHelp": "Délai en minutes entre deux appels successifs à l'API.",
