@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.1-10",
+	"version": "10.8.1-11",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -52,6 +52,7 @@
 		"10.8.1-7": "Translations synchronized with master.\nCompatibility with Jellyfin's themes improved.\nApplied patch 'fix-json-rejection'.",
 		"10.8.1-8": "Translations synchronized with master.\nCompatibility with Jellyfin's themes improved.\nRestored option 'Details Banner' (display settings) which got broken along the way.",
 		"10.8.1-9": "Translations synchronized with master.\nCompatibility with Jellyfin's themes improved.\nAdded missing translation keys.",
-		"10.8.1-10": "Translations synchronized with master.\nAdded missing translation keys.\nFixed updates' autocheck routine in tab 'About'."
+		"10.8.1-10": "Translations synchronized with master.\nAdded missing translation keys.\nFixed updates' autocheck routine in tab 'About'.",
+		"10.8.1-11": "Translations synchronized with master.\nApplied patch 'Backport pull request #3730'.\nApplied patch 'Backport pull request #3751'.\nApplied patch 'Backport pull request #3760'."
 	}
 }

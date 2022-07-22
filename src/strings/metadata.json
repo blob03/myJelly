@@ -1,14 +1,14 @@
 {
     "en-US": {
         "ccode": "en-US",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 107230,
         "ccodeSrc": "en-US",
         "displayName": "English",
         "displayNativeName": "English",
         "ISO6391": "en-US",
         "ISO6392": "eng",
-        "keys#": 1753,
+        "keys#": 1757,
         "completed%": 100.0,
         "jellyfinWeb": {
             "filename": "en-US.json",
@@ -19,7 +19,7 @@
         },
         "myJelly": {
             "filename": "en-US.json",
-            "keys#": 88,
+            "keys#": 92,
             "orphans#": 0,
             "orphans": [],
             "completed%": 100.0
@@ -27,7 +27,7 @@
     },
     "af": {
         "ccode": "af",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 51605,
         "ccodeSrc": "en-US",
         "displayName": "Afrikaans",
@@ -35,7 +35,7 @@
         "ISO6391": "af",
         "ISO6392": "afr",
         "keys#": 812,
-        "completed%": 46.32,
+        "completed%": 46.22,
         "jellyfinWeb": {
             "filename": "af.json",
             "keys#": 812,
@@ -56,7 +56,7 @@
     },
     "ar": {
         "ccode": "ar",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 145945,
         "ccodeSrc": "en-US",
         "displayName": "Arabic",
@@ -64,7 +64,7 @@
         "ISO6391": "ar",
         "ISO6392": "ara",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "ar.json",
             "keys#": 1665,
@@ -92,7 +92,7 @@
     },
     "as": {
         "ccode": "as",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 82,
         "ccodeSrc": "en-US",
         "displayName": "Assamese",
@@ -118,7 +118,7 @@
     },
     "be-BY": {
         "ccode": "be-BY",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 2515,
         "ccodeSrc": "en-US",
         "displayName": "Belarusian",
@@ -144,7 +144,7 @@
     },
     "bg-BG": {
         "ccode": "bg-BG",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 144723,
         "ccodeSrc": "en-US",
         "displayName": "Bulgarian",
@@ -152,7 +152,7 @@
         "ISO6391": "bg-BG",
         "ISO6392": "bul",
         "keys#": 1447,
-        "completed%": 82.54,
+        "completed%": 82.36,
         "jellyfinWeb": {
             "filename": "bg-BG.json",
             "keys#": 1447,
@@ -180,7 +180,7 @@
     },
     "bn-BD": {
         "ccode": "bn-BD",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 41131,
         "ccodeSrc": "en-US",
         "displayName": "Bengali",
@@ -188,7 +188,7 @@
         "ISO6391": "bn-BD",
         "ISO6392": "ben",
         "keys#": 324,
-        "completed%": 18.48,
+        "completed%": 18.44,
         "jellyfinWeb": {
             "filename": "bn-BD.json",
             "keys#": 324,
@@ -208,7 +208,7 @@
     },
     "ca": {
         "ccode": "ca",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 119382,
         "ccodeSrc": "en-US",
         "displayName": "Catalan; Valencian",
@@ -216,7 +216,7 @@
         "ISO6391": "ca",
         "ISO6392": "cat",
         "keys#": 1638,
-        "completed%": 93.44,
+        "completed%": 93.23,
         "jellyfinWeb": {
             "filename": "ca.json",
             "keys#": 1638,
@@ -243,7 +243,7 @@
     },
     "cs": {
         "ccode": "cs",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 117258,
         "ccodeSrc": "en-US",
         "displayName": "Czech",
@@ -251,7 +251,7 @@
         "ISO6391": "cs",
         "ISO6392": "cze",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "cs.json",
             "keys#": 1665,
@@ -282,7 +282,7 @@
     },
     "cy": {
         "ccode": "cy",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 22243,
         "ccodeSrc": "en-US",
         "displayName": "Welsh",
@@ -290,7 +290,7 @@
         "ISO6391": "cy",
         "ISO6392": "wel",
         "keys#": 593,
-        "completed%": 33.83,
+        "completed%": 33.75,
         "jellyfinWeb": {
             "filename": "cy.json",
             "keys#": 593,
@@ -312,7 +312,7 @@
     },
     "da": {
         "ccode": "da",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 110479,
         "ccodeSrc": "en-US",
         "displayName": "Danish",
@@ -320,7 +320,7 @@
         "ISO6391": "da",
         "ISO6392": "dan",
         "keys#": 1639,
-        "completed%": 93.5,
+        "completed%": 93.28,
         "jellyfinWeb": {
             "filename": "da.json",
             "keys#": 1639,
@@ -349,7 +349,7 @@
     },
     "de": {
         "ccode": "de",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 119688,
         "ccodeSrc": "en-US",
         "displayName": "German",
@@ -357,7 +357,7 @@
         "ISO6391": "de",
         "ISO6392": "ger",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "de.json",
             "keys#": 1665,
@@ -388,7 +388,7 @@
     },
     "el": {
         "ccode": "el",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 116454,
         "ccodeSrc": "en-US",
         "displayName": "Greek, Modern (1453-)",
@@ -396,7 +396,7 @@
         "ISO6391": "el",
         "ISO6392": "gre",
         "keys#": 1163,
-        "completed%": 66.34,
+        "completed%": 66.19,
         "jellyfinWeb": {
             "filename": "el.json",
             "keys#": 1163,
@@ -423,7 +423,7 @@
     },
     "en-GB": {
         "ccode": "en-GB",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 108369,
         "ccodeSrc": "en-US",
         "displayName": "English, Great Britain",
@@ -431,7 +431,7 @@
         "ISO6391": "en-GB",
         "ISO6392": "en-GB",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "en-GB.json",
             "keys#": 1665,
@@ -462,7 +462,7 @@
     },
     "eo": {
         "ccode": "eo",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 110771,
         "ccodeSrc": "en-US",
         "displayName": "Esperanto",
@@ -470,7 +470,7 @@
         "ISO6391": "eo",
         "ISO6392": "epo",
         "keys#": 1644,
-        "completed%": 93.78,
+        "completed%": 93.57,
         "jellyfinWeb": {
             "filename": "eo.json",
             "keys#": 1644,
@@ -497,7 +497,7 @@
     },
     "es-419": {
         "ccode": "es-419",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 113070,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Latin America",
@@ -505,7 +505,7 @@
         "ISO6391": "es-419",
         "ISO6392": "es-419",
         "keys#": 1528,
-        "completed%": 87.16,
+        "completed%": 86.97,
         "jellyfinWeb": {
             "filename": "es-419.json",
             "keys#": 1528,
@@ -533,18 +533,18 @@
     },
     "es-AR": {
         "ccode": "es-AR",
-        "lastm": 1657948940.0,
-        "fsize": 120691,
+        "lastm": 1658388146.0,
+        "fsize": 121085,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Argentina",
         "displayNativeName": "Español, República Argentina",
         "ISO6391": "es-AR",
         "ISO6392": "es-AR",
-        "keys#": 1637,
-        "completed%": 93.38,
+        "keys#": 1645,
+        "completed%": 93.63,
         "jellyfinWeb": {
             "filename": "es-AR.json",
-            "keys#": 1637,
+            "keys#": 1645,
             "orphans#": 11,
             "orphans": [
                 "ButtonNetwork",
@@ -559,7 +559,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 98.32
+            "completed%": 98.8
         },
         "myJelly": {
             "filename": "",
@@ -571,7 +571,7 @@
     },
     "es-DO": {
         "ccode": "es-DO",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 781,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Dominican Republic",
@@ -597,7 +597,7 @@
     },
     "es-MX": {
         "ccode": "es-MX",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 119615,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Mexico",
@@ -605,7 +605,7 @@
         "ISO6391": "es-MX",
         "ISO6392": "es-MX",
         "keys#": 1605,
-        "completed%": 91.56,
+        "completed%": 91.35,
         "jellyfinWeb": {
             "filename": "es-MX.json",
             "keys#": 1605,
@@ -636,7 +636,7 @@
     },
     "es": {
         "ccode": "es",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 121533,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Castilian",
@@ -644,7 +644,7 @@
         "ISO6391": "es",
         "ISO6392": "spa",
         "keys#": 1642,
-        "completed%": 93.67,
+        "completed%": 93.45,
         "jellyfinWeb": {
             "filename": "es.json",
             "keys#": 1642,
@@ -675,7 +675,7 @@
     },
     "et": {
         "ccode": "et",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 102928,
         "ccodeSrc": "en-US",
         "displayName": "Estonian",
@@ -683,7 +683,7 @@
         "ISO6391": "et",
         "ISO6392": "est",
         "keys#": 1589,
-        "completed%": 90.64,
+        "completed%": 90.44,
         "jellyfinWeb": {
             "filename": "et.json",
             "keys#": 1589,
@@ -709,7 +709,7 @@
     },
     "eu": {
         "ccode": "eu",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 114701,
         "ccodeSrc": "en-US",
         "displayName": "Basque",
@@ -717,7 +717,7 @@
         "ISO6391": "eu",
         "ISO6392": "baq",
         "keys#": 1616,
-        "completed%": 92.18,
+        "completed%": 91.97,
         "jellyfinWeb": {
             "filename": "eu.json",
             "keys#": 1616,
@@ -742,7 +742,7 @@
     },
     "fa": {
         "ccode": "fa",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 130994,
         "ccodeSrc": "en-US",
         "displayName": "Persian",
@@ -750,7 +750,7 @@
         "ISO6391": "fa",
         "ISO6392": "per",
         "keys#": 1579,
-        "completed%": 90.07,
+        "completed%": 89.87,
         "jellyfinWeb": {
             "filename": "fa.json",
             "keys#": 1579,
@@ -778,7 +778,7 @@
     },
     "fi": {
         "ccode": "fi",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 114049,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
@@ -786,7 +786,7 @@
         "ISO6391": "fi",
         "ISO6392": "fin",
         "keys#": 1659,
-        "completed%": 94.64,
+        "completed%": 94.42,
         "jellyfinWeb": {
             "filename": "fi.json",
             "keys#": 1659,
@@ -815,7 +815,7 @@
     },
     "fil": {
         "ccode": "fil",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 119391,
         "ccodeSrc": "en-US",
         "displayName": "Filipino",
@@ -823,7 +823,7 @@
         "ISO6391": "fil",
         "ISO6392": "fil",
         "keys#": 1620,
-        "completed%": 92.41,
+        "completed%": 92.2,
         "jellyfinWeb": {
             "filename": "fil.json",
             "keys#": 1620,
@@ -850,15 +850,15 @@
     },
     "fr-CA": {
         "ccode": "fr-CA",
-        "lastm": 1657948940.0,
-        "fsize": 65851,
+        "lastm": 1658388146.0,
+        "fsize": 65855,
         "ccodeSrc": "en-US",
         "displayName": "French, Canada",
         "displayNativeName": "Français, Canada",
         "ISO6391": "fr-CA",
         "ISO6392": "frc",
         "keys#": 937,
-        "completed%": 53.45,
+        "completed%": 53.33,
         "jellyfinWeb": {
             "filename": "fr-CA.json",
             "keys#": 937,
@@ -880,14 +880,14 @@
     },
     "fr": {
         "ccode": "fr",
-        "lastm": 1657948940.0,
-        "fsize": 124991,
+        "lastm": 1658388146.0,
+        "fsize": 124963,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
         "ISO6391": "fr",
         "ISO6392": "fre",
-        "keys#": 1753,
+        "keys#": 1757,
         "completed%": 100.0,
         "jellyfinWeb": {
             "filename": "fr.json",
@@ -911,7 +911,7 @@
         },
         "myJelly": {
             "filename": "fr.json",
-            "keys#": 88,
+            "keys#": 92,
             "orphans#": 0,
             "orphans": [],
             "completed%": 100.0
@@ -919,7 +919,7 @@
     },
     "gl": {
         "ccode": "gl",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 5640,
         "ccodeSrc": "en-US",
         "displayName": "Galician",
@@ -927,7 +927,7 @@
         "ISO6391": "gl",
         "ISO6392": "glg",
         "keys#": 146,
-        "completed%": 8.33,
+        "completed%": 8.31,
         "jellyfinWeb": {
             "filename": "gl.json",
             "keys#": 146,
@@ -945,7 +945,7 @@
     },
     "gsw": {
         "ccode": "gsw",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 6908,
         "ccodeSrc": "en-US",
         "displayName": "Swiss German; Alemannic; Alsatian",
@@ -953,7 +953,7 @@
         "ISO6391": "gsw",
         "ISO6392": "gsw",
         "keys#": 127,
-        "completed%": 7.24,
+        "completed%": 7.23,
         "jellyfinWeb": {
             "filename": "gsw.json",
             "keys#": 127,
@@ -971,7 +971,7 @@
     },
     "he": {
         "ccode": "he",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 65005,
         "ccodeSrc": "en-US",
         "displayName": "Hebrew",
@@ -979,7 +979,7 @@
         "ISO6391": "he",
         "ISO6392": "heb",
         "keys#": 975,
-        "completed%": 55.62,
+        "completed%": 55.49,
         "jellyfinWeb": {
             "filename": "he.json",
             "keys#": 975,
@@ -1003,7 +1003,7 @@
     },
     "hi-IN": {
         "ccode": "hi-IN",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 14714,
         "ccodeSrc": "en-US",
         "displayName": "Hindi",
@@ -1011,7 +1011,7 @@
         "ISO6391": "hi-IN",
         "ISO6392": "hin",
         "keys#": 130,
-        "completed%": 7.42,
+        "completed%": 7.4,
         "jellyfinWeb": {
             "filename": "hi-IN.json",
             "keys#": 130,
@@ -1031,7 +1031,7 @@
     },
     "hr": {
         "ccode": "hr",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 77506,
         "ccodeSrc": "en-US",
         "displayName": "Croatian",
@@ -1039,7 +1039,7 @@
         "ISO6391": "hr",
         "ISO6392": "hrv",
         "keys#": 1184,
-        "completed%": 67.54,
+        "completed%": 67.39,
         "jellyfinWeb": {
             "filename": "hr.json",
             "keys#": 1184,
@@ -1064,7 +1064,7 @@
     },
     "hu": {
         "ccode": "hu",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 123132,
         "ccodeSrc": "en-US",
         "displayName": "Hungarian",
@@ -1072,7 +1072,7 @@
         "ISO6391": "hu",
         "ISO6392": "hun",
         "keys#": 1661,
-        "completed%": 94.75,
+        "completed%": 94.54,
         "jellyfinWeb": {
             "filename": "hu.json",
             "keys#": 1661,
@@ -1103,7 +1103,7 @@
     },
     "id": {
         "ccode": "id",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 111818,
         "ccodeSrc": "en-US",
         "displayName": "Indonesian",
@@ -1111,7 +1111,7 @@
         "ISO6391": "id",
         "ISO6392": "ind",
         "keys#": 1656,
-        "completed%": 94.47,
+        "completed%": 94.25,
         "jellyfinWeb": {
             "filename": "id.json",
             "keys#": 1656,
@@ -1141,7 +1141,7 @@
     },
     "is-IS": {
         "ccode": "is-IS",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 20846,
         "ccodeSrc": "en-US",
         "displayName": "Icelandic",
@@ -1149,7 +1149,7 @@
         "ISO6391": "is-IS",
         "ISO6392": "ice",
         "keys#": 446,
-        "completed%": 25.44,
+        "completed%": 25.38,
         "jellyfinWeb": {
             "filename": "is-IS.json",
             "keys#": 446,
@@ -1171,7 +1171,7 @@
     },
     "it": {
         "ccode": "it",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 118368,
         "ccodeSrc": "en-US",
         "displayName": "Italian",
@@ -1179,7 +1179,7 @@
         "ISO6391": "it",
         "ISO6392": "ita",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "it.json",
             "keys#": 1665,
@@ -1210,7 +1210,7 @@
     },
     "ja": {
         "ccode": "ja",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 126577,
         "ccodeSrc": "en-US",
         "displayName": "Japanese",
@@ -1218,7 +1218,7 @@
         "ISO6391": "ja",
         "ISO6392": "jpn",
         "keys#": 1558,
-        "completed%": 88.88,
+        "completed%": 88.67,
         "jellyfinWeb": {
             "filename": "ja.json",
             "keys#": 1558,
@@ -1246,7 +1246,7 @@
     },
     "kab": {
         "ccode": "kab",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 244,
         "ccodeSrc": "en-US",
         "displayName": "Kabyle",
@@ -1272,7 +1272,7 @@
     },
     "kk": {
         "ccode": "kk",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 120037,
         "ccodeSrc": "en-US",
         "displayName": "Kazakh",
@@ -1280,7 +1280,7 @@
         "ISO6391": "kk",
         "ISO6392": "kaz",
         "keys#": 1649,
-        "completed%": 94.07,
+        "completed%": 93.85,
         "jellyfinWeb": {
             "filename": "kk.json",
             "keys#": 1649,
@@ -1312,7 +1312,7 @@
     },
     "kn": {
         "ccode": "kn",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 6454,
         "ccodeSrc": "en-US",
         "displayName": "Kannada",
@@ -1338,7 +1338,7 @@
     },
     "ko": {
         "ccode": "ko",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 113962,
         "ccodeSrc": "en-US",
         "displayName": "Korean",
@@ -1346,7 +1346,7 @@
         "ISO6391": "ko",
         "ISO6392": "kor",
         "keys#": 1577,
-        "completed%": 89.96,
+        "completed%": 89.76,
         "jellyfinWeb": {
             "filename": "ko.json",
             "keys#": 1577,
@@ -1374,7 +1374,7 @@
     },
     "lt-LT": {
         "ccode": "lt-LT",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 52272,
         "ccodeSrc": "en-US",
         "displayName": "Lithuanian",
@@ -1382,7 +1382,7 @@
         "ISO6391": "lt-LT",
         "ISO6392": "lit",
         "keys#": 857,
-        "completed%": 48.89,
+        "completed%": 48.78,
         "jellyfinWeb": {
             "filename": "lt-LT.json",
             "keys#": 857,
@@ -1405,7 +1405,7 @@
     },
     "lv": {
         "ccode": "lv",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 86916,
         "ccodeSrc": "en-US",
         "displayName": "Latvian",
@@ -1413,7 +1413,7 @@
         "ISO6391": "lv",
         "ISO6392": "lav",
         "keys#": 1272,
-        "completed%": 72.56,
+        "completed%": 72.4,
         "jellyfinWeb": {
             "filename": "lv.json",
             "keys#": 1272,
@@ -1438,7 +1438,7 @@
     },
     "mk": {
         "ccode": "mk",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 743,
         "ccodeSrc": "en-US",
         "displayName": "Macedonian",
@@ -1464,7 +1464,7 @@
     },
     "ml": {
         "ccode": "ml",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 232520,
         "ccodeSrc": "en-US",
         "displayName": "Malayalam",
@@ -1472,7 +1472,7 @@
         "ISO6391": "ml",
         "ISO6392": "mal",
         "keys#": 1580,
-        "completed%": 90.13,
+        "completed%": 89.93,
         "jellyfinWeb": {
             "filename": "ml.json",
             "keys#": 1580,
@@ -1498,7 +1498,7 @@
     },
     "mn": {
         "ccode": "mn",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 3968,
         "ccodeSrc": "en-US",
         "displayName": "Mongolian",
@@ -1506,7 +1506,7 @@
         "ISO6391": "mn",
         "ISO6392": "mon",
         "keys#": 97,
-        "completed%": 5.53,
+        "completed%": 5.52,
         "jellyfinWeb": {
             "filename": "mn.json",
             "keys#": 97,
@@ -1524,7 +1524,7 @@
     },
     "mr": {
         "ccode": "mr",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 43635,
         "ccodeSrc": "en-US",
         "displayName": "Marathi",
@@ -1532,7 +1532,7 @@
         "ISO6391": "mr",
         "ISO6392": "mar",
         "keys#": 665,
-        "completed%": 37.93,
+        "completed%": 37.85,
         "jellyfinWeb": {
             "filename": "mr.json",
             "keys#": 665,
@@ -1554,23 +1554,23 @@
     },
     "ms": {
         "ccode": "ms",
-        "lastm": 1657948940.0,
-        "fsize": 10415,
+        "lastm": 1658388146.0,
+        "fsize": 13156,
         "ccodeSrc": "en-US",
         "displayName": "Malay",
         "displayNativeName": "Bahasa Melayu",
         "ISO6391": "ms",
         "ISO6392": "may",
-        "keys#": 198,
-        "completed%": 11.29,
+        "keys#": 241,
+        "completed%": 13.72,
         "jellyfinWeb": {
             "filename": "ms.json",
-            "keys#": 198,
+            "keys#": 241,
             "orphans#": 1,
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 11.89
+            "completed%": 14.47
         },
         "myJelly": {
             "filename": "",
@@ -1582,7 +1582,7 @@
     },
     "my": {
         "ccode": "my",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 36979,
         "ccodeSrc": "en-US",
         "displayName": "Burmese",
@@ -1590,7 +1590,7 @@
         "ISO6391": "my",
         "ISO6392": "bur",
         "keys#": 257,
-        "completed%": 14.66,
+        "completed%": 14.63,
         "jellyfinWeb": {
             "filename": "my.json",
             "keys#": 257,
@@ -1608,7 +1608,7 @@
     },
     "nb": {
         "ccode": "nb",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 111297,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Bokmål",
@@ -1616,7 +1616,7 @@
         "ISO6391": "nb",
         "ISO6392": "nob",
         "keys#": 1640,
-        "completed%": 93.55,
+        "completed%": 93.34,
         "jellyfinWeb": {
             "filename": "nb.json",
             "keys#": 1640,
@@ -1646,7 +1646,7 @@
     },
     "ne": {
         "ccode": "ne",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 1715,
         "ccodeSrc": "en-US",
         "displayName": "Nepali",
@@ -1672,7 +1672,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 113481,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
@@ -1680,7 +1680,7 @@
         "ISO6391": "nl",
         "ISO6392": "dut",
         "keys#": 1621,
-        "completed%": 92.47,
+        "completed%": 92.26,
         "jellyfinWeb": {
             "filename": "nl.json",
             "keys#": 1621,
@@ -1710,7 +1710,7 @@
     },
     "nn": {
         "ccode": "nn",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 39636,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Nynorsk",
@@ -1718,7 +1718,7 @@
         "ISO6391": "nn",
         "ISO6392": "nno",
         "keys#": 754,
-        "completed%": 43.01,
+        "completed%": 42.91,
         "jellyfinWeb": {
             "filename": "nn.json",
             "keys#": 754,
@@ -1740,7 +1740,7 @@
     },
     "pa": {
         "ccode": "pa",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 4019,
         "ccodeSrc": "en-US",
         "displayName": "Panjabi; Punjabi",
@@ -1748,7 +1748,7 @@
         "ISO6391": "pa",
         "ISO6392": "pan",
         "keys#": 96,
-        "completed%": 5.48,
+        "completed%": 5.46,
         "jellyfinWeb": {
             "filename": "pa.json",
             "keys#": 96,
@@ -1768,7 +1768,7 @@
     },
     "pl": {
         "ccode": "pl",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 117781,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
@@ -1776,7 +1776,7 @@
         "ISO6391": "pl",
         "ISO6392": "pol",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "pl.json",
             "keys#": 1665,
@@ -1807,7 +1807,7 @@
     },
     "pr": {
         "ccode": "pr",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 2839,
         "ccodeSrc": "en-US",
         "displayName": "Pirate",
@@ -1815,7 +1815,7 @@
         "ISO6391": "pr",
         "ISO6392": "pir",
         "keys#": 67,
-        "completed%": 3.82,
+        "completed%": 3.81,
         "jellyfinWeb": {
             "filename": "pr.json",
             "keys#": 67,
@@ -1833,7 +1833,7 @@
     },
     "pt-BR": {
         "ccode": "pt-BR",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 118521,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese, Brazil",
@@ -1841,7 +1841,7 @@
         "ISO6391": "pt-BR",
         "ISO6392": "pob",
         "keys#": 1647,
-        "completed%": 93.95,
+        "completed%": 93.74,
         "jellyfinWeb": {
             "filename": "pt-BR.json",
             "keys#": 1647,
@@ -1871,7 +1871,7 @@
     },
     "pt-PT": {
         "ccode": "pt-PT",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 111334,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese, Portugal",
@@ -1879,7 +1879,7 @@
         "ISO6391": "pt-PT",
         "ISO6392": "por",
         "keys#": 1538,
-        "completed%": 87.74,
+        "completed%": 87.54,
         "jellyfinWeb": {
             "filename": "pt-PT.json",
             "keys#": 1538,
@@ -1907,7 +1907,7 @@
     },
     "pt": {
         "ccode": "pt",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 97578,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese",
@@ -1915,7 +1915,7 @@
         "ISO6391": "pt",
         "ISO6392": "prt",
         "keys#": 1347,
-        "completed%": 76.84,
+        "completed%": 76.66,
         "jellyfinWeb": {
             "filename": "pt.json",
             "keys#": 1347,
@@ -1942,7 +1942,7 @@
     },
     "ro": {
         "ccode": "ro",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 119536,
         "ccodeSrc": "en-US",
         "displayName": "Romanian; Moldavian; Moldovan",
@@ -1950,7 +1950,7 @@
         "ISO6391": "ro",
         "ISO6392": "rum",
         "keys#": 1640,
-        "completed%": 93.55,
+        "completed%": 93.34,
         "jellyfinWeb": {
             "filename": "ro.json",
             "keys#": 1640,
@@ -1981,7 +1981,7 @@
     },
     "ru": {
         "ccode": "ru",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 172520,
         "ccodeSrc": "en-US",
         "displayName": "Russian",
@@ -1989,7 +1989,7 @@
         "ISO6391": "ru",
         "ISO6392": "rus",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "ru.json",
             "keys#": 1665,
@@ -2020,7 +2020,7 @@
     },
     "sk": {
         "ccode": "sk",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 119263,
         "ccodeSrc": "en-US",
         "displayName": "Slovak",
@@ -2028,7 +2028,7 @@
         "ISO6391": "sk",
         "ISO6392": "slo",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "sk.json",
             "keys#": 1665,
@@ -2059,7 +2059,7 @@
     },
     "sl-SI": {
         "ccode": "sl-SI",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 97866,
         "ccodeSrc": "en-US",
         "displayName": "Slovenian",
@@ -2067,7 +2067,7 @@
         "ISO6391": "sl-SI",
         "ISO6392": "slv",
         "keys#": 1474,
-        "completed%": 84.08,
+        "completed%": 83.89,
         "jellyfinWeb": {
             "filename": "sl-SI.json",
             "keys#": 1474,
@@ -2096,7 +2096,7 @@
     },
     "sq": {
         "ccode": "sq",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 9330,
         "ccodeSrc": "en-US",
         "displayName": "Albanian",
@@ -2104,7 +2104,7 @@
         "ISO6391": "sq",
         "ISO6392": "alb",
         "keys#": 178,
-        "completed%": 10.15,
+        "completed%": 10.13,
         "jellyfinWeb": {
             "filename": "sq.json",
             "keys#": 178,
@@ -2124,7 +2124,7 @@
     },
     "sr": {
         "ccode": "sr",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 148548,
         "ccodeSrc": "en-US",
         "displayName": "Serbian",
@@ -2132,7 +2132,7 @@
         "ISO6391": "sr",
         "ISO6392": "srp",
         "keys#": 1520,
-        "completed%": 86.71,
+        "completed%": 86.51,
         "jellyfinWeb": {
             "filename": "sr.json",
             "keys#": 1520,
@@ -2156,7 +2156,7 @@
     },
     "sv": {
         "ccode": "sv",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 111788,
         "ccodeSrc": "en-US",
         "displayName": "Swedish",
@@ -2164,7 +2164,7 @@
         "ISO6391": "sv",
         "ISO6392": "swe",
         "keys#": 1643,
-        "completed%": 93.73,
+        "completed%": 93.51,
         "jellyfinWeb": {
             "filename": "sv.json",
             "keys#": 1643,
@@ -2194,7 +2194,7 @@
     },
     "ta": {
         "ccode": "ta",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 234361,
         "ccodeSrc": "en-US",
         "displayName": "Tamil",
@@ -2202,7 +2202,7 @@
         "ISO6391": "ta",
         "ISO6392": "tam",
         "keys#": 1640,
-        "completed%": 93.55,
+        "completed%": 93.34,
         "jellyfinWeb": {
             "filename": "ta.json",
             "keys#": 1640,
@@ -2248,7 +2248,7 @@
     },
     "te": {
         "ccode": "te",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 202508,
         "ccodeSrc": "en-US",
         "displayName": "Telugu",
@@ -2256,7 +2256,7 @@
         "ISO6391": "te",
         "ISO6392": "tel",
         "keys#": 1500,
-        "completed%": 85.57,
+        "completed%": 85.37,
         "jellyfinWeb": {
             "filename": "te.json",
             "keys#": 1500,
@@ -2280,7 +2280,7 @@
     },
     "th": {
         "ccode": "th",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 9180,
         "ccodeSrc": "en-US",
         "displayName": "Thai",
@@ -2288,7 +2288,7 @@
         "ISO6391": "th",
         "ISO6392": "tha",
         "keys#": 142,
-        "completed%": 8.1,
+        "completed%": 8.08,
         "jellyfinWeb": {
             "filename": "th.json",
             "keys#": 142,
@@ -2306,7 +2306,7 @@
     },
     "tr": {
         "ccode": "tr",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 104852,
         "ccodeSrc": "en-US",
         "displayName": "Turkish",
@@ -2314,7 +2314,7 @@
         "ISO6391": "tr",
         "ISO6392": "tur",
         "keys#": 1528,
-        "completed%": 87.16,
+        "completed%": 86.97,
         "jellyfinWeb": {
             "filename": "tr.json",
             "keys#": 1528,
@@ -2339,7 +2339,7 @@
     },
     "ug": {
         "ccode": "ug",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 286,
         "ccodeSrc": "en-US",
         "displayName": "Uighur; Uyghur",
@@ -2365,7 +2365,7 @@
     },
     "uk": {
         "ccode": "uk",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 167027,
         "ccodeSrc": "en-US",
         "displayName": "Ukrainian",
@@ -2373,7 +2373,7 @@
         "ISO6391": "uk",
         "ISO6392": "ukr",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "uk.json",
             "keys#": 1665,
@@ -2401,7 +2401,7 @@
     },
     "ur-PK": {
         "ccode": "ur-PK",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 1107,
         "ccodeSrc": "en-US",
         "displayName": "Urdu",
@@ -2409,7 +2409,7 @@
         "ISO6391": "ur-PK",
         "ISO6392": "urd",
         "keys#": 28,
-        "completed%": 1.6,
+        "completed%": 1.59,
         "jellyfinWeb": {
             "filename": "ur-PK.json",
             "keys#": 28,
@@ -2427,7 +2427,7 @@
     },
     "uz": {
         "ccode": "uz",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 44334,
         "ccodeSrc": "en-US",
         "displayName": "Uzbek",
@@ -2435,7 +2435,7 @@
         "ISO6391": "uz",
         "ISO6392": "uzb",
         "keys#": 651,
-        "completed%": 37.14,
+        "completed%": 37.05,
         "jellyfinWeb": {
             "filename": "uz.json",
             "keys#": 651,
@@ -2453,7 +2453,7 @@
     },
     "vi": {
         "ccode": "vi",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 130649,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
@@ -2461,7 +2461,7 @@
         "ISO6391": "vi",
         "ISO6392": "vie",
         "keys#": 1654,
-        "completed%": 94.35,
+        "completed%": 94.14,
         "jellyfinWeb": {
             "filename": "vi.json",
             "keys#": 1654,
@@ -2491,15 +2491,15 @@
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "lastm": 1657948940.0,
-        "fsize": 103546,
+        "lastm": 1658388146.0,
+        "fsize": 103540,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
         "displayNativeName": "中文",
         "ISO6391": "zh-CN",
         "ISO6392": "chi",
         "keys#": 1665,
-        "completed%": 94.98,
+        "completed%": 94.76,
         "jellyfinWeb": {
             "filename": "zh-CN.json",
             "keys#": 1665,
@@ -2530,7 +2530,7 @@
     },
     "zh-HK": {
         "ccode": "zh-HK",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 65367,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Hong Kong",
@@ -2538,7 +2538,7 @@
         "ISO6391": "zh-HK",
         "ISO6392": "chi",
         "keys#": 1090,
-        "completed%": 62.18,
+        "completed%": 62.04,
         "jellyfinWeb": {
             "filename": "zh-HK.json",
             "keys#": 1090,
@@ -2560,7 +2560,7 @@
     },
     "zh-TW": {
         "ccode": "zh-TW",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 97755,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Traditional",
@@ -2568,7 +2568,7 @@
         "ISO6391": "zh-TW",
         "ISO6392": "chi",
         "keys#": 1582,
-        "completed%": 90.25,
+        "completed%": 90.04,
         "jellyfinWeb": {
             "filename": "zh-TW.json",
             "keys#": 1582,
@@ -2598,7 +2598,7 @@
     },
     "zu": {
         "ccode": "zu",
-        "lastm": 1657948940.0,
+        "lastm": 1658388146.0,
         "fsize": 3481,
         "ccodeSrc": "en-US",
         "displayName": "Zulu",
@@ -2606,7 +2606,7 @@
         "ISO6391": "zu",
         "ISO6392": "zul",
         "keys#": 114,
-        "completed%": 6.5,
+        "completed%": 6.49,
         "jellyfinWeb": {
             "filename": "zu.json",
             "keys#": 114,

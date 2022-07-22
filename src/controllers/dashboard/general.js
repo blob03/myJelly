@@ -17,7 +17,6 @@ import alert from '../../components/alert';
         page.querySelector('#txtServerName').value = systemInfo.ServerName;
         page.querySelector('#txtCachePath').value = systemInfo.CachePath || '';
         page.querySelector('#chkQuickConnectAvailable').checked = config.QuickConnectAvailable === true;
-		page.querySelector('#chkSplashScreenAvailable').checked = config.SplashscreenEnabled === true;
         $('#txtMetadataPath', page).val(systemInfo.InternalMetadataPath || '');
         $('#txtMetadataNetworkPath', page).val(systemInfo.MetadataNetworkPath || '');
 		
@@ -128,6 +127,7 @@ import alert from '../../components/alert';
             ApiClient.getNamedConfiguration(brandingConfigKey).then(function (config) {
                 view.querySelector('#txtLoginDisclaimer').value = config.LoginDisclaimer || '';
                 view.querySelector('#txtCustomCss').value = config.CustomCss || '';
+				view.querySelector('#chkSplashScreenAvailable').checked = config.SplashscreenEnabled === true;
             });
         });
     }
