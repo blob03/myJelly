@@ -963,7 +963,7 @@
     "LabelTypeMetadataDownloaders": "メタデータダウンローダー ({0}):",
     "LabelTypeText": "文字:",
     "LabelUDPPortRange": "UDP コミュニケーション範囲:",
-    "LabelUDPPortRangeHelp": "UDP 接続を確立する際のポートをこの値の範囲に制限します。（デフォルト値は 1024 - 645535）。<br/> 注: 特定の機能は、この範囲外となる固定のポートを要求する場合があります。",
+    "LabelUDPPortRangeHelp": "UDP 接続を確立する際のポートをこの値の範囲に制限します。（デフォルト値は 1024 - 65535）。<br/> 注: 特定の機能は、この範囲外となる固定のポートを要求する場合があります。",
     "LabelUnstable": "不安定",
     "LabelUseNotificationServices": "以下のサービスを使用:",
     "LabelUser": "ユーザー:",

@@ -663,7 +663,7 @@
     "LabelH264Crf": "CRF para codificação H.264:",
     "LabelH265Crf": "CRF da codificação H.265:",
     "LabelHDHomerunPortRange": "Intervalo de portas HD Homerun:",
-    "LabelHDHomerunPortRangeHelp": "Restringe o intervalo de portas UDP HD Homerun a este valor. (O padrão é 1024 - 645535).",
+    "LabelHDHomerunPortRangeHelp": "Restringe o intervalo de portas UDP HD Homerun a este valor. (O padrão é 1024 - 65535).",
     "LabelHardwareAccelerationType": "Aceleração por hardware:",
     "LabelHardwareAccelerationTypeHelp": "A aceleração de hardware requer configuração adicional.",
     "LabelHardwareEncoding": "Codificação por hardware:",

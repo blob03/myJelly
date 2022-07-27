@@ -662,7 +662,7 @@
     "LabelH264Crf": "H.264 -kodering van CRF:",
     "LabelH265Crf": "H.265 -kodering CRF:",
     "LabelHDHomerunPortRange": "HD Homerun -poortreeks:",
-    "LabelHDHomerunPortRangeHelp": "Beperk die HD Homerun UDP -poortreeks tot hierdie waarde. (Standaard is 1024 - 645535).",
+    "LabelHDHomerunPortRangeHelp": "Beperk die HD Homerun UDP -poortreeks tot hierdie waarde. (Standaard is 1024 - 65535).",
     "LabelHardwareAccelerationType": "Hardeware versnelling:",
     "LabelHardwareAccelerationTypeHelp": "Hardewareversnelling vereis ekstra konfigurasie.",
     "LabelHomeNetworkQuality": "Tuisnetwerk kwaliteit:",

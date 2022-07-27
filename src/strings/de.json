@@ -715,7 +715,7 @@
     "LabelH264Crf": "CRF für Kodierung in H.264:",
     "LabelH265Crf": "CRF für Kodierung in H.265:",
     "LabelHDHomerunPortRange": "HDHomeRun Portbereich:",
-    "LabelHDHomerunPortRangeHelp": "Beschränkt den HDHomeRun UDP-Portbereich zu diesem Wert. (Standard ist 1024 - 645535).",
+    "LabelHDHomerunPortRangeHelp": "Beschränkt den HDHomeRun UDP-Portbereich zu diesem Wert. (Standard ist 1024 - 65535).",
     "LabelHardwareAccelerationType": "Hardwarebeschleunigung:",
     "LabelHardwareAccelerationTypeHelp": "Hardwarebeschleunigung benötigt zusätzliche Konfiguration.",
     "LabelHardwareEncoding": "Hardwarekodierung :",

@@ -666,7 +666,7 @@
     "LabelH264Crf": "H.264 kodiranje CRF:",
     "LabelH265Crf": "H.265 kodiranje CRF:",
     "LabelHDHomerunPortRange": "HDHomeRun razpon vrat:",
-    "LabelHDHomerunPortRangeHelp": "Omeji razpon UDP vrat za HDHomeRun na to vrednost. (Privzeto 1024 - 645535).",
+    "LabelHDHomerunPortRangeHelp": "Omeji razpon UDP vrat za HDHomeRun na to vrednost. (Privzeto 1024 - 65535).",
     "LabelHardwareAccelerationType": "Strojno pospeševanje:",
     "LabelHardwareAccelerationTypeHelp": "Strojno pospeševanje zahteva dodatno konfiguracijo.",
     "LabelHardwareEncoding": "Strojno kodiranje:",
