@@ -9,6 +9,7 @@ import { Events } from 'jellyfin-apiclient';
 	const fallbackModule = 'core';
     const allTranslations = {};
     let currentCulture;
+	let currentCultureAlt;
     let currentDateTimeCulture;
 	let DicKeysNum = {};
 	let origKeysNum = {};
@@ -60,8 +61,10 @@ import { Events } from 'jellyfin-apiclient';
 
     export function updateCurrentCulture() {
         currentCulture = userSettings.language() || getDefaultCulture().ccode;
+		currentCultureAlt = userSettings.languageAlt() || getDefaultCulture().ccode;
 		currentDateTimeCulture = userSettings.dateTimeLocale() || currentCulture;
         ensureTranslations(currentCulture);
+		ensureTranslations(currentCultureAlt);
     }
 	
 	export function updateCulture(culture) {
@@ -122,6 +125,7 @@ import { Events } from 'jellyfin-apiclient';
 			register({name: optionsName, translations: ''});
 		
 		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], locale));
+		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], currentCultureAlt));
 		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], fallbackCulture));
 	
         return Promise.all(promises);
@@ -194,6 +198,8 @@ import { Events } from 'jellyfin-apiclient';
 			culture = getDefaultCulture().ccode;
 		
         let dictionary = getDictionary(module, culture);				
+		if (!dictionary || !dictionary[key]) 
+			dictionary = getDictionary(module, currentCultureAlt);
 		if (!dictionary || !dictionary[key]) 
 			dictionary = getDictionary(module, fallbackCulture);			
 		if (!dictionary || !dictionary[key]) {

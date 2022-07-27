@@ -180,17 +180,16 @@ export function showDictionaryInfo(e) {
 	let activeLang = cultures.getDictionary(lang);
 	let srcLang = cultures.getDictionary(ccodeSrc);
 				
-	let pnode = e.target.parentNode.parentNode;
-	if (pnode) {	
-		let nodeInfo = pnode.querySelector('.infoDetails');  
+	let nodeInfo = document.querySelector('.infoDetails');  
+	if (nodeInfo) {
 		nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLang["displayNativeName"] + ' [ ' + activeLang["ISO6391"] + ' ]';
 		/*
 		if (auto !== '')
 			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML += ' [ ' + auto + ' ]';
-		
+
 		let x = new Date(1970, 0, 1); 
 		x.setSeconds(activeLang["lastm"]);
-		
+
 		let datestr = datetime.toLocaleDateString(x, {
 			weekday: 'short',
 		});
@@ -213,11 +212,11 @@ export function showDictionaryInfo(e) {
 		nodeInfo.querySelector('.infoMyjellyKeysTranslated').innerHTML = ' ' 
 			+ activeLang["myJelly"]["keys#"] + '/' + srcLang["myJelly"]["keys#"]
 			+ ' [ ' + activeLang["myJelly"]["completed%"] + '% ] ';
-		
+
 		nodeInfo.querySelector('.warningIcon').classList.add('hide');
 		nodeInfo.querySelector('.hubIcon').classList.add('hide'); 
 		nodeInfo.querySelector('.doneIcon').classList.add('hide'); 
-		
+
 		if (activeLang["completed%"] > 100 || activeLang["jellyfinWeb"]["completed%"] > 100 || activeLang["myJelly"]["completed%"] > 100) {
 			nodeInfo.querySelector('.warningIcon').classList.remove('hide');
 		} else if (activeLang["ISO6391"] === ccodeSrc) {

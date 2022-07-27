@@ -8,19 +8,22 @@
 		<div class="DisplayLanguageArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 
 			<div class="selectContainer languageSection" style='width: 47%;height: auto'>
-				<select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
-					<option value="">${Auto}</option>
-					<option disabled>${OptionDivider}</option>
-				</select>
-				<div class="fieldDescription">
-					<div>${LabelDisplayLanguageHelp}</div>
-					<div class="hyperlink hide" style="margin-top: .25em;">
-						<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link" href="https://github.com/jellyfin/jellyfin" target="_blank">${LearnHowYouCanContribute}</a>
-					</div>
+				<div class="selectContainer languageSection" style='width: auto;height: auto'>
+					<select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
+						<option value="">${Auto}</option>
+						<option disabled>${OptionDivider}</option>
+					</select>
+				</div>
+				<div class="selectContainer languageSection" style='width: auto;height: auto'>
+					<select is="emby-select" id="selectLanguageAlt" class="selectLanguageAlt" label="${LabelDisplayLanguageAlt}">
+						<option value="">${Auto}</option>
+						<option disabled>${OptionDivider}</option>
+					</select>
 				</div>
 			</div>
 			
 			<fieldset class="selectContainer infoDetails" style="width: 45%;height: auto;border: 1px solid #000;padding: 10px !important;font-size: 75%;">
+			
 				<div class="DisplayLanguageInfo fieldDescription" style='width: 100%;height: auto;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
 					<div><span class="LangDetailsHeader">${LabelDisplayLanguage}</span><span class="infoDisplayLanguage"></span></div>
 					<!-- div><span class="LangDetailsHeader">${LabelLastModified}</span><span class="infoLastModified"></span></div -->
@@ -33,6 +36,13 @@
 					</div>
 					<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelJellyfinWeb}<span class="infoJellyfinKeysTranslated"></span></li></div>
 					<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelmyJelly}<span class="infoMyjellyKeysTranslated"></span></li></div>
+				</div>
+				<br>
+				<div class="fieldDescription">
+					<div>La traduction de Jellyfin est un projet en cours.</div>
+					<div class="hyperlink hide" style="margin-top: .25em;">
+						<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link emby-button" href="https://github.com/jellyfin/jellyfin" target="_blank">Voir comment vous pouvez contribuer.</a>
+					</div>
 				</div>
 			
 			</fieldset>
@@ -62,30 +72,6 @@
 			
 			</div>
 			
-		</div>
-		
-		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
-		
-			<div class="selectContainer" style="width: 47%;height: auto;">
-				<select is="emby-select" id="selectClock" label="${EnableClock}">
-				<option value=0>${Never}</option>
-				<option value=1>${Always}</option>
-				<option value=2>${HeaderNavigation}</option>
-				<option value=3>${HeaderVideos}</option>
-				</select>
-				<div class="fieldDescription ">${EnableClockHelp}</div>
-			</div>
-			
-			<div class="selectContainer" style="width: 47%;height: auto;">
-				<select is="emby-select" id="selectWeatherBot" label="${EnableWeatherBot}">
-				<option value=0>${Never}</option>
-				<option value=1>${Always}</option>
-				<option value=2>${HeaderNavigation}</option>
-				<option value=3>${HeaderVideos}</option>
-				</select>
-				<div class="fieldDescription ">${EnableWeatherBotHelp}</div>
-			</div>
-					
 		</div>
 		
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
@@ -159,6 +145,30 @@
 				</select>
 			</div>
 
+		</div>
+
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
+		
+			<div class="selectContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectClock" label="${EnableClock}">
+				<option value=0>${Never}</option>
+				<option value=1>${Always}</option>
+				<option value=2>${HeaderNavigation}</option>
+				<option value=3>${HeaderVideos}</option>
+				</select>
+				<div class="fieldDescription ">${EnableClockHelp}</div>
+			</div>
+			
+			<div class="selectContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectWeatherBot" label="${EnableWeatherBot}">
+				<option value=0>${Never}</option>
+				<option value=1>${Always}</option>
+				<option value=2>${HeaderNavigation}</option>
+				<option value=3>${HeaderVideos}</option>
+				</select>
+				<div class="fieldDescription ">${EnableWeatherBotHelp}</div>
+			</div>
+					
 		</div>
 		
 		<div class="selectContainer" style="width: 100%;height: auto;">

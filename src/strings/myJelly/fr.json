@@ -33,6 +33,7 @@
     "LabelChromecastVersion": "Version de Chromecast :",
     "LabelDefaultView": "Vue par défaut :",
     "LabelDisplayFontSize": "Taille de la police d'affichage :",
+    "LabelDisplayLanguageAlt": "Langue secondaire :",
     "LabelEmail": "Adresse Email",
     "LabelJellyfinWeb": "Jellyfin-web :",
     "LabelLastModified": "Dernière modification :",

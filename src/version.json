@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.1-12",
+	"version": "10.8.1-13",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -54,6 +54,7 @@
 		"10.8.1-9": "Translations synchronized with master.\nCompatibility with Jellyfin's themes improved.\nAdded missing translation keys.",
 		"10.8.1-10": "Translations synchronized with master.\nAdded missing translation keys.\nFixed updates' autocheck routine in tab 'About'.",
 		"10.8.1-11": "Translations synchronized with master.\nApplied patch 'Backport pull request #3730'.\nApplied patch 'Backport pull request #3751'.\nApplied patch 'Backport pull request #3760'.",
-		"10.8.1-12": "Translations synchronized with master.\nApplied patch 'songs-random-sort'.\nApplied patch 'firefox-icon'."
+		"10.8.1-12": "Translations synchronized with master.\nApplied patch 'songs-random-sort'.\nApplied patch 'firefox-icon'.",
+		"10.8.1-13": "Rearranged layout for the display settings page.\nAllow a secondary display language which has precedence over U.S. English.\nFrench speaking Canadians can have missing keys in French, speakers of Alemannic dialects can have them in German, etc..."
 	}
 }

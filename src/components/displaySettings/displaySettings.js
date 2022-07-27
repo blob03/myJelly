@@ -274,10 +274,14 @@ import viewContainer from '../viewContainer';
 	
 		if (appHost.supports('displaylanguage')) { 
 			let selectLanguage = context.querySelector('#selectLanguage');
+			let selectLanguageAlt = context.querySelector('#selectLanguageAlt');
 			self._savedDisplayLang = userSettings.language() || '';
+			self._savedDisplayLangAlt = userSettings.languageAlt() || '';
 			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", self._savedDisplayLang);
+			settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", self._savedDisplayLangAlt);
 			selectLanguage.addEventListener('change', function(e) { settingsHelper.showDictionaryInfo(e); });
 			selectLanguage.dispatchEvent(event_change);
+			
 			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
 		} else 
 			context.querySelector('.DisplayLanguageArea').classList.add('hide');
@@ -412,6 +416,8 @@ import viewContainer from '../viewContainer';
 		const context = self.options.element;
 		const apiClient = self.options.apiClient;
 		let newDisplayLanguage = self._savedDisplayLang;
+		let newDisplayLanguageAlt = self._savedDisplayLangAlt;
+		
 		let reload = false;
 		let newLayout = context.querySelector('.selectLayout').value;
 		if (newLayout !== self._savedLayout) {
@@ -429,6 +435,11 @@ import viewContainer from '../viewContainer';
 			newDisplayLanguage = context.querySelector('#selectLanguage').value;
 			if (newDisplayLanguage !== self._savedDisplayLang) {
 				userSettingsInstance.language(newDisplayLanguage);
+				reload = true;
+			}
+			newDisplayLanguageAlt = context.querySelector('#selectLanguageAlt').value;
+			if (newDisplayLanguageAlt !== self._savedDisplayLangAlt) {
+				userSettingsInstance.languageAlt(newDisplayLanguageAlt);
 				reload = true;
 			}
         }
@@ -509,6 +520,7 @@ import viewContainer from '../viewContainer';
             this.options = options;
 			this.title = 'Display';
 			this._savedDisplayLang = '';
+			this._savedDisplayLangAlt = '';
 			this._savedLayout = '';
 			this._savedWBot = '';
 			this._savedClock = '';

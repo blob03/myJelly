@@ -1155,6 +1155,23 @@ export class UserSettings {
         else 
             return ''; // defaults to 'auto'.
     }
+	
+	/**
+     * Get or set custom fallback language.
+     * @param {string|undefined} val - Language.
+     * @return {string} Language.
+     */
+    languageAlt(val) {
+        if (val !== undefined) {
+            return this.set('languageAlt', val.toString());
+        }
+
+		const language = this.get('languageAlt');
+		if (language && typeof(language) === 'string') 
+			return language; 
+        else 
+            return ''; // defaults to 'auto'.
+    }
 		
     /**
      * Get or set datetime locale.
@@ -1462,6 +1479,7 @@ export const detailsBanner = currentSettings.detailsBanner.bind(currentSettings)
 export const useEpisodeImagesInNextUpAndResume = currentSettings.useEpisodeImagesInNextUpAndResume.bind(currentSettings);
 export const useCardLayoutInHomeSections = currentSettings.useCardLayoutInHomeSections.bind(currentSettings);
 export const language = currentSettings.language.bind(currentSettings);
+export const languageAlt = currentSettings.languageAlt.bind(currentSettings);
 export const dateTimeLocale = currentSettings.dateTimeLocale.bind(currentSettings);
 export const chromecastVersion = currentSettings.chromecastVersion.bind(currentSettings);
 export const enableRewatchingInNextUp = currentSettings.enableRewatchingInNextUp.bind(currentSettings);
