@@ -416,7 +416,7 @@ import viewContainer from '../viewContainer';
 			prefs.setAttribute('data-title', globalize.translate('Display'));
 	}
 
-    function saveUser(self) {
+    function saveForm(self) {
 		const user = self.currentUser;
 		const enableSaveConfirmation = self.options.enableSaveConfirmation;
 		const userSettingsInstance = self.options.userSettings;
@@ -424,17 +424,17 @@ import viewContainer from '../viewContainer';
 		const apiClient = self.options.apiClient;
 		let newDisplayLanguage = self._savedDisplayLang;
 		let newDisplayLanguageAlt = self._savedDisplayLangAlt;
-		
 		let reload = false;
+		
 		let newLayout = context.querySelector('.selectLayout').value;
 		if (newLayout !== self._savedLayout) {
-			layoutManager.setLayout(newLayout, true);		
+			layoutManager.setLayout(newLayout, true);
 			self._savedLayout = newLayout;
 			reload = true;
 		}
 		
 		if ((self._savedClock != context.querySelector('#selectClock').value) ||
-				(self._savedWBot != context.querySelector('#selectWeatherBot').value)) {
+			(self._savedWBot != context.querySelector('#selectWeatherBot').value)) {
 			reload = true;
 		}
 		
@@ -450,7 +450,7 @@ import viewContainer from '../viewContainer';
 				reload = true;
 			}
         }
-					
+
 		user.localUser.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
         userSettingsInstance.enableThemeSongs(context.querySelector('#chkThemeSong').checked);
@@ -476,7 +476,7 @@ import viewContainer from '../viewContainer';
 			userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);
 		else
 			displayFontSizeRset();
-		
+
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
      
 		apiClient.updateUserConfiguration(user.localUser.Id, user.localUser.Configuration).then( () => { 
@@ -501,7 +501,7 @@ import viewContainer from '../viewContainer';
 
     function onSubmit(e) {
 		loading.show();
-		saveUser(this);
+		saveForm(this);
 		Events.trigger(this, 'saved'); 
 		
         // Disable default form submission

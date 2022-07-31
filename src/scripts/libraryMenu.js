@@ -249,8 +249,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 				headerNightmodeButton.classList.add('hide');
             if (headerSearchButton)
                 headerSearchButton.classList.remove('hide');
-			if (backdropInfoButton)
-                backdropInfoButton.classList.remove('hide');
 			if (mainDrawerButton) {
 				if (!layoutManager.tv)
 					mainDrawerButton.classList.remove('hide');
