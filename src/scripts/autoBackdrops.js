@@ -2,13 +2,23 @@ import { clearBackdrop, setBackdrops } from '../components/backdrop/backdrop';
 import * as userSettings from './settings/userSettings';
 import libraryMenu from './libraryMenu';
 import { pageClassOn } from '../utils/dashboard';
+import { appRouter } from '../components/appRouter';
 
 const cache = {};
+const _info_link_href = {};
 
 function enabled() {
     return userSettings.enableBackdrops() != 'None';
 }
 
+function clearBackdropButton() {
+	const _bdi =  document.querySelector('#backdropInfoButton');
+	if (_bdi) {
+		_bdi.href = '#';
+		_bdi.classList.add('hide');
+	}
+}
+	
 function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let ImageTypes = 'Backdrop';
 	let MaxOfficialRating = parentId ? '' : 'PG-13';
@@ -17,17 +27,20 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let type = userSettings.enableBackdrops();
 	let genreIds = '';
 	let filters = '';
+	let options;
+	let images;
+	const _bdi =  document.querySelector('#backdropInfoButton');
 	
 	switch(type) {
 		case "LibrariesFav":
-		case "MovieFav":			
+		case "MovieFav":
 		case "SeriesFav":
 		case "ArtistsFav":
 			filters = 'IsFavorite';
 			break;
 	}
 			
-	switch(type) {	
+	switch(type) {
 		case "Movie":
 		case "MovieFav":
 			types = "Movie";
@@ -42,12 +55,16 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
     const key = `backdrops2_${userId + (type || '') + (parentId || '')}`;
     let data = cache[key];
     if (data) {
-        console.debug(`Found backdrop id list in cache. Key: ${key}`);
+        //console.debug(`Found backdrop id list in cache. Key: ${key}`);
+		if (_bdi) {
+			if (_info_link_href[key]) {
+				_bdi.href = _info_link_href[key];
+				_bdi.classList.remove('hide');
+			}
+		}
         data = JSON.parse(data);
         return Promise.resolve(data);
     }
-	let options;
-	let images;
 
 	switch(type) {
 		case "Libraries":
@@ -56,8 +73,6 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "MovieFav":
 		case "Series":
 		case "SeriesFav":
-		case 'Theme':
-		case "Auto":
 			options = {
 				SortBy: SortBy,
 				Limit: 20,
@@ -72,6 +87,14 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 			};
 			return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
 				if (result.Items.length) {
+					const _pageinfoUrl = appRouter.getRouteUrl(result.Items[0]) || '#';
+					if (_pageinfoUrl) {
+						if (_bdi) {
+							_bdi.href = _pageinfoUrl;
+							_bdi.classList.remove('hide');
+						}
+					}
+						
 					images = result.Items.map(function (i) {
 						return {
 							Id: i.Id,
@@ -80,6 +103,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 						};
 					});
 					cache[key] = JSON.stringify(images);
+					_info_link_href[key] = _pageinfoUrl;
 					return images;
 				}
 			});
@@ -87,6 +111,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 			
 		case "Artists":
 		case "ArtistsFav":
+			clearBackdropButton();
 			options = {
 				SortBy: SortBy,
 				Limit: 20,
@@ -95,7 +120,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 				Filters: filters
 			};
 			return apiClient.getArtists(apiClient.getCurrentUserId(), options).then( (result) => {
-				if (result.Items.length) {	
+				if (result.Items.length) {
 					images = result.Items.map(function (i) {
 						return {
 							Id: i.Id,
@@ -109,11 +134,17 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 			});
 			break;
 	}
-		
+	
+	clearBackdropButton();
+	return new Promise(() => {
+		images = {};
+		return images;
+	});
 }
 
 function showBackdrop(type, parentId) {
     const apiClient = window.ApiClient;
+	
     if (apiClient) {
         getBackdropItemIds(apiClient, apiClient.getCurrentUserId(), type, parentId).then( function (images) {
             if (images && images.length) {
@@ -122,7 +153,8 @@ function showBackdrop(type, parentId) {
                     return i;
                 }));
             } else {
-                 clearBackdrop();
+				clearBackdropButton();
+				clearBackdrop();
             }
         });
     }
@@ -130,20 +162,26 @@ function showBackdrop(type, parentId) {
 
 pageClassOn('pageshow', 'page', function () {
     const page = this;
-
+	
     if (!page.classList.contains('selfBackdropPage')) {
+		console.warn(page.classList.contains('backdropPage'));
         if (page.classList.contains('backdropPage')) {
             if (enabled()) {
                 const type = page.getAttribute('data-backdroptype');
                 const parentId = page.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
 				showBackdrop(type, parentId);
             } else {
-                page.classList.remove('backdropPage');
+				page.classList.remove('backdropPage');
+				clearBackdropButton();
                 clearBackdrop();
             }
         } else {
+			clearBackdropButton();
             clearBackdrop();
         }
-    }
+    } else {
+		clearBackdropButton();
+		clearBackdrop();
+	}
 });
 

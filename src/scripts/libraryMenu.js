@@ -72,6 +72,9 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
 		
+		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="headerButton headerBackdropInfoButton headerButtonRight hide">';
+		html += '<span class="material-icons image_search"></span></button>';
+		
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
 		
 		// Extra feature thought for the TV layout.
@@ -161,6 +164,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		headerNightmodeButton = skinHeader.querySelector('.headerNightmodeButton');
         headerAudioPlayerButton = skinHeader.querySelector('.headerAudioPlayerButton');
         headerSearchButton = skinHeader.querySelector('.headerSearchButton');
+		backdropInfoButton = skinHeader.querySelector('#backdropInfoButton');
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
 		headerLockButton = skinHeader.querySelector('.headerLockButton');
         headerSyncButton = skinHeader.querySelector('.headerSyncButton');
@@ -206,6 +210,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             headerNightmodeButton.title = globalize.translate('ButtonNightmode');
         if (headerSearchButton)
             headerSearchButton.title = globalize.translate('Search');
+		if (backdropInfoButton)
+            backdropInfoButton.title = globalize.translate('BackdropInfo');
 		if (headerReloadButton) 
 			headerReloadButton.title = globalize.translate('Reload');
 		if (headerLockButton)
@@ -243,6 +249,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 				headerNightmodeButton.classList.add('hide');
             if (headerSearchButton)
                 headerSearchButton.classList.remove('hide');
+			if (backdropInfoButton)
+                backdropInfoButton.classList.remove('hide');
 			if (mainDrawerButton) {
 				if (!layoutManager.tv)
 					mainDrawerButton.classList.remove('hide');
@@ -290,6 +298,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             headerSyncButton.classList.add('hide');
             if (headerSearchButton) 
                 headerSearchButton.classList.add('hide');
+			if (backdropInfoButton) 
+                backdropInfoButton.classList.add('hide');
 			if (headerReloadButton) 
 				headerReloadButton.classList.add('hide');
 			if (headerLockButton) 
@@ -309,6 +319,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         }
     }
 
+	function gotoBackdropInfo() {
+		appRouter.show(backdropInfoButton.href);
+	}
+	
+	
     function showSearch() {
         inputManager.handleCommand('search');
     }
@@ -365,6 +380,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         if (headerSearchButton) {
             headerSearchButton.addEventListener('click', showSearch);
         }
+		
+		if (backdropInfoButton) {
+			backdropInfoButton.addEventListener('click', gotoBackdropInfo);
+		}
 		
 		if (headerReloadButton) {
 			headerReloadButton.addEventListener('click', doReload);
@@ -471,7 +490,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
     function refreshLibraryInfoInDrawer(user) {
         let html = '';
         html += '<div style="height:.5em;"></div>';
-        html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="#!/home.html"><span class="material-icons navMenuOptionIcon home"></span><span class="navMenuOptionText">' + globalize.translate('Home') + '</span></a>';
+        html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="#/home.html"><span class="material-icons navMenuOptionIcon home"></span><span class="navMenuOptionText">' + globalize.translate('Home') + '</span></a>';
 
         // placeholder for custom menu links
         html += '<div class="customMenuOptions"></div>';
@@ -484,8 +503,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             html += '<h3 class="sidebarHeader">';
             html += globalize.translate('HeaderAdmin');
             html += '</h3>';
-            html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder lnkManageServer" data-itemid="dashboard" href="#!/dashboard.html"><span class="material-icons navMenuOptionIcon dashboard"></span><span class="navMenuOptionText">' + globalize.translate('TabDashboard') + '</span></a>';
-            html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder editorViewMenu" data-itemid="editor" href="#!/edititemmetadata.html"><span class="material-icons navMenuOptionIcon mode_edit"></span><span class="navMenuOptionText">' + globalize.translate('Metadata') + '</span></a>';
+            html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder lnkManageServer" data-itemid="dashboard" href="#/dashboard.html"><span class="material-icons navMenuOptionIcon dashboard"></span><span class="navMenuOptionText">' + globalize.translate('TabDashboard') + '</span></a>';
+            html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder editorViewMenu" data-itemid="editor" href="#/edititemmetadata.html"><span class="material-icons navMenuOptionIcon mode_edit"></span><span class="navMenuOptionText">' + globalize.translate('Metadata') + '</span></a>';
             html += '</div>';
         }
 
@@ -586,28 +605,28 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             name: globalize.translate('TabServer')
         }, {
             name: globalize.translate('TabDashboard'),
-            href: '#!/dashboard.html',
+            href: '#/dashboard.html',
             pageIds: ['dashboardPage'],
             icon: 'dashboard'
         }, {
             name: globalize.translate('General'),
-            href: '#!/dashboardgeneral.html',
+            href: '#/dashboardgeneral.html',
             pageIds: ['dashboardGeneralPage'],
             icon: 'settings'
         }, {
             name: globalize.translate('HeaderUsers'),
-            href: '#!/userprofiles.html',
+            href: '#/userprofiles.html',
             pageIds: ['userProfilesPage', 'newUserPage', 'editUserPage', 'userLibraryAccessPage', 'userParentalControlPage', 'userPasswordPage'],
             icon: 'people'
         }, {
             name: globalize.translate('HeaderLibraries'),
-            href: '#!/library.html',
+            href: '#/library.html',
             pageIds: ['mediaLibraryPage', 'librarySettingsPage', 'libraryDisplayPage', 'metadataImagesConfigurationPage', 'metadataNfoPage'],
             icon: 'folder'
         }, {
             name: globalize.translate('TitlePlayback'),
             icon: 'play_arrow',
-            href: '#!/encodingsettings.html',
+            href: '#/encodingsettings.html',
             pageIds: ['encodingSettingsPage', 'playbackConfigurationPage', 'streamingSettingsPage']
         }];
         addPluginPagesToMainMenu(links, pluginItems, 'server');
@@ -617,19 +636,19 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         });
         links.push({
             name: globalize.translate('HeaderDevices'),
-            href: '#!/devices.html',
+            href: '#/devices.html',
             pageIds: ['devicesPage', 'devicePage'],
             icon: 'devices'
         });
         links.push({
             name: globalize.translate('HeaderActivity'),
-            href: '#!/serveractivity.html',
+            href: '#/serveractivity.html',
             pageIds: ['serverActivityPage'],
             icon: 'assessment'
         });
         links.push({
             name: globalize.translate('DLNA'),
-            href: '#!/dlnasettings.html',
+            href: '#/dlnasettings.html',
             pageIds: ['dlnaSettingsPage', 'dlnaProfilesPage', 'dlnaProfilePage'],
             icon: 'input'
         });
@@ -639,13 +658,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         });
         links.push({
             name: globalize.translate('LiveTV'),
-            href: '#!/livetvstatus.html',
+            href: '#/livetvstatus.html',
             pageIds: ['liveTvStatusPage', 'liveTvTunerPage'],
             icon: 'live_tv'
         });
         links.push({
             name: globalize.translate('HeaderDVR'),
-            href: '#!/livetvsettings.html',
+            href: '#/livetvsettings.html',
             pageIds: ['liveTvSettingsPage'],
             icon: 'dvr'
         });
@@ -657,36 +676,36 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         links.push({
             name: globalize.translate('TabNetworking'),
             icon: 'cloud',
-            href: '#!/networking.html',
+            href: '#/networking.html',
             pageIds: ['networkingPage']
         });
         links.push({
             name: globalize.translate('HeaderApiKeys'),
             icon: 'vpn_key',
-            href: '#!/apikeys.html',
+            href: '#/apikeys.html',
             pageIds: ['apiKeysPage']
         });
         links.push({
             name: globalize.translate('TabLogs'),
-            href: '#!/log.html',
+            href: '#/log.html',
             pageIds: ['logPage'],
             icon: 'bug_report'
         });
         links.push({
             name: globalize.translate('TabNotifications'),
             icon: 'notifications',
-            href: '#!/notificationsettings.html',
+            href: '#/notificationsettings.html',
             pageIds: ['notificationSettingsPage', 'notificationSettingPage']
         });
         links.push({
             name: globalize.translate('TabPlugins'),
             icon: 'shopping_cart',
-            href: '#!/installedplugins.html',
+            href: '#/installedplugins.html',
             pageIds: ['pluginsPage', 'pluginCatalogPage']
         });
         links.push({
             name: globalize.translate('TabScheduledTasks'),
-            href: '#!/scheduledtasks.html',
+            href: '#/scheduledtasks.html',
             pageIds: ['scheduledTasksPage', 'scheduledTaskPage'],
             icon: 'schedule'
         });
@@ -771,7 +790,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
     function createDashboardMenu(apiClient) {
         return getToolsMenuHtml(apiClient).then(function (toolsMenuHtml) {
             let html = '';
-            html += '<a class="adminDrawerLogo clearLink" is="emby-linkbutton" href="#!/home.html">';
+            html += '<a class="adminDrawerLogo clearLink" is="emby-linkbutton" href="#/home.html">';
             html += '<img src="assets/img/icon-transparent.png" />';
             html += '</a>';
             html += toolsMenuHtml;
@@ -802,7 +821,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
                     guideView.Name = globalize.translate('Guide');
                     guideView.ImageTags = {};
                     guideView.icon = 'dvr';
-                    guideView.url = '#!/livetv.html?tab=1';
+                    guideView.url = '#/livetv.html?tab=1';
                     list.push(guideView);
                 }
             }
@@ -1108,6 +1127,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
     let headerCastButton;
 	let headerNightmodeButton;
     let headerSearchButton;
+	let backdropInfoButton;
 	let headerReloadButton;
 	let headerLockButton;
     let headerAudioPlayerButton;

@@ -7,7 +7,7 @@
 
 		<div class="DisplayLanguageArea hide" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 
-			<div class="selectContainer languageSection" style='width: 47%;height: auto'>
+			<div class="languageSection" style='width: 47%;height: auto'>
 				<div class="selectContainer languageSection" style='width: auto;height: auto'>
 					<select is="emby-select" id="selectLanguage" class="selectLanguage" label="${LabelDisplayLanguage}">
 						<option value="">${Auto}</option>
@@ -16,7 +16,7 @@
 				</div>
 				<div class="selectContainer languageSection" style='width: auto;height: auto'>
 					<select is="emby-select" id="selectLanguageAlt" class="selectLanguageAlt" label="${LabelDisplayLanguageAlt}">
-						<option value="">${Auto}</option>
+						<option value="none">${None}</option>
 						<option disabled>${OptionDivider}</option>
 					</select>
 				</div>
@@ -174,7 +174,6 @@
 		<div class="selectContainer" style="width: 100%;height: auto;">
 		
 			<select is="emby-select" id="srcBackdrops" label="${LabelBackdrops}">
-				<option value="Auto">${Auto}</option>
 				<option value="None">${None}</option>
 				<option disabled>${OptionDivider}</option>
 				<option value="Theme">${Theme}</option>

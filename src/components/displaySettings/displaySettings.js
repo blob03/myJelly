@@ -275,11 +275,18 @@ import viewContainer from '../viewContainer';
 		if (appHost.supports('displaylanguage')) { 
 			let selectLanguage = context.querySelector('#selectLanguage');
 			let selectLanguageAlt = context.querySelector('#selectLanguageAlt');
-			self._savedDisplayLang = userSettings.language() || '';
-			self._savedDisplayLangAlt = userSettings.languageAlt() || '';
+			self._savedDisplayLang = userSettings.language();
+			self._savedDisplayLangAlt = userSettings.languageAlt();
 			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", self._savedDisplayLang);
-			settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", self._savedDisplayLangAlt);
-			selectLanguage.addEventListener('change', function(e) { settingsHelper.showDictionaryInfo(e); });
+			settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", self._savedDisplayLangAlt, self._savedDisplayLang);
+			selectLanguage.addEventListener('change', 
+				function(e) { 
+					settingsHelper.showDictionaryInfo(e); 
+					let selectLanguageAlt = document.querySelector('#selectLanguageAlt');
+					let allCultures = cultures.getDictionaries();
+					settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", selectLanguageAlt.value, e.target.value);
+				}
+			);
 			selectLanguage.dispatchEvent(event_change);
 			
 			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
@@ -293,7 +300,7 @@ import viewContainer from '../viewContainer';
 		} else 
 			context.querySelector('.fldDateTimeLocale').classList.add('hide');
 	
-        if (appHost.supports('externallinks')) {	
+        if (appHost.supports('externallinks')) {
 			var els = document.getElementsByClassName('hyperlink');
 			Array.prototype.forEach.call(els, function(el) {
 				el.classList.remove('hide');
@@ -366,7 +373,7 @@ import viewContainer from '../viewContainer';
 		context.querySelector('#sliderAPIFrequency').value = userSettings.APIDelay();
 		context.querySelector('#selectSwiperFX').value = userSettings.swiperFX();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
-		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "Auto";
+		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "None";
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		self._savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 			

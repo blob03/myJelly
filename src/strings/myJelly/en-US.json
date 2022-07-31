@@ -4,6 +4,7 @@
     "Always": "Always",
     "AppDescription": "The Jellyfin web client modified.",
     "Authentication": "Authentication",
+    "BackdropInfo": "Backdrop details",
     "BackdropScreensaverHelp": "Show all the backdrops available.",
     "BlackoutScreensaverHelp": "Just a black screen.",
     "ButtonNightmode": "Night/normal mode",

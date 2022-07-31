@@ -1080,7 +1080,7 @@ export class UserSettings {
 		if (enableBackdrops && typeof(enableBackdrops) === 'string') 
 			return enableBackdrops; 
         else 
-            return 'Auto'; 
+            return 'None'; 
     }
 	
 	/**
@@ -1170,7 +1170,7 @@ export class UserSettings {
 		if (language && typeof(language) === 'string') 
 			return language; 
         else 
-            return ''; // defaults to 'auto'.
+            return "none"; // defaults to 'none'.
     }
 		
     /**
