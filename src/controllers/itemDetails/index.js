@@ -316,7 +316,7 @@ function renderSubtitleSelections(page, mediaSources) {
     const selectedId = mediaSource.DefaultSubtitleStreamIndex == null ? -1 : mediaSource.DefaultSubtitleStreamIndex;
 
     let selected = selectedId === -1 ? ' selected' : '';
-    select.innerHTML = '<option value="-1">' + globalize.translate('Off') + '</option>' + tracks.map(function (v) {
+    select.innerHTML += tracks.map(function (v) {
         selected = v.Index === selectedId ? ' selected' : '';
         return '<option value="' + v.Index + '" ' + selected + '>' + v.DisplayTitle + '</option>';
     }).join('');

@@ -14,11 +14,19 @@ function enabled() {
 function clearBackdropButton() {
 	const _bdi =  document.querySelector('#backdropInfoButton');
 	if (_bdi) {
-		_bdi.href = '#';
 		_bdi.classList.add('hide');
+		_bdi.href = '#';
 	}
 }
-	
+
+function showBackdropButton(_item_url) {
+	const _bdi =  document.querySelector('#backdropInfoButton');
+	if (_bdi && _item_url) {
+		_bdi.href = _item_url;
+		_bdi.classList.remove('hide');
+	}
+}
+
 function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let ImageTypes = 'Backdrop';
 	let MaxOfficialRating = parentId ? '' : 'PG-13';
@@ -29,7 +37,6 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let filters = '';
 	let options;
 	let images;
-	const _bdi =  document.querySelector('#backdropInfoButton');
 	
 	switch(type) {
 		case "LibrariesFav":
@@ -56,12 +63,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
     let data = cache[key];
     if (data) {
         //console.debug(`Found backdrop id list in cache. Key: ${key}`);
-		if (_bdi) {
-			if (_info_link_href[key]) {
-				_bdi.href = _info_link_href[key];
-				_bdi.classList.remove('hide');
-			}
-		}
+		showBackdropButton(_info_link_href[key]);
         data = JSON.parse(data);
         return Promise.resolve(data);
     }
@@ -88,12 +90,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 			return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
 				if (result.Items.length) {
 					const _pageinfoUrl = appRouter.getRouteUrl(result.Items[0]) || '#';
-					if (_pageinfoUrl) {
-						if (_bdi) {
-							_bdi.href = _pageinfoUrl;
-							_bdi.classList.remove('hide');
-						}
-					}
+					showBackdropButton(_pageinfoUrl);
 						
 					images = result.Items.map(function (i) {
 						return {
@@ -161,25 +158,20 @@ function showBackdrop(type, parentId) {
 }
 
 pageClassOn('pageshow', 'page', function () {
-    const page = this;
-	
-    if (!page.classList.contains('selfBackdropPage')) {
-		console.warn(page.classList.contains('backdropPage'));
-        if (page.classList.contains('backdropPage')) {
-            if (enabled()) {
-                const type = page.getAttribute('data-backdroptype');
-                const parentId = page.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
-				showBackdrop(type, parentId);
-            } else {
-				page.classList.remove('backdropPage');
-				clearBackdropButton();
-                clearBackdrop();
-            }
-        } else {
+	const page = this;
+
+	if (!page.classList.contains('selfBackdropPage')
+		&& page.classList.contains('backdropPage')) {
+		if (enabled()) {
+			const type = page.getAttribute('data-backdroptype');
+			const parentId = page.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
+			showBackdrop(type, parentId);
+		} else {
+			page.classList.remove('backdropPage');
 			clearBackdropButton();
-            clearBackdrop();
-        }
-    } else {
+			clearBackdrop();
+		}
+	} else {
 		clearBackdropButton();
 		clearBackdrop();
 	}

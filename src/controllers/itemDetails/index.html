@@ -103,7 +103,10 @@
                                 <select is="emby-select" class="selectAudio detailTrackSelect" label=""></select>
                             </div>
                             <div class="selectContainer selectSubtitlesContainer hide trackSelectionFieldContainer flex-shrink-zero">
-                                <select is="emby-select" class="selectSubtitles detailTrackSelect" label=""></select>
+                                <select is="emby-select" class="selectSubtitles detailTrackSelect" label="">
+									<option value="-1">${Off}</option>
+									<option disabled>${OptionDivider}</option>
+								</select>
                             </div>
                         </form>
 

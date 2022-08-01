@@ -446,7 +446,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 
     function onSyncButtonClicked() {
         const btn = this;
-        groupSelectionMenu.show(btn);
+        groupSelectionMenu.show(btn); 
     }
 
     function getItemHref(item, context) {
