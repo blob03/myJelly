@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.1-16",
+	"version": "10.8.1-17",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -58,6 +58,7 @@
 		"10.8.1-13": "Rearranged layout for the display settings page.\nAllow a secondary display language which has precedence over U.S. English.\nFrench speaking Canadians can have missing keys in French, speakers of Alemannic dialects can have them in German, etc...",
 		"10.8.1-14": "Translations synchronized with master.\nImproved secondary language selection.\nApplied patch 'Remove hash bang paths'.\nAdded link to backdrop details in the top bar.\nRemoved 'Auto' from the list of backdrop types.",
 		"10.8.1-15": "Fixed backdrop info button incorrectly unhidden when new display settings cause a reload of the UI.",
-		"10.8.1-16": "Improved compatibility with Jellyfin's base themes."
+		"10.8.1-16": "Improved compatibility with Jellyfin's base themes.",
+		"10.8.1-17": "Translations synchronized with master.\nFile 'package.json' synchronized with master, do '#npm update' once to apply the changes.\nApplied patch 'Backport pull request #3778'.\nApplied patch 'Backport pull request #3781'."
 	}
 }

@@ -37,8 +37,8 @@ class AboutTab {
 		this.currentUser = '';
 		const self = this;
 		
-		let html = '<div class="abouttab" style="display: flex !important;width: 100%;height: 10em;flex-direction: column;align-items: center;justify-content: space-around;margin: 6rem 0 0 0 !important;">';
-		html += '<div class="paperList aboutframe" style="padding: 1em;background: rgba(20, 20, 20, 0.15);position: fixed;top: 20%;left: 0%;right: 0px;width: 30rem;">';
+		let html = '<div class="abouttab" style="width: 100%;height: 100%;margin: .1rem 0 0 0 !important;">';
+		html += '<div class="paperList aboutframe" style="position: absolute;padding: 1em;background: rgba(20, 20, 20, 0.15);position: relative;top: 1rem;left: 0rem;right: 0rem;width: 33rem;">';
 		html += '<div><center><span style="font-weight: 400;font-size: 200%;font-family: Quicksand-Regular;" class="aboutcontent">' + appInfo.name + '</span></center></div>';
 		html += '<div><center><span style="font-weight: 400;font-style: italic;font-family: Quicksand-Regular;" class="aboutcontent">' + globalize.translate(appInfo.description) + '</span></center></div>';
 		html += '<br>';
