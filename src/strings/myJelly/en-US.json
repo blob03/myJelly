@@ -1,5 +1,6 @@
 {
     "About": "About...",
+	"Aggregate": "Aggregate",
     "AirPlay": "AirPlay",
     "Always": "Always",
     "AppDescription": "The Jellyfin web client modified.",
@@ -88,7 +89,6 @@
     "ThemeVideos": "Theme videos",
     "TryIt": "Try it",
     "UseCardLayoutInHomeSectionsHelp": "Use a card format to render the 'Home' and 'Favorites' screens.",
-    "UseNextUpRewatch": "Generate a 'Rewatching' section (Jellyfin 10.8.0+)",
     "Videos": "Videos",
     "WeatherApiRegistrationHelp": "Learn how to get a free key.",
     "WeatherbotScreensaverHelp": "Print the current weather condition.",

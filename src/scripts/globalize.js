@@ -149,7 +149,6 @@ import { Events } from 'jellyfin-apiclient';
 		DicKeysNum[lang] = origKeysNum[lang] = myKeysNum[lang] = 0;
         return new Promise((resolve) => {
 			// import jellyfin core translation file
-
             import(`../strings/${lang}.json`).then((content) => {	
 				content = Object.filter(content, str => typeof str === "string" && str.length);
 				DicKeysNum[lang] = origKeysNum[lang] = Object.keys(content).length;

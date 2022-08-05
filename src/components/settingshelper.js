@@ -1,7 +1,8 @@
 import globalize from '../scripts/globalize';
 import cultures from '../scripts/cultures';
 import datetime from '../scripts/datetime';
- 
+import indicators from './indicators/indicators';
+
 /**
  * Helper for handling settings.
  * @module components/settingsHelper
@@ -178,66 +179,73 @@ export function populateDictionaries(select, languages, view, val, ban) {
 	});	
 }
 
-// Refresh the window containing the metadata of whatever language is selected.
-export function showDictionaryInfo(e) {		
-	let ccodeSrc = globalize.getSourceCulture();
-	let val = e.target.options[e.target.selectedIndex].value;
-	let auto = '';
-	let lang = val;
-	if (lang === '') {
-		let ret = globalize.getDefaultCulture();
-		lang = ret.ccode;
-		auto = ret.src;
-	}
-	let activeLang = cultures.getDictionary(lang);
-	let srcLang = cultures.getDictionary(ccodeSrc);
+// Refresh the recap window containing the progress bar for the aggregate language.
+export function showAggregateInfo(x) {
+	const node = x.parentElement?.parentElement?.parentElement;  
+	if (!node)
+		return;
+	const langNode = node.querySelector('#langInfoArea');
+	let lang = node.querySelector('.selectLanguage')?.value;
+	let langAlt = node.querySelector('.selectLanguageAlt')?.value;
+	if (!lang || !langAlt)
+		return;
+	const srcCode = globalize.getSourceCulture();
+	
+	// Auto mode
+	if (lang === '')
+		lang = globalize.getDefaultCulture().ccode;
+	
+	globalize.getCoreDictionary(srcCode).then((srcLangKeys) => {
+		globalize.getCoreDictionary(lang).then((eLangKeys) => {
+			globalize.getCoreDictionary(langAlt).then((dic) => {
+				let _completeness = 0;
 				
-	let nodeInfo = document.querySelector('.infoDetails');  
-	if (nodeInfo) {
-		nodeInfo.querySelector('.infoDisplayLanguage').innerHTML = ' ' + activeLang["displayNativeName"] + ' [ ' + activeLang["ISO6391"] + ' ]';
-		/*
-		if (auto !== '')
-			nodeInfo.querySelector('.infoDisplayLanguage').innerHTML += ' [ ' + auto + ' ]';
-
-		let x = new Date(1970, 0, 1); 
-		x.setSeconds(activeLang["lastm"]);
-
-		let datestr = datetime.toLocaleDateString(x, {
-			weekday: 'short',
+				if (langAlt !== 'none') {
+					let _keys_done = 0;
+					let _keys_total = 0;
+					for (const key in srcLangKeys) {
+						++ _keys_total;
+						if (dic[key] || eLangKeys[key])
+							++ _keys_done;
+					}
+					_completeness = (_keys_done / _keys_total) * 100;
+				} else {
+					const eLang = cultures.getDictionary(lang);
+					_completeness = eLang["completed%"];
+				}
+				langNode.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(_completeness);
+				langNode.querySelector('.langProgressValue').innerHTML = _completeness.toFixed(2) + '% ';
+	
+				langNode.querySelector('.doneIcon').classList.add('hide'); 
+				if (_completeness === 100)
+					langNode.querySelector('.doneIcon').classList.remove('hide');
+			});
 		});
-		datestr += "  ";
-		datestr += datetime.toLocaleDateString(x);
-		datestr += "  ";
-		datestr += datetime.toLocaleTimeString(x, {
-			hour: 'numeric',
-			minute: '2-digit'
-		});
-		nodeInfo.querySelector('.infoLastModified').innerHTML = ' ' + datestr;
-		*/
-		nodeInfo.querySelector('.infoKeysTranslated').innerHTML = ' ' 
-			+ activeLang["keys#"]
-			+ '/' + srcLang["keys#"]
-			+ ' [ ' + activeLang["completed%"] + '% ] ';
-		nodeInfo.querySelector('.infoJellyfinKeysTranslated').innerHTML = ' ' 
-			+ activeLang["jellyfinWeb"]["keys#"] + '/' + srcLang["jellyfinWeb"]["keys#"]
-			+ ' [ ' + activeLang["jellyfinWeb"]["completed%"] + '% ] ';
-		nodeInfo.querySelector('.infoMyjellyKeysTranslated').innerHTML = ' ' 
-			+ activeLang["myJelly"]["keys#"] + '/' + srcLang["myJelly"]["keys#"]
-			+ ' [ ' + activeLang["myJelly"]["completed%"] + '% ] ';
+	});
+}
 
-		nodeInfo.querySelector('.warningIcon').classList.add('hide');
-		nodeInfo.querySelector('.hubIcon').classList.add('hide'); 
-		nodeInfo.querySelector('.doneIcon').classList.add('hide'); 
+// Refresh the progress bar lying underneath the language widgets.
+export function showLangProgress(x) {
+	if (!x)
+		return;
+	const node = x.parentNode;
+	let lang = x.value;
+	
+	// No language.
+	if (lang === 'none') {
+		node.querySelector('.langProgressCode').innerHTML = '';
+		node.querySelector('.langProgressBar').innerHTML = '';
+		node.querySelector('.langProgressValue').innerHTML = '';
+		return;
+	}
+	// Auto mode
+	if (lang === '')
+		lang = globalize.getDefaultCulture().ccode;
 
-		if (activeLang["completed%"] > 100 || activeLang["jellyfinWeb"]["completed%"] > 100 || activeLang["myJelly"]["completed%"] > 100) {
-			nodeInfo.querySelector('.warningIcon').classList.remove('hide');
-		} else if (activeLang["ISO6391"] === ccodeSrc) {
-			// lang is source.
-			nodeInfo.querySelector('.hubIcon').classList.remove('hide'); 
-		} else if (activeLang["completed%"] === 100) {
-			nodeInfo.querySelector('.doneIcon').classList.remove('hide');
-		}
-	}		
+	let eLang = cultures.getDictionary(lang);
+	node.querySelector('.langProgressCode').innerHTML = eLang["ISO6391"];
+	node.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(eLang["completed%"]);
+	node.querySelector('.langProgressValue').innerHTML = eLang["completed%"] + '% ';
 }
 
 export default {
@@ -245,5 +253,6 @@ export default {
 	populateServerLanguages: populateServerLanguages,
 	populateSubsLanguages: populateSubsLanguages,
 	populateDictionaries: populateDictionaries,
-	showDictionaryInfo: showDictionaryInfo
+	showAggregateInfo: showAggregateInfo,
+	showLangProgress: showLangProgress
 };

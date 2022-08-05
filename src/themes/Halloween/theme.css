@@ -273,7 +273,7 @@ html {
 }
 
 .itemProgressBarForeground {
-   background: radial-gradient(#ffa700, #ce6e19);
+   background: linear-gradient(135deg, #4114e5 0%, #6f53d3 100%);
 }
 
 .itemProgressBarForeground-recording {

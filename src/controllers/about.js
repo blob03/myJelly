@@ -90,7 +90,7 @@ class AboutTab {
 				let _txtarea = self.view.querySelector('#txtRNotes');
 				if (_txtarea && typeof self.releaseNotes[_version] === 'string') {
 					let _rows = self.releaseNotes[_version].split(/\r\n|\r|\n/).length + 1;
-					_rows = Math.min(_rows, 7);
+					_rows = Math.min(_rows, 6);
 					_txtarea.rows = _rows;
 					_txtarea.value = self.releaseNotes[_version];
 				}

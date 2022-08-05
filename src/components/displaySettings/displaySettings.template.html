@@ -13,36 +13,47 @@
 						<option value="">${Auto}</option>
 						<option disabled>${OptionDivider}</option>
 					</select>
+					<div class="fieldDescription" style="display: flex;flex-direction: row;align-items: center;justify-content: center;font-size: 75%;">
+						<div class="langProgressCode" style="padding: 0 .8rem 0 0;flex-grow: 0;"></div>
+						<div class="langProgressBar" style="width: 60%;flex-grow: 1;"></div>
+						<div class="langProgressValue" style="padding: 0 0 0 .8rem;flex-grow: 0;"></div>
+					</div>
 				</div>
 				<div class="selectContainer languageSection" style='width: auto;height: auto'>
 					<select is="emby-select" id="selectLanguageAlt" class="selectLanguageAlt" label="${LabelDisplayLanguageAlt}">
 						<option value="none">${None}</option>
 						<option disabled>${OptionDivider}</option>
 					</select>
+					<div class="fieldDescription" style="display: flex;flex-direction: row;align-items: center;justify-content: center;font-size: 75%;">
+						<div class="langProgressCode" style="padding: 0 .8rem 0 0;flex-grow: 0;"></div>
+						<div class="langProgressBar" style="width: 60%;flex-grow: 1;"></div>
+						<div class="langProgressValue" style="padding: 0 0 0 .8rem;flex-grow: 0;"></div>
+					</div>
 				</div>
 			</div>
 			
-			<fieldset class="selectContainer infoDetails" style="width: 45%;height: auto;border: 1px solid #000;padding: 10px !important;font-size: 75%;">
-			
-				<div class="DisplayLanguageInfo fieldDescription" style='width: 100%;height: auto;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
-					<div><span class="LangDetailsHeader">${LabelDisplayLanguage}</span><span class="infoDisplayLanguage"></span></div>
-					<!-- div><span class="LangDetailsHeader">${LabelLastModified}</span><span class="infoLastModified"></span></div -->
-					<div>
-						<span class="LangDetailsHeader">${LabelTranslatedStrings}</span>
-						<span class="infoKeysTranslated"></span>
-						<span class="material-icons hub hubIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
-						<span class="material-icons warning warningIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
-						<span class="material-icons done doneIcon hide" style="float:right;font-size: 250%;margin: 0em .3em 0em"></span>
+			<fieldset id="langInfoArea" class="selectContainer" style="width: 45%;height: auto;border: 1px solid #000;padding: 10px !important;">
+				
+				<div style="font-size: 75%;">
+		
+					<div class="fieldDescription" style='width: 75%;height: auto;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
+						<div class="langProgressDesc" style="font-size: 110%;font-weight: 400;padding: 0 0 .3rem 0;">${Aggregate}</div>
+						<div class="langProgressBar" style="width: 100%;"></div>
+						<div class="langProgressValue" style="font-size:85%; text-align: right;"></div>
 					</div>
-					<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelJellyfinWeb}<span class="infoJellyfinKeysTranslated"></span></li></div>
-					<div style="margin: 0 0 0 20px;font-size:90%"><li>${LabelmyJelly}<span class="infoMyjellyKeysTranslated"></span></li></div>
+					<div>
+						<span class="material-icons done doneIcon hide" style="float:right;font-size: 300%;margin: -2rem .3em 0em"></span>
+					</div>
+					
 				</div>
 				<br>
 				<div class="fieldDescription">
+				
 					<div>La traduction de Jellyfin est un projet en cours.</div>
 					<div class="hyperlink hide" style="margin-top: .25em;">
 						<a is="emby-linkbutton" rel="noopener noreferrer" class="button-link emby-button" href="https://github.com/jellyfin/jellyfin" target="_blank">Voir comment vous pouvez contribuer.</a>
 					</div>
+					
 				</div>
 			
 			</fieldset>
@@ -58,9 +69,9 @@
 				</select>
 			</div>
 			
-			<div class="inputContainer" style="display: flex;align-items: center;justify-content: space-between;flex-grow: 0;width: 47%;height: auto;">
+			<div class="inputContainer" style="display: flex;align-items: flex-end;justify-content: space-between;flex-grow: 0;width: 47%;height: auto;">
 			
-				<button is="emby-button" type="button" id="btnFindIt" class="raised btnTryIt block emby-button hide" style="width: auto;height: 50%;">
+				<button is="emby-button" type="button" id="btnFindIt" class="raised btnTryIt block emby-button hide" style="width: auto;height: 50%;margin: 0">
 					<span>${Find}</span>
 				</button>			
 				<div style="flex-grow: 0;width: 33%;height: auto;">

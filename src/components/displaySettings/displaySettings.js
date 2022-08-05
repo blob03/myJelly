@@ -255,10 +255,10 @@ import viewContainer from '../viewContainer';
 
 	function findPosition() {
 		if(navigator.geolocation){
-			navigator.geolocation.getCurrentPosition(function(position){
-				document.querySelector('#inputLat').value = Number(position.coords.latitude.toFixed(2));
-				document.querySelector('#inputLon').value = Number(position.coords.longitude.toFixed(2));
-			});
+			navigator.geolocation.getCurrentPosition( (x) => {
+				document.querySelector('#inputLat').value = Number(x.coords.latitude.toFixed(2));
+				document.querySelector('#inputLon').value = Number(x.coords.longitude.toFixed(2));
+			}, (y) => {console.warn("Failed to find current geolocation: " + y);}, { 'enableHighAccuracy': true, 'timeout': 5000, 'maximumAge': 0 });
 		} else{
 			console.warn("Sorry but it appears your browser does not support HTML5 geolocation.");
 		}
@@ -279,16 +279,25 @@ import viewContainer from '../viewContainer';
 			self._savedDisplayLangAlt = userSettings.languageAlt();
 			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", self._savedDisplayLang);
 			settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", self._savedDisplayLangAlt, self._savedDisplayLang);
-			selectLanguage.addEventListener('change', 
-				function(e) { 
-					settingsHelper.showDictionaryInfo(e); 
-					let selectLanguageAlt = document.querySelector('#selectLanguageAlt');
-					let allCultures = cultures.getDictionaries();
-					settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", selectLanguageAlt.value, e.target.value);
-				}
-			);
+			selectLanguage.addEventListener('change', function(x) {
+				const lang = x.target;
+				const langAlt = lang.parentElement.parentElement.querySelector('#selectLanguageAlt');
+				let newLang = lang.value;
+				// Auto mode
+				if (newLang === '')
+					newLang = globalize.getDefaultCulture().ccode;
+				settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", langAlt.value, newLang);
+				settingsHelper.showLangProgress(lang);
+				settingsHelper.showLangProgress(langAlt);
+				settingsHelper.showAggregateInfo(lang); 
+			});
+			selectLanguageAlt.addEventListener('change', function(x) {
+				const langAlt = x.target;
+				settingsHelper.showLangProgress(langAlt);
+				settingsHelper.showAggregateInfo(langAlt);
+			});
 			selectLanguage.dispatchEvent(event_change);
-			
+			selectLanguageAlt.dispatchEvent(event_change);
 			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
 		} else 
 			context.querySelector('.DisplayLanguageArea').classList.add('hide');
@@ -301,7 +310,7 @@ import viewContainer from '../viewContainer';
 			context.querySelector('.fldDateTimeLocale').classList.add('hide');
 	
         if (appHost.supports('externallinks')) {
-			var els = document.getElementsByClassName('hyperlink');
+			var els = context.getElementsByClassName('hyperlink');
 			Array.prototype.forEach.call(els, function(el) {
 				el.classList.remove('hide');
 			});
@@ -311,7 +320,7 @@ import viewContainer from '../viewContainer';
 		dashboardthemeNodes.forEach( function(userItem) {
 			userItem.classList.toggle('hide', !user.localUser.Policy.IsAdministrator);});
 		
-		let btnFindIt =  document.querySelector('#btnFindIt');
+		let btnFindIt =  context.querySelector('#btnFindIt');
 		if (btnFindIt) {
 			if (isSecure()) {
 				btnFindIt.classList.remove('hide');

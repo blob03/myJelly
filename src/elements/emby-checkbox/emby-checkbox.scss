@@ -48,12 +48,12 @@
 
 .checkboxOutline {
     position: absolute;
-    top: 3px;
+    /*top: 3px;*/
     left: 0;
     box-sizing: border-box;
-    width: 1.8em;
-    height: 1.8em;
     margin: 0;
+	width: 1.8em;
+    height: 1.8em;
     overflow: hidden;
     border: 0.14em solid currentcolor;
     border-radius: 0.14em;
@@ -61,6 +61,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.radio > .checkboxOutline {
+    width: auto;
+    height: auto;
 }
 
 .checkboxIcon {
@@ -160,7 +165,7 @@
 	text-shadow: none !important;
 	animation: none;
 	background: transparent;
-	font-size: 140%;
+	/*font-size: 140%;*/
 }
 
 .radio.emby-checkbox + span + .checkboxOutline {
