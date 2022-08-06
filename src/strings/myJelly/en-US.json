@@ -1,6 +1,6 @@
 {
     "About": "About...",
-	"Aggregate": "Aggregate",
+    "Aggregate": "Aggregate",
     "AirPlay": "AirPlay",
     "Always": "Always",
     "AppDescription": "The Jellyfin web client modified.",
@@ -28,6 +28,7 @@
     "Humidity": "Humidity",
     "LabelAPIFrequency": "Weather requests timing:",
     "LabelAPIFrequencyHelp": "Delay in minutes between two successive API calls.",
+    "LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",
     "LabelAppHost": "Host:",
     "LabelAppRepositoryName": "Repository Name:",
     "LabelAppVersion": "Installed version:",
@@ -41,6 +42,7 @@
     "LabelLastModified": "Last modified:",
     "LabelLatitude": "Latitude:",
     "LabelLongitude": "Longitude:",
+    "LabelMaxVideoResolution": "Maximum Allowed Video Transcoding Resolution:",
     "LabelReleaseNotes": "Release notes:",
     "LabelScreensaverTime": "Delay before activation:",
     "LabelSourceLanguage": "Source language:",

@@ -184,10 +184,10 @@ export function showAggregateInfo(x) {
 	const node = x.parentElement?.parentElement?.parentElement;  
 	if (!node)
 		return;
-	const langNode = node.querySelector('#langInfoArea');
+	const lang_info = node.querySelector('#langInfoArea');
 	let lang = node.querySelector('.selectLanguage')?.value;
-	let langAlt = node.querySelector('.selectLanguageAlt')?.value;
-	if (!lang || !langAlt)
+	let lang_alt = node.querySelector('.selectLanguageAlt')?.value;
+	if (!lang || !lang_alt)
 		return;
 	const srcCode = globalize.getSourceCulture();
 	
@@ -197,28 +197,28 @@ export function showAggregateInfo(x) {
 	
 	globalize.getCoreDictionary(srcCode).then((srcLangKeys) => {
 		globalize.getCoreDictionary(lang).then((eLangKeys) => {
-			globalize.getCoreDictionary(langAlt).then((dic) => {
-				let _completeness = 0;
+			globalize.getCoreDictionary(lang_alt).then((dic) => {
+				let completeness = 0;
 				
-				if (langAlt !== 'none') {
-					let _keys_done = 0;
-					let _keys_total = 0;
+				if (lang_alt !== 'none') {
+					let keys_done = 0;
+					let keys_total = 0;
 					for (const key in srcLangKeys) {
-						++ _keys_total;
+						++ keys_total;
 						if (dic[key] || eLangKeys[key])
-							++ _keys_done;
+							++ keys_done;
 					}
-					_completeness = (_keys_done / _keys_total) * 100;
+					completeness = (keys_done / keys_total) * 100;
 				} else {
 					const eLang = cultures.getDictionary(lang);
-					_completeness = eLang["completed%"];
+					completeness = eLang["completed%"];
 				}
-				langNode.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(_completeness);
-				langNode.querySelector('.langProgressValue').innerHTML = _completeness.toFixed(2) + '% ';
+				lang_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(completeness);
+				lang_info.querySelector('.langProgressValue').innerHTML = completeness.toFixed(2) + '% ';
 	
-				langNode.querySelector('.doneIcon').classList.add('hide'); 
-				if (_completeness === 100)
-					langNode.querySelector('.doneIcon').classList.remove('hide');
+				lang_info.querySelector('.doneIcon').classList.add('hide'); 
+				if (completeness === 100)
+					lang_info.querySelector('.doneIcon').classList.remove('hide');
 			});
 		});
 	});

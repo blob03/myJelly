@@ -6,7 +6,7 @@ import math
 import re
 from datetime import datetime
 
-# Rename a static set of dictionaries so that their names match those returned by a call to /Localization/cultures.
+# Rename a static set of dictionaries so that they match names returned by a call to /Localization/cultures.
 # This saves a conversion at runtime.
 def rename(subdir, flag):
 	langlst = {'ur_PK': 'ur-PK', 'bg-bg': 'bg-BG', 'be-by': 'be-BY', 'bn_BD': 'bn-BD', 'en-gb': 'en-GB', 'en-us': 'en-US', 'fr-ca': 'fr-CA', 
@@ -30,10 +30,12 @@ def rename(subdir, flag):
 		out.close()
 		print('Number of file renamed: ' + str(nbr) + '.')
 		
-# Load all the keys present in the source file.
-# Check whether these keys are defined inside every translation.
-# Delete keys which only exist in translations if any are found (so called 'orphans').
-def sort(subdir, source, mod, langlst):
+# Cleanup and sorting of translations.
+# Remove and report orphans, duplicates (the last found has precedence), empty/malformed input.
+# Produce a metadata file containing basic statistics for each language 
+# which can be used by the web client.
+
+def sort(subdir, source, mod, langlst, trans_aggregate):
 	cwd = os.getcwd()
 	basedir = cwd + "/../../src/strings/"
 	langdir = basedir + subdir
@@ -72,24 +74,37 @@ def sort(subdir, source, mod, langlst):
 			keys = 0
 			okeys = 0
 			dup = 0
+			empty = 0
 			nbsp = 0
 			trans_old = json.load(f)
 			trans_new = {}
+			try:
+				trans_aggregate[lang]
+			except KeyError:
+				trans_aggregate[lang] = {}
+				
 			for key in trans_old:
 				if key in langus:
-					if key not in trans_new:
+				
+					if trans_old[key] == '':
+						empty += 1
+						continue
+						
+					if key not in trans_new and key not in trans_aggregate[lang]:
 						keys += 1
 					else:
 						dup += 1
-					# For French dictionaries,
-					# replace every found regular space or tabulation preceding a special set of punctuation marks 
+					# For french dictionaries, replace any found regular space
+					# or tabulation preceding a special set of punctuation marks 
 					# with a non-breakable space.
 					if lang == 'fr.json':
 						x = len(re.findall("[\x20\t]+[:?!;]", trans_old[key]))
 						if x > 0:
 							trans_old[key] = re.sub("[\x20\t]+([:?!;])", '\xa0' + r'\1', trans_old[key])
 							nbsp += x
+							
 					trans_new[key] = trans_old[key]
+					trans_aggregate[lang][key] = trans_old[key]
 				elif key not in orphans:
 					orphans.append(key)
 					okeys += 1
@@ -101,13 +116,15 @@ def sort(subdir, source, mod, langlst):
 			f.close()
 
 			if (dup):
-				print('Duplicates: ' + str(dup))
+				print('Duplicate(s) removed: ' + str(dup))
+			if (empty):
+				print('Empty key(s) removed: ' + str(empty))
 			if (nbsp):
 				print('Non breakable space replacement: ' + str(nbsp))
 			if (okeys):
-				print('Orphan keys removed: ' + str(okeys))
-				# for orphan in orphans:
-				#	print('		' + str(orphan))
+				print('Orphan key(s) removed: ' + str(okeys))
+				for orphan in orphans:
+					print('		' + str(orphan))
 				
 			ccode = lang.split('.json')[0];
 
@@ -153,14 +170,13 @@ def sort(subdir, source, mod, langlst):
 			metatree[ccode]['keys#'] += keys
 			metatree[ccode][mod]['orphans#'] = okeys
 			metatree[ccode][mod]['orphans'] = orphans
-			metatree[ccode][mod]['completed%'] = float("{:,.2f}".format(keys*100/len(langus)).replace(".00",""))
-			metatree[ccode]['completed%'] = float("{:,.2f}".format(metatree[ccode]['keys#']*100/metatree[source]['keys#']).replace(".00",""))
+			metatree[ccode][mod]['completed%'] = float("{:,.2f}".format(metatree[ccode][mod]['keys#'] * 100 / metatree[source][mod]['keys#']).replace(".00",""))
+			metatree[ccode]['completed%'] = float("{:,.2f}".format(metatree[ccode]['keys#'] * 100 / metatree[source]['keys#']).replace(".00",""))
 	
 	with open(metafile, 'w+') as m:
 		print('Overwriting metadata file \"metafile.json\".')
 		m.write(json.dumps(metatree, indent=indent, sort_keys=False, ensure_ascii=False))
 		m.close()
-
 
 cwd = os.getcwd()
 basedir = cwd + "/../../src/strings/"
@@ -168,25 +184,27 @@ metafile = basedir + "metadata.json"
 
 if os.path.exists(metafile):
 	os.remove(metafile)
-	
+
 subdir = ''
 rename(subdir, 'w')
 
 print('#######################################')
 # We check the source file (en-US) first since we need this data to determine the progress of other dictionaries.
 langlst = ["en-US.json"]
-sort('', 'en-US', 'jellyfinWeb', langlst)
-sort('myJelly/', 'en-US', 'myJelly', langlst)
+trans_aggregate = {}
+sort('', 'en-US', 'jellyfinWeb', langlst, trans_aggregate)
+sort('myJelly/', 'en-US', 'myJelly', langlst, trans_aggregate)
 print('#######################################')
 print('#######################################')
 # We take care to load only files and to remove the source file.
+trans_aggregate = {}
 langlst = sorted([f for f in os.listdir(basedir) if (os.path.isfile(os.path.join(basedir, f)))])
 langlst.remove("en-US.json")
 langlst.remove("metadata.json")
-sort('', 'en-US', 'jellyfinWeb', langlst)
+sort('', 'en-US', 'jellyfinWeb', langlst, trans_aggregate)
 langdir = basedir + 'myJelly/'
 langlst = sorted([f for f in os.listdir(langdir) if (os.path.isfile(os.path.join(langdir, f)))])
 langlst.remove("en-US.json")
-sort('myJelly/', 'en-US', 'myJelly', langlst)
+sort('myJelly/', 'en-US', 'myJelly', langlst, trans_aggregate)
 print('#######################################')
 print('Done.')

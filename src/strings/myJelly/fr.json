@@ -1,6 +1,6 @@
 {
     "About": "À propos...",
-	"Aggregate": "Agrégat",
+    "Aggregate": "Agrégat",
     "AirPlay": "AirPlay",
     "Always": "Toujours",
     "AppDescription": "Le client web modifié de Jellyfin.",
@@ -28,6 +28,7 @@
     "Humidity": "Humidité",
     "LabelAPIFrequency": "Délai des sondages météo :",
     "LabelAPIFrequencyHelp": "Délai en minutes entre deux appels successifs à l'API.",
+    "LabelAllowedAudioChannels": "Nombre maximal de canaux audio autorisés :",
     "LabelAppHost": "Système hôte :",
     "LabelAppRepositoryName": "Adresse du dépôt :",
     "LabelAppVersion": "Version installée :",
@@ -41,6 +42,7 @@
     "LabelLastModified": "Dernière modification :",
     "LabelLatitude": "Latitude :",
     "LabelLongitude": "Longitude :",
+    "LabelMaxVideoResolution": "Résolution maximale du transcodage vidéo :",
     "LabelReleaseNotes": "Notes de version :",
     "LabelScreensaverTime": "Délai d'activation :",
     "LabelSourceLanguage": "Langue source :",

@@ -8,19 +8,16 @@ import { Events } from 'jellyfin-apiclient';
 	const fallbackCultureName = 'English';
 	const fallbackModule = 'core';
     const allTranslations = {};
-    let currentCulture;
-	let currentCultureAlt;
-    let currentDateTimeCulture;
-	let DicKeysNum = {};
-	let origKeysNum = {};
-	let myKeysNum = {};
+    let _currentCulture;
+	let _currentCultureAlt;
+    let _currentDateTimeCulture;
 
     export function getCurrentLocale() {
-        return currentCulture;
+        return _currentCulture;
     }
 
     export function getCurrentDateTimeLocale() {
-        return currentDateTimeCulture;
+        return _currentDateTimeCulture;
     }
 
 	export function getSourceCulture() {
@@ -60,11 +57,11 @@ import { Events } from 'jellyfin-apiclient';
     }
 
     export function updateCurrentCulture() {
-        currentCulture = userSettings.language() || getDefaultCulture().ccode;
-		currentCultureAlt = userSettings.languageAlt() || getDefaultCulture().ccode;
-		currentDateTimeCulture = userSettings.dateTimeLocale() || currentCulture;
-        ensureTranslations(currentCulture);
-		ensureTranslations(currentCultureAlt);
+		_currentCulture = userSettings.language() || getDefaultCulture().ccode;
+		_currentCultureAlt = userSettings.languageAlt() || getDefaultCulture().ccode;
+		_currentDateTimeCulture = userSettings.dateTimeLocale() || _currentCulture;
+        ensureTranslations(_currentCulture);
+		ensureTranslations(_currentCultureAlt);
     }
 	
 	export function updateCulture(culture) {
@@ -125,7 +122,7 @@ import { Events } from 'jellyfin-apiclient';
 			register({name: optionsName, translations: ''});
 		
 		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], locale));
-		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], currentCultureAlt));
+		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], _currentCultureAlt));
 		promises.push(ensureTranslation(optionsName, allTranslations[optionsName], fallbackCulture));
 	
         return Promise.all(promises);
@@ -146,19 +143,14 @@ import { Events } from 'jellyfin-apiclient';
 				.filter( key => predicate(obj[key]) )
 				.map( key => ({ [key]: obj[key] }) ) );
 
-		DicKeysNum[lang] = origKeysNum[lang] = myKeysNum[lang] = 0;
         return new Promise((resolve) => {
 			// import jellyfin core translation file
-            import(`../strings/${lang}.json`).then((content) => {	
-				content = Object.filter(content, str => typeof str === "string" && str.length);
-				DicKeysNum[lang] = origKeysNum[lang] = Object.keys(content).length;
+            import(`../strings/${lang}.json`).then((content) => {
+				//content = Object.filter(content, str => typeof str === "string" && str.length);
 			
 				// import myJelly core translation file
 				import(`../strings/myJelly/${lang}.json`).then((mjcontent) => {
-					mjcontent = Object.filter(mjcontent, str => typeof str === "string" && str.length);
-					myKeysNum[lang] = Object.keys(mjcontent).length;
-					DicKeysNum[lang] = origKeysNum[lang] + myKeysNum[lang];
-					
+					//mjcontent = Object.filter(mjcontent, str => typeof str === "string" && str.length);
 					let dic = {...content, ...mjcontent};
 					allTranslations[module].dictionaries[lang] = dic;
 					resolve(dic);
@@ -198,7 +190,7 @@ import { Events } from 'jellyfin-apiclient';
 		
         let dictionary = getDictionary(module, culture);				
 		if (!dictionary || !dictionary[key]) 
-			dictionary = getDictionary(module, currentCultureAlt);
+			dictionary = getDictionary(module, _currentCultureAlt);
 		if (!dictionary || !dictionary[key]) 
 			dictionary = getDictionary(module, fallbackCulture);			
 		if (!dictionary || !dictionary[key]) {
@@ -223,7 +215,6 @@ import { Events } from 'jellyfin-apiclient';
 	
 	// Function to load a specific language.
 	export function getCoreDictionary(culture) {
-		
 		if (culture === undefined)
 			culture = getCurrentLocale();
 			
