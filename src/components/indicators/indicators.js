@@ -18,11 +18,25 @@ export function enableProgressIndicator(item) {
 
 export function getProgressHtml(pct, options) {
     let containerClass = 'itemProgressBar';
+	let style = '';
+    if (options && options.containerClass) {
+        containerClass += ' ' + options.containerClass;
+    }
+	if (options && options.alt) 
+        return '<div class="' + containerClass + '"><div class="itemProgressBarForeground2" style="width: ' + pct + '%;"></div></div>';
+	
+    return '<div class="' + containerClass + '"><div class="itemProgressBarForeground" style="width: ' + pct + '%;"></div></div>';
+}
+
+export function getProgressHtmlEx(pct, pct2, options) {
+    let containerClass = 'itemProgressBar';
     if (options && options.containerClass) {
         containerClass += ' ' + options.containerClass;
     }
 
-    return '<div class="' + containerClass + '"><div class="itemProgressBarForeground" style="width:' + pct + '%;"></div></div>';
+    return '<div class="' + containerClass + '">' 
+		+ '<div class="itemProgressBarForeground" style="width: ' + (pct? pct : 0) + '%;"></div>'
+		+ '<div class="itemProgressBarForeground2" style="width: ' + (pct2? pct2 : 0) + '%;"></div></div>';
 }
 
 function getAutoTimeProgressHtml(pct, options, isRecording, start, end) {
@@ -171,6 +185,7 @@ export function getMissingIndicator(item) {
 
 export default {
     getProgressHtml: getProgressHtml,
+	getProgressHtmlEx: getProgressHtmlEx,
     getProgressBarHtml: getProgressBarHtml,
     getPlayedIndicatorHtml: getPlayedIndicatorHtml,
     getChildCountIndicatorHtml: getChildCountIndicatorHtml,

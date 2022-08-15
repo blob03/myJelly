@@ -181,7 +181,7 @@ export function populateDictionaries(select, languages, view, val, ban) {
 
 // Refresh the recap window containing the progress bar for the aggregate language.
 export function showAggregateInfo(x) {
-	const node = x.parentElement?.parentElement?.parentElement;  
+	const node = x.parentElement?.parentElement?.parentElement;
 	if (!node)
 		return;
 	const lang_info = node.querySelector('#langInfoArea');
@@ -199,33 +199,42 @@ export function showAggregateInfo(x) {
 		globalize.getCoreDictionary(lang).then((eLangKeys) => {
 			globalize.getCoreDictionary(lang_alt).then((dic) => {
 				let completeness = 0;
+				let completeness_alt = 0;
+				let completeness_agg = 0;
 				
 				if (lang_alt !== 'none') {
-					let keys_done = 0;
-					let keys_total = 0;
-					for (const key in srcLangKeys) {
-						++ keys_total;
-						if (dic[key] || eLangKeys[key])
-							++ keys_done;
-					}
-					completeness = (keys_done / keys_total) * 100;
+					const srcKeys = Object.keys(srcLangKeys);
+					const srcKeys_total = srcKeys.length;
+					//const srcKeys_done = srcKeys.filter(k => k in dic || k in eLangKeys).length;
+					let srcKeys_done = srcKeys.filter(k => k in eLangKeys).length;
+					completeness = (srcKeys_done / srcKeys_total) * 100;
+					
+					let srcKeys_done_alt = srcKeys.filter(k => !(k in eLangKeys) && (k in dic)).length;
+					completeness_alt = (srcKeys_done_alt / srcKeys_total) * 100;
+					
+					let srcKeys_done_agg = srcKeys.filter(k => (k in dic) || (k in eLangKeys)).length;
+					completeness_agg = ((srcKeys_done_alt + srcKeys_done) / srcKeys_total) * 100;
+					
+					lang_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtmlEx(completeness, completeness_alt);
+					lang_info.querySelector('.langProgressValue').innerHTML = completeness_agg.toFixed(2) + '% ';
 				} else {
 					const eLang = cultures.getDictionary(lang);
 					completeness = eLang["completed%"];
+					lang_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(completeness);
+					lang_info.querySelector('.langProgressValue').innerHTML = completeness.toFixed(2) + '% ';
 				}
-				lang_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(completeness);
-				lang_info.querySelector('.langProgressValue').innerHTML = completeness.toFixed(2) + '% ';
-	
-				lang_info.querySelector('.doneIcon').classList.add('hide'); 
-				if (completeness === 100)
+				
+				if (completeness === 100 || completeness_agg === 100)
 					lang_info.querySelector('.doneIcon').classList.remove('hide');
+				else
+					lang_info.querySelector('.doneIcon').classList.add('hide'); 
 			});
 		});
 	});
 }
 
 // Refresh the progress bar lying underneath the language widgets.
-export function showLangProgress(x) {
+export function showLangProgress(x, alt) {
 	if (!x)
 		return;
 	const node = x.parentNode;
@@ -244,7 +253,7 @@ export function showLangProgress(x) {
 
 	let eLang = cultures.getDictionary(lang);
 	node.querySelector('.langProgressCode').innerHTML = eLang["ISO6391"];
-	node.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(eLang["completed%"]);
+	node.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(eLang["completed%"], alt? {'alt': true}: {});
 	node.querySelector('.langProgressValue').innerHTML = eLang["completed%"] + '% ';
 }
 

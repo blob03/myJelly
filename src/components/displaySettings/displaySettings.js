@@ -288,12 +288,12 @@ import viewContainer from '../viewContainer';
 					newLang = globalize.getDefaultCulture().ccode;
 				settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", langAlt.value, newLang);
 				settingsHelper.showLangProgress(lang);
-				settingsHelper.showLangProgress(langAlt);
+				settingsHelper.showLangProgress(langAlt, true);
 				settingsHelper.showAggregateInfo(lang); 
 			});
 			selectLanguageAlt.addEventListener('change', function(x) {
 				const langAlt = x.target;
-				settingsHelper.showLangProgress(langAlt);
+				settingsHelper.showLangProgress(langAlt, true);
 				settingsHelper.showAggregateInfo(langAlt);
 			});
 			selectLanguage.dispatchEvent(event_change);

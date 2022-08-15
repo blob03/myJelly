@@ -124,13 +124,14 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
-    overflow: hidden;
+    overflow: visible;
     justify-content: flex-start;
 }
 
 .headerRight {
     display: flex;
     align-items: center;
+	overflow: visible;
     justify-content: flex-end;
 }
 

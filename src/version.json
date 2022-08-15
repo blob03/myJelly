@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.3-1",
+	"version": "10.8.4-0",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -61,6 +61,7 @@
 		"10.8.1-16": "Improved compatibility with Jellyfin's base themes.",
 		"10.8.1-17": "Translations synchronized with master.\nFile 'package.json' synchronized with master, do '#npm update' once to apply the changes.\nApplied patch 'Backport pull request #3778'.\nApplied patch 'Backport pull request #3781'.",
 		"10.8.3-0": "Translations synchronized with master.\nApply patch 'Backport pull request #3789'.\nChange the way completeness of translations is reported to reflect recent changes.\nTheme 'Halloween' updated.\nImprove compatibility with Jellyfin's base themes.\nFix various small glitches.",
-		"10.8.3-1": "Translations synchronized with master.\nCode clean-up (globalize.js).\nFix a miscalculation of duplicate keys inside 'mysource.py'."
+		"10.8.3-1": "Translations synchronized with master.\nCode cleanup (globalize.js).\nFix a miscalculation of duplicate keys inside 'mysource.py'.",
+		"10.8.4-0": "Translations synchronized with master.\nApply patch 'Remove unused underscore in fetchhelper.js'.\nApply patch 'Add no-return-await rule to eslint'.\nApply patch 'Remove redundant await from pluginManager'.\nApply patch 'Add no-throw-literal rule to eslintrc'.\nApply patch 'Fix throwing string in datetime.js'."
 	}
 }
