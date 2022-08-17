@@ -1,9 +1,9 @@
+import escapeHtml from 'escape-html';
 import { appHost } from '../apphost';
 import dialogHelper from '../dialogHelper/dialogHelper';
 import layoutManager from '../layoutManager';
 import globalize from '../../scripts/globalize';
 import * as userSettings from '../../scripts/settings/userSettings';
-import cultures from '../../scripts/cultures';
 import loading from '../loading/loading';
 import focusManager from '../focusManager';
 import dom from '../../scripts/dom';
@@ -99,16 +99,16 @@ function fillSubtitleList(context, item) {
 
             itemHtml += '<' + tagName + ' class="' + className + '" data-index="' + s.Index + '">';
 
-            itemHtml += '<span class="listItemIcon material-icons closed_caption"></span>';
+            itemHtml += '<span class="listItemIcon material-icons closed_caption" aria-hidden="true"></span>';
 
             itemHtml += '<div class="listItemBody two-line">';
 
             itemHtml += '<div>';
-            itemHtml += s.DisplayTitle || '';
+            itemHtml += escapeHtml(s.DisplayTitle || '');
             itemHtml += '</div>';
 
             if (s.Path) {
-                itemHtml += '<div class="secondary listItemBodyText">' + (s.Path) + '</div>';
+                itemHtml += '<div class="secondary listItemBodyText">' + escapeHtml(s.Path) + '</div>';
             }
 
             itemHtml += '</a>';
@@ -116,7 +116,7 @@ function fillSubtitleList(context, item) {
 
             if (!layoutManager.tv) {
                 if (s.Path) {
-                    itemHtml += '<button is="paper-icon-button-light" data-index="' + s.Index + '" title="' + globalize.translate('Delete') + '" class="btnDelete listItemButton"><span class="material-icons delete"></span></button>';
+                    itemHtml += '<button is="paper-icon-button-light" data-index="' + s.Index + '" title="' + globalize.translate('Delete') + '" class="btnDelete listItemButton"><span class="material-icons delete" aria-hidden="true"></span></button>';
                 }
             }
 
@@ -153,8 +153,6 @@ function fillLanguages(context, apiClient, languages) {
             const lang = user.Configuration.SubtitleLanguagePreference;
 
             if (lang) {
-				if (lang === "Auto")
-					lang = globalize.getCurrentLocale();
                 selectLanguage.value = lang;
             }
         });
@@ -196,13 +194,13 @@ function renderSearchResults(context, results) {
 
         html += '<' + tagName + ' class="' + className + '" data-subid="' + result.Id + '">';
 
-        html += '<span class="listItemIcon material-icons closed_caption"></span>';
+        html += '<span class="listItemIcon material-icons closed_caption" aria-hidden="true"></span>';
 
         const bodyClass = result.Comment || result.IsHashMatch ? 'three-line' : 'two-line';
 
         html += '<div class="listItemBody ' + bodyClass + '">';
 
-        html += '<div>' + (result.Name) + '</div>';
+        html += '<div>' + escapeHtml(result.Name) + '</div>';
         html += '<div class="secondary listItemBodyText">';
 
         if (result.Format) {
@@ -215,7 +213,7 @@ function renderSearchResults(context, results) {
         html += '</div>';
 
         if (result.Comment) {
-            html += '<div class="secondary listItemBodyText">' + (result.Comment) + '</div>';
+            html += '<div class="secondary listItemBodyText">' + escapeHtml(result.Comment) + '</div>';
         }
 
         if (result.IsHashMatch) {
@@ -225,7 +223,7 @@ function renderSearchResults(context, results) {
         html += '</div>';
 
         if (!layoutManager.tv) {
-            html += '<button type="button" is="paper-icon-button-light" data-subid="' + result.Id + '" class="btnDownload listItemButton"><span class="material-icons file_download"></span></button>';
+            html += '<button type="button" is="paper-icon-button-light" data-subid="' + result.Id + '" class="btnDownload listItemButton"><span class="material-icons file_download" aria-hidden="true"></span></button>';
         }
 
         html += '</' + tagName + '>';
@@ -268,7 +266,7 @@ function reload(context, apiClient, itemId) {
         }
 
         if (file) {
-            context.querySelector('.pathValue').innerHTML = file;
+            context.querySelector('.pathValue').innerText = file;
             context.querySelector('.originalFile').classList.remove('hide');
         } else {
             context.querySelector('.pathValue').innerHTML = '';
@@ -426,9 +424,10 @@ function showEditorInternal(itemId, serverId) {
         dlg.querySelector('.subtitleList').addEventListener('click', onSubtitleListClick);
         dlg.querySelector('.subtitleResults').addEventListener('click', onSubtitleResultsClick);
 
-		let allCultures = cultures.getCultures();
-        fillLanguages(editorContent, apiClient, allCultures);
-        
+        apiClient.getCultures().then(function (languages) {
+            fillLanguages(editorContent, apiClient, languages);
+        });
+
         dlg.querySelector('.btnCancel').addEventListener('click', function () {
             dialogHelper.close(dlg);
         });
