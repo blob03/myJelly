@@ -188,13 +188,14 @@ export function showAggregateInfo(x) {
 	let lang_alt = node.querySelector('.selectLanguageAlt')?.value;
 	if (lang === undefined || lang_alt === undefined)
 		return;
-	const srcCode = globalize.getSourceCulture();
-	const usrMeta = cultures.getDictionary(lang);
-	const srcMeta = cultures.getDictionary(srcCode);
 	
 	// Auto mode
 	if (lang === '')
 		lang = globalize.getDefaultCulture().ccode;
+	
+	const srcCode = globalize.getSourceCulture();
+	const usrMeta = cultures.getDictionary(lang);
+	const srcMeta = cultures.getDictionary(srcCode);
 	
 	globalize.getCoreDictionary(srcCode).then((srcDic) => {
 		globalize.getCoreDictionary(lang).then((usrDic) => {

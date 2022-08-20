@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-3",
+	"version": "10.8.4-4",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -65,6 +65,7 @@
 		"10.8.4-0": "Translations synchronized with master.\nApply patch 'Remove unused underscore in fetchhelper.js'.\nApply patch 'Add no-return-await rule to eslint'.\nApply patch 'Remove redundant await from pluginManager'.\nApply patch 'Add no-throw-literal rule to eslintrc'.\nApply patch 'Fix throwing string in datetime.js'.",
 		"10.8.4-1": "Apply patch 'rourien/patch-1'.\nTranslations synchronized with master.\nApply patch 'Fix broken link for subtitles help'.",
 		"10.8.4-2": "Translations synchronized with master.\nApply patch 'Update Fonts to v4.5.11'.\nApply patch 'Update PostCSS'.\nApply patch 'Update dependency blurhash to v1.1.5'.\nApply patch 'escape-html-1.x'.",
-		"10.8.4-3": "Install master's fully patched 'package.json'.\nEnhance interface for display language configuration (display settings)."
+		"10.8.4-3": "Install master's fully patched 'package.json'.\nEnhance interface for display language configuration (display settings).",
+		"10.8.4-4": "Fix stats not refreshing when display language set to 'auto' (display settings)."
 	}
 }
