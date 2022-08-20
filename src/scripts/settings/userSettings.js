@@ -240,8 +240,11 @@ export class UserSettings {
      * Convert country codes between jellyfin and the OpenWeather API.
      */
 	convertCountryCode(code) {
-		let ret = code || 'en';
-		
+		let ret = code;
+		// Auto mode
+		if (ret === '')
+			ret = globalize.getDefaultCulture().ccode;
+	
 		switch(ret) {
 			case 'nb':
 			case 'nn':
