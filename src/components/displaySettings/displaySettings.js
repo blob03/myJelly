@@ -286,6 +286,7 @@ import viewContainer from '../viewContainer';
 				// Auto mode
 				if (newLang === '')
 					newLang = globalize.getDefaultCulture().ccode;
+				// Remove the latest selection from the list of selectable secondary languages.
 				settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", langAlt.value, newLang);
 				settingsHelper.showLangProgress(lang);
 				settingsHelper.showLangProgress(langAlt, true);

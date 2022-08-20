@@ -15,6 +15,7 @@
 					</select>
 					<div class="fieldDescription" style="display: flex;flex-direction: row;align-items: center;justify-content: center;font-size: 75%;">
 						<div class="langProgressCode" style="padding: 0 .8rem 0 0;flex-grow: 0;"></div>
+						<div class="langProgressStats" style="font-size: 100%;font-weight: 400;padding: 0 .8rem 0 0;"></div>
 						<div class="langProgressBar" style="width: 60%;flex-grow: 1;"></div>
 						<div class="langProgressValue" style="padding: 0 0 0 .8rem;flex-grow: 0;"></div>
 					</div>
@@ -26,6 +27,7 @@
 					</select>
 					<div class="fieldDescription" style="display: flex;flex-direction: row;align-items: center;justify-content: center;font-size: 75%;">
 						<div class="langProgressCode" style="padding: 0 .8rem 0 0;flex-grow: 0;"></div>
+						<div class="langProgressStats" style="font-size: 100%;font-weight: 400;padding: 0 .8rem 0 0;"></div>
 						<div class="langProgressBar" style="width: 60%;flex-grow: 1;"></div>
 						<div class="langProgressValue" style="padding: 0 0 0 .8rem;flex-grow: 0;"></div>
 					</div>
@@ -34,22 +36,43 @@
 			
 			<fieldset id="langInfoArea" class="selectContainer" style="width: 45%;height: auto;border: 1px solid #000;padding: 10px !important;">
 				
-				<div style="font-size: 75%;">
+				<div style="display: flex;flex-direction: row;justify-content: space-evenly;align-items: center;">
 		
-					<div class="fieldDescription" style='width: 75%;height: auto;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
-						<div class="langProgressDesc" style="font-size: 110%;font-weight: 400;padding: 0 0 .3rem 0;">${Aggregate}</div>
-						<div style="display:flex;flex-direction:row;justify-content:flex-start;align-items: center;">
+					<div id="aggregateInfo" class="fieldDescription" style='height: auto;width: 80%;font-size: 75%;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
+						<div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;">
+							<div class="langProgressDesc" style="font-size: 110%;font-weight: 400;padding: 0 .8rem 0 0;">${Aggregate}</div>
+							<div class="langProgressStats" style="font-size: 100%;font-weight: 400;padding: 0 .8rem 0 0;"></div>
 							<div class="langProgressBar" style="width: 100%;"></div>
-							<div class="langProgressValue" style="text-align: right;padding: 0 0 0 .8rem;"></div>
+							<div class="langProgressValue" style="text-align: right;padding: 0 0 0 .8rem;">
+								<span class="number hide"></span>
+								<span class="material-icons done doneIcon hide" style="float:right;font-size: 170%;"></span>
+							</div>
 						</div>
 					</div>
-					<div>
-						<span class="material-icons done doneIcon hide" style="float:right;font-size: 300%;margin: -2rem .3em 0em"></span>
+					<div id="langInfo" class="fieldDescription" style='height: auto;width: 80%;font-size: 75%;white-space: nowrap !important;overflow: hidden;text-overflow: ellipsis'>
+						<div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;">
+							<div class="langProgressDesc" style="font-size: 110%;font-family: Quicksand-Regular;font-weight: 400;padding: 0 .8rem 0 0;">Jellyfin-web</div>
+							<div class="langProgressStats" style="font-size: 100%;font-weight: 400;padding: 0 .8rem 0 0;"></div>
+							<div class="langProgressBar" style="width: 100%;"></div>
+							<div class="langProgressValue" style="text-align: right;padding: 0 0 0 .8rem;">
+								<span class="number hide"></span>
+								<span class="material-icons done doneIcon hide" style="float:right;font-size: 170%;"></span>
+							</div>
+						</div>
+						<div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;">
+							<div class="mj_langProgressDesc" style="font-size: 110%;font-family: Quicksand-Regular;font-weight: 400;padding: 0 .8rem 0 0;">myJelly</div>
+							<div class="mj_langProgressStats" style="font-size: 100%;font-weight: 400;padding: 0 .8rem 0 0;"></div>
+							<div class="mj_langProgressBar" style="width: 100%;"></div>
+							<div class="mj_langProgressValue" style="text-align: right;padding: 0 0 0 .8rem;">
+								<span class="number hide"></span>
+								<span class="material-icons done doneIcon hide" style="float:right;font-size: 170%;"></span>
+							</div>
+						</div>
 					</div>
 					
 				</div>
 				<br>
-				<div class="fieldDescription">
+				<div class="fieldDescription" style="display: flex;flex-direction: column;justify-content: space-evenly;align-items: center;">
 				
 					<div>La traduction de Jellyfin est un projet en cours.</div>
 					<div class="hyperlink hide" style="margin-top: .25em;">

@@ -179,55 +179,87 @@ export function populateDictionaries(select, languages, view, val, ban) {
 	});	
 }
 
-// Refresh the recap window containing the progress bar for the aggregate language.
+// Refresh the lang area window containing some statistics for the languages selected.
 export function showAggregateInfo(x) {
 	const node = x.parentElement?.parentElement?.parentElement;
-	if (!node)
+	if (node === undefined)
 		return;
-	const lang_info = node.querySelector('#langInfoArea');
 	let lang = node.querySelector('.selectLanguage')?.value;
 	let lang_alt = node.querySelector('.selectLanguageAlt')?.value;
-	if (!lang || !lang_alt)
+	if (lang === undefined || lang_alt === undefined)
 		return;
 	const srcCode = globalize.getSourceCulture();
+	const usrMeta = cultures.getDictionary(lang);
+	const srcMeta = cultures.getDictionary(srcCode);
 	
 	// Auto mode
 	if (lang === '')
 		lang = globalize.getDefaultCulture().ccode;
 	
-	globalize.getCoreDictionary(srcCode).then((srcLangKeys) => {
-		globalize.getCoreDictionary(lang).then((eLangKeys) => {
-			globalize.getCoreDictionary(lang_alt).then((dic) => {
-				let completeness = 0;
-				let completeness_alt = 0;
-				let completeness_agg = 0;
+	globalize.getCoreDictionary(srcCode).then((srcDic) => {
+		globalize.getCoreDictionary(lang).then((usrDic) => {
+			globalize.getCoreDictionary(lang_alt).then((usrAltDic) => {
+				let usrDone = 0;
+				let usrDoneAlt = 0;
+				let usrDoneAgg = 0;
 				
 				if (lang_alt !== 'none') {
-					const srcKeys = Object.keys(srcLangKeys);
-					const srcKeys_total = srcKeys.length;
-					//const srcKeys_done = srcKeys.filter(k => k in dic || k in eLangKeys).length;
-					let srcKeys_done = srcKeys.filter(k => k in eLangKeys).length;
-					completeness = (srcKeys_done / srcKeys_total) * 100;
+					const agg_info = node.querySelector('#aggregateInfo');
+					const srcKeys = Object.keys(srcDic);
+					const srcKeysCnt = srcMeta["keys#"];
 					
-					let srcKeys_done_alt = srcKeys.filter(k => !(k in eLangKeys) && (k in dic)).length;
-					completeness_alt = (srcKeys_done_alt / srcKeys_total) * 100;
+					const usrKeysCnt = srcKeys.filter(k => k in usrDic).length;
+					usrDone = (usrKeysCnt / srcKeysCnt) * 100;
+					const usrKeysAltCnt = srcKeys.filter(k => !(k in usrDic) && (k in usrAltDic)).length;
+					usrDoneAlt = (usrKeysAltCnt / srcKeysCnt) * 100;
+					const usrKeysAggCnt = Math.min(usrKeysAltCnt + usrKeysCnt, srcKeysCnt);
+					usrDoneAgg = (usrKeysAggCnt / srcKeysCnt) * 100;
 					
-					let srcKeys_done_agg = srcKeys.filter(k => (k in dic) || (k in eLangKeys)).length;
-					completeness_agg = ((srcKeys_done_alt + srcKeys_done) / srcKeys_total) * 100;
+					agg_info.querySelector('.langProgressStats').innerHTML = usrKeysAggCnt + '/' + srcKeysCnt;
+					agg_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtmlEx(usrDone, usrDoneAlt);
+					if (usrDoneAgg === 100) {
+						agg_info.querySelector('.langProgressValue').querySelector('.number').classList.add('hide');
+						agg_info.querySelector('.langProgressValue').querySelector('.doneIcon').classList.remove('hide');
+					} else {
+						agg_info.querySelector('.langProgressValue').querySelector('.number').innerHTML = parseFloat(usrDoneAgg.toFixed(2)) + '% ';
+						agg_info.querySelector('.langProgressValue').querySelector('.doneIcon').classList.add('hide');
+						agg_info.querySelector('.langProgressValue').querySelector('.number').classList.remove('hide');
+					}
 					
-					lang_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtmlEx(completeness, completeness_alt);
-					lang_info.querySelector('.langProgressValue').innerHTML = completeness_agg.toFixed(2) + '% ';
+					node.querySelector('#langInfo').classList.add('hide');
+					node.querySelector('#aggregateInfo').classList.remove('hide');
 				} else {
-					const eLang = cultures.getDictionary(lang);
-					completeness = eLang["completed%"];
-					lang_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(completeness);
-					lang_info.querySelector('.langProgressValue').innerHTML = completeness.toFixed(2) + '% ';
+					const lang_info = node.querySelector('#langInfo');
+					
+					usrDone = usrMeta["jellyfinWeb"]["completed%"];
+					lang_info.querySelector('.langProgressStats').innerHTML = usrMeta["jellyfinWeb"]["keys#"] + '/' + srcMeta["jellyfinWeb"]["keys#"];
+					lang_info.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(usrDone);
+					const jf = lang_info.querySelector('.langProgressValue');
+					if (usrDone === 100) {
+						jf.querySelector('.number').classList.add('hide');
+						jf.querySelector('.doneIcon').classList.remove('hide');
+					} else {
+						jf.querySelector('.doneIcon').classList.add('hide');
+						jf.querySelector('.number').innerHTML = parseFloat(usrDone.toFixed(2)) + '% ';
+						jf.querySelector('.number').classList.remove('hide');
+					}
+					
+					usrDone = usrMeta["myJelly"]["completed%"];
+					lang_info.querySelector('.mj_langProgressStats').innerHTML = usrMeta["myJelly"]["keys#"] + '/' + srcMeta["myJelly"]["keys#"];
+					lang_info.querySelector('.mj_langProgressBar').innerHTML = indicators.getProgressHtml(usrDone);
+					const mj = lang_info.querySelector('.mj_langProgressValue');
+					if (usrDone === 100) {
+						mj.querySelector('.number').classList.add('hide');
+						mj.querySelector('.doneIcon').classList.remove('hide');
+					} else {
+						mj.querySelector('.doneIcon').classList.add('hide');
+						mj.querySelector('.number').innerHTML = parseFloat(usrDone.toFixed(2)) + '% ';
+						mj.querySelector('.number').classList.remove('hide');
+					}
+					
+					node.querySelector('#aggregateInfo').classList.add('hide');
+					lang_info.classList.remove('hide');
 				}
-				
-				if (completeness === 100 || completeness_agg === 100)
-					lang_info.querySelector('.doneIcon').classList.remove('hide');
-				else
-					lang_info.querySelector('.doneIcon').classList.add('hide'); 
 			});
 		});
 	});
@@ -238,23 +270,27 @@ export function showLangProgress(x, alt) {
 	if (!x)
 		return;
 	const node = x.parentNode;
-	let lang = x.value;
+	let usrCode = x.value;
+	const srcCode = globalize.getSourceCulture();
 	
-	// No language.
-	if (lang === 'none') {
+	// No selection.
+	if (usrCode === 'none') {
 		node.querySelector('.langProgressCode').innerHTML = '';
+		node.querySelector('.langProgressStats').innerHTML = '';
 		node.querySelector('.langProgressBar').innerHTML = '';
 		node.querySelector('.langProgressValue').innerHTML = '';
 		return;
 	}
 	// Auto mode
-	if (lang === '')
-		lang = globalize.getDefaultCulture().ccode;
+	if (usrCode === '')
+		usrCode = globalize.getDefaultCulture().ccode;
 
-	let eLang = cultures.getDictionary(lang);
-	node.querySelector('.langProgressCode').innerHTML = eLang["ISO6391"];
-	node.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(eLang["completed%"], alt? {'alt': true}: {});
-	node.querySelector('.langProgressValue').innerHTML = eLang["completed%"] + '% ';
+	const usrMeta = cultures.getDictionary(usrCode);
+	const srcMeta = cultures.getDictionary(srcCode);
+	node.querySelector('.langProgressCode').innerHTML = usrMeta["ISO6391"];
+	node.querySelector('.langProgressStats').innerHTML = usrMeta["keys#"] + '/' + srcMeta["keys#"];
+	node.querySelector('.langProgressBar').innerHTML = indicators.getProgressHtml(usrMeta["completed%"], alt? {'alt': true}: {});
+	node.querySelector('.langProgressValue').innerHTML = usrMeta["completed%"] + '% ';
 }
 
 export default {

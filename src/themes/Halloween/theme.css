@@ -268,10 +268,6 @@ html {
     box-shadow: none !important;
 }
 
-.itemProgressBar {
-	height: .4em;
-}
-
 .itemProgressBarForeground {
    background: linear-gradient(135deg, #4114e5 0%, #6f53d3 100%);
 }
