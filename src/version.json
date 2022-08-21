@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-5",
+	"version": "10.8.4-6",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -67,6 +67,7 @@
 		"10.8.4-2": "Translations synchronized with master.\nApply patch 'Update Fonts to v4.5.11'.\nApply patch 'Update PostCSS'.\nApply patch 'Update dependency blurhash to v1.1.5'.\nApply patch 'escape-html-1.x'.",
 		"10.8.4-3": "Install master's fully patched 'package.json'.\nEnhance interface for display language configuration (display settings).",
 		"10.8.4-4": "Fix stats not refreshing when display language set to 'auto' (display settings).",
-		"10.8.4-5": "Fix wrong country code sent to the weather API when display language set to 'auto' (display settings)."
+		"10.8.4-5": "Fix wrong country code sent to the weather API when display language set to 'auto' (display settings).",
+		"10.8.4-6": "Fix Jellyfin translation project message forced in French (display settings).\nTranslations synchronized with master."
 	}
 }
