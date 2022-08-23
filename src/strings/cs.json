@@ -543,6 +543,8 @@
     "Horizontal": "Vodorovně",
     "HttpsRequiresCert": "Chcete-li povolit zabezpečená připojení, budete muset zadat důvěryhodný certifikát SSL, například Let's Encrypt. Zadejte prosím certifikát nebo zakažte zabezpečená připojení.",
     "Identify": "Identifikovat",
+    "IgnoreDts": "Ignorovat DTS (časové razítko dekódování)",
+    "IgnoreDtsHelp": "Vypnutím se mohou vyřešit některé problémy, např. chybějící zvuk u kanálů s oddělenými zvukovými a video stopami.",
     "Image": "Obrázek",
     "Images": "Obrázky",
     "ImportFavoriteChannelsHelp": "Jen kanály označené jako oblíbené na zařízení tuneru budou importovány.",

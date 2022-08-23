@@ -30,7 +30,7 @@
     "LabelAPIFrequencyHelp": "Delay in minutes between two successive API calls.",
     "LabelAllowedAudioChannels": "Maximum Allowed Audio Channels:",
     "LabelAppHost": "Host:",
-    "LabelAppRepositoryName": "Repository Name:",
+    "LabelAppRepositoryName": "Repository name:",
     "LabelAppVersion": "Installed version:",
     "LabelBackdrops": "Backdrops:",
     "LabelChromecastVersion": "Chromecast Version:",
