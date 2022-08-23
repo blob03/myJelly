@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-7",
+	"version": "10.8.4-8",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -69,6 +69,7 @@
 		"10.8.4-4": "Fix stats not refreshing when display language set to 'auto' (display settings).",
 		"10.8.4-5": "Fix wrong country code sent to the weather API when display language set to 'auto' (display settings).",
 		"10.8.4-6": "Fix Jellyfin translation project message forced in French (display settings).\nTranslations synchronized with master.",
-		"10.8.4-7": "Fix both web player and SyncPlay failure to play a singleton episode with user preference 'EnableNextEpisodeAutoPlay' set.\nTranslations synchronized with master."
+		"10.8.4-7": "Fix both web player and SyncPlay failure to play a singleton episode with user preference 'EnableNextEpisodeAutoPlay' set.\nTranslations synchronized with master.",
+		"10.8.4-8": "Install master's fully patched 'package.json'; run 'npm update' once to make the changes effective."
 	}
 }
