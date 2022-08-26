@@ -144,9 +144,9 @@ import './backdrop.scss';
     export function clearBackdrop(clearAll) {
         clearRotation();
 
-        if (currentLoadingBackdrop) {
-            currentLoadingBackdrop.destroy();
-            currentLoadingBackdrop = null;
+        if (_currentInstance) {
+            _currentInstance.destroy();
+            _currentInstance = null;
         }
 
         const elem = getBackdropContainer();
@@ -194,18 +194,17 @@ import './backdrop.scss';
     }
 
     let hasExternalBackdrop;
-    export function externalBackdrop(enabled) {
+    function externalBackdrop(enabled) {
         hasExternalBackdrop = enabled;
         setBackgroundContainerBackgroundEnabled();
     }
 
-    let currentLoadingBackdrop;
-    function setBackdropImage(url) {
-        if (currentLoadingBackdrop) {
-            currentLoadingBackdrop.destroy();
-            currentLoadingBackdrop = null;
+    let _currentInstance;
+    export function setBackdropImage(url) {
+        if (_currentInstance) {
+            _currentInstance.destroy();
+            _currentInstance = null;
         }
-
         const elem = getBackdropContainer();
         const existingBackdropImage = elem.querySelector('.displayingBackdropImage');
 
@@ -215,10 +214,9 @@ import './backdrop.scss';
             }
             existingBackdropImage.classList.remove('displayingBackdropImage');
         }
-
         const instance = new Backdrop();
         instance.load(url, elem, existingBackdropImage);
-        currentLoadingBackdrop = instance;
+        _currentInstance = instance;
     }
 
     function getItemImageUrls(item, imageOptions) {

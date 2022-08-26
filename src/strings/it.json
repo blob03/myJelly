@@ -543,6 +543,8 @@
     "Horizontal": "Orizzontale",
     "HttpsRequiresCert": "Per abilitare le connessioni sicure, dovrai fornire un certificato SSL affidabile, come Let's Encrypt. Per favore o fornisci un certificato, o disabilita le connessioni sicure.",
     "Identify": "Identifica",
+    "IgnoreDts": "Ignora DTS (decodifica del timestamp)",
+    "IgnoreDtsHelp": "Disattivare quest'impostazione potregge risolvere alcuni problemi. Ad esempio, audio mancante in canali con flussi audio e video separati.",
     "Image": "Immagine",
     "Images": "Immagini",
     "ImportFavoriteChannelsHelp": "Solo i canali che sono contrassegnati come preferiti sul dispositivo di sintonizzazione verranno importati.",

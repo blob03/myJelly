@@ -750,7 +750,6 @@ h3 {
 
 .abouttab {
 	font-family: inherit;
-	font-size: 90%;
 	line-height: 1.35;
 	font-weight: 400;
 	text-shadow: 1px 1px 4px #749cb0;
@@ -759,6 +758,15 @@ h3 {
 	left: 40%;
 	align-items: flex-start !important;
 	width: auto;
+}
+
+.aboutframe {
+	padding: .2em 1em .2em 1em !important;
+	background: rgba(123, 159, 197, 0.15) !important;
+	font-size: 100% !important;
+	line-height: 1.65 !important;
+	position: relative !important;
+	top: 4em !important;
 }
 
 .aboutcontent {
@@ -1252,15 +1260,6 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
-}
-
-.aboutframe {
-	padding: .2em 1em .2em 1em !important;
-	background: rgba(123, 159, 197, 0.15) !important;
-	font-size: 100% !important;
-	line-height: 1.65 !important;
-	position: relative !important;
-	top: 4em !important;
 }
 
 .headerWthMain {

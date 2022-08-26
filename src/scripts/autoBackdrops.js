@@ -35,8 +35,6 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	let type = userSettings.enableBackdrops();
 	let genreIds = '';
 	let filters = '';
-	let options;
-	let images;
 	
 	switch(type) {
 		case "LibrariesFav":
@@ -57,13 +55,18 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "SeriesFav":
 			types = "Series";
 			break;
+			
+		case 'Theme':
+			clearBackdropButton();
+			break;
 	}
 	
     const key = `backdrops2_${userId + (type || '') + (parentId || '')}`;
     let data = cache[key];
     if (data) {
         //console.debug(`Found backdrop id list in cache. Key: ${key}`);
-		showBackdropButton(_info_link_href[key]);
+		if (type !== 'Theme')
+			showBackdropButton(_info_link_href[key]);
         data = JSON.parse(data);
         return Promise.resolve(data);
     }
@@ -75,7 +78,8 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "MovieFav":
 		case "Series":
 		case "SeriesFav":
-			options = {
+		case "Theme":
+			let options = {
 				SortBy: SortBy,
 				Limit: 20,
 				Recursive: true,
@@ -90,13 +94,14 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 			return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
 				if (result.Items.length) {
 					const _pageinfoUrl = appRouter.getRouteUrl(result.Items[0]) || '#';
-					showBackdropButton(_pageinfoUrl);
-						
-					images = result.Items.map(function (i) {
+					if (type !== 'Theme')
+						showBackdropButton(_pageinfoUrl);
+					
+					const images = result.Items.map( x => {
 						return {
-							Id: i.Id,
-							tag: i.BackdropImageTags[0],
-							ServerId: i.ServerId
+							Id: x.Id,
+							tag: x.BackdropImageTags[0],
+							ServerId: x.ServerId
 						};
 					});
 					cache[key] = JSON.stringify(images);
@@ -108,7 +113,6 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 			
 		case "Artists":
 		case "ArtistsFav":
-			clearBackdropButton();
 			options = {
 				SortBy: SortBy,
 				Limit: 20,
@@ -117,25 +121,29 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 				Filters: filters
 			};
 			return apiClient.getArtists(apiClient.getCurrentUserId(), options).then( (result) => {
-				if (result.Items.length) {
-					images = result.Items.map(function (i) {
+				// filter out items without a tag.
+				let res = result.Items.filter( x => { return x.BackdropImageTags[0] });
+				if (res.length) {
+					const _pageinfoUrl = appRouter.getRouteUrl(res[0]) || '#';
+					showBackdropButton(_pageinfoUrl);
+					const images = res.map( x => {
 						return {
-							Id: i.Id,
-							tag: i.BackdropImageTags[0],
-							ServerId: i.ServerId
+							Id: x.Id,
+							tag: x.BackdropImageTags[0],
+							ServerId: x.ServerId
 						};
 					});
 					cache[key] = JSON.stringify(images);
+					_info_link_href[key] = _pageinfoUrl;
 					return images;
 				}
 			});
 			break;
 	}
 	
-	clearBackdropButton();
-	return new Promise(() => {
-		images = {};
-		return images;
+	return new Promise((resolve, reject) => {
+		const images = {};
+		reject(images);
 	});
 }
 
@@ -143,17 +151,20 @@ function showBackdrop(type, parentId) {
     const apiClient = window.ApiClient;
 	
     if (apiClient) {
-        getBackdropItemIds(apiClient, apiClient.getCurrentUserId(), type, parentId).then( function (images) {
+        getBackdropItemIds(apiClient, apiClient.getCurrentUserId(), type, parentId).then( images => {
             if (images && images.length) {
-                setBackdrops(images.map(function (i) {
-                    i.BackdropImageTags = [i.tag];
-                    return i;
+                setBackdrops(images.map( x => {
+                    x.BackdropImageTags = [x.tag];
+                    return x;
                 }));
             } else {
 				clearBackdropButton();
 				clearBackdrop();
             }
-        });
+        }).catch( images => {
+			clearBackdropButton();
+			clearBackdrop();
+		});
     }
 }
 

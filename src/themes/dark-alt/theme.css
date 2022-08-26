@@ -667,8 +667,12 @@ html {
 .abouttab {
 	color: #767b88 !important;
 	font-family: inherit;
-	font-size: 90%;
-	line-height: 1.25;
+	font-size: 100%;
+}
+
+.aboutframe {
+	padding: 1em !important;
+	background: rgba(0, 0, 0, 0.15) !important;
 }
 
 .aboutcontent {
@@ -1334,13 +1338,6 @@ select option:selected {
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
-}
-
-.aboutframe {
-	padding: 1em !important;
-	background: rgba(0, 0, 0, 0.15) !important;
-	font-size: 110% !important;
-	line-height: 1.65 !important;
 }
 
 .headerWthMain {

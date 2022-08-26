@@ -543,6 +543,8 @@
     "Horizontal": "横向",
     "HttpsRequiresCert": "要启用安全连接, 您需要提供一个受信任的 SSL 证书, 如 \"Let's Encrypt\"。请提供证书或禁用安全连接。",
     "Identify": "识别",
+    "IgnoreDts": "忽略DTS（解码时间戳）",
+    "IgnoreDtsHelp": "禁用此选项可能会解决一些问题，例如在具有单独的音频和视频流的频道上缺少音频。",
     "Image": "图片",
     "Images": "图片",
     "ImportFavoriteChannelsHelp": "只有在协调器设备中被标记为我的最爱的频道才会被导入。",

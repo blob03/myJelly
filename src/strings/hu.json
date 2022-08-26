@@ -543,6 +543,8 @@
     "Horizontal": "Vízszintes",
     "HttpsRequiresCert": "A biztonságos kapcsolatok engedélyezéséhez megbízható SSL-tanúsítványt kell használni, mint például a Let's Encrypt. Kérlek add meg a tanúsítványt, vagy tiltsd le a biztonságos kapcsolatokat.",
     "Identify": "Azonosítás",
+    "IgnoreDts": "DTS (dekódolási időbélyeg) figyelmen kívül hagyása",
+    "IgnoreDtsHelp": "Ennek az opciónak a letiltása megoldhat bizonyos problémákat, pl. hiányzik a hang a külön hang- és videofolyamokkal rendelkező csatornákon.",
     "Image": "Kép",
     "Images": "Képek",
     "ImportFavoriteChannelsHelp": "Csak a tuner eszközön kedvencként megjelölt csatornák kerülnek importálásra.",
