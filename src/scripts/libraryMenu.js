@@ -260,7 +260,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 			else
 				headerReloadButton.classList.add('hide');
 			
-			if (layoutManager.tv && !browser.mobile) {	
+			if (layoutManager.tv && !browser.mobile) {
 				headerLockButton.classList.remove('hide');
 				const lockIcon = document.getElementById("lock");
 				if (lockIcon) {

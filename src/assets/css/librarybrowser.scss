@@ -393,14 +393,16 @@
 }
 
 .detailLogo {
-    height: 16vh;
+    height: 70%;
     position: absolute;
-    top: 5vh;
+	bottom: 0%;
     right: 0%;
 	left: 0%;
+	top: 50%;
+	transform: translateY(-50%);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
 }
 
 .criticReview:first-child {
@@ -715,7 +717,7 @@
     position: absolute !important;
     top: 20%;
     max-width: 25vw;
-    max-height: 80vh;
+    // max-height: 80vh;
     z-index: 3;
 
     .cardBox {
@@ -756,8 +758,9 @@
 
     .layout-tv & {
         left: 5%;
-        top: 21em;
+        top: 55%;
         width: 25vw;
+		height: auto;
         transform: translateY(-50%);
     }
 }

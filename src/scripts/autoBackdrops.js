@@ -56,6 +56,11 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 			types = "Series";
 			break;
 			
+		case "Artists":
+		case "ArtistsFav":
+			types = "MusicArtist";
+			break;
+			
 		case 'Theme':
 			clearBackdropButton();
 			break;
@@ -78,6 +83,8 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "MovieFav":
 		case "Series":
 		case "SeriesFav":
+		case "Artists":
+		case "ArtistsFav":
 		case "Theme":
 			let options = {
 				SortBy: SortBy,
@@ -92,40 +99,13 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 				MaxOfficialRating: MaxOfficialRating
 			};
 			return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
-				if (result.Items.length) {
-					const _pageinfoUrl = appRouter.getRouteUrl(result.Items[0]) || '#';
-					if (type !== 'Theme')
-						showBackdropButton(_pageinfoUrl);
-					
-					const images = result.Items.map( x => {
-						return {
-							Id: x.Id,
-							tag: x.BackdropImageTags[0],
-							ServerId: x.ServerId
-						};
-					});
-					cache[key] = JSON.stringify(images);
-					_info_link_href[key] = _pageinfoUrl;
-					return images;
-				}
-			});
-			break;
-			
-		case "Artists":
-		case "ArtistsFav":
-			options = {
-				SortBy: SortBy,
-				Limit: 20,
-				Recursive: true,
-				ImageTypes: ImageTypes,
-				Filters: filters
-			};
-			return apiClient.getArtists(apiClient.getCurrentUserId(), options).then( (result) => {
 				// filter out items without a tag.
 				let res = result.Items.filter( x => { return x.BackdropImageTags[0] });
 				if (res.length) {
 					const _pageinfoUrl = appRouter.getRouteUrl(res[0]) || '#';
-					showBackdropButton(_pageinfoUrl);
+					if (type !== 'Theme')
+						showBackdropButton(_pageinfoUrl);
+					
 					const images = res.map( x => {
 						return {
 							Id: x.Id,

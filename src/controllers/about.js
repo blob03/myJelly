@@ -49,7 +49,8 @@ class AboutTab {
 		html += '<button type="button" is="emby-button" class="emby-button headerButton autosearchButton" style="padding: 0;margin: 0;background: none;">';
 		html += '<span id="autosearch" class="aboutContent material-icons search" title="';
 		html += globalize.translate('LabelUpdatesAutoCheck') + '" style="color: #fff;font-size: 1.5rem;margin: 0 .5rem 0 0;"></span></button>';
-		html += globalize.translate('LabelUpdate') + ' <span style="font-weight:400;" id="aboutupdate" class="aboutcontent"></span>';
+		html += '<span id="labelUpdate" style="opacity:100%">' + globalize.translate('LabelUpdate') + ' </span>'; 
+		html += '<span style="font-weight:400;" id="aboutupdate" class="aboutcontent"></span>';
 		html += '</div> ';
 		
 		html += '<div class="selectContainer" style="width: 100%;height: auto;margin-bottom: 0.5rem !important;">';
@@ -62,7 +63,7 @@ class AboutTab {
 		html += '<span class="selectArrow material-icons keyboard_arrow_down"></span>';
 		html += '</div>';
 		html += '</div>';
-		html += '<div><textarea readonly is="emby-textarea" id="txtRNotes" class="textarea-mono emby-textarea" style="box-sizing: border-box;width: 100%;padding: .3rem .5rem .3rem .5rem;resize: vertical;font-size: .85rem;font-family: Inconsolata-Light;"></textarea></div>';			
+		html += '<div><textarea readonly is="emby-textarea" id="txtRNotes" class="textarea-mono emby-textarea" style="box-sizing: border-box;width: 100%;padding: .3rem .5rem .3rem .5rem;resize: vertical;font-size: .75rem;font-family: Inconsolata-Light;"></textarea></div>';			
 		
 		if (browser.tv || layoutManager.tv) {
 			html += '<div> ' + globalize.translate('LabelAppRepositoryName') + ' <span style="font-weight:400;" class="aboutcontent">' + appInfo.repository + '</span></div>';
@@ -107,23 +108,29 @@ class AboutTab {
     }
 
 	switchAutosearch() {
-		const autosearchIcon = document.getElementById("autosearch");
+		const autosearchIcon = document.querySelector('#autosearch');
 		if (autosearchIcon) {
 			if (appSettings.enableAutosearch() === false) {
 				autosearchIcon.classList.remove('search_off');
 				autosearchIcon.classList.add('search');
+				document.querySelector('#labelUpdate').style.opacity = 1;
 				appSettings.enableAutosearch(true);
 				this.checkUpdates();
 			} else {
-				if (this._contimeout)
+				if (this._busy === true) {
 					clearInterval(this._contimeout);
+					loading.hide();
+					this._busy = false;
+				}
+				
+				document.querySelector('#labelUpdate').style.opacity = .4;
 				this.au.innerHTML = '';
 				autosearchIcon.classList.remove('search');
 				autosearchIcon.classList.add('search_off');
 				appSettings.enableAutosearch(false);
 				this.updateReleaseNotes(appInfo);
 			}
-		}					
+		}
 	}
 	
 	updateReleaseNotes(src) {
@@ -143,9 +150,11 @@ class AboutTab {
 		const autosearchIcon = document.getElementById("autosearch");
 		if (autosearchIcon) {
 			if (appSettings.enableAutosearch() === false) {
+				document.querySelector('#labelUpdate').style.opacity = .4;
 				autosearchIcon.classList.remove('search');
 				autosearchIcon.classList.add('search_off');
 			} else {
+				document.querySelector('#labelUpdate').style.opacity = 1;
 				autosearchIcon.classList.remove('search_off');
 				autosearchIcon.classList.add('search');
 			}
@@ -156,7 +165,7 @@ class AboutTab {
 		const currentApiClient = ServerConnections.getLocalApiClient();
 		const self = this;
 		ServerConnections.user(currentApiClient).then(function (user) {
-			self.currentUser = user;			
+			self.currentUser = user;
 			if (appSettings.enableAutosearch() === false)
 				self.au.innerHTML = '';
 			else
@@ -192,14 +201,14 @@ class AboutTab {
 		let req = {};
 		req.dataType = 'json';
 		const url_proto_SSL = 'https://';
-		const url_base = 'blob03.github.io/myJelly/src/version.json';	
+		const url_base = 'blob03.github.io/myJelly/src/version.json';
 		//const url_cacheBuster = '?_=' + Date.now().toString();
 		const url_cacheBuster = '';
 		req.url = url_proto_SSL + url_base + url_cacheBuster; 
 		if (!this.au || !this.vers)
 			return;
 		
-		loading.show();	
+		loading.show();
 		if (this._busy === true)
 			return;
 		this._busy = true;

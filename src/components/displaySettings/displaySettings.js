@@ -256,10 +256,15 @@ import viewContainer from '../viewContainer';
 	function findPosition() {
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition( (x) => {
+				toast(globalize.translate('GeolocationFound', x.coords.latitude.toFixed(2), x.coords.longitude.toFixed(2)));
 				document.querySelector('#inputLat').value = Number(x.coords.latitude.toFixed(2));
 				document.querySelector('#inputLon').value = Number(x.coords.longitude.toFixed(2));
-			}, (y) => {console.warn("Failed to find current geolocation: " + y);}, { 'enableHighAccuracy': true, 'timeout': 5000, 'maximumAge': 0 });
+			}, (y) => {
+				toast(globalize.translate('GeolocationFailed'));
+				console.warn("Failed to find current geolocation: " + y);}, 
+			{ 'enableHighAccuracy': true, 'timeout': 10000, 'maximumAge': 0 });
 		} else{
+			toast(globalize.translate('GeolocationUnsupported'));
 			console.warn("Sorry but it appears your browser does not support HTML5 geolocation.");
 		}
 	}

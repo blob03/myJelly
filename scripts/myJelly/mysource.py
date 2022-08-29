@@ -16,20 +16,18 @@ def rename(subdir, flag):
 	basedir = cwd + "/../../src/strings/"
 	langdir = basedir + subdir
 	
-	with open('renamed.txt', flag) as out:
-		nbr = 0
-		for filename, BCP47 in langlst.items():
-			orig = filename + '.json'
-			dest = BCP47 + '.json'
-			if (os.path.isfile(langdir + orig)):
-				if (os.path.isfile(langdir + dest)):
-					os.remove(langdir + dest)
-				print('Renaming \'' + orig + '\' as \'' + dest + '\'.')
-				os.rename(langdir + orig, langdir + dest)
-				nbr += 1
-		out.close()
-		print('Number of file renamed: ' + str(nbr) + '.')
-		
+	nbr = 0
+	for _in, _out in langlst.items():
+		_in = _in + '.json'
+		_out = _out + '.json'
+		if (os.path.isfile(langdir + _in)):
+			if (os.path.isfile(langdir + _out)):
+				os.remove(langdir + _out)
+			print('Renaming \'' + _in + '\' as \'' + _out + '\'.')
+			os.rename(langdir + _in, langdir + _out)
+			nbr += 1
+	print('Number of file renamed: ' + str(nbr) + '.')
+	
 # Cleanup and sorting of translations.
 # Remove and report orphans, duplicates (the last found has precedence), empty/malformed input.
 # Produce a metadata file containing basic statistics for each language 
@@ -66,16 +64,14 @@ def sort(subdir, source, mod, langlst, trans_aggregate):
 	for lang in langlst:
 		with open(langdir + lang, 'r+') as f:
 			print('Checking dictionary: ' + langdir + lang)
-			#lastm = datetime.fromtimestamp(os.path.getmtime(langdir + lang)).strftime('%Y-%m-%d %H:%M:%S')
-			lastm = os.path.getmtime(langdir + lang)
 			fsize = os.path.getsize(langdir + lang)
-			print('Last modified: ' + str(lastm))
 			orphans = []
 			keys = 0
 			okeys = 0
 			dup = 0
 			empty = 0
 			nbsp = 0
+			
 			trans_old = json.load(f)
 			trans_new = {}
 			try:
@@ -133,7 +129,6 @@ def sort(subdir, source, mod, langlst, trans_aggregate):
 			except KeyError:
 				metatree[ccode] = {
 					"ccode": ccode,
-					"lastm": lastm,
 					"fsize": fsize,
 					"ccodeSrc": source,
 					"displayName": "",
