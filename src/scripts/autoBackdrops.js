@@ -1,10 +1,10 @@
-import { clearBackdrop, setBackdrops } from '../components/backdrop/backdrop';
+import { clearBackdrop, setBackdrops, setBackdropImage } from '../components/backdrop/backdrop';
 import * as userSettings from './settings/userSettings';
 import libraryMenu from './libraryMenu';
 import { pageClassOn } from '../utils/dashboard';
 import { appRouter } from '../components/appRouter';
 
-const cache = {};
+const _cache = {};
 const _info_link_href = {};
 
 function enabled() {
@@ -46,6 +46,11 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	}
 			
 	switch(type) {
+		case "Libraries":
+		case "LibrariesFav":
+			types = "Movie.Series";
+			break;
+			
 		case "Movie":
 		case "MovieFav":
 			types = "Movie";
@@ -59,23 +64,10 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "Artists":
 		case "ArtistsFav":
 			types = "MusicArtist";
-			break;
-			
-		case 'Theme':
-			clearBackdropButton();
+			MaxOfficialRating = "";
 			break;
 	}
 	
-    const key = `backdrops2_${userId + (type || '') + (parentId || '')}`;
-    let data = cache[key];
-    if (data) {
-        //console.debug(`Found backdrop id list in cache. Key: ${key}`);
-		if (type !== 'Theme')
-			showBackdropButton(_info_link_href[key]);
-        data = JSON.parse(data);
-        return Promise.resolve(data);
-    }
-
 	switch(type) {
 		case "Libraries":
 		case "LibrariesFav":
@@ -85,8 +77,15 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "SeriesFav":
 		case "Artists":
 		case "ArtistsFav":
-		case "Theme":
-			let options = {
+			const key = `backdrops2_${userId + (type || '') + (parentId || '')}`;
+			let data = _cache[key];
+			if (data) {
+				//console.debug(`Found backdrop id list in cache. Key: ${key}`);
+				showBackdropButton(_info_link_href[key]);
+				data = JSON.parse(data);
+				return Promise.resolve(data);
+			}
+			const options = {
 				SortBy: SortBy,
 				Limit: 20,
 				Recursive: true,
@@ -98,54 +97,66 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 				EnableTotalRecordCount: false,
 				MaxOfficialRating: MaxOfficialRating
 			};
-			return apiClient.getItems(apiClient.getCurrentUserId(), options).then(function (result) {
+			return apiClient.getItems(apiClient.getCurrentUserId(), options).then( res => {
 				// filter out items without a tag.
-				let res = result.Items.filter( x => { return x.BackdropImageTags[0] });
+				res = res.Items.filter( x => { return x.BackdropImageTags.length });
 				if (res.length) {
 					const _pageinfoUrl = appRouter.getRouteUrl(res[0]) || '#';
-					if (type !== 'Theme')
-						showBackdropButton(_pageinfoUrl);
-					
+					showBackdropButton(_pageinfoUrl);
 					const images = res.map( x => {
 						return {
 							Id: x.Id,
-							tag: x.BackdropImageTags[0],
+							BackdropImageTags: x.BackdropImageTags,
 							ServerId: x.ServerId
 						};
 					});
-					cache[key] = JSON.stringify(images);
+					_cache[key] = JSON.stringify(images);
 					_info_link_href[key] = _pageinfoUrl;
 					return images;
 				}
 			});
 			break;
+			
+		default:
+			return new Promise((resolve, reject) => {
+				const images = {};
+				reject(images);
+			});
 	}
-	
-	return new Promise((resolve, reject) => {
-		const images = {};
-		reject(images);
-	});
 }
 
 function showBackdrop(type, parentId) {
-    const apiClient = window.ApiClient;
-	
-    if (apiClient) {
-        getBackdropItemIds(apiClient, apiClient.getCurrentUserId(), type, parentId).then( images => {
-            if (images && images.length) {
-                setBackdrops(images.map( x => {
-                    x.BackdropImageTags = [x.tag];
-                    return x;
-                }));
-            } else {
-				clearBackdropButton();
-				clearBackdrop();
-            }
-        }).catch( images => {
+	const btype = userSettings.enableBackdrops();
+	switch(btype) {
+		case "Libraries":
+		case "LibrariesFav":
+		case "Movie":
+		case "MovieFav":
+		case "Series":
+		case "SeriesFav":
+		case "Artists":
+		case "ArtistsFav":
+			const apiClient = window.ApiClient;
+			if (apiClient) {
+				getBackdropItemIds(apiClient, apiClient.getCurrentUserId(), type, parentId).then( images => {
+					if (images && images.length) {
+						setBackdrops(images);
+					} else {
+						clearBackdropButton();
+						clearBackdrop();
+					}
+				}).catch( images => {
+					clearBackdropButton();
+					clearBackdrop();
+				});
+			}
+			break;
+			
+		case 'Theme':
+			setBackdropImage('#');
 			clearBackdropButton();
-			clearBackdrop();
-		});
-    }
+			break;
+	}
 }
 
 pageClassOn('pageshow', 'page', function () {

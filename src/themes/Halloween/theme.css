@@ -133,7 +133,7 @@ html {
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background-color: rgba(235, 129, 40, 0.8);
+    background: rgba(235, 129, 40, 0.8);
 }
 
 .backdropImage {

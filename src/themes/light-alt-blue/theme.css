@@ -72,21 +72,6 @@ html {
     background-color: #daeaf4;
 }
 
-.backgroundContainer {
-	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
-	background-color: rgb(220, 242, 248);
-    -webkit-background-size: cover;
-    background-size: cover;
-}
-
-.backgroundContainer.withBackdrop {
-   background-color: rgba(220, 242, 248, .75);
-}
-
-.backgroundContainer.withThemeBackdrop {
-   background-color: transparent;
-}
-
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
@@ -716,6 +701,21 @@ h3 {
 
 .ratingbutton-icon-withrating {
     color: #bbf6ae !important
+}
+
+.backgroundContainer {
+	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
+	background-color: rgb(220, 242, 248);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.backgroundContainer.withBackdrop {
+   background-color: rgba(220, 242, 248, .75);
+}
+
+.backgroundContainer.withThemeBackdrop {
+   background-color: transparent;
 }
 
 .backdropImage {
