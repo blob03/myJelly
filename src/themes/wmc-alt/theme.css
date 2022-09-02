@@ -239,7 +239,7 @@ html {
 }
 
 .detailRibbon {
-    background-color: #081b3b;
+	background-color: rgba(8,27,59,.4);
 }
 
 .layout-tv .detailRibbon {

@@ -1,11 +1,10 @@
-import { clearBackdrop, setBackdrops, setBackdropImage } from '../components/backdrop/backdrop';
+import { clearBackdrop, setBackdrops, setBackdropImage, showBackdropButton } from '../components/backdrop/backdrop';
 import * as userSettings from './settings/userSettings';
 import libraryMenu from './libraryMenu';
 import { pageClassOn } from '../utils/dashboard';
 import { appRouter } from '../components/appRouter';
 
-const _cache = {};
-const _info_link_href = {};
+var _cache = {};
 
 function enabled() {
     return userSettings.enableBackdrops() != 'None';
@@ -16,14 +15,6 @@ function clearBackdropButton() {
 	if (_bdi) {
 		_bdi.classList.add('hide');
 		_bdi.href = '#';
-	}
-}
-
-function showBackdropButton(_item_url) {
-	const _bdi =  document.querySelector('#backdropInfoButton');
-	if (_bdi && _item_url) {
-		_bdi.href = _item_url;
-		_bdi.classList.remove('hide');
 	}
 }
 
@@ -48,7 +39,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	switch(type) {
 		case "Libraries":
 		case "LibrariesFav":
-			types = "Movie.Series";
+			types = "Movie,Series";
 			break;
 			
 		case "Movie":
@@ -77,13 +68,11 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 		case "SeriesFav":
 		case "Artists":
 		case "ArtistsFav":
-			const key = `backdrops2_${userId + (type || '') + (parentId || '')}`;
-			let data = _cache[key];
-			if (data) {
+			const key = `${userId}-${type}-${parentId || '#'}`;
+			if (_cache[key]) {
 				//console.debug(`Found backdrop id list in cache. Key: ${key}`);
-				showBackdropButton(_info_link_href[key]);
-				data = JSON.parse(data);
-				return Promise.resolve(data);
+				let imgs = _cache[key];
+				return Promise.resolve(imgs);
 			}
 			const options = {
 				SortBy: SortBy,
@@ -101,33 +90,27 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 				// filter out items without a tag.
 				res = res.Items.filter( x => { return x.BackdropImageTags.length });
 				if (res.length) {
-					const _pageinfoUrl = appRouter.getRouteUrl(res[0]) || '#';
-					showBackdropButton(_pageinfoUrl);
-					const images = res.map( x => {
+					let imgs = res.map( x => {
 						return {
 							Id: x.Id,
 							BackdropImageTags: x.BackdropImageTags,
 							ServerId: x.ServerId
 						};
 					});
-					_cache[key] = JSON.stringify(images);
-					_info_link_href[key] = _pageinfoUrl;
-					return images;
+					_cache[key] = imgs;
+					return imgs;
 				}
 			});
 			break;
 			
 		default:
-			return new Promise((resolve, reject) => {
-				const images = {};
-				reject(images);
-			});
+			return Promise.reject({});
 	}
 }
 
 function showBackdrop(type, parentId) {
-	const btype = userSettings.enableBackdrops();
-	switch(btype) {
+	const x = userSettings.enableBackdrops();
+	switch(x) {
 		case "Libraries":
 		case "LibrariesFav":
 		case "Movie":
@@ -155,6 +138,7 @@ function showBackdrop(type, parentId) {
 		case 'Theme':
 			setBackdropImage('#');
 			clearBackdropButton();
+			//showBackdropButton("/web/themes/Halloween/img/bg-alt1.jpg");
 			break;
 	}
 }
@@ -168,14 +152,11 @@ pageClassOn('pageshow', 'page', function () {
 			const type = page.getAttribute('data-backdroptype');
 			const parentId = page.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
 			showBackdrop(type, parentId);
-		} else {
+			return;
+		} else
 			page.classList.remove('backdropPage');
-			clearBackdropButton();
-			clearBackdrop();
-		}
-	} else {
-		clearBackdropButton();
-		clearBackdrop();
-	}
+	}	
+	clearBackdropButton();
+	clearBackdrop();
 });
 

@@ -35,6 +35,8 @@
     "LabelAppHost": "Host:",
     "LabelAppRepositoryName": "Repository name:",
     "LabelAppVersion": "Installed version:",
+    "LabelBackdropRotationDelay": "Rotation delay:",
+    "LabelBackdropRotationDelayHelp": "Set a delay in seconds between two backdrops, 0 to disable.",
     "LabelBackdrops": "Backdrops:",
     "LabelChromecastVersion": "Chromecast Version:",
     "LabelDefaultView": "Default view:",

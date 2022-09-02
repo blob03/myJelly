@@ -543,6 +543,7 @@
     "Horizontal": "Horizontal",
     "HttpsRequiresCert": "Pour activer les connexions sécurisées, il est demandé de fournir un certificat SSL vérifié comme ceux fournis par 'Let's Encrypt'. Fournir ce certificat ou désactiver les connexions sécurisées.",
     "Identify": "Identifier",
+    "IgnoreDtsHelp": "Désactiver cette option pourrait résoudre certains problèmes, comme par exemple l'audio manquant sur des pistes ayant des flux audios et vidéos séparés.",
     "Image": "Image",
     "Images": "Images",
     "ImportFavoriteChannelsHelp": "Seules les chaînes ajoutées aux favoris sur le tuner seront importées.",

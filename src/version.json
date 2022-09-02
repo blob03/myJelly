@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-12",
+	"version": "10.8.4-13",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -74,6 +74,7 @@
 		"10.8.4-9": "Apply patch 'Add configurable IgnoreDts flag to M3U tuner'.\nTranslations synchronized with master.",
 		"10.8.4-10": "Translations synchronized with master.\nInstall master's fully patched 'package.json'; run 'npm update' once to make the changes effective.\nApply patch 'taku0/safe-area-inset'.\nRestore Themes backdrops which have been disabled since commit f0190b7...\nMake the backdrop button (Top bar) cover artists also.",
 		"10.8.4-11": "Translations synchronized with master.\nHide icon 'loading' when turning off updates autosearch (tab 'About').\nGray out updates autosearch label when turning off the feature (tab 'About').\nReport outcome of geolocation requests in a toast (Display settings/HTTPS only).\nScale down a bit the size of font used for the release notes window.\nUpdate script 'mysource.py'.",
-		"10.8.4-12": "Translations synchronized with master.\nCleanup and optimisation of the code handling backdrops."
+		"10.8.4-12": "Translations synchronized with master.\nCleanup and optimisation of the code handling backdrops.",
+		"10.8.4-13": "Translations synchronized with master.\nCleanup and optimisation of the code handling backdrops.\nEnable backdrops rotation for Firefox browsers and TVs.\nMake backdrop button (Top bar) compatible with backdrops rotation.\nAdd a slider to set a delay between rotations (display settings).\nUpdate themes."
 	}
 }

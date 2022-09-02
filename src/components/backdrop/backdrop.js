@@ -4,6 +4,7 @@ import { playbackManager } from '../playback/playbackmanager';
 import dom from '../../scripts/dom';
 import * as userSettings from '../../scripts/settings/userSettings';
 import ServerConnections from '../ServerConnections';
+import { appRouter } from '../appRouter';
 
 import './backdrop.scss';
 
@@ -18,14 +19,14 @@ import './backdrop.scss';
     }
 
     function enableRotation() {
-        if (browser.tv) {
-            return false;
-        }
+       // if (browser.tv) {
+        //    return false;
+       // }
 
         // Causes high cpu usage
-        if (browser.firefox) {
-            return false;
-        }
+      //  if (browser.firefox) {
+       //     return false;
+        //}
 
         return true;
     }
@@ -182,19 +183,19 @@ import './backdrop.scss';
 		};
 	}
 
-	let _hasInternalBackdrop = false;
+	var _hasInternalBackdrop = false;
     function internalBackdrop(val) {
         _hasInternalBackdrop = val;
         setBackgroundContainerBackgroundEnabled();
     }
 	
-	let _hasExternalBackdrop = false;
+	var _hasExternalBackdrop = false;
     function externalBackdrop(val) {
         _hasExternalBackdrop = val;
         setBackgroundContainerBackgroundEnabled();
     }
 
-    let _currentInstance;
+    var _currentInstance;
     export function setBackdropImage(url) {
         if (_currentInstance) {
             _currentInstance.destroy();
@@ -245,31 +246,32 @@ import './backdrop.scss';
     }
 
     function getImageUrls(items, imageOptions) {
-        const list = [];
-        const onImg = img => {
-            list.push(img);
-        };
-
+		const lot = {details: [], list: []};
+		
         for (let i = 0, length = items.length; i < length; i++) {
-            const itemImages = getItemImageUrls(items[i], imageOptions);
-            itemImages.forEach(onImg);
+			lot.list[i] = [];
+            const imgs = getItemImageUrls(items[i], imageOptions);
+            imgs.forEach( img => {
+				lot.list[i].push(img) } );
+			lot.details[i] = appRouter.getRouteUrl(items[i]) || '#';
         }
 
-        return list;
+        return lot;
     }
 
     function enabled() {
         return userSettings.enableBackdrops();
     }
 
-    let rotationInterval;
-    let currentRotatingImages = [];
-    let currentRotationIndex = -1;
+    var _rotationInterval;
+    var _currentRotatingImages = {details: [], list: []};
+    var _currentRotationIndex  = -1;
+	
     export function setBackdrops(items, imageOptions, enableImageRotation) {
         if (enabled()) {
             const images = getImageUrls(items, imageOptions);
 
-            if (images.length) {
+            if (images.list.length) {
                 startRotation(images, enableImageRotation);
             } else {
                 clearBackdrop();
@@ -278,50 +280,64 @@ import './backdrop.scss';
     }
 
     function startRotation(images, enableImageRotation) {
-        if (isEqual(images, currentRotatingImages)) {
-            return;
-        }
-
         clearRotation();
+        
+        if (images.list.length > 1 && enableImageRotation !== false && enableRotation()) {
+			
+			if (!isEqual(images.list, _currentRotatingImages.list)) {
+				_currentRotatingImages = { ...images };
+				_currentRotationIndex = -1;
+				//console.debug("Fresh backdrop lot loaded.");
+			} else
+				--_currentRotationIndex;
 
-        currentRotatingImages = images;
-        currentRotationIndex = -1;
-
-        if (images.length > 1 && enableImageRotation !== false && enableRotation()) {
-            rotationInterval = setInterval(onRotationInterval, 24000);
+			const _delay = userSettings.backdropDelay();
+			if (_delay)
+				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+			onRotationInterval();
+			return;
         }
 
-        onRotationInterval();
+        setBackdropImage(images.list[0]);
+		hideBackdropButton();
     }
+
+	export function showBackdropButton(_item_url) {
+		const _bdi =  document.querySelector('#backdropInfoButton');
+		if (_bdi && _item_url) {
+			_bdi.href = _item_url;
+			_bdi.classList.remove('hide');
+		}
+	}
+	
+	export function hideBackdropButton() {
+		const _bdi =  document.querySelector('#backdropInfoButton');
+		if (_bdi) 
+			_bdi.classList.add('hide');
+	}
 
     function onRotationInterval() {
         if (playbackManager.isPlayingLocally(['Video'])) {
             return;
         }
 
-        let newIndex = currentRotationIndex + 1;
-        if (newIndex >= currentRotatingImages.length) {
-            newIndex = 0;
-        }
-
-        currentRotationIndex = newIndex;
-        setBackdropImage(currentRotatingImages[newIndex]);
+        let i = _currentRotationIndex + 1;
+        i = i % _currentRotatingImages.list.length;
+        _currentRotationIndex = i;
+		setBackdropImage(_currentRotatingImages.list[i]);
+		showBackdropButton(_currentRotatingImages.details[i]);
     }
 
     function clearRotation() {
-        const interval = rotationInterval;
-        if (interval) {
-            clearInterval(interval);
-        }
-
-        rotationInterval = null;
-        currentRotatingImages = [];
-        currentRotationIndex = -1;
+        if (_rotationInterval)
+            clearInterval(_rotationInterval);
+        _rotationInterval = null;
     }
 
     export function setBackdrop(url, imageOptions) {
         if (url && typeof url !== 'string') {
-            url = getImageUrls([url], imageOptions)[0];
+            const imgUrls = getImageUrls([url], imageOptions).list[0];
+			url = imgUrls[0] || '#';
         }
 
         if (url) {

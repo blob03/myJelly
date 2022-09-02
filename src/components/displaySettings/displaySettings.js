@@ -389,6 +389,7 @@ import viewContainer from '../viewContainer';
 		context.querySelector('#selectSwiperFX').value = userSettings.swiperFX();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "None";
+		context.querySelector('#sliderBackdropDelay').value = userSettings.backdropDelay();
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		self._savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 			
@@ -481,6 +482,7 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
 		userSettingsInstance.swiperFX(context.querySelector('#selectSwiperFX').value);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
+		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		userSettingsInstance.APIDelay(context.querySelector('#sliderAPIFrequency').value);
 		userSettingsInstance.getlatitude(context.querySelector('#inputLat').value);
 		userSettingsInstance.getlongitude(context.querySelector('#inputLon').value);

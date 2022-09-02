@@ -1040,6 +1040,22 @@ export class UserSettings {
     }
 	
 	/**
+     * Get or set 'Backdrop rotation delay' state.
+     * @param {int|undefined} val - Delay in seconds between each backdrop rotation.
+     * @return {int} 'Backdrop delay' state.
+     */
+    backdropDelay(val) {
+		if (val !== undefined) 
+            return this.set('backdropDelay', parseInt(val, 10));
+        
+		const backdropDelay = parseInt(this.get('backdropDelay'), 10);
+		if (backdropDelay < 0 || backdropDelay > 300) 
+			return 30;
+        else 
+            return backdropDelay;
+    }
+	
+	/**
      * Get or set 'Weather API call' rate.
      * @param {int|undefined} val - Delay between each call in mins.
      * @return {int} 'Weather API call' rate.
@@ -1474,6 +1490,7 @@ export const toggleNightMode = currentSettings.toggleNightMode.bind(currentSetti
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);
+export const backdropDelay = currentSettings.backdropDelay.bind(currentSettings);
 export const APIDelay = currentSettings.APIDelay.bind(currentSettings);
 export const swiperFX = currentSettings.swiperFX.bind(currentSettings);
 export const enableBackdrops = currentSettings.enableBackdrops.bind(currentSettings);

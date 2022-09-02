@@ -35,6 +35,8 @@
     "LabelAppHost": "Système hôte :",
     "LabelAppRepositoryName": "Adresse du dépôt :",
     "LabelAppVersion": "Version installée :",
+    "LabelBackdropRotationDelay": "Délai de la rotation :",
+    "LabelBackdropRotationDelayHelp": "Définir le délai en secondes entre deux fonds d'écran; 0 pour désactiver.",
     "LabelBackdrops": "Arrière-plans :",
     "LabelChromecastVersion": "Version de Chromecast :",
     "LabelDefaultView": "Vue par défaut :",

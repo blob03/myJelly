@@ -207,22 +207,31 @@
 					
 		</div>
 		
-		<div class="selectContainer" style="width: 100%;height: auto;">
+		<div class="BackdropArea" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		
-			<select is="emby-select" id="srcBackdrops" label="${LabelBackdrops}">
-				<option value="None">${None}</option>
-				<option disabled>${OptionDivider}</option>
-				<option value="Theme">${Theme}</option>
-				<option value="Libraries">${Movies} - ${Series}</option>
-				<option value="LibrariesFav">${Movies} - ${Series} - ${Favorites}</option>
-				<option value="Movie">${Movies}</option>
-				<option value="MovieFav">${Movies} - ${Favorites}</option>
-				<option value="Series">${Series}</option>
-				<option value="SeriesFav">${Series} - ${Favorites}</option>
-				<option value="Artists">${Artists}</option>
-				<option value="ArtistsFav">${Artists} - ${Favorites}</option>
-			</select>
-			<div class="fieldDescription ">${EnableBackdropsHelp}</div>
+			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
+				<select is="emby-select" id="srcBackdrops" label="${LabelBackdrops}">
+					<option value="None">${None}</option>
+					<option disabled>${OptionDivider}</option>
+					<option value="Theme">${Theme}</option>
+					<option value="Libraries">${Movies} - ${Series}</option>
+					<option value="LibrariesFav">${Movies} - ${Series} - ${Favorites}</option>
+					<option value="Movie">${Movies}</option>
+					<option value="MovieFav">${Movies} - ${Favorites}</option>
+					<option value="Series">${Series}</option>
+					<option value="SeriesFav">${Series} - ${Favorites}</option>
+					<option value="Artists">${Artists}</option>
+					<option value="ArtistsFav">${Artists} - ${Favorites}</option>
+				</select>
+				<div class="fieldDescription ">${EnableBackdropsHelp}</div> 
+			</div>
+			
+			<div class="sliderContainer-settings" style="width: 47%;height: auto;">
+				<div class="sliderContainer">
+					<input is="emby-slider" id="sliderBackdropDelay" label="${LabelBackdropRotationDelay}" type="range" min="0" max="300" step="10"/>
+				</div>
+				<div class="fieldDescription">${LabelBackdropRotationDelayHelp}</div>
+			</div>
 			
 		</div>
 		
