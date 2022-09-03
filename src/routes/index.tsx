@@ -10,8 +10,9 @@ import UserParentalControl from './user/userparentalcontrol';
 import UserPassword from './user/userpassword';
 import UserProfile from './user/userprofile';
 import UserProfiles from './user/userprofiles';
-import Home from './home';
 */
+import Home from './home';
+
 
 const AppRoutes = () => (
     <Routes>
@@ -19,6 +20,7 @@ const AppRoutes = () => (
             {/* User routes */}
             <Route path='/' element={<ConnectionRequired />}>
                 <Route path='search.html' element={<Search />} />
+				<Route path='home.html' element={<Home />} />
 				{/* <Route path='userprofile.html' element={<UserProfile />} /> */
 				/* <Route path='home.html' element={<Home />} /> */}
             </Route>

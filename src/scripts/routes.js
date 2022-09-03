@@ -300,6 +300,7 @@ import { appRouter } from '../components/appRouter';
         controller: 'dashboard/plugins/repositories/index'
     });
 
+/*
     defineRoute({
         alias: '/home.html',
         path: 'home.html',
@@ -307,7 +308,7 @@ import { appRouter } from '../components/appRouter';
         controller: 'home',
         type: 'home'
     });
-
+*/
     defineRoute({
         alias: '/list.html',
         path: 'list.html',

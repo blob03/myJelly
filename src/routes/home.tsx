@@ -44,10 +44,12 @@ const Home: FunctionComponent<IProps> = (props: IProps) => {
 
     const getTabs = () => {
         return [{
-            name: globalize.translate('Home')
+			name: '<span class="material-icons home skinHeader-withBackground" title="' + globalize.translate('Home') + '" style="box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;background: rgba(0,0,0,0) !important;font-size: 1.5rem;"></span>'
         }, {
-            name: globalize.translate('Favorites')
-        }];
+			name: '<span class="material-icons favorite skinHeader-withBackground" title="' + globalize.translate('Favorites') + '" style="box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;background: rgba(0,0,0,0) !important;font-size: 1.5rem;"></span>'
+        }, {
+			name: '<span class="material-icons info skinHeader-withBackground" title="' + globalize.translate('About') + '" style="box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;background: rgba(0,0,0,0) !important;font-size: 1.5rem;"></span>'
+		}];
     };
 
     const getTabContainers = () => {
@@ -68,6 +70,11 @@ const Home: FunctionComponent<IProps> = (props: IProps) => {
 
             case 1:
                 depends = 'favorites';
+				break;
+				
+			case 2:
+                depends = 'about';
+                break;
         }
 
         return import(/* webpackChunkName: "[request]" */ `../controllers/${depends}`).then(({ default: controllerFactory }) => {
@@ -169,6 +176,9 @@ const Home: FunctionComponent<IProps> = (props: IProps) => {
                 <div className='tabContent pageTabContent' id='favoritesTab' data-index='1'>
                     <div className='sections'></div>
                 </div>
+				<div className="tabContent pageTabContent" id="aboutTab" data-index="2">
+					<div className="sections"></div>
+				</div>
             </Page>
         </div>
     );
