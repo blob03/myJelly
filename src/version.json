@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-15",
+	"version": "10.8.4-16",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -77,6 +77,7 @@
 		"10.8.4-12": "Translations synchronized with master.\nCleanup and optimisation of the code handling backdrops.",
 		"10.8.4-13": "Translations synchronized with master.\nCleanup and optimisation of the code handling backdrops.\nEnable backdrops rotation for Firefox browsers and TVs.\nMake backdrop button (Top bar) compatible with backdrops rotation.\nAdd a slider to set a delay between rotations (display settings).\nUpdate themes.",
 		"10.8.4-14": "Apply patches 'update suggestion/Remove unused data-dom-cache attribute'.\nApply patch 'Fix loading indicator showing when loaded'.\nApply patch 'no-mp2-for-android'.\nApply patch 'Update dependency marked to v4.0.19'.\nApply patch 'Update Linters'.",
-		"10.8.4-15": "Apply patch 'Convert-HomePage-to-react' modified."
+		"10.8.4-15": "Apply patch 'Convert-HomePage-to-react' modified.",
+		"10.8.4-16": "Translations synchronized with master.\nApply patch 'Fix scroll buttons not showing on resize'.\nInstall fresh 'package.json' from master; run 'npm update' once to make the changes effective.\nUpdate master's list of contributors."
 	}
 }

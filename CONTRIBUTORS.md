@@ -50,6 +50,8 @@
  - [Keegan Dahm](https://github.com/keegandahm)
  - [GodTamIt](https://github.com/GodTamIt)
  - [MinecraftPlaye](https://github.com/MinecraftPlaye)
+ - [Matthew Jones](https://github.com/matthew-jones-uk)
+ - [taku0](https://github.com/taku0)
 
 # Emby Contributors
 
@@ -114,4 +116,4 @@
  - [Tim Hobbs](https://github.com/timhobbs)
  - [SvenVandenbrande](https://github.com/SvenVandenbrande)
  - [jomp16](https://github.com/jomp16)
- - [Matthew Jones](https://github.com/matthew-jones-uk)
+ - [Leon de Klerk](https://github.com/leondeklerk)

@@ -376,17 +376,17 @@
     },
     "el": {
         "ccode": "el",
-        "fsize": 116590,
+        "fsize": 118215,
         "ccodeSrc": "en-US",
         "displayName": "Greek, Modern (1453-)",
         "displayNativeName": "Ελληνικά",
         "ISO6391": "el",
         "ISO6392": "gre",
-        "keys#": 1165,
-        "completed%": 66.19,
+        "keys#": 1179,
+        "completed%": 66.99,
         "jellyfinWeb": {
             "filename": "el.json",
-            "keys#": 1165,
+            "keys#": 1179,
             "orphans#": 8,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -398,7 +398,7 @@
                 "Screenshots",
                 "ButtonNetwork"
             ],
-            "completed%": 69.89
+            "completed%": 70.73
         },
         "myJelly": {
             "filename": "",
