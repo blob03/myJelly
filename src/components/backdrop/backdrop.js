@@ -2,9 +2,12 @@ import isEqual from 'lodash-es/isEqual';
 import browser from '../../scripts/browser';
 import { playbackManager } from '../playback/playbackmanager';
 import dom from '../../scripts/dom';
+import globalize from '../../scripts/globalize';
 import * as userSettings from '../../scripts/settings/userSettings';
 import ServerConnections from '../ServerConnections';
 import { appRouter } from '../appRouter';
+import toast from '../toast/toast';
+
 
 import './backdrop.scss';
 
@@ -292,7 +295,7 @@ import './backdrop.scss';
 				--_currentRotationIndex;
 
 			const _delay = userSettings.backdropDelay();
-			if (_delay)
+			if (_delay && !_onPause)
 				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
 			onRotationInterval();
 			return;
@@ -303,31 +306,92 @@ import './backdrop.scss';
     }
 
 	export function showBackdropButton(_item_url) {
+		const _bdc =  document.querySelector('#backdropControlButton');
 		const _bdi =  document.querySelector('#backdropInfoButton');
-		if (_bdi && _item_url) {
-			_bdi.href = _item_url;
-			_bdi.classList.remove('hide');
+		if (!_bdc || !_bdi)
+			return;
+		
+		switch(userSettings.enableBackdropWidget()) {
+			case 0:
+				break;
+			
+			case 1:
+				if (_item_url) 
+					_bdi.href = _item_url;
+				_bdi.classList.remove('hide');
+				_bdc.classList.remove('hide');
+				break;
+				
+			case 2:
+				if (_item_url) 
+					_bdi.href = _item_url;
+				_bdi.classList.remove('hide');
+				break;
+			
+			case 3:
+				_bdc.classList.remove('hide');
+				break;
 		}
 	}
 	
 	export function hideBackdropButton() {
+		const _bdc =  document.querySelector('#backdropControlButton');
 		const _bdi =  document.querySelector('#backdropInfoButton');
-		if (_bdi) 
-			_bdi.classList.add('hide');
+		if (!_bdc || !_bdi)
+			return;
+		_bdc.classList.add('hide');
+		_bdi.classList.add('hide');
 	}
 
-    function onRotationInterval() {
+    function onRotationInterval(x) {
         if (playbackManager.isPlayingLocally(['Video'])) {
             return;
         }
 
-        let i = _currentRotationIndex + 1;
-        i = i % _currentRotatingImages.list.length;
+        let i = _currentRotationIndex + (x? x:1);
+		if (i < 0)
+			i = _currentRotatingImages.list.length - (-i % _currentRotatingImages.list.length);
+		else
+			i = i % _currentRotatingImages.list.length;
         _currentRotationIndex = i;
 		setBackdropImage(_currentRotatingImages.list[i]);
 		showBackdropButton(_currentRotatingImages.details[i]);
     }
 
+	export function showNextBackdrop() {
+		onRotationInterval(+1);
+    }
+	
+	export function showPrevBackdrop() {
+		onRotationInterval(-1);
+    }
+	
+	var _onPause = false;
+	export function pauseBackdrop() {
+		const _bpa =  document.querySelector('#BackdropRotationPause');
+		const _bpl =  document.querySelector('#BackdropRotationPlay');
+		if (!_bpa || !_bpl)
+			return;
+		if (!_onPause) {
+            clearInterval(_rotationInterval);
+			_rotationInterval = null;
+			toast(globalize.translate('RotationOnPause'));
+			_bpa.classList.add('hide');
+			_bpl.classList.remove('hide');
+			_onPause = true;
+		} else {
+			const _delay = userSettings.backdropDelay();
+			if (_delay) {
+				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+				onRotationInterval();
+				toast(globalize.translate('RotationResume'));
+				_bpl.classList.add('hide');
+				_bpa.classList.remove('hide');
+				_onPause = false;
+			}
+		}
+    }
+	
     function clearRotation() {
         if (_rotationInterval)
             clearInterval(_rotationInterval);

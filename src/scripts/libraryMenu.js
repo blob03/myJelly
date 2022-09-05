@@ -9,6 +9,7 @@ import { appRouter } from '../components/appRouter';
 import { appHost } from '../components/apphost';
 import { playbackManager } from '../components/playback/playbackmanager';
 import groupSelectionMenu from '../components/syncPlay/ui/groupSelectionMenu';
+import { showPrevBackdrop, showNextBackdrop, pauseBackdrop } from '../components/backdrop/backdrop';
 import browser from './browser';
 import globalize from './globalize';
 import imageHelper from './imagehelper';
@@ -72,8 +73,17 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
 		
-		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="headerButton headerBackdropInfoButton headerButtonRight hide">';
-		html += '<span class="material-icons image_search"></span></button>';
+		//html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="headerButton headerBackdropInfoButton headerButtonRight hide">';
+		//html += '<span class="material-icons image_search"></span></button>';
+  
+		html += '<div id="backdropInfoWidget" style="display: flex;flex-direction: row">';
+		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light"><span class="material-icons image_search"></span></button>';
+		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row">';
+		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 70%;"><span class="material-icons skip_previous"></span></button>';
+		html += '<button href="#" type="button" id="backdropPauseButton" is="paper-icon-button-light" class="headerButton headerBackdropPauseButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 70%;"><span id="BackdropRotationPause" class="material-icons pause"></span><span id="BackdropRotationPlay" class="hide material-icons play_arrow"></span></button>';
+		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 70%;"><span class="material-icons skip_next"></span></button>';
+		html += '</div>';
+		html += '</div>';
 		
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
 		
@@ -165,6 +175,9 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         headerAudioPlayerButton = skinHeader.querySelector('.headerAudioPlayerButton');
         headerSearchButton = skinHeader.querySelector('.headerSearchButton');
 		backdropInfoButton = skinHeader.querySelector('#backdropInfoButton');
+		backdropPrevButton = skinHeader.querySelector('#backdropPrevButton');
+		backdropNextButton = skinHeader.querySelector('#backdropNextButton');
+		backdropPauseButton = skinHeader.querySelector('#backdropPauseButton');
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
 		headerLockButton = skinHeader.querySelector('.headerLockButton');
         headerSyncButton = skinHeader.querySelector('.headerSyncButton');
@@ -212,6 +225,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             headerSearchButton.title = globalize.translate('Search');
 		if (backdropInfoButton)
             backdropInfoButton.title = globalize.translate('BackdropInfo');
+		if (backdropPrevButton)
+            backdropPrevButton.title = globalize.translate('BackdropPrevious');
+		if (backdropNextButton)
+            backdropNextButton.title = globalize.translate('BackdropNext');
+		if (backdropPauseButton)
+            backdropPauseButton.title = globalize.translate('BackdropPause');
 		if (headerReloadButton) 
 			headerReloadButton.title = globalize.translate('Reload');
 		if (headerLockButton)
@@ -296,8 +315,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             headerSyncButton.classList.add('hide');
             if (headerSearchButton) 
                 headerSearchButton.classList.add('hide');
-			if (backdropInfoButton) 
-                backdropInfoButton.classList.add('hide');
+			if (backdropInfoWidget) 
+                backdropInfoWidget.classList.add('hide');
 			if (headerReloadButton) 
 				headerReloadButton.classList.add('hide');
 			if (headerLockButton) 
@@ -321,6 +340,17 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		appRouter.show(backdropInfoButton.href);
 	}
 	
+	function onPrevBackdropClick() {
+		showPrevBackdrop();
+	}
+	
+	function onNextBackdropClick() {
+		showNextBackdrop();
+	}
+	
+	function onPauseBackdropClick() {
+		pauseBackdrop();
+	}
 	
     function showSearch() {
         inputManager.handleCommand('search');
@@ -381,6 +411,18 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		if (backdropInfoButton) {
 			backdropInfoButton.addEventListener('click', gotoBackdropInfo);
+		}
+		
+		if (backdropPrevButton) {
+			backdropPrevButton.addEventListener('click', onPrevBackdropClick);
+		}
+		
+		if (backdropNextButton) {
+			backdropNextButton.addEventListener('click', onNextBackdropClick);
+		}
+		
+		if (backdropPauseButton) {
+			backdropPauseButton.addEventListener('click', onPauseBackdropClick);
 		}
 		
 		if (headerReloadButton) {
@@ -1126,6 +1168,9 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 	let headerNightmodeButton;
     let headerSearchButton;
 	let backdropInfoButton;
+	let backdropPrevButton;
+	let backdropNextButton;
+	let backdropPauseButton;
 	let headerReloadButton;
 	let headerLockButton;
     let headerAudioPlayerButton;

@@ -376,9 +376,10 @@ import viewContainer from '../viewContainer';
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		
-		self._savedClock =context.querySelector('#selectClock').value = userSettings.enableClock();
+		self._savedClock = context.querySelector('#selectClock').value = userSettings.enableClock();
 		self._savedWBot = context.querySelector('#selectWeatherBot').value = userSettings.enableWeatherBot();
 		
+		context.querySelector('#selectBackdropWidget').value = userSettings.enableBackdropWidget();
 		context.querySelector('#inputLat').value = userSettings.getlatitude();
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
@@ -477,6 +478,7 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
+		userSettingsInstance.enableBackdropWidget(context.querySelector('#selectBackdropWidget').value);
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);

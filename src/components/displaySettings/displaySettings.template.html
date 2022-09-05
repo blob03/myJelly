@@ -207,6 +207,20 @@
 					
 		</div>
 		
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
+		
+			<div class="selectContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectBackdropWidget" label="${EnableBackdropWidget}">
+				<option value=0>${Never}</option>
+				<option value=1>${Always}</option>
+				<option value=2>${OnlyDetails}</option>
+				<option value=3>${OnlyControl}</option>
+				</select>
+				<div class="fieldDescription ">${EnableBackdropWidgetHelp}</div>
+			</div>
+		
+		</div>
+		
 		<div class="BackdropArea" style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>

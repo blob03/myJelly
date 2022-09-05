@@ -984,11 +984,27 @@ export class UserSettings {
 		if (val !== undefined) 
             return this.set('blurhash', parseInt(val, 10));
         
-		const blurhash = parseInt(this.get('blurhash'), 10);
+		const blurhash = parseInt(this.get('blurhash'), 10) || 8;
 		if (blurhash < 0 || blurhash > 32) 
 			return 8; // default to 8 (performance).
         else 
             return blurhash;
+    }
+	
+	/**
+     * Get or set 'Backdrop widget' state.
+     * @param {boolean|undefined} val - Between 0 and 3 inclusively.
+     * @return {boolean} 'Backdrop widget' state.
+     */
+    enableBackdropWidget(val) {
+		if (val !== undefined) 
+            return this.set('backdropWidget', parseInt(val, 10));
+        
+		const bw = parseInt(this.get('backdropWidget'), 10) || 0;
+		if (bw < 0 || bw > 3) 
+			return 0; // default to 0 (Never).
+        else 
+            return bw;
     }
 
     /**
@@ -1480,6 +1496,7 @@ export const getlongitude = currentSettings.getlongitude.bind(currentSettings);
 export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
+export const enableBackdropWidget = currentSettings.enableBackdropWidget.bind(currentSettings);
 export const enableWeatherBot = currentSettings.enableWeatherBot.bind(currentSettings);
 export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);
 export const initWeatherBot = currentSettings.initWeatherBot.bind(currentSettings);
