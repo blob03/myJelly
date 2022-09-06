@@ -1,4 +1,4 @@
-import { clearBackdrop, setBackdrops, setBackdropImage, showBackdropButton, hideBackdropButton } from '../components/backdrop/backdrop';
+import { clearBackdrop, setBackdrops, setBackdropImage, showBackdropWidget, hideBackdropWidget } from '../components/backdrop/backdrop';
 import * as userSettings from './settings/userSettings';
 import libraryMenu from './libraryMenu';
 import { pageClassOn } from '../utils/dashboard';
@@ -117,20 +117,20 @@ function showBackdrop(type, parentId) {
 					if (images && images.length) {
 						setBackdrops(images);
 					} else {
-						hideBackdropButton();
+						hideBackdropWidget();
 						clearBackdrop();
 					}
 				}).catch( images => {
-					hideBackdropButton();
+					hideBackdropWidget();
 					clearBackdrop();
 				});
 			}
 			break;
 			
 		case 'Theme':
-			setBackdropImage('#');
-			hideBackdropButton();
-			//showBackdropButton("/web/themes/Halloween/img/bg-alt1.jpg");
+			setTimeout(() => {
+				setBackdropImage('#');
+				hideBackdropWidget();}, 1000);
 			break;
 	}
 }
@@ -148,7 +148,7 @@ pageClassOn('pageshow', 'page', function () {
 		} else
 			page.classList.remove('backdropPage');
 	}	
-	hideBackdropButton();
+	hideBackdropWidget();
 	clearBackdrop();
 });
 

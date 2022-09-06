@@ -1362,3 +1362,8 @@ select option:selected {
 .infoDetails {
 	font-size: 90% !important;
 }
+
+#backdropWidget {
+	background: rgba(39, 45, 51, 0.5);
+}
+

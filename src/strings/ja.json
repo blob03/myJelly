@@ -648,7 +648,7 @@
     "LabelEnableDlnaPlayToHelp": "ネットワーク内のデバイスを検出し、それらをリモートで操作できるようにします。",
     "LabelEnableDlnaServer": "DLNAサーバーの有効化",
     "LabelEnableDlnaServerHelp": "ネットワーク中の UPnP デバイスにコンテンツの閲覧・再生を許可する。",
-    "LabelEnableHardwareDecodingFor": "ハードウェアでコードを有効:",
+    "LabelEnableHardwareDecodingFor": "ハードウェア デコードを有効:",
     "LabelEnableHttps": "HTTPS を有効にする",
     "LabelEnableHttpsHelp": "設定した HTTPS ポートをリッスンします。この機能を有効にするには、適切な証明書の設定が必要です。",
     "LabelEnableIP4": "IPv4 を有効化:",

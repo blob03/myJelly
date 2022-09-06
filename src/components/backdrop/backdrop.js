@@ -22,59 +22,34 @@ import './backdrop.scss';
     }
 
     function enableRotation() {
-       // if (browser.tv) {
-        //    return false;
-       // }
+		// if (browser.tv) {
+		//    return false;
+		// }
 
-        // Causes high cpu usage
-      //  if (browser.firefox) {
-       //     return false;
-        //}
-
+		// Causes high cpu usage
+		//  if (browser.firefox) {
+		//     return false;
+		//}
         return true;
     }
 
 	class Backdrop {
-		constructor(options) {
-            this.options = options;
+		constructor() {
 		}
 		
 		load(url, parent, existingBackdropImage) {
 			const self = this;
-			const backdropImage = document.createElement('div');
 			const type = userSettings.enableBackdrops();
 
 			switch(type) {
 				case 'Theme':
-					backdropImage.classList.add('backdropImage');
-					backdropImage.classList.add('displayingBackdropImage');
-					backdropImage.classList.add('themeBackdrop');
-					const idx = Math.floor(Math.random() * 4);
-					if (idx)
-						backdropImage.classList.add('alt' + idx);
-					backdropImage.classList.add('backdropImageFadeIn');
-					parent.appendChild(backdropImage);
-					internalBackdrop(true);
-					return;
-					break;
-				
-				case 'Libraries':
-				case 'LibrariesFav':
-				case 'Movie':
-				case 'MovieFav':
-				case 'Series':
-				case 'SeriesFav':
-				case 'Artists':
-				case 'ArtistsFav':
-					const img = new Image();
-					backdropImage.style.backgroundImage = `url('${url}')`;
-					backdropImage.setAttribute('data-url', url);
-					img.onload = () => {
-						if (self.isDestroyed)
-							return;
-						backdropImage.classList.add('backdropImage');
-						backdropImage.classList.add('displayingBackdropImage');
-						backdropImage.classList.add('backdropImageFadeIn');
+					let backdropImage = document.createElement('div');
+					if (backdropImage) {
+						backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn', 'themeBackdrop');
+						backdropImage.setAttribute('data-url', url);
+						const idx = Math.floor(Math.random() * 4);
+						if (idx)
+							backdropImage.classList.add('alt' + idx);
 						parent.appendChild(backdropImage);
 						internalBackdrop(true);
 						
@@ -97,6 +72,50 @@ import './backdrop.scss';
 						dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
 							once: true
 						});
+					}
+					return;
+					break;
+				
+				case 'Libraries':
+				case 'LibrariesFav':
+				case 'Movie':
+				case 'MovieFav':
+				case 'Series':
+				case 'SeriesFav':
+				case 'Artists':
+				case 'ArtistsFav':
+					const img = new Image();
+					img.onload = () => {
+						if (self.isDestroyed)
+							return;
+						let backdropImage = document.createElement('div');
+						if (backdropImage) {
+							backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn');
+							backdropImage.style.backgroundImage = `url('${url}')`;
+							backdropImage.setAttribute('data-url', url);
+							parent.appendChild(backdropImage);
+							internalBackdrop(true);
+							
+							if (!enableAnimation()) {
+								if (existingBackdropImage && existingBackdropImage.parentNode)
+									existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+								return;
+							}
+
+							const onAnimationComplete = () => {
+								dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
+									once: true
+								});
+								if (backdropImage === self.currentAnimatingElement)
+									self.currentAnimatingElement = null;
+								if (existingBackdropImage && existingBackdropImage.parentNode)
+									existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+							};
+
+							dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
+								once: true
+							});
+						}
 					};
 					img.src = url;
 					break;
@@ -133,18 +152,15 @@ import './backdrop.scss';
 
     export function clearBackdrop(clearAll) {
         clearRotation();
+        if (_instance)
+            _instance.destroy();
+        _instance = null;
 
-        if (_currentInstance) {
-            _currentInstance.destroy();
-            _currentInstance = null;
-        }
-
-        const elem = getBackdropContainer();
+        let elem = getBackdropContainer();
         elem.innerHTML = '';
 
-        if (clearAll) {
+        if (clearAll)
             _hasExternalBackdrop = false;
-        }
 
         internalBackdrop(false);
     }
@@ -187,22 +203,23 @@ import './backdrop.scss';
 	}
 
 	var _hasInternalBackdrop = false;
-    function internalBackdrop(val) {
-        _hasInternalBackdrop = val;
+	var _hasExternalBackdrop = false;
+    
+	function internalBackdrop(val) {
+		_hasInternalBackdrop = (val === true);
         setBackgroundContainerBackgroundEnabled();
     }
 	
-	var _hasExternalBackdrop = false;
     function externalBackdrop(val) {
-        _hasExternalBackdrop = val;
+		_hasExternalBackdrop = (val === true);
         setBackgroundContainerBackgroundEnabled();
     }
 
-    var _currentInstance;
+    var _instance = null;
     export function setBackdropImage(url) {
-        if (_currentInstance) {
-            _currentInstance.destroy();
-            _currentInstance = null;
+        if (_instance) {
+            _instance.destroy();
+            _instance = null;
         }
         const elem = getBackdropContainer();
         const existingBackdropImage = elem.querySelector('.displayingBackdropImage');
@@ -214,7 +231,7 @@ import './backdrop.scss';
         }
         const instance = new Backdrop();
         instance.load(url, elem, existingBackdropImage);
-        _currentInstance = instance;
+        _instance = instance;
     }
 
     function getItemImageUrls(item, imageOptions) {
@@ -302,17 +319,21 @@ import './backdrop.scss';
         }
 
         setBackdropImage(images.list[0]);
-		hideBackdropButton();
+		hideBackdropWidget();
     }
 
-	export function showBackdropButton(_item_url) {
+	export function showBackdropWidget(_item_url) {
+		const _bdw =  document.querySelector('#backdropWidget');
 		const _bdc =  document.querySelector('#backdropControlButton');
 		const _bdi =  document.querySelector('#backdropInfoButton');
-		if (!_bdc || !_bdi)
+		if (!_bdw || !_bdc || !_bdi)
 			return;
 		
 		switch(userSettings.enableBackdropWidget()) {
 			case 0:
+				_bdw.classList.add('hide');
+				_bdc.classList.add('hide');
+				_bdi.classList.add('hide');
 				break;
 			
 			case 1:
@@ -320,25 +341,32 @@ import './backdrop.scss';
 					_bdi.href = _item_url;
 				_bdi.classList.remove('hide');
 				_bdc.classList.remove('hide');
+				_bdw.classList.remove('hide');
 				break;
 				
 			case 2:
 				if (_item_url) 
 					_bdi.href = _item_url;
+				_bdc.classList.add('hide');
 				_bdi.classList.remove('hide');
+				_bdw.classList.remove('hide');
 				break;
 			
 			case 3:
+				_bdi.classList.add('hide');
 				_bdc.classList.remove('hide');
+				_bdw.classList.remove('hide');
 				break;
 		}
 	}
 	
-	export function hideBackdropButton() {
+	export function hideBackdropWidget() {
+		const _bdw =  document.querySelector('#backdropWidget');
 		const _bdc =  document.querySelector('#backdropControlButton');
 		const _bdi =  document.querySelector('#backdropInfoButton');
-		if (!_bdc || !_bdi)
+		if (!_bdw || !_bdc || !_bdi)
 			return;
+		_bdw.classList.add('hide');
 		_bdc.classList.add('hide');
 		_bdi.classList.add('hide');
 	}
@@ -355,7 +383,7 @@ import './backdrop.scss';
 			i = i % _currentRotatingImages.list.length;
         _currentRotationIndex = i;
 		setBackdropImage(_currentRotatingImages.list[i]);
-		showBackdropButton(_currentRotatingImages.details[i]);
+		showBackdropWidget(_currentRotatingImages.details[i]);
     }
 
 	export function showNextBackdrop() {

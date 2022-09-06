@@ -1174,7 +1174,7 @@
     },
     "ja": {
         "ccode": "ja",
-        "fsize": 126588,
+        "fsize": 126589,
         "ccodeSrc": "en-US",
         "displayName": "Japanese",
         "displayNativeName": "日本語",
@@ -1395,20 +1395,20 @@
     },
     "mk": {
         "ccode": "mk",
-        "fsize": 743,
+        "fsize": 1040,
         "ccodeSrc": "en-US",
         "displayName": "Macedonian",
         "displayNativeName": "Македонски",
         "ISO6391": "mk",
         "ISO6392": "mac",
-        "keys#": 19,
-        "completed%": 1.07,
+        "keys#": 26,
+        "completed%": 1.47,
         "jellyfinWeb": {
             "filename": "mk.json",
-            "keys#": 19,
+            "keys#": 26,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 1.14
+            "completed%": 1.56
         },
         "myJelly": {
             "filename": "",
