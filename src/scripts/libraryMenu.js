@@ -77,7 +77,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
 		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;">';
 		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;font-size: 70%;"><span class="material-icons skip_previous"></span></button>';
-		html += '<button href="#" type="button" id="backdropPauseButton" is="paper-icon-button-light" class="headerButton headerBackdropPauseButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 90%;"><span id="BackdropRotationPause" class="material-icons pause"></span><span id="BackdropRotationPlay" class="hide material-icons play_arrow"></span></button>';
+		html += '<button href="#" type="button" id="backdropPlayPauseButton" is="paper-icon-button-light" class="headerButton headerBackdropPlayPauseButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 90%;"><span id="backdropRotationPause" class="material-icons pause"></span><span id="backdropRotationPlay" class="hide material-icons play_arrow"></span></button>';
 		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;font-size: 70%;"><span class="material-icons skip_next"></span></button>';
 		html += '</div>';
 		html += '</div>';
@@ -174,7 +174,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		backdropInfoButton = skinHeader.querySelector('#backdropInfoButton');
 		backdropPrevButton = skinHeader.querySelector('#backdropPrevButton');
 		backdropNextButton = skinHeader.querySelector('#backdropNextButton');
-		backdropPauseButton = skinHeader.querySelector('#backdropPauseButton');
+		backdropPlayPauseButton = skinHeader.querySelector('#backdropPlayPauseButton');
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
 		headerLockButton = skinHeader.querySelector('.headerLockButton');
         headerSyncButton = skinHeader.querySelector('.headerSyncButton');
@@ -226,8 +226,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             backdropPrevButton.title = globalize.translate('BackdropPrevious');
 		if (backdropNextButton)
             backdropNextButton.title = globalize.translate('BackdropNext');
-		if (backdropPauseButton)
-            backdropPauseButton.title = globalize.translate('BackdropPause');
+		if (backdropPlayPauseButton)
+            backdropPlayPauseButton.title = globalize.translate('BackdropPause');
 		if (headerReloadButton) 
 			headerReloadButton.title = globalize.translate('Reload');
 		if (headerLockButton)
@@ -345,7 +345,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		showNextBackdrop();
 	}
 	
-	function onPauseBackdropClick() {
+	function onBackdropPlayPauseClick() {
 		pauseBackdrop();
 	}
 	
@@ -418,8 +418,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 			backdropNextButton.addEventListener('click', onNextBackdropClick);
 		}
 		
-		if (backdropPauseButton) {
-			backdropPauseButton.addEventListener('click', onPauseBackdropClick);
+		if (backdropPlayPauseButton) {
+			backdropPlayPauseButton.addEventListener('click', onBackdropPlayPauseClick);
 		}
 		
 		if (headerReloadButton) {
@@ -1167,7 +1167,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 	let backdropInfoButton;
 	let backdropPrevButton;
 	let backdropNextButton;
-	let backdropPauseButton;
+	let backdropPlayPauseButton;
 	let headerReloadButton;
 	let headerLockButton;
     let headerAudioPlayerButton;

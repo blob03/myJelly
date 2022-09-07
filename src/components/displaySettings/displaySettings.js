@@ -479,17 +479,17 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
+		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
+		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		userSettingsInstance.enableBackdropWidget(context.querySelector('#selectBackdropWidget').value);
 		// With 'Only Details', backdrops rotation must be resumed.
-		if (context.querySelector('#selectBackdropWidget').value == 2) { 
+		if (context.querySelector('#selectBackdropWidget').value == 2) {
 			pauseBackdrop(false);
 		}
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
 		userSettingsInstance.swiperFX(context.querySelector('#selectSwiperFX').value);
-		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
-		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		userSettingsInstance.APIDelay(context.querySelector('#sliderAPIFrequency').value);
 		userSettingsInstance.getlatitude(context.querySelector('#inputLat').value);
 		userSettingsInstance.getlongitude(context.querySelector('#inputLon').value);

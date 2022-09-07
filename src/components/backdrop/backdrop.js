@@ -324,11 +324,16 @@ import './backdrop.scss';
         setBackdropImage(images.list[0]);
 		hideBackdropWidget();
     }
-
+	
+	var _onPause = false;
 	export function showBackdropWidget(_item_url) {
 		const _bdw =  document.querySelector('#backdropWidget');
 		const _bdc =  document.querySelector('#backdropControlButton');
 		const _bdi =  document.querySelector('#backdropInfoButton');
+
+		// Refresh play/pause button, hide if 'delay' set to 0.
+		pauseBackdrop(_onPause);
+		
 		if (!_bdw || !_bdc || !_bdi)
 			return;
 		
@@ -397,12 +402,21 @@ import './backdrop.scss';
 		onRotationInterval(-1);
     }
 	
-	var _onPause = false;
+	
 	export function pauseBackdrop(x) {
-		const _bpa =  document.querySelector('#BackdropRotationPause');
-		const _bpl =  document.querySelector('#BackdropRotationPlay');
-		if (!_bpa || !_bpl)
+		const _bpp = document.querySelector('#backdropPlayPauseButton');
+		const _bpa = document.querySelector('#backdropRotationPause');
+		const _bpl = document.querySelector('#backdropRotationPlay');
+		if (!_bpa || !_bpl || !_bpp)
 			return;
+		
+		const _delay = userSettings.backdropDelay();
+		if (!_delay) {
+			_bpp.classList.add('hide');
+			return;
+		} else
+			_bpp.classList.remove('hide');
+		
 		if (x === undefined) {
 			if (!_onPause) {
 				toast(globalize.translate('RotationOnPause'));
@@ -413,12 +427,9 @@ import './backdrop.scss';
 				_onPause = true;
 			} else {
 				toast(globalize.translate('RotationResume'));
-				const _delay = userSettings.backdropDelay();
-				if (_delay) {
-					clearInterval(_rotationInterval);
-					_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
-					onRotationInterval();
-				}
+				clearInterval(_rotationInterval);
+				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+				onRotationInterval();
 				_bpl.classList.add('hide');
 				_bpa.classList.remove('hide');
 				_onPause = false;

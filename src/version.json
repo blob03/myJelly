@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-19",
+	"version": "10.8.4-21",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -81,6 +81,7 @@
 		"10.8.4-16": "Translations synchronized with master.\nApply patch 'Fix scroll buttons not showing on resize'.\nInstall fresh 'package.json' from master; run 'npm update' once to make the changes effective.\nUpdate master's list of contributors.",
 		"10.8.4-17": "Add a rotation control pannel to the backdrop widget.\nAdd an option to disable or partially enable the backdrop widget (Display settings).",
 		"10.8.4-18": "Translations synchronized with master.\nApply some tweaking and fix a few minor issues affecting the Backdrop widget.",
-		"10.8.4-19": "Translations synchronized with master.\nInstall fresh 'package.json' from master; run 'npm update' once to make the changes effective.\nApply patch 'Merge pull request #3879 from thornbill/moar-webpack'.\nAdjust some more the backdrop widget layout.\nResume backdrops rotation automatically whenever control pannel is turned off.\nAdjust some more the layout for the language statistics frame (display settings)."
+		"10.8.4-19": "Translations synchronized with master.\nInstall fresh 'package.json' from master; run 'npm update' once to make the changes effective.\nApply patch 'Merge pull request #3879 from thornbill/moar-webpack'.\nAdjust some more the backdrop widget layout.\nResume backdrops rotation automatically whenever control pannel is turned off.\nAdjust some more the layout for the language statistics frame (display settings).",
+		"10.8.4-21": "Hide the play/pause button from the backdrops' control pannel if rotation delay set to 0 (display settings)."
 	}
 }
