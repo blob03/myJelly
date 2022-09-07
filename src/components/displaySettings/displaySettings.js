@@ -20,6 +20,7 @@ import templateUserMenu from '../../controllers/user/menu/index.html';
 import * as LibraryMenu from '../../scripts/libraryMenu';
 import viewManager from '../viewManager/viewManager';
 import * as ssmanager from '../../scripts/screensavermanager';
+import { pauseBackdrop } from '../backdrop/backdrop';
 import viewContainer from '../viewContainer';
 
 /* eslint-disable indent */
@@ -479,6 +480,10 @@ import viewContainer from '../viewContainer';
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
 		userSettingsInstance.enableBackdropWidget(context.querySelector('#selectBackdropWidget').value);
+		// With 'Only Details', backdrops rotation must be resumed.
+		if (context.querySelector('#selectBackdropWidget').value == 2) { 
+			pauseBackdrop(false);
+		}
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);

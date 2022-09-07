@@ -2,7 +2,6 @@ import { clearBackdrop, setBackdrops, setBackdropImage, showBackdropWidget, hide
 import * as userSettings from './settings/userSettings';
 import libraryMenu from './libraryMenu';
 import { pageClassOn } from '../utils/dashboard';
-import { appRouter } from '../components/appRouter';
 
 var _cache = {};
 
@@ -130,7 +129,7 @@ function showBackdrop(type, parentId) {
 		case 'Theme':
 			setTimeout(() => {
 				setBackdropImage('#');
-				hideBackdropWidget();}, 1000);
+				hideBackdropWidget();}, 500);
 			break;
 	}
 }

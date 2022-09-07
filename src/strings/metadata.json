@@ -2091,17 +2091,17 @@
     },
     "sv": {
         "ccode": "sv",
-        "fsize": 113449,
+        "fsize": 113670,
         "ccodeSrc": "en-US",
         "displayName": "Swedish",
         "displayNativeName": "Svenska",
         "ISO6391": "sv",
         "ISO6392": "swe",
-        "keys#": 1665,
-        "completed%": 94.12,
+        "keys#": 1667,
+        "completed%": 94.23,
         "jellyfinWeb": {
             "filename": "sv.json",
-            "keys#": 1665,
+            "keys#": 1667,
             "orphans#": 11,
             "orphans": [
                 "ButtonNetwork",
@@ -2116,7 +2116,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.88
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

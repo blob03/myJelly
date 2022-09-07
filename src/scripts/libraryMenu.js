@@ -72,16 +72,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
         html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
 		
 		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
-		
-		//html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="headerButton headerBackdropInfoButton headerButtonRight hide">';
-		//html += '<span class="material-icons image_search"></span></button>';
   
-		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;margin: 0 .29em 0 .29em;">';
-		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin:0"><span class="material-icons image_search"></span></button>';
-		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0 .29em 0 .29em;">';
-		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 70%;"><span class="material-icons skip_previous"></span></button>';
+		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;">';
+		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
+		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;">';
+		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;font-size: 70%;"><span class="material-icons skip_previous"></span></button>';
 		html += '<button href="#" type="button" id="backdropPauseButton" is="paper-icon-button-light" class="headerButton headerBackdropPauseButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 90%;"><span id="BackdropRotationPause" class="material-icons pause"></span><span id="BackdropRotationPlay" class="hide material-icons play_arrow"></span></button>';
-		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 70%;"><span class="material-icons skip_next"></span></button>';
+		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;font-size: 70%;"><span class="material-icons skip_next"></span></button>';
 		html += '</div>';
 		html += '</div>';
 		

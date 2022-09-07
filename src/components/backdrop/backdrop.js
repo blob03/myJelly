@@ -44,35 +44,36 @@ import './backdrop.scss';
 			switch(type) {
 				case 'Theme':
 					let backdropImage = document.createElement('div');
-					if (backdropImage) {
-						backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn', 'themeBackdrop');
-						backdropImage.setAttribute('data-url', url);
-						const idx = Math.floor(Math.random() * 4);
-						if (idx)
-							backdropImage.classList.add('alt' + idx);
-						parent.appendChild(backdropImage);
-						internalBackdrop(true);
-						
-						if (!enableAnimation()) {
-							if (existingBackdropImage && existingBackdropImage.parentNode)
-								existingBackdropImage.parentNode.removeChild(existingBackdropImage);
-							return;
-						}
+					
+					backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn', 'themeBackdrop');
+					backdropImage.setAttribute('data-url', url);
+					const idx = Math.floor(Math.random() * 4);
+					if (idx)
+						backdropImage.classList.add('alt' + idx);
+					
+					parent.appendChild(backdropImage);
+					internalBackdrop(true);
+					
+					if (!enableAnimation()) {
+						if (existingBackdropImage && existingBackdropImage.parentNode)
+							existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+						return;
+					}
 
-						const onAnimationComplete = () => {
-							dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
-								once: true
-							});
-							if (backdropImage === self.currentAnimatingElement)
-								self.currentAnimatingElement = null;
-							if (existingBackdropImage && existingBackdropImage.parentNode)
-								existingBackdropImage.parentNode.removeChild(existingBackdropImage);
-						};
-
-						dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
+					const onAnimationComplete = () => {
+						dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
 							once: true
 						});
-					}
+						if (backdropImage === self.currentAnimatingElement)
+							self.currentAnimatingElement = null;
+						if (existingBackdropImage && existingBackdropImage.parentNode)
+							existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+					};
+
+					dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
+						once: true
+					});
+				
 					return;
 					break;
 				
@@ -312,8 +313,10 @@ import './backdrop.scss';
 				--_currentRotationIndex;
 
 			const _delay = userSettings.backdropDelay();
-			if (_delay && !_onPause)
+			if (_delay && !_onPause) {
+				clearInterval(_rotationInterval);
 				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+			}
 			onRotationInterval();
 			return;
         }
@@ -395,27 +398,43 @@ import './backdrop.scss';
     }
 	
 	var _onPause = false;
-	export function pauseBackdrop() {
+	export function pauseBackdrop(x) {
 		const _bpa =  document.querySelector('#BackdropRotationPause');
 		const _bpl =  document.querySelector('#BackdropRotationPlay');
 		if (!_bpa || !_bpl)
 			return;
-		if (!_onPause) {
-            clearInterval(_rotationInterval);
-			_rotationInterval = null;
-			toast(globalize.translate('RotationOnPause'));
-			_bpa.classList.add('hide');
-			_bpl.classList.remove('hide');
-			_onPause = true;
-		} else {
-			const _delay = userSettings.backdropDelay();
-			if (_delay) {
-				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
-				onRotationInterval();
+		if (x === undefined) {
+			if (!_onPause) {
+				toast(globalize.translate('RotationOnPause'));
+				clearInterval(_rotationInterval);
+				_rotationInterval = null;
+				_bpa.classList.add('hide');
+				_bpl.classList.remove('hide');
+				_onPause = true;
+			} else {
 				toast(globalize.translate('RotationResume'));
+				const _delay = userSettings.backdropDelay();
+				if (_delay) {
+					clearInterval(_rotationInterval);
+					_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+					onRotationInterval();
+				}
 				_bpl.classList.add('hide');
 				_bpa.classList.remove('hide');
 				_onPause = false;
+			}
+		} else { 
+			x = (x === true);
+			_onPause = x;
+			switch(x) {
+				case true:
+					_bpa.classList.add('hide');
+					_bpl.classList.remove('hide');
+					break;
+				case false:
+					_bpl.classList.add('hide');
+					_bpa.classList.remove('hide');
+					break;
 			}
 		}
     }

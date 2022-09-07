@@ -543,6 +543,8 @@
     "Horizontal": "Horisontell",
     "HttpsRequiresCert": "För att aktivera säkra anslutningar måste du tillhandahålla ett pålitligt SSL-certifikat, till exempel \"Let's Encrypt\". Vänligen ange ett certifikat eller inaktivera säkra anslutningar.",
     "Identify": "Identifiera",
+    "IgnoreDts": "Ignorera DTS (avkodningstidsstämpel)",
+    "IgnoreDtsHelp": "Att avaktivera den här inställningen kan lösa några problem, t.ex. frånvarande ljud på kanaler med separata ljud- och bildströmmar.",
     "Image": "Bild",
     "Images": "Bilder",
     "ImportFavoriteChannelsHelp": "Endast kanaler som är märkta som favoriter på den här TV-mottagaren kommer att importeras.",
