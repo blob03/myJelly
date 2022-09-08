@@ -9,7 +9,7 @@ import { appRouter } from '../components/appRouter';
 import { appHost } from '../components/apphost';
 import { playbackManager } from '../components/playback/playbackmanager';
 import groupSelectionMenu from '../components/syncPlay/ui/groupSelectionMenu';
-import { showPrevBackdrop, showNextBackdrop, pauseBackdrop } from '../components/backdrop/backdrop';
+import { showPrevBackdrop, showNextBackdrop, pauseBackdrop, setBackdropContrast } from '../components/backdrop/backdrop';
 import browser from './browser';
 import globalize from './globalize';
 import imageHelper from './imagehelper';
@@ -73,13 +73,20 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
   
-		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;">';
+		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
 		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;font-size: 70%;">';
 		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_previous"></span></button>';
 		html += '<button href="#" type="button" id="backdropPlayPauseButton" is="paper-icon-button-light" class="headerButton headerBackdropPlayPauseButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 120%;"><span id="backdropRotationPause" class="material-icons pause"></span><span id="backdropRotationPlay" class="hide material-icons play_arrow"></span></button>';
 		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_next"></span></button>';
 		html += '</div>';
+		
+		html += '<div id="backdropContrast" class="hide" style="margin: 0 0 0 .29em;width: 4em;">';
+		html += '<div class="sliderContainer">';
+		html += '<input is="emby-slider" id="backdropContrastSlider" label="" nobubble="" type="range" min="0" max="10" step="1"/>';
+		html += '</div>';
+		html += '</div>';
+		
 		html += '</div>';
 		
         html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
@@ -99,9 +106,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '</div>';
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
-		html += '<div class="headerWthButton" id="headerWthRight" style="display: flex;flex-direction: row;">';
-		html += '<fieldset style="margin: .1rem .3rem .1rem .3rem;padding: .2rem .3rem .2rem .3rem;border: .1em groove #99a5ad;">';
-		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveLeftButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<div class="headerWthButton hide" id="headerWthRight" style="display: flex;flex-direction: row;margin: 0 .29em;">';
+		html += '<fieldset style="margin: 0 !important;padding: .1rem .3rem .1rem .3rem;border: .1em groove #99a5ad;">';
 		
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		
@@ -145,7 +151,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '</div>';
 		
 		html += '</button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerWth headerButton moveRightButton hide" style="padding: 0;margin: 0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</fieldset>';
 		html += '</div>';
 		/* ********************************** */
@@ -174,6 +179,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		backdropInfoButton = skinHeader.querySelector('#backdropInfoButton');
 		backdropPrevButton = skinHeader.querySelector('#backdropPrevButton');
 		backdropNextButton = skinHeader.querySelector('#backdropNextButton');
+		backdropContrastSlider = skinHeader.querySelector('#backdropContrastSlider');
 		backdropPlayPauseButton = skinHeader.querySelector('#backdropPlayPauseButton');
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
 		headerLockButton = skinHeader.querySelector('.headerLockButton');
@@ -224,6 +230,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             backdropInfoButton.title = globalize.translate('BackdropInfo');
 		if (backdropPrevButton)
             backdropPrevButton.title = globalize.translate('BackdropPrevious');
+		if (backdropContrastSlider)
+            backdropContrastSlider.title = globalize.translate('BackdropContrast');
 		if (backdropNextButton)
             backdropNextButton.title = globalize.translate('BackdropNext');
 		if (backdropPlayPauseButton)
@@ -293,6 +301,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 			} else 
 				headerLockButton.classList.add('hide');
 			
+			enableWeatherBot(enableWeatherBot());
+			
             if (!layoutManager.tv) 
                 headerCastButton.classList.remove('hide');
             else
@@ -339,6 +349,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 	
 	function onPrevBackdropClick() {
 		showPrevBackdrop();
+	}
+	
+	function onBackdropContrast(e) {
+		setBackdropContrast(e);
 	}
 	
 	function onNextBackdropClick() {
@@ -412,6 +426,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		if (backdropPrevButton) {
 			backdropPrevButton.addEventListener('click', onPrevBackdropClick);
+		}
+
+		if (backdropContrastSlider) {
+			backdropContrastSlider.addEventListener('input', onBackdropContrast);
 		}
 		
 		if (backdropNextButton) {
@@ -1166,6 +1184,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
     let headerSearchButton;
 	let backdropInfoButton;
 	let backdropPrevButton;
+	let backdropContrastSlider;
 	let backdropNextButton;
 	let backdropPlayPauseButton;
 	let headerReloadButton;

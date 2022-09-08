@@ -5,6 +5,7 @@
     "Always": "Always",
     "AppDescription": "The Jellyfin web client modified.",
     "Authentication": "Authentication",
+    "BackdropContrast": "Contrast level",
     "BackdropInfo": "Backdrop details",
     "BackdropNext": "Next",
     "BackdropPause": "Pause",

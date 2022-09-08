@@ -330,11 +330,12 @@ import './backdrop.scss';
 		const _bdw =  document.querySelector('#backdropWidget');
 		const _bdc =  document.querySelector('#backdropControlButton');
 		const _bdi =  document.querySelector('#backdropInfoButton');
-
+		const _bdco =  document.querySelector('#backdropContrast');
+		
 		// Refresh play/pause button, hide if 'delay' set to 0.
 		pauseBackdrop(_onPause);
 		
-		if (!_bdw || !_bdc || !_bdi)
+		if (!_bdw || !_bdc || !_bdi || !_bdco)
 			return;
 		
 		switch(userSettings.enableBackdropWidget()) {
@@ -342,6 +343,7 @@ import './backdrop.scss';
 				_bdw.classList.add('hide');
 				_bdc.classList.add('hide');
 				_bdi.classList.add('hide');
+				_bdco.classList.add('hide');
 				break;
 			
 			case 1:
@@ -350,19 +352,29 @@ import './backdrop.scss';
 				_bdi.classList.remove('hide');
 				_bdc.classList.remove('hide');
 				_bdw.classList.remove('hide');
+				_bdco.classList.remove('hide');
 				break;
 				
 			case 2:
 				if (_item_url) 
 					_bdi.href = _item_url;
 				_bdc.classList.add('hide');
+				_bdco.classList.add('hide');
 				_bdi.classList.remove('hide');
 				_bdw.classList.remove('hide');
 				break;
 			
 			case 3:
 				_bdi.classList.add('hide');
+				_bdco.classList.add('hide');
 				_bdc.classList.remove('hide');
+				_bdw.classList.remove('hide');
+				break;
+				
+			case 4:
+				_bdi.classList.add('hide');
+				_bdc.classList.add('hide');
+				_bdco.classList.remove('hide');
 				_bdw.classList.remove('hide');
 				break;
 		}
@@ -372,11 +384,14 @@ import './backdrop.scss';
 		const _bdw =  document.querySelector('#backdropWidget');
 		const _bdc =  document.querySelector('#backdropControlButton');
 		const _bdi =  document.querySelector('#backdropInfoButton');
-		if (!_bdw || !_bdc || !_bdi)
+		const _bdco =  document.querySelector('#backdropContrast');
+		
+		if (!_bdw || !_bdc || !_bdi || !_bdco)
 			return;
 		_bdw.classList.add('hide');
 		_bdc.classList.add('hide');
 		_bdi.classList.add('hide');
+		_bdco.classList.add('hide');
 	}
 
     function onRotationInterval(x) {
@@ -402,6 +417,13 @@ import './backdrop.scss';
 		onRotationInterval(-1);
     }
 	
+	export function setBackdropContrast(e) {
+		const _bc = document.querySelector('.backgroundContainer');
+		if (!_bc)
+			return;
+		//toast(e.target.value);
+		_bc.style.opacity = 1 - parseFloat(e.target.value/50);
+	}
 	
 	export function pauseBackdrop(x) {
 		const _bpp = document.querySelector('#backdropPlayPauseButton');

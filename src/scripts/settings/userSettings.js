@@ -874,20 +874,20 @@ export class UserSettings {
 	
 	initWeatherBot() {
 		const self = this;
-		var WB_nextMode = function(self) {
+		var WB_nextScreen = (x) => {
 			return function WB_curried(e) {
-				if (self._pwrButtons === true) {
-					self._wbmode --;
-					self._wbmode = (self._wbmode + 1) % 3;	
-					self._wbmode ++;
-					self.WB_setButtons();
+				if (x._pwrButtons === true) {
+					x._wbmode --;
+					x._wbmode = (x._wbmode + 1) % 3;
+					x._wbmode ++;
+					x.WB_setButtons();
 				}
 			}
 		}	
 		let elm = document.getElementsByClassName("headerWthMain")[0];
 		if (elm) {
-			elm.removeEventListener('click', WB_nextMode(self));
-			elm.addEventListener('click', WB_nextMode(self));
+			elm.removeEventListener('click', WB_nextScreen(self));
+			elm.addEventListener('click', WB_nextScreen(self));
 		}
 	}
 	
@@ -1001,8 +1001,8 @@ export class UserSettings {
             return this.set('backdropWidget', parseInt(val, 10));
         
 		const bw = parseInt(this.get('backdropWidget'), 10) || 0;
-		if (bw < 0 || bw > 3) 
-			return 0; // default to 0 (Never).
+		if (bw < 0 || bw > 4) 
+			return 0; // default to 0 (None).
         else 
             return bw;
     }
