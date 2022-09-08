@@ -407,15 +407,19 @@ import './backdrop.scss';
 		const _bpp = document.querySelector('#backdropPlayPauseButton');
 		const _bpa = document.querySelector('#backdropRotationPause');
 		const _bpl = document.querySelector('#backdropRotationPlay');
-		if (!_bpa || !_bpl || !_bpp)
+		const _bdc = document.querySelector('#backdropControlButton');
+		if (!_bpa || !_bpl || !_bpp || !_bdc)
 			return;
 		
 		const _delay = userSettings.backdropDelay();
 		if (!_delay) {
 			_bpp.classList.add('hide');
+			_bdc.style.fontSize = '90%';
 			return;
-		} else
+		} else {
+			_bdc.style.fontSize = '70%';
 			_bpp.classList.remove('hide');
+		}
 		
 		if (x === undefined) {
 			if (!_onPause) {

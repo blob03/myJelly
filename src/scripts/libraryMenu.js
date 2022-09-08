@@ -75,10 +75,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
   
 		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
-		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;">';
-		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;font-size: 70%;"><span class="material-icons skip_previous"></span></button>';
-		html += '<button href="#" type="button" id="backdropPlayPauseButton" is="paper-icon-button-light" class="headerButton headerBackdropPlayPauseButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 90%;"><span id="backdropRotationPause" class="material-icons pause"></span><span id="backdropRotationPlay" class="hide material-icons play_arrow"></span></button>';
-		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;font-size: 70%;"><span class="material-icons skip_next"></span></button>';
+		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;font-size: 70%;">';
+		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_previous"></span></button>';
+		html += '<button href="#" type="button" id="backdropPlayPauseButton" is="paper-icon-button-light" class="headerButton headerBackdropPlayPauseButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: 33%;font-size: 120%;"><span id="backdropRotationPause" class="material-icons pause"></span><span id="backdropRotationPlay" class="hide material-icons play_arrow"></span></button>';
+		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_next"></span></button>';
 		html += '</div>';
 		html += '</div>';
 		
