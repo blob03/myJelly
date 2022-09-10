@@ -995,13 +995,18 @@ export class UserSettings {
      * Get or set 'Backdrop widget' state.
      * @param {boolean|undefined} val - Between 0 and 3 inclusively.
      * @return {boolean} 'Backdrop widget' state.
+		0: Nothing
+		7: Everything
+		1: Details
+		2: Control pannel
+		4: BackdropContrast
      */
     enableBackdropWidget(val) {
 		if (val !== undefined) 
             return this.set('backdropWidget', parseInt(val, 10));
         
 		const bw = parseInt(this.get('backdropWidget'), 10) || 0;
-		if (bw < 0 || bw > 4) 
+		if (bw < 0 || bw > 7) 
 			return 0; // default to 0 (None).
         else 
             return bw;

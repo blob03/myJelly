@@ -380,7 +380,29 @@ import viewContainer from '../viewContainer';
 		self._savedClock = context.querySelector('#selectClock').value = userSettings.enableClock();
 		self._savedWBot = context.querySelector('#selectWeatherBot').value = userSettings.enableWeatherBot();
 		
-		context.querySelector('#selectBackdropWidget').value = userSettings.enableBackdropWidget();
+		let backdropToolbox = context.querySelector('#backdropToolsAll');
+		let backdropToolsList = context.querySelector('#backdropToolsList');
+		let toolbox = userSettings.enableBackdropWidget();
+		
+		backdropToolbox.checked = (toolbox == 7);
+		context.querySelector('#backdropToolsDetails').checked = (toolbox & 1);
+		context.querySelector('#backdropToolsControl').checked = (toolbox & 2);
+		context.querySelector('#backdropToolsContrast').checked = (toolbox & 4);
+		
+		if (backdropToolbox.checked)
+			backdropToolsList.classList.add('hide');
+		else
+			backdropToolsList.classList.remove('hide');
+		
+		backdropToolbox.addEventListener('change', (ev) => {
+			if (ev.target.checked)
+				backdropToolsList.classList.add('hide');
+			else
+				backdropToolsList.classList.remove('hide');
+		});
+		
+		
+		
 		context.querySelector('#inputLat').value = userSettings.getlatitude();
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
@@ -481,11 +503,25 @@ import viewContainer from '../viewContainer';
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
-		userSettingsInstance.enableBackdropWidget(context.querySelector('#selectBackdropWidget').value);
-		// With 'Only Details', backdrops rotation must be resumed.
-		if (context.querySelector('#selectBackdropWidget').value == 2) {
+		
+		let toolbox = 0;
+		if (context.querySelector('#backdropToolsAll').checked)
+			toolbox = 7;
+		else {
+			if (context.querySelector('#backdropToolsDetails').checked)
+				toolbox = toolbox | 1;
+			if (context.querySelector('#backdropToolsControl').checked)
+				toolbox = toolbox | 2;
+			if (context.querySelector('#backdropToolsContrast').checked)
+				toolbox = toolbox | 4;
+		}
+		userSettingsInstance.enableBackdropWidget(toolbox);
+		
+		// When controls are turned off, backdrops rotation must be resumed.
+		if (toolbox & 2) {
 			pauseBackdrop(false);
 		}
+		
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);

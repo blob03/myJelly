@@ -1170,19 +1170,6 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	font-size: 1em !important;
 }
 
-.radioButtonLabel,
-.emby-collapsible-button,
-.label,
-.paperListLabel,
-.checkboxListLabel,
-.textareaLabel,
-.selectLabel,
-.sliderLabel,
-.checkboxLabel,
-.inputLabel {
-	margin-bottom: .4em !important;
-}
-
 .detailSectionHeader, 
 .sectionTitle {
 	color : #dbe2ea;
@@ -1195,6 +1182,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .visualCardBox {
     background-color: #333639;
 	border: 3px ridge #3a434c;
+	padding: .3em;
 }
 
 /* tab buttons */

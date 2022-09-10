@@ -1621,17 +1621,17 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 113565,
+        "fsize": 114726,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
         "ISO6391": "nl",
         "ISO6392": "dut",
-        "keys#": 1622,
-        "completed%": 91.64,
+        "keys#": 1636,
+        "completed%": 92.43,
         "jellyfinWeb": {
             "filename": "nl.json",
-            "keys#": 1622,
+            "keys#": 1636,
             "orphans#": 11,
             "orphans": [
                 "ButtonNetwork",
@@ -1646,7 +1646,7 @@
                 "SetUsingLastTracks",
                 "SetUsingLastTracksHelp"
             ],
-            "completed%": 97.3
+            "completed%": 98.14
         },
         "myJelly": {
             "filename": "",

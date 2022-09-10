@@ -78,13 +78,6 @@ import { appRouter } from '../components/appRouter';
     });
 
     defineRoute({
-        alias: '/myprofile.html',
-        path: 'user/profile/index.html',
-        autoFocus: false,
-        controller: 'user/profile/index'
-    });
-
-    defineRoute({
         alias: '/mypreferencescontrols.html',
         path: 'user/controls/index.html',
         autoFocus: false,
@@ -300,15 +293,6 @@ import { appRouter } from '../components/appRouter';
         controller: 'dashboard/plugins/repositories/index'
     });
 
-/*
-    defineRoute({
-        alias: '/home.html',
-        path: 'home.html',
-        autoFocus: false,
-        controller: 'home',
-        type: 'home'
-    });
-*/
     defineRoute({
         alias: '/list.html',
         path: 'list.html',
@@ -431,53 +415,6 @@ import { appRouter } from '../components/appRouter';
     });
 
     defineRoute({
-        alias: '/useredit.html',
-        path: 'dashboard/users/useredit.html',
-        autoFocus: false,
-        roles: 'admin',
-        pageComponent: 'UserEditPage'
-    });
-
-    defineRoute({
-        alias: '/userlibraryaccess.html',
-        path: 'dashboard/users/userlibraryaccess.html',
-        autoFocus: false,
-        roles: 'admin',
-        controller: 'dashboard/users/userlibraryaccess'
-    });
-
-    defineRoute({
-        alias: '/usernew.html',
-        path: 'dashboard/users/usernew.html',
-        autoFocus: false,
-        roles: 'admin',
-        pageComponent: 'NewUserPage'
-    });
-
-    defineRoute({
-        alias: '/userparentalcontrol.html',
-        path: 'dashboard/users/userparentalcontrol.html',
-        autoFocus: false,
-        roles: 'admin',
-        controller: 'dashboard/users/userparentalcontrol'
-    });
-
-    defineRoute({
-        alias: '/userpassword.html',
-        path: 'dashboard/users/userpassword.html',
-        autoFocus: false,
-        controller: 'dashboard/users/userpasswordpage'
-    });
-
-    defineRoute({
-        alias: '/userprofiles.html',
-        path: 'dashboard/users/userprofiles.html',
-        autoFocus: false,
-        roles: 'admin',
-        pageComponent: 'UserProfilesPage'
-    });
-
-    defineRoute({
         alias: '/wizardremoteaccess.html',
         path: 'wizard/remote/index.html',
         autoFocus: false,
@@ -556,7 +493,7 @@ import { appRouter } from '../components/appRouter';
     });
 
     defineRoute({
-		path: '/',
+        path: '/',
         autoFocus: false,
         isDefaultRoute: true
     });

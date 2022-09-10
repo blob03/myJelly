@@ -338,7 +338,8 @@ import './backdrop.scss';
 		if (!_bdw || !_bdc || !_bdi || !_bdco)
 			return;
 		
-		switch(userSettings.enableBackdropWidget()) {
+		const toolbox = userSettings.enableBackdropWidget();
+		switch(toolbox) {
 			case 0:
 				_bdw.classList.add('hide');
 				_bdc.classList.add('hide');
@@ -346,7 +347,7 @@ import './backdrop.scss';
 				_bdco.classList.add('hide');
 				break;
 			
-			case 1:
+			case 7:
 				if (_item_url) 
 					_bdi.href = _item_url;
 				_bdi.classList.remove('hide');
@@ -355,27 +356,24 @@ import './backdrop.scss';
 				_bdco.classList.remove('hide');
 				break;
 				
-			case 2:
-				if (_item_url) 
-					_bdi.href = _item_url;
-				_bdc.classList.add('hide');
-				_bdco.classList.add('hide');
-				_bdi.classList.remove('hide');
-				_bdw.classList.remove('hide');
-				break;
-			
-			case 3:
-				_bdi.classList.add('hide');
-				_bdco.classList.add('hide');
-				_bdc.classList.remove('hide');
-				_bdw.classList.remove('hide');
-				break;
+			default:
+				if (toolbox & 1) {
+					if (_item_url) 
+						_bdi.href = _item_url;
+					_bdi.classList.remove('hide');
+				} else
+					_bdi.classList.add('hide');
+				if (toolbox & 2)
+					_bdc.classList.remove('hide');
+				else
+					_bdc.classList.add('hide');
+				if (toolbox & 4)
+					_bdco.classList.remove('hide');
+				else
+					_bdco.classList.add('hide');
 				
-			case 4:
-				_bdi.classList.add('hide');
-				_bdc.classList.add('hide');
-				_bdco.classList.remove('hide');
-				_bdw.classList.remove('hide');
+				if (toolbox)
+					_bdw.classList.remove('hide');
 				break;
 		}
 	}

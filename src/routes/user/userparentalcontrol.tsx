@@ -76,7 +76,7 @@ const UserParentalControl: FunctionComponent = () => {
             name: globalize.translate('Movies'),
             value: 'Movie'
         }, {
-            name: globalize.translate('Music'),
+            name: globalize.translate('TabMusic'),
             value: 'Music'
         }, {
             name: globalize.translate('Trailers'),
@@ -160,7 +160,7 @@ const UserParentalControl: FunctionComponent = () => {
         }
 
         setUserName(user.Name);
-        LibraryMenu.setTitle(user.Name);
+        //LibraryMenu.setTitle(user.Name);
         loadUnratedItems(user);
 
         loadBlockedTags(user.Policy.BlockedTags);

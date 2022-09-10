@@ -153,7 +153,7 @@ const UserEdit: FunctionComponent = () => {
 
         const lnkEditUserPreferences = page.querySelector('.lnkEditUserPreferences') as HTMLDivElement;
         lnkEditUserPreferences.setAttribute('href', 'mypreferencesmenu.html?userId=' + user.Id);
-        LibraryMenu.setTitle(user.Name);
+        //LibraryMenu.setTitle(user.Name);
         setUserName(user.Name);
         (page.querySelector('#txtUserName') as HTMLInputElement).value = user.Name;
         (page.querySelector('.chkIsAdmin') as HTMLInputElement).checked = user.Policy.IsAdministrator;

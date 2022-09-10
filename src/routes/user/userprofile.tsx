@@ -38,7 +38,7 @@ const UserProfile: FunctionComponent = () => {
             }
 
             setUserName(user.Name);
-            LibraryMenu.setTitle(user.Name);
+            //LibraryMenu.setTitle(user.Name);
 
             let imageUrl = 'assets/img/avatar.png';
             if (user.PrimaryImageTag) {
