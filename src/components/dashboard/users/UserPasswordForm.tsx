@@ -263,9 +263,9 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 style={{margin: '0 auto'}}
             >
                 <div className='detailSection'>
-                    <div className='detailSectionHeader'>
+                    <h2 className='detailSectionHeader'>
                         {globalize.translate('HeaderEasyPinCode')}
-                    </div>
+                    </h2>
                     <br />
                     <div>
                         {globalize.translate('EasyPasswordHelp')}

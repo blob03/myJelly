@@ -16,9 +16,9 @@ type IProps = {
 const SectionTitleContainer: FunctionComponent<IProps> = ({SectionClassName, title, isBtnVisible = false, btnId, btnClassName, btnTitle, btnIcon, isLinkVisible = true, url}: IProps) => {
     return (
         <div className={`${SectionClassName} sectionTitleContainer flex align-items-center`}>
-            <h2 className='sectionTitle'>
+            <div className='sectionTitle'>
                 {title}
-            </h2>
+            </div>
 
             {isBtnVisible && <IconButtonElement
                 is='emby-button'

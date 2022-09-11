@@ -830,11 +830,13 @@ legend {
 .checkboxIcon-checked {
 	color: #888 !important;
 	padding-left: .2em;
-	padding-bottom: .3em;
+	padding-bottom: .2em;
 	transform: scale(1.5);
 	text-shadow: 1px 2px 3px #1e1d25;
 	animation-name: check-in;
 	animation-duration: .15s;
+	font-size: 1.4em;
+	font-weight: 600;
 }
 
 .checkboxOutline {

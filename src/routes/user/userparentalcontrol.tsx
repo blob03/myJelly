@@ -314,7 +314,8 @@ const UserParentalControl: FunctionComponent = () => {
 
     const optionMaxParentalRating = () => {
         let content = '';
-        content += '<option value=\'\'></option>';
+        content += `<option value=''>${globalize.translate('None')}</option>`;
+		content += `<option disabled>${globalize.translate('OptionDivider')}</option>`;
         for (const rating of parentalRatings) {
             content += `<option value='${rating.Value}'>${escapeHTML(rating.Name)}</option>`;
         }
@@ -348,9 +349,9 @@ const UserParentalControl: FunctionComponent = () => {
                     </div>
                     <div>
                         <div className='blockUnratedItems'>
-                            <h3 className='checkboxListLabel'>
+                            <div className='checkboxListLabel'>
                                 {globalize.translate('HeaderBlockItemsWithNoRating')}
-                            </h3>
+                            </div>
                             <div className='checkboxList paperList' style={{ padding: '.5em 1em' }}>
                                 {unratedItems.map(Item => {
                                     return <CheckBoxElement

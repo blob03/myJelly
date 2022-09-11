@@ -245,8 +245,13 @@
     transform: scale(1.025, 1.025);
 }
 
-.paperList {
-    margin: 0.5em auto;
+.paperList + .fieldDescription {
+	margin-top: .25em;
+    //margin: 0.5em auto;
+}
+
+.paperListLabel {
+	margin-bottom: .25em;
 }
 
 .paperList-clear {

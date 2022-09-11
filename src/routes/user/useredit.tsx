@@ -376,9 +376,9 @@ const UserEdit: FunctionComponent = () => {
                         title='OptionAllowUserToManageServer'
                     />
                     <div id='featureAccessFields' className='verticalSection'>
-                        <h2 className='paperListLabel'>
+                        <div className='paperListLabel'>
                             {globalize.translate('HeaderFeatureAccess')}
-                        </h2>
+                        </div>
                         <div className='checkboxList paperList' style={{padding: '.5em 1em'}}>
                             <CheckBoxElement
                                 className='chkEnableLiveTvAccess'
@@ -391,9 +391,9 @@ const UserEdit: FunctionComponent = () => {
                         </div>
                     </div>
                     <div className='verticalSection'>
-                        <h2 className='paperListLabel'>
+                        <div className='paperListLabel'>
                             {globalize.translate('HeaderPlayback')}
-                        </h2>
+                        </div>
                         <div className='checkboxList paperList' style={{padding: '.5em 1em'}}>
                             <CheckBoxElement
                                 className='chkEnableMediaPlayback'
@@ -420,7 +420,6 @@ const UserEdit: FunctionComponent = () => {
                             {globalize.translate('OptionAllowMediaPlaybackTranscodingHelp')}
                         </div>
                     </div>
-                    <br />
                     <div className='verticalSection'>
                         <div className='inputContainer'>
                             <InputElement
@@ -431,8 +430,7 @@ const UserEdit: FunctionComponent = () => {
                             />
                             <div className='fieldDescription'>
                                 {globalize.translate('LabelRemoteClientBitrateLimitHelp')}
-                            </div>
-                            <div className='fieldDescription'>
+                            <br />
                                 {globalize.translate('LabelUserRemoteClientBitrateLimitHelp')}
                             </div>
                         </div>
@@ -451,16 +449,16 @@ const UserEdit: FunctionComponent = () => {
                         </div>
                     </div>
                     <div className='verticalSection'>
-                        <h2 className='checkboxListLabel' style={{marginBottom: '1em'}}>
+                        <div className='paperListLabel'>
                             {globalize.translate('HeaderAllowMediaDeletionFrom')}
-                        </h2>
-                        <div className='checkboxList paperList checkboxList-paperList'>
+                        </div>
+                        <div className='checkboxList paperList' style={{padding: '.5em 1em'}}>
                             <CheckBoxElement
-                                labelClassName='checkboxContainer'
+                                labelClassName=''
                                 className='chkEnableDeleteAllFolders'
                                 title='AllLibraries'
                             />
-                            <div className='deleteAccess'>
+                            <div className='deleteAccess' style={{padding: '1em 0 0 0'}}>
                                 {deleteFoldersAccess.map(Item => (
                                     <CheckBoxElement
                                         key={Item.Id}
@@ -474,9 +472,9 @@ const UserEdit: FunctionComponent = () => {
                         </div>
                     </div>
                     <div className='verticalSection'>
-                        <h2 className='checkboxListLabel'>
+                        <div className='checkboxListLabel'>
                             {globalize.translate('HeaderRemoteControl')}
-                        </h2>
+                        </div>
                         <div className='checkboxList paperList' style={{padding: '.5em 1em'}}>
                             <CheckBoxElement
                                 className='chkEnableRemoteControlOtherUsers'
@@ -491,9 +489,7 @@ const UserEdit: FunctionComponent = () => {
                             {globalize.translate('OptionAllowRemoteSharedDevicesHelp')}
                         </div>
                     </div>
-                    <h2 className='checkboxListLabel'>
-                        {globalize.translate('Other')}
-                    </h2>
+					<br />
                     <div className='checkboxContainer checkboxContainer-withDescription'>
                         <CheckBoxElement
                             className='chkEnableDownloading'
@@ -521,7 +517,6 @@ const UserEdit: FunctionComponent = () => {
                             {globalize.translate('OptionHideUserFromLoginHelp')}
                         </div>
                     </div>
-                    <br />
                     <div className='verticalSection'>
                         <div className='inputContainer' id='fldLoginAttemptsBeforeLockout'>
                             <InputElement
@@ -532,13 +527,11 @@ const UserEdit: FunctionComponent = () => {
                             />
                             <div className='fieldDescription'>
                                 {globalize.translate('OptionLoginAttemptsBeforeLockout')}
-                            </div>
-                            <div className='fieldDescription'>
+                            <br />
                                 {globalize.translate('OptionLoginAttemptsBeforeLockoutHelp')}
                             </div>
                         </div>
                     </div>
-                    <br />
                     <div className='verticalSection'>
                         <div className='inputContainer' id='fldMaxActiveSessions'>
                             <InputElement
@@ -549,8 +542,7 @@ const UserEdit: FunctionComponent = () => {
                             />
                             <div className='fieldDescription'>
                                 {globalize.translate('OptionMaxActiveSessions')}
-                            </div>
-                            <div className='fieldDescription'>
+                            <br />
                                 {globalize.translate('OptionMaxActiveSessionsHelp')}
                             </div>
                         </div>

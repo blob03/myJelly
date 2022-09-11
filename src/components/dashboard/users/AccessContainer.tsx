@@ -27,9 +27,9 @@ const AccessContainer: FunctionComponent<IProps> = ({containerClassName, headerT
             />
             <div className={listContainerClassName}>
                 <div className={accessClassName}>
-                    <h3 className='checkboxListLabel'>
+                    <div className='checkboxListLabel'>
                         {globalize.translate(listTitle)}
-                    </h3>
+                    </div>
                     <div className='checkboxList paperList' style={{
                         padding: '.5em 1em'
                     }}>
