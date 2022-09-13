@@ -23,12 +23,12 @@ import './backdrop.scss';
 
     function enableRotation() {
 		// if (browser.tv) {
-		//    return false;
+		//	return false;
 		// }
 
 		// Causes high cpu usage
-		//  if (browser.firefox) {
-		//     return false;
+		// if (browser.firefox) {
+		//	return false;
 		//}
         return true;
     }
@@ -44,10 +44,8 @@ import './backdrop.scss';
 			switch(type) {
 				case 'Theme':
 					let backdropImage = document.createElement('div');
-					
 					backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn', 'themeBackdrop');
-					backdropImage.setAttribute('data-url', url);
-					const idx = Math.floor(Math.random() * 4);
+					const idx = Math.ceil(Math.random() * 4);
 					if (idx)
 						backdropImage.classList.add('alt' + idx);
 					
@@ -90,33 +88,31 @@ import './backdrop.scss';
 						if (self.isDestroyed)
 							return;
 						let backdropImage = document.createElement('div');
-						if (backdropImage) {
-							backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn');
-							backdropImage.style.backgroundImage = `url('${url}')`;
-							backdropImage.setAttribute('data-url', url);
-							parent.appendChild(backdropImage);
-							internalBackdrop(true);
-							
-							if (!enableAnimation()) {
-								if (existingBackdropImage && existingBackdropImage.parentNode)
-									existingBackdropImage.parentNode.removeChild(existingBackdropImage);
-								return;
-							}
+						backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn');
+						backdropImage.style.backgroundImage = `url('${url}')`;
+						backdropImage.setAttribute('data-url', url);
+						parent.appendChild(backdropImage);
+						internalBackdrop(true);
+						
+						if (!enableAnimation()) {
+							if (existingBackdropImage && existingBackdropImage.parentNode)
+								existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+							return;
+						}
 
-							const onAnimationComplete = () => {
-								dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
-									once: true
-								});
-								if (backdropImage === self.currentAnimatingElement)
-									self.currentAnimatingElement = null;
-								if (existingBackdropImage && existingBackdropImage.parentNode)
-									existingBackdropImage.parentNode.removeChild(existingBackdropImage);
-							};
-
-							dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
+						const onAnimationComplete = () => {
+							dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
 								once: true
 							});
-						}
+							if (backdropImage === self.currentAnimatingElement)
+								self.currentAnimatingElement = null;
+							if (existingBackdropImage && existingBackdropImage.parentNode)
+								existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+						};
+
+						dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
+							once: true
+						});
 					};
 					img.src = url;
 					break;
@@ -289,41 +285,51 @@ import './backdrop.scss';
     var _currentRotationIndex  = -1;
 	
     export function setBackdrops(items, imageOptions, enableImageRotation) {
-        if (enabled()) {
-            const images = getImageUrls(items, imageOptions);
-
-            if (images.list.length) {
-                startRotation(images, enableImageRotation);
-            } else {
-                clearBackdrop();
-            }
-        }
-    }
+        if (!enabled())
+			return;
+		
+		let images;
+		if (items) {
+			images = getImageUrls(items, imageOptions);
+			if (!images.list.length) {
+				clearBackdrop();
+				hideBackdropWidget();
+				return;
+			}
+			if (images.list.length == 1) {
+				setBackdropImage(images.list[0]);
+				hideBackdropWidget();
+				return;	
+			}
+		}
+		
+		startRotation(images, enableImageRotation);
+	}
 
     function startRotation(images, enableImageRotation) {
-        clearRotation();
-        
-        if (images.list.length > 1 && enableImageRotation !== false && enableRotation()) {
+		clearRotation();
+		
+		if (images && images.list.length) {
+			if (enableImageRotation === false || !enableRotation()) {
+				setBackdropImage(images.list[0]);
+				hideBackdropWidget();
+				return;
+			}
 			
 			if (!isEqual(images.list, _currentRotatingImages.list)) {
 				_currentRotatingImages = { ...images };
-				_currentRotationIndex = -1;
-				//console.debug("Fresh backdrop lot loaded.");
-			} else
-				--_currentRotationIndex;
-
-			const _delay = userSettings.backdropDelay();
-			if (_delay && !_onPause) {
-				clearInterval(_rotationInterval);
-				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+				_currentRotationIndex = 0;
 			}
-			onRotationInterval();
-			return;
-        }
-
-        setBackdropImage(images.list[0]);
-		hideBackdropWidget();
-    }
+		}
+		
+		const _delay = userSettings.backdropDelay();
+		if (_delay && !_onPause) {
+			clearInterval(_rotationInterval);
+			_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+		}
+		onRotationInterval(0);
+		return;
+	}
 	
 	var _onPause = false;
 	export function showBackdropWidget(_item_url) {
@@ -348,8 +354,6 @@ import './backdrop.scss';
 				break;
 			
 			case 7:
-				if (_item_url) 
-					_bdi.href = _item_url;
 				_bdi.classList.remove('hide');
 				_bdc.classList.remove('hide');
 				_bdw.classList.remove('hide');
@@ -358,8 +362,6 @@ import './backdrop.scss';
 				
 			default:
 				if (toolbox & 1) {
-					if (_item_url) 
-						_bdi.href = _item_url;
 					_bdi.classList.remove('hide');
 				} else
 					_bdi.classList.add('hide');
@@ -376,6 +378,10 @@ import './backdrop.scss';
 					_bdw.classList.remove('hide');
 				break;
 		}
+		if (_item_url)
+			_bdi.href = _item_url;
+		else
+			_bdi.classList.add('hide');
 	}
 	
 	export function hideBackdropWidget() {
@@ -397,29 +403,59 @@ import './backdrop.scss';
             return;
         }
 
-        let i = _currentRotationIndex + (x? x:1);
-		if (i < 0)
-			i = _currentRotatingImages.list.length - (-i % _currentRotatingImages.list.length);
-		else
-			i = i % _currentRotatingImages.list.length;
-        _currentRotationIndex = i;
-		setBackdropImage(_currentRotatingImages.list[i]);
-		showBackdropWidget(_currentRotatingImages.details[i]);
+        let i = _currentRotationIndex + (x !== undefined? x:1);
+		
+		switch(userSettings.enableBackdrops()) {
+			case 'Theme':
+				if (i < 0)
+					i = 4 - (-i % 4);
+				else
+					i = i % 4;
+				_currentRotationIndex = i;
+				const backdropImage = document.querySelector('.backdropImage');
+				if (!backdropImage)
+					return;
+				backdropImage.classList.remove('alt1');
+				backdropImage.classList.remove('alt2');
+				backdropImage.classList.remove('alt3');
+				backdropImage.classList.remove('alt4');
+				backdropImage.classList.add('alt' + ( i + 1));
+				showBackdropWidget();
+				break;
+			
+			default:
+				if (i < 0)
+					i = _currentRotatingImages.list.length - (-i % _currentRotatingImages.list.length);
+				else
+					i = i % _currentRotatingImages.list.length;
+				_currentRotationIndex = i;
+				setBackdropImage(_currentRotatingImages.list[i]);
+				showBackdropWidget(_currentRotatingImages.details[i]);
+		}
     }
 
 	export function showNextBackdrop() {
+		const _delay = userSettings.backdropDelay();
+		if (_delay && !_onPause)
+			clearInterval(_rotationInterval);
 		onRotationInterval(+1);
+		if (_delay && !_onPause)
+			_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
     }
 	
 	export function showPrevBackdrop() {
+		const _delay = userSettings.backdropDelay();
+		if (_delay && !_onPause)
+			clearInterval(_rotationInterval);
 		onRotationInterval(-1);
+		if (_delay && !_onPause)
+			_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
     }
 	
 	export function setBackdropContrast(e) {
 		const _bc = document.querySelector('.backgroundContainer');
 		if (!_bc)
 			return;
-		//toast(e.target.value);
 		_bc.style.opacity = 1 - parseFloat(e.target.value/50);
 	}
 	
@@ -453,7 +489,7 @@ import './backdrop.scss';
 				toast(globalize.translate('RotationResume'));
 				clearInterval(_rotationInterval);
 				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
-				onRotationInterval();
+				onRotationInterval(+1);
 				_bpl.classList.add('hide');
 				_bpa.classList.remove('hide');
 				_onPause = false;

@@ -112,10 +112,8 @@ class AboutTab {
 		const autosearchIcon = document.querySelector('#autosearch');
 		if (autosearchIcon) {
 			if (appSettings.enableAutosearch() === false) {
-				autosearchIcon.classList.remove('search_off');
-				autosearchIcon.classList.add('search');
-				document.querySelector('#labelUpdate').style.opacity = 1;
 				appSettings.enableAutosearch(true);
+				this.refreshAutosearch();
 				this.checkUpdates();
 			} else {
 				if (this._busy === true) {
@@ -123,12 +121,8 @@ class AboutTab {
 					loading.hide();
 					this._busy = false;
 				}
-				
-				document.querySelector('#labelUpdate').style.opacity = .4;
-				this.au.innerHTML = '';
-				autosearchIcon.classList.remove('search');
-				autosearchIcon.classList.add('search_off');
 				appSettings.enableAutosearch(false);
+				this.refreshAutosearch();
 				this.updateReleaseNotes(appInfo);
 			}
 		}
@@ -151,7 +145,8 @@ class AboutTab {
 		const autosearchIcon = document.getElementById("autosearch");
 		if (autosearchIcon) {
 			if (appSettings.enableAutosearch() === false) {
-				document.querySelector('#labelUpdate').style.opacity = .4;
+				this.au.innerHTML = '';
+				document.querySelector('#labelUpdate').style.opacity = .5;
 				autosearchIcon.classList.remove('search');
 				autosearchIcon.classList.add('search_off');
 			} else {

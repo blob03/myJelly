@@ -725,19 +725,23 @@ h3 {
 }
 
 .backdropImage.themeBackdrop {
-	background-image: url(./bg.jpg) !important;
+	background-image: url(./img/bg.jpg) !important;
 }
 
 .backdropImage.themeBackdrop.alt1 {
-	background-image: url(./bg-alt1.jpg) !important;
+	background-image: url(./img/bg.jpg) !important;
 }
 
 .backdropImage.themeBackdrop.alt2 {
-	background-image: url(./bg.jpg) !important;
+	background-image: url(./img/bg-alt1.jpg) !important;
 }
 
 .backdropImage.themeBackdrop.alt3 {
-	background-image: url(./bg-alt1.jpg) !important;
+	background-image: url(./img/bg-alt2.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt4 {
+	background-image: url(./img/bg-alt3.jpg) !important;
 }
 
 /* fix for TV Layout */
@@ -753,20 +757,16 @@ h3 {
 	line-height: 1.35;
 	font-weight: 400;
 	text-shadow: 1px 1px 4px #749cb0;
-	color: #277499;
-	top: 20%;
-	left: 40%;
+	color: #11597b;
 	align-items: flex-start !important;
 	width: auto;
 }
 
 .aboutframe {
 	padding: .2em 1em .2em 1em !important;
-	background: rgba(123, 159, 197, 0.15) !important;
+	background: rgba(117, 195, 195, 0.25) !important;
 	font-size: 100% !important;
 	line-height: 1.65 !important;
-	position: relative !important;
-	top: 4em !important;
 }
 
 .aboutcontent {
@@ -1120,7 +1120,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .pageTabContent {
-    padding-top: 1.5em !important;
+    padding-top: 0.5em !important;
 }
 
 .sectionTitle-cards,
@@ -1245,7 +1245,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .weatherbotScreenSaver,
 .clockScreenSaver {
-	background-image: url(./bg.jpg) !important;
+	background-image: url(./img/bg.jpg) !important;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
@@ -1283,3 +1283,4 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .infoDetails {
 	font-size: 90% !important;
 }
+

@@ -121,7 +121,6 @@ html {
 }
 
 .backgroundContainer {
-    /*background: url(./img/bg.jpg) center top no-repeat #033361;*/
 	background: linear-gradient(125deg, rgba(255, 217, 167, 0.4) 0%, rgba(246, 127, 0, 0.4) 40%, rgba(165, 100, 32, 0.4) 70%, rgba(255, 181, 103, 0.4) 100%);
 	background-color: rgba(235, 129, 40, 0.8);
     -webkit-background-size: cover;
@@ -145,7 +144,7 @@ html {
 }
 
 .backdropImage.themeBackdrop.alt1 {
-	background-image: url(./img/bg-alt1.jpg) !important;
+	background-image: url(./img/bg.jpg) !important;
 }
 
 .backdropImage.themeBackdrop.alt2 {
@@ -153,7 +152,11 @@ html {
 }
 
 .backdropImage.themeBackdrop.alt3 {
-	background-image: url(./img/bg.jpg) !important;
+	background-image: url(./img/bg-alt2.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt4 {
+	background-image: url(./img/bg-alt3.jpg) !important;
 }
 
 .dialog,

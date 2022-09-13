@@ -129,7 +129,9 @@ function showBackdrop(type, parentId) {
 		case 'Theme':
 			setTimeout(() => {
 				setBackdropImage('#');
-				hideBackdropWidget();}, 500);
+				//hideBackdropWidget();
+				setBackdrops();
+				}, 500);
 			break;
 	}
 }

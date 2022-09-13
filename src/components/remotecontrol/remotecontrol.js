@@ -139,7 +139,7 @@ function updateNowPlayingInfo(context, state, serverId) {
     const displayName = item ? getNowPlayingNameHtml(item).replace('<br/>', ' - ') : '';
     if (item) {
         const nowPlayingServerId = (item.ServerId || serverId);
-        if (item.Type == 'Audio' || item.MediaStreams[0].Type == 'Audio') {
+        if (item.Type == 'AudioBook' || item.Type == 'Audio' || item.MediaStreams[0].Type == 'Audio') {
             const songName = item.Name;
             let artistsSeries = '';
             let albumName = '';

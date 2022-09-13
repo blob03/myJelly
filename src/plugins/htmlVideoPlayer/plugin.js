@@ -1151,7 +1151,7 @@ function tryRemoveElement(elem) {
             }
 
             // This is unfortunate, but we're unable to remove the textTrack that gets added via addTextTrack
-            if (browser.firefox || browser.web0s) {
+            if (browser.web0s) {
                 return true;
             }
 
