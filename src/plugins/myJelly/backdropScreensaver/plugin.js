@@ -5,7 +5,7 @@ import * as userSettings from '../../../scripts/settings/userSettings';
 class BackdropScreensaver {
     constructor() {
         this.name = 'My Backdrop Player';
-		this.version = '1.7';
+		this.version = '1.71';
 		this.group = 'myJelly';
 		this.description = 'MJBackdropScreensaverHelp';
         this.type = 'screensaver';
@@ -44,7 +44,7 @@ class BackdropScreensaver {
 		let swiperFX = null;
 		// When tested, use the relevant parameters as they are set in the settings page
 		// at the time of the call rather than the ones saved.
-		if (TEST === true) {	
+		if (TEST === true) {
 			this.hideOnMouse = false;
 			// Get the source of backdrops currently selected.
 			let srcBackdrops = document.querySelector('#srcBackdrops');
@@ -60,21 +60,20 @@ class BackdropScreensaver {
 			type = userSettings.enableBackdrops();
 		
 		let types = '';
-		let filters = '';			
+		let filters = '';
 
 		switch(type) {
 			case "LibrariesFav":
-			case "MovieFav":			
+			case "MovieFav":
 			case "SeriesFav":
 			case "ArtistsFav":
 				filters = 'IsFavorite';
 				break;
 		}
 
-		switch(type) {	
+		switch(type) {
 			case "Libraries":
 			case "LibrariesFav":
-			case "Auto":
 				types = 'Movie,Series,MusicArtist';
 				break;
 				
@@ -88,10 +87,8 @@ class BackdropScreensaver {
 				types = "Series";
 				break;
 				
-			case "None":
-			case "Theme":
+			default:
 				types = "";
-				break;
 		}
 		
 		let query;
@@ -104,7 +101,6 @@ class BackdropScreensaver {
 			case "MovieFav":
 			case "Series":
 			case "SeriesFav":
-			case "Auto":
 				query = {
 					ImageTypes: 'Backdrop',
 					EnableImageTypes: 'Backdrop',

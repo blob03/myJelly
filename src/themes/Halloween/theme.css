@@ -1393,7 +1393,6 @@ option:selected {
 
 .weatherbotScreenSaver,
 .clockScreenSaver {
-	background-image: url(./img/bg-alt1.jpg) !important;
 	-webkit-background-size: cover;
 	background-size: cover;
 }

@@ -322,8 +322,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             headerSyncButton.classList.add('hide');
             if (headerSearchButton) 
                 headerSearchButton.classList.add('hide');
-			if (backdropInfoWidget) 
-                backdropInfoWidget.classList.add('hide');
+			if (backdropInfoButton) 
+                backdropInfoButton.classList.add('hide');
 			if (headerReloadButton) 
 				headerReloadButton.classList.add('hide');
 			if (headerLockButton) 

@@ -3,13 +3,14 @@ import ServerConnections from '../../../components/ServerConnections';
 import * as userSettings from '../../../scripts/settings/userSettings';
 import globalize from '../../../scripts/globalize';
 import datetime from '../../../scripts/datetime';
+import appSettings from '../../../scripts/settings/appSettings';
 
 export default function () {
     const self = this;
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.9';
+	self.version = '0.91';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -21,13 +22,13 @@ export default function () {
 	self._datestr_;
 	self._timestr_;
 		
-	function clock(LOCALE) {	
+	function clock(LOCALE) {
 		const x = new Date();
 		const _date_ = x.toLocaleDateString(LOCALE, {
 			weekday: 'long',
 			year: 'numeric',
 			month: 'long',
-			day: '2-digit'	
+			day: '2-digit'
 		});
 		const _time_ = x.toLocaleTimeString(LOCALE, {
 			hour: 'numeric',
@@ -48,27 +49,31 @@ export default function () {
 
     self.show = function (TEST) {
 		
-		// If another instance is running, return.
-		if (self.interval !== null) 
-			return;
+		// Stop any instance that could be running.
+		stopInterval();
 		
         import('./style.scss').then(() => {
             let elem = document.querySelector('.clockScreenSaver');
+			if (elem)
+				elem.remove();
+            
+			elem = document.createElement('div');
+			elem.classList.add('clockScreenSaver');
+			elem.classList.add('backdropImage');
+			elem.classList.add('themeBackdrop');
+			const idx = Math.ceil(Math.random() * 4);
+			if (idx)
+				elem.classList.add('alt' + idx);
+			const _opacity = 'style="opacity: ' + (appSettings.get('opacity') || 1) + '"';
 
-            if (!elem) {
-                elem = document.createElement('div');
-                elem.classList.add('clockScreenSaver');
-                document.body.appendChild(elem);
-				elem.innerHTML = '<div id="ssBackplane" class="ssBackplane">'
-                + '<div id="ssClockDate" class="ssForeplane ssClockDate"></div>'
+			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane" ' + _opacity +'>'
+				+ '<div id="ssClockDate" class="ssForeplane ssClockDate"></div>'
 				+ '<div id="ssClockTime" class="ssForeplane ssClockTime"></div>'
 				+ '</div>';
-            }
+			document.body.appendChild(elem);
 			
 			self._datestr_ = document.getElementById("ssClockDate");
 			self._timestr_ = document.getElementById("ssClockTime");
-
-			stopInterval();
 			
 			// When tested, use the relevant parameters as they are currently set in the settings page
 			// rather than the saved ones.

@@ -7,7 +7,7 @@ import * as userSettings from '../../scripts/settings/userSettings';
 import ServerConnections from '../ServerConnections';
 import { appRouter } from '../appRouter';
 import toast from '../toast/toast';
-
+import appSettings from '../../scripts/settings/appSettings';
 
 import './backdrop.scss';
 
@@ -457,6 +457,7 @@ import './backdrop.scss';
 		if (!_bc)
 			return;
 		_bc.style.opacity = 1 - parseFloat(e.target.value/50);
+		appSettings.set('opacity', _bc.style.opacity);
 	}
 	
 	export function pauseBackdrop(x) {

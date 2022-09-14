@@ -1186,7 +1186,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .paperList,
 .visualCardBox {
-    background-color: #333639;
+    background-color: #353a3e;
 	border: 3px ridge #3a434c;
 	padding: .3em;
 }
@@ -1309,7 +1309,6 @@ select option:selected {
 
 .weatherbotScreenSaver,
 .clockScreenSaver {
-	background-image: url(./img/bg.jpg) !important;
 	-webkit-background-size: cover;
 	background-size: cover;
 }

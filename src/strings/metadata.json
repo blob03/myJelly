@@ -1333,17 +1333,17 @@
     },
     "lt-LT": {
         "ccode": "lt-LT",
-        "fsize": 58052,
+        "fsize": 58174,
         "ccodeSrc": "en-US",
         "displayName": "Lithuanian",
         "displayNativeName": "Lietuvių",
         "ISO6391": "lt-LT",
         "ISO6392": "lit",
-        "keys#": 970,
-        "completed%": 54.8,
+        "keys#": 974,
+        "completed%": 55.03,
         "jellyfinWeb": {
             "filename": "lt-LT.json",
-            "keys#": 970,
+            "keys#": 974,
             "orphans#": 4,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -1351,7 +1351,7 @@
                 "Screenshots",
                 "ButtonNetwork"
             ],
-            "completed%": 58.19
+            "completed%": 58.43
         },
         "myJelly": {
             "filename": "",

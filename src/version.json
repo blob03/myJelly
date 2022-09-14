@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-26",
+	"version": "10.8.4-27",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -87,6 +87,7 @@
 		"10.8.4-23": "Add a slider to the backdrop widget wich allows users to adjust their contrast level; feature can be turned on/off in the display settings.",
 		"10.8.4-24": "Translations synchronized with master.\nApply patch 'Remove reactControllerFactory'.\nMigrate Dashboard's user pages to React.\nApply patch 'Update route naming'.\nBackdrop tools can be turned off and on individually (display settings).",
 		"10.8.4-25": "Translations synchronized with master.\nFix a number of small visual inconsistencies in the Dashboard users pages.\nUpdate theme 'Halloween'.",
-		"10.8.4-26": "Translations synchronized with master.\nMake Backdrop control & contrast tools compatible with theme backdrops.\nThemes updated.\nApply patch 'firefox-native-subtitles'.\nApply patch 'FatboyJames/patch-1'."
+		"10.8.4-26": "Translations synchronized with master.\nMake Backdrop control & contrast tools compatible with theme backdrops.\nThemes updated.\nApply patch 'firefox-native-subtitles'.\nApply patch 'FatboyJames/patch-1'.",
+		"10.8.4-27": "Translations synchronized with master.\nUpdate themes.\nUpgrade screensavers 'Digital clock' and 'Weatherbot' to use latest theme backdrops.\nFix an error bugging the client during logouts."
 	}
 }

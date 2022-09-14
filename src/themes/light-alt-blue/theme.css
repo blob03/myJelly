@@ -715,7 +715,7 @@ h3 {
 }
 
 .backgroundContainer.withThemeBackdrop {
-   background-color: transparent;
+   background-color: #07def94f;
 }
 
 .backdropImage {
@@ -1245,7 +1245,6 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .weatherbotScreenSaver,
 .clockScreenSaver {
-	background-image: url(./img/bg.jpg) !important;
 	-webkit-background-size: cover;
 	background-size: cover;
 }

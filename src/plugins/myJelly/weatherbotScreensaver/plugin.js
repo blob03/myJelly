@@ -5,6 +5,7 @@ import * as userSettings from '../../../scripts/settings/userSettings';
 import globalize from '../../../scripts/globalize';
 import datetime from '../../../scripts/datetime';
 import loading from '../../../components/loading/loading';
+import appSettings from '../../../scripts/settings/appSettings';
 
 function show(item, visible) {
 	if (!item || typeof visible != "boolean")
@@ -22,7 +23,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.23';
+	self.version = '1.24';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -182,8 +183,14 @@ export default function () {
             if (!elem) {
                 elem = document.createElement('div');
                 elem.classList.add('weatherbotScreenSaver');
-                document.body.appendChild(elem);
-				let content ='<div class="ssBackplane">'
+				elem.classList.add('backdropImage');
+				elem.classList.add('themeBackdrop');
+				const idx = Math.ceil(Math.random() * 4);
+				if (idx)
+					elem.classList.add('alt' + idx);
+				const _opacity = 'style="opacity: ' + (appSettings.get('opacity') || 1) + '"';
+				
+				let content ='<div id="ssBackplane" class="ssBackplane" ' + _opacity +'>'
 				+ '<div class="ssFailure hide">'
 				+ '<span id="ssMsg" class="ssWeatherData"></span>'
 				+ '</div>'
@@ -234,6 +241,7 @@ export default function () {
 				+ '</div>';
 				
 				elem.innerHTML = content;
+				document.body.appendChild(elem);
             }
 
 			self.opts.tempstr = document.getElementById("ssTemp");
