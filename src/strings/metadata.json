@@ -2237,17 +2237,17 @@
     },
     "tr": {
         "ccode": "tr",
-        "fsize": 104850,
+        "fsize": 108737,
         "ccodeSrc": "en-US",
         "displayName": "Turkish",
         "displayNativeName": "Türkçe",
         "ISO6391": "tr",
         "ISO6392": "tur",
-        "keys#": 1528,
-        "completed%": 86.33,
+        "keys#": 1560,
+        "completed%": 88.14,
         "jellyfinWeb": {
             "filename": "tr.json",
-            "keys#": 1528,
+            "keys#": 1560,
             "orphans#": 6,
             "orphans": [
                 "ButtonNetwork",
@@ -2257,7 +2257,7 @@
                 "Screenshots",
                 "Screenshot"
             ],
-            "completed%": 91.66
+            "completed%": 93.58
         },
         "myJelly": {
             "filename": "",

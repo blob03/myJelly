@@ -33,6 +33,7 @@
 .ssForeplane {
 	display: flex;
 	align-items: center;
+	justify-content: space-evenly;
 	background: rgba(0, 0, 0, 0);
 	outline: none;
 	height: auto;
@@ -41,15 +42,32 @@
 
 .ssForeplane > .material-icons,
 .ssWeatherData {
-	font-size: 200%;
+	font-size: 180%;
+}
+
+.ssDataSection {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 0 .5em 0 1em;
 }
 
 .ssWeatherDataSmall {
 	font-size: 120%;
-	padding: 0 0 0 10px;
 }
 
 .ssWeatherDataUnit {
 	font-size: 70%;
-	padding: 0 0 5% 0;
+	margin: 0 0 1em .2em;
+}
+
+.ssIcons {
+	margin: 0 .2em 0 0;
+	font-size: 110%;
+	opacity: 50%;
+}
+
+#ssCond {
+	position: relative;
+	top: -.5em;
 }

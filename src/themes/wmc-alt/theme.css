@@ -63,7 +63,7 @@ html {
 }
 
 .backgroundContainer.withBackdrop {
-    background: rgba(17, 98, 164, 0.9);
+    background: rgba(17, 98, 164, 0.8);
 }
 
 .backgroundContainer.withThemeBackdrop {
@@ -797,4 +797,8 @@ option.sourceDictionaryOption {
 
 .infoDetails {
 	font-size: 90% !important;
+}
+
+.aboutframe {
+	background: rgba(106, 159, 142, 0.25) !important;
 }

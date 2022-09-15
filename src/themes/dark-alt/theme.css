@@ -71,15 +71,15 @@ html {
 }
 
 .backgroundContainer {
-	background-color: rgba(40, 40, 40, 0.9);
+	background-color: rgba(21, 21, 21, 0.9);
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(40, 40, 40, 0.9);
+    background-color: rgba(21, 21, 21, 0.8);
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background-color: rgba(40, 40, 40, 0.8);
+    background-color: rgba(21, 21, 21, 0.7);
 }
 
 .backdropImage {
@@ -676,7 +676,7 @@ html {
 
 .aboutframe {
 	padding: 1em !important;
-	background: rgba(0, 0, 0, 0.15) !important;
+	background: rgba(43, 46, 49, 0.45) !important;
 }
 
 .aboutcontent {
@@ -1314,7 +1314,8 @@ select option:selected {
 }
 
 .ssFailure,
-.ssForeplane {
+.ssForeplane,
+.ssForeplane > * > .material-icons {
 	color: #d7e2e9;
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 	background: rgba(10, 10, 10, 0);

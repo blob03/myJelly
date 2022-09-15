@@ -453,10 +453,10 @@ import './backdrop.scss';
     }
 	
 	export function setBackdropContrast(e) {
-		const _bc = document.querySelector('.backgroundContainer');
+		const _bc = document.querySelector('.backdropContainer');
 		if (!_bc)
 			return;
-		_bc.style.opacity = 1 - parseFloat(e.target.value/50);
+		_bc.style.opacity = parseFloat(e.target.value/10);
 		appSettings.set('opacity', _bc.style.opacity);
 	}
 	

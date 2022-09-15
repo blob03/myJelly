@@ -10,7 +10,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.91';
+	self.version = '0.92';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -33,8 +33,7 @@ export default function () {
 		const _time_ = x.toLocaleTimeString(LOCALE, {
 			hour: 'numeric',
 			minute: '2-digit',
-			second: '2-digit',
-			hour12: false
+			second: '2-digit'
 		});
 		self._datestr_.innerHTML = _date_;
 		self._timestr_.innerHTML = _time_;
@@ -53,20 +52,19 @@ export default function () {
 		stopInterval();
 		
         import('./style.scss').then(() => {
-            let elem = document.querySelector('.clockScreenSaver');
+            let elem = document.querySelector('.screenSaver');
 			if (elem)
 				elem.remove();
             
 			elem = document.createElement('div');
+			elem.classList.add('screenSaver');
 			elem.classList.add('clockScreenSaver');
 			elem.classList.add('backdropImage');
 			elem.classList.add('themeBackdrop');
 			const idx = Math.ceil(Math.random() * 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
-			const _opacity = 'style="opacity: ' + (appSettings.get('opacity') || 1) + '"';
-
-			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane" ' + _opacity +'>'
+			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane">'
 				+ '<div id="ssClockDate" class="ssForeplane ssClockDate"></div>'
 				+ '<div id="ssClockTime" class="ssForeplane ssClockTime"></div>'
 				+ '</div>';
@@ -83,10 +81,10 @@ export default function () {
 				// Get currently selected Locale.
 				dateTimeLocale = document.querySelector('.selectDateTimeLocale').value;
 				// If set to 'auto' then use the language.
-				if (dateTimeLocale === "")
+				if (!dateTimeLocale)
 					dateTimeLocale = document.querySelector('.selectLanguage').value;
 				// If display language is also set to 'auto' then request the default value.
-				if (dateTimeLocale === "")
+				if (!dateTimeLocale)
 					dateTimeLocale = globalize.getDefaultCulture();
 			} else {
 				self.hideOnMouse = true;
@@ -102,16 +100,14 @@ export default function () {
 
     self.hide = function () {
         stopInterval();
-		const elem = document.querySelector('.clockScreenSaver');
+		const elem = document.querySelector('.screenSaver');
  
 		if (elem) {
             return new Promise((resolve) => {
-                
 				elem.parentNode.removeChild(elem);
 				resolve();
             });
         }
-
         return Promise.resolve();
     };
 }

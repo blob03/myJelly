@@ -711,17 +711,16 @@ h3 {
 }
 
 .backgroundContainer.withBackdrop {
-   background-color: rgba(220, 242, 248, .75);
+	background-color: rgba(108, 200, 235, 0.1);
 }
 
 .backgroundContainer.withThemeBackdrop {
-   background-color: #07def94f;
+	background-color: rgba(108, 200, 235, 0.1);
 }
 
 .backdropImage {
     background-color: rgb(220, 220, 220) !important;
 	background-position: 0 0;
-	top: 3.3em;
 }
 
 .backdropImage.themeBackdrop {
@@ -1251,7 +1250,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .ssFailure,
 .ssForeplane,
-.ssForeplane > .material-icons {
+.ssForeplane > * > .material-icons {
 	color: #fff;
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
 	background: rgba(10, 10, 10, .0);

@@ -122,17 +122,17 @@ html {
 
 .backgroundContainer {
 	background: linear-gradient(125deg, rgba(255, 217, 167, 0.4) 0%, rgba(246, 127, 0, 0.4) 40%, rgba(165, 100, 32, 0.4) 70%, rgba(255, 181, 103, 0.4) 100%);
-	background-color: rgba(235, 129, 40, 0.8);
+	background-color: rgba(235, 129, 40, 0.9);
     -webkit-background-size: cover;
     background-size: cover;
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(235, 129, 40, 0.65);
+    background-color: rgba(235, 129, 40, 0.6);
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background: rgba(235, 129, 40, 0.8);
+    background: rgba(235, 129, 40, 0.6);
 }
 
 .backdropImage {
@@ -1399,7 +1399,7 @@ option:selected {
 
 .ssFailure,
 .ssForeplane,
-.ssForeplane > .material-icons
+.ssForeplane > * > .material-icons
  {
 	color: #f8e5bf;
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
