@@ -109,29 +109,30 @@ import viewContainer from '../viewContainer';
 	}
 	
 	function onScreenSaverChange(e) {
-		const val = e.target.value;
-	    const options = pluginManager.ofType('screensaver').map( plugin => {
-            return {
-                value: plugin.id,
-				description: plugin.description || ''
-            };
-        });
+		const _newss = e.target.value;
 		let key;
-		let sel = options.filter(option => option.value === val);
-		
-		if (val == 'any')
-			key = 'RandomScreensaverHelp';
-		else 
+
+		if (_newss !== 'any') {
+			const options = pluginManager.ofType('screensaver').map( ss => {
+				return {
+					value: ss.id,
+					description: ss.description || ''
+				};
+			});	
+			const sel = options.filter(ss => ss.value === _newss);
 			key = sel[0]?.description;
+		} else
+			key = 'RandomScreensaverHelp';
 		
-		const txt = key? globalize.translate(key): '';
+		const _desc = key? globalize.translate(key): '';
 		
 		let pnode = e.target.parentNode;
-		if (pnode)	
-			pnode.querySelector('.fieldDescription').innerHTML = txt;
-		
+		if (!pnode)
+			return;
+		pnode.querySelector('.fieldDescription').innerHTML = _desc;
 		pnode = e.target.parentNode.parentNode;
-		if (!pnode) return;
+		if (!pnode) 
+			return;
 		let sliderContainerSettings =  pnode.querySelector('.sliderContainer-settings');
 		if (sliderContainerSettings) {
 			if (e.target.value === 'none') 
@@ -150,23 +151,24 @@ import viewContainer from '../viewContainer';
 	}
 	
 	function onScreenSaverTry(e) {
-		let pnode = document.querySelector('#selectScreensaver');
-		if (!pnode || !pnode.value)
+		const pnode = e.target.parentNode.parentNode;
+		const newval =  pnode.querySelector('#selectScreensaver');
+		if (!newval?.value)
 			return;
-	
-		let currentSS = ssmanager.getScreensaverPluginByName(pnode.value);
-		if (currentSS) 
-			ssmanager.showScreenSaver(currentSS, true);
+		
+		const ss = ssmanager.getScreensaverPluginByName(newval.value);
+		if (ss) 
+			ssmanager.showScreenSaver(ss, true);
 	}
 	
     function loadScreensavers(select, val) {
-        const options = pluginManager.ofType('screensaver').map( plugin => {
+        const options = pluginManager.ofType('screensaver').map( ss => {
             return {
-                name: plugin.name,
-                value: plugin.id,
-				version: plugin.version || '',
-				description: plugin.description || '',
-				group: plugin.group
+                name: ss.name,
+                value: ss.id,
+				version: ss.version || '',
+				description: ss.description || '',
+				group: ss.group
             };
         });
 		
@@ -193,7 +195,6 @@ import viewContainer from '../viewContainer';
 				let w = document.createElement("option");
 				w.text = "-------------\u00A0\u00A0\u00A0" + x;
 				w.disabled = true;
-				//w.style.fontWeight = "bold";
 				w.style.fontSize = "120%";
 				w.style.fontFamily = "quicksand";
 				select.options.add(w, undefined);
@@ -224,7 +225,7 @@ import viewContainer from '../viewContainer';
 				select.options.add(z, undefined); 
 			});
 			
-		});		
+		});	
 		select.value = val;
     }
 
@@ -401,8 +402,6 @@ import viewContainer from '../viewContainer';
 				backdropToolsList.classList.remove('hide');
 		});
 		
-		
-		
 		context.querySelector('#inputLat').value = userSettings.getlatitude();
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
@@ -478,7 +477,7 @@ import viewContainer from '../viewContainer';
 			reload = true;
 		}
 		
-        if (appHost.supports('displaylanguage')) {	
+        if (appHost.supports('displaylanguage')) {
 			newDisplayLanguage = context.querySelector('#selectLanguage').value;
 			if (newDisplayLanguage !== self._savedDisplayLang) {
 				userSettingsInstance.language(newDisplayLanguage);
@@ -562,7 +561,7 @@ import viewContainer from '../viewContainer';
     function onSubmit(e) {
 		loading.show();
 		saveForm(this);
-		Events.trigger(this, 'saved'); 
+		Events.trigger(this, 'saved');
 		
         // Disable default form submission
         if (e) 
@@ -600,10 +599,10 @@ import viewContainer from '../viewContainer';
             loading.show();
             
 			return ServerConnections.user(this.options.apiClient).then((user) => {
-				self.currentUser = user;               
+				self.currentUser = user;
 				self.dataLoaded = true;
 				loadForm(self);
-				if (autoFocus) 
+				if (autoFocus)
 					focusManager.autoFocus(self.options.element);
 				loading.hide();
 			});

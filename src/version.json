@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-28",
+	"version": "10.8.4-29",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -89,6 +89,7 @@
 		"10.8.4-25": "Translations synchronized with master.\nFix a number of small visual inconsistencies in the Dashboard users pages.\nUpdate theme 'Halloween'.",
 		"10.8.4-26": "Translations synchronized with master.\nMake Backdrop control & contrast tools compatible with theme backdrops.\nThemes updated.\nApply patch 'firefox-native-subtitles'.\nApply patch 'FatboyJames/patch-1'.",
 		"10.8.4-27": "Translations synchronized with master.\nUpdate themes.\nUpgrade screensavers 'Digital clock' and 'Weatherbot' to use latest theme backdrops.\nFix an error bugging clients at logout.",
-		"10.8.4-28": "Update translations.\nRecalibrate slider for backdrop contrast.\nUpdate themes.\nFix ss 'Weatherbot' requesting incorrect lang.\nTweak ss 'Weatherbot' condition reporting style.\nUnset ss 'Digital Clock' forced '24 hours' format."
+		"10.8.4-28": "Update translations.\nRecalibrate slider for backdrop contrast.\nUpdate themes.\nFix ss 'Weatherbot' requesting incorrect lang.\nTweak ss 'Weatherbot' condition reporting style.\nUnset ss 'Digital Clock' forced '24 hours' format.",
+		"10.8.4-29": "Apply patch 'Backport pull request #3848'.\nApply patch 'Backport pull request #3849'.\nApply patch 'Backport pull request #3878'.\nFix wrong ss sometimes kicking off in test mode."
 	}
 }
