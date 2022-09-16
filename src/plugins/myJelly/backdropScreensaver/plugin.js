@@ -5,7 +5,7 @@ import * as userSettings from '../../../scripts/settings/userSettings';
 class BackdropScreensaver {
     constructor() {
         this.name = 'My Backdrop Player';
-		this.version = '1.71';
+		this.version = '1.72';
 		this.group = 'myJelly';
 		this.description = 'MJBackdropScreensaverHelp';
         this.type = 'screensaver';
@@ -61,7 +61,8 @@ class BackdropScreensaver {
 		
 		let types = '';
 		let filters = '';
-
+		let MaxOfficialRating = '';
+		
 		switch(type) {
 			case "LibrariesFav":
 			case "MovieFav":
@@ -74,7 +75,7 @@ class BackdropScreensaver {
 		switch(type) {
 			case "Libraries":
 			case "LibrariesFav":
-				types = 'Movie,Series,MusicArtist';
+				types = 'Movie,Series';
 				break;
 				
 			case "Movie":
@@ -87,91 +88,51 @@ class BackdropScreensaver {
 				types = "Series";
 				break;
 				
-			default:
-				types = "";
-		}
-		
-		let query;
-		let apiClient;
-		
-		switch(type) {
-			case "Libraries":
-			case "LibrariesFav":
-			case "Movie":
-			case "MovieFav":
-			case "Series":
-			case "SeriesFav":
-				query = {
-					ImageTypes: 'Backdrop',
-					EnableImageTypes: 'Backdrop',
-					IncludeItemTypes: types,
-					SortBy: 'Random',
-					Recursive: true,
-					Fields: 'Taglines',
-					ImageTypeLimit: 1,
-					StartIndex: 0,
-					Filters: filters,
-					Limit: 200
-				};
-				apiClient = ServerConnections.currentApiClient();
-				apiClient.getItems(apiClient.getCurrentUserId(), query).then( (result) => {
-					if (result.Items.length) {
-						import('../../../components/slideshow/slideshow').then(({default: Slideshow}) => {
-							const newSlideShow = new Slideshow({
-								showTitle: true,
-								cover: true,
-								items: result.Items,
-								"autoplayDelay": autoplayDelay,
-								"swiperFX": swiperFX
-							});
-
-							newSlideShow.show();
-							this.currentSlideshow = newSlideShow;
-						}).catch(console.error);
-					} else {
-						// If current configuration doesn't bear any backdrop then fallback to a sober black screen.
-						this.blackout_ON();
-					}
-				});
-				break;
-			
 			case "Artists":
 			case "ArtistsFav":
-				query = {
-					SortBy: 'Random',
-                    Recursive: true,
-                    Fields: 'PrimaryImageAspectRatio,SortName,BasicSyncInfo',
-                    StartIndex: 0,
-                    ImageTypeLimit: 1,
-					Filters: filters,
-                    EnableImageTypes: 'Backdrop',
-					Limit: 200
-				};
-				apiClient = ServerConnections.currentApiClient();
-				apiClient.getArtists(apiClient.getCurrentUserId(), query).then( (result) => {
-					if (result.Items.length) {
-						import('../../../components/slideshow/slideshow').then(({default: Slideshow}) => {
-							const newSlideShow = new Slideshow({
-								showTitle: true,
-								cover: true,
-								items: result.Items,
-								"autoplayDelay": autoplayDelay,
-								"swiperFX": swiperFX
-							});
-
-							newSlideShow.show();
-							this.currentSlideshow = newSlideShow;
-						}).catch(console.error);
-					} else {
-						// If current configuration doesn't bear any backdrop then fallback to a sober black screen.
-						this.blackout_ON();
-					}
-				});
+				types = "MusicArtist";
 				break;
-			
+				
 			default:
+				types = "Movie,Series,MusicArtist";
+		}
+
+		const query = {
+			ImageTypes: 'Backdrop',
+			EnableImageTypes: 'Backdrop',
+			IncludeItemTypes: types,
+			SortBy: 'Random',
+			Recursive: true,
+			ImageTypeLimit: 1,
+			StartIndex: 0,
+			Filters: filters,
+			Limit: 20,
+			EnableTotalRecordCount: false,
+			GenreIds: '',
+			ParentId: '',
+			MaxOfficialRating: MaxOfficialRating
+		};
+		const apiClient = ServerConnections.currentApiClient();
+		apiClient.getItems(apiClient.getCurrentUserId(), query).then( (result) => {
+			if (result.Items.length) {
+				import('../../../components/slideshow/slideshow').then(({default: Slideshow}) => {
+					const newSlideShow = new Slideshow({
+						showTitle: true,
+						cover: true,
+						items: result.Items,
+						"autoplayDelay": autoplayDelay,
+						"swiperFX": swiperFX
+					});
+
+					newSlideShow.show();
+					this.currentSlideshow = newSlideShow;
+				}).catch(console.error);
+			} else {
+				// If current configuration doesn't bear any backdrop then fallback to a sober black screen.
 				this.blackout_ON();
-		}	
+			}
+		});
+
 	}
 
 	hide() {

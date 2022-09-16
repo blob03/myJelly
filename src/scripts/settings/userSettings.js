@@ -63,7 +63,7 @@ function hdrWeather() {
 		+ '&lang=' + this.convertCountryCode(this.language());
 	
 	let req = {};
-	req.dataType = 'text';	
+	req.dataType = 'text';
 	req.url = url.proto + url.base + url.apiMethod + url.params; 
 	
 	let _contimeout = setTimeout(() => {
@@ -71,7 +71,7 @@ function hdrWeather() {
 		self.WB_setButtons(0);
 	}, 3000);
 	
-	ajax(req).then(function (data) { 
+	ajax(req).then(function (data) {
 		clearInterval(_contimeout);
 		let _xmlDoc;
 		let _root;
@@ -93,7 +93,6 @@ function hdrWeather() {
 				_data.icon = _root.getElementsByTagName("weather")[0].getAttribute("icon");
 				_data.title = _root.getElementsByTagName("weather")[0].getAttribute("value");
 			}
-		
 			if (_root.getElementsByTagName("temperature")[0])
 				_data.temp = _root.getElementsByTagName("temperature")[0].getAttribute("value");
 		
@@ -107,13 +106,11 @@ function hdrWeather() {
 				_data.pressure = _root.getElementsByTagName("pressure")[0].getAttribute("value");
 				_data.pressureUnit = _root.getElementsByTagName("pressure")[0].getAttribute("unit");
 			}
-			
 			if (_root.getElementsByTagName("wind")[0]) {
 				_data.speed = _root.getElementsByTagName("wind")[0].getElementsByTagName("speed")[0].getAttribute("value");
 				_data.dir = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("value");
 				_data.code = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("code");
 			}
-			
 			if (_root.getElementsByTagName("city")[0]) {
 				_data.sunrise = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("rise");
 				_data.sunset = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("set");

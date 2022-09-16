@@ -23,7 +23,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.3';
+	self.version = '1.32';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -42,14 +42,13 @@ export default function () {
 
 		// Note that API keys can be obtained free of charge by registering at the address below
 		// https://home.openweathermap.org/users/sign_up
-		// Remember to copy any new key into its dedicated field in the display settings.
-		let req = {};
-		req.dataType = 'json';
-		const url_proto = 'http://';
-		const url_proto_SSL = 'https://';
-		const url_base_icon = 'openweathermap.org/img/wn/';
-		const url_base = 'api.openweathermap.org/data/2.5/';
-		const url_apiMethod = 'weather';
+
+		const url = {};
+		url.proto = isSecure() ? 'https://' : 'http://' ;
+		url.base_icon = 'openweathermap.org/img/wn/';
+		url.base = 'api.openweathermap.org/data/2.5/';
+		url.apiMethod = 'weather';
+		
 		const wapikey = self.opts.apikey;
 		if (!wapikey) {
 			console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
@@ -58,55 +57,111 @@ export default function () {
 			show('ssFailure', true);
 			return;
 		}
-		const url_params = '?appid=' +  wapikey
+		url.params = '?appid=' +  wapikey
 		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
-		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric') 
+		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric')
+		+ '&mode=xml'
 		+ '&lang=' + self.opts.language;
-		req.url = ( isSecure() ? url_proto_SSL : url_proto) + url_base + url_apiMethod + url_params; 
+
+		const req = {};
+		req.dataType = 'text';
+		req.url = url.proto + url.base + url.apiMethod + url.params;
 		
-		loading.show();	
-		let _contimeout = setTimeout(() => {show('ssForeplane', false);self.opts.msgstr.innerHTML = globalize.translate('Connecting');show('ssFailure', true);}, 3000);
+		loading.show();
+		const _contimeout = setTimeout( () => {
+			show('ssForeplane', false);
+			self.opts.msgstr.innerHTML = globalize.translate('Connecting');
+			show('ssFailure', true);}, 3000);
 		
-		ajax(req).then(function (data) {
+		ajax(req).then(function (xmldata) {
 			clearInterval(_contimeout);
 			show('ssFailure', false);
 
-			if (data.name)
-				self.opts.locationstr.innerHTML = data.name;
-			self.opts.location2str.innerHTML = "";
-			if (data.sys.country)
-				self.opts.location2str.innerHTML += data.sys.country;
-			if (data.weather["0"].description)
-				self.opts.conditionstr.innerHTML = data.weather["0"].description;
-			if (data.weather["0"].icon)
-				self.opts.iconstr.src = ( isSecure() ? url_proto_SSL : url_proto) + url_base_icon + data.weather["0"].icon + '.png';
-			if (data.main.temp) {
-				let _data = data.main.temp;
-				self.opts.tempstr.innerHTML = Number(_data.toFixed(1));
+			let _root;
+			let data = {};
+			
+			if (window.DOMParser) {
+				const _parser = new DOMParser();
+				if (_parser) {
+					const _xmlDoc = _parser.parseFromString(xmldata, "text/xml");
+					if (_xmlDoc) 
+						_root = _xmlDoc.getElementsByTagName("current")[0];
+				}
 			}
-			if (data.main.humidity) {
-				let _data = data.main.humidity;
-				self.opts.humstr.innerHTML = Number(_data.toFixed(1));
+		
+			if (!_root)
+				return;
+			
+			if (_root.getElementsByTagName("weather")[0]) {
+				data.icon = _root.getElementsByTagName("weather")[0].getAttribute("icon");
+				data.title = _root.getElementsByTagName("weather")[0].getAttribute("value");
+			}
+			if (_root.getElementsByTagName("temperature")[0])
+				data.temp = _root.getElementsByTagName("temperature")[0].getAttribute("value");
+		
+			if (_root.getElementsByTagName("city")[0])
+				data.name = _root.getElementsByTagName("city")[0].getAttribute("name");
+			
+			if (_root.getElementsByTagName("humidity")[0])
+				data.hum = _root.getElementsByTagName("humidity")[0].getAttribute("value");
+			
+			if (_root.getElementsByTagName("pressure")[0]) {
+				data.pressure = _root.getElementsByTagName("pressure")[0].getAttribute("value");
+				data.pressureUnit = _root.getElementsByTagName("pressure")[0].getAttribute("unit");
+			}
+			if (_root.getElementsByTagName("wind")[0]) {
+				data.speed = _root.getElementsByTagName("wind")[0].getElementsByTagName("speed")[0].getAttribute("value");
+				data.dir = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("value");
+				data.code = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("code");
+			}
+			if (_root.getElementsByTagName("clouds")[0]) {
+				data.desc = _root.getElementsByTagName("clouds")[0].getAttribute("name");
+			}
+			if (_root.getElementsByTagName("visibility")[0]) {
+				data.visibility = _root.getElementsByTagName("visibility")[0].getAttribute("value");
+			}
+			if (_root.getElementsByTagName("city")[0]) {
+				data.sunrise = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("rise");
+				data.sunset = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("set");
+				data.country = _root.getElementsByTagName("city")[0].getElementsByTagName("country")[0].textContent;
+			}
+	
+			let _data;
+			self.opts.locationstr.innerHTML = data.name || '';
+			self.opts.location2str.innerHTML = data.country || '';
+			self.opts.conditionstr.innerHTML = data.desc || '';
+			if (data.icon)
+				self.opts.iconstr.src = url.proto + url.base_icon + data.icon + '.png';
+			if (data.temp) {
+				_data = data.temp;
+				self.opts.tempstr.innerHTML = Number(_data).toFixed(1);
+			}
+			if (data.hum) {
+				_data = data.hum;
+				self.opts.humstr.innerHTML = Number(_data).toFixed(1);
 			}
 			if (data.visibility) {
-				let _data = data.visibility;
+				_data = data.visibility;
 				if (self.opts.USUnits)
 					_data = _data/1609; // miles
 				else
 					_data = _data/1000; // km
-				self.opts.visistr.innerHTML = Number(_data.toFixed(1));
+				self.opts.visistr.innerHTML = Number(_data).toFixed(1);
 			}
-			if (data.wind.speed) {
-				let _data = data.wind.speed;
+			if (data.speed) {
+				_data = data.speed;
 				if (!self.opts.USUnits)
 					_data *= 3.6; // m/s -> km/h
-				self.opts.windstr.innerHTML = Number(_data.toFixed(1));
+				self.opts.windstr.innerHTML = Number(_data).toFixed(1);
 			}
 			self.opts.windirstr.innerHTML = "";
-			if (data.wind.deg) {
+			if (data.dir) {
 				self.opts.windirstr.innerHTML += '&nbsp;&nbsp;';
-				self.opts.windirstr.innerHTML += data.wind.deg;
+				self.opts.windirstr.innerHTML += data.dir;
+				if (data.code)
+					self.opts.windircodestr.innerHTML = "&nbsp;" + data.code;
 			}
+			
 			show('ssForeplane', true);
 			
 		}).catch(function (data) {
@@ -124,7 +179,7 @@ export default function () {
 
 		}).finally(() => {
 			loading.hide();
-		});;
+		});
 	}
 
     function stopInterval() {
@@ -242,6 +297,7 @@ export default function () {
 			
 			content += '<span id="ssWindir" class="ssWeatherData ssWeatherDataSmall"></span>'
 			+ '<span class="ssWeatherDataUnit ssWeatherDataSmall">&deg;</span>'
+			+ '<span id="ssWindircode" class="ssWeatherDataUnit ssWeatherDataSmall"></span>'
 			+ '</div>'
 			+ '</div>';
 			
@@ -253,6 +309,7 @@ export default function () {
 			self.opts.visistr = document.getElementById("ssVisi");
 			self.opts.windstr = document.getElementById("ssWind");
 			self.opts.windirstr = document.getElementById("ssWindir");
+			self.opts.windircodestr = document.getElementById("ssWindircode");
 			self.opts.msgstr = document.getElementById("ssMsg");
 			self.opts.conditionstr = document.getElementById("ssCond");
 			self.opts.locationstr = document.getElementById("ssLoc");
