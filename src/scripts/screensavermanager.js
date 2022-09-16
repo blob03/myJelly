@@ -84,35 +84,33 @@ export function ScreenSaverManager() {
 	let self = this;
 	
 	this.showScreenSaver = (ssplugin, TEST) => {
-        if (self.activeScreenSaver) 
+        if (this.isShowing()) 
             throw new Error('An existing screensaver is already active.');
 
         console.debug('Showing screensaver ' + ssplugin.name);
         document.body.classList.add('screensaver-noScroll');
 
-        self.activeScreenSaver = ssplugin;	
+        this.activeScreenSaver = ssplugin;
 		ssplugin.show(TEST);
 		
 		setTimeout(() => {
-			if (ssplugin.hideOnClick !== false) {
+			if (ssplugin.hideOnClick !== false)
 				window.addEventListener('click', self.hide, true);
-			}
-			if (!layoutManager.tv && ssplugin.hideOnMouse !== false) {
+			if (!layoutManager.tv && ssplugin.hideOnMouse !== false)
 				window.addEventListener('mousemove', self.hide, true);
-			}
-			if (ssplugin.hideOnKey !== false) {
+			if (ssplugin.hideOnKey !== false)
 				window.addEventListener('keydown', self.hide, true);
-			}
+			
 		}, 1500);
     }
 
     this.hide = () => {
-        if (self.activeScreenSaver) {
+        if (this.isShowing()) {
             console.debug('Hiding screensaver');
-            self.activeScreenSaver.hide().then( () => {
+            this.activeScreenSaver.hide().then( () => {
                 document.body.classList.remove('screensaver-noScroll');
             });
-            self.activeScreenSaver = null;
+            this.activeScreenSaver = null;
         }
         window.removeEventListener('click', self.hide, true);
         window.removeEventListener('mousemove', self.hide, true);
@@ -120,39 +118,30 @@ export function ScreenSaverManager() {
     }
 
     this.isShowing = () => {
-        return self.activeScreenSaver != null;
+        return this.activeScreenSaver != null;
     };
 
-    this.show = function () {
-        let isLoggedIn;
+    this.show = () => {
+        let isLoggedIn = false;
         const apiClient = ServerConnections.currentApiClient();
-
         if (apiClient && apiClient.isLoggedIn())
             isLoggedIn = true;
         
         const screensaver = getScreensaverPlugin(isLoggedIn);
         if (screensaver) 
-            self.showScreenSaver(screensaver, false);
+            this.showScreenSaver(screensaver, false);
     };
 
     const onInterval = () => {
-        if (self.isShowing()) {
+        if (this.isShowing())
             return;
-        }
-
-        if (inputManager.idleTime() < getMinIdleTime()) {
+        if (inputManager.idleTime() < getMinIdleTime())
             return;
-        }
-
-        if (getFunctionalEventIdleTime() < getMinIdleTime()) {
+        if (getFunctionalEventIdleTime() < getMinIdleTime())
             return;
-        }
-
-        if (playbackManager.isPlayingVideo()) {
+        if (playbackManager.isPlayingVideo())
             return;
-        }
-
-        self.show();
+        this.show();
     };
 
     setInterval(onInterval, 10000);
@@ -160,5 +149,3 @@ export function ScreenSaverManager() {
 
 export const ssmanager = new ScreenSaverManager;
 export const showScreenSaver = ssmanager.showScreenSaver.bind(ssmanager);
-
-export default new ScreenSaverManager;

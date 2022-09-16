@@ -306,7 +306,7 @@ export function show(options) {
 
                     resolve(selectedId);
                 } else {
-                    reject();
+                    reject('ActionSheet closed without resolving');
                 }
             }
         });

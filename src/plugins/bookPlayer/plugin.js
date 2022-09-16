@@ -75,7 +75,7 @@ export class BookPlayer {
     destroy() {
         // Nothing to do here
     }
-	
+
     currentItem() {
         return this.item;
     }
@@ -259,7 +259,7 @@ export class BookPlayer {
         this.streamInfo = {
             started: true,
             ended: false,
-			item: this.item,
+            item: this.item,
             mediaSource: {
                 Id: item.Id
             }
@@ -313,7 +313,7 @@ export class BookPlayer {
                         epubElem.style.opacity = '';
                         rendition.on('relocated', (locations) => {
                             this.progress = book.locations.percentageFromCfi(locations.start.cfi);
-                             Events.trigger(this, 'pause');
+                            Events.trigger(this, 'pause');
                         });
 
                         loading.hide();

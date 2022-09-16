@@ -7,7 +7,6 @@ import { appRouter } from '../../components/appRouter';
 import './style.scss';
 import '../../elements/emby-button/paper-icon-button-light';
 import { Events } from 'jellyfin-apiclient';
-import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
 
 export class PdfPlayer {
     constructor() {
@@ -36,7 +35,7 @@ export class PdfPlayer {
     stop() {
         this.unbindEvents();
 
-		const stopInfo = {
+        const stopInfo = {
             src: this.item
         };
 
@@ -124,8 +123,8 @@ export class PdfPlayer {
     bindMediaElementEvents() {
         const elem = this.mediaElement;
 
-       elem.addEventListener('close', this.onDialogClosed, { once: true });
-       elem.querySelector('.btnExit').addEventListener('click', this.onDialogClosed, { once: true });
+        elem.addEventListener('close', this.onDialogClosed, { once: true });
+        elem.querySelector('.btnExit').addEventListener('click', this.onDialogClosed, { once: true });
     }
 
     bindEvents() {
@@ -171,7 +170,7 @@ export class PdfPlayer {
             let html = '';
             html += '<canvas id="canvas"></canvas>';
             html += '<div class="actionButtons">';
-            html += '<button is="paper-icon-button-light" class="autoSize btnExit" tabindex="-1"><span class="material-icons actionButtonIcon close"></span></button>';
+            html += '<button is="paper-icon-button-light" class="autoSize btnExit" tabindex="-1"><span class="material-icons actionButtonIcon close" aria-hidden="true"></span></button>';
             html += '</div>';
 
             elem.id = 'pdfPlayer';
@@ -191,7 +190,7 @@ export class PdfPlayer {
         this.streamInfo = {
             started: true,
             ended: false,
-			item: this.item,
+            item: this.item,
             mediaSource: {
                 Id: item.Id
             }
@@ -200,14 +199,14 @@ export class PdfPlayer {
         const serverId = item.ServerId;
         const apiClient = ServerConnections.getApiClient(serverId);
 
-        return new Promise((resolve) => {
+        return import('pdfjs-dist').then(({ GlobalWorkerOptions, getDocument }) => {
             const downloadHref = apiClient.getItemDownloadUrl(item.Id);
 
             this.bindEvents();
             GlobalWorkerOptions.workerSrc = appRouter.baseUrl() + '/libraries/pdf.worker.js';
 
             const downloadTask = getDocument(downloadHref);
-            downloadTask.promise.then(book => {
+            return downloadTask.promise.then(book => {
                 if (this.cancellationToken) return;
                 this.book = book;
                 this.loaded = true;
@@ -219,8 +218,6 @@ export class PdfPlayer {
                 } else {
                     this.loadPage(1);
                 }
-
-                return resolve();
             });
         });
     }
@@ -229,16 +226,16 @@ export class PdfPlayer {
         if (this.progress === this.duration() - 1) return;
         this.loadPage(this.progress + 2);
         this.progress = this.progress + 1;
-		
-		Events.trigger(this, 'pause');
+
+        Events.trigger(this, 'pause');
     }
 
     previous() {
         if (this.progress === 0) return;
         this.loadPage(this.progress);
         this.progress = this.progress - 1;
-		
-		Events.trigger(this, 'pause');
+
+        Events.trigger(this, 'pause');
     }
 
     replaceCanvas(canvas) {
@@ -280,7 +277,6 @@ export class PdfPlayer {
 
     renderPage(canvas, number) {
         this.book.getPage(number).then(page => {
-
             const original = page.getViewport({ scale: 1 });
             const context = canvas.getContext('2d');
 

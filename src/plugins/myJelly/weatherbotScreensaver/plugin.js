@@ -7,7 +7,7 @@ import datetime from '../../../scripts/datetime';
 import loading from '../../../components/loading/loading';
 import appSettings from '../../../scripts/settings/appSettings';
 
-function show(item, visible) {
+function _show(item, visible) {
 	if (!item || typeof visible != "boolean")
 		return;
 	let els = document.getElementsByClassName(item);
@@ -23,7 +23,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.32';
+	self.version = '1.33';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -38,7 +38,7 @@ export default function () {
 		return location.protocol == 'https:';
 	}
 
-	function weather(self) {
+	function weather() {
 
 		// Note that API keys can be obtained free of charge by registering at the address below
 		// https://home.openweathermap.org/users/sign_up
@@ -49,33 +49,35 @@ export default function () {
 		url.base = 'api.openweathermap.org/data/2.5/';
 		url.apiMethod = 'weather';
 		
-		const wapikey = self.opts.apikey;
+		const wapikey = this.opts.apikey;
 		if (!wapikey) {
 			console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
-			show('ssForeplane', false);
-			self.opts.msgstr.innerHTML = globalize.translate('MissingAPIKey');
-			show('ssFailure', true);
+			_show('ssForeplane', false);
+			this.opts.msgstr.innerHTML = globalize.translate('MissingAPIKey');
+			_show('ssFailure', true);
 			return;
 		}
 		url.params = '?appid=' +  wapikey
-		+ '&lat=' + self.opts.lat + '&lon=' + self.opts.lon
-		+ '&units=' + (self.opts.USUnits === true?'imperial':'metric')
+		+ '&lat=' + this.opts.lat + '&lon=' + this.opts.lon
+		+ '&units=' + (this.opts.USUnits === true?'imperial':'metric')
 		+ '&mode=xml'
-		+ '&lang=' + self.opts.language;
+		+ '&lang=' + this.opts.language;
 
 		const req = {};
 		req.dataType = 'text';
 		req.url = url.proto + url.base + url.apiMethod + url.params;
-		
+
+		let self = this;
 		loading.show();
 		const _contimeout = setTimeout( () => {
-			show('ssForeplane', false);
+			_show('ssForeplane', false);
 			self.opts.msgstr.innerHTML = globalize.translate('Connecting');
-			show('ssFailure', true);}, 3000);
+			_show('ssFailure', true);
+		}, 3000);
 		
 		ajax(req).then(function (xmldata) {
 			clearInterval(_contimeout);
-			show('ssFailure', false);
+			_show('ssFailure', false);
 
 			let _root;
 			let data = {};
@@ -89,84 +91,82 @@ export default function () {
 				}
 			}
 		
-			if (!_root)
-				return;
+			if (_root) {
+				if (_root.getElementsByTagName("weather")[0]) {
+					data.icon = _root.getElementsByTagName("weather")[0].getAttribute("icon");
+					data.title = _root.getElementsByTagName("weather")[0].getAttribute("value");
+				}
+				if (_root.getElementsByTagName("temperature")[0])
+					data.temp = _root.getElementsByTagName("temperature")[0].getAttribute("value");
 			
-			if (_root.getElementsByTagName("weather")[0]) {
-				data.icon = _root.getElementsByTagName("weather")[0].getAttribute("icon");
-				data.title = _root.getElementsByTagName("weather")[0].getAttribute("value");
-			}
-			if (_root.getElementsByTagName("temperature")[0])
-				data.temp = _root.getElementsByTagName("temperature")[0].getAttribute("value");
+				if (_root.getElementsByTagName("city")[0])
+					data.name = _root.getElementsByTagName("city")[0].getAttribute("name");
+				
+				if (_root.getElementsByTagName("humidity")[0])
+					data.hum = _root.getElementsByTagName("humidity")[0].getAttribute("value");
+				
+				if (_root.getElementsByTagName("pressure")[0]) {
+					data.pressure = _root.getElementsByTagName("pressure")[0].getAttribute("value");
+					data.pressureUnit = _root.getElementsByTagName("pressure")[0].getAttribute("unit");
+				}
+				if (_root.getElementsByTagName("wind")[0]) {
+					data.speed = _root.getElementsByTagName("wind")[0].getElementsByTagName("speed")[0].getAttribute("value");
+					data.dir = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("value");
+					data.code = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("code");
+				}
+				if (_root.getElementsByTagName("clouds")[0]) {
+					data.desc = _root.getElementsByTagName("clouds")[0].getAttribute("name");
+				}
+				if (_root.getElementsByTagName("visibility")[0]) {
+					data.visibility = _root.getElementsByTagName("visibility")[0].getAttribute("value");
+				}
+				if (_root.getElementsByTagName("city")[0]) {
+					data.sunrise = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("rise");
+					data.sunset = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("set");
+					data.country = _root.getElementsByTagName("city")[0].getElementsByTagName("country")[0].textContent;
+				}
 		
-			if (_root.getElementsByTagName("city")[0])
-				data.name = _root.getElementsByTagName("city")[0].getAttribute("name");
-			
-			if (_root.getElementsByTagName("humidity")[0])
-				data.hum = _root.getElementsByTagName("humidity")[0].getAttribute("value");
-			
-			if (_root.getElementsByTagName("pressure")[0]) {
-				data.pressure = _root.getElementsByTagName("pressure")[0].getAttribute("value");
-				data.pressureUnit = _root.getElementsByTagName("pressure")[0].getAttribute("unit");
-			}
-			if (_root.getElementsByTagName("wind")[0]) {
-				data.speed = _root.getElementsByTagName("wind")[0].getElementsByTagName("speed")[0].getAttribute("value");
-				data.dir = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("value");
-				data.code = _root.getElementsByTagName("wind")[0].getElementsByTagName("direction")[0].getAttribute("code");
-			}
-			if (_root.getElementsByTagName("clouds")[0]) {
-				data.desc = _root.getElementsByTagName("clouds")[0].getAttribute("name");
-			}
-			if (_root.getElementsByTagName("visibility")[0]) {
-				data.visibility = _root.getElementsByTagName("visibility")[0].getAttribute("value");
-			}
-			if (_root.getElementsByTagName("city")[0]) {
-				data.sunrise = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("rise");
-				data.sunset = _root.getElementsByTagName("city")[0].getElementsByTagName("sun")[0].getAttribute("set");
-				data.country = _root.getElementsByTagName("city")[0].getElementsByTagName("country")[0].textContent;
-			}
-	
-			let _data;
-			self.opts.locationstr.innerHTML = data.name || '';
-			self.opts.location2str.innerHTML = data.country || '';
-			self.opts.conditionstr.innerHTML = data.desc || '';
-			if (data.icon)
-				self.opts.iconstr.src = url.proto + url.base_icon + data.icon + '.png';
-			if (data.temp) {
-				_data = data.temp;
-				self.opts.tempstr.innerHTML = Number(_data).toFixed(1);
-			}
-			if (data.hum) {
-				_data = data.hum;
-				self.opts.humstr.innerHTML = Number(_data).toFixed(1);
-			}
-			if (data.visibility) {
-				_data = data.visibility;
-				if (self.opts.USUnits)
-					_data = _data/1609; // miles
-				else
-					_data = _data/1000; // km
-				self.opts.visistr.innerHTML = Number(_data).toFixed(1);
-			}
-			if (data.speed) {
-				_data = data.speed;
-				if (!self.opts.USUnits)
-					_data *= 3.6; // m/s -> km/h
-				self.opts.windstr.innerHTML = Number(_data).toFixed(1);
-			}
-			self.opts.windirstr.innerHTML = "";
-			if (data.dir) {
-				self.opts.windirstr.innerHTML += '&nbsp;&nbsp;';
-				self.opts.windirstr.innerHTML += data.dir;
-				if (data.code)
-					self.opts.windircodestr.innerHTML = "&nbsp;" + data.code;
-			}
-			
-			show('ssForeplane', true);
-			
+				let _data;
+				self.opts.locationstr.innerHTML = data.name || '';
+				self.opts.location2str.innerHTML = data.country || '';
+				self.opts.conditionstr.innerHTML = data.desc || '';
+				if (data.icon)
+					self.opts.iconstr.src = url.proto + url.base_icon + data.icon + '.png';
+				if (data.temp) {
+					_data = data.temp;
+					self.opts.tempstr.innerHTML = Number(_data).toFixed(1);
+				}
+				if (data.hum) {
+					_data = data.hum;
+					self.opts.humstr.innerHTML = Number(_data).toFixed(1);
+				}
+				if (data.visibility) {
+					_data = data.visibility;
+					if (self.opts.USUnits)
+						_data = _data/1609; // miles
+					else
+						_data = _data/1000; // km
+					self.opts.visistr.innerHTML = Number(_data).toFixed(1);
+				}
+				if (data.speed) {
+					_data = data.speed;
+					if (!self.opts.USUnits)
+						_data *= 3.6; // m/s -> km/h
+					self.opts.windstr.innerHTML = Number(_data).toFixed(1);
+				}
+				self.opts.windirstr.innerHTML = "";
+				if (data.dir) {
+					self.opts.windirstr.innerHTML += '&nbsp;&nbsp;';
+					self.opts.windirstr.innerHTML += data.dir;
+					if (data.code)
+						self.opts.windircodestr.innerHTML = "&nbsp;" + data.code;
+				}
+				
+				_show('ssForeplane', true);
+			}			
 		}).catch(function (data) {
 			clearInterval(_contimeout);
-			show('ssForeplane', false);
+			_show('ssForeplane', false);
 			
 			if (data.status) {
 				let _msg = data.status;
@@ -175,7 +175,7 @@ export default function () {
 				self.opts.msgstr.innerHTML = _msg; 
 			} else
 				self.opts.msgstr.innerHTML = globalize.translate('NoConnectivity');
-			show('ssFailure', true);
+			_show('ssFailure', true);
 
 		}).finally(() => {
 			loading.hide();
@@ -187,8 +187,8 @@ export default function () {
             clearInterval(self.interval);
             self.interval = null;
         }
-		show('ssFailure', false);
-		show('ssForeplane', false);
+		_show('ssFailure', false);
+		_show('ssForeplane', false);
     }
 
     self.show = function (TEST) {
@@ -230,7 +230,7 @@ export default function () {
 				self.opts.USUnits = (globalize.getCurrentDateTimeLocale() === 'en-US')? true: false;
 				self.opts.lat = userSettings.getlatitude();
 				self.opts.lon = userSettings.getlongitude();
-				self.opts.delay = (userSettings.APIDelay()? userSettings.APIDelay() * 60000 : 300000)
+				self.opts.delay = userSettings.APIDelay() * 60000;
 			}
 
 			elem = document.createElement('div');
@@ -315,10 +315,10 @@ export default function () {
 			self.opts.locationstr = document.getElementById("ssLoc");
 			self.opts.location2str = document.getElementById("ssLoc2");
 			self.opts.iconstr = document.getElementById("ssIcon");
-						
-			weather(self);
+			
+			setTimeout( weather.bind(self), 10);
 			// Refresh every x minutes.
-			this.weatherTimer = setInterval( function() { weather(self) }, self.opts.delay);
+			this.weatherTimer = setInterval( function() { weather.bind(self) }, self.opts.delay);
 		});
 	};
 
