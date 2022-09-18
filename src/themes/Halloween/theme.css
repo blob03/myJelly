@@ -639,11 +639,6 @@ html {
 	font-size: 80% !important;
 }
 
-.nightMode > * {
-	color: #f8e5bf;
-	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
-}
-
 .headerClockButton:hover > .headerClockTime,
 .headerClockButton:focus > .headerClockTime {
 	font-size: 170% !important;
@@ -1406,6 +1401,11 @@ option:selected {
 	background: rgba(10, 10, 10, 0);
 }
 
+.nightMode > * {
+	color: #f8e5bf;
+	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
+}
+
 .ssClockDate {
 	font-size: 120% !important;
 }
@@ -1424,6 +1424,10 @@ option:selected {
 .ssClockTime,
 .ssClockDate {
 	top: -30%;
+}
+
+.ssBackplane {
+	background: rgba(41, 22, 6, 0.8);
 }
 
 .cardPadder .cardImageIcon {

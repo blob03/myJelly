@@ -6,6 +6,7 @@ import globalize from '../../../scripts/globalize';
 import datetime from '../../../scripts/datetime';
 import loading from '../../../components/loading/loading';
 import appSettings from '../../../scripts/settings/appSettings';
+import { toPrecision } from '../../../utils/string.ts';
 
 function _show(item, visible) {
 	if (!item || typeof visible != "boolean")
@@ -23,7 +24,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.33';
+	self.version = '1.35';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -90,7 +91,7 @@ export default function () {
 						_root = _xmlDoc.getElementsByTagName("current")[0];
 				}
 			}
-		
+
 			if (_root) {
 				if (_root.getElementsByTagName("weather")[0]) {
 					data.icon = _root.getElementsByTagName("weather")[0].getAttribute("icon");
@@ -104,7 +105,6 @@ export default function () {
 				
 				if (_root.getElementsByTagName("humidity")[0])
 					data.hum = _root.getElementsByTagName("humidity")[0].getAttribute("value");
-				
 				if (_root.getElementsByTagName("pressure")[0]) {
 					data.pressure = _root.getElementsByTagName("pressure")[0].getAttribute("value");
 					data.pressureUnit = _root.getElementsByTagName("pressure")[0].getAttribute("unit");
@@ -134,36 +134,31 @@ export default function () {
 					self.opts.iconstr.src = url.proto + url.base_icon + data.icon + '.png';
 				if (data.temp) {
 					_data = data.temp;
-					self.opts.tempstr.innerHTML = Number(_data).toFixed(1);
+					self.opts.tempstr.innerHTML = toPrecision(_data, 1);
 				}
 				if (data.hum) {
 					_data = data.hum;
-					self.opts.humstr.innerHTML = Number(_data).toFixed(1);
+					self.opts.humstr.innerHTML = toPrecision(_data, 1);
 				}
-				if (data.visibility) {
-					_data = data.visibility;
-					if (self.opts.USUnits)
-						_data = _data/1609; // miles
-					else
-						_data = _data/1000; // km
-					self.opts.visistr.innerHTML = Number(_data).toFixed(1);
+				if (data.pressure) {
+					_data = data.pressure;
+					self.opts.pressstr.innerHTML = toPrecision(_data, 1);
 				}
 				if (data.speed) {
 					_data = data.speed;
 					if (!self.opts.USUnits)
 						_data *= 3.6; // m/s -> km/h
-					self.opts.windstr.innerHTML = Number(_data).toFixed(1);
+					self.opts.windstr.innerHTML = toPrecision(_data, 1);
 				}
 				self.opts.windirstr.innerHTML = "";
 				if (data.dir) {
-					self.opts.windirstr.innerHTML += '&nbsp;&nbsp;';
 					self.opts.windirstr.innerHTML += data.dir;
 					if (data.code)
-						self.opts.windircodestr.innerHTML = "&nbsp;" + data.code;
+						self.opts.windircodestr.innerHTML = data.code;
 				}
 				
 				_show('ssForeplane', true);
-			}			
+			}
 		}).catch(function (data) {
 			clearInterval(_contimeout);
 			_show('ssForeplane', false);
@@ -242,49 +237,54 @@ export default function () {
 			if (idx)
 				elem.classList.add('alt' + idx);
 			
-			let content ='<div id="ssBackplane" class="ssBackplane">'
+			let content ='<div id="ssBackplane" class="ssBackplane skinHeader-withBackground">'
 			+ '<div class="ssFailure hide">'
 			+ '<span id="ssMsg" class="ssWeatherData"></span>'
 			+ '</div>'
 			+ '<div class="ssForeplane hide">'
-			+ '<span id="ssLoc" class="ssWeatherData"></span>'
+			+ '<span id="ssLoc" class="ssWeatherData ssWeatherTitle"></span>'
 			+ '</div>'
 			+ '<div class="ssForeplane hide">'
 			+ '<span id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></span>'
 			+ '</div>'
-			+ '<div class="ssForeplane hide">'
-			+ '<img id="ssIcon" class="ssWeatherData ssWeatherDataSmall">'
+			+ '<div class="ssForeplane ssWeatherIcon hide">'
+			+ '<img id="ssIcon" class="ssWeatherData" style="width: 80px;height: 80px;">'
 			+ '</div>'
 			+ '<div class="ssForeplane hide">'
 			+ '<span id="ssCond" class="ssWeatherData ssWeatherDataSmall"></span>'
 			+ '</div>'
-			+ '<div class="ssForeplane hide">'
+			
+			+'<div style="display: flex;align-items: center;justify-content: space-evenly;align-items: center;width: 22em;">'
+			
+			+ '<div class="ssForeplane hide" style="font-size: 350%">'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons thermostat"></span>'
+			+ '<span class="material-icons ssIcons thermostat" style="margin: 0;font-size: 60%"></span>'
 			+ '<span id="ssTemp" class="ssWeatherData"></span>';
 			
 			if (self.opts.USUnits)
-				content += '<span class="ssWeatherDataUnit">&#8457;</span>';
+				content += '<span class="ssWeatherTempUnit ssWeatherDataUnit">&#8457;</span>';
 			else
-				content += '<span class="ssWeatherDataUnit">&#8451;</span>';
+				content += '<span class="ssWeatherTempUnit ssWeatherDataUnit">&#8451;</span>';
 			
 			content += '</div>'
+			+ '</div>'
+			
+			+ '<div style="display: flex;flex-direction: column;font-size: 80%; align-items: flex-start;justify-content: center;">'
+			
+			+ '<div class="ssForeplane hide">'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons water_drop"></span>'
 			+ '<span id="ssHum" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">%</span>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons visibility"></span>'
-			+ '<span id="ssVisi" class="ssWeatherData"></span>';
-			
-			if (self.opts.USUnits)
-				content += '<span class="ssWeatherDataUnit">miles</span>';
-			else
-				content += '<span class="ssWeatherDataUnit">km</span>';
+			+ '<span class="material-icons ssIcons"></span>'
+			+ '<span id="ssPressureValue" class="ssWeatherData"></span>'
+			+ '<span class="ssWeatherDataUnit">hPa</span>';
 			
 			content += '</div>'
 			+ '</div>'
+			
 			+ '<div class="ssForeplane hide">'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons air"></span>'
@@ -295,9 +295,14 @@ export default function () {
 			else
 				content += '<span class="ssWeatherDataUnit">km/h</span>';
 			
-			content += '<span id="ssWindir" class="ssWeatherData ssWeatherDataSmall"></span>'
-			+ '<span class="ssWeatherDataUnit ssWeatherDataSmall">&deg;</span>'
-			+ '<span id="ssWindircode" class="ssWeatherDataUnit ssWeatherDataSmall"></span>'
+			content += '</div>'
+			+ '<div class="ssDataSection">'
+			+ '<span id="ssWindir" class="ssWeatherData"></span>'
+			+ '<span class="ssWeatherDataUnit">&deg;</span>'
+			+ '<span id="ssWindircode" class="ssWeatherDataUnit"></span>'
+			+ '</div>'
+			+ '</div>'
+			
 			+ '</div>'
 			+ '</div>';
 			
@@ -306,6 +311,7 @@ export default function () {
 
 			self.opts.tempstr = document.getElementById("ssTemp");
 			self.opts.humstr = document.getElementById("ssHum");
+			self.opts.pressstr = document.getElementById("ssPressureValue");
 			self.opts.visistr = document.getElementById("ssVisi");
 			self.opts.windstr = document.getElementById("ssWind");
 			self.opts.windirstr = document.getElementById("ssWindir");

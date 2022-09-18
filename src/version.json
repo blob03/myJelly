@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-32",
+	"version": "10.8.4-33",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -93,6 +93,7 @@
 		"10.8.4-29": "Apply patch 'Backport pull request #3848'.\nApply patch 'Backport pull request #3849'.\nApply patch 'Backport pull request #3878'.\nFix wrong ss sometimes kicking off in test mode.",
 		"10.8.4-30": "Translations synchronized with master.\nss 'myBackdropPlayer' code cleanup.\nMigrate ss 'Weatherbot' to XML format.",
 		"10.8.4-31": "Fix ss manager wrongfully installing two watchers upon initialization.",
-		"10.8.4-32": "Apply patch 'Update to @jellyfin/sdk package'.\nInstall an up-to-date copy of 'package.json' modified.\n###############################################################\nIn order to avoid errors, users must run '#npm update' once\n before packing up the first time.\n###############################################################\nApply patch 'Use dynamic import for pdf.js'.\nInstall a fresh copy of plugin 'Book Player'.\nApply patch 'second-actionsheet-failures'."
+		"10.8.4-32": "Apply patch 'Update to @jellyfin/sdk package'.\nInstall an up-to-date copy of 'package.json' modified.\n###############################################################\nIn order to avoid errors, users must run '#npm update' once\n before packing up the first time.\n###############################################################\nApply patch 'Use dynamic import for pdf.js'.\nInstall a fresh copy of plugin 'Book Player'.\nApply patch 'second-actionsheet-failures'.",
+		"10.8.4-33": "Translations synchronized with master.\nFurther enhance reporting style for 'Weatherbot' (both ss and widget).\nUpdate themes.\nImprove ss 'Weatherbot' and 'Digital clock' compatibility with base themes.\nApply patch 'Include collections in search results'."
 	}
 }

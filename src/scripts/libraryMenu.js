@@ -126,15 +126,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '</div>';
 		
 		html += '<div class="hide WBScreen WBScreen2" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;width: 100%;justify-content: space-evenly;">';
 		html += '<div id="headerWthWind" class="headerWthWind" style="display: flex;align-items: center;"></div>';
 		html += '<div id="headerWthWindDir" class="headerWthWindDir" style="display: flex;align-items: center;"></div>';
 		html += '<span id="headerWthWindDirCode" style="font-size: 50%"></span>';
 		html += '</div>';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;width: 100%;justify-content: space-evenly;">';
 		html += '<div id="headerWthHum" class="headerWthHum" style="display: flex;align-items: center;"></div>';
-		html += '</div>';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;">';
 		html += '<div id="headerWthPressure" class="headerWthPressure" style="display: flex;align-items: center;"></div>';
 		html += '</div>';
 		html += '</div>';

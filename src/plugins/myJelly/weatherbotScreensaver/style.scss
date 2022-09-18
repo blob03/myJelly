@@ -42,6 +42,10 @@
 
 .ssForeplane > .material-icons,
 .ssWeatherData {
+	font-size: 150%;
+}
+
+.ssWeatherTitle {
 	font-size: 180%;
 }
 
@@ -49,7 +53,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	margin: 0 .5em 0 1em;
+	margin: 0 .3em;
 }
 
 .ssWeatherDataSmall {
@@ -58,16 +62,29 @@
 
 .ssWeatherDataUnit {
 	font-size: 70%;
-	margin: 0 0 1em .2em;
+	margin: -1em 0 0 .3em;
+}
+
+#ssTemp {
+	font-size: 100%;
+}
+
+.ssWeatherTempUnit {
+	font-size: 25%;
+	margin: -2em 0 0 0;
 }
 
 .ssIcons {
-	margin: 0 .2em 0 0;
-	font-size: 110%;
+	margin: 0 .5em 0 0;
+	font-size: 160%;
 	opacity: 50%;
+}
+
+.ssWeatherIcon {
+	border-width: 0px;
 }
 
 #ssCond {
 	position: relative;
-	top: -.5em;
+	top: -.9em;
 }

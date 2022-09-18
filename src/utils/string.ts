@@ -28,3 +28,15 @@ export function toFloat(value: string | null | undefined, defaultValue = 0) {
     }
 }
 
+/**
+ * Gets the value of a string as float number with a precision specified by the caller.
+ * @param {string} value The value as a string.
+ * @param {number} defaultValue The default value if the string is invalid.
+ * @returns {number} The value.
+ */
+export function toPrecision(value: string | null | undefined, x: number | null | undefined, defaultValue = 0) {
+	if (!value || Number.isNaN(value))
+		return defaultValue;
+	return Number(Number(value).toFixed(x?x:0));
+}
+

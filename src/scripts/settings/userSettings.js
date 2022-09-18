@@ -1,6 +1,6 @@
 import appSettings from './appSettings';
 import { Events } from 'jellyfin-apiclient';
-import { toBoolean } from '../../utils/string.ts';
+import { toBoolean, toPrecision } from '../../utils/string.ts';
 import globalize from '../globalize';
 import datetime from '../datetime';
 import { ajax } from '../../components/fetchhelper';
@@ -125,8 +125,8 @@ function hdrWeather() {
 		} 
 		
 		if (_data.temp) {
-			_dyn = Number(_data.temp).toFixed(1);
-			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
+			_dyn = toPrecision(_data.temp, 1);
+			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">';
 			_dyn += (enableUSUnits? '&#8457;': '&#8451;') + '</span>';
 			self._hdrwth.temp.innerHTML = _dyn;
 			self._hdrwth.temp.title = globalize.translate('Temperature');
@@ -139,15 +139,15 @@ function hdrWeather() {
 		}
 		
 		if (_data.hum) {
-			_dyn = Number(_data.hum).toFixed(1);
-			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">%</span>';
+			_dyn = toPrecision(_data.hum, 1);
+			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">%</span>';
 			self._hdrwth.hum.innerHTML = _dyn;
 			self._hdrwth.hum.title = globalize.translate('Humidity');
 		}
 		
 		if (_data.pressure) {
-			_dyn = Number(_data.pressure).toFixed(1);
-			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .4rem 0;">';
+			_dyn = toPrecision(_data.pressure, 1);
+			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">';
 			if (_data.pressureUnit)
 				_dyn += _data.pressureUnit;
 			else
@@ -161,8 +161,8 @@ function hdrWeather() {
 			let wspeed = _data.speed;
 			if (!enableUSUnits)
 				wspeed *= 3.6; // m/s -> km/h
-			_dyn = Number(wspeed).toFixed(1);
-			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">';
+			_dyn = toPrecision(wspeed, 1);
+			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">';
 			_dyn += (enableUSUnits? 'mph': 'km/h') + '</span>';
 			self._hdrwth.wind.innerHTML = _dyn;
 			if (self._hdrwth.wind.parentNode)
@@ -170,11 +170,13 @@ function hdrWeather() {
 		}
 		
 		if (_data.dir) {
-			_dyn = "&nbsp;" + _data.dir;
-			_dyn += '<span class="ssWeatherDataUnit" style="font-size: 40%;padding: 0 0 .3rem 0;">&deg;</span>';
+			_dyn = _data.dir;
+			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">&deg;</span>';
 			self._hdrwth.windDir.innerHTML = _dyn;
-			if (_data.code)
-				self._hdrwth.windDirCode.innerHTML = "&nbsp;" + _data.code;
+			if (_data.code) {
+				_dyn = '<span style="font-size: 40%;margin: -1em 0 0 .3em;">' + _data.code + '</span>';
+				self._hdrwth.windDir.innerHTML += _dyn;
+			}
 		}
 		
 		if (_data.sunrise) {

@@ -1256,6 +1256,10 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	background: rgba(10, 10, 10, .0);
 }
 
+.ssBackplane {
+	background: rgba(19, 71, 69, 0.7);
+}
+
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
 }

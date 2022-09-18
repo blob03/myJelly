@@ -802,3 +802,8 @@ option.sourceDictionaryOption {
 .aboutframe {
 	background: rgba(106, 159, 142, 0.25) !important;
 }
+
+.ssBackplane {
+	background: linear-gradient(to bottom, #0f3562, #1162a4, #03215f);
+}
+
