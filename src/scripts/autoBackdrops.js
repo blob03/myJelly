@@ -1,4 +1,4 @@
-import { clearBackdrop, setBackdrops, setBackdropImage, showBackdropWidget, hideBackdropWidget } from '../components/backdrop/backdrop';
+import { clearBackdrop, setBackdrops, setBackdropImage, hideBackdropWidget } from '../components/backdrop/backdrop';
 import * as userSettings from './settings/userSettings';
 import libraryMenu from './libraryMenu';
 import { pageClassOn } from '../utils/dashboard';
@@ -129,7 +129,6 @@ function showBackdrop(type, parentId) {
 		case 'Theme':
 			setTimeout(() => {
 				setBackdropImage('#');
-				//hideBackdropWidget();
 				setBackdrops();
 				}, 500);
 			break;

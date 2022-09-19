@@ -357,6 +357,7 @@ import './backdrop.scss';
 				_bdi.classList.remove('hide');
 				_bdc.classList.remove('hide');
 				_bdw.classList.remove('hide');
+				setBackdropContrast();
 				_bdco.classList.remove('hide');
 				break;
 				
@@ -369,8 +370,10 @@ import './backdrop.scss';
 					_bdc.classList.remove('hide');
 				else
 					_bdc.classList.add('hide');
-				if (toolbox & 4)
+				if (toolbox & 4) {
+					setBackdropContrast();
 					_bdco.classList.remove('hide');
+				}
 				else
 					_bdco.classList.add('hide');
 				
@@ -453,10 +456,13 @@ import './backdrop.scss';
     }
 	
 	export function setBackdropContrast(e) {
+		let _val = e?.target?.value;
+		if (!_val)
+			_val = document.querySelector('#backdropContrastSlider').value;
 		const _bc = document.querySelector('.backdropContainer');
-		if (!_bc)
+		if (!_val || !_bc)
 			return;
-		_bc.style.opacity = parseFloat(e.target.value/10);
+		_bc.style.opacity = parseFloat(_val/10);
 		appSettings.set('opacity', _bc.style.opacity);
 	}
 	

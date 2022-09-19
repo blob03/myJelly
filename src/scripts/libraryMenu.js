@@ -23,7 +23,7 @@ import '../assets/css/scrollstyles.scss';
 import '../assets/css/flexstyles.scss';
 
 import appSettings from './settings/appSettings';
-import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showClock, placeClock, initWeatherBot, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showClock, placeClock, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -127,13 +127,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '<div class="hide WBScreen WBScreen2" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
 		html += '<div style="display: flex;outline: none;height: auto;align-items: center;width: 100%;justify-content: space-evenly;">';
+		html += '<div id="headerWthHum" class="headerWthHum" style="display: flex;align-items: center;"></div>';
+		html += '<div id="headerWthPressure" class="headerWthPressure" style="display: flex;align-items: center;"></div>';
+		html += '</div>';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;width: 100%;justify-content: space-evenly;">';
 		html += '<div id="headerWthWind" class="headerWthWind" style="display: flex;align-items: center;"></div>';
 		html += '<div id="headerWthWindDir" class="headerWthWindDir" style="display: flex;align-items: center;"></div>';
 		html += '<span id="headerWthWindDirCode" style="font-size: 50%"></span>';
-		html += '</div>';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;width: 100%;justify-content: space-evenly;">';
-		html += '<div id="headerWthHum" class="headerWthHum" style="display: flex;align-items: center;"></div>';
-		html += '<div id="headerWthPressure" class="headerWthPressure" style="display: flex;align-items: center;"></div>';
 		html += '</div>';
 		html += '</div>';
 		
@@ -241,27 +241,22 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
     }
 
     export function updateUserInHeader(user) {
-        let hasImage;
+        let url = null;
 
 		retranslateUi();
 		
 		if (!user)
 			user = currentUser;
-		
         if (user && user.name) {
-            if (user.imageUrl) {
-                const url = user.imageUrl;
-                updateHeaderUserButton(url);
-                hasImage = true;
-            }
+            if (user.imageUrl)
+                url = user.imageUrl;
             headerUserButton.title = user.name;
             headerUserButton.classList.remove('hide');
         } else 
             headerUserButton.classList.add('hide');
 
-        if (!hasImage) 
-            updateHeaderUserButton(null);
-		
+		updateHeaderUserButton(url);
+
         if (user && user.localUser) {
             if (headerHomeButton) 
                 headerHomeButton.classList.remove('hide');
@@ -1329,10 +1324,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
             currentUser = user;
 			globalize.updateCurrentCulture();
             updateUserInHeader(user);
+			
 			initClockPlaces();
 			placeClock(0);
 			enableClock(enableClock());
-			initWeatherBot();
+			
+			WB_init();
 			enableWeatherBot(enableWeatherBot());
         });
     });

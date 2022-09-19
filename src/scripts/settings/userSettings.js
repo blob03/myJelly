@@ -26,10 +26,10 @@ const defaultSubtitleAppearanceSettings = {
 function hdrClock() {
 	globalize.updateCurrentCulture();
 	const x = new Date();
-	const _hdrclk_time = datetime.toLocaleTimeString(x, this._opts_time); 
-	const _hdrclk_date = datetime.toLocaleDateString(x, this._opts_date);
-	this._hdrclkdate_span.innerHTML = _hdrclk_date;
-	this._hdrclktime_span.innerHTML = _hdrclk_time;
+	const _hdrclk_time = datetime.toLocaleTimeString(x, currentSettings._opts_time); 
+	const _hdrclk_date = datetime.toLocaleDateString(x, currentSettings._opts_date);
+	currentSettings._hdrclkdate_span.innerHTML = _hdrclk_date;
+	currentSettings._hdrclktime_span.innerHTML = _hdrclk_time;
 	return;
 }
 
@@ -728,118 +728,119 @@ export class UserSettings {
 		placeClock(-1);
 	}
 	
-	initButtons(pos) {
-		const self = this;
-		let elm;
-		if (pos) {
-			var nextClockMode = function(self) {
-				return function curried(e) {
-					const elms = document.getElementsByClassName("headerClockMain");
-					if (elms.length) {
-						self._clkmode = (self._clkmode + 1) % 7;
-						
-						delete self._opts_date['weekday'];
-						delete self._opts_date['month'];
-						delete self._opts_date['timeZoneName'];
-						self._opts_date['year'] = 'numeric';
-						self._opts_date['day'] = '2-digit';
-						self._opts_time['hour'] = 'numeric';
-						self._opts_time['minute'] = '2-digit';
-									
-						switch (self._clkmode) {
-							case 0:					
-								for (let elm of elms) {
-									for (let _x = 0;_x < 7; _x ++)
-										elm.classList.remove('headerClockMode' + _x);
-									elm.classList.add('headerClockMode0');
-									elm.style.fontSize = "100%";
-									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
-								}
-								self._opts_date['month'] = '2-digit';
-								break;
-							case 1:
-								for (let elm of elms) {
-									elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
-									for (let _x = 0;_x < 7; _x ++)
-										elm.classList.remove('headerClockMode' + _x);
-									elm.classList.add('headerClockMode1');
-									elm.style.fontSize = "120%";
-								}
-								break;
-							case 2:
-								for (let elm of elms) {
-									elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
-									for (let _x = 0;_x < 7; _x ++)
-										elm.classList.remove('headerClockMode' + _x);
-									elm.classList.add('headerClockMode2');
-									elm.style.fontSize = "140%";
-								}
-								break;
-							case 3:
-								for (let elm of elms) {
-									elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
-									for (let _x = 0;_x < 7; _x ++)
-										elm.classList.remove('headerClockMode' + _x);
-									elm.classList.add('headerClockMode3');
-									elm.style.fontSize = "160%";
-								}
-								break;
-							case 4:
-								for (let elm of elms) {
-									for (let _x = 0;_x < 7; _x ++)
-										elm.classList.remove('headerClockMode' + _x);
-									elm.classList.add('headerClockMode4');
-									elm.style.fontSize = "100%";
-									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
-								}
-								self._opts_date['weekday'] = 'long';
-								self._opts_date['month'] = 'long';
-								break;
-							case 5:
-								for (let elm of elms) {
-									for (let _x = 0;_x < 7; _x ++)
-										elm.classList.remove('headerClockMode' + _x);
-									elm.classList.add('headerClockMode5');
-									elm.style.fontSize = "100%";
-									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
-								}
-								self._opts_date['weekday'] = 'short';
-								self._opts_date['month'] = '2-digit';
-								self._opts_date['timeZoneName'] = 'short';
-								break;
-							case 6:
-								for (let elm of elms) {
-									for (let _x = 0;_x < 7; _x ++)
-										elm.classList.remove('headerClockMode' + _x);
-									elm.classList.add('headerClockMode6');
-									elm.style.fontSize = "100%";
-									elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
-								}
-								self._opts_date['weekday'] = 'short';
-								self._opts_date['month'] = '2-digit';
-								break;
-						}
-						setTimeout(hdrClock.bind(self), 10);
-					}
+	nextClockFormat() {
+		const elms = document.getElementsByClassName("headerClockMain");
+		if (!elms || !elms.length)
+			return;
+		currentSettings._clkmode = (currentSettings._clkmode + 1) % 7;
+		
+		delete currentSettings._opts_date['weekday'];
+		delete currentSettings._opts_date['month'];
+		delete currentSettings._opts_date['timeZoneName'];
+		currentSettings._opts_date['year'] = 'numeric';
+		currentSettings._opts_date['day'] = '2-digit';
+		currentSettings._opts_time['hour'] = 'numeric';
+		currentSettings._opts_time['minute'] = '2-digit';
+		
+		switch (currentSettings._clkmode) {
+			case 0:
+				for (let elm of elms) {
+					for (let _x = 0;_x < 7; _x ++)
+						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.add('headerClockMode0');
+					elm.style.fontSize = "100%";
+					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
-			}
-			elm = pos.getElementsByClassName("headerClockMain")[0];
-			if (elm) {
-				elm.removeEventListener('click', nextClockMode(self));
-				elm.addEventListener('click', nextClockMode(self));
-			}
-			
-			elm = pos.getElementsByClassName("moveLeftButton")[0];
-			if (elm) {
-				elm.removeEventListener('click', self.moveL);
-				elm.addEventListener('click', self.moveL);
-			}
-			
-			elm = pos.getElementsByClassName("moveRightButton")[0];
-			if (elm) {
-				elm.removeEventListener('click', self.moveR);
-				elm.addEventListener('click', self.moveR);
-			}
+				currentSettings._opts_date['month'] = '2-digit';
+				break;
+			case 1:
+				for (let elm of elms) {
+					elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
+					for (let _x = 0;_x < 7; _x ++)
+						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.add('headerClockMode1');
+					elm.style.fontSize = "120%";
+				}
+				break;
+			case 2:
+				for (let elm of elms) {
+					elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
+					for (let _x = 0;_x < 7; _x ++)
+						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.add('headerClockMode2');
+					elm.style.fontSize = "140%";
+				}
+				break;
+			case 3:
+				for (let elm of elms) {
+					elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
+					for (let _x = 0;_x < 7; _x ++)
+						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.add('headerClockMode3');
+					elm.style.fontSize = "160%";
+				}
+				break;
+			case 4:
+				for (let elm of elms) {
+					for (let _x = 0;_x < 7; _x ++)
+						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.add('headerClockMode4');
+					elm.style.fontSize = "100%";
+					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
+				}
+				currentSettings._opts_date['weekday'] = 'long';
+				currentSettings._opts_date['month'] = 'long';
+				break;
+			case 5:
+				for (let elm of elms) {
+					for (let _x = 0;_x < 7; _x ++)
+						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.add('headerClockMode5');
+					elm.style.fontSize = "100%";
+					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
+				}
+				currentSettings._opts_date['weekday'] = 'short';
+				currentSettings._opts_date['month'] = '2-digit';
+				currentSettings._opts_date['timeZoneName'] = 'short';
+				break;
+			case 6:
+				for (let elm of elms) {
+					for (let _x = 0;_x < 7; _x ++)
+						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.add('headerClockMode6');
+					elm.style.fontSize = "100%";
+					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
+				}
+				currentSettings._opts_date['weekday'] = 'short';
+				currentSettings._opts_date['month'] = '2-digit';
+				break;
+		}
+		setTimeout(hdrClock.bind(this), 10);
+	}
+		
+	initButtons(pos) {
+		let elm;
+		if (!pos)
+			return;
+		
+		const self = this;
+		
+		elm = pos.getElementsByClassName("headerClockMain")[0];
+		if (elm) {
+			elm.removeEventListener('click', self.nextClockFormat);
+			elm.addEventListener('click', self.nextClockFormat);
+		}
+		
+		elm = pos.getElementsByClassName("moveLeftButton")[0];
+		if (elm) {
+			elm.removeEventListener('click', self.moveL);
+			elm.addEventListener('click', self.moveL);
+		}
+		
+		elm = pos.getElementsByClassName("moveRightButton")[0];
+		if (elm) {
+			elm.removeEventListener('click', self.moveR);
+			elm.addEventListener('click', self.moveR);
 		}
 	}
 	
@@ -849,14 +850,14 @@ export class UserSettings {
 		let _r_hdrclck = document.getElementById("headerClockMiddle");
 		if (!_l_hdrclck || !_m_hdrclck || !_r_hdrclck)
 			return;
-				
+		
 		this.initButtons(_l_hdrclck);
 		this.initButtons(_m_hdrclck);
 		this.initButtons(_r_hdrclck);
 	}
 	
 	WB_setButtons(nb) {
-		const elms = document.getElementsByClassName("WBScreen");				
+		const elms = document.getElementsByClassName("WBScreen");
 		if (elms.length) {	
 			for (let elm of elms) 
 				elm.classList.add('hide');
@@ -867,26 +868,25 @@ export class UserSettings {
 			
 			const act = (nb !== undefined)? nb: this._wbmode;
 			if (elms[act])
-				elms[act].classList.remove('hide');	
+				elms[act].classList.remove('hide');
 		}
 	}
 	
-	initWeatherBot() {
+	WB_nextScreen() {
+		if (currentSettings._pwrButtons === true) {
+			currentSettings._wbmode --;
+			currentSettings._wbmode = (currentSettings._wbmode + 1) % 3;
+			currentSettings._wbmode ++;
+			currentSettings.WB_setButtons();
+		}
+	}
+	
+	WB_init() {
 		const self = this;
-		var WB_nextScreen = (x) => {
-			return function WB_curried(e) {
-				if (x._pwrButtons === true) {
-					x._wbmode --;
-					x._wbmode = (x._wbmode + 1) % 3;
-					x._wbmode ++;
-					x.WB_setButtons();
-				}
-			}
-		}	
 		let elm = document.getElementsByClassName("headerWthMain")[0];
 		if (elm) {
-			elm.removeEventListener('click', WB_nextScreen(self));
-			elm.addEventListener('click', WB_nextScreen(self));
+			elm.removeEventListener('click', self.WB_nextScreen);
+			elm.addEventListener('click', self.WB_nextScreen);
 		}
 	}
 	
@@ -933,7 +933,7 @@ export class UserSettings {
 		
 			this.hideClockPos(_l_hdrclck);
 			this.hideClockPos(_m_hdrclck);
-			this.hideClockPos(_r_hdrclck);	
+			this.hideClockPos(_r_hdrclck);
 		
 			switch(pos) {
 				/*** left side ***/
@@ -1503,7 +1503,7 @@ export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableBackdropWidget = currentSettings.enableBackdropWidget.bind(currentSettings);
 export const enableWeatherBot = currentSettings.enableWeatherBot.bind(currentSettings);
 export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSettings);
-export const initWeatherBot = currentSettings.initWeatherBot.bind(currentSettings);
+export const WB_init = currentSettings.WB_init.bind(currentSettings);
 export const showClock = currentSettings.showClock.bind(currentSettings);
 export const showWeatherBot = currentSettings.showWeatherBot.bind(currentSettings);
 export const placeClock = currentSettings.placeClock.bind(currentSettings);
