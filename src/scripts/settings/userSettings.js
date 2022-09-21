@@ -183,22 +183,20 @@ function hdrWeather() {
 			 if (_data.sunrise.charAt(_data.sunrise.length - 1).toUpperCase() !== 'Z')
 				_data.sunrise += 'Z';
 			let _date = new Date(_data.sunrise);
-			let _srise = _date.getHours().toString().padStart(2, "0") + ":";
-			_srise += _date.getMinutes().toString().padStart(2, "0");
-			_dyn = "&nbsp;&nbsp;&nbsp;" + _srise;
-			self._hdrwth.sunrise.innerHTML = _dyn;
+			const _date_localized = datetime.toLocaleTimeString(_date, currentSettings._opts_time); 
+	
+			self._hdrwth.sunrise.innerHTML = _date_localized;
 			if (self._hdrwth.sunrise.parentNode)
 				self._hdrwth.sunrise.parentNode.title = globalize.translate('Sunrise');
 		}
 		
 		if (_data.sunset) {
 			if (_data.sunset.charAt(_data.sunset.length - 1).toUpperCase() !== 'Z')
-				_data.sunset += 'Z';
+				_data.sunset += 'Z'; 
 			let _date = new Date(_data.sunset);
-			let _sset = _date.getHours().toString().padStart(2, "0") + ":";
-			_sset += _date.getMinutes().toString().padStart(2, "0");
-			_dyn = "&nbsp;&nbsp;&nbsp;" + _sset;
-			self._hdrwth.sunset.innerHTML = _dyn;
+			const _date_localized = datetime.toLocaleTimeString(_date, currentSettings._opts_time);
+			
+			self._hdrwth.sunset.innerHTML = _date_localized;
 			if (self._hdrwth.sunset.parentNode)
 				self._hdrwth.sunset.parentNode.title = globalize.translate('Sunset');
 		}
@@ -220,7 +218,11 @@ function hdrWeather() {
 	return;
 }
 
-	
+const defaultComicsPlayerSettings = {
+    langDir: 'ltr',
+    pagesPerView: 1
+};
+
 export class UserSettings {
     constructor() {
 		this.clockTimer = null;
@@ -744,6 +746,7 @@ export class UserSettings {
 		
 		switch (currentSettings._clkmode) {
 			case 0:
+				currentSettings._opts_date['month'] = '2-digit';
 				for (let elm of elms) {
 					for (let _x = 0;_x < 7; _x ++)
 						elm.classList.remove('headerClockMode' + _x);
@@ -751,7 +754,6 @@ export class UserSettings {
 					elm.style.fontSize = "100%";
 					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
-				currentSettings._opts_date['month'] = '2-digit';
 				break;
 			case 1:
 				for (let elm of elms) {
@@ -781,6 +783,8 @@ export class UserSettings {
 				}
 				break;
 			case 4:
+				currentSettings._opts_date['weekday'] = 'long';
+				currentSettings._opts_date['month'] = 'long';
 				for (let elm of elms) {
 					for (let _x = 0;_x < 7; _x ++)
 						elm.classList.remove('headerClockMode' + _x);
@@ -788,10 +792,11 @@ export class UserSettings {
 					elm.style.fontSize = "100%";
 					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
-				currentSettings._opts_date['weekday'] = 'long';
-				currentSettings._opts_date['month'] = 'long';
 				break;
 			case 5:
+				currentSettings._opts_date['weekday'] = 'short';
+				currentSettings._opts_date['month'] = '2-digit';
+				currentSettings._opts_date['timeZoneName'] = 'short';
 				for (let elm of elms) {
 					for (let _x = 0;_x < 7; _x ++)
 						elm.classList.remove('headerClockMode' + _x);
@@ -799,11 +804,10 @@ export class UserSettings {
 					elm.style.fontSize = "100%";
 					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
-				currentSettings._opts_date['weekday'] = 'short';
-				currentSettings._opts_date['month'] = '2-digit';
-				currentSettings._opts_date['timeZoneName'] = 'short';
 				break;
 			case 6:
+				currentSettings._opts_date['weekday'] = 'short';
+				currentSettings._opts_date['month'] = '2-digit';
 				for (let elm of elms) {
 					for (let _x = 0;_x < 7; _x ++)
 						elm.classList.remove('headerClockMode' + _x);
@@ -811,8 +815,6 @@ export class UserSettings {
 					elm.style.fontSize = "100%";
 					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
-				currentSettings._opts_date['weekday'] = 'short';
-				currentSettings._opts_date['month'] = '2-digit';
 				break;
 		}
 		setTimeout(hdrClock.bind(this), 10);
@@ -1458,6 +1460,27 @@ export class UserSettings {
     }
 
     /**
+     * Get comics player settings.
+     * @param {string} mediaSourceId - Media Source Id.
+     * @return {Object} Comics player settings.
+     */
+    getComicsPlayerSettings(mediaSourceId) {
+        const settings = JSON.parse(this.get('comicsPlayerSettings', false) || '{}');
+        return Object.assign(defaultComicsPlayerSettings, settings[mediaSourceId]);
+    }
+
+    /**
+     * Set comics player settings.
+     * @param {Object} value - Comics player settings.
+     * @param {string} mediaSourceId - Media Source Id.
+     */
+    setComicsPlayerSettings(value, mediaSourceId) {
+        const settings = JSON.parse(this.get('comicsPlayerSettings', false) || '{}');
+        settings[mediaSourceId] = value;
+        return this.set('comicsPlayerSettings', JSON.stringify(settings), false);
+    }
+	
+    /**
      * Set filter.
      * @param {string} key - Filter key.
      * @param {string} value - Filter value.
@@ -1538,6 +1561,8 @@ export const loadQuerySettings = currentSettings.loadQuerySettings.bind(currentS
 export const saveQuerySettings = currentSettings.saveQuerySettings.bind(currentSettings);
 export const getSubtitleAppearanceSettings = currentSettings.getSubtitleAppearanceSettings.bind(currentSettings);
 export const setSubtitleAppearanceSettings = currentSettings.setSubtitleAppearanceSettings.bind(currentSettings);
+export const getComicsPlayerSettings = currentSettings.getComicsPlayerSettings.bind(currentSettings);
+export const setComicsPlayerSettings = currentSettings.setComicsPlayerSettings.bind(currentSettings);
 export const setFilter = currentSettings.setFilter.bind(currentSettings);
 export const getFilter = currentSettings.getFilter.bind(currentSettings);
 export const customCss = currentSettings.customCss.bind(currentSettings);

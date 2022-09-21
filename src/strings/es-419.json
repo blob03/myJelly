@@ -190,6 +190,7 @@
     "Desktop": "Escritorio",
     "DetectingDevices": "Detectando dispositivos",
     "DeviceAccessHelp": "Esto solo se aplica a los dispositivos que pueden ser identificados de manera única y no impedirá el acceso desde navegadores. Filtrar el acceso a los dispositivos de los usuarios les impedirá usar nuevos dispositivos hasta que hayan sido aprobados aquí.",
+    "Digital": "Digital",
     "DirectPlayHelp": "El archivo de origen es totalmente compatible con este cliente y la sesión esta recibiendo el archivo sin modificaciones.",
     "DirectPlaying": "Reproducción directa",
     "DirectStreamHelp1": "La pista de video es compatible con el dispositivo, pero tiene un formato de audio (DTS, Dolby TrueHD, etc.) o un número de canales de audio incompatible. La pista de video se reempaquetará sin pérdidas sobre la marcha antes de ser enviado al dispositivo. Solo se transcodificará la pista de audio.",

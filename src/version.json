@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-34",
+	"version": "10.8.4-35",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -95,6 +95,7 @@
 		"10.8.4-31": "Fix ss manager wrongfully installing two watchers upon initialization.",
 		"10.8.4-32": "Apply patch 'Update to @jellyfin/sdk package'.\nInstall an up-to-date copy of 'package.json' modified.\n###############################################################\nIn order to avoid errors, users must run '#npm update' once\n before packing up the first time.\n###############################################################\nApply patch 'Use dynamic import for pdf.js'.\nInstall a fresh copy of plugin 'Book Player'.\nApply patch 'second-actionsheet-failures'.",
 		"10.8.4-33": "Translations synchronized with master.\nFurther enhance reporting style for 'Weatherbot' (both ss and widget).\nUpdate themes.\nImprove ss 'Weatherbot' and 'Digital clock' compatibility with base themes.\nApply patch 'Include collections in search results'.",
-		"10.8.4-34": "Translations synchronized with master.\nFix event handlers not disinstalling at logout, instead multiplying over time causing widgets to glitch.\nModify layout of weather screen #2 in order to align with the ss reporting style.\nWhen contrast control is enabled, apply contrast level to backdrop upon initialization."
+		"10.8.4-34": "Translations synchronized with master.\nFix event handlers not disinstalling at logout, instead multiplying over time causing widgets to glitch.\nModify layout of weather screen #2 in order to align with the ss reporting style.\nWhen contrast control is enabled, apply contrast level to backdrop upon initialization.",
+		"10.8.4-35": "Translations synchronized with master.\nLocalize Weatherbot's sunrise & sunset timestamps.\nMake adjustments to the Weatherbot report layout for screens #2 & #3.\nInstall a fresh copy of 'package.json' and contributors files.\nApply patch 'richer-comic-reader'.\nAdd animation to theme backdrops rotation."
 	}
 }

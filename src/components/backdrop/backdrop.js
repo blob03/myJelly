@@ -45,9 +45,14 @@ import './backdrop.scss';
 				case 'Theme':
 					let backdropImage = document.createElement('div');
 					backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn', 'themeBackdrop');
-					const idx = Math.ceil(Math.random() * 4);
-					if (idx)
-						backdropImage.classList.add('alt' + idx);
+
+					if (url)
+						backdropImage.classList.add(url);
+					else {
+						const idx = Math.ceil(Math.random() * 4);
+						if (idx)
+							backdropImage.classList.add('alt' + idx);
+					}
 					
 					parent.appendChild(backdropImage);
 					internalBackdrop(true);
@@ -212,23 +217,38 @@ import './backdrop.scss';
         setBackgroundContainerBackgroundEnabled();
     }
 
-    var _instance = null;
-    export function setBackdropImage(url) {
-        if (_instance) {
-            _instance.destroy();
-            _instance = null;
-        }
-        const elem = getBackdropContainer();
-        const existingBackdropImage = elem.querySelector('.displayingBackdropImage');
-        if (existingBackdropImage && existingBackdropImage.getAttribute('data-url') === url) {
-            if (existingBackdropImage.getAttribute('data-url') === url) {
-                return;
-            }
-            existingBackdropImage.classList.remove('displayingBackdropImage');
-        }
-        const instance = new Backdrop();
-        instance.load(url, elem, existingBackdropImage);
-        _instance = instance;
+	var _instance = null;
+	export function setBackdropImage(url) {
+		const elem = getBackdropContainer();
+		const existingBackdropImage = elem.querySelector('.displayingBackdropImage');
+		if (existingBackdropImage) { 
+			if (existingBackdropImage.getAttribute('data-url') === url)
+				return;
+			existingBackdropImage.classList.remove('displayingBackdropImage');
+		}
+		if (_instance) {
+			_instance.destroy();
+			_instance = null;
+		}
+		_instance = new Backdrop();
+		_instance.load(url, elem, existingBackdropImage);
+    }
+	
+	export function setBackdropThemeImage(ref) {
+		const elem = getBackdropContainer();
+		// Check if ref isn't already in use in which case, we do nothing.
+		const existingBackdropImage = elem.querySelector('.displayingBackdropImage');
+		if (existingBackdropImage) {
+			if (existingBackdropImage.classList.contains(ref))
+				return;
+			existingBackdropImage.classList.remove('displayingBackdropImage');
+		}
+		if (_instance) {
+			_instance.destroy();
+			_instance = null;
+		}
+		_instance = new Backdrop();
+		_instance.load(ref, elem, existingBackdropImage);
     }
 
     function getItemImageUrls(item, imageOptions) {
@@ -415,14 +435,7 @@ import './backdrop.scss';
 				else
 					i = i % 4;
 				_currentRotationIndex = i;
-				const backdropImage = document.querySelector('.backdropImage');
-				if (!backdropImage)
-					return;
-				backdropImage.classList.remove('alt1');
-				backdropImage.classList.remove('alt2');
-				backdropImage.classList.remove('alt3');
-				backdropImage.classList.remove('alt4');
-				backdropImage.classList.add('alt' + ( i + 1));
+				setBackdropThemeImage('alt' + ( i + 1));
 				showBackdropWidget();
 				break;
 			
