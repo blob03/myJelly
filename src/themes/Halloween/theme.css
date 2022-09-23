@@ -636,7 +636,7 @@ html {
 }
 
 .headerClockDate {
-	font-size: 80% !important;
+	font-size: 70% !important;
 }
 
 .headerClockButton:hover > .headerClockTime,

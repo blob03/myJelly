@@ -13,12 +13,12 @@ import './backdrop.scss';
 
 /* eslint-disable indent */
 
-    function enableAnimation() {
-        if (browser.slow) {
-            return false;
-        }
-
-        return true;
+    function enableFastAnimation() {
+		return userSettings.enableFastFadein() === true;
+		
+        //if (browser.slow)
+        //    return false;
+        //return true;
     }
 
     function enableRotation() {
@@ -40,11 +40,12 @@ import './backdrop.scss';
 		load(url, parent, existingBackdropImage) {
 			const self = this;
 			const type = userSettings.enableBackdrops();
-
+			if (!parent)
+				return;
 			switch(type) {
 				case 'Theme':
 					let backdropImage = document.createElement('div');
-					backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn', 'themeBackdrop');
+					backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'themeBackdrop');
 
 					if (url)
 						backdropImage.classList.add(url);
@@ -54,23 +55,26 @@ import './backdrop.scss';
 							backdropImage.classList.add('alt' + idx);
 					}
 					
-					parent.appendChild(backdropImage);
 					internalBackdrop(true);
 					
-					if (!enableAnimation()) {
-						if (existingBackdropImage && existingBackdropImage.parentNode)
-							existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+					if (enableFastAnimation()) {
+						if (existingBackdropImage)
+							parent.removeChild(existingBackdropImage);
+						backdropImage.classList.add('backdropImageFastFadeIn');
+						parent.appendChild(backdropImage);
 						return;
 					}
-
+					
+					backdropImage.classList.add('backdropImageFadeIn');
+					parent.appendChild(backdropImage);
 					const onAnimationComplete = () => {
 						dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
 							once: true
 						});
 						if (backdropImage === self.currentAnimatingElement)
 							self.currentAnimatingElement = null;
-						if (existingBackdropImage && existingBackdropImage.parentNode)
-							existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+						if (existingBackdropImage)
+							parent.removeChild(existingBackdropImage);
 					};
 
 					dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
@@ -93,26 +97,29 @@ import './backdrop.scss';
 						if (self.isDestroyed)
 							return;
 						let backdropImage = document.createElement('div');
-						backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'backdropImageFadeIn');
+						backdropImage.classList.add('backdropImage', 'displayingBackdropImage');
 						backdropImage.style.backgroundImage = `url('${url}')`;
 						backdropImage.setAttribute('data-url', url);
-						parent.appendChild(backdropImage);
 						internalBackdrop(true);
 						
-						if (!enableAnimation()) {
-							if (existingBackdropImage && existingBackdropImage.parentNode)
-								existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+						if (enableFastAnimation()) {
+							if (existingBackdropImage)
+								parent.removeChild(existingBackdropImage);
+							backdropImage.classList.add('backdropImageFastFadeIn');
+							parent.appendChild(backdropImage);
 							return;
 						}
 
+						backdropImage.classList.add('backdropImageFadeIn');
+						parent.appendChild(backdropImage);
 						const onAnimationComplete = () => {
 							dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
 								once: true
 							});
 							if (backdropImage === self.currentAnimatingElement)
 								self.currentAnimatingElement = null;
-							if (existingBackdropImage && existingBackdropImage.parentNode)
-								existingBackdropImage.parentNode.removeChild(existingBackdropImage);
+							if (existingBackdropImage)
+								parent.removeChild(existingBackdropImage);
 						};
 
 						dom.addEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
@@ -286,10 +293,12 @@ import './backdrop.scss';
 		const lot = {details: [], list: []};
 		
         for (let i = 0, length = items.length; i < length; i++) {
-			lot.list[i] = [];
             const imgs = getItemImageUrls(items[i], imageOptions);
-            imgs.forEach( img => {
-				lot.list[i].push(img) } );
+			if (imgs.length) {
+				lot.list[i] = [];
+				imgs.forEach( img => {
+					lot.list[i].push(img) } );
+			}
 			lot.details[i] = appRouter.getRouteUrl(items[i]) || '#';
         }
 
@@ -308,7 +317,7 @@ import './backdrop.scss';
         if (!enabled())
 			return;
 		
-		let images;
+		let images = {list: []};
 		if (items) {
 			images = getImageUrls(items, imageOptions);
 			if (!images.list.length) {
@@ -322,7 +331,7 @@ import './backdrop.scss';
 				return;	
 			}
 		}
-		
+
 		startRotation(images, enableImageRotation);
 	}
 

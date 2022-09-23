@@ -40,7 +40,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		/* Added: Left casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
+		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
@@ -57,7 +57,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		/* Added: Middle casing for the topbar clock */
 		html += '<div class="headerMiddle headerClockButton hide" id="headerClockMiddle" style="display: flex;flex-direction: row;justify-content: center;position: absolute;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeMiddle" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
@@ -98,7 +98,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		/* Added: Right most casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
@@ -106,35 +106,35 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '</div>';
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
-		html += '<div class="headerWthButton hide" id="headerWthRight" style="display: flex;flex-direction: row;margin: 0 .29em;">';
-		html += '<fieldset style="margin: 0 !important;padding: .1rem .3rem .1rem .3rem;border: .1em groove #99a5ad;">';
+		html += '<div class="headerWthButton hide" id="headerWthRight" style="display: flex;flex-direction: row;margin: 0 .29em;height: 3.2em;">';
+		html += '<fieldset style="margin: 0 !important;padding: .1rem .4rem .1rem .4rem;border: .1em groove #99a5ad;">';
 		
-		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		
-		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;">';
+		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;">';
 		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen1" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .2em;">';
-		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="margin-right: .2em;background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.3em;width: 2.3em;">';
-		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.3em;">';
+		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .1em;">';
+		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.1em;width: 2.1em;">';
+		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.1em;">';
 		html += '</div>';
 		html += '<div id="headerWthTemp" class="headerWthTemp" style="display: flex;align-items: center;font-size: 140%;margin-left: .2em;"></div>';
 		html += '</div>';
 		html += '<div id="headerWthCity" class="headerWthCity" style="font-size: 60%;"></div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen2" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
 		
-		html += '<div style="display: flex;flex-direction: column;align-items: flex-start;justify-content: center;width: auto;height: 3em;">';
+		html += '<div style="display: flex;flex-direction: row;align-items: center;justify-content: center;width: auto;height: 3em;">';
 		
-		html += '<div style="display: flex;outline: none;">';
+		html += '<div style="display: flex;flex-direction: column;outline: none;">';
 		html += '<div id="headerWthHum" class="headerWthHum" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
-		html += '<div id="headerWthPressure" class="headerWthPressure" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
-		html += '</div>';
-		html += '<div style="display: flex;outline: none;">';
 		html += '<div id="headerWthWind" class="headerWthWind" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
+		html += '</div>';
+		html += '<div style="display: flex;flex-direction: column;outline: none;">';
+		html += '<div id="headerWthPressure" class="headerWthPressure" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '<div id="headerWthWindDir" class="headerWthWindDir" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '<span id="headerWthWindDirCode" style="font-size: 50%"></span>';
 		html += '</div>';
@@ -143,7 +143,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen3" style="margin: .1em;width: 7em;height: 3.2em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
+		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
 		
 		html += '<div style="display: flex;flex-direction: column;align-items: flex-start;justify-content: center;width: auto;height: 3em;">';
 		

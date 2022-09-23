@@ -744,40 +744,37 @@ export class UserSettings {
 		currentSettings._opts_time['hour'] = 'numeric';
 		currentSettings._opts_time['minute'] = '2-digit';
 		
+		let _prevMode = currentSettings._clkmode - 1;
+		if (_prevMode == -1)
+			_prevMode = 6;
+		
 		switch (currentSettings._clkmode) {
 			case 0:
 				currentSettings._opts_date['month'] = '2-digit';
 				for (let elm of elms) {
-					for (let _x = 0;_x < 7; _x ++)
-						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.remove('headerClockMode' + _prevMode);
 					elm.classList.add('headerClockMode0');
 					elm.style.fontSize = "100%";
-					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
 				break;
 			case 1:
 				for (let elm of elms) {
 					elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
-					for (let _x = 0;_x < 7; _x ++)
-						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.remove('headerClockMode' + _prevMode);
 					elm.classList.add('headerClockMode1');
 					elm.style.fontSize = "120%";
 				}
 				break;
 			case 2:
 				for (let elm of elms) {
-					elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
-					for (let _x = 0;_x < 7; _x ++)
-						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.remove('headerClockMode' + _prevMode);
 					elm.classList.add('headerClockMode2');
 					elm.style.fontSize = "140%";
 				}
 				break;
 			case 3:
 				for (let elm of elms) {
-					elm.getElementsByClassName('headerClockDate')[0].classList.add('hide');
-					for (let _x = 0;_x < 7; _x ++)
-						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.remove('headerClockMode' + _prevMode);
 					elm.classList.add('headerClockMode3');
 					elm.style.fontSize = "160%";
 				}
@@ -786,11 +783,10 @@ export class UserSettings {
 				currentSettings._opts_date['weekday'] = 'long';
 				currentSettings._opts_date['month'] = 'long';
 				for (let elm of elms) {
-					for (let _x = 0;_x < 7; _x ++)
-						elm.classList.remove('headerClockMode' + _x);
 					elm.classList.add('headerClockMode4');
 					elm.style.fontSize = "100%";
 					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
+					elm.classList.remove('headerClockMode' + _prevMode);
 				}
 				break;
 			case 5:
@@ -798,26 +794,23 @@ export class UserSettings {
 				currentSettings._opts_date['month'] = '2-digit';
 				currentSettings._opts_date['timeZoneName'] = 'short';
 				for (let elm of elms) {
-					for (let _x = 0;_x < 7; _x ++)
-						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.remove('headerClockMode' + _prevMode);
 					elm.classList.add('headerClockMode5');
 					elm.style.fontSize = "100%";
-					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
 				break;
 			case 6:
 				currentSettings._opts_date['weekday'] = 'short';
 				currentSettings._opts_date['month'] = '2-digit';
 				for (let elm of elms) {
-					for (let _x = 0;_x < 7; _x ++)
-						elm.classList.remove('headerClockMode' + _x);
+					elm.classList.remove('headerClockMode' + _prevMode);
 					elm.classList.add('headerClockMode6');
 					elm.style.fontSize = "100%";
-					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
 				}
 				break;
 		}
-		setTimeout(hdrClock.bind(this), 10);
+		
+		setTimeout(hdrClock, 10);
 	}
 		
 	initButtons(pos) {

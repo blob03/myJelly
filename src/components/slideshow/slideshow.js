@@ -14,10 +14,6 @@ import './style.scss';
 import 'material-design-icons-iconfont';
 import '../../elements/emby-button/paper-icon-button-light';
 import ServerConnections from '../ServerConnections';
-//eslint-disable-next-line import/no-unresolved
-import { Swiper } from 'swiper/bundle';
-//eslint-disable-next-line import/no-unresolved
-import 'swiper/css/bundle';
 import screenfull from 'screenfull';
 import * as userSettings from '../../scripts/settings/userSettings';
 
@@ -529,15 +525,21 @@ export default function (options) {
 			
 		if (options.interactive)
 			parameters.autoplay = false;
-			
-        swiperInstance = new Swiper(dialog.querySelector('.slideshowSwiperContainer'), parameters);
+		
+		//eslint-disable-next-line import/no-unresolved
+        import('swiper/css/bundle');
 
-        swiperInstance.on('autoplayStart', onAutoplayStart);
-        swiperInstance.on('autoplayStop', onAutoplayStop);
+        // eslint-disable-next-line import/no-unresolved
+        import('swiper/bundle').then(({ Swiper }) => {
+			swiperInstance = new Swiper(dialog.querySelector('.slideshowSwiperContainer'), parameters);
+			swiperInstance.on('autoplayStart', onAutoplayStart);
+			swiperInstance.on('autoplayStop', onAutoplayStop);
 
-        if (useFakeZoomImage) {
-            swiperInstance.on('zoomChange', onZoomChange);
-        }
+			if (useFakeZoomImage) {
+				swiperInstance.on('zoomChange', onZoomChange);
+			}
+			if (swiperInstance.autoplay?.running) onAutoplayStart();
+		});
     }
 
     /**

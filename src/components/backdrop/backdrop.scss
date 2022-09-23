@@ -30,6 +30,10 @@
     animation: backdrop-fadein 800ms ease-in normal both;
 }
 
+.backdropImageFastFadeIn {
+    animation: backdrop-fadein 200ms ease-in normal both;
+}
+
 @keyframes backdrop-fadein {
     from {
         opacity: 0;
