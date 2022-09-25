@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.4-36",
+	"version": "10.8.5-0",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -97,6 +97,7 @@
 		"10.8.4-33": "Translations synchronized with master.\nFurther enhance reporting style for 'Weatherbot' (both ss and widget).\nUpdate themes.\nImprove ss 'Weatherbot' and 'Digital clock' compatibility with base themes.\nApply patch 'Include collections in search results'.",
 		"10.8.4-34": "Translations synchronized with master.\nFix event handlers not disinstalling at logout, instead multiplying over time causing widgets to glitch.\nModify layout of weather screen #2 in order to align with the ss reporting style.\nWhen contrast control is enabled, apply contrast level to backdrop upon initialization.",
 		"10.8.4-35": "Translations synchronized with master.\nLocalize Weatherbot's sunrise & sunset timestamps.\nMake adjustments to the Weatherbot report layout for screens #2 & #3.\nInstall a fresh copy of 'package.json' and contributors files.\nApply patch 'richer-comic-reader'.\nAdd animation to theme backdrops rotation.",
-		"10.8.4-36": "Make option 'faster animations' (display settings) effect backdrops animation as well.\nApply patch 'Defer loading of swiper until used' modified.\nInstall a fresh 'package.json' with modifications; do 'npm update' before packing up this release.\nDisable word wrapping & reduce date font size (widget 'Digital Clock').\nFix a bug introduced with recent changes in backdrop handling code which was causing some detail pages not to load."
+		"10.8.4-36": "Make option 'faster animations' (display settings) effect backdrops animation as well.\nApply patch 'Defer loading of swiper until used' modified.\nInstall a fresh 'package.json' with modifications; do 'npm update' before packing up this release.\nDisable word wrapping & reduce date font size (widget 'Digital Clock').\nFix a bug introduced with recent changes in backdrop handling code which was causing some detail pages not to load.",
+		"10.8.5-0": "Translations synchronized with master.\nApply patch 'Backport pull request #3877'.\nMake minor layout adjustments (Weatherbot widget)."
 	}
 }

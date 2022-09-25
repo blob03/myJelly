@@ -76,7 +76,7 @@ class AppRouter {
         if (path.startsWith('#')) {
             path = path.substring(1);
         }
-        // Support legacy '#' routes since people may have old bookmarks, etc.
+        // Support legacy '#!' routes since people may have old bookmarks, etc.
         if (path.startsWith('!')) {
             path = path.substring(1);
         }
@@ -85,7 +85,7 @@ class AppRouter {
             path = '/' + path;
         }
 
-        path = path.replace(this.baseUrl(), '');
+        path = path.replace(this.baseUrl(), ''); 
 
         if (this.currentRouteInfo && this.currentRouteInfo.path === path) {
             // can't use this with home right now due to the back menu
@@ -185,9 +185,8 @@ class AppRouter {
             if (arguments.length === 2) {
                 options = arguments[1];
             }
-
             const url = this.getRouteUrl(item, options);
-             this.show(url, { item });
+            this.show(url, { item });
         }
     }
 

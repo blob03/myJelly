@@ -1270,8 +1270,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .headerWthButton > fieldset {
-	margin: .1rem .5rem .1rem .5rem !important;
-	border: 4px groove #8cbdc8 !important;
+	border: 2px groove #8cbdc8 !important;
 }
 
 .homePage {

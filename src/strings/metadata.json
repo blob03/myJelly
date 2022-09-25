@@ -942,17 +942,17 @@
     },
     "he": {
         "ccode": "he",
-        "fsize": 65005,
+        "fsize": 68086,
         "ccodeSrc": "en-US",
         "displayName": "Hebrew",
         "displayNativeName": "עברית",
         "ISO6391": "he",
         "ISO6392": "heb",
-        "keys#": 974,
-        "completed%": 55.03,
+        "keys#": 1024,
+        "completed%": 57.85,
         "jellyfinWeb": {
             "filename": "he.json",
-            "keys#": 974,
+            "keys#": 1024,
             "orphans#": 5,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -961,7 +961,7 @@
                 "ButtonNetwork",
                 "Screenshot"
             ],
-            "completed%": 58.43
+            "completed%": 61.43
         },
         "myJelly": {
             "filename": "",
@@ -1559,7 +1559,7 @@
     },
     "nb": {
         "ccode": "nb",
-        "fsize": 112135,
+        "fsize": 112136,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Bokmål",
         "displayNativeName": "Norsk, Bokmål",
@@ -1997,17 +1997,17 @@
     },
     "sl-SI": {
         "ccode": "sl-SI",
-        "fsize": 101959,
+        "fsize": 111221,
         "ccodeSrc": "en-US",
         "displayName": "Slovenian",
         "displayNativeName": "Slovenščina",
         "ISO6391": "sl-SI",
         "ISO6392": "slv",
-        "keys#": 1523,
-        "completed%": 86.05,
+        "keys#": 1648,
+        "completed%": 93.11,
         "jellyfinWeb": {
             "filename": "sl-SI.json",
-            "keys#": 1523,
+            "keys#": 1648,
             "orphans#": 10,
             "orphans": [
                 "ButtonNetwork",
@@ -2021,7 +2021,7 @@
                 "Screenshots",
                 "YadifBob"
             ],
-            "completed%": 91.36
+            "completed%": 98.86
         },
         "myJelly": {
             "filename": "",

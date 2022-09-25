@@ -37,7 +37,7 @@ import './backdrop.scss';
 		constructor() {
 		}
 		
-		load(url, parent, existingBackdropImage) {
+		load(src, parent, existingBackdropImage) {
 			const self = this;
 			const type = userSettings.enableBackdrops();
 			if (!parent)
@@ -45,16 +45,16 @@ import './backdrop.scss';
 			switch(type) {
 				case 'Theme':
 					let backdropImage = document.createElement('div');
-					backdropImage.classList.add('backdropImage', 'displayingBackdropImage', 'themeBackdrop');
+					let _classes = ['backdropImage', 'displayingBackdropImage', 'themeBackdrop'];
 
-					if (url)
-						backdropImage.classList.add(url);
-					else {
+					if (!src || !src.theme) {
 						const idx = Math.ceil(Math.random() * 4);
 						if (idx)
-							backdropImage.classList.add('alt' + idx);
-					}
+							_classes.push('alt' + idx);
+					} else
+						_classes.push(src.theme);
 					
+					backdropImage.classList.add(..._classes);
 					internalBackdrop(true);
 					
 					if (enableFastAnimation()) {
@@ -92,25 +92,30 @@ import './backdrop.scss';
 				case 'SeriesFav':
 				case 'Artists':
 				case 'ArtistsFav':
+					if (!src || !src.url)
+						return;
 					const img = new Image();
 					img.onload = () => {
 						if (self.isDestroyed)
 							return;
+
+						let _classes = ['backdropImage', 'displayingBackdropImage'];
 						let backdropImage = document.createElement('div');
-						backdropImage.classList.add('backdropImage', 'displayingBackdropImage');
-						backdropImage.style.backgroundImage = `url('${url}')`;
-						backdropImage.setAttribute('data-url', url);
+						backdropImage.style.backgroundImage = `url('${src.url}')`;
+						backdropImage.setAttribute('data-url', src.url);
 						internalBackdrop(true);
 						
 						if (enableFastAnimation()) {
 							if (existingBackdropImage)
 								parent.removeChild(existingBackdropImage);
-							backdropImage.classList.add('backdropImageFastFadeIn');
+							_classes.push('backdropImageFastFadeIn');
+							backdropImage.classList.add(..._classes);
 							parent.appendChild(backdropImage);
 							return;
 						}
 
-						backdropImage.classList.add('backdropImageFadeIn');
+						_classes.push('backdropImageFadeIn');
+						backdropImage.classList.add(..._classes);
 						parent.appendChild(backdropImage);
 						const onAnimationComplete = () => {
 							dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
@@ -126,7 +131,7 @@ import './backdrop.scss';
 							once: true
 						});
 					};
-					img.src = url;
+					img.src = src.url;
 					break;
 				
 				default:
@@ -238,7 +243,7 @@ import './backdrop.scss';
 			_instance = null;
 		}
 		_instance = new Backdrop();
-		_instance.load(url, elem, existingBackdropImage);
+		_instance.load({'url': url}, elem, existingBackdropImage);
     }
 	
 	export function setBackdropThemeImage(ref) {
@@ -255,7 +260,7 @@ import './backdrop.scss';
 			_instance = null;
 		}
 		_instance = new Backdrop();
-		_instance.load(ref, elem, existingBackdropImage);
+		_instance.load({'theme': ref}, elem, existingBackdropImage);
     }
 
     function getItemImageUrls(item, imageOptions) {

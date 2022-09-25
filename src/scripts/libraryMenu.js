@@ -107,15 +107,15 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
 		html += '<div class="headerWthButton hide" id="headerWthRight" style="display: flex;flex-direction: row;margin: 0 .29em;height: 3.2em;">';
-		html += '<fieldset style="margin: 0 !important;padding: .1rem .4rem .1rem .4rem;border: .1em groove #99a5ad;">';
+		html += '<fieldset style="margin: 0 !important;padding: .1rem .4rem .1rem .4rem;border: 1px groove #99a5ad;">';
 		
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		
-		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;">';
+		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;height: 3.2em;">';
 		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;align-items: center;flex-direction: column;font-size: 90%;">';
+		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;height: 3.2em;">';
 		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .1em;">';
 		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.1em;width: 2.1em;">';
 		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.1em;">';
@@ -125,9 +125,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<div id="headerWthCity" class="headerWthCity" style="font-size: 60%;"></div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
-		
-		html += '<div style="display: flex;flex-direction: row;align-items: center;justify-content: center;width: auto;height: 3em;">';
+		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;display: flex;align-items: center;justify-content: center;font-size: 90%;height: 3.2em;">';
 		
 		html += '<div style="display: flex;flex-direction: column;outline: none;">';
 		html += '<div id="headerWthHum" class="headerWthHum" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
@@ -141,11 +139,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		
 		html += '</div>';
 		
-		html += '</div>';
-		
-		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;">';
-		
-		html += '<div style="display: flex;flex-direction: column;align-items: flex-start;justify-content: center;width: auto;height: 3em;">';
+		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;font-size: 90%;display: flex;flex-direction: column;align-items: center;justify-content: center;height: 3.2em;">';
 		
 		html += '<div style="display: flex;outline: none;margin: .1em;">';
 		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 120%;"></span>';
@@ -154,8 +148,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
 		html += '<div style="display: flex;outline: none;margin: .1em;">';
 		html += '<span class="material-icons bedtime" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunset" class="headerWthSunset" style="margin: 0 0 0 .6em;"></div>';
-		html += '</div>';
-		
 		html += '</div>';
 		
 		html += '</div>';

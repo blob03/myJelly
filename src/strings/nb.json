@@ -1024,7 +1024,7 @@
     "LabelVideoInfo": "Videoinformasjon",
     "LabelVideoRange": "Videoområde:",
     "LabelVideoResolution": "Oppløsning på video:",
-    "LabelVppTonemappingBrightness": "VPP Tonemapping lysstyrke gain",
+    "LabelVppTonemappingBrightness": "VPP Tonemapping lysstyrke gain:",
     "LabelWeb": "Web:",
     "LabelXDlnaCap": "Kapabilitets-ID for enhet:",
     "LabelXDlnaCapHelp": "Bestem innholdet i 'X_DLNACAP'-elementet i 'urn:schemas-dlna-org:device-1-0'-domenet.",

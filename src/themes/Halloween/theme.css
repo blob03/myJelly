@@ -1435,6 +1435,7 @@ option:selected {
 }
 
 .headerWthMain {
+	font-family: "Mystery";
 	color: rgba(230, 138, 57, 0.8) !important;
 	text-shadow: 1px 1px 8px #411c5b !important;
 }
@@ -1445,7 +1446,6 @@ option:selected {
 }
 
 .headerWthTemp {
-	font-family: "Mystery";
 	font-size: 170% !important;
 }
 
