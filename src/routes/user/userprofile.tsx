@@ -153,11 +153,11 @@ const UserProfile: FunctionComponent = () => {
             <div ref={element} className='padded-top padded-left padded-right padded-bottom-page'>
                 <div
                     className='readOnlyContent'
-                    style={{margin: '0 auto', marginBottom: '1.8em', padding: '0 1em', display: 'flex', flexDirection: 'row', alignItems: 'center'}}
+                    style={{margin: '0 auto', marginBottom: '1.8em', padding: '0 1em', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}
                 >
                     <div
                         className='imagePlaceHolder'
-                        style={{position: 'relative', display: 'inline-block', maxWidth: 200 }}
+                        style={{position: 'relative', display: 'inline-block', maxWidth: '10em', margin: '0 1em'}}
                     >
                         <input
                             id='uploadImage'
@@ -167,10 +167,10 @@ const UserProfile: FunctionComponent = () => {
                         />
                         <div
                             id='image'
-                            style={{width: '10em', height: '10em', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', borderRadius: '100%', backgroundSize: 'cover'}}
+                            style={{width: '9em', height: '9em', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', borderRadius: '100%', backgroundSize: 'cover'}}
                         />
                     </div>
-                    <div style={{verticalAlign: 'top', margin: '1em 2em', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                    <div style={{verticalAlign: 'top', margin: '1em 2em', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
                         <h2 className='username' style={{margin: 0, fontSize: 'xx-large'}}>
                             {userName}
                         </h2>

@@ -45,8 +45,14 @@ import './login.scss';
             }
         });
     }
-
+	
+	let _qc_interval = null;
+	
     function authenticateQuickConnect(apiClient) {
+		
+		if (_qc_interval)
+			clearInterval(_qc_interval);
+			
         const url = apiClient.getUrl('/QuickConnect/Initiate');
         apiClient.getJSON(url).then(function (json) {
             if (!json.Secret || !json.Code) {
@@ -63,14 +69,14 @@ import './login.scss';
             });
 
             const connectUrl = apiClient.getUrl('/QuickConnect/Connect?Secret=' + json.Secret);
-
-            const interval = setInterval(function() {
+			
+            _qc_interval = setInterval(function() {
                 apiClient.getJSON(connectUrl).then(async function(data) {
                     if (!data.Authenticated) {
                         return;
                     }
 
-                    clearInterval(interval);
+                    clearInterval(_qc_interval);
 
                     // Close the QuickConnect dialog
                     const dlg = document.getElementById('quickConnectAlert');
@@ -82,7 +88,7 @@ import './login.scss';
 					const result = await apiClient.quickConnect(data.Secret);
                     onLoginSuccessful(result.User.Id, result.AccessToken, apiClient);
                 }, function (e) {
-                    clearInterval(interval);
+                    clearInterval(_qc_interval);
 
                     // Close the QuickConnect dialog
                     const dlg = document.getElementById('quickConnectAlert');

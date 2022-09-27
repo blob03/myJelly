@@ -3,6 +3,7 @@ import { playbackManager } from '../playback/playbackmanager';
 import globalize from '../../scripts/globalize';
 import qualityoptions from '../qualityOptions';
 import ServerConnections from '../ServerConnections';
+import browser from '../../scripts/browser';
 
 function showQualityMenu(player, btn) {
     const videoStream = playbackManager.currentMediaSource(player).MediaStreams.filter(function (stream) {
@@ -238,7 +239,7 @@ function showWithUser(options, player, user) {
 
     return actionsheet.show({
         items: menuItems,
-		resolveOnClick: true,
+		resolveOnClick: (browser.web0s? false:true),
         positionTo: options.positionTo
     }).then(function (id) {
         return handleSelectedOption(id, options, player);
