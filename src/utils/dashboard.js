@@ -11,7 +11,7 @@ import { setBackdropTransparency } from '../components/backdrop/backdrop';
 import DirectoryBrowser from '../components/directorybrowser/directorybrowser';
 import dialogHelper from '../components/dialogHelper/dialogHelper';
 import itemIdentifier from '../components/itemidentifier/itemidentifier';
-import { enableClock } from '../scripts/settings/userSettings';
+import { showClock } from '../scripts/settings/userSettings';
 import { getLocationSearch } from './url.ts';
 
 export function getCurrentUser() {
@@ -88,7 +88,7 @@ export function onServerChanged(_userId, _accessToken, apiClient) {
 }
 
 export function logout() {
-	enableClock(0);	// 0 -> Never
+	showClock(false);
     ServerConnections.logout().then(function () {
         webSettings.getMultiServer().then(multi => {
             multi ? navigate('selectserver.html') : navigate('login.html');

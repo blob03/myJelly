@@ -150,7 +150,7 @@ const UserProfile: FunctionComponent = () => {
             title={globalize.translate('Profile')}
             className='mainAnimatedPage libraryPage userPreferencesPage userPasswordPage noSecondaryNavPage'
         >
-            <div ref={element} className='padded-left padded-right padded-bottom-page'>
+            <div ref={element} className='padded-top padded-left padded-right padded-bottom-page'>
                 <div
                     className='readOnlyContent'
                     style={{margin: '0 auto', marginBottom: '1.8em', padding: '0 1em', display: 'flex', flexDirection: 'row', alignItems: 'center'}}
@@ -167,7 +167,7 @@ const UserProfile: FunctionComponent = () => {
                         />
                         <div
                             id='image'
-                            style={{width: 200, height: 200, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', borderRadius: '100%', backgroundSize: 'cover'}}
+                            style={{width: '10em', height: '10em', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', borderRadius: '100%', backgroundSize: 'cover'}}
                         />
                     </div>
                     <div style={{verticalAlign: 'top', margin: '1em 2em', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>

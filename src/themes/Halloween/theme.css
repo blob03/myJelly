@@ -1074,6 +1074,14 @@ fieldset {
 	to {transform: scale(1.2);}
 }
 
+.btnSelectServer {
+	color: #b892d2;
+	width: 35% !important;
+	background-color: rgb(104, 67, 121);
+	box-shadow: 0px 0px 4px #471e05;
+	margin: .5em auto .5em auto !important;
+ }
+ 
 .cancel,
 .button-cancel,
 .button-alt,

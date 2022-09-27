@@ -1363,7 +1363,7 @@
     },
     "lv": {
         "ccode": "lv",
-        "fsize": 86914,
+        "fsize": 86915,
         "ccodeSrc": "en-US",
         "displayName": "Latvian",
         "displayNativeName": "Latviešu",
@@ -1814,17 +1814,17 @@
     },
     "pt-PT": {
         "ccode": "pt-PT",
-        "fsize": 111345,
+        "fsize": 121761,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese, Portugal",
         "displayNativeName": "Português, Portugal",
         "ISO6391": "pt-PT",
         "ISO6392": "por",
-        "keys#": 1538,
-        "completed%": 86.89,
+        "keys#": 1667,
+        "completed%": 94.18,
         "jellyfinWeb": {
             "filename": "pt-PT.json",
-            "keys#": 1538,
+            "keys#": 1667,
             "orphans#": 9,
             "orphans": [
                 "ButtonNetwork",
@@ -1837,7 +1837,7 @@
                 "OptionDownloadImagesInAdvance",
                 "LabelSyncPlayTimeOffset"
             ],
-            "completed%": 92.26
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -1849,7 +1849,7 @@
     },
     "pt": {
         "ccode": "pt",
-        "fsize": 97577,
+        "fsize": 97572,
         "ccodeSrc": "en-US",
         "displayName": "Portuguese",
         "displayNativeName": "Português",

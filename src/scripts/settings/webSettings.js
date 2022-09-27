@@ -95,8 +95,8 @@ const baseDefaultTheme = {
 };
 
 const baseDefaultPreset = {
-    'name': 'Dark',
-    'id': 'dark',
+    'name': 'Neon pink',
+    'id': 'Neonpink',
     'default': true
 };
 

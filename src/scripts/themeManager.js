@@ -21,18 +21,17 @@ function getPresets() {
 
 function getThemeStylesheetInfo(id) {
     return getThemes().then(themes => {
-        let theme;
-
+        let theme = null;
+		
         if (id) {
-            theme = themes.find(currentTheme => {
-                return currentTheme.id === id;
+            theme = themes.find(x => {
+                return x.id === id;
             });
         }
-
-        if (!theme) {
-            theme = getDefaultTheme();
-        }
-
+		
+		if (!theme)
+			theme = getDefaultTheme();
+		
         return {
             stylesheetPath: 'themes/' + theme.id + '/theme.css',
             themeId: theme.id,
@@ -43,29 +42,24 @@ function getThemeStylesheetInfo(id) {
 
 function setTheme(id) {
     return new Promise(function (resolve) {
-				
-        if (currentThemeId && currentThemeId === id) {
-            resolve();
-            return;
-        }
-
+		
 		// If requested theme is "None" then unload the theme in use and exit.
 		if (id === "None") {
 			unloadTheme();
+			resolve();
 			return;
 		}
 		
-        getThemeStylesheetInfo(id).then(function (info) {
-            if (currentThemeId && currentThemeId === info.themeId) {
+        getThemeStylesheetInfo(id).then( (info) => {
+            if (info.themeId === currentThemeId) {
                 resolve();
                 return;
             }
-
+			currentThemeId = info.themeId;
             const linkUrl = info.stylesheetPath;
             unloadTheme();
 
             let link = themeStyleElement;
-
             if (!link) {
                 // Inject the theme css as a dom element in body so it will take
                 // precedence over other stylesheets
@@ -82,11 +76,8 @@ function setTheme(id) {
             };
 
             link.addEventListener('load', onLoad);
-
             link.setAttribute('href', linkUrl);
             themeStyleElement = link;
-            currentThemeId = info.themeId;
-			
 			document.getElementById('themeColor').content = info.color;
         });
     });

@@ -697,12 +697,12 @@ export class UserSettings {
 		if (!_hdrclck) {
 			this.placeClock(0);
 			_hdrclck = document.getElementsByClassName('headerClockActive')[0];
-		}			
+		}
 		this._hdrclkdate_span = _hdrclck.getElementsByClassName('headerClockDate')[0];
-		this._hdrclktime_span = _hdrclck.getElementsByClassName('headerClockTime')[0];	
+		this._hdrclktime_span = _hdrclck.getElementsByClassName('headerClockTime')[0];
 		
 		if (val === true) {
-			/*** Show ***/
+			/*** Start and Show ***/
 			this.toggleNightMode(false);
 			const self = this;
 			setTimeout(hdrClock.bind(self), 10);
@@ -711,7 +711,7 @@ export class UserSettings {
 			}
 			_hdrclck.parentElement.classList.remove('hide');
 		} else {
-			/*** Hide ***/
+			/*** Halt and Hide ***/
 			_hdrclck.parentElement.classList.add('hide');
 			if (this.clockTimer !== null) {
 				clearInterval(this.clockTimer);

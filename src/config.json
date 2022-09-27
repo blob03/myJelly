@@ -10,16 +10,17 @@
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.29",
+		"version": "2.30",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "1.91",
+		"version": "1.92",
 		"id": "dark-alt",
 		"color": "#202020",
-		"group": "myJelly"
+		"group": "myJelly",
+		"default": true
 	}, {
 		"name": "WMC alt.",
 		"version": "1.45",
@@ -37,8 +38,7 @@
 	}, {
 		"name": "Dark",
 		"id": "dark",
-		"color": "#202020",
-		"default": true
+		"color": "#202020"
 	}, {
 		"name": "Light",
 		"id": "light",
@@ -223,7 +223,8 @@
 		"osize": 1,
 		"bgcolor": "Transparent",
 		"shcolor": "Red",
-		"shadow": "diffused"
+		"shadow": "diffused",
+		"default": true
     }, {
 		"name": "Neon pink alt.",
 		"id": "Cutepink",

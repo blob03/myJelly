@@ -270,14 +270,25 @@ function loadColors(context) {
 
 function fillPresets(select, selectedPreset) {
 	skinManager.getPresets().then(presets => {
-		select.innerHTML += presets.map(t => {
-			return `<option value="${t.id}">${t.name}</option>`;
-		}).join('');
-
-		// get default preset
-		// const defaultPreset = presets.find(preset => preset.default);
-
-		// set the current theme
+		
+		presets.sort((a, b) => {
+			let fa = a.name.toLowerCase(),
+				fb = b.name.toLowerCase();
+			if (fa < fb) 
+				return -1;
+			if (fa > fb) 
+				return 1;
+			return 0;
+		});
+		
+		presets.forEach(t => {
+			let z = document.createElement("option");
+			if (t.default)
+				z.icon = 'star';
+			z.value = t.id;
+			z.text = t.name;
+			select.options.add(z, undefined);
+		});
 		select.value = selectedPreset || '';
 	});
 }
