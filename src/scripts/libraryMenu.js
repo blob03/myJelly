@@ -23,7 +23,7 @@ import '../assets/css/scrollstyles.scss';
 import '../assets/css/flexstyles.scss';
 
 import appSettings from './settings/appSettings';
-import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showClock, placeClock, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, placeClock, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -1341,6 +1341,9 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showCl
     Events.on(ServerConnections, 'localusersignedout', function () {
         currentUser = {};
         updateUserInHeader(null);
+		
+		showClock(false);
+		showWeatherBot(false);
     });
 
     Events.on(playbackManager, 'playerchange', updateCastIcon);

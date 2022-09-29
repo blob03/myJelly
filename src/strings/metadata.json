@@ -1000,17 +1000,17 @@
     },
     "hr": {
         "ccode": "hr",
-        "fsize": 77506,
+        "fsize": 77548,
         "ccodeSrc": "en-US",
         "displayName": "Croatian",
         "displayNativeName": "Hrvatski",
         "ISO6391": "hr",
         "ISO6392": "hrv",
-        "keys#": 1184,
-        "completed%": 66.89,
+        "keys#": 1185,
+        "completed%": 66.95,
         "jellyfinWeb": {
             "filename": "hr.json",
-            "keys#": 1184,
+            "keys#": 1185,
             "orphans#": 6,
             "orphans": [
                 "ButtonNetwork",
@@ -1020,7 +1020,7 @@
                 "OptionDownloadImagesInAdvance",
                 "Screenshots"
             ],
-            "completed%": 71.03
+            "completed%": 71.09
         },
         "myJelly": {
             "filename": "",
@@ -2237,17 +2237,17 @@
     },
     "tr": {
         "ccode": "tr",
-        "fsize": 108737,
+        "fsize": 110307,
         "ccodeSrc": "en-US",
         "displayName": "Turkish",
         "displayNativeName": "Türkçe",
         "ISO6391": "tr",
         "ISO6392": "tur",
-        "keys#": 1560,
-        "completed%": 88.14,
+        "keys#": 1572,
+        "completed%": 88.81,
         "jellyfinWeb": {
             "filename": "tr.json",
-            "keys#": 1560,
+            "keys#": 1572,
             "orphans#": 6,
             "orphans": [
                 "ButtonNetwork",
@@ -2257,7 +2257,7 @@
                 "Screenshots",
                 "Screenshot"
             ],
-            "completed%": 93.58
+            "completed%": 94.3
         },
         "myJelly": {
             "filename": "",
@@ -2269,20 +2269,20 @@
     },
     "ug": {
         "ccode": "ug",
-        "fsize": 286,
+        "fsize": 671,
         "ccodeSrc": "en-US",
         "displayName": "Uighur; Uyghur",
         "displayNativeName": "Uyƣurqə",
         "ISO6391": "ug",
         "ISO6392": "uig",
-        "keys#": 8,
-        "completed%": 0.45,
+        "keys#": 15,
+        "completed%": 0.85,
         "jellyfinWeb": {
             "filename": "ug.json",
-            "keys#": 8,
+            "keys#": 15,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 0.48
+            "completed%": 0.9
         },
         "myJelly": {
             "filename": "",

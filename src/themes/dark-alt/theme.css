@@ -974,8 +974,7 @@ option.selected {
 	background: none;
 }
 
-.sliderContainer-settings.disabled .mdl-slider
- {
+.sliderContainer-settings.disabled .mdl-slider {
 	visibility: hidden;
 }
 
@@ -1060,18 +1059,22 @@ button.emby-button {
 
 .btnSelectServer,
 .btnManual,
-.btnRevoke,
-.btnForgotPassword,
 .btnQuick,
 .btnSave,
-.button-submit,
+.btnRevoke,
+.btnForgotPassword,
 .cancel,
 .button-cancel,
 #btnResetPassword,
 #btnResetEasyPassword,
-#btnDeleteImage {
+.button-submit {
 	margin: .5em auto .5em auto !important;
 	width: 20em !important;
+}
+
+#btnDeleteImage {
+	margin: .5em auto .5em auto !important;
+	width: 15em !important;
 }
 
 button.submit {
