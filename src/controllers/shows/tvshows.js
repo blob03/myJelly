@@ -28,7 +28,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                         EnableImageTypes: 'Primary,Backdrop,Banner,Thumb',
                         StartIndex: 0
                     },
-                    view: libraryBrowser.getSavedView(key) || 'PosterCard'
+                    view: libraryBrowser.getSavedView(key) || 'Poster'
                 };
 
                 if (userSettings.libraryPageSize() > 0) {
@@ -80,7 +80,7 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                     }
 
                     if (userSettings.libraryPageSize() > 0) {
-                        query.StartIndex += parseInt(query.Limit, 10);
+                        query.StartIndex += query.Limit;
                     }
                     reloadItems(tabContent);
                 }
@@ -195,29 +195,29 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                 });
             });
         };
-		
+
         const data = {};
         let isLoading = false;
+
+        this.showFilterMenu = function () {
+            import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
+                const filterDialog = new filterDialogFactory({
+                    query: getQuery(tabContent),
+                    mode: 'series',
+                    serverId: ApiClient.serverId()
+                });
+                Events.on(filterDialog, 'filterchange', function () {
+                    getQuery(tabContent).StartIndex = 0;
+                    reloadItems(tabContent);
+                });
+                filterDialog.show();
+            });
+        };
 
         this.getCurrentViewStyle = function () {
             return getPageData(tabContent).view;
         };
 
-		this.showFilterMenu = function () {
-			import('../../components/filterdialog/filterdialog').then(({default: filterDialogFactory}) => {
-				const filterDialog = new filterDialogFactory({
-					query: getQuery(tabContent),
-					mode: 'series',
-					serverId: ApiClient.serverId()
-				});
-				Events.on(filterDialog, 'filterchange', function () {
-					getQuery(tabContent).StartIndex = 0;
-					reloadItems(tabContent);
-				});
-				filterDialog.show();
-			});
-		};
-		
         const initPage = (tabContent) => {
             const alphaPickerElement = tabContent.querySelector('.alphaPicker');
             const itemsContainer = tabContent.querySelector('.itemsContainer');
@@ -247,21 +247,23 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
             tabContent.querySelector('.btnFilter').addEventListener('click', () => {
                 this.showFilterMenu();
             });
-		
             tabContent.querySelector('.btnSort').addEventListener('click', function (e) {
                 libraryBrowser.showSortMenu({
                     items: [{
                         name: globalize.translate('Name'),
                         id: 'SortName'
-					}, {
+                    }, {
                         name: globalize.translate('OptionRandom'),
                         id: 'Random'
                     }, {
                         name: globalize.translate('OptionImdbRating'),
                         id: 'CommunityRating,SortName'
                     }, {
-                        name: globalize.translate('OptionDateAdded'),
+                        name: globalize.translate('OptionDateShowAdded'),
                         id: 'DateCreated,SortName'
+                    }, {
+                        name: globalize.translate('OptionDateEpisodeAdded'),
+                        id: 'DateLastContentAdded,SortName'
                     }, {
                         name: globalize.translate('OptionDatePlayed'),
                         id: 'SeriesDatePlayed,SortName'

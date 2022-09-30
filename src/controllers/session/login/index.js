@@ -280,33 +280,33 @@ import './login.scss';
 				});
 
             apiClient.getPublicUsers().then(function (users) {
-                if (users.length) {
+                if (users && users.length) {
                     showVisualForm();
                     loadUserList(view, apiClient, users);
                 } else {
                     view.querySelector('#txtManualName').value = '';
                     showManualForm(view, false, false);
                 }
-            }).catch().then(function () {
-                loading.hide();
-            });
-            apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
-                const disclaimer = view.querySelector('.disclaimer');
+            }).catch().finally( () => {
+				apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
+					const disclaimer = view.querySelector('.disclaimer');
 
-                disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
+					disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
 
-                for (const elem of disclaimer.querySelectorAll('a')) {
-					elem.rel = 'noopener noreferrer';
-                    elem.target = '_blank';
-                    elem.classList.add('button-link');
-                    elem.setAttribute('is', 'emby-linkbutton');
+					for (const elem of disclaimer.querySelectorAll('a')) {
+						elem.rel = 'noopener noreferrer';
+						elem.target = '_blank';
+						elem.classList.add('button-link');
+						elem.setAttribute('is', 'emby-linkbutton');
 
-                    if (layoutManager.tv) {
-                        // Disable links navigation on TV
-                        elem.tabIndex = -1;
-                    }
-                }
-            });
+						if (layoutManager.tv) {
+							// Disable links navigation on TV
+							elem.tabIndex = -1;
+						}
+					}
+				});
+				loading.hide();
+			});
         });
         view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);

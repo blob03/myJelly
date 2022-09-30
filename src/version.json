@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-3",
+	"version": "10.8.5-4",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -101,6 +101,7 @@
 		"10.8.5-0": "Translations synchronized with master.\nApply patch 'Backport pull request #3877'.\nMake minor layout adjustments (Weatherbot widget).",
 		"10.8.5-1": "Translations synchronized with master.\nMake theme 'Dark-alt' the default.\nMake subtitles preset 'Neon pink' the default.\nSort out the list of available presets and mark the default (subtitles settings).\nInstall a fresh 'package.json' modified; users should run '#npm update' before packing up next time.\nApply patch 'kristiankauffeld/bug-#3929'.",
 		"10.8.5-2": "Enforce one pending QuickConnect request max at any time; cancel any running request at launch time.\nMake some adjustments to the layout of the profile page and tab 'About' also.\nFix an issue with patch 'set html player actionsheet to resolve on click' which prevent video settings subsheets to display during playback with WebOs.",
-		"10.8.5-3": "Translations synchronized with master.\nApply patch 'Remove naive scaling of video playback controls'.\nUpdate 'package.json' from master.\nApply patch 'fix-book-players-styles'.\nDeactivate widgets 'Digital Clock' and 'Weatherbot' upon user logout."
+		"10.8.5-3": "Translations synchronized with master.\nApply patch 'Remove naive scaling of video playback controls'.\nUpdate 'package.json' from master.\nApply patch 'fix-book-players-styles'.\nDeactivate widgets 'Digital Clock' and 'Weatherbot' upon user logout.",
+		"10.8.5-4": "Translations synchronized with master.\nApply patch 'add-episode-add-sort'.\nUpdate 'package.json' from master.\nApply patch 'auto switch between LocalAddress and ManualAddress'."
 	}
 }

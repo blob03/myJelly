@@ -703,7 +703,7 @@
     "LabelImageType": "Tipo de imagen:",
     "LabelImportOnlyFavoriteChannels": "Restringir a canales marcados como favoritos",
     "LabelInNetworkSignInWithEasyPassword": "Habilitar inicio de sesión con mi código \"Easy PIN\" para conexiones dentro de la red",
-    "LabelInNetworkSignInWithEasyPasswordHelp": "Utiliza el código PIN sencillo para acceder a los clientes en tu red local. Tu contraseña regular solo se necesitará fuera de casa. Si el código PIN se deja en blanco, no necesitarás una contraseña dentro de tu red local.",
+    "LabelInNetworkSignInWithEasyPasswordHelp": "Utiliza el código PIN sencillo para acceder desde un cliente en tu red local. Tu contraseña regular solo se necesitará fuera de casa. Si el código PIN se deja en blanco, no necesitarás una contraseña dentro de tu red local.",
     "LabelInternetQuality": "Calidad en Internet:",
     "LabelIsForced": "Forzar",
     "LabelKeepUpTo": "Mantener hasta:",
