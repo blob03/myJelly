@@ -43,12 +43,11 @@ import viewContainer from '../viewContainer';
 			let ngroups = Object.keys(groups);
 			ngroups.forEach( x => {
 				
+				let w = document.createElement("option");
 				if (layoutManager.tv) {
-					let w = document.createElement("option");
 					w.divider = x;
 					select.options.add(w, undefined);
 				} else {
-					let w = document.createElement("option");
 					w.text = "-------------\u00A0\u00A0\u00A0" + x;
 					w.disabled = true;
 					//w.style.fontWeight = "bold";

@@ -47,6 +47,16 @@ import './login.scss';
     }
 	
 	let _qc_interval = null;
+	let _qc_prevCode = null;
+	
+	function resetQuickConnect() {
+		if (_qc_interval) {
+			clearInterval(_qc_interval);
+			toast(globalize.translate('QuickConnectCancelCode', _qc_prevCode));
+		}
+		_qc_interval = null;
+		_qc_prevCode = null;
+	}
 	
     function authenticateQuickConnect(apiClient) {
 		
@@ -59,7 +69,7 @@ import './login.scss';
                 console.error('Malformed quick connect response', json);
                 return false;
             }
-
+			
             baseAlert({
                 dialogOptions: {
                     id: 'quickConnectAlert'
@@ -67,7 +77,13 @@ import './login.scss';
                 title: globalize.translate('QuickConnect'),
                 text: globalize.translate('QuickConnectAuthorizeCode', json.Code)
             });
-
+			
+			if (_qc_prevCode) {
+				toast(globalize.translate('QuickConnectCancelCode', _qc_prevCode));
+			}
+			
+			_qc_prevCode = json.Code;
+			
             const connectUrl = apiClient.getUrl('/QuickConnect/Connect?Secret=' + json.Secret);
 			
             _qc_interval = setInterval(function() {
@@ -118,6 +134,7 @@ import './login.scss';
     }
 
     function onLoginSuccessful(id, accessToken, apiClient) {
+		resetQuickConnect();
         Dashboard.onServerChanged(id, accessToken, apiClient);
         Dashboard.navigate('home.html');
     }
@@ -193,14 +210,13 @@ import './login.scss';
     }
 
     export default function (view, params) {
+		
         function getApiClient() {
-            const serverId = params.serverid;
-
+            const serverId = params? params.serverid: null;
             if (serverId) {
                 return ServerConnections.getOrCreateApiClient(serverId);
             }
-
-            return ApiClient;
+            return ServerConnections.currentApiClient();
         }
 
         function showVisualForm() {
@@ -227,7 +243,9 @@ import './login.scss';
                     context.querySelector('#txtManualName').value = '';
                     showManualForm(context, true);
                 } else if (haspw == 'false') {
-                    authenticateUserByName(context, getApiClient(), name, '');
+					const apiClient = getApiClient();
+					if (apiClient)
+						authenticateUserByName(context, apiClient, name, '');
                 } else {
                     context.querySelector('#txtManualName').value = name;
                     context.querySelector('#txtManualPassword').value = '';
@@ -238,7 +256,8 @@ import './login.scss';
         view.querySelector('.manualLoginForm').addEventListener('submit', function (e) {
             appSettings.enableAutoLogin(view.querySelector('.chkRememberLogin').checked);
             const apiClient = getApiClient();
-            authenticateUserByName(view, apiClient, view.querySelector('#txtManualName').value, view.querySelector('#txtManualPassword').value);
+			if (apiClient)
+				authenticateUserByName(view, apiClient, view.querySelector('#txtManualName').value, view.querySelector('#txtManualPassword').value);
             e.preventDefault();
             return false;
         });
@@ -248,7 +267,8 @@ import './login.scss';
         view.querySelector('.btnCancel').addEventListener('click', showVisualForm);
         view.querySelector('.btnQuick').addEventListener('click', function () {
             const apiClient = getApiClient();
-            authenticateQuickConnect(apiClient);
+			if (apiClient)
+				authenticateQuickConnect(apiClient);
             return false;
         });
         view.querySelector('.btnManual').addEventListener('click', function () {
@@ -268,7 +288,11 @@ import './login.scss';
             }
 
             const apiClient = getApiClient();
-
+			if (!apiClient) {
+				loading.hide();
+				return;
+			}
+			
             apiClient.getQuickConnect('Enabled')
 				.then(enabled => {
 					if (enabled === true) {
@@ -284,6 +308,7 @@ import './login.scss';
                     showVisualForm();
                     loadUserList(view, apiClient, users);
                 } else {
+					
                     view.querySelector('#txtManualName').value = '';
                     showManualForm(view, false, false);
                 }
@@ -308,6 +333,7 @@ import './login.scss';
 				loading.hide();
 			});
         });
+		
         view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);
         });

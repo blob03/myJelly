@@ -170,8 +170,8 @@ const UserProfile: FunctionComponent = () => {
                             style={{width: '9em', height: '9em', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', borderRadius: '100%', backgroundSize: 'cover'}}
                         />
                     </div>
-                    <div style={{verticalAlign: 'top', margin: '1em 2em', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <h2 className='username' style={{margin: 0, fontSize: 'xx-large'}}>
+                    <div className='verticalSection' style={{verticalAlign: 'top', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                        <h2 className='username sectionTitle' style={{margin: 0}}>
                             {userName}
                         </h2>
                         <br />

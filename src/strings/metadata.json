@@ -755,17 +755,17 @@
     },
     "fi": {
         "ccode": "fi",
-        "fsize": 114169,
+        "fsize": 114270,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
         "displayNativeName": "Suomi",
         "ISO6391": "fi",
         "ISO6392": "fin",
-        "keys#": 1661,
-        "completed%": 93.74,
+        "keys#": 1663,
+        "completed%": 93.85,
         "jellyfinWeb": {
             "filename": "fi.json",
-            "keys#": 1661,
+            "keys#": 1663,
             "orphans#": 10,
             "orphans": [
                 "ButtonNetwork",
@@ -779,7 +779,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.52
+            "completed%": 99.64
         },
         "myJelly": {
             "filename": "fi.json",

@@ -117,7 +117,6 @@ import cardBuilder from '../../../components/cardbuilder/cardBuilder';
             ServerConnections.connectToServer(server, {
                 enableAutoLogin: appSettings.enableAutoLogin()
             }).then(function (result) {
-                loading.hide();
                 const apiClient = result.ApiClient;
 
                 switch (result.State) {
@@ -141,7 +140,7 @@ import cardBuilder from '../../../components/cardbuilder/cardBuilder';
                     default:
                         showServerConnectionFailure();
                 }
-            });
+            }).finally(()=>{loading.hide();});
         }
 
         function deleteServer(server) {
@@ -149,7 +148,7 @@ import cardBuilder from '../../../components/cardbuilder/cardBuilder';
             ServerConnections.deleteServer(server.Id).then(function () {
                 loading.hide();
                 loadServers();
-            });
+            }).finally(()=>{loading.hide();});
         }
 
         function onServerClick(server) {
@@ -188,7 +187,9 @@ import cardBuilder from '../../../components/cardbuilder/cardBuilder';
 
         function loadServers() {
             loading.show();
-            ServerConnections.getAvailableServers().then(onServersRetrieved);
+            ServerConnections.getAvailableServers()
+			.then(onServersRetrieved)
+			.finally(()=>{loading.hide();});
         }
 
         let servers;

@@ -87,7 +87,7 @@
     "OptionHasThemeVideo": "Vidéo thématique",
     "Pressure": "Pression atmosphérique",
     "Queue": "Queue",
-    "QuickConnectActivationFail": "Activation impossible",
+    "QuickConnectCancelCode": "Le code {0} est annulé",
     "RandomScreensaverHelp": "Laisser le système décider.",
     "Reload": "Recharger l'application",
     "RotationOnPause": "Rotation en pause.",

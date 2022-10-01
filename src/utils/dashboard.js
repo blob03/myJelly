@@ -88,10 +88,12 @@ export function onServerChanged(_userId, _accessToken, apiClient) {
 }
 
 export function logout() {
-	showClock(false);
+	const apiClient = window.ApiClient;
+	const serverId = apiClient._serverInfo.Id;
+	
     ServerConnections.logout().then(function () {
         webSettings.getMultiServer().then(multi => {
-            multi ? navigate('selectserver.html') : navigate('login.html');
+            multi ? navigate('selectserver.html') : navigate('login.html?serverid=' + serverId, false);
         });
     });
 }
@@ -101,7 +103,8 @@ export function getPluginUrl(name) {
 }
 
 export function getConfigurationResourceUrl(name) {
-    return ApiClient.getUrl('web/ConfigurationPage', {
+	const apiClient = window.ApiClient;
+    return apiClient.getUrl('web/ConfigurationPage', {
         name: name
     });
 }
