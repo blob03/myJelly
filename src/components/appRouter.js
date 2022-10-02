@@ -7,7 +7,6 @@ import itemHelper from './itemHelper';
 import loading from './loading/loading';
 import viewManager from './viewManager/viewManager';
 import ServerConnections from './ServerConnections';
-import toast from './toast/toast';
 import alert from './alert';
 
 export const history = createHashHistory();
@@ -208,8 +207,6 @@ class AppRouter {
                 this.goHome();
                 break;
             case 'ServerSignIn':
-			toast('inside approuter.js');
-			toast(result.ApiClient.serverId()); 
                 this.showLocalLogin(result.ApiClient.serverId());
                 break;
             case 'ServerSelection':

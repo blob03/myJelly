@@ -4,7 +4,8 @@ import Dashboard from '../../../utils/dashboard';
 /* eslint-disable indent */
 
     function processForgotPasswordResult(result) {
-        if (result.Action == 'ContactAdmin') {
+        if ((result.Action == 'ContactAdmin') || 
+			(result.Action == 'InNetworkRequired')) {
             Dashboard.alert({
                 message: globalize.translate('MessageContactAdminToResetPassword'),
                 title: globalize.translate('ButtonForgotPassword')
@@ -12,6 +13,7 @@ import Dashboard from '../../../utils/dashboard';
 			return;
         }
 
+/*
         if (result.Action == 'InNetworkRequired') {
             Dashboard.alert({
                 message: globalize.translate('MessageForgotPasswordInNetworkRequired'),
@@ -19,12 +21,10 @@ import Dashboard from '../../../utils/dashboard';
             });
 			return;
         }
-
+*/
         if (result.Action == 'PinCode') {
             let msg = globalize.translate('MessageForgotPasswordFileCreated');
             msg += '<br/>';
-            msg += '<br/>';
-            msg += 'Enter PIN here to finish Password Reset<br/>';
             msg += '<br/>';
             msg += result.PinFile;
             msg += '<br/>';

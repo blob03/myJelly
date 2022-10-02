@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-5",
+	"version": "10.8.5-6",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -103,6 +103,7 @@
 		"10.8.5-2": "Enforce one pending QuickConnect request max at any time; cancel any running request at launch time.\nMake some adjustments to the layout of the profile page and tab 'About' also.\nFix an issue with patch 'set html player actionsheet to resolve on click' which prevent video settings subsheets to display during playback with WebOs.",
 		"10.8.5-3": "Translations synchronized with master.\nApply patch 'Remove naive scaling of video playback controls'.\nUpdate 'package.json' from master.\nApply patch 'fix-book-players-styles'.\nDeactivate widgets 'Digital Clock' and 'Weatherbot' upon user logout.",
 		"10.8.5-4": "Translations synchronized with master.\nApply patch 'add-episode-add-sort'.\nUpdate 'package.json' from master.\nApply patch 'auto switch between LocalAddress and ManualAddress'.",
-		"10.8.5-5": "Translations synchronized with master.\nFix a bug in getApiClient() (login/index.js) causing the client to crash if called without parameters.\nWhen no serverId is provided, make getApiClient() return the current API client rather than a mere null.\nMake dashboard.logout() send a serverId along its request to login.html.\nMake minor visual adjustments to the login sub/pages.\nIf multiple QuickConnect requests are made, keep the latest and show the user the codes that were cancelled.\nUpon successful login, remove any pending QC request and show the code that was cancelled."
+		"10.8.5-5": "Translations synchronized with master.\nFix a bug in getApiClient() (login/index.js) causing clients to crash if called without parameters.\nWhen no serverId is provided, make getApiClient() return the current API client rather than a mere null.\nMake dashboard.logout() send a serverId along its request to login.html.\nMake minor visual adjustments to the login sub/pages.\nIf multiple QuickConnect requests are made, keep the latest and show the user the codes that were cancelled.\nUpon successful login, remove any pending QC request and show the code that was cancelled.",
+		"10.8.5-6": "Translations synchronized with master.\nRemove residual debug code from approuter.\nProcess password recovery action 'InNetworkRequired' as 'ContactAdmin'.\nRemove hardcoded english text from the password recovery 'step #2' page."
 	}
 }
