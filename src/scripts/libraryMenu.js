@@ -260,6 +260,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
             headerUserButton.classList.add('hide');
 
 		updateHeaderUserButton(url);
+		
+		if (layoutManager.tv)
+			headerReloadButton.classList.remove('hide');
+		else
+			headerReloadButton.classList.add('hide');
 
         if (user && user.localUser) {
             if (headerHomeButton) 
@@ -276,10 +281,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 				else
 					mainDrawerButton.classList.add('hide');
 			}
-			if (layoutManager.tv || browser.mobile || browser.iOS) 
-				headerReloadButton.classList.remove('hide');
-			else
-				headerReloadButton.classList.add('hide');
 			
 			if (layoutManager.tv && !browser.mobile) {
 				headerLockButton.classList.remove('hide');
@@ -321,8 +322,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
                 headerSearchButton.classList.add('hide');
 			if (backdropInfoButton) 
                 backdropInfoButton.classList.add('hide');
-			if (headerReloadButton) 
-				headerReloadButton.classList.add('hide');
 			if (headerLockButton) 
 				headerLockButton.classList.add('hide');
         }
@@ -365,11 +364,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 	
 	function doReload() {
-		// Move to the home page 
-		// before reloading everything anew from the server.
-		appRouter.show("/home.html").then(() => {
-			window.location.reload(true);
-		});
+		window.location.reload(true);
 	}
 	
 	function doLock() {
@@ -1358,7 +1353,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         setTabs: setTabs,
         setDefaultTitle: setDefaultTitle,
         setTitle: setTitle,
-        setTransparentMenu: setTransparentMenu
+        setTransparentMenu: setTransparentMenu,
+		updateUserInHeader: updateUserInHeader
     };
 
     window.LibraryMenu = LibraryMenu;

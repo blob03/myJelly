@@ -286,6 +286,8 @@ import './login.scss';
             if (!appHost.supports('multiserver')) {
                 view.querySelector('.btnSelectServer').classList.add('hide');
             }
+			
+			libraryMenu.updateUserInHeader(null);
 
             const apiClient = getApiClient();
 			if (!apiClient) {

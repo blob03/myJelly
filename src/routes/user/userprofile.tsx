@@ -189,6 +189,7 @@ const UserProfile: FunctionComponent = () => {
                         />
                     </div>
                 </div>
+
                 <UserPasswordForm
                     userId={userId}
                 />
