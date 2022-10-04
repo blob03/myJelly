@@ -64,7 +64,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 txtEasyPassword.value = '';
 
                 if (user.HasConfiguredEasyPassword) {
-                    txtEasyPassword.placeholder = '******';
+                    txtEasyPassword.placeholder = '*****';
                     (page.querySelector('#btnResetEasyPassword') as HTMLDivElement).classList.remove('hide');
                 } else {
                     txtEasyPassword.removeAttribute('placeholder');

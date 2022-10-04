@@ -99,7 +99,7 @@ function fillSubtitleList(context, item) {
 
             itemHtml += '<' + tagName + ' class="' + className + '" data-index="' + s.Index + '">';
 
-            itemHtml += '<span class="listItemIcon material-icons closed_caption" aria-hidden="true"></span>';
+            itemHtml += '<span class="listItemIcon material-icons subtitles" aria-hidden="true"></span>';
 
             itemHtml += '<div class="listItemBody two-line">';
 
@@ -194,7 +194,7 @@ function renderSearchResults(context, results) {
 
         html += '<' + tagName + ' class="' + className + '" data-subid="' + result.Id + '">';
 
-        html += '<span class="listItemIcon material-icons closed_caption" aria-hidden="true"></span>';
+        html += '<span class="listItemIcon material-icons subtitles" aria-hidden="true"></span>';
 
         const bodyClass = result.Comment || result.IsHashMatch ? 'three-line' : 'two-line';
 

@@ -207,7 +207,7 @@ import toast from './toast/toast';
                     commands.push({
                         name: globalize.translate('EditSubtitles'),
                         id: 'editsubtitles',
-                        icon: 'closed_caption'
+                        icon: 'subtitles'
                     });
                 }
             }

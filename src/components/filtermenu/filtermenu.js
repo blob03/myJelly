@@ -131,6 +131,7 @@ function saveValues(context, settings, settingsKey) {
             seriesStatuses.push(elems[i].getAttribute('data-filter'));
         }
     }
+    userSettings.setFilter(`${settingsKey}-filter-SeriesStatus`, seriesStatuses.join(','));
 
     // Genres
     const genres = [];

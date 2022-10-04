@@ -239,7 +239,6 @@ function showWithUser(options, player, user) {
 
     return actionsheet.show({
         items: menuItems,
-		resolveOnClick: (browser.web0s? false:true),
         positionTo: options.positionTo
     }).then(function (id) {
         return handleSelectedOption(id, options, player);

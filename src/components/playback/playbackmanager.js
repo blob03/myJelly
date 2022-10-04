@@ -2073,7 +2073,8 @@ class PlaybackManager {
 
             // If it's still null then there's nothing to play
             if (!firstItem) {
-                showPlaybackInfoErrorMessage(self, 'PlaybackErrorNoCompatibleStream');
+				loading.hide();
+                showPlaybackInfoErrorMessage(self, 'PlaybackErrorNoStream');
                 return Promise.reject();
             }
 
