@@ -86,7 +86,7 @@
     "Oblique": "Oblique :",
     "OptionDivider": "...............................",
     "OptionHasThemeVideo": "Vidéo thématique",
-    "PlaybackErrorNoStream": "Le média est introuvable ou endommagé.",
+    "PlaybackErrorNoStream": "Le média demandé est introuvable.",
     "Pressure": "Pression atmosphérique",
     "Queue": "Queue",
     "QuickConnectCancelCode": "Le code {0} est annulé",

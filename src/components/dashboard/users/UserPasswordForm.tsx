@@ -259,7 +259,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
             </form>
             <br />
             <form
-                className='localAccessForm localAccessSection'
+                className='localAccessForm localAccessSection hide'
                 style={{margin: '0 auto'}}
             >
                 <div className='detailSection'>

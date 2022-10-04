@@ -266,7 +266,7 @@ const supportedFeatures = function () {
     features.push('screensaver');
 
     webSettings.getMultiServer().then(enabled => {
-        if (enabled) features.push('multiserver');
+        if (enabled || browser.web0s) features.push('multiserver');
     });
 
     if (!browser.orsay && (browser.firefox || browser.ps4 || browser.edge || supportsCue())) {

@@ -86,7 +86,7 @@
     "Oblique": "Oblique:",
     "OptionDivider": "...............................",
     "OptionHasThemeVideo": "Theme Video",
-    "PlaybackErrorNoStream": "Media is missing or damaged.",
+    "PlaybackErrorNoStream": "Media is missing.",
     "Pressure": "Atmospheric pressure",
     "Queue": "Queue",
     "QuickConnectCancelCode": "Code {0} was cancelled",
