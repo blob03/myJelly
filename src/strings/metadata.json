@@ -691,9 +691,9 @@
         "fsize": 114699,
         "ccodeSrc": "en-US",
         "displayName": "Basque",
-        "displayNativeName": "Euskara",
+        "displayNativeName": "Euskera",
         "ISO6391": "eu",
-        "ISO6392": "baq",
+        "ISO6392": "es-PV",
         "keys#": 1616,
         "completed%": 91.09,
         "jellyfinWeb": {
@@ -2269,20 +2269,20 @@
     },
     "ug": {
         "ccode": "ug",
-        "fsize": 671,
+        "fsize": 1204,
         "ccodeSrc": "en-US",
         "displayName": "Uighur; Uyghur",
         "displayNativeName": "Uyƣurqə",
         "ISO6391": "ug",
         "ISO6392": "uig",
-        "keys#": 15,
-        "completed%": 0.85,
+        "keys#": 27,
+        "completed%": 1.52,
         "jellyfinWeb": {
             "filename": "ug.json",
-            "keys#": 15,
+            "keys#": 27,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 0.9
+            "completed%": 1.62
         },
         "myJelly": {
             "filename": "",

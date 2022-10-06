@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-9",
+	"version": "10.8.5-10",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -107,6 +107,7 @@
 		"10.8.5-6": "Translations synchronized with master.\nRemove residual debug code from approuter.\nProcess password recovery action 'InNetworkRequired' as 'ContactAdmin'.\nRemove hardcoded english text from the password recovery 'step #2' page.",
 		"10.8.5-7": "Translations synchronized with master.\nChange icon for user submenus 'subtitles', 'controls' and 'logout'.\nApply patch 'thornbill/sonar-lint-2'.\nEnable top bar button 'reload' in login screen (TV users).\nPressing 'reload' doesn't redirect users to home.html anymore.",
 		"10.8.5-8": "Translations synchronized with master.\nHide loading animation after an attempt to play a missing or damaged media.\nAlso, in the latter situation, show a more accurate message.\nApply patch 'fix dialog closing flow'.\nReplace all occurences of icon 'closed_caption' with 'subtitles'.\nApply patch 'Fix series status filter'.",
-		"10.8.5-9": "Apply patch 'syncplay-plugin'.\nReplace remaining occurence of icon 'exit_to_app' with 'logout'.\nActivate feature 'multiserver' for all webOs based hosts regardless of what 'config.json' is saying.\nHide formular localAccessForm by default. (user profile)"
+		"10.8.5-9": "Apply patch 'syncplay-plugin'.\nReplace remaining occurence of icon 'exit_to_app' with 'logout'.\nActivate feature 'multiserver' for all webOs based hosts regardless of what 'config.json' is saying.\nHide formular localAccessForm by default. (user profile)",
+		"10.8.5-10": "Translations synchronized with master.\nApply patch 'Viperinius/chapter-markers'.\nApply patch 'add_basque'.\nUpdate package.json; run 'npm update' before packing up a client."
 	}
 }

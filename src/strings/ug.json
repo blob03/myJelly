@@ -13,5 +13,17 @@
     "Collections": "توپلام",
     "Default": "سۈكۈتتىكى",
     "Favorites": "ساقلىغۇچ",
-    "Folders": "ھۆججەت خالتىسى"
+    "Folders": "ھۆججەت خالتىسى",
+    "Genres": "ئۇسلۇبلار",
+    "HeaderAlbumArtists": "پىلاستىنكا سەنئەتكارلىرى",
+    "HeaderContinueWatching": "داۋاملىق كۆرۈش",
+    "Movies": "فىلىملەر",
+    "MusicVideos": "سىنلىق مۇزىكا",
+    "Photos": "رەسىملەر",
+    "Playlists": "قويۇش تىزىملىكى",
+    "Shows": "پروگراممىلار",
+    "Small": "كىچىك",
+    "Songs": "ناخشىلار",
+    "Sync": "ماس قەدەمدەش",
+    "ValueSpecialEpisodeName": "خاسلىق - {0}"
 }

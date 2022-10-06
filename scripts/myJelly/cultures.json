@@ -497,6 +497,16 @@
 		  "ewe"
 		]
 	  },
+	  "eu": {
+		"Name": "Basque",
+		"DisplayName": "Basque",
+		"DisplayNativeName": "Euskera",
+		"TwoLetterISOLanguageName": "eu",
+		"ThreeLetterISOLanguageName": "es-PV",
+		"ThreeLetterISOLanguageNames": [
+		  "es-PV"
+		]
+	  },
 	  "fo": {
 		"Name": "Faroese",
 		"DisplayName": "Faroese",
