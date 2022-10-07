@@ -93,9 +93,13 @@
 .selectArrowContainer {
     position: absolute;
     right: 0.3em;
-    top: .7em;
+    top: 2em;
     color: inherit;
     pointer-events: none;
+}
+
+.trackSelectionFieldContainer > .selectArrowContainer {
+    top: .5em;
 }
 
 .selectContainer-inline > .selectArrowContainer {
@@ -109,8 +113,7 @@
 }
 
 .selectArrow {
-    margin-top: 1.5rem;
-    font-size: 1.7em;
+    font-size: 1.7em !important;
 }
 
 .emby-select-iconbutton {

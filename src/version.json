@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-10",
+	"version": "10.8.5-11",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -108,6 +108,7 @@
 		"10.8.5-7": "Translations synchronized with master.\nChange icon for user submenus 'subtitles', 'controls' and 'logout'.\nApply patch 'thornbill/sonar-lint-2'.\nEnable top bar button 'reload' in login screen (TV users).\nPressing 'reload' doesn't redirect users to home.html anymore.",
 		"10.8.5-8": "Translations synchronized with master.\nHide loading animation after an attempt to play a missing or damaged media.\nAlso, in the latter situation, show a more accurate message.\nApply patch 'fix dialog closing flow'.\nReplace all occurences of icon 'closed_caption' with 'subtitles'.\nApply patch 'Fix series status filter'.",
 		"10.8.5-9": "Apply patch 'syncplay-plugin'.\nReplace remaining occurence of icon 'exit_to_app' with 'logout'.\nActivate feature 'multiserver' for all webOs based hosts regardless of what 'config.json' is saying.\nHide formular localAccessForm by default. (user profile)",
-		"10.8.5-10": "Translations synchronized with master.\nApply patch 'Viperinius/chapter-markers'.\nApply patch 'add_basque'.\nUpdate package.json; run 'npm update' before packing up a client."
+		"10.8.5-10": "Translations synchronized with master.\nApply patch 'Viperinius/chapter-markers'.\nApply patch 'add_basque'.\nUpdate package.json; run 'npm update' before packing up a client.",
+		"10.8.5-11": "Update themes 'Halloween', 'Dark-alt' and 'Light-alt-blue'.\nRoll back patch 'taku0/safe-area-inset' which seems to have issues running with web0s5.\nApply patch 'Fix locale with suffix'.\nFix selects' arrow and detail image card getting misaligned after tuning up the size of the display font (TV users/display settings).\nApply patch 'Remove resizeObserver'."
 	}
 }

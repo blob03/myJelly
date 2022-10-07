@@ -1419,3 +1419,24 @@ select option:selected {
 	background: rgba(39, 45, 51, 0.5);
 }
 
+.sliderMarkerContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 0.54em; /* half of slider thumb size */
+}
+
+.sliderMarker {
+    position: absolute;
+    width: 2px;
+    height: 0.5em;
+    transform: translate3d(0, 25%, 0);
+}
+
+.sliderMarker.unwatched {
+    background-color: rgba(169, 183, 193, 0.5);
+}
+
+.sliderMarker.watched {
+    background-color: rgba(241, 249, 255, 0.8);
+}

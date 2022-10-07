@@ -647,7 +647,7 @@ h3 {
 }
 
 .detailRibbon {
-    background-color: rgba(255,255,255,.4);
+    background-color: rgba(255,255,255,.6);
     color: rgba(255, 255, 255, 0.87);
 }
 
@@ -1278,10 +1278,31 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .libraryPage {
-    padding-top: 5.5em !important;
+    padding-top: 4.4em !important;
 }
 
 .infoDetails {
 	font-size: 90% !important;
 }
 
+.sliderMarkerContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 0.54em; /* half of slider thumb size */
+}
+
+.sliderMarker {
+    position: absolute;
+    width: 2px;
+    height: 0.5em;
+    transform: translate3d(0, 25%, 0);
+}
+
+.sliderMarker.unwatched {
+    background-color: rgba(184, 232, 255, 0.5);
+}
+
+.sliderMarker.watched {
+    background-color: #15487d;
+}

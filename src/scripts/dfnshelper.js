@@ -67,9 +67,14 @@ export function getLocale() {
     return dateLocales(globalize.getCurrentLocale()) || enUS;
 }
 
-export const localeWithSuffix = { addSuffix: true, locale: getLocale() };
+export function getLocaleWithSuffix() {
+    return {
+        addSuffix: true,
+        locale: getLocale()
+    };
+}
 
 export default {
     getLocale: getLocale,
-    localeWithSuffix: localeWithSuffix
+    getLocaleWithSuffix
 };

@@ -54,16 +54,24 @@
     overflow: hidden;
 }
 
-.libraryPage {
-    padding-top: 7em !important;
+.libraryPage.noSecondaryNavPage {
+    padding-top: 4.2em !important;
+}
+
+.libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 8.5em !important;
 }
 
 .itemDetailPage {
     padding-top: 0 !important;
 }
 
+.layout-tv body::-webkit-scrollbar {
+    display: none;
+}
+
 .layout-tv .itemDetailPage {
-    padding-top: 4.2em !important;
+    padding-top: 8% !important;
 }
 
 .standalonePage {
@@ -72,10 +80,6 @@
 
 .wizardPage {
     padding-top: 7em !important;
-}
-
-.libraryPage:not(.noSecondaryNavPage) {
-    padding-top: 7.5em !important;
 }
 
 .absolutePageTabContent {
@@ -120,13 +124,14 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
-    overflow: hidden;
+    overflow: visible;
     justify-content: flex-start;
 }
 
 .headerRight {
     display: flex;
     align-items: center;
+	overflow: visible;
     justify-content: flex-end;
 }
 
@@ -175,9 +180,6 @@
     flex-direction: column;
     contain: layout style paint;
     transition: background ease-in-out 0.5s;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    padding-top: env(safe-area-inset-top);
 }
 
 .layout-tv .skinHeader {
@@ -186,11 +188,17 @@
     position: relative;
 }
 
+.layout-tv .skinHeader.locked {
+    /* users of TVs that come with a pointing device can use a floating bar like PC users */
+    position: fixed;
+}
+
 .hiddenViewMenuBar .skinHeader {
     display: none;
 }
 
 .headerTop {
+	height: 3rem;
     padding: 0.54em 0;
 }
 
@@ -382,11 +390,11 @@
 }
 
 .detailLogo {
-    width: 25vw;
     height: 16vh;
     position: absolute;
-    top: 10vh;
-    right: 25vw;
+    top: 5vh;
+    right: 0%;
+	left: 0%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -626,7 +634,7 @@
 
 .subtitle {
     margin: 0.15em 0 0.2em;
-
+	
     // Leave room for a focused button
     margin-left: -1em;
     padding-left: 1em;
@@ -634,7 +642,7 @@
 
 .layout-mobile .subtitle {
     margin: 0.2em 0 0.2em;
-    padding-left: 0; // Reset padding for focused button since 'margin-left' is 0
+	padding-left: 0; // Reset padding for focused button since 'margin-left' is 0
 }
 
 .detailPagePrimaryContainer {
@@ -661,7 +669,7 @@
 }
 
 .layout-desktop .detailRibbon {
-    margin-top: -7.2em;
+    margin-top: .1em;
     height: 7.2em;
 }
 
@@ -739,15 +747,15 @@
 
     .layout-desktop & {
         left: 3.3%;
-        top: -80%;
+        top: 1em;
         width: 25vw;
     }
 
     .layout-tv & {
         left: 5%;
-        top: 50%;
+        top: 8rem;
         width: 25vw;
-        transform: translateY(-50%);
+        /*transform: translateY(-50%);*/
     }
 }
 
@@ -804,9 +812,8 @@ div.itemDetailGalleryLink.defaultCardBackground {
     .layout-desktop .itemBackdrop {
         height: 40vh;
     }
-
-    .layout-desktop .detailPageWrapperContainer,
-    .layout-tv .detailPageWrapperContainer {
+    
+	.layout-tv .detailPageWrapperContainer {
         margin-top: 0.1em;
     }
 
@@ -1003,7 +1010,7 @@ div.itemDetailGalleryLink.defaultCardBackground {
 
 .mediaInfoStreamType {
     display: block;
-    margin: 0.622em 0; /* copy button height compensation */
+	margin: 0.622em 0; /* copy button height compensation */
 }
 
 .layout-tv .mediaInfoStreamType {
@@ -1042,10 +1049,8 @@ div.itemDetailGalleryLink.defaultCardBackground {
     margin: 0 auto;
 }
 
-@media all and (max-height: 31.25em) {
-    .itemBackdrop {
-        height: 52vh;
-    }
+.itemBackdrop {
+	height: 12em;
 }
 
 .listViewUserDataButtons {
@@ -1072,6 +1077,10 @@ div.itemDetailGalleryLink.defaultCardBackground {
     margin-bottom: 1em;
 }
 
+.verticalSection {
+    margin-top: 2em;
+}
+
 .sectionTitleButton,
 .sectionTitleIconButton {
     margin-right: 0 !important;
@@ -1092,7 +1101,7 @@ div.itemDetailGalleryLink.defaultCardBackground {
 /* these next two rules are for the scroller element headers */
 .sectionTitleContainer-cards {
     margin: 0;
-    padding-top: 1.25em;
+    /*padding-top: 1.25em;*/
 }
 
 div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
@@ -1149,12 +1158,10 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 
 .padded-left {
     padding-left: 3.3%;
-    padding-left: max(env(safe-area-inset-left), 3.3%);
 }
 
 .padded-right {
     padding-right: 3.3%;
-    padding-right: max(env(safe-area-inset-right), 3.3%);
 }
 
 .padded-top {
@@ -1178,7 +1185,6 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 @media all and (min-height: 31.25em) {
     .padded-right-withalphapicker {
         padding-right: 7.5%;
-        padding-right: max(env(safe-area-inset-left), 7.5%);
     }
 }
 
@@ -1236,9 +1242,11 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
     margin: 0 0 0.5em !important;
 }
 
+/*
 .trackSelections .selectContainer {
     margin: 0 0 0.3em !important;
 }
+*/
 
 .detailsGroupItem .label,
 .trackSelections .selectContainer .selectLabel {
@@ -1250,7 +1258,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 }
 
 .trackSelections .selectContainer .selectLabel {
-    margin: 0 0.2em 0 0;
+    margin: .5em .1em .5em .1em;
     line-height: 1.75;
 }
 
@@ -1261,7 +1269,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 
 .trackSelections .selectContainer .detailTrackSelect {
     font-size: inherit;
-    padding: 0;
+    padding: .5em 1.9em .5em .5em;
     overflow: hidden;
 }
 

@@ -738,7 +738,7 @@ html {
 }
 
 .detailRibbon {
-    background-color: rgba(255,160,59,.4);
+    background-color: rgba(255,160,59,.6);
     color: rgba(255, 255, 255, 0.87);
 }
 
@@ -962,7 +962,7 @@ div[data-role="controlgroup"] a.ui-btn-active {
 }
 
 .libraryPage {
-	padding-top: 4.3em !important;
+	padding-top: 4.1em !important;
 }
 
 .headerUserButtonRound {
@@ -1463,4 +1463,26 @@ option:selected {
 
 .infoDetails {
 	font-size: 90% !important;
+}
+
+.sliderMarkerContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 0.54em; /* half of slider thumb size */
+}
+
+.sliderMarker {
+    position: absolute;
+    width: 2px;
+    height: 0.5em;
+    transform: translate3d(0, 25%, 0);
+}
+
+.sliderMarker.unwatched {
+    background-color: #ffd369;
+}
+
+.sliderMarker.watched {
+    background-color: #907fae;
 }

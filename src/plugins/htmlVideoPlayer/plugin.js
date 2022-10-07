@@ -279,10 +279,6 @@ function tryRemoveElement(elem) {
          * @type {any | undefined}
          */
         #lastProfile;
-        /**
-         * @type {MutationObserver | IntersectionObserver | undefined} (Unclear observer typing)
-         */
-        #resizeObserver;
 
         constructor() {
             if (browser.edgeUwp) {
@@ -969,10 +965,6 @@ function tryRemoveElement(elem) {
          * @private
          */
         destroyCustomTrack(videoElement) {
-            if (this.#resizeObserver) {
-                this.#resizeObserver.disconnect();
-                this.#resizeObserver = null;
-            }
 
             if (this.#videoSubtitlesElem) {
                 const subtitlesContainer = this.#videoSubtitlesElem.parentNode;
