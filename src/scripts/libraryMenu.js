@@ -39,7 +39,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';	
 		
 		/* Added: Left casing for the topbar clock */
-		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;">';
+		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;flex-shrink: 0">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: flex-start;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
@@ -49,14 +49,20 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '</div>';
 		/* ********************************** */
 		
-        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerBackButton hide"><span class="material-icons ' + (browser.safari ? 'chevron_left' : 'arrow_back') + '"></span></button>';
-        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerHomeButton hide barsMenuButton headerButtonLeft"><span class="material-icons home"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerHomeButton barsMenuButton headerButtonLeft hide"><span class="material-icons home"></span></button>';
 		
-		html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);" aria-hidden="true"></h3>';
-        html += '</div>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerBackButton hide"><span class="material-icons ' + (browser.safari ? 'chevron_left' : 'arrow_back') + '"></span></button>';
+		
+		//html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);" aria-hidden="true"></h3>';
+		
+		html += '<div style="overflow: hidden !important;max-width: 22vw;flex-shrink: 3;">';
+		html += '<span aria-hidden="true" class="pageTitle" style="color: rgba(255,255,255,0.4);"></span>';
+		html += '</div>';
+		
+		html += '</div>';
 		
 		/* Added: Middle casing for the topbar clock */
-		html += '<div class="headerMiddle headerClockButton hide" id="headerClockMiddle" style="display: flex;flex-direction: row;justify-content: center;position: absolute;">';
+		html += '<div class="headerMiddle headerClockButton hide" id="headerClockMiddle" style="display: flex;flex-direction: row;flex-shrink: 0;justify-content: center;position: absolute;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';
@@ -97,7 +103,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		/* Added: Right most casing for the topbar clock */
-		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;">';
+		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;flex-shrink: 0;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
@@ -142,6 +148,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		
 		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;font-size: 90%;display: flex;flex-direction: column;align-items: center;justify-content: center;height: 3.2em;">';
 		
+		html += '<div style="display: flex;flex-direction: column;align-items: flex-start;justify-content: space-around;height: 3.2em;">';
+		
 		html += '<div style="display: flex;outline: none;margin: .1em;">';
 		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunrise" class="headerWthSunrise" style="margin: 0 0 0 .6em;"></div>';
@@ -149,6 +157,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<div style="display: flex;outline: none;margin: .1em;">';
 		html += '<span class="material-icons bedtime" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunset" class="headerWthSunset" style="margin: 0 0 0 .6em;"></div>';
+		html += '</div>';
+		
 		html += '</div>';
 		
 		html += '</div>';
@@ -371,7 +381,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 	
 	function doReload() {
-		window.location.reload(true);
+		// Use appRouter to reload the current path.
+		appRouter.show(appRouter.currentRouteInfo.path).then(() => {
+			window.location.reload(true);
+		});
 	}
 	
 	function doLock() {

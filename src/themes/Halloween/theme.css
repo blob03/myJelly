@@ -1486,3 +1486,18 @@ option:selected {
 .sliderMarker.watched {
     background-color: #907fae;
 }
+
+.material-icons.wb_sunny,
+.material-icons.bedtime {
+	color: #c67e3e !important;
+}
+
+.nightMode .material-icons.wb_sunny {
+	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
+	color: #101111 !important;
+}
+
+.nightMode .material-icons.bedtime {
+	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
+	color: #fff !important;
+}

@@ -141,11 +141,13 @@
 }
 
 .pageTitle {
-    display: inline-flex;
-    margin: 0 0 0 0.5em;
-    height: 1.7em;
-    align-items: center;
-    flex-shrink: 1;
+	margin: 0 0 0 .5em;
+	white-space: nowrap;
+	text-overflow: clip;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	height: 2em;
 }
 
 .pageTitleWithDefaultLogo {

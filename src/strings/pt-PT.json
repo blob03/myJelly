@@ -38,7 +38,7 @@
     "AllowOnTheFlySubtitleExtractionHelp": "Legendas integradas podem ser extraídas do vídeo e enviadas como texto simples para os clientes para evitar transcodificação. Em certos dispositivos, esta poderá ser uma operação demorada e pode causar interrupções de reprodução durante o processo de extração. Desative esta opção para que as legendas sejam integradas no vídeo durante a conversão para um formato suportado pelo dispositivo de destino.",
     "AllowRemoteAccess": "Permitir ligações remotas a este servidor",
     "AllowRemoteAccessHelp": "Se desmarcado, todas as ligações remotas serão bloqueadas.",
-    "AllowTonemappingHelp": "O processo de Tone Mapping transforma o Dynamic Range de um vídeo HDR  em SDR, mantendo os detalhes e as cores, sendo estes bastante importantes para preservar a cena original. Atualmente funciona apenas com vídeos HDR10 ou HLG. Esta opção requer os executáveis CUDA ou OpenCL correspondentes.",
+    "AllowTonemappingHelp": "O processo de Tone Mapping transforma o Dynamic Range de um vídeo HDR em SDR, mantendo os detalhes e as cores, sendo estes bastante importantes para preservar a cena original. Atualmente funciona apenas com vídeos HDR10 ou HLG. Esta opção requer os executáveis CUDA ou OpenCL correspondentes.",
     "AllowVppTonemappingHelp": "Tone mapping completo dos drivers da Intel. Vídeos em HDR10 funcionam apenas em certas configurações de hardware. Tem maior prioridade quando comparado a outras implementações OpenCL.",
     "AllowedRemoteAddressesHelp": "Lista separada por vírgulas de endereços IP, ou sub-rede IP/Máscara, aos quais será permitida ligação remota. Se deixado em branco, todos os endereços remotos serão permitidos.",
     "AlwaysPlaySubtitles": "Reproduzir Sempre",
