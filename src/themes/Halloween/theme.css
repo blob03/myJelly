@@ -955,11 +955,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
 	color: #5539b8 !important;
 }
- 
-.headerTop {
-	height: 3rem;
-    padding: .54em 0em .54em 0em !important;
-}
 
 .libraryPage {
 	padding-top: 4.1em !important;

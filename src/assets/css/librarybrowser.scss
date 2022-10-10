@@ -55,11 +55,11 @@
 }
 
 .libraryPage.noSecondaryNavPage {
-    padding-top: 4.2em !important;
+    padding-top: 5.5em !important;
 }
 
 .libraryPage:not(.noSecondaryNavPage) {
-    padding-top: 8.5em !important;
+    padding-top: 7em !important;
 }
 
 .itemDetailPage {
@@ -143,11 +143,9 @@
 .pageTitle {
 	margin: 0 0 0 .5em;
 	white-space: nowrap;
-	text-overflow: clip;
+	text-overflow: ellipsis;
 	overflow: hidden;
-	display: flex;
-	align-items: center;
-	height: 2em;
+	display: block;
 }
 
 .pageTitleWithDefaultLogo {
@@ -169,6 +167,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     width: 13.2em;
+	height: 2em;
 }
 
 .skinHeader {
@@ -200,8 +199,8 @@
 }
 
 .headerTop {
-	height: 3rem;
-    padding: 0.54em 0;
+	height: 3.9em;
+	padding: .5em 0em .5em 0em;
 }
 
 .sectionTabs {

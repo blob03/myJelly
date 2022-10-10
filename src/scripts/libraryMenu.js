@@ -55,22 +55,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		
 		//html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);" aria-hidden="true"></h3>';
 		
-		html += '<div style="overflow: hidden !important;max-width: 22vw;flex-shrink: 3;">';
+		html += '<div style="overflow: hidden !important;max-width: 43vw;min-width: 2vw;width: 2vw;flex-grow: 2;">';
 		html += '<span aria-hidden="true" class="pageTitle" style="color: rgba(255,255,255,0.4);"></span>';
 		html += '</div>';
 		
 		html += '</div>';
-		
-		/* Added: Middle casing for the topbar clock */
-		html += '<div class="headerMiddle headerClockButton hide" id="headerClockMiddle" style="display: flex;flex-direction: row;flex-shrink: 0;justify-content: center;position: absolute;">';
-		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
-		html += '<div id="headerClockDateMiddle" class="headerClockDate" style="font-size: 70%;"></div>';
-		html += '<div id="headerClockTimeMiddle" class="headerClockTime" style="font-size: 140%;"></div>';
-		html += '</button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
-		html += '</div>';
-		/* ********************************** */
 		
         html += '<div class="headerRight">';
 		html += '<span class="headerSelectedPlayer"></span>';
@@ -113,8 +102,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '</div>';
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
-		html += '<div class="headerWthButton hide" id="headerWthRight" style="display: flex;flex-direction: row;margin: 0 .29em;height: 3.2em;">';
-		html += '<fieldset style="margin: 0 !important;padding: .1rem .4rem .1rem .4rem;border: 1px groove #99a5ad;">';
+		html += '<div class="headerWthButton hide" id="headerWthRight" style="display: flex;flex-direction: row;margin: 0 .29em;height: 3.4em;">';
+		html += '<fieldset style="margin: 0 !important;padding: .2em .4em .2em .4em;border: 1px groove #99a5ad;">';
 		
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		
@@ -383,7 +372,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 	function doReload() {
 		// Use appRouter to reload the current path.
 		appRouter.show(appRouter.currentRouteInfo.path).then(() => {
-			window.location.reload(true);
+			window.location.reload();
 		});
 	}
 	
@@ -1221,9 +1210,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 
     function setDefaultTitle () {
-        if (!pageTitleElement) {
+        if (!pageTitleElement)
             pageTitleElement = document.querySelector('.pageTitle');
-        }
 
         if (pageTitleElement) {
             pageTitleElement.classList.add('pageTitleWithLogo');
@@ -1236,30 +1224,23 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 
     export function setTitle (title) {
-        if (title == null) {
-            LibraryMenu.setDefaultTitle();
-            return;
-        }
+		if (title !== null) {
+			if (title === '-')
+				title = '';
 
-        if (title === '-') {
-            title = '';
-        }
+			if (!pageTitleElement)
+				pageTitleElement = document.querySelector('.pageTitle');
 
-        const html = title;
-
-        if (!pageTitleElement) {
-            pageTitleElement = document.querySelector('.pageTitle');
-        }
-
-        if (pageTitleElement) {
-            pageTitleElement.classList.remove('pageTitleWithLogo');
-            pageTitleElement.classList.remove('pageTitleWithDefaultLogo');
-            pageTitleElement.style.backgroundImage = null;
-            pageTitleElement.innerHTML = html || '';
-        }
-
-        document.title = title || 'Jellyfin';
-    }
+			if (pageTitleElement) {
+				pageTitleElement.classList.remove('pageTitleWithLogo');
+				pageTitleElement.classList.remove('pageTitleWithDefaultLogo');
+				pageTitleElement.style.backgroundImage = null;
+				pageTitleElement.innerHTML = title;
+			}
+		} else
+			LibraryMenu.setDefaultTitle();
+		document.title = title || 'Jellyfin';
+	}
 
 	function displayFontSizeModifier(apiClient) { 
 		const userId = Dashboard.getCurrentUserId();

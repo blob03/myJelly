@@ -841,13 +841,11 @@ export class UserSettings {
 	
 	initClockPlaces() {
 		let _l_hdrclck = document.getElementById("headerClockLeft");
-		let _m_hdrclck = document.getElementById("headerClockRight");
-		let _r_hdrclck = document.getElementById("headerClockMiddle");
-		if (!_l_hdrclck || !_m_hdrclck || !_r_hdrclck)
+		let _r_hdrclck = document.getElementById("headerClockRight");
+		if (!_l_hdrclck || !_r_hdrclck)
 			return;
 		
 		this.initButtons(_l_hdrclck);
-		this.initButtons(_m_hdrclck);
 		this.initButtons(_r_hdrclck);
 	}
 	
@@ -908,26 +906,20 @@ export class UserSettings {
 	 
 	placeClock(val) {
 		let pos = parseInt(this.get('clock_pos'), 10) || 0;
+		if (pos < 0 || pos > 1)
+			pos = 0;
         if (val !== undefined) {
 			
-			let newval = parseInt(val, 10) || 0;
-			if (newval < -1 || newval > 1)
-				newval = 0;
+			const offset = parseInt(val, 10) || 0;
+			if (offset == -1 || offset == 1)
+				pos = Math.abs(pos + offset) % 2; 
 			
-			pos += newval;
-			if (pos > 2)
-				pos = 0;
-			if (pos < 0)
-				pos = 2;
-		
 			let _l_hdrclck = document.getElementById("headerClockLeft");
-			let _m_hdrclck = document.getElementById("headerClockMiddle");
 			let _r_hdrclck = document.getElementById("headerClockRight");
-			if (!_l_hdrclck || !_m_hdrclck || !_r_hdrclck)
+			if (!_l_hdrclck || !_r_hdrclck)
 				return false;
 		
 			this.hideClockPos(_l_hdrclck);
-			this.hideClockPos(_m_hdrclck);
 			this.hideClockPos(_r_hdrclck);
 		
 			switch(pos) {
@@ -935,12 +927,8 @@ export class UserSettings {
 				case 0:
 					this.showClockPos(_l_hdrclck);
 					break;
-				/*** Middle ***/
-				case 1:		
-					this.showClockPos(_m_hdrclck);
-					break;
 				/*** right side ***/
-				case 2:
+				case 1:
 					this.showClockPos(_r_hdrclck);
 					break;
 			}
@@ -951,9 +939,7 @@ export class UserSettings {
             return true;
         }
 		
-		if (pos < 0 || pos > 2)
-			return 0;
-        return pos;
+		return pos;
     }
 
     /**

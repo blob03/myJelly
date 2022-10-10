@@ -899,11 +899,6 @@ legend {
 .radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
 	color: #ccc !important;
-} 
-
-.headerTop {
-	height: 3rem;
-    padding: .54em 0em .54em 0em !important;
 }
 
 .libraryPage {
