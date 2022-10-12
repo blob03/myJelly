@@ -19,11 +19,12 @@ function isTv() {
         return true;
     }
 
-    if (userAgent.indexOf('web0s') !== -1) {
-        return true;
-    }
+     return isWeb0s();
+}
 
-    return false;
+function isWeb0s() {
+	return userAgent.indexOf('netcast') !== -1
+		|| userAgent.indexOf('web0s') !== -1;
 }
 
 function isMobile(userAgent) {
@@ -70,11 +71,7 @@ function hasKeyboard(browser) {
         return true;
     }
 
-    if (browser.tv) {
-        return true;
-    }
-
-    return false;
+	return !!browser.tv;
 }
 
 function iOSversion() {

@@ -332,11 +332,7 @@ export class BookPlayer {
     }
 
     canPlayItem(item) {
-        if (item.Path && item.Path.endsWith('epub')) {
-            return true;
-        }
-
-        return false;
+         return item.Path && item.Path.endsWith('epub');
     }
 }
 

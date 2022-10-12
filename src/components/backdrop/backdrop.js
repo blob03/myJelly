@@ -16,22 +16,16 @@ import './backdrop.scss';
     function enableFastAnimation() {
 		return userSettings.enableFastFadein() === true;
 		
-        //if (browser.slow)
-        //    return false;
-        //return true;
-    }
+		//return !browser.slow;
+	}
 
     function enableRotation() {
-		// if (browser.tv) {
-		//	return false;
-		// }
-
-		// Causes high cpu usage
-		// if (browser.firefox) {
-		//	return false;
-		//}
-        return true;
-    }
+		//return !browser.tv
+			// Causes high cpu usage
+			//&& !browser.firefox;
+		
+		return true;
+	}
 
 	class Backdrop {
 		constructor() {

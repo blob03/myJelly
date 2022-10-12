@@ -32,6 +32,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         let html = '';
         html += '<div class="flex align-items-center flex-grow headerTop" style="justify-content: center;">';
         html += '<div class="headerLeft">';
+		// Extra feature thought for the TV layout.
+		// That one locks the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
+		
 		// Extra feature thought for TV and mobile users regardless of the layout in use.
 		// That one acts like a shift + reload with Firefox, requesting a fresh copy of everything from the server.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
@@ -61,14 +65,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		
 		html += '</div>';
 		
-        html += '<div class="headerRight">';
+		html += '<div class="headerRight">';
 		html += '<span class="headerSelectedPlayer"></span>';
-        html += '<button is="paper-icon-button-light" class="headerSyncButton syncButton headerButton headerButtonRight hide"><span class="material-icons groups"></span></button>';
-        html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
-        html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerSyncButton syncButton headerButton headerButtonRight hide"><span class="material-icons groups"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
 		
-		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
-  
 		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
 		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;font-size: 70%;">';
@@ -85,11 +88,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		
 		html += '</div>';
 		
-        html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
-		
-		// Extra feature thought for the TV layout.
-		// That one locks the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
 		
 		/* Added: Right most casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;flex-shrink: 0;">';

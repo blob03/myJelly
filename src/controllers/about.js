@@ -7,6 +7,7 @@ import browser from '../scripts/browser';
 import ServerConnections from '../components/ServerConnections';
 import appSettings from '../scripts/settings/appSettings';
 import appInfo from '../version.json';
+import Dashboard from '../utils/dashboard';
 
 function getHostVersion(browser) {
 	if (browser.web0s) 

@@ -2128,17 +2128,17 @@
     },
     "ta": {
         "ccode": "ta",
-        "fsize": 234359,
+        "fsize": 237718,
         "ccodeSrc": "en-US",
         "displayName": "Tamil",
         "displayNativeName": "தமிழ்",
         "ISO6391": "ta",
         "ISO6392": "tam",
-        "keys#": 1640,
-        "completed%": 92.45,
+        "keys#": 1663,
+        "completed%": 93.74,
         "jellyfinWeb": {
             "filename": "ta.json",
-            "keys#": 1640,
+            "keys#": 1663,
             "orphans#": 27,
             "orphans": [
                 "AttributeNew",
@@ -2169,7 +2169,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 98.26
+            "completed%": 99.64
         },
         "myJelly": {
             "filename": "",

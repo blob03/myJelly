@@ -440,11 +440,7 @@ import layoutManager from './layoutManager';
      * Returns true if smooth scroll must be used.
      */
     function useSmoothScroll() {
-        if (browser.tizen) {
-            return true;
-        }
-
-        return false;
+        return !!browser.tizen;
     }
 
     /**

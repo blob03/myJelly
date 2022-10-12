@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-13",
+	"version": "10.8.5-14",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -111,6 +111,7 @@
 		"10.8.5-10": "Translations synchronized with master.\nApply patch 'Viperinius/chapter-markers'.\nApply patch 'add_basque'.\nUpdate package.json; run 'npm update' before packing up a client.",
 		"10.8.5-11": "Update themes 'Halloween', 'Dark-alt' and 'Light-alt-blue'.\nRoll back patch 'taku0/safe-area-inset' which seems to have issues running with web0s5.\nApply patch 'Fix locale with suffix'.\nFix selects' arrow and detail image card getting misaligned after tuning up the size of the display font (TV users/display settings).\nApply patch 'Remove resizeObserver'.",
 		"10.8.5-12": "Translations synchronized with master.\nFix large page title pushing adjacent buttons off screen.\nImprove Weatherbot's screen #3 layout.\nApply patch 'Fix legacy browser support'.\nPatch function doReload() to work together with appRouter.\nSwitch position of buttons 'home' and 'back' (top bar).",
-		"10.8.5-13": "Remove middle screen clock position.\nTweak some more layout of screen title."
+		"10.8.5-13": "Remove middle screen clock position.\nTweak some more layout of screen title.",
+		"10.8.5-14": "Synchronize translation files with master.\nInstall latest 'package.json'.\nApply patch 'Fix sonarjs prefer-single-boolean-return'.\nApply patch 'ctalkington/patch-1'.\nApply patch 'Fix inverted boolean returns'.\nApply patch 'Fix EnableMediaSourceDisplay logic'.\nRearrange position of some icons within top bar."
 	}
 }

@@ -24,11 +24,7 @@ import focusManager from '../../components/focusManager';
             return true;
         }
 
-        if (layoutManager.tv) {
-            return false;
-        }
-
-        return true;
+        return !layoutManager.tv;
     }
 
     function triggerChange(select) {
