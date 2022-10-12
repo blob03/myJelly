@@ -260,43 +260,44 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 
 		updateHeaderUserButton(url);
 		
+		headerLockButton.classList.remove('hide');
+		const lockIcon = document.getElementById("lock");
+		if (lockIcon) {
+			let id = null
+			if (user && user.localUser)
+				id = user.localUser.Id;
+			
+			if (appSettings.get('lockHeader', id) === 'true') {
+				skinHeader.classList.add('locked');
+				lockIcon.classList.remove('lock_open');
+				lockIcon.classList.add('lock');
+			} else {
+				skinHeader.classList.remove('locked');
+				lockIcon.classList.remove('lock');
+				lockIcon.classList.add('lock_open');
+			}
+		}
+		
 		if (layoutManager.tv)
 			headerReloadButton.classList.remove('hide');
 		else
 			headerReloadButton.classList.add('hide');
 
-        if (user && user.localUser) {
-            if (headerHomeButton) 
-                headerHomeButton.classList.remove('hide');
+		if (user && user.localUser) {
+			if (headerHomeButton) 
+				headerHomeButton.classList.remove('hide');
 			if (headerNightmodeButton && (enableClock() == 1 || enableClock() == 2 || enableWeatherBot() == 1 || enableWeatherBot() == 2))
 				headerNightmodeButton.classList.remove('hide');
 			else
 				headerNightmodeButton.classList.add('hide');
-            if (headerSearchButton)
-                headerSearchButton.classList.remove('hide');
+			if (headerSearchButton)
+				headerSearchButton.classList.remove('hide');
 			if (mainDrawerButton) {
 				if (!layoutManager.tv)
 					mainDrawerButton.classList.remove('hide');
 				else
 					mainDrawerButton.classList.add('hide');
 			}
-			
-			if (layoutManager.tv && !browser.mobile) {
-				headerLockButton.classList.remove('hide');
-				const lockIcon = document.getElementById("lock");
-				if (lockIcon) {
-					if (appSettings.get('lockHeader', user.localUser.Id) === 'true') {
-						skinHeader.classList.add('locked');
-						lockIcon.classList.remove('lock_open');
-						lockIcon.classList.add('lock');
-					} else {
-						skinHeader.classList.remove('locked');
-						lockIcon.classList.remove('lock');
-						lockIcon.classList.add('lock_open');
-					}
-				}
-			} else 
-				headerLockButton.classList.add('hide');
 			
 			enableWeatherBot(enableWeatherBot());
 			
@@ -327,8 +328,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
                 headerSearchButton.classList.add('hide');
 			if (backdropInfoButton) 
                 backdropInfoButton.classList.add('hide');
-			if (headerLockButton) 
-				headerLockButton.classList.add('hide');
         }
 		
         requiresUserRefresh = false;
@@ -370,7 +369,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 	
 	function doReload() {
 		// Use appRouter to reload the current path.
-		appRouter.show(appRouter.currentRouteInfo.path).then(() => {
+		//appRouter.show(appRouter.currentRouteInfo.path).then(() => {
+		//	window.location.reload();
+		//});
+		
+		// Move to home page before reloading.
+		appRouter.show("/home.html").then(() => {
 			window.location.reload();
 		});
 	}
@@ -385,12 +389,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 				lockIcon.classList.remove('lock');
 				lockIcon.classList.add('lock_open');
 				// make new setting persistent
-				appSettings.set('lockHeader', 'false', currentUser.localUser.Id);
+				appSettings.set('lockHeader', 'false', (currentUser && currentUser.localUser)? currentUser.localUser.Id : null);
 			} else {
 				skinHeader.classList.add('locked');
 				lockIcon.classList.remove('lock_open');
 				lockIcon.classList.add('lock');
-				appSettings.set('lockHeader', 'true', currentUser.localUser.Id);
+				appSettings.set('lockHeader', 'true', (currentUser && currentUser.localUser)? currentUser.localUser.Id : null);
 			}
 		}
 	}
@@ -1346,6 +1350,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     loadNavDrawer();
 
     const LibraryMenu = {
+		doReload: doReload,
         getTopParentId: getTopParentId,
         onHardwareMenuButtonClick: function () {
             toggleMainDrawer();

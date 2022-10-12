@@ -16,6 +16,9 @@ import toast from '../../../components/toast/toast';
 import dialogHelper from '../../../components/dialogHelper/dialogHelper';
 import baseAlert from '../../../components/alert';
 import cardBuilder from '../../../components/cardbuilder/cardBuilder';
+import settingsHelper from '../../../components/settingshelper';
+import cultures from '../../../scripts/cultures';
+import * as userSettings from '../../../scripts/settings/userSettings';
 import './login.scss';
 
 /* eslint-disable indent */
@@ -294,6 +297,20 @@ import './login.scss';
 				loading.hide();
 				return;
 			}
+			
+			const allCultures = cultures.getDictionaries();
+			const selectLanguage = view.querySelector('#selectLanguage');
+			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", null);
+			
+			selectLanguage.addEventListener('change', function(x) {
+				const lang = x.target;
+				let newLang = lang.value;
+				// Auto mode
+				if (newLang === '')
+					newLang = globalize.getDefaultCulture().ccode;
+				userSettings.language(newLang);
+				libraryMenu.doReload();
+			});
 			
             apiClient.getQuickConnect('Enabled')
 				.then(enabled => {
