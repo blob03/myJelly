@@ -189,8 +189,13 @@
     position: relative;
 }
 
-.layout-tv .skinHeader.locked {
-    /* users of TVs that come with a pointing device can use a floating bar like PC users */
+.skinHeader {
+    /* In TV layout, it makes more sense to use a 'relative' position
+       Having it 'fixed' only makes us lose vertical space, while not being focusable */
+    position: relative;
+}
+
+.skinHeader.locked {
     position: fixed;
 }
 
@@ -670,7 +675,7 @@
 }
 
 .layout-desktop .detailRibbon {
-    margin-top: .1em;
+    margin-top: 0;
     height: 7.2em;
 }
 
@@ -1080,6 +1085,10 @@ div.itemDetailGalleryLink.defaultCardBackground {
 
 .verticalSection {
     margin-top: 2em;
+}
+
+.sections {
+	margin-top: 3em;
 }
 
 .sectionTitleButton,

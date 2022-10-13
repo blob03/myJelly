@@ -1522,7 +1522,7 @@
     "Sunday": "Sunnuntai",
     "Sync": "Synkronointi",
     "SyncPlayAccessHelp": "SyncPlay-ominaisuus mahdollistaa toiston muiden laitteiden toistton kohdistuksen. Valitse käyttäjälle myönnettävä SyncPlay-taso.",
-    "SyncPlayGroupDefaultTitle": "Käyttäjän {0} ryhmä",
+    "SyncPlayGroupDefaultTitle": "{0} -n ryhmä",
     "SystemDlnaProfilesHelp": "Järjestelmäprofiileihin ei ole kirjoitusoikeutta ja niihin tehdyt muutokset tallennetaan uusina profiileina.",
     "TV": "Televisio",
     "TabAccess": "Pääsy",

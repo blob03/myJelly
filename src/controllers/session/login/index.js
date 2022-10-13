@@ -309,7 +309,7 @@ import './login.scss';
 				if (newLang === '')
 					newLang = globalize.getDefaultCulture().ccode;
 				userSettings.language(newLang);
-				libraryMenu.doReload();
+				libraryMenu.doReload(); 
 			});
 			
             apiClient.getQuickConnect('Enabled')
