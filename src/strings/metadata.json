@@ -942,17 +942,17 @@
     },
     "he": {
         "ccode": "he",
-        "fsize": 68086,
+        "fsize": 68447,
         "ccodeSrc": "en-US",
         "displayName": "Hebrew",
         "displayNativeName": "עברית",
         "ISO6391": "he",
         "ISO6392": "heb",
-        "keys#": 1024,
-        "completed%": 57.72,
+        "keys#": 1028,
+        "completed%": 57.95,
         "jellyfinWeb": {
             "filename": "he.json",
-            "keys#": 1024,
+            "keys#": 1028,
             "orphans#": 5,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -961,7 +961,7 @@
                 "ButtonNetwork",
                 "Screenshot"
             ],
-            "completed%": 61.35
+            "completed%": 61.59
         },
         "myJelly": {
             "filename": "",

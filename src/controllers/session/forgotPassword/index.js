@@ -53,8 +53,14 @@ import Dashboard from '../../../utils/dashboard';
             e.preventDefault();
             return false;
         }
+		
+		function onCancel(e) {
+			const rnd = Math.floor(Math.random() * 100000);
+			Dashboard.navigate('login.html?v=' + rnd);
+		}
 
         view.querySelector('form').addEventListener('submit', onSubmit);
+		view.querySelector('.btnCancel').addEventListener('click', onCancel);
     }
 
 /* eslint-enable indent */

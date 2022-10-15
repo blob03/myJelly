@@ -9,6 +9,7 @@ import { appRouter } from '../components/appRouter';
 import { appHost } from '../components/apphost';
 import { playbackManager } from '../components/playback/playbackmanager';
 import { pluginManager } from '../components/pluginManager';
+import loading from '../components/loading/loading';
 import groupSelectionMenu from '../plugins/syncPlay/ui/groupSelectionMenu';
 import { showPrevBackdrop, showNextBackdrop, pauseBackdrop, setBackdropContrast } from '../components/backdrop/backdrop';
 import browser from './browser';
@@ -32,15 +33,14 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         let html = '';
         html += '<div class="flex align-items-center flex-grow headerTop" style="justify-content: center;">';
         html += '<div class="headerLeft">';
+	
 		// Extra feature thought for the TV layout.
 		// That one locks the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
-		// Extra feature thought for TV and mobile users regardless of the layout in use.
-		// That one acts like a shift + reload with Firefox, requesting a fresh copy of everything from the server.
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
 	
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';	
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;flex-shrink: 0">';
@@ -52,6 +52,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
 		/* ********************************** */
+		
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';	
+		
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
 		
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerHomeButton barsMenuButton headerButtonLeft hide"><span class="material-icons home"></span></button>';
 		
@@ -70,7 +74,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button is="paper-icon-button-light" class="headerSyncButton syncButton headerButton headerButtonRight hide"><span class="material-icons groups"></span></button>';
 		html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
 		html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
 		
 		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
@@ -87,9 +90,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '</div>';
 		
 		html += '</div>';
-		
-		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
-		
+			
 		/* Added: Right most casing for the topbar clock */
 		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;flex-shrink: 0;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
@@ -277,13 +278,10 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 				lockIcon.classList.add('lock_open');
 			}
 		}
-		
-		if (layoutManager.tv)
-			headerReloadButton.classList.remove('hide');
-		else
-			headerReloadButton.classList.add('hide');
 
 		if (user && user.localUser) {
+			if (headerReloadButton)
+				headerReloadButton.classList.add('hide');
 			if (headerHomeButton) 
 				headerHomeButton.classList.remove('hide');
 			if (headerNightmodeButton && (enableClock() == 1 || enableClock() == 2 || enableWeatherBot() == 1 || enableWeatherBot() == 2))
@@ -328,6 +326,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
                 headerSearchButton.classList.add('hide');
 			if (backdropInfoButton) 
                 backdropInfoButton.classList.add('hide');
+			if (headerReloadButton) {
+				if (layoutManager.tv)
+					headerReloadButton.classList.remove('hide');
+				else
+					headerReloadButton.classList.add('hide');
+			}
         }
 		
         requiresUserRefresh = false;
@@ -367,15 +371,19 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         inputManager.handleCommand('search');
     }
 	
-	function doReload() {
-		// Use appRouter to reload the current path.
-		//appRouter.show(appRouter.currentRouteInfo.path).then(() => {
-		//	window.location.reload();
-		//});
-		
-		// Move to home page before reloading.
-		appRouter.show("/home.html").then(() => {
-			window.location.reload();
+	function doReload(_cachebuster) {
+		loading.show();
+		let _path = 'home.html';
+		let cb = '';
+		if (_cachebuster === true) {
+			const rnd = Math.floor(Math.random() * 1000000);
+			cb = '?cb=' + rnd;
+		}
+
+		appRouter.show(_path + cb).then(() => {
+			setTimeout(() => {
+				loading.hide();
+			}, 1000);
 		});
 	}
 	

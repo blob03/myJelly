@@ -139,7 +139,7 @@ import './login.scss';
     function onLoginSuccessful(id, accessToken, apiClient) {
 		resetQuickConnect();
         Dashboard.onServerChanged(id, accessToken, apiClient);
-        Dashboard.navigate('home.html');
+		Dashboard.navigate('home.html');
     }
 
     function showManualForm(context, showCancel, focusPassword) {
@@ -148,17 +148,15 @@ import './login.scss';
         context.querySelector('.visualLoginForm').classList.add('hide');
         context.querySelector('.btnManual').classList.add('hide');
 
-        if (focusPassword) {
-            context.querySelector('#txtManualPassword').focus();
-        } else {
-            context.querySelector('#txtManualName').focus();
-        }
+		if (focusPassword)
+			context.querySelector('#txtManualPassword').focus();
+		else
+			context.querySelector('#txtManualName').focus();
 
-        if (showCancel) {
-            context.querySelector('.btnCancel').classList.remove('hide');
-        } else {
-            context.querySelector('.btnCancel').classList.add('hide');
-        }
+		if (showCancel)
+			context.querySelector('.btnCancel').classList.remove('hide');
+		else
+			context.querySelector('.btnCancel').classList.add('hide');
     }
 
     function loadUserList(context, apiClient, users) {
@@ -283,79 +281,78 @@ import './login.scss';
         });
 
         view.addEventListener('viewshow', function () {
-            loading.show();
             libraryMenu.setTransparentMenu(true);
-
-            if (!appHost.supports('multiserver')) {
-                view.querySelector('.btnSelectServer').classList.add('hide');
-            }
-			
-			libraryMenu.updateUserInHeader(null);
-
-            const apiClient = getApiClient();
-			if (!apiClient) {
-				loading.hide();
-				return;
-			}
-			
-			const allCultures = cultures.getDictionaries();
-			const selectLanguage = view.querySelector('#selectLanguage');
-			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", null);
-			
-			selectLanguage.addEventListener('change', function(x) {
-				const lang = x.target;
-				let newLang = lang.value;
-				// Auto mode
-				if (newLang === '')
-					newLang = globalize.getDefaultCulture().ccode;
-				userSettings.language(newLang);
-				libraryMenu.doReload(); 
-			});
-			
-            apiClient.getQuickConnect('Enabled')
-				.then(enabled => {
-					if (enabled === true) {
-						view.querySelector('.btnQuick').classList.remove('hide');
-					}
-				})
-				.catch(() => {
-					console.debug('Failed to get QuickConnect status');
-				});
-
-            apiClient.getPublicUsers().then(function (users) {
-                if (users && users.length) {
-                    showVisualForm();
-                    loadUserList(view, apiClient, users);
-                } else {
-					
-                    view.querySelector('#txtManualName').value = '';
-                    showManualForm(view, false, false);
-                }
-            }).catch().finally( () => {
-				apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
-					const disclaimer = view.querySelector('.disclaimer');
-
-					disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
-
-					for (const elem of disclaimer.querySelectorAll('a')) {
-						elem.rel = 'noopener noreferrer';
-						elem.target = '_blank';
-						elem.classList.add('button-link');
-						elem.setAttribute('is', 'emby-linkbutton');
-
-						if (layoutManager.tv) {
-							// Disable links navigation on TV
-							elem.tabIndex = -1;
-						}
-					}
-				});
-				loading.hide();
-			});
         });
 		
         view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);
         });
+		
+		loading.show();
+		
+		const allCultures = cultures.getDictionaries();
+		const selectLanguage = view.querySelector('#selectLanguage');
+		const defaultLang = globalize.getDefaultCulture().ccode;
+		let lang = globalize.getCurrentLocale();
+
+		settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", lang);
+		
+		selectLanguage.addEventListener('change', (x) => {
+			let lang = x.target.value || defaultLang;
+
+			userSettings.language(lang);
+			globalize.getCoreDictionary(lang).then(() => {libraryMenu.doReload();});
+		});
+		
+		if (!appHost.supports('multiserver')) {
+			view.querySelector('.btnSelectServer').classList.add('hide');
+		}
+
+		const apiClient = getApiClient();
+		if (!apiClient) {
+			loading.hide();
+			return;
+		}
+		
+		apiClient.getQuickConnect('Enabled')
+			.then(enabled => {
+				if (enabled === true) {
+					view.querySelector('.btnQuick').classList.remove('hide');
+				}
+			})
+			.catch(() => {
+				console.debug('Failed to get QuickConnect status');
+			});
+
+		apiClient.getPublicUsers().then(function (users) {
+			if (users && users.length) {
+				showVisualForm();
+				loadUserList(view, apiClient, users);
+			} else {
+				
+				view.querySelector('#txtManualName').value = '';
+				showManualForm(view, false, false);
+			}
+		}).catch().finally( () => {
+			apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
+				const disclaimer = view.querySelector('.disclaimer');
+
+				disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
+
+				for (const elem of disclaimer.querySelectorAll('a')) {
+					elem.rel = 'noopener noreferrer';
+					elem.target = '_blank';
+					elem.classList.add('button-link');
+					elem.setAttribute('is', 'emby-linkbutton');
+
+					if (layoutManager.tv) {
+						// Disable links navigation on TV
+						elem.tabIndex = -1;
+					}
+				}
+			});
+			loading.hide();
+		});
     }
 
 /* eslint-enable indent */
