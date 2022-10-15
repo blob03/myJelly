@@ -3,7 +3,6 @@ import Headroom from 'headroom.js';
 import dom from './dom';
 import layoutManager from '../components/layoutManager';
 import inputManager from './inputManager';
-import { Events } from 'jellyfin-apiclient';
 import viewManager from '../components/viewManager/viewManager';
 import { appRouter } from '../components/appRouter';
 import { appHost } from '../components/apphost';
@@ -19,6 +18,7 @@ import { getMenuLinks } from '../scripts/settings/webSettings';
 import Dashboard, { pageClassOn } from '../utils/dashboard';
 import { getParameterByName } from '../utils/url';
 import ServerConnections from '../components/ServerConnections';
+import Events from '../utils/events.ts';
 import '../elements/emby-button/paper-icon-button-light';
 import 'material-design-icons-iconfont';
 import '../assets/css/scrollstyles.scss';
@@ -261,7 +261,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 
 		updateHeaderUserButton(url);
 		
-		headerLockButton.classList.remove('hide');
+		if (headerLockButton)
+			headerLockButton.classList.remove('hide');
 		const lockIcon = document.getElementById("lock");
 		if (lockIcon) {
 			let id = null
@@ -1332,23 +1333,20 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         loadNavDrawer();
 
         ServerConnections.user(currentApiClient).then(function (user) {
-            currentUser = user;
+			currentUser = user;
 			globalize.updateCurrentCulture();
-            updateUserInHeader(user);
-			
+			updateUserInHeader(user);
 			initClockPlaces();
 			placeClock(0);
 			enableClock(enableClock());
-			
 			WB_init();
 			enableWeatherBot(enableWeatherBot());
         });
     });
 
     Events.on(ServerConnections, 'localusersignedout', function () {
-        currentUser = {};
-        updateUserInHeader(null);
-		
+		currentUser = {};
+		updateUserInHeader(null);
 		showClock(false);
 		showWeatherBot(false);
     });

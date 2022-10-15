@@ -1,4 +1,4 @@
-import { Events } from 'jellyfin-apiclient';
+import Events from '../../utils/events.ts';
 import { playbackManager } from '../playback/playbackmanager';
 
 function transferPlayback(oldPlayer, newPlayer) {

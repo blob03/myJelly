@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-17",
+	"version": "10.8.5-18",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -115,6 +115,7 @@
 		"10.8.5-14": "Synchronize translation files with master.\nInstall latest 'package.json'.\nApply patch 'Fix sonarjs prefer-single-boolean-return'.\nApply patch 'ctalkington/patch-1'.\nApply patch 'Fix inverted boolean returns'.\nApply patch 'Fix EnableMediaSourceDisplay logic'.\nRearrange position of some icons within top bar.",
 		"10.8.5-15": "Enable top menu bar's sticky button in the sign-in screens.\nAllow user to switch language in the sign-in screens .\nInstall latest files 'package.json' and 'webpack.common.js'.",
 		"10.8.5-16": "Synchronize translation files with master.\nApply patch 'Allow zero as MaxParentalRating value'.\nApply patch 'Properly check for NaN instead of undefined'.\nApply patch 'Move skinBody class to root react element'.\nEnable sticky button for PC and mobile users.\nFix default tabs top margin.",
-		"10.8.5-17": "Make switching language in sign-in screen faster.\nRemove button 'reload' after signing in.\nRearrange position of some icons within top bar.\nSynchronize translation files with master."
+		"10.8.5-17": "Make switching language in sign-in screen faster.\nRemove button 'reload' after signing in.\nRearrange position of some icons within top bar.\nSynchronize translation files with master.",
+		"10.8.5-18": "Apply patch 'thornbill/apiclient-events'.\nApply patch 'thornbill/apiclient-appstorage'.\nInstall latest 'package.json'."
 	}
 }

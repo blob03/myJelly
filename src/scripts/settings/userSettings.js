@@ -1,5 +1,5 @@
 import appSettings from './appSettings';
-import { Events } from 'jellyfin-apiclient';
+import Events from '../../utils/events.ts';
 import { toBoolean, toPrecision } from '../../utils/string.ts';
 import globalize from '../globalize';
 import datetime from '../datetime';

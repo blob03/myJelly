@@ -1,5 +1,6 @@
 /* eslint-disable indent */
-import { AppStorage, Events } from 'jellyfin-apiclient';
+
+import Events from '../../utils/events.ts';
 import { toBoolean } from '../../utils/string.ts';
 
 class AppSettings {
@@ -126,13 +127,13 @@ class AppSettings {
         const currentValue = this.get(name, userId);
         
         if (currentValue !== value) {
-			AppStorage.setItem(this.#getKey(name, userId), value);
+			localStorage.setItem(this.#getKey(name, userId), value);
             Events.trigger(this, 'change', [name]);
         }
     }
 
     get(name, userId) {
-        return AppStorage.getItem(this.#getKey(name, userId));
+		return localStorage.getItem(this.#getKey(name, userId));
     }
 }
 

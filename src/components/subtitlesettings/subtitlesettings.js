@@ -10,7 +10,7 @@ import settingsHelper from '../settingshelper';
 import cultures from '../../scripts/cultures';
 import skinManager from '../../scripts/themeManager';
 import dom from '../../scripts/dom';
-import { Events } from 'jellyfin-apiclient';
+import Events from '../../utils/events.ts';
 import '../listview/listview.scss';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-slider/emby-slider';

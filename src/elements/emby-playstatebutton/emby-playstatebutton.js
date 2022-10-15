@@ -1,5 +1,5 @@
 import serverNotifications from '../../scripts/serverNotifications';
-import { Events } from 'jellyfin-apiclient';
+import Events from '../../utils/events.ts';
 import globalize from '../../scripts/globalize';
 import EmbyButtonPrototype from '../../elements/emby-button/emby-button';
 import ServerConnections from '../../components/ServerConnections';

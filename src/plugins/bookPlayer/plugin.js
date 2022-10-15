@@ -1,4 +1,3 @@
-import { Events } from 'jellyfin-apiclient';
 import 'material-design-icons-iconfont';
 
 import loading from '../../components/loading/loading';
@@ -9,6 +8,8 @@ import Screenfull from 'screenfull';
 import TableOfContents from './tableOfContents';
 import dom from '../../scripts/dom';
 import { translateHtml } from '../../scripts/globalize';
+import * as userSettings from '../../scripts/settings/userSettings';
+import Events from '../../utils/events.ts';
 
 import '../../elements/emby-button/paper-icon-button-light';
 
@@ -294,6 +295,12 @@ export class BookPlayer {
                 this.currentSrc = downloadHref;
                 this.rendition = rendition;
 
+                rendition.themes.register('dark', { 'body': { 'color': '#fff' } });
+
+                if (userSettings.theme(undefined) === 'dark' || userSettings.theme(undefined) === null) {
+                    rendition.themes.select('dark');
+                }
+
                 return rendition.display().then(() => {
                     const epubElem = document.querySelector('.epub-container');
                     epubElem.style.opacity = '0';
@@ -332,7 +339,7 @@ export class BookPlayer {
     }
 
     canPlayItem(item) {
-         return item.Path && item.Path.endsWith('epub');
+        return item.Path && item.Path.endsWith('epub');
     }
 }
 

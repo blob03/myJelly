@@ -1,6 +1,7 @@
-import { Events } from 'jellyfin-apiclient';
+
 import { playbackManager } from '../components/playback/playbackmanager';
 import ServerConnections from '../components/ServerConnections';
+import Events from '../utils/events.ts';
 
 export function supported() {
     return typeof(Storage) !== 'undefined';

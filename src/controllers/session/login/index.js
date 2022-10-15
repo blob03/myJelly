@@ -290,6 +290,8 @@ import './login.scss';
 		
 		loading.show();
 		
+		libraryMenu.updateUserInHeader(null);
+		
 		const allCultures = cultures.getDictionaries();
 		const selectLanguage = view.querySelector('#selectLanguage');
 		const defaultLang = globalize.getDefaultCulture().ccode;

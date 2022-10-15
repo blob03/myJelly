@@ -9,7 +9,7 @@ import settingsHelper from '../settingshelper';
 import cultures from '../../scripts/cultures';
 import loading from '../loading/loading';
 import skinManager from '../../scripts/themeManager';
-import { Events } from 'jellyfin-apiclient';
+import Events from '../../utils/events.ts';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-checkbox/emby-checkbox';
 import '../../elements/emby-button/emby-button';

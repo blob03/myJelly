@@ -1,6 +1,6 @@
 import { currentSettings as userSettings } from './settings/userSettings';
 import cultures from './cultures';
-import { Events } from 'jellyfin-apiclient';
+import Events from '../utils/events.ts';
 
 /* eslint-disable indent */
 

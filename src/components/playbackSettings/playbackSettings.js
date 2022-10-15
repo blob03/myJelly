@@ -8,7 +8,7 @@ import globalize from '../../scripts/globalize';
 import loading from '../loading/loading';
 import settingsHelper from '../settingshelper';
 import cultures from '../../scripts/cultures';
-import { Events } from 'jellyfin-apiclient';
+import Events from '../../utils/events.ts';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-slider/emby-slider';
 import '../../elements/emby-checkbox/emby-checkbox';

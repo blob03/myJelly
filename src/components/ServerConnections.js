@@ -1,6 +1,7 @@
-import { ConnectionManager, Credentials, ApiClient, Events } from 'jellyfin-apiclient';
+import { ConnectionManager, Credentials, ApiClient } from 'jellyfin-apiclient';
 import { appHost } from './apphost';
 import Dashboard from '../utils/dashboard';
+import Events from '../utils/events.ts';
 import { setUserInfo } from '../scripts/settings/userSettings';
 import appSettings from '../scripts/settings/appSettings';
 

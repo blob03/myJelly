@@ -1,4 +1,4 @@
-import { Events } from 'jellyfin-apiclient';
+import Events from '../../utils/events.ts';
 import { playbackManager } from './playbackmanager';
 import dom from '../../scripts/dom';
 import browser from '../../scripts/browser';
