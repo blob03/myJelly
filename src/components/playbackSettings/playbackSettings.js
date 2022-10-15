@@ -159,7 +159,7 @@ import template from './playbackSettings.template.html';
 		
 		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
 
-		let allCultures = cultures.getCultures();		
+		let allCultures = cultures.getCultures();
 		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "displayNativeName", userSettings.AudioLanguagePreference() || '');
 
         if (appHost.supports('externalplayerintent')) {
@@ -185,7 +185,6 @@ import template from './playbackSettings.template.html';
         context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
 		
 		context.querySelector('.chkRememberAudioSelections').checked = user.Configuration.RememberAudioSelections || false;
-        context.querySelector('.chkRememberSubtitleSelections').checked = user.Configuration.RememberSubtitleSelections || false;
 		
         setMaxBitrateIntoField(context.querySelector('.selectVideoInNetworkQuality'), true, 'Video');
         setMaxBitrateIntoField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
@@ -193,6 +192,8 @@ import template from './playbackSettings.template.html';
 
         fillChromecastQuality(context.querySelector('.selectChromecastVideoQuality'));
         context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
+
+		context.querySelector('.chkMuteButton').checked = userSettings.muteButton();
 
 		const selectLabelMaxVideoWidth = context.querySelector('.selectLabelMaxVideoWidth');
         selectLabelMaxVideoWidth.value = appSettings.maxVideoWidth();
@@ -247,11 +248,12 @@ import template from './playbackSettings.template.html';
         userSettings.enableNextEpisodeAutoPlay(context.querySelector('.chkEpisodeAutoPlay').checked);
 		
 		user.Configuration.RememberAudioSelections = context.querySelector('.chkRememberAudioSelections').checked;
-        user.Configuration.RememberSubtitleSelections = context.querySelector('.chkRememberSubtitleSelections').checked;
 		
 		userSettings.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
         userSettings.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
         userSettings.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
+		userSettings.muteButton(context.querySelector('.chkMuteButton').checked);
+		
         userSettings.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);
         userSettings.skipBackLength(context.querySelector('#sliderSkipBackLength').value * 1000);
 		userSettings.AudioLanguagePreference(context.querySelector('#selectAudioLanguage').value);

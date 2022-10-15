@@ -384,7 +384,7 @@ function loadForm(self) {
 	
 	context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || 'none';
 	loadColors(context);
-	
+
 	context.querySelector('#inputShadowColor').value = appearanceSettings.textShadow || 'Transparent';
 	context.querySelector('#inputShadowColor').addEventListener('change', cancelPreset);
 	context.querySelector('#shadowcolor').style.backgroundColor = context.querySelector('#inputShadowColor').value;
@@ -427,6 +427,8 @@ function loadForm(self) {
 	context.querySelector('#selectSubtitleBurnIn').value = appSettings.get('subtitleburnin') || '';
 	context.querySelector('#chkPreview').checked = appearanceSettings.chkPreview;
 	
+	context.querySelector('.chkRememberSubtitleSelections').checked = user.Configuration.RememberSubtitleSelections || false;	
+	
 	let selectSubtitlePlaybackMode = context.querySelector('#selectSubtitlePlaybackMode');
 	selectSubtitlePlaybackMode.value = user.Configuration.SubtitleMode || '';
 	
@@ -462,6 +464,7 @@ function save(self) {
     appearanceSettings = Object.assign(appearanceSettings, getSubtitleAppearanceObject(context));
     userSettings.setSubtitleAppearanceSettings(appearanceSettings, appearanceKey);
 
+	user.Configuration.RememberSubtitleSelections = context.querySelector('.chkRememberSubtitleSelections').checked;
     user.Configuration.SubtitleLanguagePreference = context.querySelector('#selectSubtitleLanguage').value;
     user.Configuration.SubtitleMode = context.querySelector('#selectSubtitlePlaybackMode').value;
 		

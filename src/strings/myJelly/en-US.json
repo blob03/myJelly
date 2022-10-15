@@ -82,6 +82,8 @@
     "MJBackdropScreensaverHelp": "Show the backdrops from the source defined above.",
     "MissingAPIKey": "API KEY MISSING",
     "MoreDiffused": "More diffused",
+    "MuteButton": "Mute button",
+    "MuteButtonHelp": "Enable Mute button when playing on devices with physical audio control.",
     "NoConnectivity": "NO CONNECTION",
     "Notifications": "Notification",
     "Oblique": "Oblique:",

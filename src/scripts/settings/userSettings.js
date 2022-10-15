@@ -515,6 +515,19 @@ export class UserSettings {
     }
 	
 	/**
+     * Get or set 'Mute button' state.
+     * @param {boolean|undefined} val - Flag to force 'mute' button in osd or undefined.
+     * @return {boolean} 'Mute button' state.
+     */
+	muteButton(val) {
+		if (val !== undefined) {
+			return this.set('muteButton', val.toString());
+		}
+		
+		return toBoolean(this.get('muteButton'), false);
+	}
+	
+	/**
      * Get or set 'Use Episode Images in Next Up and Continue Watching' state.
      * @param {string|boolean|undefined} val - Flag to enable 'Use Episode Images in Next Up and Continue Watching' or undefined.
      * @return {boolean} 'Use Episode Images in Next Up' state.
@@ -1525,6 +1538,7 @@ export const language = currentSettings.language.bind(currentSettings);
 export const languageAlt = currentSettings.languageAlt.bind(currentSettings);
 export const dateTimeLocale = currentSettings.dateTimeLocale.bind(currentSettings);
 export const chromecastVersion = currentSettings.chromecastVersion.bind(currentSettings);
+export const muteButton = currentSettings.muteButton.bind(currentSettings);
 export const enableRewatchingInNextUp = currentSettings.enableRewatchingInNextUp.bind(currentSettings);
 export const skipBackLength = currentSettings.skipBackLength.bind(currentSettings);
 export const skipForwardLength = currentSettings.skipForwardLength.bind(currentSettings);

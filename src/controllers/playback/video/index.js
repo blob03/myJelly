@@ -806,7 +806,8 @@ import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components
             }
 
             if (player.isLocalPlayer && appHost.supports('physicalvolumecontrol')) {
-                showMuteButton = false;
+				if (!userSettings.muteButton())
+					showMuteButton = false;
                 showVolumeSlider = false;
             }
 

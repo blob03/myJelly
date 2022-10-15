@@ -82,6 +82,8 @@
     "MJBackdropScreensaverHelp": "Afficher les arrière-plans définis au-dessus.",
     "MissingAPIKey": "CLEF API MANQUANTE",
     "MoreDiffused": "Plus diffus",
+    "MuteButton": "Bouton 'Silence'",
+    "MuteButtonHelp": "Afficher le bouton 'Silence' même si le périphérique possède une télécommande.",
     "NoConnectivity": "NON CONNECTÉ",
     "Notifications": "Notifications",
     "Oblique": "Oblique :",

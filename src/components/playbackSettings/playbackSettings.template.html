@@ -19,7 +19,23 @@
             <select is="emby-select" id="selectAudioLanguage" label="${LabelAudioLanguagePreference}">
 				<option value="">${Default}</option>
 				<option disabled>${OptionDivider}</option>
-		</select>
+			</select>
+        </div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription">
+            <label>
+                <input type="checkbox" is="emby-checkbox" class="chkRememberAudioSelections" />
+                <span>${RememberAudioSelections}</span>
+            </label>
+            <div class="fieldDescription checkboxFieldDescription">${RememberAudioSelectionsHelp}</div>
+        </div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription">
+            <label>
+                <input type="checkbox" is="emby-checkbox" class="chkMuteButton" />
+                <span>${MuteButton}</span>
+            </label>
+            <div class="fieldDescription checkboxFieldDescription">${MuteButtonHelp}</div>
         </div>
     </div>
 
@@ -89,22 +105,6 @@
                 <span>${PreferFmp4HlsContainer}</span>
             </label>
             <div class="fieldDescription checkboxFieldDescription">${PreferFmp4HlsContainerHelp}</div>
-        </div>
-		
-		<div class="checkboxContainer checkboxContainer-withDescription">
-            <label>
-                <input type="checkbox" is="emby-checkbox" class="chkRememberAudioSelections" />
-                <span>${RememberAudioSelections}</span>
-            </label>
-            <div class="fieldDescription checkboxFieldDescription">${RememberAudioSelectionsHelp}</div>
-        </div>
-
-        <div class="checkboxContainer checkboxContainer-withDescription">
-            <label>
-                <input type="checkbox" is="emby-checkbox" class="chkRememberSubtitleSelections" />
-                <span>${RememberSubtitleSelections}</span>
-            </label>
-            <div class="fieldDescription checkboxFieldDescription">${RememberSubtitleSelectionsHelp}</div>
         </div>
 
 		<fieldset style="padding: 1.5em 2em 0 2em;margin: 0 0 2em 0;border: 1px solid #000;">
