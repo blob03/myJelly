@@ -2454,24 +2454,24 @@
     },
     "zh-HK": {
         "ccode": "zh-HK",
-        "fsize": 65365,
+        "fsize": 65525,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Hong Kong",
         "displayNativeName": "廣東話 (香港)",
         "ISO6391": "zh-HK",
         "ISO6392": "chi",
-        "keys#": 1090,
-        "completed%": 61.37,
+        "keys#": 1093,
+        "completed%": 61.54,
         "jellyfinWeb": {
             "filename": "zh-HK.json",
-            "keys#": 1090,
+            "keys#": 1093,
             "orphans#": 3,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
                 "LabelMinScreenshotDownloadWidth",
                 "ButtonNetwork"
             ],
-            "completed%": 65.31
+            "completed%": 65.49
         },
         "myJelly": {
             "filename": "",

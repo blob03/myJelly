@@ -671,7 +671,7 @@ html {
 	color: #6f53d3 !important;
 }
 
-.headerButton > .material-icons.home::before {
+.material-icons.home::before {
 	font-family: "HSpirits";
 	font-size: 100%;
 	font-weight: 100;
