@@ -87,9 +87,10 @@ class AppRouter {
 
         path = path.replace(this.baseUrl(), ''); 
 
-        if (this.currentRouteInfo && this.currentRouteInfo.path === path) {
+        if (this.currentRouteInfo?.path === path) {
             // can't use this with home right now due to the back menu
-            if (this.currentRouteInfo.route.type !== 'home') {
+            if (this.currentRouteInfo.route.type !== 'home'
+			&& this.currentRouteInfo.route.type !== 'login') {
                 loading.hide();
                 return Promise.resolve();
             }
@@ -484,14 +485,15 @@ class AppRouter {
 
     #getHandler(route) {
         return (ctx, next) => {
-
-            const ignore = ctx.path === this.currentRouteInfo.path;
-            if (ignore) {
-				console.debug('[appRouter] path did not change, ignoring route change');
-                // Resolve 'show' promise
-                this.onViewShow();
-                return;
-            }
+			if (this.currentRouteInfo.route.type !== 'login') {
+				const ignore = ctx.path === this.currentRouteInfo.path;
+				if (ignore) {
+					console.debug('[appRouter] path did not change, ignoring route change');
+					// Resolve 'show' promise
+					this.onViewShow();
+					return;
+				}
+			}
 
             this.#handleRoute(ctx, next, route);
         };

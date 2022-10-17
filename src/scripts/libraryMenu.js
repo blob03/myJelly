@@ -372,20 +372,16 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         inputManager.handleCommand('search');
     }
 	
-	function doReload(_cachebuster) {
-		loading.show();
-		let _path = 'home.html';
-		let cb = '';
-		if (_cachebuster === true) {
-			const rnd = Math.floor(Math.random() * 1000000);
-			cb = '?cb=' + rnd;
+	function doReload() {
+		if (appRouter.currentRouteInfo && appRouter.currentRouteInfo.path) {
+			loading.show();
+			let url = appRouter.currentRouteInfo.path;
+			appRouter.show(url).then(() => {
+				setTimeout(() => {
+					loading.hide();
+				}, 500);
+			});
 		}
-
-		appRouter.show(_path + cb).then(() => {
-			setTimeout(() => {
-				loading.hide();
-			}, 1000);
-		});
 	}
 	
 	function doLock() {

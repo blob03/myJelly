@@ -1207,6 +1207,31 @@
             "completed%": 0
         }
     },
+    "jbo": {
+        "ccode": "jbo",
+        "fsize": 798,
+        "ccodeSrc": "en-US",
+        "displayName": "Lojban",
+        "displayNativeName": "Lojban",
+        "ISO6391": "jbo",
+        "ISO6392": "jbo",
+        "keys#": 27,
+        "completed%": 1.52,
+        "jellyfinWeb": {
+            "filename": "jbo.json",
+            "keys#": 27,
+            "orphans#": 0,
+            "orphans": [],
+            "completed%": 1.62
+        },
+        "myJelly": {
+            "filename": "",
+            "keys#": 0,
+            "orphans#": 0,
+            "orphans": [],
+            "completed%": 0
+        }
+    },
     "kab": {
         "ccode": "kab",
         "fsize": 244,

@@ -1,5 +1,6 @@
 import globalize from '../../../scripts/globalize';
 import Dashboard from '../../../utils/dashboard';
+import { appRouter } from '../../../components/appRouter';
 
 /* eslint-disable indent */
 
@@ -55,8 +56,7 @@ import Dashboard from '../../../utils/dashboard';
         }
 		
 		function onCancel(e) {
-			const rnd = Math.floor(Math.random() * 100000);
-			Dashboard.navigate('login.html?v=' + rnd);
+			appRouter.back();
 		}
 
         view.querySelector('form').addEventListener('submit', onSubmit);

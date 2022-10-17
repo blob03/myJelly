@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-21",
+	"version": "10.8.5-22",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -119,6 +119,7 @@
 		"10.8.5-18": "Apply patch 'thornbill/apiclient-events'.\nApply patch 'thornbill/apiclient-appstorage'.\nInstall latest 'package.json'.",
 		"10.8.5-19": "Move 'set audio track based on previous item' into section 'audio settings' (playback settings).\nMove 'set subtitles track based on previous item' into section 'subtitles' (subtitles settings).\nOption to enable the Mute button regardless of whether the playback device has one (playback settings).",
 		"10.8.5-20": "Translations synchronized with master.\nFix ReactRoot frame blocking access to other features of the Dashboard.\nFix 'Last Seen' string too long to fit into user cards (Dashboard).",
-		"10.8.5-21": "Fix unstoppable ScheduledTasksInfo polling.\nApply patch 'Remove string replaceAll implementations'."
+		"10.8.5-21": "Fix unstoppable ScheduledTasksInfo polling.\nApply patch 'Remove string replaceAll implementations'.",
+		"10.8.5-22": "Synchronize translation files with master.\nNo loss of querystring while browsing the sign-in pages.\nApply patch 'thornbill/fix-intl-compat'."
 	}
 }
