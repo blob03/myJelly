@@ -6,6 +6,8 @@ import Events from '../utils/events.ts';
 
 import '../elements/emby-button/emby-button';
 
+ let _pollInterval;
+ 
 export default function (options) {
     function pollTasks() {
         ServerConnections.getApiClient(serverId).getScheduledTasks({
@@ -78,7 +80,7 @@ export default function (options) {
         }
     }
 
-    let pollInterval;
+   
     const button = options.button;
     const serverId = ApiClient.serverId();
 
@@ -91,18 +93,18 @@ export default function (options) {
     function startInterval() {
         const apiClient = ServerConnections.getApiClient(serverId);
 
-        if (pollInterval) {
-            clearInterval(pollInterval);
+        if (_pollInterval) {
+            clearInterval(_pollInterval);
         }
         apiClient.sendMessage('ScheduledTasksInfoStart', '1000,1000');
-        pollInterval = setInterval(onPollIntervalFired, 5000);
+        _pollInterval = setInterval(onPollIntervalFired, 5000);
     }
 
     function stopInterval() {
         ServerConnections.getApiClient(serverId).sendMessage('ScheduledTasksInfoStop');
 
-        if (pollInterval) {
-            clearInterval(pollInterval);
+        if (_pollInterval) {
+            clearInterval(_pollInterval);
         }
     }
 
@@ -110,14 +112,14 @@ export default function (options) {
         options.panel.classList.add('hide');
     }
 
-    if (options.mode == 'off') {
-        button.removeEventListener('click', onButtonClick);
-        Events.off(serverNotifications, 'ScheduledTasksInfo', onScheduledTasksUpdate);
-        stopInterval();
-    } else {
+	if (options.mode === 'on') {
         button.addEventListener('click', onButtonClick);
         pollTasks();
         startInterval();
         Events.on(serverNotifications, 'ScheduledTasksInfo', onScheduledTasksUpdate);
+    } else {
+		stopInterval();
+        button.removeEventListener('click', onButtonClick);
+        Events.off(serverNotifications, 'ScheduledTasksInfo', onScheduledTasksUpdate);
     }
 }

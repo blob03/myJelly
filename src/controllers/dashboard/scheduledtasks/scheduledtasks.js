@@ -152,8 +152,8 @@ import '../../../elements/emby-button/emby-button';
         }
 
         function startInterval() {
-            ApiClient.sendMessage('ScheduledTasksInfoStart', '1000,1000');
             pollInterval && clearInterval(pollInterval);
+			ApiClient.sendMessage('ScheduledTasksInfoStart', '1000,1000');
             pollInterval = setInterval(onPollIntervalFired, 1e4);
         }
 

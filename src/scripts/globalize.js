@@ -200,15 +200,11 @@ import Events from '../utils/events.ts';
 		
         return dictionary[key];
     }
-	
-    function replaceAll(str, find, replace) {
-        return str.split(find).join(replace);
-    }
 
     export function translate(key) {
         let val = translateKey(key);
         for (let i = 1; i < arguments.length; i++) {
-            val = replaceAll(val, '{' + (i - 1) + '}', arguments[i]);
+             val = val.replaceAll('{' + (i - 1) + '}', arguments[i].toLocaleString(_currentCulture));
         }
         return val;
     }

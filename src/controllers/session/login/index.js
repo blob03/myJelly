@@ -184,7 +184,7 @@ import './login.scss';
             html += `<div class="cardContent" data-haspw="${user.HasPassword}" data-username="${user.Name}" data-userid="${user.Id}">`;
             let imgUrl;
 
-            if (user.PrimaryImageTag) {
+            if (user.PrimaryImageTag && user.Id) {
                 imgUrl = apiClient.getUserImageUrl(user.Id, {
                     width: 300,
                     tag: user.PrimaryImageTag,
