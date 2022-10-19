@@ -825,24 +825,24 @@
     },
     "fr-CA": {
         "ccode": "fr-CA",
-        "fsize": 65961,
+        "fsize": 67451,
         "ccodeSrc": "en-US",
         "displayName": "French, Canada",
         "displayNativeName": "Français, Canada",
         "ISO6391": "fr-CA",
         "ISO6392": "frc",
-        "keys#": 938,
-        "completed%": 52.82,
+        "keys#": 952,
+        "completed%": 53.6,
         "jellyfinWeb": {
             "filename": "fr-CA.json",
-            "keys#": 938,
+            "keys#": 952,
             "orphans#": 3,
             "orphans": [
                 "ButtonNetwork",
                 "LabelVideo",
                 "Screenshots"
             ],
-            "completed%": 56.2
+            "completed%": 57.04
         },
         "myJelly": {
             "filename": "",
@@ -1209,20 +1209,20 @@
     },
     "jbo": {
         "ccode": "jbo",
-        "fsize": 2362,
+        "fsize": 2548,
         "ccodeSrc": "en-US",
         "displayName": "Lojban",
         "displayNativeName": "Lojban",
         "ISO6391": "jbo",
         "ISO6392": "jbo",
-        "keys#": 70,
-        "completed%": 3.94,
+        "keys#": 74,
+        "completed%": 4.17,
         "jellyfinWeb": {
             "filename": "jbo.json",
-            "keys#": 70,
+            "keys#": 74,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 4.19
+            "completed%": 4.43
         },
         "myJelly": {
             "filename": "",
