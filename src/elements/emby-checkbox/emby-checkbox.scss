@@ -7,10 +7,17 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    padding-left: 2.4em;
     align-items: center;
     height: 2.35em;
     cursor: pointer;
+	
+	[dir="ltr"] & {
+        padding-left: 2.4em;
+    }
+
+    [dir="rtl"] & {
+        padding-right: 2.4em;
+    }
 }
 
 .checkboxFieldDescription {
@@ -49,7 +56,7 @@
 .checkboxOutline {
     position: absolute;
     /*top: 3px;*/
-    left: 0;
+    
     box-sizing: border-box;
     margin: 0;
 	width: 1.8em;
@@ -61,6 +68,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+	
+    [dir="ltr"] & {
+        left: 0;
+    }
+
+    [dir="rtl"] & {
+        right: 0;
+    }
 }
 
 .radio > .checkboxOutline {

@@ -5,6 +5,7 @@
  * @module components/listview/listview
  */
 
+import escapeHtml from 'escape-html';
 import itemHelper from '../itemHelper';
 import mediaInfo from '../mediainfo/mediainfo';
 import indicators from '../indicators/indicators';
@@ -148,7 +149,7 @@ import ServerConnections from '../ServerConnections';
              elem.classList.add('listItemBodyText');
 
             if (textlines[i]) {
-                elem.innerText = textlines[i];
+				elem.innerHTML = '<bdi>' + escapeHtml(textlines[i]) + '</bdi>';
             } else {
                 elem.innerHTML = '&nbsp;';
             }
@@ -424,7 +425,7 @@ import ServerConnections from '../ServerConnections';
 
             if (enableOverview && item.Overview) {
                 html += '<div class="secondary listItem-overview listItemBodyText">';
-                html += item.Overview;
+				html += '<bdi>' + item.Overview + '</bdi>';
                 html += '</div>';
             }
 
@@ -489,7 +490,7 @@ import ServerConnections from '../ServerConnections';
 
                 if (enableOverview && item.Overview) {
                     html += '<div class="listItem-bottomoverview secondary">';
-                    html += item.Overview;
+                    html += '<bdi>' + item.Overview + '</bdi>';
                     html += '</div>';
                 }
             }

@@ -617,7 +617,7 @@
     },
     "es": {
         "ccode": "es",
-        "fsize": 122232,
+        "fsize": 122236,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Castilian",
         "displayNativeName": "Español, Castellano",
@@ -688,7 +688,7 @@
     },
     "eu": {
         "ccode": "eu",
-        "fsize": 114699,
+        "fsize": 114703,
         "ccodeSrc": "en-US",
         "displayName": "Basque",
         "displayNativeName": "Euskera",
@@ -1209,20 +1209,20 @@
     },
     "jbo": {
         "ccode": "jbo",
-        "fsize": 798,
+        "fsize": 2362,
         "ccodeSrc": "en-US",
         "displayName": "Lojban",
         "displayNativeName": "Lojban",
         "ISO6391": "jbo",
         "ISO6392": "jbo",
-        "keys#": 27,
-        "completed%": 1.52,
+        "keys#": 70,
+        "completed%": 3.94,
         "jellyfinWeb": {
             "filename": "jbo.json",
-            "keys#": 27,
+            "keys#": 70,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 1.62
+            "completed%": 4.19
         },
         "myJelly": {
             "filename": "",
@@ -2058,22 +2058,22 @@
     },
     "sq": {
         "ccode": "sq",
-        "fsize": 9330,
+        "fsize": 10135,
         "ccodeSrc": "en-US",
         "displayName": "Albanian",
         "displayNativeName": "Shqip",
         "ISO6391": "sq",
         "ISO6392": "alb",
-        "keys#": 178,
-        "completed%": 10.02,
+        "keys#": 187,
+        "completed%": 10.53,
         "jellyfinWeb": {
             "filename": "sq.json",
-            "keys#": 178,
+            "keys#": 187,
             "orphans#": 1,
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 10.67
+            "completed%": 11.2
         },
         "myJelly": {
             "filename": "",
@@ -2206,7 +2206,7 @@
     },
     "te": {
         "ccode": "te",
-        "fsize": 202506,
+        "fsize": 202476,
         "ccodeSrc": "en-US",
         "displayName": "Telugu",
         "displayNativeName": "తెలుగు",

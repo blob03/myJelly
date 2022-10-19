@@ -103,11 +103,8 @@ const UserLibraryAccess: FunctionComponent = () => {
         }
 
         const itemsArr: ItemsArr[] = [];
-		const _Ids = {};
-        for (const device of devices) { 
-			if (_Ids[device.Id])
-				continue;
-			_Ids[device.Id] = true;
+
+        for (const device of devices) {
             const isChecked = user.Policy.EnableAllDevices || user.Policy.EnabledDevices.indexOf(device.Id) != -1;
             const checkedAttribute = isChecked ? ' checked="checked"' : '';
             itemsArr.push({
@@ -117,12 +114,11 @@ const UserLibraryAccess: FunctionComponent = () => {
                 checkedAttribute: checkedAttribute
             });
         }
+
         setDevicesItems(itemsArr);
 
         const chkEnableAllDevices = page.querySelector('.chkEnableAllDevices') as HTMLInputElement;
-
         chkEnableAllDevices.checked = user.Policy.EnableAllDevices;
-
         triggerChange(chkEnableAllDevices);
 
         if (user.Policy.IsAdministrator) {
@@ -134,7 +130,7 @@ const UserLibraryAccess: FunctionComponent = () => {
 
     const loadUser = useCallback((user, mediaFolders, channels, devices) => {
         setUserName(user.Name);
-        //libraryMenu.setTitle(user.Name);
+        libraryMenu.setTitle(user.Name);
         loadChannels(user, channels);
         loadMediaFolders(user, mediaFolders);
         loadDevices(user, devices);

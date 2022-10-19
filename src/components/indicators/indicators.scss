@@ -10,6 +10,13 @@
 }
 
 .itemProgressBarForeground {
+    [dir="ltr"] & {
+        left: 0;
+    }
+
+    [dir="rtl"] & {
+        right: 0;
+    }
 }
 
 .itemProgressBarForeground2 {
@@ -36,7 +43,13 @@
 }
 
 .indicator + .indicator {
-    margin-left: 0.25em;
+    [dir="ltr"] & {
+        margin-left: 0.25em;
+    }
+
+    [dir="rtl"] & {
+        margin-right: 0.25em;
+    }
 }
 
 .indicatorIcon {

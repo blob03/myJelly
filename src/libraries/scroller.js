@@ -8,6 +8,7 @@ import dom from '../scripts/dom';
 import focusManager from '../components/focusManager';
 import ResizeObserver from 'resize-observer-polyfill';
 import '../assets/css/scrollstyles.scss';
+import globalize from '../scripts/globalize';
 
 /**
 * Return type of the value.
@@ -51,7 +52,14 @@ function disableOneEvent(event) {
  *
  * @return {Number}
  */
-function within(number, min, max) {
+function within(number, num1, num2) {
+    if (num2 === undefined && globalize.getIsRTL()) {
+        return number > num1 ? num1 : number;
+    } else if (num2 === undefined) {
+        return number < num1 ? num1 : number;
+    }
+    const min = Math.min(num1, num2);
+    const max = Math.max(num1, num2);
     if (number < min) {
         return min;
     } else if (number > max) {
@@ -172,6 +180,8 @@ const scrollerFactory = function (frame, options) {
 
             // Set position limits & relativess
             self._pos.end = Math.max(slideeSize - frameSize, 0);
+			if (globalize.getIsRTL())
+                self._pos.end *= -1;
         }
     }
 
@@ -261,7 +271,9 @@ const scrollerFactory = function (frame, options) {
         ensureSizeInfo();
         const pos = self._pos;
 
-        if (layoutManager.tv) {
+        if (layoutManager.tv && globalize.getIsRTL()) {
+            newPos = within(-newPos, pos.start);
+        } else if (layoutManager.tv) {
             newPos = within(newPos, pos.start);
         } else {
             newPos = within(newPos, pos.start, pos.end);
@@ -355,7 +367,12 @@ const scrollerFactory = function (frame, options) {
         const slideeOffset = getBoundingClientRect(scrollElement);
         const itemOffset = getBoundingClientRect(item);
 
-        let offset = o.horizontal ? itemOffset.left - slideeOffset.left : itemOffset.top - slideeOffset.top;
+                let horizontalOffset = itemOffset.left - slideeOffset.left;
+        if (globalize.getIsRTL()) {
+            horizontalOffset = slideeOffset.right - itemOffset.right;
+        }
+
+        let offset = o.horizontal ? horizontalOffset : itemOffset.top - slideeOffset.top;
 
         let size = o.horizontal ? itemOffset.width : itemOffset.height;
         if (!size && size !== 0) {
@@ -376,17 +393,21 @@ const scrollerFactory = function (frame, options) {
         ensureSizeInfo();
 
         const currentStart = self._pos.cur;
-        const currentEnd = currentStart + frameSize;
+        let currentEnd = currentStart + frameSize;
+        if (globalize.getIsRTL()) {
+            currentEnd = currentStart - frameSize;
+        }
 
         console.debug('offset:' + offset + ' currentStart:' + currentStart + ' currentEnd:' + currentEnd);
-        const isVisible = offset >= currentStart && (offset + size) <= currentEnd;
+        const isVisible = offset >= Math.min(currentStart, currentEnd)
+            && (globalize.getIsRTL() ? (offset - size) : (offset + size)) <= Math.max(currentStart, currentEnd);
 
         return {
             start: offset,
             center: offset + centerOffset - (frameSize / 2) + (size / 2),
             end: offset - frameSize + size,
-            size: size,
-            isVisible: isVisible
+            size,
+            isVisible
         };
     };
 

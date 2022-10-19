@@ -1362,7 +1362,7 @@
     "Quality": "Kalitatea",
     "QuickConnect": "Konexio azkarra",
     "QuickConnectActivationSuccessful": "Behar bezala aktibatuta",
-    "QuickConnectAuthorizeCode": "Sartu identifikazio-kodea",
+    "QuickConnectAuthorizeCode": "Sartu identifikazio-kodea {0}",
     "QuickConnectAuthorizeFail": "Konexio azkarreko kode ezezaguna",
     "QuickConnectAuthorizeSuccess": "Baimena eskatu",
     "QuickConnectDeactivated": "Konexio azkarra saioa hasteko eskaera onartu baino lehen desaktibatu zen",

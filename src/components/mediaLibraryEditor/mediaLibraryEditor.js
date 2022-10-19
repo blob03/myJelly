@@ -17,6 +17,7 @@ import '../../elements/emby-button/paper-icon-button-light';
 import '../formdialog.scss';
 import '../../elements/emby-toggle/emby-toggle';
 import '../../assets/css/flexstyles.scss';
+import './style.scss';
 import toast from '../toast/toast';
 import confirm from '../confirm/confirm';
 import template from './mediaLibraryEditor.template.html';
@@ -108,7 +109,7 @@ import template from './mediaLibraryEditor.template.html';
 
     function getFolderHtml(pathInfo, index) {
         let html = '';
-        html += `<div class="listItem listItem-border lnkPath" data-index="${index}" style="padding-left:.5em;">`;
+         html += `<div class="listItem listItem-border lnkPath" data-index="${index}">`;
         html += `<div class="${pathInfo.NetworkPath ? 'listItemBody two-line' : 'listItemBody'}">`;
         html += '<h3 class="listItemBodyText">';
         html += pathInfo.Path;

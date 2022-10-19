@@ -852,6 +852,16 @@
 		  "jpn"
 		]
 	  },
+	  "jbo": {
+		"Name": "Lojban",
+		"DisplayName": "Lojban",
+		"DisplayNativeName": "Lojban",
+		"TwoLetterISOLanguageName": "jbo",
+		"ThreeLetterISOLanguageName": "jbo",
+		"ThreeLetterISOLanguageNames": [
+		  "jbo"
+		]
+	  },
 	  "jv": {
 		"Name": "Javanese",
 		"DisplayName": "Javanese",

@@ -57,6 +57,21 @@ class AppRouter {
     ready() {
         return this.promiseShow || Promise.resolve();
     }
+	
+	async reload() {
+		const rnd = "_cb=" + Math.floor(Math.random() * 1000000);
+		let url = this.currentRouteInfo?.path || '/home.html';
+		
+		if (url.match(/_cb=[0-9]+/))
+			url = url.replace(/_cb=[0-9]+/, rnd);
+		else {
+			if (url.indexOf("?") != -1) {
+				url += '&' + rnd;
+			} else
+				url += '?' + rnd;
+		}
+		return this.show(url);
+	}
 
     async back() {
         if (this.promiseShow) await this.promiseShow;

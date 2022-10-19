@@ -73,7 +73,10 @@ import { toPercent } from '../../utils/number.ts';
             this.querySelector('.animate-75-100-b').style.transform = 'rotate(' + angle + 'deg)';
         }
 
-        this.querySelector('.progressring-text').innerHTML = toPercent(progress / 100, getCurrentDateTimeLocale());
+        this.querySelector('.progressring-text').innerHTML = new Intl.NumberFormat(getCurrentDateTimeLocale(), {
+            style: 'percent',
+            maximumFractionDigits: 0
+        }).format(progress / 100);
     };
 
     EmbyProgressRing.attachedCallback = function () {

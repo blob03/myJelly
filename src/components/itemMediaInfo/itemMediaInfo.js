@@ -5,6 +5,7 @@
  * @module components/itemMediaInfo/itemMediaInfo
  */
 
+import escapeHtml from 'escape-html';
 import dialogHelper from '../dialogHelper/dialogHelper';
 import layoutManager from '../layoutManager';
 import toast from '../toast/toast';
@@ -65,7 +66,7 @@ const attributeDelimiterHtml = layoutManager.tv ? '' : '<span class="hide">: </s
             html += `${createAttribute(globalize.translate('MediaInfoFormat'), version.Formats.join(','))}<br/>`;
         }
         if (version.Path && user && user.Policy.IsAdministrator) {
-            html += `${createAttribute(globalize.translate('MediaInfoPath'), version.Path)}<br/>`;
+            html += `${createAttribute(globalize.translate('MediaInfoPath'), version.Path, true)}<br/>`;
         }
         if (version.Size) {
             const size = `${(version.Size / (1024 * 1024)).toFixed(0)} MB`;
@@ -211,8 +212,9 @@ const attributeDelimiterHtml = layoutManager.tv ? '' : '<span class="hide">: </s
         return html;
     }
 
-    function createAttribute(label, value) {
-         return `<span class="mediaInfoLabel">${label}</span>${attributeDelimiterHtml}<span class="mediaInfoAttribute">${value}</span>\n`;
+    // File Paths should be always ltr. The isLtr parameter allows this.
+    function createAttribute(label, value, isLtr) {
+        return `<span class="mediaInfoLabel">${label}</span>${attributeDelimiterHtml}<span class="mediaInfoAttribute" ${isLtr && 'dir="ltr"'}>${escapeHtml(value)}</span>\n`;
     }
 
     function loadMediaInfo(itemId, serverId) {

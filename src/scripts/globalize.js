@@ -2,18 +2,55 @@ import { currentSettings as userSettings } from './settings/userSettings';
 import cultures from './cultures';
 import Events from '../utils/events.ts';
 
+const Direction = {
+    rtl: 'rtl',
+    ltr: 'ltr'
+};
+
 /* eslint-disable indent */
 
 	const fallbackCulture = 'en-US';
 	const fallbackCultureName = 'English';
 	const fallbackModule = 'core';
+	const RTL_LANGS = ['ar', 'fa', 'ur', 'he'];
     const allTranslations = {};
     let _currentCulture;
 	let _currentCultureAlt;
     let _currentDateTimeCulture;
+	let isRTL = false;
 
     export function getCurrentLocale() {
         return _currentCulture;
+    }
+	
+	export function getIsRTL() {
+        return isRTL;
+    }
+
+    function checkAndProcessDir(culture) {
+        isRTL = false;
+        //console.log(culture);
+        for (const lang of RTL_LANGS) {
+            if (culture.includes(lang)) {
+                isRTL = true;
+                break;
+            }
+        }
+        setDocumentDirection(isRTL ? Direction.rtl : Direction.ltr);
+    }
+
+    function setDocumentDirection(direction) {
+        document.getElementsByTagName('body')[0].setAttribute('dir', direction);
+        document.getElementsByTagName('html')[0].setAttribute('dir', direction);
+        if (direction === Direction.rtl)
+            import('../styles/rtl.scss');
+    }
+
+    export function getIsElementRTL(element) {
+        if (window.getComputedStyle) { // all browsers
+            return window.getComputedStyle(element, null).getPropertyValue('direction') == 'rtl';
+        }
+        return element.currentStyle.direction == 'rtl';
     }
 
     export function getCurrentDateTimeLocale() {
@@ -60,6 +97,7 @@ import Events from '../utils/events.ts';
 		_currentCulture = userSettings.language() || getDefaultCulture().ccode;
 		_currentCultureAlt = userSettings.languageAlt() || getDefaultCulture().ccode;
 		_currentDateTimeCulture = userSettings.dateTimeLocale() || _currentCulture;
+		checkAndProcessDir(_currentCulture);
         ensureTranslations(_currentCulture);
 		ensureTranslations(_currentCultureAlt);
     }
@@ -278,7 +316,9 @@ export default {
 	getSourceCulture,
     register,
     updateCurrentCulture,
-	updateCulture
+	updateCulture,
+	getIsRTL,
+    getIsElementRTL
 };
 
 /* eslint-enable indent */

@@ -372,18 +372,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         inputManager.handleCommand('search');
     }
 	
-	function doReload() {
-		if (appRouter.currentRouteInfo && appRouter.currentRouteInfo.path) {
-			loading.show();
-			let url = appRouter.currentRouteInfo.path;
-			appRouter.show(url).then(() => {
-				setTimeout(() => {
-					loading.hide();
-				}, 500);
-			});
-		}
-	}
-	
 	function doLock() {
 		const lockIcon = document.getElementById("lock");
 		if (lockIcon) {
@@ -450,7 +438,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		}
 		
 		if (headerReloadButton) {
-			headerReloadButton.addEventListener('click', doReload);
+			headerReloadButton.addEventListener('click', () => {appRouter.reload()});
 		}
 		
 		if (headerLockButton) {
@@ -1352,7 +1340,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     loadNavDrawer();
 
     const LibraryMenu = {
-		doReload: doReload,
         getTopParentId: getTopParentId,
         onHardwareMenuButtonClick: function () {
             toggleMainDrawer();

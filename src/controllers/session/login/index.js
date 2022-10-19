@@ -6,6 +6,7 @@ import dom from '../../../scripts/dom';
 import loading from '../../../components/loading/loading';
 import layoutManager from '../../../components/layoutManager';
 import libraryMenu from '../../../scripts/libraryMenu';
+import { appRouter } from '../../../components/appRouter';
 import browser from '../../../scripts/browser';
 import globalize from '../../../scripts/globalize';
 import '../../../components/cardbuilder/card.scss';
@@ -300,10 +301,11 @@ import './login.scss';
 		settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", lang);
 		
 		selectLanguage.addEventListener('change', (x) => {
-			let lang = x.target.value || defaultLang;
-
-			userSettings.language(lang);
-			globalize.getCoreDictionary(lang).then(() => {libraryMenu.doReload();});
+			const lang = x.target.value || defaultLang;
+			globalize.getCoreDictionary(lang).then(() => {
+				userSettings.language(lang);
+				appRouter.reload();
+			});
 		});
 		
 		if (!appHost.supports('multiserver')) {
@@ -331,7 +333,6 @@ import './login.scss';
 				showVisualForm();
 				loadUserList(view, apiClient, users);
 			} else {
-				
 				view.querySelector('#txtManualName').value = '';
 				showManualForm(view, false, false);
 			}
