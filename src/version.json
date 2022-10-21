@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-24",
+	"version": "10.8.5-25",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -122,6 +122,7 @@
 		"10.8.5-21": "Fix unstoppable ScheduledTasksInfo polling.\nApply patch 'Remove string replaceAll implementations'.",
 		"10.8.5-22": "Synchronize translation files with master.\nNo loss of querystring while browsing the sign-in pages.\nApply patch 'thornbill/fix-intl-compat'.",
 		"10.8.5-23": "Synchronize translation files with master.\nApply patch 'Added support for RTL layouts'.\nApply patch 'fix button group position on ItemDetails page'.\nApply patch 'fix HTML escaping'.\nApply patch 'fix listview and actionsheet items'.\nApply patch 'Enable react strict mode'.\nAdd a cache buster to the reload routine.\nImport escapeHtml where it was missing.\nInstall latest 'package.json'.",
-		"10.8.5-24": "Fix clock and weatherbot compatibility issues with RTL scripts.\nSynchronize translation files with master."
+		"10.8.5-24": "Fix clock and weatherbot compatibility issues with RTL scripts.\nSynchronize translation files with master.",
+		"10.8.5-25": "Synchronize translation files with master.\nInstall latest 'package.json'.\nMake tab 'About' compatible with RTL scripts."
 	}
 }

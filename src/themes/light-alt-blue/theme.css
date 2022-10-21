@@ -754,11 +754,11 @@ h3 {
 .abouttab {
 	font-family: inherit;
 	line-height: 1.35;
-	font-weight: 400;
-	text-shadow: 1px 1px 4px #749cb0;
-	color: #11597b;
 	align-items: flex-start !important;
 	width: auto;
+	font-weight: 600;
+	text-shadow: 1px 1px 4px #9fa8ac;
+	color: rgb(57, 110, 129);
 }
 
 .aboutframe {
@@ -768,7 +768,7 @@ h3 {
 	line-height: 1.65 !important;
 }
 
-.aboutcontent {
+.aboutContent {
 	color: #d3f9ff;
 	text-shadow: none;
 }

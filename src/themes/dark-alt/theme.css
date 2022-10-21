@@ -669,7 +669,7 @@ html {
 /* Tab About... */
 
 .abouttab {
-	color: #767b88 !important;
+	color: #858d9f !important;
 	font-family: inherit;
 	font-size: 100%;
 }
@@ -679,7 +679,7 @@ html {
 	background: rgba(43, 46, 49, 0.45) !important;
 }
 
-.aboutcontent {
+.aboutContent {
 	color: #fff;
 }
 

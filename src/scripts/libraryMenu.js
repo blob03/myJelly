@@ -75,7 +75,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
 		html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
 		
-		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;">';
+		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;direction: ltr !important;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
 		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;font-size: 70%;">';
 		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_previous"></span></button>';

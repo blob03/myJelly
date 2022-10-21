@@ -1,0 +1,42 @@
+.aboutframe {
+	padding: 1rem;
+	background: rgba(60, 62, 63, 0.15);
+	width: 33rem;
+}
+
+.aboutContent {
+	font-weight: 400;
+	color: #fff;
+}
+
+.aboutTitle1 {
+	font-size: 200%;
+	font-family: Quicksand-Regular;
+}
+
+.aboutTitle2 {
+	font-family: Quicksand-Regular;
+	font-style: italic;
+}
+
+.aboutLabel {
+	[dir="ltr"] & {
+        margin: 0 .5rem 0 0;
+    }
+
+    [dir="rtl"] & {
+        margin: 0 0 0 .5rem;
+    }
+}
+
+.aboutContent.material-icons {
+	color: #fff;
+	font-size: 1.5rem;
+	[dir="ltr"] & {
+        margin: 0 .5rem 0 0;
+    }
+
+    [dir="rtl"] & {
+        margin: 0 0 0 .5rem;
+    }
+}

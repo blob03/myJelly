@@ -662,7 +662,7 @@ html {
 	background: rgba(132, 68, 9, 0.25) !important;
 }
 
-.aboutcontent {
+.aboutContent {
 	color: #ffc898;
 }
 
@@ -713,7 +713,7 @@ html {
 .mediaButton > .material-icons,
 .slideshowButton > .material-icons,
 .slideshowBottomBar > * > .material-icons,
-.buttons > * > .material-icons,
+.buttons .material-icons,
 .volumeButtons > * > .material-icons,
 .navMenuOption > .material-icons {
 	color: #6f53d3;
