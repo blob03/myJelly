@@ -62,7 +62,7 @@
 
 .ssWeatherDataUnit {
 	font-size: 70%;
-	margin: -1em 0 0 .3em;
+	margin: .3em 0 0 .3em;
 }
 
 #ssTemp {
@@ -70,14 +70,19 @@
 }
 
 .ssWeatherTempUnit {
-	font-size: 25%;
-	margin: -2em 0 0 0;
+	font-size: 35%;
+	margin: .6em 0 0 0;
 }
 
 .ssIcons {
-	margin: 0 .5em 0 0;
-	font-size: 160%;
 	opacity: 50%;
+	[dir="ltr"] & {
+		margin: 0 .3em 0 0;
+	}
+
+	[dir="rtl"] & {
+		margin: 0 0 0 .3em;
+	}
 }
 
 .ssWeatherIcon {

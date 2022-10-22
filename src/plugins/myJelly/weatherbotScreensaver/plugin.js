@@ -206,6 +206,7 @@ export default function () {
 				// Get currently selected Language.
 				const _lang = document.querySelector('.selectLanguage').value;
 				self.opts.language = userSettings.convertCountryCode(_lang);
+				self.opts.langDir = globalize.getIsRTL(_lang);
 				// Get an API key from the form.
 				self.opts.apikey = document.querySelector('#inputApikey').value || "";
 				
@@ -219,6 +220,7 @@ export default function () {
 				self.opts.delay = (document.querySelector('#sliderAPIFrequency').value * 60000) || 300000;
 			} else {
 				self.hideOnMouse = true;
+				self.opts.langDir = globalize.getIsRTL();
 				// get the last saved API key.
 				self.opts.apikey = userSettings.weatherApiKey() || "";
 				self.opts.language = userSettings.convertCountryCode(userSettings.language());
@@ -237,7 +239,7 @@ export default function () {
 			if (idx)
 				elem.classList.add('alt' + idx);
 			
-			let content ='<div id="ssBackplane" class="ssBackplane skinHeader-withBackground">'
+			let content ='<div id="ssBackplane" class="ssBackplane skinHeader-withBackground" dir="' + (self.opts.langDir? 'rtl':'ltr') + '">'
 			+ '<div class="ssFailure hide">'
 			+ '<span id="ssMsg" class="ssWeatherData"></span>'
 			+ '</div>'
@@ -258,7 +260,8 @@ export default function () {
 			
 			+ '<div class="ssForeplane hide" style="font-size: 350%">'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons thermostat" style="margin: 0;font-size: 60%"></span>'
+			+ '<span class="material-icons ssIcons thermostat" style="font-size: 60%"></span>'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssTemp" class="ssWeatherData"></span>';
 			
 			if (self.opts.USUnits)
@@ -268,26 +271,32 @@ export default function () {
 			
 			content += '</div>'
 			+ '</div>'
+			+ '</div>'
 			
 			+ '<div style="display: flex;flex-direction: column;font-size: 80%; align-items: flex-start;justify-content: center;">'
 			
 			+ '<div class="ssForeplane hide">'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons water_drop"></span>'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssHum" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">%</span>'
 			+ '</div>'
+			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons"></span>'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssPressureValue" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">hPa</span>';
 			
 			content += '</div>'
 			+ '</div>'
-			
+			+ '</div>'
 			+ '<div class="ssForeplane hide">'
+			
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons air"></span>'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssWind" class="ssWeatherData"></span>';
 			
 			if (self.opts.USUnits)
@@ -296,15 +305,12 @@ export default function () {
 				content += '<span class="ssWeatherDataUnit">km/h</span>';
 			
 			content += '</div>'
-			+ '<div class="ssDataSection">'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssWindir" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">&deg;</span>'
 			+ '<span id="ssWindircode" class="ssWeatherDataUnit"></span>'
 			+ '</div>'
 			+ '</div>'
-			
-			+ '</div>'
-			+ '</div>';
 			
 			elem.innerHTML = content;
 			document.body.appendChild(elem);

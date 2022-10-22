@@ -1,0 +1,19 @@
+
+.headerWthTemp,
+.headerWthSunrise,
+.headerWthSunset {
+	[dir="ltr"] & {
+		margin: 0 0 0 .3em;
+	}
+
+	[dir="rtl"] & {
+		margin: 0 .3em 0 0;
+	}
+}
+
+.headerWthUnit {
+	font-size: 40%;
+	margin: -1em 0 0 .3em;
+}
+
+

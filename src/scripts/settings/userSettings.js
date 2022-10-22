@@ -126,7 +126,7 @@ function hdrWeather() {
 		
 		if (_data.temp) {
 			_dyn = toPrecision(_data.temp, 1);
-			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">';
+			_dyn += '<span class="headerWthUnit">';
 			_dyn += (enableUSUnits? '&#8457;': '&#8451;') + '</span>';
 			self._hdrwth.temp.innerHTML = _dyn;
 			self._hdrwth.temp.title = globalize.translate('Temperature');
@@ -140,14 +140,14 @@ function hdrWeather() {
 		
 		if (_data.hum) {
 			_dyn = toPrecision(_data.hum, 1);
-			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">%</span>';
+			_dyn += '<span class="headerWthUnit">%</span>';
 			self._hdrwth.hum.innerHTML = _dyn;
 			self._hdrwth.hum.title = globalize.translate('Humidity');
 		}
 		
 		if (_data.pressure) {
 			_dyn = toPrecision(_data.pressure, 1);
-			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">';
+			_dyn += '<span class="headerWthUnit">';
 			if (_data.pressureUnit)
 				_dyn += _data.pressureUnit;
 			else
@@ -162,7 +162,7 @@ function hdrWeather() {
 			if (!enableUSUnits)
 				wspeed *= 3.6; // m/s -> km/h
 			_dyn = toPrecision(wspeed, 1);
-			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">';
+			_dyn += '<span class="headerWthUnit">';
 			_dyn += (enableUSUnits? 'mph': 'km/h') + '</span>';
 			self._hdrwth.wind.innerHTML = _dyn;
 			if (self._hdrwth.wind.parentNode)
@@ -171,10 +171,10 @@ function hdrWeather() {
 		
 		if (_data.dir) {
 			_dyn = _data.dir;
-			_dyn += '<span style="font-size: 40%;margin: -1em 0 0 .3em;">&deg;</span>';
+			_dyn += '<span class="headerWthUnit">&deg;</span>';
 			self._hdrwth.windDir.innerHTML = _dyn;
 			if (_data.code) {
-				_dyn = '<span style="font-size: 40%;margin: -1em 0 0 .3em;">' + _data.code + '</span>';
+				_dyn = '<span class="headerWthUnit">' + _data.code + '</span>';
 				self._hdrwth.windDir.innerHTML += _dyn;
 			}
 		}

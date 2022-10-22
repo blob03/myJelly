@@ -490,13 +490,7 @@ import { appRouter } from '../components/appRouter';
         enableContentQueryString: true,
         roles: 'admin',
         serverRequest: true
-    });
-
-    defineRoute({
-        path: '/',
-        autoFocus: false,
-        isDefaultRoute: true
-    });
+    })
 
     console.groupEnd('defining core routes');
 

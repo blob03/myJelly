@@ -23,19 +23,20 @@ const Direction = {
         return _currentCulture;
     }
 	
-	export function getIsRTL() {
-        return isRTL;
+	export function getIsRTL(culture) {
+		if (culture !== undefined) {
+			for (const lang of RTL_LANGS) {
+				if (culture.includes(lang))
+					return true;
+			}
+			return false;
+		} else
+			return isRTL;
     }
 
     function checkAndProcessDir(culture) {
-        isRTL = false;
         //console.log(culture);
-        for (const lang of RTL_LANGS) {
-            if (culture.includes(lang)) {
-                isRTL = true;
-                break;
-            }
-        }
+        isRTL = getIsRTL(culture);
         setDocumentDirection(isRTL ? Direction.rtl : Direction.ltr);
     }
 
