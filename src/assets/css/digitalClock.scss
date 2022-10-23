@@ -1,0 +1,18 @@
+
+.material-icons.arrow_right::before {
+	[dir="ltr"] & {
+		content: "\e5df";
+	}
+	[dir="rtl"] & {
+		content: "\e5de";
+	}
+}
+
+.material-icons.arrow_left::before {
+	[dir="ltr"] & {
+		content: "\e5de";
+	}
+	[dir="rtl"] & {
+		content: "\e5df";
+	}
+}

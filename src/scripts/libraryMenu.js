@@ -24,6 +24,8 @@ import 'material-design-icons-iconfont';
 import '../assets/css/scrollstyles.scss';
 import '../assets/css/flexstyles.scss';
 import '../assets/css/weatherBot.scss';
+import '../assets/css/backdropControl.scss';
+import '../assets/css/digitalClock.scss';
 
 import appSettings from './settings/appSettings';
 import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, placeClock, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
@@ -44,7 +46,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the clock widget*/
-		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;flex-shrink: 0;direction: ltr;">';
+		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;flex-shrink: 0;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
@@ -76,7 +78,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
 		html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
 		
-		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;direction: ltr !important;">';
+		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
 		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;font-size: 70%;">';
 		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_previous"></span></button>';
@@ -84,7 +86,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_next"></span></button>';
 		html += '</div>';
 		
-		html += '<div id="backdropContrast" class="hide" style="margin: 0 0 0 .29em;width: 4em;">';
+		html += '<div id="backdropContrast" class="hide">';
 		html += '<div class="sliderContainer">';
 		html += '<input is="emby-slider" id="backdropContrastSlider" label="" nobubble="" type="range" min="0" max="10" step="1"/>';
 		html += '</div>';
@@ -93,7 +95,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '</div>';
 			
 		/* Added: Right most casing for the clock widget */
-		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;flex-shrink: 0;direction: ltr;">';
+		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;flex-shrink: 0;">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
 		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';

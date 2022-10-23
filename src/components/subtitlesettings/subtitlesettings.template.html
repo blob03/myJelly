@@ -3,19 +3,20 @@
         <h2 class="sectionTitle">
             ${Subtitles}
         </h2>
-
-        <div class="checkboxContainer">
-            <label>
-                <input is="emby-checkbox" id="chkPreview" type="checkbox" class="chkPreview" />
-                <span>${Preview}</span>
-            </label>
-        </div>
 		
         <div class="selectContainer">
             <select is="emby-select" id="selectSubtitleLanguage" label="${LabelPreferredSubtitleLanguage}">
 				<option value="Auto">${Auto}</option>
 				<option disabled>${OptionDivider}</option>
 			</select>
+        </div>
+		
+		<div class="checkboxContainer checkboxContainer-withDescription">
+            <label>
+                <input type="checkbox" is="emby-checkbox" class="chkRememberSubtitleSelections" />
+                <span>${RememberSubtitleSelections}</span>
+            </label>
+            <div class="fieldDescription checkboxFieldDescription">${RememberSubtitleSelectionsHelp}</div>
         </div>
 
         <div class="selectContainer">
@@ -45,19 +46,19 @@
             <div class="fieldDescription">${BurnSubtitlesHelp}</div>
         </div>
 		
-		<div class="checkboxContainer checkboxContainer-withDescription">
-            <label>
-                <input type="checkbox" is="emby-checkbox" class="chkRememberSubtitleSelections" />
-                <span>${RememberSubtitleSelections}</span>
-            </label>
-            <div class="fieldDescription checkboxFieldDescription">${RememberSubtitleSelectionsHelp}</div>
-        </div>
     </div>
 
     <div class="verticalSection subtitleAppearanceSection hide">
         <h2 class="sectionTitle">
             ${HeaderSubtitleAppearance}
         </h2>
+		
+		<div class="checkboxContainer">
+            <label>
+                <input is="emby-checkbox" id="chkPreview" type="checkbox" class="chkPreview" />
+                <span>${Preview}</span>
+            </label>
+        </div>
 
         <div class="subtitleappearance-fullpreview subtitleappearance-fullpreview-hide">
             <div class="subtitleappearance-fullpreview-window">

@@ -385,23 +385,20 @@ import './backdrop.scss';
 				_bdi.classList.remove('hide');
 				_bdc.classList.remove('hide');
 				_bdw.classList.remove('hide');
-				setBackdropContrast();
 				_bdco.classList.remove('hide');
 				break;
 				
 			default:
-				if (toolbox & 1) {
+				if (toolbox & 1)
 					_bdi.classList.remove('hide');
-				} else
+				else
 					_bdi.classList.add('hide');
 				if (toolbox & 2)
 					_bdc.classList.remove('hide');
 				else
 					_bdc.classList.add('hide');
-				if (toolbox & 4) {
-					setBackdropContrast();
+				if (toolbox & 4)
 					_bdco.classList.remove('hide');
-				}
 				else
 					_bdco.classList.add('hide');
 				
@@ -413,6 +410,9 @@ import './backdrop.scss';
 			_bdi.href = _item_url;
 		else
 			_bdi.classList.add('hide');
+		
+		if (!_bdco.classList.contains('hide'))
+			setBackdropContrast();
 	}
 	
 	export function hideBackdropWidget() {

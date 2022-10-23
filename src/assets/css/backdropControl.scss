@@ -1,0 +1,28 @@
+
+#backdropContrast {
+	width: 4em;
+	[dir="ltr"] & {
+		margin: 0 0 0 .29em;
+	}
+	[dir="rtl"] & {
+		margin: 0 .29em 0 0;
+	}
+}
+
+.material-icons.skip_previous::before {
+	[dir="ltr"] & {
+		content: "\e045";
+	}
+	[dir="rtl"] & {
+		content: "\e044";
+	}
+}
+
+.material-icons.skip_next::before {
+	[dir="ltr"] & {
+		content: "\e044";
+	}
+	[dir="rtl"] & {
+		content: "\e045";
+	}
+}
