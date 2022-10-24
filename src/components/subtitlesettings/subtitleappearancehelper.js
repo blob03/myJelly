@@ -109,6 +109,7 @@ export function applyStyles(elements, appearanceSettings) {
         applyStyleList(styles.window, elements.window);
     }
 }
+
 export default {
     getStyles: getStyles,
     applyStyles: applyStyles

@@ -31,11 +31,6 @@
 }
 
 @font-face {
-	font-family: "Mystery";
-    src: url(./fonts/MysteryQuest-Regular.ttf) format("truetype"); 
-}
-
-@font-face {
 	font-family: "HSpirits";
     src: url(./fonts/HalloweenSpirits/HalloweenSpirits-K7aAl.ttf) format("truetype"); 
 }

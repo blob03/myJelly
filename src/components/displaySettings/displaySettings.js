@@ -22,6 +22,7 @@ import viewManager from '../viewManager/viewManager';
 import * as ssmanager from '../../scripts/screensavermanager';
 import { pauseBackdrop } from '../backdrop/backdrop';
 import viewContainer from '../viewContainer';
+import './displaysettings.scss';
 
 /* eslint-disable indent */
 
@@ -242,11 +243,11 @@ import viewContainer from '../viewContainer';
 			pnode.querySelector('.fieldDescription').innerHTML = e.target.value + " min.";
 	}
 	
-	function onDisplayFontSizeChange(e) { 		
+	function onDisplayFontSizeChange(e) {
 		document.body.style.fontSize = 1 + (e.target.value/100) + "rem"; 
 	}
 	
-	function displayFontSizeRset() { 		
+	function displayFontSizeRset() {
 		document.body.style.fontSize = "1rem";
 	}
 	
@@ -415,7 +416,7 @@ import viewContainer from '../viewContainer';
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		self._savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 			
-		if (browser.web0s || appHost.supports('displaymode')) 	
+		if (browser.web0s || appHost.supports('displaymode'))
 			context.querySelector('.fldDisplayMode').classList.remove('hide');
         else 
 			context.querySelector('.fldDisplayMode').classList.add('hide');

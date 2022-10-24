@@ -107,6 +107,7 @@
 					<option value="JRosalie">Janda Rosalie &copy; 2011 Kimberly Geswein</option>
 					<option value="Monserga">Monserga &copy; 2016 defharo.com</option>
 					<option value="OogieBoogie">OogieBoogie</option>
+					<option value="Mystery">Mystery Quest</option>
 					<option value="Orange">Orange Juice &copy; 2013 Brittney Murphy</option>
 					<option value="Quicksand-Regular">Quicksand &copy; 2011 The Quicksand Project Authors</option>
 					<option value="Quicksand-Light">Quicksand Light &copy; 2011 The Quicksand Project Authors</option>
@@ -143,7 +144,7 @@
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: space-between;'>
 				<label for='inputTextColor'>${LabelTextColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-					<div id='fcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>				
+					<div id='fcolor' class="colorPreview"></div>
 					<div style='width:100%;height: auto;'>
 						<select is="emby-select" id="inputTextColor"
 							onchange='document.getElementById("fcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
@@ -166,7 +167,7 @@
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
 				<label for='inputTextStroke'>${LabelTextStrokeColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-					<div id='strcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>
+					<div id='strcolor' class="colorPreview"></div>
 					<div style='width: 100%;height: auto;'>
 						<select is="emby-select" id="inputTextStroke"  
 							onchange='document.getElementById("strcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
@@ -189,7 +190,7 @@
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
 				<label for='inputTextBackground'>${LabelTextBackgroundColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-					<div id='bgcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>
+					<div id='bgcolor' class="colorPreview"></div>
 					<div style='width: 100%;height: auto;'>
 						<select is="emby-select" id="inputTextBackground"  
 							onchange='document.getElementById("bgcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
@@ -205,7 +206,7 @@
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
 				<label for='inputShadowColor'>${LabelTextShadowColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
-					<div id='shadowcolor' style='width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid lightskyblue;margin: 0px 20px 0px 0px;'></div>
+					<div id='shadowcolor' class="colorPreview"></div>
 					<div style='width: 100%;height: auto;'>
 						<select is="emby-select" id="inputShadowColor"  
 							onchange='document.getElementById("shadowcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>

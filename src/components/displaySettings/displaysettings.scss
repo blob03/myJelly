@@ -1,0 +1,42 @@
+
+.langProgressCode {
+	flex-grow: 0;
+	width: 3em;
+
+	[dir="ltr"] & {
+        padding: 0 .8rem 0 0;
+    }
+
+    [dir="rtl"] & {
+        padding: 0 0 0 .8rem;
+    }
+}
+
+.langProgressStats {
+	font-size: 100%;
+	font-weight: 400;
+	width: 5em;
+	
+	[dir="ltr"] & {
+        padding: 0 .8rem 0 0;
+    }
+
+    [dir="rtl"] & {
+        padding: 0 0 0 .8rem;
+    }
+}
+
+.langProgressValue {
+	flex-grow: 0;
+	width: 3em;
+	
+	[dir="ltr"] & {
+        padding: 0 0 0 .8rem;
+    }
+
+    [dir="rtl"] & {
+        padding: 0 .8rem 0 0;
+    }
+
+}
+

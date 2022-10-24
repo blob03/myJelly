@@ -1520,6 +1520,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
     font-size: inherit;
     padding: .5em 1.9em .5em .5em;
     overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .trackSelections .selectContainer .selectArrowContainer .selectArrow {

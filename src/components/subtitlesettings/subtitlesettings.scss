@@ -25,5 +25,18 @@
     max-width: 70%;
 }
 
+.colorPreview {
+	width: 2.8em;
+	height: 1.6em;
+	border-radius: 5px 5px 5px;
+	border: 1px solid lightskyblue;
+	
+	[dir="ltr"] & {
+        margin: 0 2em 0 0;
+    }
 
+    [dir="rtl"] & {
+        margin: 0 0 0 2em;
+    }
+}
 
