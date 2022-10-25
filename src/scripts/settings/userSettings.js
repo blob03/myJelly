@@ -744,10 +744,11 @@ export class UserSettings {
 	}
 	
 	nextClockFormat() {
+		const FORMATS_NBR = 8;
 		const elms = document.getElementsByClassName("headerClockMain");
 		if (!elms || !elms.length)
 			return;
-		currentSettings._clkmode = (currentSettings._clkmode + 1) % 7;
+		currentSettings._clkmode = (currentSettings._clkmode + 1) % FORMATS_NBR;
 		
 		delete currentSettings._opts_date['weekday'];
 		delete currentSettings._opts_date['month'];
@@ -759,7 +760,7 @@ export class UserSettings {
 		
 		let _prevMode = currentSettings._clkmode - 1;
 		if (_prevMode == -1)
-			_prevMode = 6;
+			_prevMode = FORMATS_NBR - 1;
 		
 		switch (currentSettings._clkmode) {
 			case 0:
@@ -803,6 +804,17 @@ export class UserSettings {
 				}
 				break;
 			case 5:
+				currentSettings._opts_date['weekday'] = 'long';
+				currentSettings._opts_date['month'] = 'long';
+				delete currentSettings._opts_date['year'];
+				for (let elm of elms) {
+					elm.classList.add('headerClockMode4');
+					elm.style.fontSize = "100%";
+					elm.getElementsByClassName('headerClockDate')[0].classList.remove('hide');
+					elm.classList.remove('headerClockMode' + _prevMode);
+				}
+				break;
+			case 6:
 				currentSettings._opts_date['weekday'] = 'short';
 				currentSettings._opts_date['month'] = '2-digit';
 				currentSettings._opts_date['timeZoneName'] = 'short';
@@ -812,7 +824,7 @@ export class UserSettings {
 					elm.style.fontSize = "100%";
 				}
 				break;
-			case 6:
+			case 7:
 				currentSettings._opts_date['weekday'] = 'short';
 				currentSettings._opts_date['month'] = '2-digit';
 				for (let elm of elms) {

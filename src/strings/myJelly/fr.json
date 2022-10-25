@@ -114,5 +114,6 @@
     "Videos": "Vidéos",
     "WeatherApiRegistrationHelp": "Voir comment obtenir une clef.",
     "WeatherbotScreensaverHelp": "Afficher les conditions météorologiques présentes.",
-    "WindSpeed": "Vent"
+    "WindSpeed": "Vent",
+    "playbackStopped": "Lecture audio arrêtée."
 }

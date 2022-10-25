@@ -88,11 +88,11 @@
 }
 
 .libraryPage.noSecondaryNavPage {
-    padding-top: 5.5em !important;
+    padding-top: 6.5em !important;
 }
 
 .libraryPage:not(.noSecondaryNavPage) {
-    padding-top: 7em !important;
+    padding-top: 7.5em !important;
 }
 
 .itemDetailPage {
@@ -317,11 +317,17 @@
     position: absolute;
     top: 0;
     right: 0;
-    //bottom: 0;
+    bottom: 0;
     left: 0;
+	pointer-events: none;
 	
     [dir="rtl"] & {
         transition: right ease-in-out 0.3s, padding ease-in-out 0.3s;
+    }
+	
+    > .page {
+        // Fix pointer events being swallowed by the react root when a dashboard page is not rendered by react
+        pointer-events: all;
     }
 }
 
@@ -1432,8 +1438,11 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards {
 }
 
 @media all and (min-height: 31.25em) {
-    .padded-right-withalphapicker {
+    [dir="ltr"] .padded-right-withalphapicker {
         padding-right: 7.5%;
+    }
+	[dir="rtl"] .padded-right-withalphapicker {
+        padding-left: 7.5%;
     }
 }
 

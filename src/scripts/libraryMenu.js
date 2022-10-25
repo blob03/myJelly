@@ -13,6 +13,7 @@ import groupSelectionMenu from '../plugins/syncPlay/ui/groupSelectionMenu';
 import { showPrevBackdrop, showNextBackdrop, pauseBackdrop, setBackdropContrast } from '../components/backdrop/backdrop';
 import browser from './browser';
 import globalize from './globalize';
+import toast from '../components/toast/toast';
 import imageHelper from './imagehelper';
 import { getMenuLinks } from '../scripts/settings/webSettings';
 import Dashboard, { pageClassOn } from '../utils/dashboard';
@@ -88,7 +89,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		
 		html += '<div id="backdropContrast" class="hide">';
 		html += '<div class="sliderContainer">';
-		html += '<input is="emby-slider" id="backdropContrastSlider" label="" nobubble="" type="range" min="0" max="10" step="1"/>';
+		html += '<input is="emby-slider" id="backdropContrastSlider" label="" nobubble="" type="range" min="0" max="10" />';
 		html += '</div>';
 		html += '</div>';
 		
@@ -189,7 +190,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
 		headerLockButton = skinHeader.querySelector('.headerLockButton');
         headerSyncButton = skinHeader.querySelector('.headerSyncButton');
-
+ 
         //retranslateUi();
         lazyLoadViewMenuBarImages();
         bindMenuEvents();
@@ -570,7 +571,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
             html += '</h3>';
 
             if (appHost.supports('multiserver')) {
-                html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnSelectServer" data-itemid="selectserver" href="#"><span class="material-icons navMenuOptionIcon wifi"></span><span class="navMenuOptionText">' + globalize.translate('SelectServer') + '</span></a>';
+                html += `<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnSelectServer" data-itemid="selectserver" href="#"><span class="material-icons navMenuOptionIcon storage" aria-hidden="true"></span><span class="navMenuOptionText">${globalize.translate('SelectServer')}</span></a>`;
             }
 
             html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnSettings" data-itemid="settings" href="#"><span class="material-icons navMenuOptionIcon settings"></span><span class="navMenuOptionText">' + globalize.translate('Settings') + '</span></a>';
@@ -993,7 +994,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 	
     function onLogoutClick() {
-        Dashboard.logout();
+		if (playbackManager.isPlayingAudio()) {
+			toast(globalize.translate('playbackStopped'));
+			playbackManager.stop().then( () => {
+				Dashboard.logout();
+			});
+		} else
+			Dashboard.logout();
     }
 
     function updateCastIcon() {
@@ -1328,6 +1335,9 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			enableClock(enableClock());
 			WB_init();
 			enableWeatherBot(enableWeatherBot());
+			let event_input = new Event('input');
+			let bcs = document.querySelector('#backdropContrastSlider');
+			bcs.dispatchEvent(event_input);
         });
     });
 
@@ -1356,7 +1366,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 
     window.LibraryMenu = LibraryMenu;
     renderHeader();
-	
 	
 export default LibraryMenu;
 

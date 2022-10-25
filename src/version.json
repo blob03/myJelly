@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-28",
+	"version": "10.8.5-29",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -126,6 +126,7 @@
 		"10.8.5-25": "Synchronize translation files with master.\nInstall latest 'package.json'.\nMake tab 'About' compatible with RTL scripts.",
 		"10.8.5-26": "Synchronize translation files with master.\nInstall latest 'package.json'.\nFix compatibility issues between 'weatherBot' (Widget/ss) and RTL scripts.\nApply patch 'nielsvanvelzen/docs-urls'.\nApply patch 'grafixeyehero/Fix-bug-textarea'.\nApply patch 'thornbill/fix-double-root-routing'.",
 		"10.8.5-27": "Synchronize translation files with master.\nReorder some subtitles settings.\nFix compatibility issues between widgets 'backdrop control', 'digital Clock' and RTL scripts.",
-		"10.8.5-28": "Synchronize translation files with master.\nFix compatibility issues between RTL scripts and settings screens for subtitles and display.\nMove Halloween theme font 'Mystery Quest' into assets and make it available for subtitles."
+		"10.8.5-28": "Synchronize translation files with master.\nFix compatibility issues between RTL scripts and settings screens for subtitles and display.\nMove Halloween theme font 'Mystery Quest' into assets and make it available for subtitles.",
+		"10.8.5-29": "Fix backdrop contrast slider not rendering latest value upon sign-in.\nFix 'nowPlaying' frame position for TV layout.\nInstall latest 'package.json'.\nApply patch 'fix RTL padding with AlphaPicker'.\nApply patch 'search bar for installed plugins' modified.\nApply patch 'Update server and quick connect icons'.\nFix Audio playback still running after a logout.\nApply patch 'fix-dashboard-interaction'."
 	}
 }

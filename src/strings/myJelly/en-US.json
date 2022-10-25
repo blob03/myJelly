@@ -114,5 +114,6 @@
     "Videos": "Videos",
     "WeatherApiRegistrationHelp": "Learn how to get a free key.",
     "WeatherbotScreensaverHelp": "Print the current weather condition.",
-    "WindSpeed": "Wind speed"
+    "WindSpeed": "Wind speed",
+    "playbackStopped": "Audio playback stopped."
 }

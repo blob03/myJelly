@@ -7,12 +7,20 @@ import * as LibraryMenu from '../../../scripts/libraryMenu';
 import Dashboard from '../../../utils/dashboard';
 import template from './index.html';
 import loading from '../../../components/loading/loading';
+import { playbackManager } from '../../../components/playback/playbackmanager';
+import toast from '../../../components/toast/toast';
 import * as quickConnect from '../quickConnect/helper';
 
 export default function (view, params) {
 	
     view.querySelector('.btnLogout').addEventListener('click', function () {
-        Dashboard.logout();
+		if (playbackManager.isPlayingAudio()) {
+			toast(globalize.translate('playbackStopped'));
+			playbackManager.stop().then( () => {
+				Dashboard.logout();
+			});
+		} else
+			Dashboard.logout();
     });
 
     view.querySelector('.selectServer').addEventListener('click', function () {
