@@ -88,6 +88,10 @@
 }
 
 .libraryPage.noSecondaryNavPage {
+    padding-top: 5.1em !important;
+}
+
+.layout-tv .libraryPage.noSecondaryNavPage {
     padding-top: 6.5em !important;
 }
 
@@ -505,9 +509,9 @@
 }
 
 .detailLogo {
-    height: 16vh;
+    height: 60%;
     position: absolute;
-    top: 5vh;
+    top: 10%;
     right: 0%;
 	left: 0%;
     background-size: contain;

@@ -1,8 +1,16 @@
 <div id="pluginCatalogPage" data-role="page" class="page type-interior pluginConfigurationPage withTabs fullWidthContent">
-    <div>
-        <div class="content-primary">
-            <div id="noPlugins" class="hide">${MessageNoAvailablePlugins}</div>
-            <div id="pluginTiles" style="text-align:left;"></div>
-        </div>
-    </div>
+	<div>
+		<div class="content-primary">
+			<div class="sectionTitleContainer align-items-center">
+				<div class="searchFieldsInner flex align-items-center justify-content-center">
+					<span class="searchfields-icon material-icons search" aria-hidden="true"></span>
+					<div class="inputContainer flex-grow" style="margin-bottom: 0px;">
+						<input id="txtSearchPlugins" name="txtSearchPlugins" type="text" is="emby-input" label="" class="searchfields-txtSearch emby-input" data-keyboard="true" placeholder="${Search}" autocomplete="off" maxlength="40" autofocus="" />
+					</div>
+				</div>
+			</div>	
+			<div id="noPlugins" class="hide">${MessageNoAvailablePlugins}</div>
+			<div id="pluginTiles" style="text-align:left;"></div>
+		</div>
+	</div>
 </div>

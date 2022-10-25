@@ -1157,6 +1157,7 @@
     "MessagePluginInstallError": "Při instalaci zásuvného modulu došlo k chybě.",
     "MessagePluginInstalled": "Zásuvný modul byl úspěšně nainstalován. Server bude nutné restartovat, aby se změny projevily.",
     "MessageReenableUser": "Viz níže pro znovuzapnutí",
+    "MessageRenameMediaFolder": "Přejmenování knihovny médií způsobí ztrátu všech metadat, postupujte proto s opatrností.",
     "MessageSent": "Zpráva odeslána.",
     "MessageSyncPlayCreateGroupDenied": "K vytvoření skupiny je vyžadováno povolení.",
     "MessageSyncPlayDisabled": "Synchronizace přehrávání zakázána.",
