@@ -13,15 +13,7 @@ import * as quickConnect from '../quickConnect/helper';
 
 export default function (view, params) {
 	
-    view.querySelector('.btnLogout').addEventListener('click', function () {
-		if (playbackManager.isPlayingAudio()) {
-			toast(globalize.translate('playbackStopped'));
-			playbackManager.stop().then( () => {
-				Dashboard.logout();
-			});
-		} else
-			Dashboard.logout();
-    });
+    view.querySelector('.btnLogout').addEventListener('click', LibraryMenu.onLogoutClick);
 
     view.querySelector('.selectServer').addEventListener('click', function () {
         Dashboard.selectServer();

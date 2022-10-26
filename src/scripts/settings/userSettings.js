@@ -22,9 +22,8 @@ function saveServerPreferences(instance) {
 const defaultSubtitleAppearanceSettings = {
 	verticalPosition: -1
 };
-	
+
 function hdrClock() {
-	globalize.updateCurrentCulture();
 	const x = new Date();
 	const _hdrclk_time = datetime.toLocaleTimeString(x, currentSettings._opts_time); 
 	const _hdrclk_date = datetime.toLocaleDateString(x, currentSettings._opts_date);
@@ -724,7 +723,7 @@ export class UserSettings {
 			}
 			_hdrclck.parentElement.classList.remove('hide');
 		} else {
-			/*** Halt and Hide ***/
+			/*** Hide and Halt ***/
 			_hdrclck.parentElement.classList.add('hide');
 			if (this.clockTimer !== null) {
 				clearInterval(this.clockTimer);
@@ -943,17 +942,16 @@ export class UserSettings {
 			let _r_hdrclck = document.getElementById("headerClockRight");
 			if (!_l_hdrclck || !_r_hdrclck)
 				return false;
-		
-			this.hideClockPos(_l_hdrclck);
-			this.hideClockPos(_r_hdrclck);
-		
+
 			switch(pos) {
 				/*** left side ***/
 				case 0:
+					this.hideClockPos(_r_hdrclck);
 					this.showClockPos(_l_hdrclck);
 					break;
 				/*** right side ***/
 				case 1:
+					this.hideClockPos(_l_hdrclck);
 					this.showClockPos(_r_hdrclck);
 					break;
 			}
@@ -961,8 +959,8 @@ export class UserSettings {
 			/*** Save the new position. ***/
 			this.set('clock_pos', pos, true);
 			this.showClock(true);
-            return true;
-        }
+			return true;
+		}
 		
 		return pos;
     }

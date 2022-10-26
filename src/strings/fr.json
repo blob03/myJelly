@@ -1157,6 +1157,7 @@
     "MessagePluginInstallError": "Une erreur s'est produite durant l'installation de l'extension.",
     "MessagePluginInstalled": "Cette extension a été installée avec succès. Le serveur doit être redémarré afin que les modifications soient prises en compte.",
     "MessageReenableUser": "Voir ci-dessous pour le réactiver",
+    "MessageRenameMediaFolder": "Renommer une médiathèque entraînera la perte de toutes les métadonnées, procédez avec prudence.",
     "MessageSent": "Message envoyé.",
     "MessageSyncPlayCreateGroupDenied": "Permission requise pour créer un groupe.",
     "MessageSyncPlayDisabled": "SyncPlay désactivé.",

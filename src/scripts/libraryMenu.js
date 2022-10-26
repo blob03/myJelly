@@ -287,14 +287,18 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		if (user && user.localUser) {
 			if (headerReloadButton)
 				headerReloadButton.classList.add('hide');
+			
 			if (headerHomeButton) 
 				headerHomeButton.classList.remove('hide');
+			
 			if (headerNightmodeButton && (enableClock() == 1 || enableClock() == 2 || enableWeatherBot() == 1 || enableWeatherBot() == 2))
 				headerNightmodeButton.classList.remove('hide');
 			else
 				headerNightmodeButton.classList.add('hide');
+			
 			if (headerSearchButton)
 				headerSearchButton.classList.remove('hide');
+			
 			if (mainDrawerButton) {
 				if (!layoutManager.tv)
 					mainDrawerButton.classList.remove('hide');
@@ -302,45 +306,51 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 					mainDrawerButton.classList.add('hide');
 			}
 			
+			if (headerCastButton) {
+				if (!layoutManager.tv) 
+					headerCastButton.classList.remove('hide');
+				else
+					headerCastButton.classList.add('hide');
+			}
+
 			enableWeatherBot(enableWeatherBot());
 			
-            if (!layoutManager.tv) 
-                headerCastButton.classList.remove('hide');
-            else
-				headerCastButton.classList.add('hide');
-			
-            const policy = user.Policy ? user.Policy : user.localUser.Policy;
+			const policy = user.Policy ? user.Policy : user.localUser.Policy;
 
 			if (
-                // Button is present
-                headerSyncButton
-                // SyncPlay plugin is loaded
-                && pluginManager.plugins.filter(plugin => plugin.id === 'syncplay').length > 0
-                // SyncPlay enabled for user
-                && policy?.SyncPlayAccess !== 'None'
-            ) {
-                headerSyncButton.classList.remove('hide');
-            }
-        } else {
-			mainDrawerButton.classList.add('hide');
-            headerHomeButton.classList.add('hide');
-            headerCastButton.classList.add('hide');
-			headerNightmodeButton.classList.add('hide');
-            headerSyncButton.classList.add('hide');
-            if (headerSearchButton) 
-                headerSearchButton.classList.add('hide');
+				// Button is present
+				headerSyncButton
+				// SyncPlay plugin is loaded
+				&& pluginManager.plugins.filter(plugin => plugin.id === 'syncplay').length > 0
+				// SyncPlay enabled for user
+				&& policy?.SyncPlayAccess !== 'None'
+			) {
+				headerSyncButton.classList.remove('hide');
+			}
+		} else {
+			if (mainDrawerButton)
+				mainDrawerButton.classList.add('hide');
+			if (headerHomeButton)
+				headerHomeButton.classList.add('hide');
+			if (headerCastButton)
+				headerCastButton.classList.add('hide');
+			if (headerNightmodeButton)
+				headerNightmodeButton.classList.add('hide');
+			if (headerSyncButton)
+				headerSyncButton.classList.add('hide');
+			if (headerSearchButton) 
+				headerSearchButton.classList.add('hide');
 			if (backdropInfoButton) 
-                backdropInfoButton.classList.add('hide');
+				backdropInfoButton.classList.add('hide');
 			if (headerReloadButton) {
 				if (layoutManager.tv)
 					headerReloadButton.classList.remove('hide');
 				else
 					headerReloadButton.classList.add('hide');
 			}
-        }
-		
-        requiresUserRefresh = false;
-    }
+		}
+		requiresUserRefresh = false;
+	}
 	
     function updateHeaderUserButton(src) {
         if (src) {
@@ -993,7 +1003,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         appHost.exit();
     }
 	
-    function onLogoutClick() {
+	// This is also the routine used by the user menu.
+    export function onLogoutClick() {
+		showClock(false);
+		showWeatherBot(false);
+		
 		if (playbackManager.isPlayingAudio()) {
 			toast(globalize.translate('playbackStopped'));
 			playbackManager.stop().then( () => {
@@ -1330,7 +1344,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			currentUser = user;
 			globalize.updateCurrentCulture();
 			updateUserInHeader(user);
-			initClockPlaces();
 			placeClock(0);
 			enableClock(enableClock());
 			WB_init();
@@ -1344,8 +1357,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     Events.on(ServerConnections, 'localusersignedout', function () {
 		currentUser = {};
 		updateUserInHeader(null);
-		showClock(false);
-		showWeatherBot(false);
     });
 
     Events.on(playbackManager, 'playerchange', updateCastIcon);

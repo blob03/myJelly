@@ -180,6 +180,8 @@ async function onAppReady() {
         }
     }
 
+	currentSettings.initClockPlaces();
+	
     const apiClient = ServerConnections.currentApiClient();
     if (apiClient) {
         const updateStyle = (css) => {
@@ -272,9 +274,11 @@ function registerServiceWorker() {
 init();
 
 pageClassOn('viewshow', 'standalonePage', function () {
-    document.querySelector('.skinHeader').classList.add('noHeaderRight');
+	currentSettings.showClock(true);
+    //document.querySelector('.skinHeader').classList.add('noHeaderRight');
 });
 
 pageClassOn('viewhide', 'standalonePage', function () {
-    document.querySelector('.skinHeader').classList.remove('noHeaderRight');
+	currentSettings.showClock(false);
+    //document.querySelector('.skinHeader').classList.remove('noHeaderRight');
 });
