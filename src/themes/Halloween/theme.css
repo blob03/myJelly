@@ -632,17 +632,17 @@ html {
 
 .headerClockDate {
 	font-family: "Mystery";
-	font-size: 70% !important;
+	font-size: 80% !important;
 }
 
 .headerClockButton:hover > .headerClockTime,
 .headerClockButton:focus > .headerClockTime {
-	font-size: 170% !important;
+	font-size: 180% !important;
 }
 
 .headerClockButton:hover > .headerClockDate,
 .headerClockButton:focus > .headerClockDate {
-	font-size: 80% !important;
+	font-size: 90% !important;
 }
 
 /* Tab About... */

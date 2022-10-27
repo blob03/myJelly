@@ -184,12 +184,9 @@ const Direction = {
 
         return new Promise((resolve) => {
 			// import jellyfin core translation file
-            import(`../strings/${lang}.json`).then((content) => {
-				//content = Object.filter(content, str => typeof str === "string" && str.length);
-			
+            import(/* webpackChunkName: "[request]" */`../strings/${lang}.json`).then((content) => {
 				// import myJelly core translation file
-				import(`../strings/myJelly/${lang}.json`).then((mjcontent) => {
-					//mjcontent = Object.filter(mjcontent, str => typeof str === "string" && str.length);
+				import(/* webpackChunkName: "[request]" */`../strings/myJelly/${lang}.json`).then((mjcontent) => {
 					let dic = {...content, ...mjcontent};
 					allTranslations[module].dictionaries[lang] = dic;
 					resolve(dic);

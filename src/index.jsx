@@ -85,7 +85,7 @@ function onGlobalizeInit() {
         return onAppReady();
     }
 
-    document.title = globalize.translateHtml(document.title, 'core');
+    document.title = globalize.translateHtml(document.title);
 
     if (browser.tv && !browser.android) {
         console.debug('using system fonts with explicit sizes');
@@ -279,6 +279,5 @@ pageClassOn('viewshow', 'standalonePage', function () {
 });
 
 pageClassOn('viewhide', 'standalonePage', function () {
-	currentSettings.showClock(false);
     //document.querySelector('.skinHeader').classList.remove('noHeaderRight');
 });

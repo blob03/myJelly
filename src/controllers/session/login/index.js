@@ -291,13 +291,11 @@ import './login.scss';
 		
 		loading.show();
 		
-		libraryMenu.updateUserInHeader(null);
-		
+		const defaultLang = globalize.getDefaultCulture().ccode;
+		const lang = globalize.getCurrentLocale();
 		const allCultures = cultures.getDictionaries();
 		const selectLanguage = view.querySelector('#selectLanguage');
-		const defaultLang = globalize.getDefaultCulture().ccode;
-		let lang = globalize.getCurrentLocale();
-
+		
 		settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", lang);
 		
 		selectLanguage.addEventListener('change', (x) => {
@@ -307,7 +305,7 @@ import './login.scss';
 				appRouter.reload();
 			});
 		});
-		
+	
 		if (!appHost.supports('multiserver')) {
 			view.querySelector('.btnSelectServer').classList.add('hide');
 		}

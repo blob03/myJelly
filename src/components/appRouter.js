@@ -279,7 +279,7 @@ class AppRouter {
         };
 
         if (route.controller) {
-            import('../controllers/' + route.controller).then(onInitComplete);
+            import(/* webpackChunkName: "[request]" */ '../controllers/' + route.controller).then(onInitComplete);
         } else {
             onInitComplete();
         }

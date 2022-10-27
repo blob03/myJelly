@@ -1157,6 +1157,7 @@
     "MessagePluginInstallError": "Hiba történt a bővítmény telepítése során.",
     "MessagePluginInstalled": "A bővítmény sikeresen telepítve lett. A módosítások életbelépéséhez újra kell indítani a Jellyfint.",
     "MessageReenableUser": "Az újra engedélyezéshez lásd lentebb",
+    "MessageRenameMediaFolder": "A médiakönyvtár átnevezése az összes metaadat elvesztésével jár, csak óvatosan.",
     "MessageSent": "Üzenet elküldve.",
     "MessageSyncPlayCreateGroupDenied": "Jogosultság szükséges a csoportok létrehozásához.",
     "MessageSyncPlayDisabled": "SyncPlay letiltva.",

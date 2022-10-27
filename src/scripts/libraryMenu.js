@@ -43,7 +43,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
 		
 		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
-	
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the clock widget*/
@@ -342,10 +341,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 				headerSearchButton.classList.add('hide');
 			if (backdropInfoButton) 
 				backdropInfoButton.classList.add('hide');
+
+			// At this point, we only keep it for dev.
 			if (headerReloadButton) {
-				if (layoutManager.tv)
+				/*if (layoutManager.tv)
 					headerReloadButton.classList.remove('hide');
-				else
+				else*/
 					headerReloadButton.classList.add('hide');
 			}
 		}
@@ -1344,13 +1345,15 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			currentUser = user;
 			globalize.updateCurrentCulture();
 			updateUserInHeader(user);
-			placeClock(0);
+			//placeClock(0);
 			enableClock(enableClock());
 			WB_init();
 			enableWeatherBot(enableWeatherBot());
-			let event_input = new Event('input');
-			let bcs = document.querySelector('#backdropContrastSlider');
-			bcs.dispatchEvent(event_input);
+			const bcs = document.querySelector('#backdropContrastSlider');
+			if (bcs) {
+				const event_input = new Event('input');
+				bcs.dispatchEvent(event_input);
+			}
         });
     });
 
