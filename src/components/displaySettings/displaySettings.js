@@ -278,7 +278,7 @@ import './displaysettings.scss';
 		let apiClient = self.options.apiClient;
 		let event_change = new Event('change');
 		let allCultures = cultures.getDictionaries();
-	
+		
 		if (appHost.supports('displaylanguage')) { 
 			let selectLanguage = context.querySelector('#selectLanguage');
 			let selectLanguageAlt = context.querySelector('#selectLanguageAlt');
@@ -326,7 +326,7 @@ import './displaysettings.scss';
 		
 		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
 		dashboardthemeNodes.forEach( function(userItem) {
-			userItem.classList.toggle('hide', !user.localUser.Policy.IsAdministrator);});
+			userItem.classList.toggle('hide', !user.Policy.IsAdministrator);});
 		
 		let btnFindIt =  context.querySelector('#btnFindIt');
 		if (btnFindIt) {
@@ -374,7 +374,7 @@ import './displaysettings.scss';
 		
         fillThemes(context.querySelector('#selectDashboardTheme'), userSettings.dashboardTheme());
 
-        context.querySelector('.chkDisplayMissingEpisodes').checked = user.localUser.Configuration.DisplayMissingEpisodes || false;
+        context.querySelector('.chkDisplayMissingEpisodes').checked = user.Configuration.DisplayMissingEpisodes || false;
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		
@@ -416,7 +416,9 @@ import './displaysettings.scss';
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		self._savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 			
-		if (browser.web0s || appHost.supports('displaymode'))
+		/* If an admin is actually impersonating a user,
+			there is no point exposing the layout settings. */
+		if (!self.adminEdit && (browser.web0s || appHost.supports('displaymode')))
 			context.querySelector('.fldDisplayMode').classList.remove('hide');
         else 
 			context.querySelector('.fldDisplayMode').classList.add('hide');
@@ -465,15 +467,17 @@ import './displaysettings.scss';
 		let newDisplayLanguageAlt = self._savedDisplayLangAlt;
 		let reload = false;
 		
-		let newLayout = context.querySelector('.selectLayout').value;
-		if (newLayout !== self._savedLayout) {
-			layoutManager.setLayout(newLayout, true);
-			self._savedLayout = newLayout;
-			reload = true;
+		if (!self.adminEdit) {
+			const newLayout = context.querySelector('.selectLayout').value;
+			if (newLayout !== self._savedLayout) {
+				layoutManager.setLayout(newLayout, true);
+				self._savedLayout = newLayout;
+				reload = true;
+			}
 		}
 		
-		if ((self._savedClock != context.querySelector('#selectClock').value) ||
-			(self._savedWBot != context.querySelector('#selectWeatherBot').value)) {
+		if (!self.adminEdit && ((self._savedClock != context.querySelector('#selectClock').value) ||
+			(self._savedWBot != context.querySelector('#selectWeatherBot').value))) {
 			reload = true;
 		}
 		
@@ -490,7 +494,7 @@ import './displaysettings.scss';
 			}
         }
 
-		user.localUser.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
+		user.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
         userSettingsInstance.enableThemeSongs(context.querySelector('#chkThemeSong').checked);
         userSettingsInstance.enableThemeVideos(context.querySelector('#chkThemeVideo').checked);
@@ -499,7 +503,7 @@ import './displaysettings.scss';
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
-		userSettingsInstance.enableClock(context.querySelector('#selectClock').value);
+		userSettingsInstance.enableClock(context.querySelector('#selectClock').value, self.adminEdit);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		
@@ -529,7 +533,7 @@ import './displaysettings.scss';
 		userSettingsInstance.getlatitude(context.querySelector('#inputLat').value);
 		userSettingsInstance.getlongitude(context.querySelector('#inputLon').value);
 		userSettingsInstance.weatherApiKey(context.querySelector('#inputApikey').value);
-		userSettingsInstance.enableWeatherBot(context.querySelector('#selectWeatherBot').value);
+		userSettingsInstance.enableWeatherBot(context.querySelector('#selectWeatherBot').value, self.adminEdit);
 		
 		if (layoutManager.tv) 
 			userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);
@@ -538,23 +542,23 @@ import './displaysettings.scss';
 
         userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
      
-		apiClient.updateUserConfiguration(user.localUser.Id, user.localUser.Configuration).then( () => { 
-			userSettingsInstance.commit(); 
-			setTimeout(() => { 
-				if (reload !== false) {
+		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
+			userSettingsInstance.commit();
+			setTimeout(() => {
+				if (!self.adminEdit && reload === true) {
 					embed(self, newDisplayLanguage).then( () => {
-						LibraryMenu.setTitle(globalize.translate(self.title));
-						LibraryMenu.updateUserInHeader(user);
 						translateUserMenu();
-						loading.hide();	
-						if (enableSaveConfirmation) 
+						LibraryMenu.setTitle(globalize.translate(self.title));
+						LibraryMenu.updateUserInHeader();
+						loading.hide();
+						if (enableSaveConfirmation)
 							toast(globalize.translate('SettingsSaved'));
 					});
 				} else {
-					loading.hide();	
+					loading.hide();
 					if (enableSaveConfirmation) 
 						toast(globalize.translate('SettingsSaved'));
-				}}, 2000); 
+				}}, 1000);
 		});
     }
 
@@ -590,21 +594,39 @@ import './displaysettings.scss';
 			this._savedLayout = '';
 			this._savedWBot = '';
 			this._savedClock = '';
+			this.adminEdit = false;
             embed(this);
         }
 
         loadData(autoFocus) {
             const self = this;
-           
+			const apiClient = self.options.apiClient;
+
             loading.show();
-            
-			return ServerConnections.user(this.options.apiClient).then((user) => {
-				self.currentUser = user;
-				self.dataLoaded = true;
-				loadForm(self);
-				if (autoFocus)
-					focusManager.autoFocus(self.options.element);
-				loading.hide();
+
+			return ServerConnections.user(apiClient).then((user) => {
+				// If the request comes from a server admin configuring a user...
+				if (self.options.userId !== user.localUser.Id) {
+					return apiClient.getUser(self.options.userId).then(target => {
+						return self.options.userSettings.setUserInfo(self.options.userId, apiClient).then(() => {
+							console.debug("Admin \'" + user.localUser.Name + "\' is configuring display preferences for user \'" + target.Name + "'");
+							self.currentUser = target;
+							self.dataLoaded = true;
+							self.adminEdit = true;
+							loadForm(self);
+							if (autoFocus)
+								focusManager.autoFocus(self.options.element);
+							loading.hide();
+						});
+					});
+				} else {
+					self.currentUser = user.localUser;
+					self.dataLoaded = true;
+					loadForm(self);
+					if (autoFocus)
+						focusManager.autoFocus(self.options.element);
+					loading.hide();
+				}
 			});
         }
 

@@ -557,7 +557,7 @@ export class UserSettings {
      * @param {boolean|undefined} val - Flag to (en|dis)able 'Meteo' (Set) or undefined (Get).
      * @return {boolean} 'Meteo' state (Get) or success/failure status (Set).
      */
-	enableWeatherBot(val) {
+	enableWeatherBot(val, norefresh) {
         if (val !== undefined) {
 			let newval = parseInt(val, 10);
 			if (newval < 0 || newval > 3)
@@ -565,16 +565,19 @@ export class UserSettings {
 			
 			/*** Save the new value. ***/
 			this.set('weatherbot', newval);
+
+			if (norefresh === true)
+				return true;
 			
-			/***
-				If weatherbot is disabled or enabled only for video,
-				clear any existing timer
-				then hide the widget
-				and return. 
-			***/
 			switch(newval) {
 				case 0:
 				case 3:
+					/***
+						If weatherbot is disabled or enabled only for video,
+						clear any existing timer
+						then hide the widget
+						and return. 
+					***/
 					this.showWeatherBot(false);
 					break;
 					
@@ -670,7 +673,7 @@ export class UserSettings {
      * @param {boolean|undefined} val - Flag to (en|dis)able 'Clock' (Set) or undefined (Get).
      * @return {boolean} 'Clock' state (Get) or success/failure status (Set).
      */
-	enableClock(val) {
+	enableClock(val, norefresh) {
         if (val !== undefined) {
 			let newval = parseInt(val, 10);
 			if (newval < 0 || newval > 3)
@@ -679,15 +682,18 @@ export class UserSettings {
 			/*** Save the new value. ***/
 			this.set('clock', newval);
 			
-			/***
-				If clock is disabled or enabled only for videos,
-				clear any existing timer
-				hide the clock 
-				return. 
-			***/
+			if (norefresh === true)
+				return true;
+			
 			switch(newval) {
 				case 0:
 				case 3:
+					/***
+						If clock is disabled or enabled only for videos,
+						clear any existing timer
+						hide the clock 
+						return. 
+					***/
 					this.showClock(false);
 					break;
 					

@@ -248,29 +248,29 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 
     export function updateUserInHeader(user) {
-        let url = null;
-
 		retranslateUi();
 		
 		if (!user)
 			user = currentUser;
-        if (user && user.name) {
-            if (user.imageUrl)
-                url = user.imageUrl;
-            headerUserButton.title = user.name;
-            headerUserButton.classList.remove('hide');
-        } else 
-            headerUserButton.classList.add('hide');
-
-		updateHeaderUserButton(url);
+		
+		if (headerUserButton) {
+			let url = null;
+			if (user && user.name) {
+				if (user.imageUrl)
+					url = user.imageUrl;
+				headerUserButton.title = user.name;
+				headerUserButton.classList.remove('hide');
+			} else 
+				headerUserButton.classList.add('hide');
+			updateHeaderUserButton(url); 
+		}
 		
 		if (headerLockButton)
 			headerLockButton.classList.remove('hide');
+		
 		const lockIcon = document.getElementById("lock");
 		if (lockIcon) {
-			let id = null
-			if (user && user.localUser)
-				id = user.localUser.Id;
+			let id = user?.localUser?.Id;
 			
 			if (appSettings.get('lockHeader', id) === 'true') {
 				skinHeader.classList.add('locked');
@@ -354,6 +354,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 	}
 	
     function updateHeaderUserButton(src) {
+		if (!headerUserButton)
+			return;
         if (src) {
             headerUserButton.classList.add('headerUserButtonRound');
             headerUserButton.innerHTML = '<div class="headerButton headerButtonRight paper-icon-button-light headerUserButtonRound" style="background-image:url(\'' + src + "');\"></div>";
@@ -599,24 +601,17 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         navDrawerScrollContainer.innerHTML = html;
 
         const btnSelectServer = navDrawerScrollContainer.querySelector('.btnSelectServer');
-        if (btnSelectServer) {
-            btnSelectServer.addEventListener('click', onSelectServerClick);
-        }
-
-        const btnSettings = navDrawerScrollContainer.querySelector('.btnSettings');
-        if (btnSettings) {
-            btnSettings.addEventListener('click', onSettingsClick);
-        }
-
+		const btnSettings = navDrawerScrollContainer.querySelector('.btnSettings');
 		const btnExit = navDrawerScrollContainer.querySelector('.exitApp');
-        if (btnExit) {
+		const btnLogout = navDrawerScrollContainer.querySelector('.btnLogout');
+        if (btnSelectServer)
+            btnSelectServer.addEventListener('click', onSelectServerClick);
+        if (btnSettings)
+            btnSettings.addEventListener('click', onSettingsClick);
+        if (btnExit)
             btnExit.addEventListener('click', onExitAppClick);
-        }
-		
-        const btnLogout = navDrawerScrollContainer.querySelector('.btnLogout');
-        if (btnLogout) {
+        if (btnLogout)
             btnLogout.addEventListener('click', onLogoutClick);
-        }
     }
 
     function refreshDashboardInfoInDrawer(page, apiClient) {

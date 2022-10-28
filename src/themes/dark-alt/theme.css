@@ -1044,6 +1044,7 @@ button.emby-button {
 .btnRefresh,
 .submit,
 .button-submit,
+.button-delete,
 .cancel,
 .button-cancel {
 	text-align: center;
@@ -1060,6 +1061,7 @@ button.emby-button {
 .btnForgotPassword,
 .cancel,
 .button-cancel,
+.button-delete,
 #btnResetPassword,
 #btnResetEasyPassword,
 .button-submit {

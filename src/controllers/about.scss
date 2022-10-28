@@ -1,22 +1,25 @@
 .aboutframe {
 	padding: 1rem;
-	background: rgba(60, 62, 63, 0.15);
+	background: rgba(20, 20, 20, 0.15) !important;
 	width: 33rem;
 }
 
 .aboutContent {
 	font-weight: 400;
-	color: #fff;
 }
 
 .aboutTitle1 {
 	font-size: 200%;
 	font-family: Quicksand-Regular;
+	color: #fff;
+	text-shadow: 1px 1px 4px #736a7d;
 }
 
 .aboutTitle2 {
 	font-family: Quicksand-Regular;
 	font-style: italic;
+	color: #eee;
+	text-shadow: 1px 1px 10px #382f44;
 }
 
 .aboutLabel {

@@ -1151,6 +1151,7 @@
     "MessagePluginInstallError": "Asennettaessa lisäosaa tapahtui virhe.",
     "MessagePluginInstalled": "Lisäosan asennus onnistui. Palvelin on käynnistettävä uudelleen, jotta muutokset tulevat voimaan.",
     "MessageReenableUser": "Ottaaksesi uudelleen käyttöön, katso alempaa",
+    "MessageRenameMediaFolder": "Kaikki metatiedot menetetään mediakirjaston uudelleennimeämisen yhteydessä, joten ole varovainen.",
     "MessageSent": "Viesti lähetetty.",
     "MessageSyncPlayCreateGroupDenied": "Lupa ryhmän luomiseen vaaditaan.",
     "MessageSyncPlayDisabled": "Ryhmäkatselu otettu pois käytöstä.",

@@ -624,26 +624,45 @@ export class SubtitleSettings {
     constructor(options) {
         this.options = options;
 		this.subtitlePreviewDelay = 1000;
+		this.adminEdit = false;
         embed(this);
     }
 
-    loadData() {
-        const self = this;
-        const context = this.options.element;
+	loadData(autoFocus) {
+		const self = this;
 		const userId = this.options.userId;
-        const apiClient = this.options.apiClient;
-        const userSettings = this.options.userSettings;
+		const apiClient = this.options.apiClient;
+		const userSettings = this.options.userSettings;
 		
-        loading.show();
-
-        apiClient.getUser(userId).then(function (user) {
-			self.currentUser = user;
-			self.dataLoaded = true;
-			self.appearanceSettings = userSettings.getSubtitleAppearanceSettings(self.options.appearanceKey);
-			loadForm(self);
-			loading.hide();
-        });
-    }
+		loading.show();
+		
+		return ServerConnections.user(apiClient).then((user) => {
+			// If the request comes from a server admin configuring a user...
+			if (self.options.userId !== user.localUser.Id) {
+				return apiClient.getUser(self.options.userId).then(target => {
+					return userSettings.setUserInfo(self.options.userId, apiClient).then(() => {
+						console.debug("Admin \'" + user.localUser.Name + "\' is configuring subtitles preferences for user \'" + target.Name + "'");
+						self.currentUser = target;
+						self.dataLoaded = true;
+						self.adminEdit = true;
+						self.appearanceSettings = userSettings.getSubtitleAppearanceSettings(self.options.appearanceKey);
+						loadForm(self);
+						if (autoFocus)
+							focusManager.autoFocus(self.options.element);
+						loading.hide();
+					});
+				});
+			} else {
+				self.currentUser = user.localUser;
+				self.dataLoaded = true;
+				self.appearanceSettings = userSettings.getSubtitleAppearanceSettings(self.options.appearanceKey);
+				loadForm(self);
+				if (autoFocus)
+					focusManager.autoFocus(self.options.element);
+				loading.hide();
+			}
+		});
+	}
 
     submit() {
         this.onSubmit(null);

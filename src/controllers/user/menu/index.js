@@ -30,6 +30,7 @@ export default function (view, params) {
     view.addEventListener('viewshow', function () {
         // this page can also be used by admins to change user preferences from the user edit page
         const userId = params.userId || Dashboard.getCurrentUserId();
+		const adminEdit = params.userId && (params.userId !== Dashboard.getCurrentUserId());
         const page = this;
         page.querySelector('.lnkUserProfile').setAttribute('href', '#/userprofile.html?userId=' + userId);
         page.querySelector('.lnkDisplayPreferences').setAttribute('href', '#/mypreferencesdisplay.html?userId=' + userId);
@@ -46,25 +47,29 @@ export default function (view, params) {
         page.querySelector('.selectServer').classList.toggle('hide', !supportsMultiServer);
         page.querySelector('.lnkControlsPreferences').classList.toggle('hide', layoutManager.mobile);
 
-		// Check whether QuickConnect is active or not.
-		quickConnect.isActive().then( (ret) => {
-			if (ret === true) 
-				page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
-		});
-			
+		if (!adminEdit) {
+			// Check whether QuickConnect is active or not.
+			quickConnect.isActive().then( (ret) => {
+				if (ret === true) 
+					page.querySelector('.lnkQuickConnectPreferences').classList.remove('hide');
+			});
+		} else {
+			// As it seems there is a lack of support for doing QC requests on behalf of a user.
+			// This needs further investigation, in the meantime we disable it.
+			page.querySelector('.lnkQuickConnectPreferences').classList.add('hide');
+
+			// Hide the actions if user preferences are being edited for a different user
+            page.querySelector('.userSection').classList.add('hide');
+            page.querySelector('.adminSection').classList.add('hide');
+            page.querySelector('.lnkControlsPreferences').classList.add('hide');
+		}
+
         ApiClient.getUser(userId).then( (user) => {
             page.querySelector('.headerUsername').innerHTML = user.Name;
             if (user.Policy.IsAdministrator && !layoutManager.tv) {
                 page.querySelector('.adminSection').classList.remove('hide');
             }
         });
-
-        // Hide the actions if user preferences are being edited for a different user
-        if (params.userId && params.userId !== Dashboard.getCurrentUserId) {
-            page.querySelector('.userSection').classList.add('hide');
-            page.querySelector('.adminSection').classList.add('hide');
-            page.querySelector('.lnkControlsPreferences').classList.add('hide');
-        }
 
         import('../../../components/autoFocuser').then(({default: autoFocuser}) => {
             autoFocuser.autoFocus(view);

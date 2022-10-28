@@ -42,8 +42,8 @@ class AboutTab {
 		let html = '<div class="abouttab" style="display: flex;align-items: center;justify-content: center;">';
 		
 		html += '<div class="paperList aboutframe">';
-		html += '<div><center><span class="aboutContent aboutTitle1">' + appInfo.name + '</span></center></div>';
-		html += '<div><center><span class="aboutContent aboutTitle2">' + globalize.translate(appInfo.description) + '</span></center></div>';
+		html += '<div><center><span class="aboutTitle1 aboutContent">' + appInfo.name + '</span></center></div>';
+		html += '<div><center><span class="aboutTitle2 aboutContent">' + globalize.translate(appInfo.description) + '</span></center></div>';
 		html += '<br>';
 		html += '<div style="display: flex">';
 		html += '<div class="aboutLabel">' + globalize.translate('LabelAppHost') + '</div>';

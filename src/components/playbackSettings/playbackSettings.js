@@ -302,24 +302,41 @@ import template from './playbackSettings.template.html';
         constructor(options) {
             this.options = options;
 			this.currentUser = null;
+			this.adminEdit = false;
             embed(this);
         }
 
-        loadData() {
+        loadData(autoFocus) {
             const self = this;
-
+			const userId = this.options.userId;
+            const apiClient = this.options.apiClient;
+			
             loading.show();
 
-            const userId = this.options.userId;
-            const apiClient = this.options.apiClient;
-            const userSettings = this.options.userSettings;
-
-            apiClient.getUser(userId).then(user => {
-				self.currentUser = user;				
-				self.dataLoaded = true;
-				loadForm(self);
-				loading.hide();
-            });
+			return ServerConnections.user(apiClient).then((user) => {
+				// If the request comes from a server admin configuring a user...
+				if (self.options.userId !== user.localUser.Id) {
+					return apiClient.getUser(self.options.userId).then(target => {
+						return self.options.userSettings.setUserInfo(self.options.userId, apiClient).then(() => {
+							console.debug("Admin \'" + user.localUser.Name + "\' is configuring playback preferences for user \'" + target.Name + "'");
+							self.currentUser = target;
+							self.dataLoaded = true;
+							self.adminEdit = true;
+							loadForm(self);
+							if (autoFocus)
+								focusManager.autoFocus(self.options.element);
+							loading.hide();
+						});
+					});
+				} else {
+					self.currentUser = user.localUser;
+					self.dataLoaded = true;
+					loadForm(self);
+					if (autoFocus)
+						focusManager.autoFocus(self.options.element);
+					loading.hide();
+				}
+			});
         }
 
         submit() {

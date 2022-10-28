@@ -338,17 +338,17 @@
     },
     "de": {
         "ccode": "de",
-        "fsize": 120016,
+        "fsize": 120148,
         "ccodeSrc": "en-US",
         "displayName": "German",
         "displayNativeName": "Deutsch",
         "ISO6391": "de",
         "ISO6392": "ger",
-        "keys#": 1669,
-        "completed%": 93.87,
+        "keys#": 1670,
+        "completed%": 93.93,
         "jellyfinWeb": {
             "filename": "de.json",
-            "keys#": 1669,
+            "keys#": 1670,
             "orphans#": 12,
             "orphans": [
                 "ButtonNetwork",
@@ -364,7 +364,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.94
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "de.json",
@@ -755,17 +755,17 @@
     },
     "fi": {
         "ccode": "fi",
-        "fsize": 114260,
+        "fsize": 114397,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
         "displayNativeName": "Suomi",
         "ISO6391": "fi",
         "ISO6392": "fin",
-        "keys#": 1663,
-        "completed%": 93.53,
+        "keys#": 1664,
+        "completed%": 93.59,
         "jellyfinWeb": {
             "filename": "fi.json",
-            "keys#": 1663,
+            "keys#": 1664,
             "orphans#": 10,
             "orphans": [
                 "ButtonNetwork",
@@ -779,7 +779,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.58
+            "completed%": 99.64
         },
         "myJelly": {
             "filename": "fi.json",
@@ -2441,17 +2441,17 @@
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "fsize": 103829,
+        "fsize": 103937,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
         "displayNativeName": "中文",
         "ISO6391": "zh-CN",
         "ISO6392": "chi",
-        "keys#": 1669,
-        "completed%": 93.87,
+        "keys#": 1670,
+        "completed%": 93.93,
         "jellyfinWeb": {
             "filename": "zh-CN.json",
-            "keys#": 1669,
+            "keys#": 1670,
             "orphans#": 12,
             "orphans": [
                 "ButtonNetwork",
@@ -2467,7 +2467,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.94
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

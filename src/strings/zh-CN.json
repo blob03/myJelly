@@ -1157,6 +1157,7 @@
     "MessagePluginInstallError": "安装插件时出现错误。",
     "MessagePluginInstalled": "此插件已成功安装。服务器需要重启以使该插件生效。",
     "MessageReenableUser": "请参阅以下以重新启用",
+    "MessageRenameMediaFolder": "请注意: 重命名一个媒体库将会导致所有的元数据丢失.",
     "MessageSent": "消息已发送。",
     "MessageSyncPlayCreateGroupDenied": "需要权限以创建群组。",
     "MessageSyncPlayDisabled": "同步播放已关闭。",
