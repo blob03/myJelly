@@ -7,12 +7,13 @@ import '../../../../elements/emby-button/emby-button';
 import '../../../../elements/emby-checkbox/emby-checkbox';
 import '../../../../elements/emby-select/emby-select';
 
-function reloadList(page) {
+function reloadList(page, view) {
     loading.show();
     const promise1 = ApiClient.getAvailablePlugins();
     const promise2 = ApiClient.getInstalledPlugins();
     Promise.all([promise1, promise2]).then(function (responses) {
         populateList({
+			view: view,
             catalogElement: page.querySelector('#pluginTiles'),
             noItemsElement: page.querySelector('#noPlugins'),
             availablePlugins: responses[0],
@@ -36,6 +37,7 @@ function getHeaderText(category) {
 function populateList(options) {
     const availablePlugins = options.availablePlugins;
     const installedPlugins = options.installedPlugins;
+	const view = options.view;
 
     availablePlugins.forEach(function (plugin, index, array) {
         plugin.category = plugin.category || 'General';
@@ -82,18 +84,18 @@ function populateList(options) {
         options.noItemsElement.classList.remove('hide');
     }
 	
-	const searchBar = document.getElementById('txtSearchPlugins');
+	const searchBar = view.querySelector('#txtSearchPluginCatalog');
     if (searchBar) {
-        searchBar.addEventListener('input', () => onSearchBarType(searchBar));
+        searchBar.addEventListener('input', () => onSearchBarType(searchBar, view));
     }
 
     options.catalogElement.innerHTML = html;
     loading.hide();
 }
 
-function onSearchBarType(searchBar) {
+function onSearchBarType(searchBar, view) {
     const filter = searchBar.value.toLowerCase();
-    for (const header of document.querySelectorAll('div .verticalSection')) {
+    for (const header of view.querySelectorAll('div .verticalSection')) {
         // keep track of shown cards after each search
         let shown = 0;
         for (const card of header.querySelectorAll('div .card')) {
@@ -171,6 +173,6 @@ function getTabs() {
 export default function (view) {
     view.addEventListener('viewshow', function () {
         libraryMenu.setTabs('plugins', 1, getTabs);
-        reloadList(this);
+        reloadList(this, view);
     });
 }

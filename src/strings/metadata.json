@@ -376,17 +376,17 @@
     },
     "el": {
         "ccode": "el",
-        "fsize": 118215,
+        "fsize": 120943,
         "ccodeSrc": "en-US",
         "displayName": "Greek, Modern (1453-)",
         "displayNativeName": "Ελληνικά",
         "ISO6391": "el",
         "ISO6392": "gre",
-        "keys#": 1179,
-        "completed%": 66.31,
+        "keys#": 1209,
+        "completed%": 68.0,
         "jellyfinWeb": {
             "filename": "el.json",
-            "keys#": 1179,
+            "keys#": 1209,
             "orphans#": 8,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -398,7 +398,7 @@
                 "Screenshots",
                 "ButtonNetwork"
             ],
-            "completed%": 70.6
+            "completed%": 72.4
         },
         "myJelly": {
             "filename": "",
@@ -2058,22 +2058,22 @@
     },
     "sq": {
         "ccode": "sq",
-        "fsize": 13976,
+        "fsize": 22387,
         "ccodeSrc": "en-US",
         "displayName": "Albanian",
         "displayNativeName": "Shqip",
         "ISO6391": "sq",
         "ISO6392": "alb",
-        "keys#": 222,
-        "completed%": 12.49,
+        "keys#": 300,
+        "completed%": 16.87,
         "jellyfinWeb": {
             "filename": "sq.json",
-            "keys#": 222,
+            "keys#": 300,
             "orphans#": 1,
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 13.29
+            "completed%": 17.96
         },
         "myJelly": {
             "filename": "",
