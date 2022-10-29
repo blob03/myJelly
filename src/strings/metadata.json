@@ -2058,22 +2058,22 @@
     },
     "sq": {
         "ccode": "sq",
-        "fsize": 10135,
+        "fsize": 13976,
         "ccodeSrc": "en-US",
         "displayName": "Albanian",
         "displayNativeName": "Shqip",
         "ISO6391": "sq",
         "ISO6392": "alb",
-        "keys#": 187,
-        "completed%": 10.52,
+        "keys#": 222,
+        "completed%": 12.49,
         "jellyfinWeb": {
             "filename": "sq.json",
-            "keys#": 187,
+            "keys#": 222,
             "orphans#": 1,
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 11.2
+            "completed%": 13.29
         },
         "myJelly": {
             "filename": "",

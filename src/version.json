@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.5-33",
+	"version": "10.8.6-0",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -131,6 +131,7 @@
 		"10.8.5-30": "Apply patch 'Move castSenderApi to plugin dir'.\nApply patch 'Artiume/rename-warning'.\nSynchronize translation files with master.\nApply patch 'search-plugin-catalog'.",
 		"10.8.5-31": "Synchronize translation files with master.\nEnable widget 'Digital Clock' in the login screens.",
 		"10.8.5-32": "Synchronize translation files with master.\nHide button 'Reload' away from the login screens.\nApply patch 'photonconvergence/add/device-logos'.\nApply patch 'Fix chunk names'.\nApply patch 'Fix sdk import'.",
-		"10.8.5-33": "Fix tab 'About' title and background style.\nApply patch 'Accept arbitrary precision for community rating'.\nRestore ability to configure users' settings from the dashboard.\nSynchronize translation files with master."
+		"10.8.5-33": "Fix tab 'About' title and background style.\nApply patch 'Accept arbitrary precision for community rating'.\nRestore ability to configure users' settings from the dashboard.\nSynchronize translation files with master.",
+		"10.8.6-0": "Synchronize translation files with master."
 	}
 }
