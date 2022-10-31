@@ -18,6 +18,7 @@ import Dashboard from '../../../utils/dashboard';
 import ServerConnections from '../../../components/ServerConnections';
 import alert from '../../../components/alert';
 import cardBuilder from '../../../components/cardbuilder/cardBuilder';
+import { ConnectionState } from '../../../utils/jellyfin-apiclient/ConnectionState.ts';
 
 /* eslint-disable indent */
 
@@ -111,17 +112,17 @@ import cardBuilder from '../../../components/cardbuilder/cardBuilder';
                 const apiClient = result.ApiClient;
 
                 switch (result.State) {
-                    case 'SignedIn':
+                    case ConnectionState.SignedIn:
                         Dashboard.onServerChanged(apiClient.getCurrentUserId(), apiClient.accessToken(), apiClient);
                         Dashboard.navigate('home.html');
                         break;
 
-                    case 'ServerSignIn':
+                    case ConnectionState.ServerSignIn:
                         Dashboard.onServerChanged(null, null, apiClient);
                         Dashboard.navigate('login.html?serverid=' + result.Servers[0].Id);
                         break;
 
-                    case 'ServerUpdateNeeded':
+                    case ConnectionState.ServerUpdateNeeded:
                         alertTextWithOptions({
                             text: globalize.translate('core#ServerUpdateNeeded', 'https://github.com/jellyfin/jellyfin'),
                             html: globalize.translate('core#ServerUpdateNeeded', '<a href="https://github.com/jellyfin/jellyfin">https://github.com/jellyfin/jellyfin</a>')

@@ -167,11 +167,12 @@ const UserProfile: FunctionComponent = () => {
                         />
                         <div
                             id='image'
-                            style={{width: '9em', height: '9em', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', borderRadius: '100%', backgroundSize: 'cover'}}
+							className='userProfileAvatar'
+                            style={{width: '9em', height: '9em', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', borderRadius: '100%', border: '2px solid', boxShadow: '4px 4px 12px #606060', backgroundSize: 'cover'}}
                         />
                     </div>
                     <div className='verticalSection' style={{verticalAlign: 'top', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <h2 className='username sectionTitle' style={{margin: 0}}>
+                        <h2 className='username sectionTitle' style={{margin: '0 .3em'}}>
                             {userName}
                         </h2>
                         <br />

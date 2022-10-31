@@ -807,3 +807,6 @@ option.sourceDictionaryOption {
 	background: linear-gradient(to bottom, #0f3562, #1162a4, #03215f);
 }
 
+.userProfileAvatar {
+	box-shadow: rgb(14, 29, 58) 4px 4px 12px !important;
+}

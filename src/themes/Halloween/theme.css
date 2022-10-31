@@ -956,14 +956,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	padding-top: 4.1em !important;
 }
 
-.headerUserButtonRound {
-	border: 1px solid rgb(229, 164, 81);
-}
-
-.userProfileImage {
-	border: 6px ridge rgb(229, 164, 81);
-}
-
  .radioButtonLabel,
  .emby-collapsible-button {
 	color: rgb(127, 67, 15) !important;
@@ -1491,4 +1483,9 @@ option:selected {
 .nightMode .material-icons.bedtime {
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
 	color: #fff !important;
+}
+
+.userProfileAvatar {
+	border: 1px solid rgb(229, 164, 81) !important;
+	box-shadow: rgb(126, 73, 4) 4px 4px 12px !important;
 }

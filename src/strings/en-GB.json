@@ -1157,6 +1157,7 @@
     "MessagePluginInstallError": "An error occurred while installing the plugin.",
     "MessagePluginInstalled": "The plugin has been successfully installed. The server will need to be restarted for changes to take effect.",
     "MessageReenableUser": "See below to reenable",
+    "MessageRenameMediaFolder": "Renaming a media library will cause all metadata to be lost, proceed with caution.",
     "MessageSent": "Message sent.",
     "MessageSyncPlayCreateGroupDenied": "Permission required to create a group.",
     "MessageSyncPlayDisabled": "SyncPlay disabled.",

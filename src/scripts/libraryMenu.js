@@ -358,7 +358,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			return;
         if (src) {
             headerUserButton.classList.add('headerUserButtonRound');
-            headerUserButton.innerHTML = '<div class="headerButton headerButtonRight paper-icon-button-light headerUserButtonRound" style="background-image:url(\'' + src + "');\"></div>";
+            headerUserButton.innerHTML = '<div class="headerButton headerButtonRight paper-icon-button-light headerUserButtonRound userProfileAvatar" style="background-image:url(\'' + src + "');border: 1px solid;\"></div>";
         } else {
             headerUserButton.classList.remove('headerUserButtonRound');
             headerUserButton.innerHTML = '<span class="material-icons person"></span>';

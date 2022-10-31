@@ -950,14 +950,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	font-weight: 600 !important;
 }
 
-.headerUserButtonRound {
-	border: 1px solid rgb(81, 107, 116);
-}
-
-.userProfileImage {
-	border: 6px ridge rgb(81, 107, 116);
-}
-
 .sectionTitle {
 	color: #ecfbd0;
 	text-shadow: 1px 1px 3px #45653a;

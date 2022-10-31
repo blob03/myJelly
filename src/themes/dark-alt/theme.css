@@ -905,14 +905,6 @@ legend {
 	padding-top: 4.3em !important;
 }
 
-.headerUserButtonRound {
-	border: 1px solid rgb(136, 157, 167);
-}
-
-.userProfileImage {
-	border: 6px ridge rgb(136, 157, 167);
-}
-
 .headerLeft, .headerRight {
 	overflow: visible !important;
 	margin-right: .5em;
@@ -1451,4 +1443,9 @@ select option:selected {
 .nightMode .material-icons.bedtime {
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 	color: #fff !important;
+}
+
+.userProfileAvatar {
+	border: 1px solid rgb(136, 157, 167) !important;
+	box-shadow: 4px 4px 12px #202020 !important;
 }

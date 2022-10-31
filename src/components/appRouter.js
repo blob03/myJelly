@@ -8,6 +8,7 @@ import loading from './loading/loading';
 import viewManager from './viewManager/viewManager';
 import ServerConnections from './ServerConnections';
 import alert from './alert';
+import { ConnectionState } from '../utils/jellyfin-apiclient/ConnectionState.ts';
 
 export const history = createHashHistory();
 
@@ -218,17 +219,17 @@ class AppRouter {
 
     #handleConnectionResult(result) {
         switch (result.State) {
-            case 'SignedIn':
+            case ConnectionState.SignedIn:
                 loading.hide();
                 this.goHome();
                 break;
-            case 'ServerSignIn':
+            case ConnectionState.ServerSignIn:
                 this.showLocalLogin(result.ApiClient.serverId());
                 break;
-            case 'ServerSelection':
+            case ConnectionState.ServerSelection:
                 this.showSelectServer();
                 break;
-            case 'ServerUpdateNeeded':
+            case ConnectionState.ServerUpdateNeeded:
                 alert({
                     text: globalize.translate('ServerUpdateNeeded', 'https://github.com/jellyfin/jellyfin'),
                     html: globalize.translate('ServerUpdateNeeded', '<a href="https://github.com/jellyfin/jellyfin">https://github.com/jellyfin/jellyfin</a>')
@@ -384,7 +385,7 @@ class AppRouter {
 
         this.firstConnectionResult = null;
         if (firstResult) {
-            if (firstResult.State === 'ServerSignIn') {
+            if (firstResult.State === ConnectionState.ServerSignIn) {
                 const url = firstResult.ApiClient.serverAddress() + '/System/Info/Public';
                 fetch(url).then(response => {
                     if (!response.ok) return Promise.reject('fetch failed');
@@ -401,7 +402,7 @@ class AppRouter {
                 });
 
                 return;
-            } else if (firstResult.State !== 'SignedIn') {
+            } else if (firstResult.State !== ConnectionState.SignedIn) {
                 this.#handleConnectionResult(firstResult);
                 return;
             }
