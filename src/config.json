@@ -4,13 +4,13 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "1.98",
+		"version": "1.99",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.38",
+		"version": "2.39",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"

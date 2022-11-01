@@ -2,8 +2,10 @@
     <div>
         <div class="content-primary">
             <form class="playbackConfigurationForm">
-                <div class="sectionTitleContainer flex align-items-center">
-                    <h2 class="sectionTitle">${HeaderResume}</h2>
+				<div class="verticalSection">
+                    <div class="sectionTitleContainer flex align-items-center">
+						<h2 class="sectionTitle">${HeaderResume}</h2>
+					</div>
                 </div>
                 <div class="inputContainer">
                     <input is="emby-input" type="number" id="txtMinResumePct" name="txtMinResumePct" pattern="[0-9]*" required min="0" max="100" label="${LabelMinResumePercentage}"></input>

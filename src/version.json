@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.6-2",
+	"version": "10.8.7-0",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -134,6 +134,7 @@
 		"10.8.5-33": "Fix tab 'About' title and background style.\nApply patch 'Accept arbitrary precision for community rating'.\nRestore ability to configure users' settings from the dashboard.\nSynchronize translation files with master.",
 		"10.8.6-0": "Synchronize translation files with master.",
 		"10.8.6-1": "Synchronize translation files with master.\nFix plugin search bars using conflicting ids.\nFix event handler sometimes incorrectly bound to the hidden search bar (plugin catalog).",
-		"10.8.6-2": "Apply patch 'thornbill/add-loading-component'.\nApply patch 'thornbill/connection-state-refactor'.\nInstall latest 'package.json'.\nSynchronize translations."
+		"10.8.6-2": "Apply patch 'thornbill/add-loading-component'.\nApply patch 'thornbill/connection-state-refactor'.\nInstall latest 'package.json'.\nSynchronize translations.",
+		"10.8.7-0": "Fix a few layout inconsistencies in the dashboard pages."
 	}
 }

@@ -75,8 +75,8 @@ html {
 .backgroundContainer {
     -webkit-background-size: cover;
     background-size: cover;
-	background: linear-gradient(35deg, rgba(172, 93, 55, 0.4) 0%, rgba(96, 197, 169, 0.4) 40%, rgba(79, 157, 194, 0.4) 70%, rgba(220, 170, 230, 0.4) 100%);
-	background-color: rgb(225, 200, 191);
+	background: linear-gradient(35deg, rgba(91, 88, 86, 0.4) 0%, rgba(187, 200, 196, 0.4) 40%, rgba(255, 232, 162, 0.4) 70%, rgba(152, 216, 255, 0.4) 100%);
+	background-color: rgb(254, 255, 255);
 }
 
 .backgroundContainer.withBackdrop {
