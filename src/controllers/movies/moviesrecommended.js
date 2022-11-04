@@ -360,7 +360,7 @@ import '../../elements/emby-button/emby-button';
 				html += listView.getListViewHtml({
 					items: recommendation.Items,
 					context: 'movies',
-					SortBy: 'SortName',
+					SortBy: 'SortName,ProductionYear',
 					SortOrder: 'Ascending'
 				});
 			} else if (viewStyle == 'PosterCard') {

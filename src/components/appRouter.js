@@ -78,7 +78,11 @@ class AppRouter {
         if (this.promiseShow) await this.promiseShow;
 
         this.promiseShow = new Promise((resolve) => {
-            this.resolveOnNextShow = resolve;
+            const unlisten = history.listen(() => {
+                unlisten();
+                this.promiseShow = null;
+                resolve();
+            });
             history.back();
         });
 

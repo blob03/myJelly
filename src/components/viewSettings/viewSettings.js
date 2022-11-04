@@ -29,13 +29,24 @@ function initEditor(context, settings) {
     context.querySelector('.selectImageType').value = settings.imageType || 'primary';
 }
 
-function saveValues(context, settings, settingsKey) {
-    const elems = context.querySelectorAll('.viewSetting-checkboxContainer');
-    for (const elem of elems) {
-        userSettings.set(settingsKey + '-' + elem.getAttribute('data-settingname'), elem.querySelector('input').checked);
-    }
+function saveValues(context, settings, settingsKey, setviewsettings) {
+    if (setviewsettings) {
+        setviewsettings((prevState) => ({
+            ...prevState,
+            StartIndex: 0,
+            imageType: context.querySelector('.selectImageType').value,
+            showTitle: context.querySelector('.chkShowTitle').checked || false,
+            showYear: context.querySelector('.chkShowYear').checked || false,
+            cardLayout: context.querySelector('.chkEnableCardLayout').checked || false
+        }));
+    } else {
+        const elems = context.querySelectorAll('.viewSetting-checkboxContainer');
+        for (const elem of elems) {
+            userSettings.set(settingsKey + '-' + elem.getAttribute('data-settingname'), elem.querySelector('input').checked);
+        }
 
-    userSettings.set(settingsKey + '-imageType', context.querySelector('.selectImageType').value);
+        userSettings.set(settingsKey + '-imageType', context.querySelector('.selectImageType').value);
+    }
 }
 
 function centerFocus(elem, horiz, on) {
@@ -59,7 +70,7 @@ class ViewSettings {
     constructor() {}
 	
     show(options) {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function (resolve) {
             const dialogOptions = {
                 removeOnClose: true,
                 scrollY: false
@@ -97,10 +108,9 @@ class ViewSettings {
             initEditor(dlg, options.settings);
 			
             dlg.querySelector('.selectImageType').addEventListener('change', function (e) {
-				const val = e.target.value;
-                showIfAllowed(dlg, '.chkTitleContainer', val !== 'list');
-				showIfAllowed(dlg, '.chkCardFormatContainer', val !== 'list');
-                showIfAllowed(dlg, '.chkYearContainer', val !== 'list');
+				showIfAllowed(dlg, '.chkTitleContainer', this.value !== 'list');
+                showIfAllowed(dlg, '.chkYearContainer', this.value !== 'list');
+                showIfAllowed(dlg, '.chkCardLayoutContainer', this.value !== 'list');
             });
 
             dlg.querySelector('.btnCancel').addEventListener('click', function () {
@@ -123,12 +133,11 @@ class ViewSettings {
                     centerFocus(dlg.querySelector('.formDialogContent'), false, false);
 
                 if (submitted) {
-                    saveValues(dlg, options.settings, options.settingsKey);
-                    resolve();
-                    return;
+                    saveValues(dlg, options.settings, options.settingsKey, options.setviewsettings);
+                    return resolve();
                 }
 
-                reject();
+                 return resolve();
             });
         });
     }

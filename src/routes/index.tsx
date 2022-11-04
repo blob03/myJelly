@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import ConnectionRequired from '../components/ConnectionRequired';
+import ViewManagerPage from '../components/viewManager/ViewManagerPage';
 import Search from './search';
 import UserNew from './user/usernew';
 import UserEdit from './user/useredit';
@@ -11,6 +12,7 @@ import UserPassword from './user/userpassword';
 import UserProfile from './user/userprofile';
 import UserProfiles from './user/userprofiles';
 import Home from './home';
+import Movies from './movies';
 
 const AppRoutes = () => (
     <Routes>
@@ -20,6 +22,10 @@ const AppRoutes = () => (
                 <Route path='search.html' element={<Search />} />
                 <Route path='userprofile.html' element={<UserProfile />} />
                 <Route path='home.html' element={<Home />} />
+				<Route path='movies.html' element={<Movies />} />
+				<Route path='music.html' element={
+                    <ViewManagerPage controller='music/musicrecommended' view='music/music.html' />
+                } />
             </Route>
 
             {/* Admin routes */}

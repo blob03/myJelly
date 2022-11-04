@@ -1,6 +1,7 @@
 import { currentSettings as userSettings } from './settings/userSettings';
 import cultures from './cultures';
 import Events from '../utils/events.ts';
+import { updateLocale } from '../utils/dateFnsLocale.ts';
 
 const Direction = {
     rtl: 'rtl',
@@ -98,6 +99,7 @@ const Direction = {
 		_currentCulture = userSettings.language() || getDefaultCulture().ccode;
 		_currentCultureAlt = userSettings.languageAlt() || getDefaultCulture().ccode;
 		_currentDateTimeCulture = userSettings.dateTimeLocale() || _currentCulture;
+		updateLocale(_currentDateTimeCulture);
 		checkAndProcessDir(_currentCulture);
         ensureTranslations(_currentCulture);
 		ensureTranslations(_currentCultureAlt);

@@ -1374,12 +1374,13 @@ export class UserSettings {
      * @return {number} Library page size.
      */
     libraryPageSize(val) {
+		const defaultPageSize = 60;
         if (val !== undefined) 
             return this.set('libraryPageSize', parseInt(val, 10));
 
-		const libraryPageSize = parseInt(this.get('libraryPageSize'), 10);
-		if (libraryPageSize > 128) 
-			return 60;
+		const libraryPageSize = parseInt(this.get('libraryPageSize'), 10) || defaultPageSize;
+		if (libraryPageSize < 0 || libraryPageSize > 128) 
+			return defaultPageSize;
         else 
             return libraryPageSize;
     }
@@ -1413,11 +1414,17 @@ export class UserSettings {
         return this.get('soundeffects');
     }
 
+   /**
+    * @typedef {Object} Query
+    * @property {number} StartIndex - query StartIndex.
+    * @property {number} Limit - query Limit.
+    */
+	
     /**
      * Load query settings.
      * @param {string} key - Query key.
      * @param {Object} query - Query base.
-     * @return {Object} Query.
+     * @return {Query} Query.
      */
     loadQuerySettings(key, query) {
         let values = this.get(key);

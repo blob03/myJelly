@@ -101,7 +101,7 @@ import toast from '../toast/toast';
 
             Recursive: true,
             IncludeItemTypes: 'BoxSet',
-            SortBy: 'SortName',
+            SortBy: 'SortName,ProductionYear',
             EnableTotalRecordCount: false
         };
 
@@ -205,8 +205,8 @@ import toast from '../toast/toast';
         });
     }
 
-    export class showEditor {
-        constructor(options) {
+	class CollectionEditor {
+        show(options) {
             const items = options.items || {};
             currentServerId = options.serverId;
 
@@ -265,4 +265,4 @@ import toast from '../toast/toast';
     }
 
 /* eslint-enable indent */
-export default showEditor;
+export default CollectionEditor;

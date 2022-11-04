@@ -1,26 +1,27 @@
+@font-face {
+	font-family: "Shangai";
+    src: url("fonts/shanghai.ttf") format("truetype"); 
+}
 
 * {
-	scrollbar-color: #246b76 #b8d9d6;
-    scrollbar-width: thin;
+	scrollbar-color: #3e3e3e #2c2c2c;
+	scrollbar-width: thin;
 }
 
 .skinHeader,
 html {
-    color: #0a5e9b;
-}
-
-.headerLeft, .headerRight {
-	overflow: visible;
+    color: #8997ae;
+	background-color: #202020;
 }
 
 ::-moz-selection { 
-	color: #113c6a;
-	background: #b7d6f7;
+	color: #ffa700;
+	background: #000;
 }
 
 ::selection {
-	color: #113c6a;
-	background: #b7d6f7;
+	color: #202020;
+	background: #fff;
 }
 
 .wizardStartForm,
@@ -30,6 +31,7 @@ html {
 }
 
 .emby-collapsible-button {
+    border-color: #ccc;
     border-color: rgba(0, 0, 0, 0.158);
 }
 
@@ -37,12 +39,12 @@ html {
     background-color: #eaeaea;
 }
 
-.formDialogHeader,
 .skinHeader-withBackground {
-	background: linear-gradient(105deg, rgb(221, 171, 107) 0%, rgb(175, 144, 179) 100%);
+	background-color: #202020;
     color: #fff;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+	overflow: visible;
 }
 
 .osdHeader {
@@ -53,11 +55,11 @@ html {
 .skinHeader.semiTransparent {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    background-color: #91b0d2;
+    background-color: rgba(40, 40, 40, .8);
 }
 
 .layout-tv .skinHeader.semiTransparent {
-    background-color: #91b0d2;
+    background-color: #202020;
 }
 
 .pageTitleWithDefaultLogo {
@@ -68,29 +70,46 @@ html {
     background-image: url(../../assets/img/icon-transparent.png);
 }
 
-html {
-    background-color: #daeaf4;
-}
-
 .backgroundContainer {
-    -webkit-background-size: cover;
-    background-size: cover;
-	background: linear-gradient(35deg, rgba(91, 88, 86, 0.4) 0%, rgba(187, 200, 196, 0.4) 40%, rgba(255, 232, 162, 0.4) 70%, rgba(152, 216, 255, 0.4) 100%);
-	background-color: rgb(254, 255, 255);
+	background-color: rgba(21, 21, 21, 0.9);
 }
 
 .backgroundContainer.withBackdrop {
-   background-color: rgba(220, 242, 248, .8);
+    background-color: rgba(21, 21, 21, 0.8);
 }
 
 .backgroundContainer.withThemeBackdrop {
-   background-color: transparent;
+    background-color: rgba(21, 21, 21, 0.7);
+}
+
+.backdropImage {
+    background-color: rgb(40, 40, 40) !important;
+}
+
+.backdropImage.themeBackdrop {
+	background-image: url(./img/bg.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt1 {
+	background-image: url(./img/bg.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt2 {
+	background-image: url(./img/bg-alt1.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt3 {
+	background-image: url(./img/bg-alt2.jpg) !important;
+}
+
+.backdropImage.themeBackdrop.alt4 {
+	background-image: url(./img/bg-alt3.jpg) !important;
 }
 
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #d0effc;
+    background-color: #202020 !important;
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -104,56 +123,38 @@ html {
 
 .fab:focus,
 .raised:focus {
-    background-color: rgba(66, 126, 139, 0.4);
-	color: rgb(255, 232, 232);
+    background-color: rgba(117, 133, 144, 0.8) !important;
+	color: rgba(255, 232, 232, 0.8);
 }
 
-.button-link,
-.inputLabelFocused,
-.selectLabelFocused,
-.textareaLabelFocused {
-    color: rgb(88, 159, 235);
-}
-
-.paperList,
-.visualCardBox {
-    background: rgba(103, 164, 161,.3);
-}
-
-.defaultCardBackground1 {
-    background-color: #009688;
+.button-link:hover {
+	color: #fff !important;
 }
 
 .formDialogFooter:not(.formDialogFooter-clear) {
-    background-color: transparent;
-    border: none;
+    background-color: #202020;
+    border-top: 1px solid #ddd;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     color: inherit;
 }
 	
 .actionsheetDivider {
-    background: rgba(0, 0, 0, 0.14);
+    background: rgb(44, 46, 48);
 }
 
-.formDialogHeader a,
-.toast {
+.formDialogHeader a {
     color: #fff;
 }
 
-.actionSheetMenuItem:hover {
-    background-color: #ddd;
-}
-
 .toast {
-	color: #113c6a;
-	background: #fff;
+    background: #eee;
+    color: #000;
 }
 
 .appfooter,
 .playlistSectionButton {
-	background: linear-gradient(to right, #fff 0%, #add1d3 18%, #6eb5d8 38%, #a3d4dc 68%, #6fa3b6 81%, #2c687b 100%);
-    color: #1d6fa1;
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
+    background: #202020;
+    color: #fff;
 }
 
 .nowPlayingBarSecondaryText {
@@ -169,24 +170,28 @@ html {
     color: #fff;
 }
 
+.upNextDialog-countdownText {
+    color: #00a4dc;
+}
+
 .alphaPickerButton {
-	color: rgb(76, 140, 171);
+	color: #888;
 	background-color: transparent;
 	font-weight: 600;
 }
 
-.alphaPickerButton-selected,
-.alphaPickerButton-tv:focus {
-    background-color: #00a4dc;
-    color: #fff !important;
+.alphaPickerButton-selected {
+    background-color: #cecfcf !important;
+    color: #000 !important;
+}
+
+.alphaPickerButton:hover {
+	color: #fff !important;
+	background-color: transparent;
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
-    background: #f8f8f8;
-}
-
-.listItem-border {
-    border-color: #b9d2d5 !important;
+    background: #34383c;
 }
 
 .progressring-spiner {
@@ -200,11 +205,26 @@ html {
 
 .emby-input,
 .emby-textarea {
-	color: rgb(101, 133, 144) !important;
-	background: #fff;
-	border: 4px ridge rgb(199, 215, 217);
+	color: #383e4a !important;
+	font-weight: 600;
+	font-style: italic;
+	background-color: #5d676c;
+	border: 0.2em ridge rgb(66, 68, 71);
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
+}
+
+.emby-input::placeholder,
+.emby-textarea::placeholder {
+  color: #b4b3b1;
+}
+
+.emby-input:focus,
+.emby-textarea:focus {
+	border-color: #ccc;
+	outline: 0px !important;
+	-webkit-appearance: none;
+	box-shadow: none !important;
 }
 
 .itemProgressBarForeground {
@@ -220,10 +240,10 @@ html {
 .playedIndicator,
 .mediaSourceIndicator,
 .indicator {
-	color: #1684ba;
+	color: #6a6344;
 	background: White;
-	box-shadow: 0 0 8px #286089;
-	text-shadow: 1px 1px 3px #9eb9c3;
+	box-shadow: 0px 2px 8px #1e1d25;
+	text-shadow: 1px 1px 3px #727272;
 }
 
 .fullSyncIndicator {
@@ -231,7 +251,7 @@ html {
 }
 
 .mainDrawer {
-    background: #fff;
+    background: #282828;
 }
 
 .channelPrograms,
@@ -276,6 +296,7 @@ html {
 }
 
 .guide-date-tab-button {
+    color: #555;
     color: rgba(0, 0, 0, 0.54);
 }
 
@@ -307,14 +328,14 @@ html {
 }
 
 .cardBox:not(.visualCardBox) .cardPadder {
-    background-color: #fff;
+    background-color: #292e33;
 }
 
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-	border-color: rgba(106, 136, 207, 0.8) !important;
+	border-color: #909090 !important;
 } 
-
+ 
 .metadataSidebarIcon {
     color: #968b5b;
 }
@@ -322,10 +343,11 @@ html {
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: #081b3b;
+    background-color: #2c2c2c;
 }
 
 .layout-desktop ::-webkit-scrollbar,
@@ -338,48 +360,7 @@ html {
 ::-webkit-scrollbar-thumb:vertical {
     border-radius: 2px;
     -webkit-border-radius: 2px;
-    background: center no-repeat #083b6b;
-}
-
-
-/* checkbox widget */
-
-@keyframes check-in {
-	from {transform: scale(0);}
-	to {transform: scale(1.8);}
-}
-
-.checkboxOutline {
-	overflow: visible;
-	transform: scale(0.8);
-	border: 3px solid rgb(37, 71, 77);
-	border-radius: 20%;
-}
-
-.emby-checkbox + span + .checkboxOutline {
-    border-color: #b8ef81;
-}
-
-.emby-checkbox:checked + span + .checkboxOutline {
-	background-color: transparent;
-}
-
-.emby-checkbox:focus + span + .checkboxOutline,
-.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
-.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
-.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked {
-	border-color: rgb(35, 218, 141);
-	color: rgb(35, 218, 141);
-}
-
-.checkboxIcon-checked {
-	color: #fff !important;
-	padding-left: 5px;
-	padding-bottom: 6px;
-	transform: scale(1.5);
-	text-shadow: 1px 2px 3px #1e1d25;
-	animation-name: check-in;
-	animation-duration: .15s;
+    background: center no-repeat #3e3e3e;
 }
 
 /* Buttons */
@@ -389,202 +370,158 @@ html {
 }
 
 .homeLibraryButton {
-	color: rgb(176, 220, 195) !important;
-	background-color: rgba(36, 136, 153, 0.4);
-	box-shadow: 0px 0px 4px #244877;
-	font-weight: 400;
-}
-
-.homeLibraryButton:hover:not(:disabled) {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(92, 151, 179, 0.8) !important;
-}
-
-.homeLibraryButton:focus {
-	color: rgba(28, 72, 119, 0.8) !important;
-	background-color: rgba(123, 152, 184, 0.8) !important;
-	transform: scale(1.1) !important;
+	color: #747a7f !important;
+	background-color: rgba(57, 57, 57, 0.6);
+	box-shadow: 0 0 2px #857f7f;
 	font-weight: 600;
 }
 
-.listItemBody {
-	color: rgb(183, 244, 210);
+.homeLibraryButton:hover:not(:disabled) {
+	color: #d7e9eb !important;
+	background-color: rgba(36, 43, 48, 0.8) !important;
+	box-shadow: 0 0 2px #060606, 0 0 4px #4c4645, 0 0 6px #fff, 0 0 8px #fff, 0 0 17px #fcfcfc, 0 0 25px #fcfcfb, 0 0 38px #bfd2da;
 }
 
-.listItemBody:hover:not(:disabled) {
-	color: rgba(244, 245, 247, 0.8) !important;
+.homeLibraryButton:focus {
+	color: #fff !important;
+	background-color: rgba(94, 106, 136, 0.2) !important;
+	transform: scale(1.1) !important;
+	box-shadow: 0 0 8px #282828, 1px 1px 18px #282828;
+}
+
+.material-icons {
+	color: #fff;
+	text-shadow: 1px 1px 4px #39392d;
+}
+
+.material-icons.navMenuOptionIcon.notifications {
 	background-color: transparent !important;
+	color: #fff !important;
 }
 
-.listItem-button:hover:not(:disabled) {
-	color: rgba(244, 245, 247, 0.8) !important;
-	background-color: rgba(141, 180, 193, 0.8) !important
+.material-icons.notifications {
+	background-color: #646c70 !important;
+	color: rgb(175, 184, 193) !important;
 }
 
-.listItem-button:focus {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
+.homeLibraryButton > .material-icons {
+	color: #a5a5a5;
+	text-shadow: 0 0 4px #39392d;	
 }
 
-.listItem-button:active {
-	color: rgba(255, 255, 255, 0.8) !important;
+.homeLibraryButton:hover > .material-icons,
+.indicatorIcon.material-icons {
+	color: #a4adb6;
+	text-shadow: 0 0 4px #39392d;	
+}
+
+.homeLibraryButton:focus > .material-icons {
+	color: #ccc;
+	text-shadow: 0 0 4px #39392d;	
+}
+
+.indicatorIcon.material-icons {
+	color: #000;
+	text-shadow: 0 0 4px #39392d;	
+}
+
+.listItemBody {
+	color: rgb(117, 129, 138);
+}
+
+.listItem-border {
+    border-color: #2b2b2b !important;
 }
  
+ .emby-button {
+	color: #909090;
+ }
+ 
+.dashboardActionsContainer > .emby-button,
+.sectionTitleContainer > .emby-button {
+	color: #ccc;
+ }
+ 
 .emby-button:hover:not(:disabled) {
-	color: rgb(4, 103, 162);
+	color: #fff;
 }
 
 .emby-button.show-focus:focus > .listItem > .listItemBody {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(177, 224, 239, 0.8) !important;
+	background-color: transparent;
 }
 
 .emby-button:active {
 	color: rgba(255, 255, 255, 0.8);
 }
 
-/* tab buttons */
+/* headerButton + detail button */
 
-.emby-tab-button {
-	text-shadow: 0 0 2px #5b3a72;
-	color: rgb(240, 218, 176) !important;
-	transform: scale(1.0);
+@keyframes buttonfocus {
+	from {transform: scale(1.0);}
+	80% {transform: scale(1.4);}
+	to {transform: scale(1.3);}
 }
 
-.emby-tab-button:hover:not(:disabled) {
-    color: rgba(143, 225, 229, 0.8);
-}
-
-.emby-tab-button-active,
-.emby-tab-button-active:focus,
-.emby-tab-button-active:hover:not(:disabled) {
-	text-shadow: 0 0 6px #5b3a72;
-	color: rgb(240, 218, 176) !important;
-	transform: scale(1.3) !important;
-}
-
-/* headerButton */
-
-.headerButton:focus {
-    background-color: rgba(123, 152, 184, 0.4);
-	animation-name: focus;
-	animation-duration: .15s;
-	transform: scale(1.3);
-}
-
-.headerButton:hover:not(:disabled) {
+.detailButton:focus,
+.headerButton:focus
+ {
 	color: #efe4aa;
-	background-color: rgba(213, 226, 242, 0.4);
-}
-
-.headerButton:active:not(:disabled) {
-    color: #f0ed3c;
-	background-color: rgba(255, 232, 232, 0.8);
-}
-
-/* Save button */
-
-@keyframes click {
-	from {transform: scale(1.2);}
-	70% {transform: scale(1.4);}
-	to {transform: scale(1.2);}
-}
-
-.button-submit {
-	width: 50% !important;
-	margin: 0 auto !important;
-	background-color: rgb(193, 195, 127);
-	box-shadow: 0px 0px 8px #a16e31;
-	color: rgb(250, 252, 189) !important;
-	font-weight: 600;
-}
-
-.button-submit:hover:not(:disabled) {
-	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(229, 237, 179, 0.8) !important;
-	transform: scale(1.2);
-}
-
-.button-submit:focus {
-	color: rgba(30, 30, 30, 0.8) !important;
-	background-color: rgba(123, 152, 184, 0.8) !important;
-	transform: scale(1.2);
-}
-
-.button-submit:active {
-	background-color: rgba(255, 232, 232, 0.8) !important;
-	color: rgba(255, 255, 255, 1) !important;
-	animation-name: click;
+	background-color:transparent;
+	overflow: visible;
+	animation-name: buttonfocus;
 	animation-duration: .15s;
-	transform: scale(1.2);
-}
-
-/* detail button */
-
-.detailButton {
-	border-radius: 50%;
-	margin: 4px !important;
-	padding: 9px !important;
-}
-
-.detailButton:hover:not(:disabled) {
-	background-color: rgba(169, 198, 230, 0.4);
-}
-
-.detailButton:focus {
 	transform: scale(1.3);
-	background-color: rgba(85, 142, 216, 0.4);
-	animation-name: focus;
-	animation-duration: .15s;
 }
 
-.detailButton:active {
-	background-color: rgba(255, 232, 232, 0.8) !important;
+.detailButton:hover:not(:disabled),
+.headerButton:active:not(:disabled),
+.detailButton:active:not(:disabled),
+.headerButton:hover:not(:disabled) {
+	overflow: visible;
+	color: #efe4aa;
 }
 
-/* select widget */
 
-.selectArrow {
-	text-shadow: 2px 2px 3px #1e1d25;
+.detailButton > * > .material-icons,
+.headerButton > .material-icons {
+	color: rgb(175, 184, 193);
 }
 
-.emby-select-withcolor {
-    background: #fff;
-    border: 0.07em solid rgba(0, 0, 0, 0.158);
-	font-weight: 400;
-	line-height: 1.35;
-	color: rgb(101, 133, 144) !important;
+.cardOverlayButtonIcon.material-icons:hover  {
+	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 55px #ffffff;
+	color: #fff;
 }
 
-.selectLabel,
-.sliderLabel,
-.checkboxLabel,
-.inputLabel {
-	font-weight: 600;
-	color: #b5ffd2;
+.detailButton:focus > * > .material-icons,
+.detailButton:hover > * > .material-icons,
+.detailButton:active > * > .material-icons,
+.headerButton:focus > .material-icons,
+.headerButton:hover > .material-icons,
+.headerButton:active > .material-icons {
+	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 55px #ffffff;
+	color: #fff;
 }
 
-.emby-select-withcolor:focus {
-	border-color: rgba(38, 218, 247, 0.8);
+/* listItem */
+
+.listItem {
+	overflow: visible;
 }
 
-.emby-select-withcolor > option {
-	color: #7b87a9;
-	background: #fff;
+.listItem > .material-icons {
+	color: rgb(175, 184, 193);
 }
 
-.emby-select-tv-withcolor:focus {
-    border-color: rgba(38, 218, 247, 0.8);
-    color: #fff;
+.listItem:focus > .listItemBody,
+.listItem:hover > .listItemBody {
+	color: #a8c3d0;
 }
 
-select option:disabled {
-	color: rgb(9, 54, 111);
-}
-
-select option:selected {
-	color: #ffffff !important;
-	background: #898989 !important;
+.listItem:focus > .material-icons,
+.listItem:hover > .material-icons,
+.listItem:active > .material-icons {
+	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01cdfc;
+	color: #fff;
 }
 
 /* slider widget */
@@ -594,60 +531,82 @@ select option:selected {
 }
 
 .mdl-slider-background,
-.mdl-slider-background-flex  {
-	background: #b1b88f;
+.mdl-slider-background-flex {
+	box-shadow: 1px 2px 8px #1e1d25;
+	background: #353535;
 }
 
 .mdl-slider:focus,
-.mdl-slider:hover:not(:disabled) {
-	background-color: rgba(67, 120, 176, 0.1);
-}
-
+.mdl-slider:hover:not(:disabled),
 .mdl-slider:active {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(100, 100, 100, 0.1);
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(90deg, rgb(255, 155, 0) 0%, rgb(255, 253, 246) 100%);
+	background: linear-gradient(135deg, rgb(47, 51, 64) 0%, rgb(68, 89, 116) 50%, rgb(255, 255, 255) 100%);
 }
 
-.mdl-slider::-moz-range-thumb
- {
+.mdl-slider::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #b5ffd2;
+	background: #888;
 }
 
 .mdl-slider::-ms-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #b5ffd2;
+	background: #888;
 }
 
 .mdl-slider::-webkit-slider-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #b5ffd2;
+	background: #888;
+}
+
+.mdl-slider:focus::-moz-range-thumb,
+.mdl-slider:hover:not(:disabled)::-moz-range-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: #ccc;
+}
+
+.mdl-slider:focus::-ms-thumb,
+.mdl-slider:hover:not(:disabled)::-ms-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: #ccc;
+}
+
+.mdl-slider:focus::-webkit-slider-thumb,
+.mdl-slider:hover:not(:disabled)::-webkit-slider-thumb {
+	box-shadow: 0px 2px 8px #1e1d25;
+	background: #ccc;
 }
 
 .mdl-slider-container {
     height: 0.83em !important;
 }
 
-.sliderBubble {
-	background: #f6f6f6;
-	color: #113c6a;
-	border-radius: 62px;
-	border: 1px solid #cfcfcf;
+.sliderBubbleText {
+	font-family: "Shangai";
+	font-size: 170% !important;
 }
+
+.sliderBubble {
+	background: #282d32;
+	color: #ccc;
+	border-radius: 62px;
+	border: .2em ridge #474c52;
+}
+
+
 
 /* dashboard menu */
 
 .navMenuOption:hover:not(:disabled) {
+	background: #84989f !important;
 	color: rgba(155, 155, 155, 0.8) !important;
-	background-color: rgba(240, 240, 240, 0.8) !important;
 }
 
 .navMenuOption:focus {
+	background: #84989f !important;
 	color: rgba(255, 255, 255, 0.8) !important;
-	background-color: rgba(210, 210, 210, 0.8) !important;
 }
 
 .navMenuOption:active {
@@ -655,59 +614,78 @@ select option:selected {
 }
 
 .navMenuOption-selected {
-    background-color: rgba(180, 180, 180, 0.8) !important;
-    color: #fff;
+	background: rgba(90, 105, 120, 0.8) !important;
+	color: #292929;
 }
 
 /* top bar clock style */
 
 .headerClockButton {
-	padding:0px 15px;
+	padding:0px;
 }
 
-.headerClockTime,
-.headerClockDate {
-	color: rgb(183, 244, 210);
-	text-shadow: 1px 1px 4px #304753;
+.headerClock,
+.headerClock > .material-icons {
+	color: rgba(121, 135, 144, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
-.headerClockTime {
+.headerClockMode1 {
+	font-size: 120% !important;
+}
+
+.headerClockMode2 {
 	font-size: 140% !important;
 }
 
+.headerClockMode3 {
+	font-size: 160% !important;
+}
+	
+.headerClockTime {
+	font-family: "Shangai";
+	font-size: 170% !important;
+}
+
 .headerClockDate {
-	font-size: 90% !important;
+	font-size: 70% !important;
 }
 
 .nightMode > * {
-	color: #fff;
-	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #bcf5ff, 0 0 40px #76e8fb, 0 0 50px #0cfcf1, 0 0 60px #16ffde, 0 0 70px #1cfff4;
+	color: #d7e2e9;
+	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 }
 
 .headerClockButton:hover > .headerClockTime,
 .headerClockButton:focus > .headerClockTime {
-	font-size: 140% !important;
+	font-size: 170% !important;
 }
 
 .headerClockButton:hover > .headerClockDate,
 .headerClockButton:focus > .headerClockDate {
-	font-size: 90% !important;
+	font-size: 80% !important;
+}
+
+/* Tab About... */
+
+.abouttab {
+	color: #858d9f !important;
+	font-family: inherit;
+	font-size: 100%;
+}
+
+.aboutframe {
+	padding: 1em !important;
+	background: rgba(43, 46, 49, 0.45) !important;
+}
+
+.aboutContent {
+	color: #fff;
 }
 
 .formDialogHeaderTitle,
 .pageTitle {
-	color: #fff !important;
-	text-shadow: 1px 1px 4px #304753;
-}
-
-.material-icons {
-	color: rgb(183, 244, 210);
-	text-shadow: 1px 1px 4px #304753;
-}
-
-.cardOverlayButton > .material-icons {
-    color: #cbeeff;
-    text-shadow: 1px 1px 4px #4a5152;
+	color: #dbe2ea !important;
 }
 
 .starIcon {
@@ -719,7 +697,7 @@ select option:selected {
 }
 
 .detailRibbon {
-    background-color: White;
+    background-color: rgba(32,32,32,.3);
     color: rgba(255, 255, 255, 0.87);
 }
 
@@ -727,14 +705,18 @@ select option:selected {
     background: none;
 }
 
+.mediaInfoItem {
+	color: #bdcbce !important;
+}
+
 .itemName {
-	color: #146088;
-	text-shadow: 0 0 4px #6f7373;
+	color: #7c898b !important;
+	text-shadow: 3px 3px 6px #171716;
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {
-	background-color: #edece8;
-    color: rgba(255, 255, 255, 0.87);
+	background-color: #282828;
+    color: #8b877f;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 }
@@ -745,19 +727,14 @@ select option:selected {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-	color: #fff;
+	color: #717274;
 	font-size: 85%;
 }
 
 .skinHeader.osdHeader {
-	background: linear-gradient(180deg,hsla(213.8, 35.9%, 30%, 0.85),hsla(240, 100%, 0.2%, 0.05));
+	background: linear-gradient(180deg,hsla(0, 9.1%, 2.2%, 0.55),hsla(0,0%,6%,0));
 	height: 6.5em;
 	transition: opacity .6s ease-out;
-}
-
-.emby-input:focus,
-.emby-textarea:focus {
-	border-color: rgba(38, 218, 247, 0.8);	
 }
 
 .jstree-default .jstree-wholerow-clicked {
@@ -767,6 +744,10 @@ select option:selected {
 .button-accent-flat {
 	color: #4f4c41 !important;
 	text-shadow: 1px 1px 15px #8c8c8c !important;
+}
+
+.emby-tabs,
+.emby-tab-button {
 	overflow: visible !important;
 }
 
@@ -779,28 +760,27 @@ select option:selected {
 }
 
 .ratingbutton-icon-withrating {
-    color: #bbf6ae !important
+    color: #913079 !important;
 }
 
-.backdropImage {
-    background-color: rgb(220, 220, 220) !important;
-	top: 3.9em;
+.cardOverlayContainer {
+	background: rgba(42, 42, 42, 0.8);
 }
 
-.backdropImage.themeBackdrop {
-	background-image: url(./bg.jpg) !important;
+.navMenuOptionText {
+	color: #ddd;
 }
 
-.backdropImage.themeBackdrop.alt1 {
-	background-image: url(./bg-alt1.jpg) !important;
+.sidebarHeader {
+	color: #8b877f;
 }
 
-.backdropImage.themeBackdrop.alt2 {
-	background-image: url(./bg-alt1.jpg) !important;
+.listItemAside {
+	color: #4d6783;
 }
 
-.backdropImage.themeBackdrop.alt3 {
-	background-image: url(./bg-alt1.jpg) !important;
+.listItemIcon:not(.listItemIcon-transparent) {
+	background-color: #646c70;
 }
 
 /* fix for TV Layout */
@@ -809,25 +789,11 @@ select option:selected {
 	margin-top: 2%;
 }
 
-/* Tab About... */
-
-.abouttab {
-	font-family: inherit;
-	font-size: 90%;
-	line-height: 1.35;
-	font-weight: 600;
-	color: #ffdfbc;
-}
-
-.aboutcontent {
-	color: #d3f9ff;
-}
-
 /* upNext dialog box */
 
 .upNextContainer {
-	background: #113c6a;
-	color: #b7d6f7;
+	background: #616567;
+	color: #282828;
 	width: auto;
 	overflow: hidden;
 	margin: 0 0 0 0;
@@ -838,32 +804,73 @@ select option:selected {
 }
 
 .upNextDialog-countdownText {
-	color: #00a4dc;
+	color: #fff;
 }
 
 .upNextDialog-button {
 	background: #e0e6e6;
-	color: #113c6a !important;
 }
 
 .upNextDialog-button:focus {
 	transform: scale(1.1) !important;
-	color: #113c6a !important;
-	background: #b7d6f7 !important;
-}
-
-.mediaInfoItem {
-	color: #fff !important;	
+	color: #fff !important;
+	background: #a3abb0 !important;
 }
 
 legend {
 	padding: 0 10px 0 10px;
 	font-weight: 600 !important;
-	text-shadow: 2px 2px 4px #6a7679;
-	color: #fbfdff;
+	text-shadow: 2px 2px 4px #313638;
+	color: #989da1;
 }
 
-/* Pseudo radio widget (a radio button that allows unselects) */
+/* checkbox widget */
+
+@keyframes check-in {
+	from {transform: scale(0);}
+	to {transform: scale(1.8);}
+}
+
+.checkboxIcon-checked {
+	color: #888 !important;
+	padding-left: .2em;
+	padding-bottom: .2em;
+	transform: scale(1.5);
+	text-shadow: 1px 2px 3px #1e1d25;
+	animation-name: check-in;
+	animation-duration: .15s;
+	font-size: 1.4em;
+	font-weight: 600;
+}
+
+.checkboxOutline {
+	transform: scale(0.78);
+	border: .2em solid rgb(97, 213, 233);
+	border-radius: 100%;
+	overflow: visible;
+}
+
+.checkboxOutline > .material-icons {
+	text-shadow: 2px 2px 4px #000;
+}
+
+.emby-checkbox + span + .checkboxOutline {
+    border-color: #7e7e7e;
+}
+
+.emby-checkbox:checked + span + .checkboxOutline {
+	background-color: rgb(62, 69, 74);
+}
+
+.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
+.emby-checkbox:hover:not(:disabled) + span + .checkboxOutline > .checkboxIcon-checked,
+.emby-checkbox:focus + span + .checkboxOutline,
+.emby-checkbox:focus + span + .checkboxOutline > .checkboxIcon-checked {
+	border-color: #ccc;
+	color: #ccc !important;
+}
+
+/* Pseudo radio widget (a radio button that allows deselecting) */
 /* based on the checkbox widget */
 
 .radio > .checkboxLabel,
@@ -874,9 +881,9 @@ legend {
 
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
+	color: #888 !important;
 	font-size: 170%;
 	text-shadow: 1px 2px 3px #1e1d25;
-	color: #5e97ae;
 }
 
 .radio.emby-checkbox + span + .checkboxOutline {
@@ -884,104 +891,561 @@ legend {
 }
 
 .radio.emby-checkbox:checked + span + .checkboxOutline {
-	background-color: transparent;
+	background-color: rgb(62, 69, 74);
 }
 
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
+.radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-unchecked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
-	color: white !important;
+	color: #ccc !important;
+}
+
+.libraryPage {
+	padding-top: 4.3em !important;
+}
+
+.headerLeft, .headerRight {
+	overflow: visible !important;
+	margin-right: .5em;
+	margin-left: .5em;
+}
+
+.headerTop {
+	overflow: visible;
+}
+
+div[data-role="controlgroup"] a.ui-btn-active {
+	background: #84989f !important;
+	color: #fff;
 }
 
 .radioButtonLabel,
 .emby-collapsible-button {
-	color: rgb(134, 167, 179) !important;
+	color: rgb(117, 129, 138);
 	font-size: .9em !important;
  }
  
 .collapseContent {
-	color: rgb(134, 167, 179) !important;
-	background-color: #e1e8e7 !important;
+	color: rgb(86, 99, 107) !important;
+	background-color: #2d2d2d !important; 
  }
  
 .iconOsdProgressInner {
-	background: rgb(181, 201, 218);
+	background: rgb(221, 219, 225);
 }
 
-option.sourceDictionaryOption {
+option.selected {
 	color: #fff;
+}
+
+/* disabled slider */
+
+.sliderContainer-settings.disabled > .sliderLabel {
+	color: #3f4650;
+}
+
+.sliderContainer-settings.disabled  .mdl-slider-background, 
+.sliderContainer-settings.disabled  .mdl-slider-background-flex {
+	box-shadow: none;
+	background: #3f4650;
+}
+
+.sliderContainer-settings.disabled .fieldDescription,
+.sliderContainer-settings.disabled .sliderBubble {
+	color: #454d59;
+	visibility: hidden;
+}
+
+.sliderContainer-settings.disabled .mdl-slider-background-lower {
+	background: none;
+}
+
+.sliderContainer-settings.disabled .mdl-slider {
+	visibility: hidden;
 }
 
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 4px groove #fcfcfc !important;
-	border-color: #d1dfda !important
+	border: 3px groove #363d43 !important;
 }
 
 .fieldDescription {
-	color: #486f5b;
+	color: #646e78;
 	font-style: italic;
 	font-size: 85%;
 }
 
 .LangDetailsHeader {
-	color: #b5ffd2;
+	color: #818b96;
 	font-size: 100%;
 	font-weight: 600;
 	font-style: normal;
+}
+
+.material-icons.warningIcon,
+.material-icons.hubIcon,
+.material-icons.doneIcon {
+	color: rgb(167, 172, 176) !important;
 }
 
 .mdl-spinner__layer-1,
 .mdl-spinner__layer-2,
 .mdl-spinner__layer-3,
 .mdl-spinner__layer-4 {
-    border-color: #527898 !important;
+    border-color: rgb(201, 160, 230) !important;
 }
 
-div[data-role="controlgroup"] a[data-role="button"] {
-	background: #cce3e6 !important;
-	color: #fff !important;
-	font-weight: 600 !important;
+.button-link,
+.checkboxLabelFocused,
+.selectLabelFocused,
+.inputLabelFocused,
+.sliderLabelFocused,
+.selectLabelFocused,
+.textareaLabelFocused {
+    color: #aaa !important;
 }
 
-div[data-role="controlgroup"] a.ui-btn-active {
-	background: #377f8f !important;
-	color: #fff !important;
-	font-weight: 600 !important;
+.button-link {
+	text-align: left;
 }
 
+/* buttons */
+
+button.emby-button {
+	font-weight: 600;
+	flex-grow: 0 !important;
+	justify-content: center;
+	align-items: center;
+}
+
+.btnAddServer,
+.btnSelectServer,
+.btnManual,
+.btnForgotPassword,
+.btnQuick,
+.btnSave,
+#btnRestartServer,
+#btnShutdown,
+#btnResetPassword,
+#btnResetEasyPassword,
+#btnDeleteImage
+.btnOption,
+.btnRevoke,
+.btnRefresh,
+.submit,
+.button-submit,
+.button-delete,
+.cancel,
+.button-cancel {
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	border: 0.05em solid rgb(61, 68, 73);
+}
+
+.btnSelectServer,
+.btnManual,
+.btnQuick,
+.btnSave,
+.btnRevoke,
+.btnForgotPassword,
+.cancel,
+.button-cancel,
+.button-delete,
+#btnResetPassword,
+#btnResetEasyPassword,
+.button-submit {
+	margin: .5em auto .5em auto !important;
+	width: 20em !important;
+}
+
+#btnDeleteImage {
+	margin: .5em auto .5em auto !important;
+	width: 15em !important;
+}
+
+button.submit {
+	margin: 1em !important;
+	width: auto !important;
+}
+
+.btnManual,
+.btnForgotPassword,
+.btnQuick,
+.btnOption,
+.btnRefresh,
+.btnSelectServer,
+.submit,
+.button-submit {
+	color: #5e6871 !important;
+	background-color: #333539;
+	/*background: linear-gradient(105deg, rgb(38, 41, 44) 0%, rgb(64, 72, 78) 30%, rgb(50, 56, 62) 70%, rgb(25, 32, 36) 100%);*/
+	box-shadow: 0 0 4px #17191a;
+}
+
+#btnRestartServer,
+#btnShutdown,
+#btnResetPassword,
+#btnResetEasyPassword,
+#btnDeleteImage,
+.btnRevoke,
+.button-delete,
+.button-cancel,
+.cancel,
+.button-cancel {
+	background-color: rgb(82, 99, 109);
+	box-shadow: 0 0 4px #17191a;
+	color: rgb(52, 61, 63) !important;
+}
+
+.button-delete:hover:not(:disabled),
+.btnRevoke:hover:not(:disabled),
+.btnRefresh:hover:not(:disabled),
+#btnRestartServer:hover:not(:disabled),
+#btnShutdown:hover:not(:disabled),
+#btnResetPassword:hover:not(:disabled),
+#btnResetEasyPassword:hover:not(:disabled),
+#btnDeleteImage:hover:not(:disabled),
+.btnSelectServer:hover:not(:disabled),
+.submit:hover:not(:disabled),
+.button-submit:hover:not(:disabled) {
+    color: #d7e9eb !important;
+    background-color: rgba(36, 43, 48, 0.8) !important;
+    box-shadow: 0 0 4px #d7e0e8, 0 0 6px #cccedf, 0 0 17px #b2c3cf, 0 0 38px #a3bec9;
+}
+
+.button-delete:focus,
+.btnRevoke:focus,
+.btnRefresh:focus,
+#btnRestartServer:focus,
+#btnShutdown:focus,
+#btnResetPassword:focus,
+#btnResetEasyPassword:focus,
+#btnDeleteImage:focus,
+.btnSelectServer:focus,
+.submit:focus,
+.button-submit:focus {
+	color: rgba(255, 255, 255, 0.8) !important;
+	background-color: rgba(36, 43, 48, 0.8) !important;
+}
+
+.button-delete:active,
+.btnRevoke:active,
+.btnRefresh:active,
+#btnRestartServer:active,
+#btnShutdown:active,
+#btnResetPassword:active,
+#btnResetEasyPassword:active,
+#btnDeleteImage:active,
+.button-submit:active {
+	color: white !important;
+	background-color: rgba(36, 43, 48, 0.8) !important;
+}
+
+.button-cancel:hover:not(:disabled),
+.cancel:hover:not(:disabled) {
+	color: rgba(197, 208, 218, 0.8) !important;
+	background-color: rgba(32, 38, 39, 0.8) !important;
+	box-shadow: 0 0 4px #a8cac0, 0 0 6px #95c4b1, 0 0 17px #a0ceb8, 0 0 38px #fcfdfd;
+}
+
+.button-cancel:focus,
+.cancel:focus {
+	color: white !important;
+	background-color: rgba(32, 38, 39, 0.8) !important;
+}
+
+.button-cancel:active,
+.cancel:active {
+	color: white !important;
+	background-color: rgba(32, 38, 39, 0.8) !important;
+}
+
+.button-alt {
+	background-color: rgb(79, 76, 93);
+	box-shadow: 0 0 4px #17191a;
+	color: rgb(32, 23, 38) !important;
+	border: 0.05em solid rgb(120, 97, 118);
+}
+
+.button-alt:hover:not(:disabled) {
+	color: rgba(229, 222, 233, 0.8) !important;
+	background-color: rgba(33, 31, 39, 0.8) !important;
+	box-shadow: 0 0 4px #dfd3e6, 0 0 6px #d9c6e6, 0 0 17px #d1c4da, 0 0 38px #ebe4ed;
+}
+
+.button-alt:focus {
+	color: white !important;
+	background-color: rgba(33, 31, 39, 0.8) !important;
+}
+
+.button-alt:active {
+	color: white !important;
+	background-color: rgba(33, 31, 39, 0.8) !important;
+}
+
+.trackSelectionFieldContainer > .selectLabel,
+.detailsGroupItem > .label {
+	color: white;
+	font-weight: 600;
+}
+
+.pageTabContent {
+    padding-top: 1.5em !important;
+}
+
+.sectionTitle-cards,
+div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
+.sectionTitleContainer-cards {
+		padding-top: 0px;
+}
+
+.radioButtonLabel,
+.emby-collapsible-button,
+.emby-collapsible-title,
+.label,
+.listItemBodyText,
+.paperListLabel,
+.checkboxListLabel,
+.textareaLabel,
+.selectLabel,
+.sliderLabel,
+.checkboxLabel,
+.inputLabel {
+	font-weight: 400;
+	color: #858d9f;
+	font-size: 1em !important;
+}
+
+.detailSectionHeader, 
 .sectionTitle {
-	color: #ecfbd0;
-	text-shadow: 1px 1px 3px #45653a;
+	color : #dbe2ea;
+	text-shadow: 1px 1px 3px #171c1e;
 	font-weight: 600;
+	font-size: 1.5rem;
 }
 
-.libraryPage {
-    padding-top: 4em !important;
+.paperList,
+.visualCardBox {
+    background-color: #353a3e;
+	border: 3px ridge #3a434c;
+	padding: .3em;
 }
 
-.formDialogContent {
-	background: linear-gradient(105deg, rgba(55, 95, 172, 0.5) 0%, rgba(60, 152, 126, 0.5) 40%, rgba(38, 112, 148, 0.5) 70%, rgba(185, 217, 219, 0.5) 100%);
-	background-color: rgb(220, 242, 248);
+/* tab buttons */
+
+.emby-tab-button {
+    color: rgb(112, 123, 128);
+	overflow: visible;
 }
 
-.dialogContentInner {
-    padding: .5em 1em 1em;
+.emby-tab-button:hover,
+.emby-tab-button-active {
+    color: #fff !important;
 }
 
-.username {
-	color: #efefef;
-	text-shadow: 1px 1px 3px #1a8489;
+.emby-tab-button-active {
+	animation-name: buttonfocus !important;
+	animation-duration: .15s !important;
+	transform: scale(1.2) !important;
+}
+
+.emby-tab-button:hover:not(:disabled) > * > .material-icons {
+    color: rgb(175, 184, 193) !important;
+}
+
+.emby-tab-button-active > * > .material-icons,
+.emby-tab-button-active:focus > * > .material-icons,
+.emby-tab-button-active:hover:not(:disabled) > * > .material-icons {
+	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01cdfc !important;
+    color: #fff !important;
+	animation-name: buttonfocus !important;
+	animation-duration: .15s !important;
+	transform: scale(1.5) !important;
+}
+
+.emby-tabs-button > * > .material-icons {
+	color: rgb(175, 184, 193) !important;
+	font-size: 1.5rem !important;
+	transform: scale(1) !important;
+	text-shadow: 0 0 5px #060606 !important;
+}
+
+/* select widget */
+
+[label],
+select option:disabled {
+	color: rgb(76, 94, 106);
+}
+
+.selectArrow {
+	text-shadow: 2px 2px 3px #1e1d25;
+	color: #909090;
+}
+
+option:not(:disabled), 
+.emby-select-withcolor {
+	color: #a2a5ae;
+	background: #333539;
+	border: 0.05em solid rgb(61, 68, 73);
 	font-weight: 600;
+	padding: .5em 1.9em .5em .5em !important;
 }
 
-.actionSheetTitle {
-	color: #4298c1;
-	text-shadow: 1px 1px 3px #83aab6;
+.emby-select-withcolor:focus,
+.emby-select-tv-withcolor:focus {
+    border-color: #fff;
+}
+
+select option:selected {
+	color: #ffffff !important;
+	background: #282828 !important;
+}
+
+.defaultCardBackground1 {
+    background-color: #374b61;
+}
+
+.defaultCardBackground2 {
+    background-color: #23262d;
+}
+
+.defaultCardBackground3 {
+    background-color: #454d56;
+}
+
+.defaultCardBackground4 {
+    background-color: #606970;
+}
+
+.defaultCardBackground5 {
+    background-color: #373f48;
+}
+
+.actionsheetDivider {	
+	color: rgb(33, 34, 35);
 	font-weight: 600;
-	font-size: 1.5em;
+	background: rgb(49, 59, 65);
+}
+
+.listItem-button:hover:not(:disabled) {
+	color: #c1c8d4 !important;
+	background-color: #35373b;
+}
+
+.listItem-button:focus {
+	color: #c1c8d4 !important;
+	background-color: #404040 !important;
+}
+
+.btnTryIt {
+	font-size: 0.8rem;
+	border-radius: 10%;
+	background-color: #333539;
+	background: linear-gradient(105deg, rgb(126, 132, 139) 0%, rgb(139, 150, 159) 30%, rgb(85, 88, 92) 70%, rgb(50, 58, 63) 100%);
+	box-shadow: 0 0 4px #17191a;
+	border: 0.05em solid rgb(61, 68, 73);
+	text-shadow: rgb(30, 38, 43) -1px -1px 1px;
+}
+
+.weatherbotScreenSaver,
+.clockScreenSaver {
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.ssFailure,
+.ssForeplane,
+.ssForeplane > * > .material-icons {
+	color: #d7e2e9;
+	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+	background: rgba(10, 10, 10, 0);
+}
+
+.ssClockDate {
+	margin: 30% 0px 0px 0px;
+}
+
+.ssWeatherData,
+.ssClockTime {
+	font-family: "Shangai";
+}
+
+.ssBackplane {
+	background: rgba(12, 13, 14, 0.7);
 }
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
+}
+
+.headerWthMain {
+	color: rgba(121, 135, 144, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
+}
+
+.headerWthButton > fieldset {
+	margin: .1rem .5rem .1rem .5rem !important;
+	border: 2px groove #363d43 !important;
+}
+
+.headerWthTemp {
+	font-family: "Shangai";
+	font-size: 170% !important;
+}
+
+.headerWthIconBg {
+	background: rgba(238, 245, 255, 0.3) !important;
+}
+
+.infoDetails {
+	font-size: 90% !important;
+}
+
+#backdropWidget {
+	background: rgba(39, 45, 51, 0.5);
+}
+
+.sliderMarkerContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 0.54em; /* half of slider thumb size */
+}
+
+.sliderMarker {
+    position: absolute;
+    width: 2px;
+    height: 0.5em;
+    transform: translate3d(0, 25%, 0);
+}
+
+.sliderMarker.unwatched {
+    background-color: rgba(169, 183, 193, 0.5);
+}
+
+.sliderMarker.watched {
+    background-color: rgba(241, 249, 255, 0.8);
+}
+
+.material-icons.wb_sunny,
+.material-icons.bedtime {
+	color: #8b9fad !important;
+}
+
+.nightMode .material-icons.wb_sunny {
+	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+	color: #101111 !important;
+}
+
+.nightMode .material-icons.bedtime {
+	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+	color: #fff !important;
+}
+
+.userProfileAvatar {
+	border: 1px solid rgb(136, 157, 167) !important;
+	box-shadow: 4px 4px 12px #202020 !important;
 }

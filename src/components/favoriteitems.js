@@ -106,7 +106,7 @@ import '../elements/emby-itemscontainer/emby-itemscontainer';
     function loadSection(elem, userId, topParentId, section, isSingleSection) {
         const screenWidth = dom.getWindowSize().innerWidth;
         const options = {
-            SortBy: 'SortName',
+            SortBy: 'SortName,ProductionYear',
             SortOrder: 'Ascending',
             Filters: 'IsFavorite',
             Recursive: true,

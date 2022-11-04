@@ -346,20 +346,6 @@ import { appRouter } from '../components/appRouter';
     });
 
     defineRoute({
-        alias: '/movies.html',
-        path: 'movies/movies.html',
-        autoFocus: false,
-        controller: 'movies/moviesrecommended'
-    });
-
-    defineRoute({
-        alias: '/music.html',
-        path: 'music/music.html',
-        controller: 'music/musicrecommended',
-        autoFocus: false
-    });
-
-    defineRoute({
         alias: '/installedplugins.html',
         path: 'dashboard/plugins/installed/index.html',
         autoFocus: false,

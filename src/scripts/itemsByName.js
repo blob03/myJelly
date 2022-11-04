@@ -125,7 +125,7 @@ function renderSection(item, element, type) {
                 ArtistIds: '',
                 AlbumArtistIds: '',
                 Limit: 10,
-                SortBy: 'SortName'
+                SortBy: 'SortName,ProductionYear'
             }, {
                 shape: 'overflowPortrait',
                 showTitle: true,
@@ -161,7 +161,7 @@ function renderSection(item, element, type) {
                 ArtistIds: '',
                 AlbumArtistIds: '',
                 Limit: 10,
-                SortBy: 'SortName'
+                SortBy: 'SortName,ProductionYear'
             }, {
                 shape: 'overflowPortrait',
                 showTitle: true,

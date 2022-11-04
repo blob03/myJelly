@@ -174,6 +174,11 @@ button::-moz-focus-inner {
     text-decoration: none;
 }
 
+// Ensure that cards with an image type 'logo/backdrop' fit inside the container.
+.backdropCard .cardImageContainer {
+    background-size: contain !important;
+}
+
 .cardContent.cardImageContainer {
     display: flex;
 }

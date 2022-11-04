@@ -539,7 +539,7 @@ import { appRouter } from '../appRouter';
             } else if (options.preferThumb && item.BackdropImageTags && item.BackdropImageTags.length) {
                 imgType = 'Backdrop';
                 imgTag = item.BackdropImageTags[0];
-                forceName = true;
+                //forceName = true;
             } else if (options.preferThumb && item.ParentBackdropImageTags && item.ParentBackdropImageTags.length && options.inheritThumb !== false && item.Type === 'Episode') {
                 imgType = 'Backdrop';
                 imgTag = item.ParentBackdropImageTags[0];
@@ -549,9 +549,9 @@ import { appRouter } from '../appRouter';
                 imgTag = item.ImageTags.Primary;
                 height = width && primaryImageAspectRatio ? Math.round(width / primaryImageAspectRatio) : null;
 
-                if (options.preferThumb && options.showTitle !== false) {
-                    forceName = true;
-                }
+                //if (options.preferThumb && options.showTitle !== false) {
+                //    forceName = true;
+                //}
 
                 if (primaryImageAspectRatio && uiAspect) {
                     coverImage = (Math.abs(primaryImageAspectRatio - uiAspect) / uiAspect) <= 0.2;
@@ -566,9 +566,9 @@ import { appRouter } from '../appRouter';
                 itemId = item.PrimaryImageItemId;
                 height = width && primaryImageAspectRatio ? Math.round(width / primaryImageAspectRatio) : null;
 
-                if (options.preferThumb && options.showTitle !== false) {
-                    forceName = true;
-                }
+                //if (options.preferThumb && options.showTitle !== false) {
+                //    forceName = true;
+                //}
 
                 if (primaryImageAspectRatio && uiAspect) {
                     coverImage = (Math.abs(primaryImageAspectRatio - uiAspect) / uiAspect) <= 0.2;
@@ -1350,7 +1350,7 @@ import { appRouter } from '../appRouter';
             } else {
 				const cardImageContainerAriaLabelAttribute = ` aria-label="${escapeHtml(item.Name)}"`;
 						
-				const url = appRouter.getRouteUrl(item);						
+				const url = appRouter.getRouteUrl(item);
                 // Don't use the IMG tag with safari because it puts a white border around it
                 cardImageContainerOpen = imgUrl ? ('<a href="' + url + '" data-action="' + action + '" class="' + cardImageContainerClass + ' ' + cardContentClass + ' itemAction lazy" data-src="' + imgUrl + '" ' + blurhashAttrib + cardImageContainerAriaLabelAttribute + '>') : ('<a href="' + url + '" data-action="' + action + '" class="' + cardImageContainerClass + ' ' + cardContentClass + ' itemAction"' + cardImageContainerAriaLabelAttribute + '>');
 
