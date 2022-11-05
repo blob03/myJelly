@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import ConnectionRequired from '../components/ConnectionRequired';
+import { LEGACY_ADMIN_ROUTES, LEGACY_USER_ROUTES, toViewManagerPageRoute } from './legacyRoutes';
 import ViewManagerPage from '../components/viewManager/ViewManagerPage';
 import Search from './search';
 import UserNew from './user/usernew';
@@ -23,9 +24,8 @@ const AppRoutes = () => (
                 <Route path='userprofile.html' element={<UserProfile />} />
                 <Route path='home.html' element={<Home />} />
 				<Route path='movies.html' element={<Movies />} />
-				<Route path='music.html' element={
-                    <ViewManagerPage controller='music/musicrecommended' view='music/music.html' />
-                } />
+				
+				{LEGACY_USER_ROUTES.map(toViewManagerPageRoute)}
             </Route>
 
             {/* Admin routes */}
@@ -36,6 +36,8 @@ const AppRoutes = () => (
                 <Route path='userlibraryaccess.html' element={<UserLibraryAccess />} />
                 <Route path='userparentalcontrol.html' element={<UserParentalControl />} />
                 <Route path='userpassword.html' element={<UserPassword />} />
+				
+				{LEGACY_ADMIN_ROUTES.map(toViewManagerPageRoute)}
             </Route>
 
             {/* Public routes */}

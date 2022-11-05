@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-1",
+	"version": "10.8.7-2",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -136,6 +136,7 @@
 		"10.8.6-1": "Synchronize translation files with master.\nFix plugin search bars using conflicting ids.\nFix event handler sometimes incorrectly bound to the hidden search bar (plugin catalog).",
 		"10.8.6-2": "Apply patch 'thornbill/add-loading-component'.\nApply patch 'thornbill/connection-state-refactor'.\nInstall latest 'package.json'.\nSynchronize translations.",
 		"10.8.7-0": "Fix a few layout inconsistencies in the dashboard pages.",
-		"10.8.7-1": "Synchronize translations.\nApply patch 'grafixeyehero/Convert-Movies-Page-to-react' modified.\nApply patch 'fix resolving of history back promise'.\nApply patch 'fix-react-router-dialogs'.\nInstall latest 'package.json'.\nApply patch 'Rename and convert dfnshelper to typescript'.\nApply patch 'Optimize loading of date-fns'."
+		"10.8.7-1": "Synchronize translations.\nApply patch 'grafixeyehero/Convert-Movies-Page-to-react' modified.\nApply patch 'fix resolving of history back promise'.\nApply patch 'fix-react-router-dialogs'.\nInstall latest 'package.json'.\nApply patch 'Rename and convert dfnshelper to typescript'.\nApply patch 'Optimize loading of date-fns'.",
+		"10.8.7-2": "Apply patch 'Migrate all user routes to react router'.\nApply patch 'Migrate all admin routes to react router'."
 	}
 }
