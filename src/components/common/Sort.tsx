@@ -1,6 +1,7 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import IconButtonElement from '../../elements/IconButtonElement';
 import { ViewQuerySettings } from '../../types/interface';
+import SortMenu from '../sortmenu/sortmenu';
 
 interface SortProps {
     getSortMenuOptions: () => {
@@ -18,24 +19,35 @@ const Sort: FC<SortProps> = ({
 }) => {
     const element = useRef<HTMLDivElement>(null);
 
+	const checkSortMenu = useCallback(() => {
+		const btnSort = element.current?.querySelector('.btnSort');
+		if (btnSort) {
+			const sortMenu = new SortMenu();
+			const inUse = sortMenu.inUse({
+				settings: viewQuerySettings,
+			});
+			if (inUse === true)
+				btnSort.classList.add('inUse');
+			else
+				btnSort.classList.remove('inUse');
+		}
+	}, [viewQuerySettings]);
+	
     const showSortMenu = useCallback(() => {
-        import('../sortmenu/sortmenu').then(({default: SortMenu}) => {
-            const sortMenu = new SortMenu();
-            sortMenu.show({
-                settings: viewQuerySettings,
-                sortOptions: getSortMenuOptions(),
-                setSortValues: setViewQuerySettings
-            });
-        });
+		const sortMenu = new SortMenu();
+		sortMenu.show({
+			settings: viewQuerySettings,
+			sortOptions: getSortMenuOptions(),
+			setSortValues: setViewQuerySettings
+		});
     }, [getSortMenuOptions, viewQuerySettings, setViewQuerySettings]);
 
     useEffect(() => {
         const btnSort = element.current?.querySelector('.btnSort');
-
         btnSort?.addEventListener('click', showSortMenu);
-
+		checkSortMenu();
         return () => { btnSort?.removeEventListener('click', showSortMenu); };
-    }, [showSortMenu]);
+    }, [checkSortMenu]);
 
     return (
         <div ref={element}>

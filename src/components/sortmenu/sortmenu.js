@@ -36,6 +36,26 @@ function fillSortBy(context, options) {
     }).join('');
 }
 
+function resetValues(context, settings) {
+	if (!context || !settings)
+		return;
+	
+	context.querySelector('.selectSortBy').value = 'SortName,ProductionYear';
+	settings.SortBy = 'SortName,ProductionYear';
+	context.querySelector('.selectSortOrder').value = 'Ascending';
+	settings.SortOrder = 'Ascending';
+}
+
+function checkValues(settings) {
+	if (!settings)
+		return false;
+	
+	if (settings.SortBy !== 'SortName,ProductionYear' || settings.SortOrder !== 'Ascending')
+		return true;
+	
+	return false;
+}
+
 function saveValues(context, settingsKey, setSortValues) {
     if (setSortValues) {
         setSortValues((prevState) => ({
@@ -51,6 +71,9 @@ function saveValues(context, settingsKey, setSortValues) {
 }
 
 class SortMenu {
+	inUse(options) {
+		return checkValues(options.settings);
+	}
     show(options) {
         return new Promise(function (resolve, reject) {
             const dialogOptions = {
@@ -69,13 +92,11 @@ class SortMenu {
             dlg.classList.add('formDialog');
 
             let html = '';
-
             html += '<div class="formDialogHeader">';
+			html += `<button is="paper-icon-button-light" class="btnReset hide-mouse-idle-tv" tabindex="-1" title="${globalize.translate('ButtonReset')}"><span class="material-icons restart_alt" aria-hidden="true"></span></button>`;
             html += `<button is="paper-icon-button-light" class="btnCancel hide-mouse-idle-tv" tabindex="-1" title="${globalize.translate('ButtonBack')}"><span class="material-icons arrow_back" aria-hidden="true"></span></button>`;
             html += '<h3 class="formDialogHeaderTitle">${Sort}</h3>';
-
             html += '</div>';
-
             html += template;
 
             dlg.innerHTML = globalize.translateHtml(html, 'core');
@@ -85,6 +106,10 @@ class SortMenu {
 
             dlg.querySelector('.btnCancel').addEventListener('click', function () {
                 dialogHelper.close(dlg);
+            });
+			dlg.querySelector('.btnReset').addEventListener('click', function () {
+                resetValues(dlg, options.settings);
+				submitted = true;
             });
 
             if (layoutManager.tv) {

@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-3",
+	"version": "10.8.7-4",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -138,6 +138,7 @@
 		"10.8.7-0": "Fix a few layout inconsistencies in the dashboard pages.",
 		"10.8.7-1": "Synchronize translations.\nApply patch 'grafixeyehero/Convert-Movies-Page-to-react' modified.\nApply patch 'fix resolving of history back promise'.\nApply patch 'fix-react-router-dialogs'.\nInstall latest 'package.json'.\nApply patch 'Rename and convert dfnshelper to typescript'.\nApply patch 'Optimize loading of date-fns'.",
 		"10.8.7-2": "Apply patch 'Migrate all user routes to react router'.\nApply patch 'Migrate all admin routes to react router'.",
-		"10.8.7-3": "Upgrade react component 'Filter' to apply a new style when a filter is set.\nAdd a reset button to the react component 'Filter'.\nApply patch 'thornbill/improve-view-restores'."
+		"10.8.7-3": "Upgrade react component 'Filter' to apply a new style when a filter is set.\nAdd a reset button to the react component 'Filter'.\nApply patch 'thornbill/improve-view-restores'.",
+		"10.8.7-4": "Synchronize translations.\nEnable filter options for the movie collections view.\nUpgrade react component 'Sort' to apply a new style when a filter is set.\nAdd a reset button to the component."
 	}
 }

@@ -19,7 +19,7 @@ const CollectionsView: FC<LibraryViewProps> = ({ topParentId }) => {
     return (
         <ViewItemsContainer
             topParentId={topParentId}
-            isBtnFilterEnabled={false}
+            isBtnFilterEnabled={true}
             isBtnNewCollectionEnabled={true}
             isAlphaPickerEnabled={true}
 			isBtnShuffleEnabled={true}
