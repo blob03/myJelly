@@ -34,6 +34,10 @@
     transition: 0.2s;
 }
 
+.btnFilter.inUse > .material-icons {
+	color: #00a4dc;
+}
+
 .emby-button.show-focus:focus {
     transform: scale(1.2);
     z-index: 1;

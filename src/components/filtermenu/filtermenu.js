@@ -102,9 +102,81 @@ function onInputCommand(e) {
             break;
     }
 }
+function resetValues(context, settings) {
+	if (!context || !settings)
+		return;
+	let idx;
+	
+	// Series status
+	settings.SeriesStatus='';
+    elems = context.querySelectorAll('.chkSeriesStatus');
+    for (idx = 0, length = elems.length; idx < length; idx++) {
+        elems[idx].checked = false;
+    }
+    // Genres
+	settings.GenreIds='';
+	elems = context.querySelectorAll('.chkGenreFilter');
+    for (idx = 0, length = elems.length; idx < length; idx++) {
+        elems[idx].checked = false;
+    }
+	
+	settings.IsPlayed = false;
+	context.querySelectorAll('.chkPlayed')[0].checked = false;
+	settings.IsUnplayed = false;
+	context.querySelectorAll('.chkUnplayed')[0].checked = false;
+	settings.IsFavorite = false;
+	context.querySelectorAll('.chkFavorite')[0].checked = false;
+	settings.IsResumable = false;
+	context.querySelectorAll('.chkResumable')[0].checked = false;
+	
+	settings.Is4K = false;
+	context.querySelectorAll('.chk4KFilter')[0].checked = false;
+	settings.IsHD = false;
+	context.querySelectorAll('.chkHDFilter')[0].checked = false;
+	settings.IsSD = false;
+	context.querySelectorAll('.chkSDFilter')[0].checked = false;
+	settings.Is3D = false;
+	context.querySelectorAll('.chk3DFilter')[0].checked = false;
+	
+	// Video types
+	settings.VideoTypes='';
+    let elems = context.querySelectorAll('.chkVideoTypeFilter');
+    for (idx = 0, length = elems.length; idx < length; idx++) {
+        elems[idx].checked = false;
+    }
+	
+	// Feature filters
+	elems = context.querySelectorAll('.chkFeatureFilter');
+    for (idx = 0, length = elems.length; idx < length; idx++) {
+        elems[idx].checked = false;
+    }
+	settings.HasSubtitles = false;
+	settings.HasTrailer = false;
+	settings.HasSpecialFeature = false;
+	settings.HasThemeSong = false;
+	settings.HasThemeVideo = false;
+}
+function checkValues(settings) {
+	if (!settings)
+		return false;
+    // Video type
+	if (settings.VideoTypes?.length > 0)
+		return true;
+    // Series status
+	if (settings.SeriesStatus?.length > 0)
+		return true;
+    // Genres
+	if (settings.GenreIds?.length > 0)
+		return true;
+	
+	return settings.IsPlayed || settings.IsUnplayed || settings.IsFavorite || settings.IsResumable
+		|| settings.Is4K || settings.IsHD || settings.IsSD || settings.Is3D
+		|| settings.HasSubtitles || settings.HasTrailer || settings.HasSpecialFeature
+		|| settings.HasThemeSong || settings.HasThemeVideo;
+}
 function saveValues(context, settings, settingsKey, setfilters) {
     let elems = context.querySelectorAll('.simpleFilter');
-
+	
     // Video type
     const videoTypes = [];
     elems = context.querySelectorAll('.chkVideoTypeFilter');
@@ -164,7 +236,6 @@ function saveValues(context, settings, settingsKey, setfilters) {
                 setBasicFilter(context, settingsKey + '-filter-' + elems[i].getAttribute('data-settingname'), elems[i].querySelector('input'));
             }
         }
-
         userSettings.setFilter(settingsKey + '-filter-GenreIds', genres.join(','));
     }
 }
@@ -234,8 +305,12 @@ function loadDynamicFilters(context, options) {
     });
 }
 class FilterMenu {
+	inUse(options) {
+		return checkValues(options.settings);
+	}
     show(options) {
         return new Promise( (resolve) => {
+			
             const dialogOptions = {
                 removeOnClose: true,
                 scrollY: false
@@ -249,17 +324,13 @@ class FilterMenu {
             const dlg = dialogHelper.createDialog(dialogOptions);
 
             dlg.classList.add('formDialog');
-
             let html = '';
-
             html += '<div class="formDialogHeader">';
+			html += `<button is="paper-icon-button-light" class="btnReset hide-mouse-idle-tv" title="${globalize.translate('ButtonReset')}"><span class="material-icons restart_alt" aria-hidden="true"></span></button>`;
             html += `<button is="paper-icon-button-light" class="btnCancel hide-mouse-idle-tv" tabindex="-1" title="${globalize.translate('ButtonBack')}"><span class="material-icons arrow_back" aria-hidden="true"></span></button>`;
             html += '<h3 class="formDialogHeaderTitle">${Filters}</h3>';
-
             html += '</div>';
-
             html += template;
-
             dlg.innerHTML = globalize.translateHtml(html, 'core');
 
             const settingElements = dlg.querySelectorAll('.viewSetting');
@@ -277,6 +348,10 @@ class FilterMenu {
             bindCheckboxInput(dlg, true);
             dlg.querySelector('.btnCancel').addEventListener('click', function () {
                 dialogHelper.close(dlg);
+            });
+			dlg.querySelector('.btnReset').addEventListener('click', function () {
+                resetValues(dlg, options.settings);
+				submitted = true;
             });
 
             if (layoutManager.tv) {

@@ -1488,3 +1488,12 @@ option:selected {
 	border: 1px solid rgb(229, 164, 81) !important;
 	box-shadow: rgb(126, 73, 4) 4px 4px 12px !important;
 }
+
+.btnFilter {
+	overflow:visible !important;
+}
+
+.btnFilter.inUse > .material-icons {
+	text-shadow: 0 0 4px #fff, 0 0 16px #ffce9a, 0 0 32px #ff9b52, 0 0 54px #ff7f33 !important;
+	color: #ffeec5 !important;
+}

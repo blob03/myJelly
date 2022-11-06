@@ -86,6 +86,10 @@ div[data-role="page"] {
     padding-bottom: 5em !important;
 }
 
+.pageTabContent {
+	padding-top: 1.5em !important;
+}
+
 .readOnlyContent {
     @media all and (min-width: 50em) {
         max-width: 54em;
