@@ -25,6 +25,7 @@ const Sort: FC<SortProps> = ({
 			const sortMenu = new SortMenu();
 			const inUse = sortMenu.inUse({
 				settings: viewQuerySettings,
+				sortOptions: getSortMenuOptions()
 			});
 			if (inUse === true)
 				btnSort.classList.add('inUse');

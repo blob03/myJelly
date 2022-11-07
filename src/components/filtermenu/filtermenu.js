@@ -16,6 +16,7 @@ import '../formdialog.scss';
 import '../../assets/css/flexstyles.scss';
 import ServerConnections from '../ServerConnections';
 import template from './filtermenu.template.html';
+import { toBoolean } from '../../utils/string.ts';
 
 function onSubmit(e) {
     e.preventDefault();
@@ -55,10 +56,13 @@ function renderDynamicFilters(context, result, options) {
     });
 }
 
-function setBasicFilter(context, key, elem) {
+function setBasicFilter(key, elem) {
     let value = elem.checked;
     value = value ? value : null;
     userSettings.setFilter(key, value);
+}
+function getBasicFilter(key, elem) {
+    elem.checked = userSettings.getFilter(key);
 }
 function moveCheckboxFocus(elem, offset) {
     const parent = dom.parentWithClass(elem, 'checkboxList-verticalwrap');
@@ -102,64 +106,37 @@ function onInputCommand(e) {
             break;
     }
 }
-function resetValues(context, settings) {
-	if (!context || !settings)
+function resetValues(context) {
+	if (!context)
 		return;
 	let idx;
+	let length;
 	
 	// Series status
-	settings.SeriesStatus='';
     elems = context.querySelectorAll('.chkSeriesStatus');
     for (idx = 0, length = elems.length; idx < length; idx++) {
         elems[idx].checked = false;
     }
     // Genres
-	settings.GenreIds='';
 	elems = context.querySelectorAll('.chkGenreFilter');
     for (idx = 0, length = elems.length; idx < length; idx++) {
         elems[idx].checked = false;
     }
 	
-	settings.IsPlayed = false;
-	context.querySelectorAll('.chkPlayed')[0].checked = false;
-	settings.IsUnplayed = false;
-	context.querySelectorAll('.chkUnplayed')[0].checked = false;
-	settings.IsFavorite = false;
-	context.querySelectorAll('.chkFavorite')[0].checked = false;
-	settings.IsResumable = false;
-	context.querySelectorAll('.chkResumable')[0].checked = false;
-	
-	settings.Is4K = false;
-	context.querySelectorAll('.chk4KFilter')[0].checked = false;
-	settings.IsHD = false;
-	context.querySelectorAll('.chkHDFilter')[0].checked = false;
-	settings.IsSD = false;
-	context.querySelectorAll('.chkSDFilter')[0].checked = false;
-	settings.Is3D = false;
-	context.querySelectorAll('.chk3DFilter')[0].checked = false;
+	elems = context.querySelectorAll('.simpleFilter');
+    for (let i = 0, length = elems.length; i < length; i++)
+		elems[i].querySelector('input').checked = false;
 	
 	// Video types
-	settings.VideoTypes='';
     let elems = context.querySelectorAll('.chkVideoTypeFilter');
     for (idx = 0, length = elems.length; idx < length; idx++) {
         elems[idx].checked = false;
     }
-	
-	// Feature filters
-	elems = context.querySelectorAll('.chkFeatureFilter');
-    for (idx = 0, length = elems.length; idx < length; idx++) {
-        elems[idx].checked = false;
-    }
-	settings.HasSubtitles = false;
-	settings.HasTrailer = false;
-	settings.HasSpecialFeature = false;
-	settings.HasThemeSong = false;
-	settings.HasThemeVideo = false;
 }
 function checkValues(settings) {
 	if (!settings)
 		return false;
-    // Video type
+    // Video types
 	if (settings.VideoTypes?.length > 0)
 		return true;
     // Series status
@@ -170,37 +147,31 @@ function checkValues(settings) {
 		return true;
 	
 	return settings.IsPlayed || settings.IsUnplayed || settings.IsFavorite || settings.IsResumable
-		|| settings.Is4K || settings.IsHD || settings.IsSD || settings.Is3D
 		|| settings.HasSubtitles || settings.HasTrailer || settings.HasSpecialFeature
 		|| settings.HasThemeSong || settings.HasThemeVideo;
 }
-function saveValues(context, settings, settingsKey, setfilters) {
-    let elems = context.querySelectorAll('.simpleFilter');
+function saveValues(context, settingsKey, setfilters) {
+    let elems;
 	
-    // Video type
+    // Video types
     const videoTypes = [];
     elems = context.querySelectorAll('.chkVideoTypeFilter');
-
     for (let i = 0, length = elems.length; i < length; i++) {
         if (elems[i].checked) {
             videoTypes.push(elems[i].getAttribute('data-filter'));
         }
     }
-
     // Series status
     const seriesStatuses = [];
     elems = context.querySelectorAll('.chkSeriesStatus');
-
     for (let i = 0, length = elems.length; i < length; i++) {
         if (elems[i].checked) {
             seriesStatuses.push(elems[i].getAttribute('data-filter'));
         }
     }
-
     // Genres
     const genres = [];
     elems = context.querySelectorAll('.chkGenreFilter');
-
     for (let i = 0, length = elems.length; i < length; i++) {
         if (elems[i].checked) {
             genres.push(elems[i].getAttribute('data-filter'));
@@ -215,10 +186,6 @@ function saveValues(context, settings, settingsKey, setfilters) {
             IsUnplayed: context.querySelector('.chkUnplayed').checked,
             IsFavorite: context.querySelector('.chkFavorite').checked,
             IsResumable: context.querySelector('.chkResumable').checked,
-            Is4K: context.querySelector('.chk4KFilter').checked,
-            IsHD: context.querySelector('.chkHDFilter').checked,
-            IsSD: context.querySelector('.chkSDFilter').checked,
-            Is3D: context.querySelector('.chk3DFilter').checked,
             VideoTypes: videoTypes.join(','),
             SeriesStatus: seriesStatuses.join(','),
             HasSubtitles: context.querySelector('.chkSubtitle').checked,
@@ -229,14 +196,22 @@ function saveValues(context, settings, settingsKey, setfilters) {
             GenreIds: genres.join(',')
         }));
     } else {
+		elems = context.querySelectorAll('.simpleFilter');
         for (let i = 0, length = elems.length; i < length; i++) {
             if (elems[i].tagName === 'INPUT') {
-                setBasicFilter(context, settingsKey + '-filter-' + elems[i].getAttribute('data-settingname'), elems[i]);
+                setBasicFilter(context, settingsKey + '-filter-' + elems[i].getAttribute('data-filter'), elems[i]);
             } else {
-                setBasicFilter(context, settingsKey + '-filter-' + elems[i].getAttribute('data-settingname'), elems[i].querySelector('input'));
+				if (setfilters) {
+					setBasicFilter(context, settingsKey + '-filter-' + elems[i].getAttribute('data-filter'), elems[i].querySelector('input'));
+				} else {
+					const filterName = elems[i].getAttribute('data-filter');
+					userSettings.setFilter(settingsKey + '-filter-' + filterName, elems[i].querySelector('input').checked);
+				}
             }
         }
         userSettings.setFilter(settingsKey + '-filter-GenreIds', genres.join(','));
+		userSettings.setFilter(settingsKey + '-filter-VideoTypes', videoTypes.join(','));
+		userSettings.setFilter(settingsKey + '-filter-SeriesStatus', seriesStatuses.join(','));
     }
 }
 function bindCheckboxInput(context, on) {
@@ -249,46 +224,60 @@ function bindCheckboxInput(context, on) {
         }
     }
 }
-function initEditor(context, settings) {
-    context.querySelector('form').addEventListener('submit', onSubmit);
-
-    let elems = context.querySelectorAll('.simpleFilter');
+function initEditor(context, settings, settingsKey, setfilters) {
     let i;
     let length;
-
+	
+	let elems = context.querySelectorAll('.simpleFilter');
     for (i = 0, length = elems.length; i < length; i++) {
         if (elems[i].tagName === 'INPUT') {
-            elems[i].checked = settings[elems[i].getAttribute('data-settingname')] || false;
+            elems[i].checked = settings[elems[i].getAttribute('data-filter')] || false;
         } else {
-            elems[i].querySelector('input').checked = settings[elems[i].getAttribute('data-settingname')] || false;
+			if (setfilters) {
+				elems[i].querySelector('input').checked = settings[elems[i].getAttribute('data-filter')] || false;
+			} else {
+				const filterName = elems[i].getAttribute('data-filter');
+				const _state = toBoolean(userSettings.getFilter(settingsKey + '-filter-' + filterName), false);
+				elems[i].querySelector('input').checked = _state;
+			}
         }
     }
 
-    const videoTypes = settings.VideoTypes ? settings.VideoTypes.split(',') : [];
+	// Video types
+    let videoTypes = [];
+	if (setfilters) {
+		videoTypes = settings.VideoTypes ? settings.VideoTypes.split(',') : [];
+	} else {
+		videoTypes = userSettings.getFilter(settingsKey + '-filter-VideoTypes') || [];
+	}
     elems = context.querySelectorAll('.chkVideoTypeFilter');
-
     for (i = 0, length = elems.length; i < length; i++) {
         elems[i].checked = videoTypes.indexOf(elems[i].getAttribute('data-filter')) !== -1;
     }
 
-    const seriesStatuses = settings.SeriesStatus ? settings.SeriesStatus.split(',') : [];
+	// Series status
+    let seriesStatuses = [];
+	if (setfilters) {
+		seriesStatuses = settings.SeriesStatus ? settings.SeriesStatus.split(',') : [];
+	} else {
+		seriesStatuses = userSettings.getFilter(settingsKey + '-filter-SeriesStatus') || [];
+	}
     elems = context.querySelectorAll('.chkSeriesStatus');
-
     for (i = 0, length = elems.length; i < length; i++) {
         elems[i].checked = seriesStatuses.indexOf(elems[i].getAttribute('data-filter')) !== -1;
     }
 
-    if (context.querySelector('.basicFilterSection .viewSetting:not(.hide)')) {
+    if (context.querySelector('.basicFilterSection .viewSetting:not(.hide)'))
         context.querySelector('.basicFilterSection').classList.remove('hide');
-    } else {
+    else
         context.querySelector('.basicFilterSection').classList.add('hide');
-    }
 
-    if (context.querySelector('.featureSection .viewSetting:not(.hide)')) {
+    if (context.querySelector('.featureSection .viewSetting:not(.hide)'))
         context.querySelector('.featureSection').classList.remove('hide');
-    } else {
+    else
         context.querySelector('.featureSection').classList.add('hide');
-    }
+	
+	context.querySelector('form').addEventListener('submit', onSubmit);
 }
 function loadDynamicFilters(context, options) {
     const apiClient = ServerConnections.getApiClient(options.serverId);
@@ -310,6 +299,8 @@ class FilterMenu {
 	}
     show(options) {
         return new Promise( (resolve) => {
+			
+			let submitted = false;
 			
             const dialogOptions = {
                 removeOnClose: true,
@@ -335,14 +326,14 @@ class FilterMenu {
 
             const settingElements = dlg.querySelectorAll('.viewSetting');
             for (let i = 0, length = settingElements.length; i < length; i++) {
-                if (options.visibleSettings.indexOf(settingElements[i].getAttribute('data-settingname')) === -1) {
+                if (options.visibleSettings.indexOf(settingElements[i].getAttribute('data-filter')) === -1) {
                     settingElements[i].classList.add('hide');
                 } else {
                     settingElements[i].classList.remove('hide');
                 }
             }
 
-            initEditor(dlg, options.settings);
+            initEditor(dlg, options.settings, options.settingsKey, options.setfilters);
             loadDynamicFilters(dlg, options);
 
             bindCheckboxInput(dlg, true);
@@ -350,15 +341,13 @@ class FilterMenu {
                 dialogHelper.close(dlg);
             });
 			dlg.querySelector('.btnReset').addEventListener('click', function () {
-                resetValues(dlg, options.settings);
+                resetValues(dlg);
 				submitted = true;
             });
 
             if (layoutManager.tv) {
                 centerFocus(dlg.querySelector('.formDialogContent'), false, true);
             }
-
-            let submitted;
 
             dlg.querySelector('form').addEventListener('change', function () {
                 submitted = true;
@@ -373,7 +362,7 @@ class FilterMenu {
 
                 if (submitted) {
                     //if (!options.onChange) {
-                    saveValues(dlg, options.settings, options.settingsKey, options.setfilters);
+                    saveValues(dlg, options.settingsKey, options.setfilters);
                     return resolve();
                     //}
                 }

@@ -15,10 +15,17 @@ function onSubmit(e) {
     return false;
 }
 
-function initEditor(context, settings) {
-	context.querySelector('form').addEventListener('submit', onSubmit);
-	context.querySelector('.selectSortOrder').value = settings.SortOrder;
-	context.querySelector('.selectSortBy').value = settings.SortBy;
+function initEditor(context, settings, settingsKey, setSortValues) {
+	if (!context || !settings)
+		return;
+	if (setSortValues) {
+		context.querySelector('form').addEventListener('submit', onSubmit);
+		context.querySelector('.selectSortOrder').value = settings.SortOrder;
+		context.querySelector('.selectSortBy').value = settings.SortBy;
+    } else {
+        context.querySelector('.selectSortOrder').value = userSettings.getFilter(settingsKey + '-sortorder');
+        context.querySelector('.selectSortBy').value = userSettings.getFilter(settingsKey + '-sortby');
+    }
 }
 
 function centerFocus(elem, horiz, on) {
@@ -36,21 +43,19 @@ function fillSortBy(context, options) {
     }).join('');
 }
 
-function resetValues(context, settings) {
-	if (!context || !settings)
+function resetValues(context, options) {
+	if (!context || !(options?.sortOptions?.length))
 		return;
 	
-	context.querySelector('.selectSortBy').value = 'SortName,ProductionYear';
-	settings.SortBy = 'SortName,ProductionYear';
+	context.querySelector('.selectSortBy').value = options.sortOptions[0].value;
 	context.querySelector('.selectSortOrder').value = 'Ascending';
-	settings.SortOrder = 'Ascending';
 }
 
-function checkValues(settings) {
-	if (!settings)
+function checkValues(options) {
+	if (!(options?.sortOptions?.length))
 		return false;
 	
-	if (settings.SortBy !== 'SortName,ProductionYear' || settings.SortOrder !== 'Ascending')
+	if (options.settings.SortBy !== options.sortOptions[0].value || options.settings.SortOrder !== 'Ascending')
 		return true;
 	
 	return false;
@@ -72,7 +77,7 @@ function saveValues(context, settingsKey, setSortValues) {
 
 class SortMenu {
 	inUse(options) {
-		return checkValues(options.settings);
+		return checkValues(options);
 	}
     show(options) {
         return new Promise(function (resolve, reject) {
@@ -102,13 +107,13 @@ class SortMenu {
             dlg.innerHTML = globalize.translateHtml(html, 'core');
 
             fillSortBy(dlg, options.sortOptions);
-            initEditor(dlg, options.settings);
+            initEditor(dlg, options.settings, options.settingsKey, options.setSortValues);
 
             dlg.querySelector('.btnCancel').addEventListener('click', function () {
                 dialogHelper.close(dlg);
             });
 			dlg.querySelector('.btnReset').addEventListener('click', function () {
-                resetValues(dlg, options.settings);
+                resetValues(dlg, options);
 				submitted = true;
             });
 

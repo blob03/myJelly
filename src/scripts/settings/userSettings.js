@@ -356,11 +356,10 @@ export class UserSettings {
      * @return {string} Value of setting or ''.
      */
 	get(name, enableOnServer) {
-        const userId = this.currentUserId;
         if (enableOnServer !== false && this.displayPrefs) {
             return this.displayPrefs.CustomPrefs[name];
         }
-
+		const userId = this.currentUserId;
         return appSettings.get(name, userId);
     }
 

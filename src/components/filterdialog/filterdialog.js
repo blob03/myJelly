@@ -87,10 +87,7 @@ import template from './filterdialog.template.html';
             const filterName = elem.getAttribute('data-filter');
             elem.checked = filters.includes(`,${filterName}`);
         }
-        context.querySelector('.chk3DFilter').checked = query.Is3D === true;
-        context.querySelector('.chkHDFilter').checked = query.IsHD === true;
-        context.querySelector('.chk4KFilter').checked = query.Is4K === true;
-        context.querySelector('.chkSDFilter').checked = query.IsHD === false;
+		
         context.querySelector('#chkSubtitle').checked = query.HasSubtitles === true;
         context.querySelector('#chkTrailer').checked = query.HasTrailer === true;
         context.querySelector('#chkThemeSong').checked = query.HasThemeSong === true;
@@ -99,6 +96,7 @@ import template from './filterdialog.template.html';
         context.querySelector('#chkSpecialEpisode').checked = query.ParentIndexNumber === 0;
         context.querySelector('#chkMissingEpisode').checked = query.IsMissing === true;
         context.querySelector('#chkFutureEpisode').checked = query.IsUnaired === true;
+		
         for (const elem of context.querySelectorAll('.chkStatus')) {
             const filters = `,${query.SeriesStatus || ''}`;
             const filterName = elem.getAttribute('data-filter');

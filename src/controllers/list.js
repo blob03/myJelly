@@ -82,7 +82,7 @@ import LibraryMenu from '../scripts/libraryMenu';
 
         query.Fields = query.Fields ? query.Fields + ',PrimaryImageAspectRatio' : 'PrimaryImageAspectRatio';
         query.ImageTypeLimit = 1;
-        let hasFilters;
+        let hasFilters = false;
         const queryFilters = [];
         const filters = instance.getFilters();
 
@@ -114,26 +114,6 @@ import LibraryMenu from '../scripts/libraryMenu';
         if (filters.GenreIds) {
             hasFilters = true;
             query.GenreIds = filters.GenreIds;
-        }
-
-        if (filters.Is4K) {
-            query.Is4K = true;
-            hasFilters = true;
-        }
-
-        if (filters.IsHD) {
-            query.IsHD = true;
-            hasFilters = true;
-        }
-
-        if (filters.IsSD) {
-            query.IsHD = false;
-            hasFilters = true;
-        }
-
-        if (filters.Is3D) {
-            query.Is3D = true;
-            hasFilters = true;
         }
 
         if (filters.HasSubtitles) {
@@ -943,22 +923,19 @@ class ItemsView {
 
     getFilters() {
         const basekey = this.getSettingsKey();
+		
         return {
             IsPlayed: userSettings.getFilter(basekey + '-filter-IsPlayed') === 'true',
             IsUnplayed: userSettings.getFilter(basekey + '-filter-IsUnplayed') === 'true',
             IsFavorite: userSettings.getFilter(basekey + '-filter-IsFavorite') === 'true',
             IsResumable: userSettings.getFilter(basekey + '-filter-IsResumable') === 'true',
-            Is4K: userSettings.getFilter(basekey + '-filter-Is4K') === 'true',
-            IsHD: userSettings.getFilter(basekey + '-filter-IsHD') === 'true',
-            IsSD: userSettings.getFilter(basekey + '-filter-IsSD') === 'true',
-            Is3D: userSettings.getFilter(basekey + '-filter-Is3D') === 'true',
             VideoTypes: userSettings.getFilter(basekey + '-filter-VideoTypes'),
             SeriesStatus: userSettings.getFilter(basekey + '-filter-SeriesStatus'),
-            HasSubtitles: userSettings.getFilter(basekey + '-filter-HasSubtitles'),
-            HasTrailer: userSettings.getFilter(basekey + '-filter-HasTrailer'),
-            HasSpecialFeature: userSettings.getFilter(basekey + '-filter-HasSpecialFeature'),
-            HasThemeSong: userSettings.getFilter(basekey + '-filter-HasThemeSong'),
-            HasThemeVideo: userSettings.getFilter(basekey + '-filter-HasThemeVideo'),
+            HasSubtitles: userSettings.getFilter(basekey + '-filter-HasSubtitles') === 'true',
+            HasTrailer: userSettings.getFilter(basekey + '-filter-HasTrailer') === 'true',
+            HasSpecialFeature: userSettings.getFilter(basekey + '-filter-HasSpecialFeature') === 'true',
+            HasThemeSong: userSettings.getFilter(basekey + '-filter-HasThemeSong') === 'true',
+            HasThemeVideo: userSettings.getFilter(basekey + '-filter-HasThemeVideo') === 'true',
             GenreIds: userSettings.getFilter(basekey + '-filter-GenreIds')
         };
     }
