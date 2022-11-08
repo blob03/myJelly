@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-5",
+	"version": "10.8.7-6",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -140,6 +140,7 @@
 		"10.8.7-2": "Apply patch 'Migrate all user routes to react router'.\nApply patch 'Migrate all admin routes to react router'.",
 		"10.8.7-3": "Upgrade react component 'Filter' to apply a new style when a filter is set.\nAdd a reset button to the react component 'Filter'.\nApply patch 'thornbill/improve-view-restores'.",
 		"10.8.7-4": "Synchronize translations.\nEnable filter options for the movie collections view.\nUpgrade react component 'Sort' to apply a new style when a filter is set.\nAdd a reset button to the component.",
-		"10.8.7-5": "Synchronize translations.\nOptimize and clean recent changes made to REACT components 'sort' and 'filter'.\nFix some issues found inside original code for non-REACT'd libraries (photos, series etc..)."
+		"10.8.7-5": "Synchronize translations.\nOptimize and clean recent changes made to REACT components 'sort' and 'filter'.\nFix some issues found inside original code for non-REACT'd libraries (photos, series etc..).",
+		"10.8.7-6": "Synchronize translations.\nDisable text overlays when titles are explicitely unset.\nUsers can zeroize their preferences in one click from their profile page.\nFix small issues with the layout of the profile page."
 	}
 }

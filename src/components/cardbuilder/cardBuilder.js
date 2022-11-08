@@ -685,6 +685,7 @@ import { appRouter } from '../appRouter';
             let html = '';
 
             let valid = 0;
+			//forceLines = false;
 
             for (let i = 0; i < lines.length; i++) {
                 let currentCssClass = cssClass;
@@ -1220,7 +1221,8 @@ import { appRouter } from '../appRouter';
 
             const forceName = imgInfo.forceName;
 
-            const showTitle = options.showTitle === 'auto' ? true : (options.showTitle || item.Type === 'PhotoAlbum' || item.Type === 'Folder');
+            //const showTitle = options.showTitle === 'auto' ? true : (options.showTitle || item.Type === 'PhotoAlbum' || item.Type === 'Folder');
+			const showTitle = options.showTitle === 'auto' ? true : options.showTitle;
             const overlayText = options.overlayText;
 
             let cardImageContainerClass = 'cardImageContainer';

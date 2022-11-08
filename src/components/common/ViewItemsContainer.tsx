@@ -252,16 +252,20 @@ const ViewItemsContainer: FC<ViewItemsContainerProps> = ({
             queryFilters.push('IsResumable');
         }
 
-        let queryIsHD;
-
-        if (viewQuerySettings.IsHD) {
-            queryIsHD = true;
-        }
-
-        if (viewQuerySettings.IsSD) {
-            queryIsHD = false;
-        }
-
+		let queryIsHD = null;
+		let queryIs4K = null;
+		let queryIs3D = null;
+		
+		if (viewQuerySettings.VideoTypes) {
+			if (viewQuerySettings.VideoTypes.indexOf('IsHD') >= 0)
+				queryIsHD = true;
+			if (viewQuerySettings.VideoTypes.indexOf('IsSD') >= 0)
+				queryIsHD = false;
+			if (viewQuerySettings.VideoTypes.indexOf('Is4K') >= 0)
+				queryIs4K =  true;
+			if (viewQuerySettings.VideoTypes.indexOf('Is3D') >= 0)
+				queryIs3D =  true;
+		}
         return {
             SortBy: viewQuerySettings.SortBy,
             SortOrder: viewQuerySettings.SortOrder,
@@ -272,6 +276,9 @@ const ViewItemsContainer: FC<ViewItemsContainerProps> = ({
             EnableImageTypes: 'Primary,Backdrop,Banner,Thumb,Disc,Logo',
             Limit: userSettings.libraryPageSize(undefined),
             IsFavorite: getBasekey() === 'favorites' ? true : null,
+			IsHD: queryIsHD,
+			Is4K: queryIs4K,
+			Is3D: queryIs3D,
             VideoTypes: viewQuerySettings.VideoTypes,
             GenreIds: viewQuerySettings.GenreIds,
             HasSubtitles: viewQuerySettings.HasSubtitles ? true : null,

@@ -107,8 +107,16 @@ import LibraryMenu from '../scripts/libraryMenu';
         }
 
         if (filters.VideoTypes) {
-            hasFilters = true;
             query.VideoTypes = filters.VideoTypes;
+			if (query.VideoTypes.indexOf('IsHD') >= 0)
+				query.IsHD = true;
+			if (query.VideoTypes.indexOf('IsSD') >= 0)
+				query.IsHD = false;
+			if (query.VideoTypes.indexOf('Is4K') >= 0)
+				query.Is4K = true;
+			if (query.VideoTypes.indexOf('Is3D') >= 0)
+				query.Is3D = true;
+			hasFilters = true;
         }
 
         if (filters.GenreIds) {
@@ -145,7 +153,7 @@ import LibraryMenu from '../scripts/libraryMenu';
         instance.setFilterStatus(hasFilters);
 
         if (instance.alphaPicker) {
-                        const newValue = instance.alphaPicker.value();
+			const newValue = instance.alphaPicker.value();
             if (newValue === '#') {
                 query.NameLessThan = 'A';
                 delete query.NameStartsWith;

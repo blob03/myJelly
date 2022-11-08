@@ -297,12 +297,35 @@ export class UserSettings {
             return Promise.resolve();
         }
 
-        const obj = this;
-
+        const self = this;
         return apiClient.getDisplayPreferences('usersettings', userId, 'emby').then(function (result) {
             result.CustomPrefs = result.CustomPrefs || {};
-            obj.displayPrefs = result;
+            self.displayPrefs = result;
         });
+    }
+	
+	/**
+	* Reset current user settings.
+	* @param {string} - User identifier.
+	* @param {Object} - ApiClient instance.
+	*/
+    resetUserInfo(userId, apiClient) {
+        if (!userId || !apiClient)
+            return Promise.reject();
+
+        const prefs = this.displayPrefs;
+		if (!prefs)
+            return Promise.reject();
+		
+		if (this.saveTimeout) {
+            clearTimeout(this.saveTimeout);
+        } 
+	
+		Object.entries(prefs.CustomPrefs).forEach(([key, value]) => {
+			prefs.CustomPrefs[key] = '';
+		});
+
+		return apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby');
     }
 
     // FIXME: Seems unused
@@ -1516,6 +1539,7 @@ export class UserSettings {
 export const currentSettings = new UserSettings;
 
 // Wrappers for non-ES6 modules and backward compatibility
+export const resetUserInfo = currentSettings.resetUserInfo.bind(currentSettings);
 export const setUserInfo = currentSettings.setUserInfo.bind(currentSettings);
 export const getData = currentSettings.getData.bind(currentSettings);
 export const importFrom = currentSettings.importFrom.bind(currentSettings);

@@ -9,6 +9,7 @@ import toast from '../../toast/toast';
 import ButtonElement from '../../../elements/ButtonElement';
 import CheckBoxElement from '../../../elements/CheckBoxElement';
 import InputElement from '../../../elements/InputElement';
+import * as userSettings from '../../../scripts/settings/userSettings';
 
 type IProps = {
     userId: string;
@@ -202,21 +203,44 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 });
             });
         };
+		
+	    const resetSettings = () => {
+            const msg = globalize.translate('SettingsResetConfirmation');
+            confirm(msg, globalize.translate('HeaderResetSettings')).then(function () {
+                loading.show();
+				// In case an admin is editing a user, we use a new instance that we bind to the target userId.
+				let _userSettings = new userSettings.UserSettings;
+				_userSettings.setUserInfo(userId, window.ApiClient).then(() => {
+					_userSettings.resetUserInfo(userId, window.ApiClient).then(() => {
+						loading.hide();
+						Dashboard.alert({
+							message: globalize.translate('SettingsResetComplete'),
+							title: globalize.translate('HeaderResetSettings')
+						});
+						loadUser();
+					}).catch(() => {loading.hide();});
+				});
+            });
+        };
 
         (page.querySelector('.updatePasswordForm') as HTMLFormElement).addEventListener('submit', onSubmit);
         (page.querySelector('.localAccessForm') as HTMLFormElement).addEventListener('submit', onLocalAccessSubmit);
 
         (page.querySelector('#btnResetEasyPassword') as HTMLButtonElement).addEventListener('click', resetEasyPassword);
         (page.querySelector('#btnResetPassword') as HTMLButtonElement).addEventListener('click', resetPassword);
+		(page.querySelector('#btnResetSettings') as HTMLButtonElement).addEventListener('click', resetSettings);
     }, [loadUser, userId]);
 
     return (
         <div ref={element}>
             <form
                 className='updatePasswordForm passwordSection hide'
-                style={{margin: '0 auto 2em'}}
+                style={{margin: '0 auto'}}
             >
-                <div className='detailSection'>
+				<div className='verticalSection'>
+                    <h2 className='sectionTitle'>
+                        {globalize.translate('HeaderPassword')}
+                    </h2>
                     <div id='fldCurrentPassword' className='inputContainer hide'>
                         <InputElement
                             type='password'
@@ -262,12 +286,11 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 className='localAccessForm localAccessSection hide'
                 style={{margin: '0 auto'}}
             >
-                <div className='detailSection'>
-                    <h2 className='detailSectionHeader'>
+                <div className='verticalSection'>
+                    <h2 className='sectionTitle'>
                         {globalize.translate('HeaderEasyPinCode')}
                     </h2>
-                    <br />
-                    <div>
+                    <div className='fieldDescription'>
                         {globalize.translate('EasyPasswordHelp')}
                     </div>
                     <br />
@@ -300,6 +323,37 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                             id='btnResetEasyPassword'
                             className='raised button-cancel block hide'
                             title='ButtonResetEasyPassword'
+                        />
+                    </div>
+                </div>
+            </form>
+			<br />
+            <form
+                className='localAccessForm localAccessSection'
+                style={{margin: '0 auto'}}
+            >
+				<div className='verticalSection'>
+                    <h2 className='sectionTitle'>
+                        {globalize.translate('HeaderResetSettings')}
+                    </h2>
+                    <div>
+						<span className='fieldDescription'>
+							{globalize.translate('ResetSettingsHelp')}
+						</span>
+						&nbsp;
+						<u>
+							<span className='fieldDescription'>
+								{globalize.translate('ResetSettingsHelp2')}
+							</span>
+						</u>
+                    </div>
+                    <br />
+                    <div>
+                        <ButtonElement
+                            type='button'
+                            id='btnResetSettings'
+                            className='raised button-cancel block'
+                            title='ButtonResetSettings'
                         />
                     </div>
                 </div>
