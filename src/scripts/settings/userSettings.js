@@ -6,9 +6,8 @@ import datetime from '../datetime';
 import { ajax } from '../../components/fetchhelper';
 
 function onSaveTimeout() {
-    const self = this;
-    self.saveTimeout = null;
-    self.currentApiClient.updateDisplayPreferences('usersettings', self.displayPrefs, self.currentUserId, 'emby');
+    this.saveTimeout = null;
+    this.currentApiClient.updateDisplayPreferences('usersettings', this.displayPrefs, this.currentUserId, 'emby');
 }
 
 function saveServerPreferences(instance) {
@@ -279,6 +278,20 @@ export class UserSettings {
 		return ret;
 	}
 	
+	/**
+     * Return the user the current instance is bound to.
+     */
+	getCurrentUserId() {
+		return this.currentUserId;
+	}
+	
+	/**
+     * Return the apiclient the current instance is using.
+     */
+	getCurrentApiClient() {
+		return this.currentApiClient;
+	}
+	
     /**
      * Bind UserSettings instance to user.
      * @param {string} - User identifier.
@@ -309,12 +322,13 @@ export class UserSettings {
 	* @param {string} - User identifier.
 	* @param {Object} - ApiClient instance.
 	*/
-    resetUserInfo(userId, apiClient) {
-        if (!userId || !apiClient)
-            return Promise.reject();
-
-        const prefs = this.displayPrefs;
-		if (!prefs)
+    resetUserInfo(userId) {
+        if (!userId)
+			userId = this.currentUserId;
+		let apiClient = this.currentApiClient;
+        let prefs = this.displayPrefs;
+		
+		if (!prefs || !apiClient || !userId)
             return Promise.reject();
 		
 		if (this.saveTimeout) {
@@ -366,7 +380,7 @@ export class UserSettings {
 	 * Save the user preferences into the server storage, all at once.
 	 */
 	commit() {
-		if (this.displayPrefs)     
+		if (this.displayPrefs)
 			saveServerPreferences(this);
 		
 		return true;
@@ -1539,6 +1553,9 @@ export class UserSettings {
 export const currentSettings = new UserSettings;
 
 // Wrappers for non-ES6 modules and backward compatibility
+
+export const getCurrentApiClient = currentSettings.getCurrentApiClient.bind(currentSettings);
+export const getCurrentUserId = currentSettings.getCurrentUserId.bind(currentSettings);
 export const resetUserInfo = currentSettings.resetUserInfo.bind(currentSettings);
 export const setUserInfo = currentSettings.setUserInfo.bind(currentSettings);
 export const getData = currentSettings.getData.bind(currentSettings);

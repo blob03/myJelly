@@ -208,10 +208,17 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
             const msg = globalize.translate('SettingsResetConfirmation');
             confirm(msg, globalize.translate('HeaderResetSettings')).then(function () {
                 loading.show();
+				let _uSettings = userSettings.currentSettings;
+				let _uid = _uSettings.getCurrentUserId();
+				let _ac = _uSettings.getCurrentApiClient();
 				// In case an admin is editing a user, we use a new instance that we bind to the target userId.
-				let _userSettings = new userSettings.UserSettings;
-				_userSettings.setUserInfo(userId, window.ApiClient).then(() => {
-					_userSettings.resetUserInfo(userId, window.ApiClient).then(() => {
+				if (_uid !== userId) {
+					_uSettings = new userSettings.UserSettings;
+					_uid = userId;
+					_ac = window.ApiClient;
+				}
+				_uSettings.setUserInfo(_uid, _ac).then(() => {
+					_uSettings.resetUserInfo(_uid).then(() => {
 						loading.hide();
 						Dashboard.alert({
 							message: globalize.translate('SettingsResetComplete'),

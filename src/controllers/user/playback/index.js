@@ -15,7 +15,9 @@ import '../../../components/listview/listview.scss';
         const currentSettings = userId === ApiClient.getCurrentUserId() ? userSettings : new UserSettings();
 		
         view.addEventListener('viewshow', function () {
-            if (!settingsInstance) {
+            if (settingsInstance) {
+                settingsInstance.loadData();
+            } else {
                 settingsInstance = new PlaybackSettings({
                     serverId: ApiClient.serverId(),
                     userId: userId,

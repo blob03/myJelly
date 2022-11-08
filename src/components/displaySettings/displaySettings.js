@@ -274,7 +274,7 @@ import './displaysettings.scss';
 	function loadForm(self) {
 		let context = self.options.element;
 		let user = self.currentUser;
-		let userSettings = self.options.userSettings;;
+		let userSettings = self.options.userSettings;
 		let apiClient = self.options.apiClient;
 		let event_change = new Event('change');
 		let allCultures = cultures.getDictionaries();
@@ -605,7 +605,7 @@ import './displaysettings.scss';
             loading.show();
 
 			return ServerConnections.user(apiClient).then((user) => {
-				// If the request comes from a server admin configuring a user...
+				// If the request comes from a jellyfin admin configuring a user...
 				if (self.options.userId !== user.localUser.Id) {
 					return apiClient.getUser(self.options.userId).then(target => {
 						return self.options.userSettings.setUserInfo(self.options.userId, apiClient).then(() => {

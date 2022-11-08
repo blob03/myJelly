@@ -13,7 +13,9 @@ import autoFocuser from '../../../components/autoFocuser';
         const currentSettings = userId === ApiClient.getCurrentUserId() ? userSettings : new UserSettings();
 
         view.addEventListener('viewshow', function () {
-            if (!subtitleSettingsInstance) {
+            if (subtitleSettingsInstance) {
+                subtitleSettingsInstance.loadData();
+            } else {
                 subtitleSettingsInstance = new SubtitleSettings({
                     serverId: ApiClient.serverId(),
 					apiClient: ApiClient,

@@ -14,7 +14,9 @@ import '../../../components/listview/listview.scss';
         const currentSettings = userId === ApiClient.getCurrentUserId() ? userSettings : new UserSettings();
 		
         view.addEventListener('viewshow', function () {
-            if (!homescreenSettingsInstance) {
+            if (homescreenSettingsInstance) {
+                homescreenSettingsInstance.loadData();
+            } else {
                 homescreenSettingsInstance = new HomescreenSettings({
                     serverId: ApiClient.serverId(),
 					apiClient: ApiClient,
