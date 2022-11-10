@@ -275,7 +275,7 @@ import './displaysettings.scss';
 		let context = self.options.element;
 		let user = self.currentUser;
 		let userSettings = self.options.userSettings;
-		let apiClient = self.options.apiClient;
+		const apiClient = self.options.apiClient;
 		let event_change = new Event('change');
 		let allCultures = cultures.getDictionaries();
 		
@@ -594,40 +594,17 @@ import './displaysettings.scss';
 			this._savedLayout = '';
 			this._savedWBot = '';
 			this._savedClock = '';
-			this.adminEdit = false;
+			this.currentUser = options.currentUser;
+			this.adminEdit = options.adminEdit;
             embed(this);
         }
 
         loadData(autoFocus) {
-            const self = this;
-			const apiClient = self.options.apiClient;
-
-            loading.show();
-
-			return ServerConnections.user(apiClient).then((user) => {
-				// If the request comes from a jellyfin admin configuring a user...
-				if (self.options.userId !== user.localUser.Id) {
-					return apiClient.getUser(self.options.userId).then(target => {
-						return self.options.userSettings.setUserInfo(self.options.userId, apiClient).then(() => {
-							console.debug("Admin \'" + user.localUser.Name + "\' is configuring display preferences for user \'" + target.Name + "'");
-							self.currentUser = target;
-							self.dataLoaded = true;
-							self.adminEdit = true;
-							loadForm(self);
-							if (autoFocus)
-								focusManager.autoFocus(self.options.element);
-							loading.hide();
-						});
-					});
-				} else {
-					self.currentUser = user.localUser;
-					self.dataLoaded = true;
-					loadForm(self);
-					if (autoFocus)
-						focusManager.autoFocus(self.options.element);
-					loading.hide();
-				}
-			});
+			loading.show();
+			loadForm(this);
+			if (autoFocus)
+				focusManager.autoFocus(this.options.element);
+			loading.hide();
         }
 
         submit() {

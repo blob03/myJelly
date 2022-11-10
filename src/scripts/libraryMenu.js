@@ -4,6 +4,7 @@ import dom from './dom';
 import layoutManager from '../components/layoutManager';
 import inputManager from './inputManager';
 import viewManager from '../components/viewManager/viewManager';
+import viewContainer from '../components/viewContainer';
 import { appRouter } from '../components/appRouter';
 import { appHost } from '../components/apphost';
 import { playbackManager } from '../components/playback/playbackmanager';
@@ -1003,6 +1004,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     export function onLogoutClick() {
 		showClock(false);
 		showWeatherBot(false);
+		
+		viewContainer.reset();
 		
 		if (playbackManager.isPlayingAudio()) {
 			toast(globalize.translate('playbackStopped'));

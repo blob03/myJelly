@@ -210,23 +210,35 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 loading.show();
 				let _uSettings = userSettings.currentSettings;
 				let _uid = _uSettings.getCurrentUserId();
-				let _ac = _uSettings.getCurrentApiClient();
-				// In case an admin is editing a user, we use a new instance that we bind to the target userId.
 				if (_uid !== userId) {
+					// In case an admin is editing a user, 
+					// we use a new instance that we bind to the target userId.
 					_uSettings = new userSettings.UserSettings;
-					_uid = userId;
-					_ac = window.ApiClient;
-				}
-				_uSettings.setUserInfo(_uid, _ac).then(() => {
+					if (_uSettings) {
+						_uid = userId;
+						const _ac = window.ApiClient;
+						_uSettings.setUserInfo(_uid, _ac).then(() => {
+							_uSettings.resetUserInfo(_uid).then(() => {
+								loading.hide();
+								Dashboard.alert({
+									message: globalize.translate('SettingsResetComplete'),
+									title: globalize.translate('HeaderResetSettings')
+								});
+								// Resetting custom prefs shouldn't affect account login related stuff.
+								//loadUser();
+							}).catch(() => {loading.hide();});
+						});
+					}
+				} else {
 					_uSettings.resetUserInfo(_uid).then(() => {
 						loading.hide();
 						Dashboard.alert({
 							message: globalize.translate('SettingsResetComplete'),
 							title: globalize.translate('HeaderResetSettings')
 						});
-						loadUser();
+						//loadUser();
 					}).catch(() => {loading.hide();});
-				});
+				}
             });
         };
 

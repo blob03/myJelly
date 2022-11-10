@@ -285,13 +285,6 @@ export class UserSettings {
 		return this.currentUserId;
 	}
 	
-	/**
-     * Return the apiclient the current instance is using.
-     */
-	getCurrentApiClient() {
-		return this.currentApiClient;
-	}
-	
     /**
      * Bind UserSettings instance to user.
      * @param {string} - User identifier.
@@ -335,11 +328,16 @@ export class UserSettings {
             clearTimeout(this.saveTimeout);
         } 
 	
-		Object.entries(prefs.CustomPrefs).forEach(([key, value]) => {
-			prefs.CustomPrefs[key] = '';
+		//Object.entries(prefs.CustomPrefs).forEach(([key, value]) => {
+		//	prefs.CustomPrefs[key] = '';
+		//});
+		// Part of the user preferences are stored in the usersettings object while others are
+		// stored in the user object. For now clear everything out...
+		prefs.CustomPrefs = {};
+		const config = {};
+		return apiClient.updateUserConfiguration(userId, config).then(() => {
+			apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby');
 		});
-
-		return apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby');
     }
 
     // FIXME: Seems unused
@@ -1554,7 +1552,6 @@ export const currentSettings = new UserSettings;
 
 // Wrappers for non-ES6 modules and backward compatibility
 
-export const getCurrentApiClient = currentSettings.getCurrentApiClient.bind(currentSettings);
 export const getCurrentUserId = currentSettings.getCurrentUserId.bind(currentSettings);
 export const resetUserInfo = currentSettings.resetUserInfo.bind(currentSettings);
 export const setUserInfo = currentSettings.setUserInfo.bind(currentSettings);

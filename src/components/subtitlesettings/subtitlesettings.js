@@ -467,7 +467,7 @@ function save(self) {
 	user.Configuration.RememberSubtitleSelections = context.querySelector('.chkRememberSubtitleSelections').checked;
     user.Configuration.SubtitleLanguagePreference = context.querySelector('#selectSubtitleLanguage').value;
     user.Configuration.SubtitleMode = context.querySelector('#selectSubtitlePlaybackMode').value;
-		
+	
     apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 		userSettings.commit();
 		setTimeout(() => { 

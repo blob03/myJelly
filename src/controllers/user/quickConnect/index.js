@@ -1,7 +1,6 @@
-import { authorize, isActive } from './helper';
+import { authorize } from './helper';
 import globalize from '../../../scripts/globalize';
 import toast from '../../../components/toast/toast';
-import loading from '../../../components/loading/loading';
 
 export default function (view) {
     view.addEventListener('viewshow', function () {
