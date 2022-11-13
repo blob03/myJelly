@@ -48,7 +48,15 @@ class AppSettings {
 		
 		return toBoolean(this.get('clock_mode'), false);
 	}
-
+	
+	pinMenubar(val) {
+		if (val !== undefined) {
+			return this.set('pinned_menubar', val.toString());
+        }
+		
+		return toBoolean(this.get('pinned_menubar'), false);
+	}
+	
     enableSystemExternalPlayers(val) {
         if (val !== undefined) {
             this.set('enableSystemExternalPlayers', val.toString());

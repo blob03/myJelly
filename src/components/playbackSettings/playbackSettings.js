@@ -151,31 +151,23 @@ import template from './playbackSettings.template.html';
 		const apiClient = self.options.apiClient;
         const userSettings = self.options.userSettings;
 		const context = self.options.element;
-		const user = self.currentUser;
+		const user = self.options.currentUser;
 
         showHideQualityFields(context, user, apiClient);
 
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
 		
 		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
-
+		selectAudioLanguage.value = '';
 		let allCultures = cultures.getCultures();
-		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "displayNativeName", userSettings.AudioLanguagePreference() || '');
+		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "displayNativeName", user.Configuration.AudioLanguagePreference || '');
 
-        if (appHost.supports('externalplayerintent')) {
-            context.querySelector('.fldExternalPlayer').classList.remove('hide');
-        } else {
-            context.querySelector('.fldExternalPlayer').classList.add('hide');
-        }
-
+        context.querySelector('.fldExternalPlayer').classList.toggle('hide', !appHost.supports('externalplayerintent'));
+        
         if (user.Policy.EnableVideoPlaybackTranscoding || user.Policy.EnableAudioPlaybackTranscoding) {
             context.querySelector('.qualitySections').classList.remove('hide');
-
-            if (appHost.supports('chromecast') && user.Policy.EnableVideoPlaybackTranscoding) {
-                context.querySelector('.fldChromecastQuality').classList.remove('hide');
-            } else {
-                context.querySelector('.fldChromecastQuality').classList.add('hide');
-            }
+            if (appHost.supports('chromecast'))
+				context.querySelector('.fldChromecastQuality').classList.toggle('hide', !user.Policy.EnableVideoPlaybackTranscoding);
         } else {
             context.querySelector('.qualitySections').classList.add('hide');
             context.querySelector('.fldChromecastQuality').classList.add('hide');
@@ -183,7 +175,6 @@ import template from './playbackSettings.template.html';
 
         context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
         context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
-		
 		context.querySelector('.chkRememberAudioSelections').checked = user.Configuration.RememberAudioSelections || false;
 		
         setMaxBitrateIntoField(context.querySelector('.selectVideoInNetworkQuality'), true, 'Video');
@@ -204,7 +195,7 @@ import template from './playbackSettings.template.html';
 		let chkEnableNextVideoOverlay = context.querySelector('.chkEnableNextVideoOverlay');
 		
 		chkEnableNextVideoOverlay.checked = userSettings.enableNextVideoInfoOverlay();
-		chkEpisodeAutoPlay.checked = userSettings.enableNextEpisodeAutoPlay() && !chkEnableNextVideoOverlay.checked;
+		chkEpisodeAutoPlay.checked = user.Configuration.EnableNextEpisodeAutoPlay && !chkEnableNextVideoOverlay.checked;
 		chkEpisodeAutoPlay.addEventListener('change', function(ev) {  if (ev.target.checked) chkEnableNextVideoOverlay.checked = false });
 		chkEnableNextVideoOverlay.addEventListener('change', function(ev) {  if (ev.target.checked) chkEpisodeAutoPlay.checked = false });
 		
@@ -230,7 +221,7 @@ import template from './playbackSettings.template.html';
     }
 
 	function save(self) {
-		const user = self.currentUser;
+		const user = self.options.currentUser;
 		const apiClient = self.options.apiClient;
         const userSettings = self.options.userSettings;
 		const context = self.options.element;
@@ -245,19 +236,17 @@ import template from './playbackSettings.template.html';
         setMaxBitrateFromField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
 
 		userSettings.enableNextVideoInfoOverlay(context.querySelector('.chkEnableNextVideoOverlay').checked);
-        userSettings.enableNextEpisodeAutoPlay(context.querySelector('.chkEpisodeAutoPlay').checked);
-		
-		user.Configuration.RememberAudioSelections = context.querySelector('.chkRememberAudioSelections').checked;
-		
 		userSettings.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
         userSettings.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
         userSettings.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
 		userSettings.muteButton(context.querySelector('.chkMuteButton').checked);
-		
         userSettings.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);
         userSettings.skipBackLength(context.querySelector('#sliderSkipBackLength').value * 1000);
-		userSettings.AudioLanguagePreference(context.querySelector('#selectAudioLanguage').value);
 		
+		user.Configuration.RememberAudioSelections = context.querySelector('.chkRememberAudioSelections').checked;
+		user.Configuration.AudioLanguagePreference = context.querySelector('#selectAudioLanguage').value;
+		user.Configuration.EnableNextEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay').checked 
+													|| context.querySelector('.chkEnableNextVideoOverlay').checked;
 		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 			userSettings.commit(); 
 			setTimeout(() => { 
@@ -301,42 +290,16 @@ import template from './playbackSettings.template.html';
     class PlaybackSettings {
         constructor(options) {
             this.options = options;
-			this.currentUser = null;
-			this.adminEdit = false;
+			this.adminEdit = options.adminEdit;
             embed(this);
         }
 
-        loadData(autoFocus) {
-            const self = this;
-			const userId = this.options.userId;
-            const apiClient = this.options.apiClient;
-			
-            loading.show();
-
-			return ServerConnections.user(apiClient).then((user) => {
-				// If the request comes from a server admin configuring a user...
-				if (self.options.userId !== user.localUser.Id) {
-					return apiClient.getUser(self.options.userId).then(target => {
-						return self.options.userSettings.setUserInfo(self.options.userId, apiClient).then(() => {
-							console.debug("Admin \'" + user.localUser.Name + "\' is configuring playback preferences for user \'" + target.Name + "'");
-							self.currentUser = target;
-							self.dataLoaded = true;
-							self.adminEdit = true;
-							loadForm(self);
-							if (autoFocus)
-								focusManager.autoFocus(self.options.element);
-							loading.hide();
-						});
-					});
-				} else {
-					self.currentUser = user.localUser;
-					self.dataLoaded = true;
-					loadForm(self);
-					if (autoFocus)
-						focusManager.autoFocus(self.options.element);
-					loading.hide();
-				}
-			});
+        loadData() {
+			loading.show();
+			loadForm(this);
+			if (this.options.autoFocus)
+				focusManager.autoFocus(this.options.element);
+			loading.hide();
         }
 
         submit() {

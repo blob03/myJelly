@@ -55,7 +55,7 @@ html {
 .skinHeader.semiTransparent {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
-    background-color: rgba(40, 40, 40, .8);
+	background: linear-gradient(125deg, rgba(255, 255, 255, 0.4) 0%, rgba(238, 230, 195, 0.4) 40%, rgba(224, 231, 233, 0.4) 70%, rgba(243, 224, 165, 0.4) 100%);
 }
 
 .layout-tv .skinHeader.semiTransparent {

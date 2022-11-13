@@ -30,22 +30,22 @@ export default function (view, params) {
 			view.querySelector('.exitApp').classList.toggle('hide', !supportsExitMenu);
 			view.querySelector('.selectServer').classList.toggle('hide', !supportsMultiServer);
 
-			// this page can also be used by admins to change users' preferences from the user edit page
+			// this page can also be called by admins to edit users' preferences.
 			let adminEdit = Boolean(params.userId && params.userId !== ApiClient.getCurrentUserId());
-			if (!adminEdit) {
-				// Check whether QuickConnect is active or not.
-				isActive().then( (ret) => {
-						view.querySelector('.lnkQuickConnectPreferences').classList.toggle('hide', !ret);
-				});
-			} else
-				// As it seems there is a lack of support for doing QC requests on behalf of a user.
-				// This needs further investigation, in the meantime we disable it.
-				view.querySelector('.lnkQuickConnectPreferences').classList.add('hide');
-
-			// Hide the actions if user preferences are being edited for a different user
+			
+			// Sections to hide when editing on behalf of a user.
 			view.querySelector('.userSection').classList.toggle('hide', adminEdit);
 			view.querySelector('.adminSection').classList.toggle('hide', adminEdit || !_currentUser.Policy.IsAdministrator || layoutManager.tv);
 			view.querySelector('.lnkControlsPreferences').classList.toggle('hide', adminEdit || layoutManager.mobile);
+			// As it seems there is a lack of support for doing QC requests on behalf of a user.
+			// This needs further investigation, in the meantime just keep it disabled.
+			if (!adminEdit) {
+				// Check whether QuickConnect is active or not.
+				isActive().then((ret) => {
+					view.querySelector('.lnkQuickConnectPreferences').classList.toggle('hide', !ret);
+				});
+			} else
+				view.querySelector('.lnkQuickConnectPreferences').classList.add('hide');
 		});
 	 
 		import('../../../components/autoFocuser').then(({default: autoFocuser}) => {

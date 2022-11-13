@@ -10,6 +10,7 @@ import ButtonElement from '../../../elements/ButtonElement';
 import CheckBoxElement from '../../../elements/CheckBoxElement';
 import InputElement from '../../../elements/InputElement';
 import * as userSettings from '../../../scripts/settings/userSettings';
+import viewContainer from '../../viewContainer';
 
 type IProps = {
     userId: string;
@@ -226,7 +227,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 								});
 								// Resetting custom prefs shouldn't affect account login related stuff.
 								//loadUser();
-							}).catch(() => {loading.hide();});
+							});
 						});
 					}
 				} else {
@@ -237,8 +238,10 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 							title: globalize.translate('HeaderResetSettings')
 						});
 						//loadUser();
-					}).catch(() => {loading.hide();});
+					});
 				}
+				viewContainer.reset();
+				loading.hide();
             });
         };
 

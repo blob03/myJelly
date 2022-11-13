@@ -9,30 +9,30 @@ import autoFocuser from '../../../components/autoFocuser';
 		let cSettings = currentSettings;
 		const API_userId = ApiClient.getCurrentUserId();
 		const userId = params.userId || API_userId;
-		// this page can also be used by admins to change user preferences from the user edit page
-		const adminEdit = userId && (userId !== API_userId);
+		// this page can also be used by admins to edit users' preferences.
+		const adminEdit = Boolean(userId && (userId !== API_userId));
+		const options = {
+			serverId: ApiClient.serverId(),
+			adminEdit: adminEdit,
+			apiClient: ApiClient,
+			userId: userId,
+			element: view.querySelector('.settingsContainer'),
+			userSettings: cSettings,
+			enableSaveButton: true,
+			enableSaveConfirmation: true,
+			autoFocus: autoFocuser.isEnabled()
+		};
 		
 		view.addEventListener('viewshow', function () {
 			if (settingsInstance) {
 				settingsInstance.loadData();
 			} else {
-				ApiClient.getUser(userId).then( _currentUser => {
-					let options = {
-						serverId: ApiClient.serverId(),
-						adminEdit: adminEdit,
-						apiClient: ApiClient,
-						userId: userId,
-						currentUser: _currentUser,
-						element: view.querySelector('.settingsContainer'),
-						userSettings: cSettings,
-						enableSaveButton: true,
-						enableSaveConfirmation: true,
-						autoFocus: autoFocuser.isEnabled()
-					};
+				ApiClient.getUser(userId).then( currentUser => {
+					options.currentUser = currentUser;
 					if (adminEdit) {
 						cSettings = new UserSettings;
 						cSettings.setUserInfo(userId, ApiClient).then(() => {
-							console.debug("Admin is configuring display preferences for user \'" + _currentUser.Name + "'");
+							console.debug("Admin is configuring display preferences for user \'" + currentUser.Name + "'");
 							options.userSettings = cSettings;
 							settingsInstance = new DisplaySettings(options);
 						});

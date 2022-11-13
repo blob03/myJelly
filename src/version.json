@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-8",
+	"version": "10.8.7-9",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -143,6 +143,7 @@
 		"10.8.7-5": "Synchronize translations.\nOptimize and clean recent changes made to REACT components 'sort' and 'filter'.\nFix some issues found inside original code for non-REACT'd libraries (photos, series etc..).",
 		"10.8.7-6": "Synchronize translations.\nDisable text overlays when titles are explicitly unset.\nUsers can zeroize their preferences in one click from their profile page.\nFix small issues with the layout of the profile page.",
 		"10.8.7-7": "Synchronize translations.\nUse the userSettings instance already in use for users doing the reset.\nForce the controllers for display/subs/playback pages to reload the data at every Show event.",
-		"10.8.7-8": "Synchronize translations.\nFix links let without event handler (user menu).\nReset cached views upon logout to avoid confusions when signing in and out with multiples accounts."
+		"10.8.7-8": "Synchronize translations.\nFix links let without event handler (user menu).\nReset cached views upon logout to avoid confusions when signing in and out with multiples accounts.",
+		"10.8.7-9": "Synchronize translations.\nEnable reset of server-side user configuration (stored in user obj).\nCode cleanup and optimization (user pages)."
 	}
 }

@@ -473,16 +473,13 @@ import template from './homeScreenSettings.template.html';
             userSettings.set(`landing-${selectLanding.getAttribute('data-folderid')}`, selectLanding.value);
         }
 		
-        apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
-			userSettings.commit(); 
+        apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => {
+			userSettings.commit();
 			setTimeout(() => { 
-				embed(self).then( () => { 
-					loading.hide();	
-					if (enableSaveConfirmation) 
-						toast(globalize.translate('SettingsSaved'));
-					Events.trigger(self, 'saved');
-				}
-			);}, 2000); 
+				loading.hide();
+				if (enableSaveConfirmation) 
+					toast(globalize.translate('SettingsSaved'));}, 1000);
+			Events.trigger(self, 'saved');
 		});
     }
 
@@ -524,13 +521,8 @@ import template from './homeScreenSettings.template.html';
         options.element.querySelector('.viewOrderList').addEventListener('click', onSectionOrderListClick);
         options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
         options.element.addEventListener('change', onChange);
-		
-        if (options.enableSaveButton)
-            options.element.querySelector('.btnSave').classList.remove('hide');
-        if (layoutManager.tv)
-            options.element.querySelector('.selectTVHomeScreenContainer').classList.remove('hide');
-        else
-            options.element.querySelector('.selectTVHomeScreenContainer').classList.add('hide');
+        options.element.querySelector('.btnSave').classList.toggle('hide', !options.enableSaveButton);
+        options.element.querySelector('.selectTVHomeScreenContainer').classList.toggle('hide', layoutManager.tv);
 
         return self.loadData(options.autoFocus);
     }
@@ -538,42 +530,17 @@ import template from './homeScreenSettings.template.html';
     class HomeScreenSettings {
         constructor(options) {
             this.options = options;
-			this.currentUser = null;
-			this.adminEdit = false;
+			this.currentUser = options.currentUser;
+			this.adminEdit = options.adminEdit;
             embed(this);
         }
-
-        loadData(autoFocus) {
-            const self = this;
-			const userId = this.options.userId;
-            const apiClient = this.options.apiClient;
-			
-            loading.show();
-
-			return ServerConnections.user(apiClient).then((user) => {
-				// If the request comes from a server admin configuring a user...
-				if (self.options.userId !== user.localUser.Id) {
-					return apiClient.getUser(self.options.userId).then(target => {
-						return self.options.userSettings.setUserInfo(self.options.userId, apiClient).then(() => {
-							console.debug("Admin \'" + user.localUser.Name + "\' is configuring homescreen preferences for user \'" + target.Name + "'");
-							self.currentUser = target;
-							self.dataLoaded = true;
-							self.adminEdit = true;
-							loadForm(self);
-							if (autoFocus)
-								focusManager.autoFocus(self.options.element);
-							loading.hide();
-						});
-					});
-				} else {
-					self.currentUser = user.localUser;
-					self.dataLoaded = true;
-					loadForm(self);
-					if (autoFocus)
-						focusManager.autoFocus(self.options.element);
-					loading.hide();
-				}
-			});
+		
+		loadData(autoFocus) {
+			loading.show();
+			loadForm(this);
+			if (autoFocus)
+				focusManager.autoFocus(this.options.element);
+			loading.hide();
         }
 
         submit() {

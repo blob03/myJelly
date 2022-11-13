@@ -655,17 +655,17 @@
     },
     "et": {
         "ccode": "et",
-        "fsize": 102926,
+        "fsize": 105106,
         "ccodeSrc": "en-US",
         "displayName": "Estonian",
         "displayNativeName": "Eesti",
         "ISO6391": "et",
         "ISO6392": "est",
-        "keys#": 1589,
-        "completed%": 88.87,
+        "keys#": 1624,
+        "completed%": 90.83,
         "jellyfinWeb": {
             "filename": "et.json",
-            "keys#": 1589,
+            "keys#": 1624,
             "orphans#": 7,
             "orphans": [
                 "ButtonNetwork",
@@ -676,7 +676,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 94.98
+            "completed%": 97.07
         },
         "myJelly": {
             "filename": "",
@@ -1174,17 +1174,17 @@
     },
     "ja": {
         "ccode": "ja",
-        "fsize": 126592,
+        "fsize": 127649,
         "ccodeSrc": "en-US",
         "displayName": "Japanese",
         "displayNativeName": "日本語",
         "ISO6391": "ja",
         "ISO6392": "jpn",
-        "keys#": 1558,
-        "completed%": 87.14,
+        "keys#": 1568,
+        "completed%": 87.7,
         "jellyfinWeb": {
             "filename": "ja.json",
-            "keys#": 1558,
+            "keys#": 1568,
             "orphans#": 9,
             "orphans": [
                 "ButtonNetwork",
@@ -1197,7 +1197,7 @@
                 "OptionDownloadImagesInAdvanceHelp",
                 "OptionDownloadImagesInAdvance"
             ],
-            "completed%": 93.13
+            "completed%": 93.72
         },
         "myJelly": {
             "filename": "",
@@ -1646,7 +1646,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 117245,
+        "fsize": 117178,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
@@ -2404,17 +2404,17 @@
     },
     "vi": {
         "ccode": "vi",
-        "fsize": 131106,
+        "fsize": 131478,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
         "displayNativeName": "Việtnam",
         "ISO6391": "vi",
         "ISO6392": "vie",
-        "keys#": 1658,
-        "completed%": 92.73,
+        "keys#": 1662,
+        "completed%": 92.95,
         "jellyfinWeb": {
             "filename": "vi.json",
-            "keys#": 1658,
+            "keys#": 1662,
             "orphans#": 11,
             "orphans": [
                 "ButtonNetwork",
@@ -2429,7 +2429,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.1
+            "completed%": 99.34
         },
         "myJelly": {
             "filename": "",
@@ -2441,7 +2441,7 @@
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "fsize": 104111,
+        "fsize": 104096,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
         "displayNativeName": "中文",

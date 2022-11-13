@@ -474,7 +474,7 @@ function save(self) {
 			loading.hide();
 			if (enableSaveConfirmation) 
 				toast(globalize.translate('SettingsSaved'));}, 1000);
-			Events.trigger(self, 'saved');
+		Events.trigger(self, 'saved');
 	});
 }
 
@@ -624,46 +624,20 @@ export class SubtitleSettings {
     constructor(options) {
         this.options = options;
 		this.subtitlePreviewDelay = 1000;
-		this.adminEdit = false;
+		this.currentUser = options.currentUser;
+		this.adminEdit = options.adminEdit;
         embed(this);
     }
 
 	loadData(autoFocus) {
-		const self = this;
-		const userId = this.options.userId;
-		const apiClient = this.options.apiClient;
-		const userSettings = this.options.userSettings;
-		
 		loading.show();
-		
-		return ServerConnections.user(apiClient).then((user) => {
-			// If the request comes from a server admin configuring a user...
-			if (self.options.userId !== user.localUser.Id) {
-				return apiClient.getUser(self.options.userId).then(target => {
-					return userSettings.setUserInfo(self.options.userId, apiClient).then(() => {
-						console.debug("Admin \'" + user.localUser.Name + "\' is configuring subtitles preferences for user \'" + target.Name + "'");
-						self.currentUser = target;
-						self.dataLoaded = true;
-						self.adminEdit = true;
-						self.appearanceSettings = userSettings.getSubtitleAppearanceSettings(self.options.appearanceKey);
-						loadForm(self);
-						if (autoFocus)
-							focusManager.autoFocus(self.options.element);
-						loading.hide();
-					});
-				});
-			} else {
-				self.currentUser = user.localUser;
-				self.dataLoaded = true;
-				self.appearanceSettings = userSettings.getSubtitleAppearanceSettings(self.options.appearanceKey);
-				loadForm(self);
-				if (autoFocus)
-					focusManager.autoFocus(self.options.element);
-				loading.hide();
-			}
-		});
+		this.appearanceSettings = this.options.userSettings.getSubtitleAppearanceSettings(this.options.appearanceKey);
+		loadForm(this);
+		if (autoFocus)
+			focusManager.autoFocus(this.options.element);
+		loading.hide();
 	}
-
+	
     submit() {
         this.onSubmit(null);
     }

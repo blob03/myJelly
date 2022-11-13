@@ -334,9 +334,26 @@ export class UserSettings {
 		// Part of the user preferences are stored in the usersettings object while others are
 		// stored in the user object. For now clear everything out...
 		prefs.CustomPrefs = {};
-		const config = {};
-		return apiClient.updateUserConfiguration(userId, config).then(() => {
-			apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby');
+		let userConf = {};
+		
+		userConf.AudioLanguagePreference = "";
+		userConf.DisplayCollectionsView = false;
+		userConf.DisplayMissingEpisodes = false;
+		userConf.EnableLocalPassword = false;
+		userConf.EnableNextEpisodeAutoPlay = false;
+		userConf.GroupedFolders = [];
+		userConf.HidePlayedInLatest = false;
+		userConf.LatestItemsExcludes = [];
+		userConf.MyMediaExcludes = [];
+		userConf.OrderedViews = [];
+		userConf.PlayDefaultAudioTrack = true;
+		userConf.RememberAudioSelections = false;
+		userConf.RememberSubtitleSelections = false;
+		userConf.SubtitleLanguagePreference = "";
+		userConf.SubtitleMode = "Default";
+		
+		return apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby').finally(() => {
+			apiClient.updateUserConfiguration(userId, userConf);
 		});
     }
 
@@ -481,19 +498,6 @@ export class UserSettings {
     }
 	
 	/**
-     * Get or set 'Next Video autoplay' state.
-     * @param {boolean|undefined} val - Flag to enable 'Next Video autoplay' or undefined.
-     * @return {boolean} 'Next Video autoplay' state.
-     */
-    enableNextEpisodeAutoPlay(val) {
-        if (val !== undefined) {
-            return this.set('enableNextEpisodeAutoPlay', val.toString()); 
-        }
-
-        return toBoolean(this.get('enableNextEpisodeAutoPlay'), false);
-    }
-	
-	/**
      * Get or set 'Latitude' coordinate.
      * @param {boolean|undefined} val - Value to set 'Latitude' or undefined.
      * @return {boolean} 'Latitude' currently set.
@@ -583,7 +587,7 @@ export class UserSettings {
             return this.set('useCardLayoutInHomeSections', val.toString());
         }
 
-		return toBoolean(this.get('useCardLayoutInHomeSections'), true);
+		return toBoolean(this.get('useCardLayoutInHomeSections'), false);
     }
 	
 	    /**
@@ -1015,7 +1019,7 @@ export class UserSettings {
             return this.set('fastFadein', val.toString());
         }
 
-        return toBoolean(this.get('fastFadein'), true);
+        return toBoolean(this.get('fastFadein'), false);
     }
 
     /**
@@ -1084,7 +1088,7 @@ export class UserSettings {
             return this.set('enableRewatchingInNextUp', val, false);
         }
 
-         return toBoolean(this.get('enableRewatchingInNextUp', false), false);
+         return toBoolean(this.get('enableRewatchingInNextUp'), false);
     }
 	
     /**
@@ -1176,7 +1180,7 @@ export class UserSettings {
             return this.set('disableCustomCss', val.toString(), false);
         }
 
-        return toBoolean(this.get('disableCustomCss', false), false);
+        return toBoolean(this.get('disableCustomCss'), false);
     }
 	
 	/**
@@ -1219,7 +1223,7 @@ export class UserSettings {
             return this.set('detailsBanner', val.toString());
         }
 
-        return toBoolean(this.get('detailsBanner'), false);
+        return toBoolean(this.get('detailsBanner'));
     }
 
     /**
@@ -1383,7 +1387,7 @@ export class UserSettings {
             return this.set('screensaver', val.toString());
         }
 
-        return this.get('screensaver');
+        return this.get('screensaver') || 'none';
     }
 
     /**
@@ -1566,7 +1570,6 @@ export const preferFmp4HlsContainer = currentSettings.preferFmp4HlsContainer.bin
 export const enableCinemaMode = currentSettings.enableCinemaMode.bind(currentSettings);
 export const AudioLanguagePreference = currentSettings.AudioLanguagePreference.bind(currentSettings);
 export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOverlay.bind(currentSettings);
-export const enableNextEpisodeAutoPlay = currentSettings.enableNextEpisodeAutoPlay.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
 export const convertCountryCode = currentSettings.convertCountryCode.bind(currentSettings);

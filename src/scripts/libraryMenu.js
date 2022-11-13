@@ -40,8 +40,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         html += '<div class="headerLeft">';
 	
 		// Extra feature thought for the TV layout.
-		// That one locks the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerLockButton headerButtonRight hide"><span id="lock" class="material-icons lock_open"></span></button>';
+		// That one pin the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerPinButton headerButtonRight hide"><span id="pin" class="material-icons lock_open"></span></button>';
 		
 		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
@@ -188,7 +188,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		backdropContrastSlider = skinHeader.querySelector('#backdropContrastSlider');
 		backdropPlayPauseButton = skinHeader.querySelector('#backdropPlayPauseButton');
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
-		headerLockButton = skinHeader.querySelector('.headerLockButton');
+		headerPinButton = skinHeader.querySelector('.headerPinButton');
         headerSyncButton = skinHeader.querySelector('.headerSyncButton');
  
         //retranslateUi();
@@ -244,8 +244,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
             backdropPlayPauseButton.title = globalize.translate('BackdropPause');
 		if (headerReloadButton) 
 			headerReloadButton.title = globalize.translate('Reload');
-		if (headerLockButton)
-			headerLockButton.title = globalize.translate('LockHeader');
+		if (headerPinButton)
+			headerPinButton.title = globalize.translate('LockHeader');
     }
 
     export function updateUserInHeader(user) {
@@ -266,23 +266,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			updateHeaderUserButton(url); 
 		}
 		
-		if (headerLockButton)
-			headerLockButton.classList.remove('hide');
+		if (headerPinButton)
+			headerPinButton.classList.remove('hide');
 		
-		const lockIcon = document.getElementById("lock");
-		if (lockIcon) {
-			let id = user?.localUser?.Id;
-			
-			if (appSettings.get('lockHeader', id) === 'true') {
-				skinHeader.classList.add('locked');
-				lockIcon.classList.remove('lock_open');
-				lockIcon.classList.add('lock');
-			} else {
-				skinHeader.classList.remove('locked');
-				lockIcon.classList.remove('lock');
-				lockIcon.classList.add('lock_open');
-			}
-		}
+		const pinIcon = document.getElementById('pin');
+		if (pinIcon)
+			togglePin(false);
 
 		if (user && user.localUser) {
 			if (headerReloadButton)
@@ -299,19 +288,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			if (headerSearchButton)
 				headerSearchButton.classList.remove('hide');
 			
-			if (mainDrawerButton) {
-				if (!layoutManager.tv)
-					mainDrawerButton.classList.remove('hide');
-				else
-					mainDrawerButton.classList.add('hide');
-			}
+			if (mainDrawerButton)
+				mainDrawerButton.classList.toggle('hide', layoutManager.tv);
 			
-			if (headerCastButton) {
-				if (!layoutManager.tv) 
-					headerCastButton.classList.remove('hide');
-				else
-					headerCastButton.classList.add('hide');
-			}
+			if (headerCastButton)
+				headerCastButton.classList.toggle('hide', layoutManager.tv);
 
 			enableWeatherBot(enableWeatherBot());
 			
@@ -390,24 +371,19 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         inputManager.handleCommand('search');
     }
 	
-	function doLock() {
-		const lockIcon = document.getElementById("lock");
-		if (lockIcon) {
-			if (skinHeader.classList.contains('locked')) {
-				// remove feature
-				skinHeader.classList.remove('locked');
-				// update icon
-				lockIcon.classList.remove('lock');
-				lockIcon.classList.add('lock_open');
-				// make new setting persistent
-				appSettings.set('lockHeader', 'false', (currentUser && currentUser.localUser)? currentUser.localUser.Id : null);
-			} else {
-				skinHeader.classList.add('locked');
-				lockIcon.classList.remove('lock_open');
-				lockIcon.classList.add('lock');
-				appSettings.set('lockHeader', 'true', (currentUser && currentUser.localUser)? currentUser.localUser.Id : null);
-			}
+	function togglePin(TOGGLE) {
+		const pinIcon = document.getElementById("pin");
+		if (!pinIcon)
+			return;
+		
+		let _pinned = appSettings.pinMenubar();
+		if (TOGGLE === undefined || TOGGLE === true) {
+			_pinned = !_pinned;
+			appSettings.pinMenubar(_pinned);
 		}
+		
+		pinIcon.classList.toggle('lock_open', !_pinned);
+		pinIcon.classList.toggle('lock', _pinned);
 	}
 
     function onHeaderUserButtonClick() {
@@ -459,8 +435,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			headerReloadButton.addEventListener('click', () => {appRouter.reload()});
 		}
 		
-		if (headerLockButton) {
-			headerLockButton.addEventListener('click', doLock);
+		if (headerPinButton) {
+			headerPinButton.addEventListener('click', () => {togglePin(true);} );
 		}
 		
         headerUserButton.addEventListener('click', onHeaderUserButtonClick);
@@ -1208,7 +1184,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 	let backdropNextButton;
 	let backdropPlayPauseButton;
 	let headerReloadButton;
-	let headerLockButton;
+	let headerPinButton;
     let headerAudioPlayerButton;
     let headerSyncButton;
     const enableLibraryNavDrawer = layoutManager.desktop;

@@ -190,35 +190,37 @@ export function translateItemsForPlayback(apiClient, items, options) {
         }, queryOptions));
     } else if (firstItem.Type === 'Episode' && items.length === 1) {
         promise = new Promise(function (resolve, reject) {
-			if (!userSettings.enableNextEpisodeAutoPlay() || !firstItem.SeriesId) {
-				resolve(null);
-				return;
-			}
-
-			apiClient.getEpisodes(firstItem.SeriesId, {
-				IsVirtualUnaired: false,
-				IsMissing: false,
-				UserId: apiClient.getCurrentUserId(),
-				Fields: 'Chapters'
-			}).then(function (episodesResult) {
-				let foundItem = false;
-				episodesResult.Items = episodesResult.Items.filter(function (e) {
-					if (foundItem) {
-						return true;
-					}
-					if (e.Id === firstItem.Id) {
-						foundItem = true;
-						return true;
-					}
-
-					return false;
-				});
-				episodesResult.TotalRecordCount = episodesResult.Items.length;
-				if (!episodesResult.TotalRecordCount)
+			apiClient.getCurrentUser().then(function (user) {
+				if (!user.Configuration.EnableNextEpisodeAutoPlay || !firstItem.SeriesId) {
 					resolve(null);
-				resolve(episodesResult);
-			}, reject);
-        });
+					return;
+				}
+
+				apiClient.getEpisodes(firstItem.SeriesId, {
+					IsVirtualUnaired: false,
+					IsMissing: false,
+					UserId: apiClient.getCurrentUserId(),
+					Fields: 'Chapters'
+				}).then(function (episodesResult) {
+					let foundItem = false;
+					episodesResult.Items = episodesResult.Items.filter(function (e) {
+						if (foundItem) {
+							return true;
+						}
+						if (e.Id === firstItem.Id) {
+							foundItem = true;
+							return true;
+						}
+
+						return false;
+					});
+					episodesResult.TotalRecordCount = episodesResult.Items.length;
+					if (!episodesResult.TotalRecordCount)
+						resolve(null);
+					resolve(episodesResult);
+				}, reject);
+			});
+		});
     }
 
     if (promise) {
