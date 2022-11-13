@@ -381,7 +381,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			_pinned = !_pinned;
 			appSettings.pinMenubar(_pinned);
 		}
-		
+		skinHeader.classList.toggle('pinned', _pinned);
 		pinIcon.classList.toggle('lock_open', !_pinned);
 		pinIcon.classList.toggle('lock', _pinned);
 	}
