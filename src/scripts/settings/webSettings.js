@@ -159,6 +159,24 @@ export function getPresets() {
     });
 }
 
+export function loadUserPresets(templateName) {
+	if (!templateName)
+		return undefined;
+	
+	if (DefaultConfig?.userPresets)
+		return DefaultConfig.userPresets[templateName];
+	else {
+		console.error('Web config file is invalid, missing user configuration:', config);
+		return undefined;
+	}
+}
+
+export function listUserPresets() {
+	let list = [];
+	Object.keys(DefaultConfig.userPresets).forEach( x => {list.push(x)} );
+	return list;
+}
+
 export const getDefaultTheme = () => internalDefaultTheme;
 
 export const getDefaultPreset = () => internalDefaultPreset;

@@ -6,7 +6,7 @@ import { pageClassOn } from '../utils/dashboard';
 var _cache = {};
 
 function enabled() {
-    return userSettings.enableBackdrops() != 'None';
+    return userSettings.enableBackdrops() != 'none';
 }
 
 function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {

@@ -135,7 +135,7 @@ export function populateDictionaries(select, languages, view, val, ban) {
 		return 0;
 	});
 	
-	// Remove previous options but preserve special options such as 'none', 'auto', ...
+	// Remove previous options but preserve special options such as 'none', 'Auto', ...
 	Array.from(select.options).forEach( function(opt) {
 		if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
 			opt.remove();

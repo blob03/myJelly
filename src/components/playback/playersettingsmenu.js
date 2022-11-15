@@ -71,9 +71,9 @@ function showRepeatModeMenu(player, btn) {
     });
 
     menuItems.push({
-        name: globalize.translate('None'),
-        id: 'RepeatNone',
-        selected: currentValue === 'RepeatNone'
+        name: globalize.translate('none'),
+        id: 'Repeatnone',
+        selected: currentValue === 'Repeatnone'
     });
 
     return actionsheet.show({
@@ -217,7 +217,7 @@ function showWithUser(options, player, user) {
         menuItems.push({
             name: globalize.translate('RepeatMode'),
             id: 'repeatmode',
-            asideText: repeatMode === 'RepeatNone' ? globalize.translate('None') : globalize.translate('' + repeatMode)
+            asideText: repeatMode === 'Repeatnone' ? globalize.translate('none') : globalize.translate('' + repeatMode)
         });
     }
 

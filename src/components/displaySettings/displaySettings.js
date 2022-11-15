@@ -85,7 +85,7 @@ import './displaysettings.scss';
 			});
             
 			select.value = selectedTheme;
-			if (selectedTheme === 'Auto' || selectedTheme === 'None')
+			if (selectedTheme === 'Auto' || selectedTheme === 'none')
 				return;
 			
 			// If for some reasons selectedTheme doesn't exist anymore (eg. theme was renamed/deleted),
@@ -411,7 +411,7 @@ import './displaysettings.scss';
 		context.querySelector('#sliderAPIFrequency').value = userSettings.APIDelay();
 		context.querySelector('#selectSwiperFX').value = userSettings.swiperFX();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
-		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "None";
+		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "none";
 		context.querySelector('#sliderBackdropDelay').value = userSettings.backdropDelay();
 		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
 		self._savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';

@@ -17,7 +17,7 @@ import settingsHelper from '../../components/settingshelper';
     function populateCountries(selectCountry) {
         return ApiClient.getCountries().then(function(allCountries) {
             let html = '';
-			html += "<option value=''>" + globalize.translate('None') + "</option>";
+			html += "<option value=''>" + globalize.translate('none') + "</option>";
             for (let i = 0, length = allCountries.length; i < length; i++) {
                 const culture = allCountries[i];
                 html += "<option value='" + culture.TwoLetterISORegionName + "'>" + culture.DisplayName + '</option>';

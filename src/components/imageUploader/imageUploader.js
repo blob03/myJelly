@@ -96,7 +96,7 @@ import template from './imageUploader.template.html';
         const dlg = dom.parentWithClass(this, 'dialog');
 
         const imageType = dlg.querySelector('#selectImageType').value;
-        if (imageType === 'None') {
+        if (imageType === 'none') {
             toast(globalize.translate('MessageImageTypeNotSelected'));
             e.preventDefault();
             return false;

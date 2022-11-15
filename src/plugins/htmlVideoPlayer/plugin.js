@@ -1187,7 +1187,7 @@ function tryRemoveElement(elem) {
                 subtitleAppearanceHelper.applyStyles({
                     text: innerElem,
                     window: elem
-                }, userSettings.getSubtitleAppearanceSettings());
+                }, userSettings.getSubtitlesAppearance());
             });
         }
 
@@ -1214,7 +1214,7 @@ function tryRemoveElement(elem) {
                     document.getElementsByTagName('head')[0].appendChild(styleElem);
                 }
 
-                styleElem.innerHTML = this.getCueCss(subtitleAppearanceHelper.getStyles(userSettings.getSubtitleAppearanceSettings()), '.htmlvideoplayer');
+                styleElem.innerHTML = this.getCueCss(subtitleAppearanceHelper.getStyles(userSettings.getSubtitlesAppearance()), '.htmlvideoplayer');
             });
         }
 
@@ -1263,7 +1263,7 @@ function tryRemoveElement(elem) {
                     // show in ui
                     console.debug(`downloaded ${data.TrackEvents.length} track events`);
 
-                    const subtitleAppearance = userSettings.getSubtitleAppearanceSettings();
+                    const subtitleAppearance = userSettings.getSubtitlesAppearance();
                     const cueLine = parseInt(subtitleAppearance.verticalPosition, 10);
 
                     // add some cues to show the text

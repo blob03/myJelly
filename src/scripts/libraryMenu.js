@@ -304,7 +304,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 				// SyncPlay plugin is loaded
 				&& pluginManager.plugins.filter(plugin => plugin.id === 'syncplay').length > 0
 				// SyncPlay enabled for user
-				&& policy?.SyncPlayAccess !== 'None'
+				&& policy?.SyncPlayAccess !== 'none'
 			) {
 				headerSyncButton.classList.remove('hide');
 			}
@@ -1319,7 +1319,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			currentUser = user;
 			globalize.updateCurrentCulture();
 			updateUserInHeader(user);
-			//placeClock(0);
 			enableClock(enableClock());
 			WB_init();
 			enableWeatherBot(enableWeatherBot());

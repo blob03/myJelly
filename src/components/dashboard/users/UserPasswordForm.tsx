@@ -8,8 +8,10 @@ import loading from '../../loading/loading';
 import toast from '../../toast/toast';
 import ButtonElement from '../../../elements/ButtonElement';
 import CheckBoxElement from '../../../elements/CheckBoxElement';
+import SelectElement from '../../../elements/SelectElement';
 import InputElement from '../../../elements/InputElement';
 import * as userSettings from '../../../scripts/settings/userSettings';
+import { listUserPresets } from '../../../scripts/settings/webSettings';
 import viewContainer from '../../viewContainer';
 
 type IProps = {
@@ -209,6 +211,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
             const msg = globalize.translate('SettingsResetConfirmation');
             confirm(msg, globalize.translate('HeaderResetSettings')).then(function () {
                 loading.show();
+				const userPresets = (page.querySelector('#selectPresets') as HTMLSelectElement).value;
 				let _uSettings = userSettings.currentSettings;
 				let _uid = _uSettings.getCurrentUserId();
 				if (_uid !== userId) {
@@ -219,7 +222,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 						_uid = userId;
 						const _ac = window.ApiClient;
 						_uSettings.setUserInfo(_uid, _ac).then(() => {
-							_uSettings.resetUserInfo(_uid).then(() => {
+							_uSettings.resetUserInfo(_uid, userPresets).then(() => {
 								loading.hide();
 								Dashboard.alert({
 									message: globalize.translate('SettingsResetComplete'),
@@ -231,7 +234,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 						});
 					}
 				} else {
-					_uSettings.resetUserInfo(_uid).then(() => {
+					_uSettings.resetUserInfo(_uid, userPresets).then(() => {
 						loading.hide();
 						Dashboard.alert({
 							message: globalize.translate('SettingsResetComplete'),
@@ -252,6 +255,19 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
         (page.querySelector('#btnResetPassword') as HTMLButtonElement).addEventListener('click', resetPassword);
 		(page.querySelector('#btnResetSettings') as HTMLButtonElement).addEventListener('click', resetSettings);
     }, [loadUser, userId]);
+
+	const optionConfigPresets = () => {
+		let content = '';
+		const list = listUserPresets();
+		content += `<option value=''>${globalize.translate('Default')}</option>`;
+		content += `<option disabled>${globalize.translate('OptionDivider')}</option>`;
+		if (list) {
+			for (const x of list) {
+				content += `<option value='${x}'>${x}</option>`;
+			}
+		}
+		return content;
+	};
 
     return (
         <div ref={element}>
@@ -370,6 +386,18 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 						</u>
                     </div>
                     <br />
+					<div className='selectContainer'>
+						<SelectElement
+							id='selectPresets'
+							label='LabelUserPresets'
+						>
+                            {optionConfigPresets()}
+                        </SelectElement>
+                        <div className='fieldDescription'>
+                            {globalize.translate('LabelUserPresetsHelp')}
+                        </div>
+                    </div>
+					<br />
                     <div>
                         <ButtonElement
                             type='button'

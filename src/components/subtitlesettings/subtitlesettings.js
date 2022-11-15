@@ -456,13 +456,12 @@ function save(self) {
 	const context = self.options.element;
     const apiClient = self.options.apiClient;
 	const enableSaveConfirmation = self.options.enableSaveConfirmation;
-	const appearanceKey = self.options.appearanceKey;
 	
 	appSettings.set('subtitleburnin', context.querySelector('#selectSubtitleBurnIn').value);
 	
-    let appearanceSettings = userSettings.getSubtitleAppearanceSettings(appearanceKey);
+    let appearanceSettings = userSettings.getSubtitlesAppearance();
     appearanceSettings = Object.assign(appearanceSettings, getSubtitleAppearanceObject(context));
-    userSettings.setSubtitleAppearanceSettings(appearanceSettings, appearanceKey);
+    userSettings.setSubtitlesAppearance(appearanceSettings);
 
 	user.Configuration.RememberSubtitleSelections = context.querySelector('.chkRememberSubtitleSelections').checked;
     user.Configuration.SubtitleLanguagePreference = context.querySelector('#selectSubtitleLanguage').value;
@@ -631,7 +630,7 @@ export class SubtitleSettings {
 
 	loadData(autoFocus) {
 		loading.show();
-		this.appearanceSettings = this.options.userSettings.getSubtitleAppearanceSettings(this.options.appearanceKey);
+		this.appearanceSettings = this.options.userSettings.getSubtitlesAppearance();
 		loadForm(this);
 		if (autoFocus)
 			focusManager.autoFocus(this.options.element);

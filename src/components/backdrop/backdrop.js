@@ -129,7 +129,7 @@ import './backdrop.scss';
 					break;
 				
 				default:
-				case 'None':
+				case 'none':
 					break;
 			}
         }
@@ -205,7 +205,7 @@ import './backdrop.scss';
 				break;
 				
 			default:
-			case 'None':
+			case 'none':
 				break;
 		};
 	}
@@ -566,7 +566,7 @@ import './backdrop.scss';
 export const TRANSPARENCY_LEVEL = {
     Full: 'full',
     Backdrop: 'backdrop',
-    None: 'none'
+    none: 'none'
 };
 
 

@@ -29,7 +29,7 @@ class Manager {
         this.queueCore = new QueueCore();
         this.controller = new Controller();
 
-        this.syncMethod = 'None'; // Used for stats.
+        this.syncMethod = 'none'; // Used for stats.
 
         this.groupInfo = null;
         this.syncPlayEnabledAt = null; // Server time of when SyncPlay has been enabled.
@@ -490,7 +490,7 @@ class Manager {
      * Emits an event to clear the SyncPlay status icon.
      */
     clearSyncIcon() {
-        this.syncMethod = 'None';
+        this.syncMethod = 'none';
         Events.trigger(this, 'syncing', [false, this.syncMethod]);
     }
 }

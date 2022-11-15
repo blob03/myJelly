@@ -349,7 +349,7 @@ class CastPlayer {
         }
 
         if (message.options && message.options.items) {
-            message.subtitleAppearance = userSettings.getSubtitleAppearanceSettings();
+            message.subtitleAppearance = userSettings.getSubtitlesAppearance();
             message.subtitleBurnIn = appSettings.get('subtitleburnin') || '';
         }
 

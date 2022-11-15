@@ -1,4 +1,5 @@
 import appSettings from './appSettings';
+import { loadUserPresets, listUserPresets } from './webSettings';
 import Events from '../../utils/events.ts';
 import { toBoolean, toPrecision } from '../../utils/string.ts';
 import globalize from '../globalize';
@@ -17,10 +18,6 @@ function saveServerPreferences(instance) {
 
     instance.saveTimeout = setTimeout(onSaveTimeout.bind(instance), 50);
 }
-
-const defaultSubtitleAppearanceSettings = {
-	verticalPosition: -1
-};
 
 function hdrClock() {
 	const x = new Date();
@@ -315,7 +312,7 @@ export class UserSettings {
 	* @param {string} - User identifier.
 	* @param {Object} - ApiClient instance.
 	*/
-    resetUserInfo(userId) {
+    resetUserInfo(userId, presetsName) {
         if (!userId)
 			userId = this.currentUserId;
 		let apiClient = this.currentApiClient;
@@ -327,15 +324,9 @@ export class UserSettings {
 		if (this.saveTimeout) {
             clearTimeout(this.saveTimeout);
         } 
-	
-		//Object.entries(prefs.CustomPrefs).forEach(([key, value]) => {
-		//	prefs.CustomPrefs[key] = '';
-		//});
-		// Part of the user preferences are stored in the usersettings object while others are
-		// stored in the user object. For now clear everything out...
-		prefs.CustomPrefs = {};
+
+		// user.Configuration contains configuration used by the server code.
 		let userConf = {};
-		
 		userConf.AudioLanguagePreference = "";
 		userConf.DisplayCollectionsView = false;
 		userConf.DisplayMissingEpisodes = false;
@@ -351,11 +342,54 @@ export class UserSettings {
 		userConf.RememberSubtitleSelections = false;
 		userConf.SubtitleLanguagePreference = "";
 		userConf.SubtitleMode = "Default";
+		userConf = { ...userConf };
 		
-		return apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby').finally(() => {
-			apiClient.updateUserConfiguration(userId, userConf);
+		// usersettings.CustomPrefs contains parameters for the web client.
+		let userPrefs = {};
+		userPrefs.APIDelay = "15";
+		userPrefs.appTheme = "";
+		userPrefs.backdropDelay = "150";
+		userPrefs.backdropWidget = "0";
+		userPrefs.blurhash = "8";
+		userPrefs.chromecastVersion = "stable";
+		userPrefs.clock = "0";
+		userPrefs.clock_pos = "0";
+		userPrefs.dashboardTheme = "";
+		userPrefs.datetimelocale = "";
+		userPrefs.detailsBanner = "false";
+		userPrefs.enableBackdrops = "none";
+		userPrefs.enableNextVideoInfoOverlay = "false";
+		userPrefs.enableThemeSongs = "false";
+		userPrefs.enableThemeVideos = "false";
+		userPrefs.fastFadein = "false";
+		userPrefs.latitude = "";
+		userPrefs.libraryPageSize = "";
+		userPrefs.longitude = "";
+		userPrefs.screensaver = "none";
+		userPrefs.screensaverTime = "0";
+		userPrefs.skipBackLength = "";
+		userPrefs.skipForwardLength = "";
+		userPrefs.subtitlesAppearance = "{}";
+		userPrefs.swiperDelay = "";
+		userPrefs.swiperFX = "horizontal";
+		userPrefs.tvhome = "";
+		userPrefs.weatherApiKey = "";
+		userPrefs.weatherbot = "0";
+		prefs.CustomPrefs = { ...userPrefs };
+		
+		const x = loadUserPresets(presetsName);
+		if (x?.userPrefs)
+			prefs.CustomPrefs = { ...userPrefs, ...x.userPrefs };
+		if (x?.userConf)
+			userConf = { ...userConf, ...x.userConf };
+	
+		return apiClient.updateUserConfiguration(userId, userConf).then( () => {
+			apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby').then( () => {
+				enableClock(enableClock());
+				enableWeatherBot(enableWeatherBot());
+			});
 		});
-    }
+	}
 
     // FIXME: Seems unused
     getData() {
@@ -1031,8 +1065,9 @@ export class UserSettings {
 		if (val !== undefined) 
             return this.set('blurhash', parseInt(val, 10));
         
-		const blurhash = parseInt(this.get('blurhash'), 10) || 8;
-		if (blurhash < 0 || blurhash > 32) 
+		const blurhash = parseInt(this.get('blurhash'), 10);
+		// 0 is a valid value.
+		if (blurhash == NaN || blurhash < 0 || blurhash > 32) 
 			return 8; // default to 8 (performance).
         else 
             return blurhash;
@@ -1054,7 +1089,7 @@ export class UserSettings {
         
 		const bw = parseInt(this.get('backdropWidget'), 10) || 0;
 		if (bw < 0 || bw > 7) 
-			return 0; // default to 0 (None).
+			return 0; // default to 0 (none).
         else 
             return bw;
     }
@@ -1167,7 +1202,7 @@ export class UserSettings {
 		if (enableBackdrops && typeof(enableBackdrops) === 'string') 
 			return enableBackdrops; 
         else 
-            return 'None'; 
+            return 'none'; 
     }
 	
 	/**
@@ -1497,9 +1532,9 @@ export class UserSettings {
      * @param {string|undefined} key - Settings key.
      * @return {Object} Subtitle appearance settings.
      */
-    getSubtitleAppearanceSettings(key) {
-        key = key || 'localplayersubtitleappearance3';
-        return Object.assign(defaultSubtitleAppearanceSettings, JSON.parse(this.get(key) || '{}'));
+    getSubtitlesAppearance() {
+		const defaultSubtitlesAppearance = { verticalPosition: -1 };
+        return Object.assign(defaultSubtitlesAppearance, JSON.parse(this.get('subtitlesAppearance')));
     }
 
     /**
@@ -1507,9 +1542,8 @@ export class UserSettings {
      * @param {Object} value - Subtitle appearance settings.
      * @param {string|undefined} key - Settings key.
      */
-    setSubtitleAppearanceSettings(value, key) {
-        key = key || 'localplayersubtitleappearance3';
-        return this.set(key, JSON.stringify(value));
+    setSubtitlesAppearance(value) {
+        return this.set('subtitlesAppearance', JSON.stringify(value));
     }
 
     /**
@@ -1615,8 +1649,8 @@ export const maxDaysForNextUp = currentSettings.maxDaysForNextUp.bind(currentSet
 export const soundEffects = currentSettings.soundEffects.bind(currentSettings);
 export const loadQuerySettings = currentSettings.loadQuerySettings.bind(currentSettings);
 export const saveQuerySettings = currentSettings.saveQuerySettings.bind(currentSettings);
-export const getSubtitleAppearanceSettings = currentSettings.getSubtitleAppearanceSettings.bind(currentSettings);
-export const setSubtitleAppearanceSettings = currentSettings.setSubtitleAppearanceSettings.bind(currentSettings);
+export const getSubtitlesAppearance = currentSettings.getSubtitlesAppearance.bind(currentSettings);
+export const setSubtitlesAppearance = currentSettings.setSubtitlesAppearance.bind(currentSettings);
 export const getComicsPlayerSettings = currentSettings.getComicsPlayerSettings.bind(currentSettings);
 export const setComicsPlayerSettings = currentSettings.setComicsPlayerSettings.bind(currentSettings);
 export const setFilter = currentSettings.setFilter.bind(currentSettings);

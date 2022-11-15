@@ -8,7 +8,7 @@ import alert from '../../components/alert';
 /* eslint-disable indent */
 
     function loadPage(page, config, users) {
-        let html = '<option value="" selected="selected">' + globalize.translate('None') + '</option>';
+        let html = '<option value="" selected="selected">' + globalize.translate('none') + '</option>';
         html += users.map(function (user) {
             return '<option value="' + user.Id + '">' + user.Name + '</option>';
         }).join('');
