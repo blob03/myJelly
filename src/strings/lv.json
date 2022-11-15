@@ -1126,7 +1126,6 @@
     "OptionImdbRating": "IMDb Vērtējums",
     "OptionIsHD": "HD",
     "OptionIsSD": "SD",
-    "OptionLikes": "Patīk",
     "OptionLoginAttemptsBeforeLockout": "Nosaka, cik daudz nepareizi piekļuves mēģinājumi var notikt pirms notiek bloķēšana.",
     "OptionLoginAttemptsBeforeLockoutHelp": "Vērtība nulle nozīmē noklusējuma trīs mēģinājumu priekš lietotājiem un piecu priekš administratoriem izmantošanu. Uzstādot uz -1 atspējos funkciju.",
     "OptionMax": "Maksimums",

@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-11",
+	"version": "10.8.7-12",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -146,6 +146,7 @@
 		"10.8.7-8": "Synchronize translations.\nFix links let without event handler (user menu).\nReset cached views upon logout to avoid confusions when signing in and out with multiples accounts.",
 		"10.8.7-9": "Synchronize translations.\nEnable reset of server-side user configuration (stored in user obj).\nCode cleanup and optimization (user pages).",
 		"10.8.7-10": "Restore menu bar pin that got broken by latest update.",
-		"10.8.7-11": "Users are offered a list of configuration templates which they install by doing a configuration reset (Profile settings).\nProposed templates are defined in config.json and therefore can be easily customized by admins.\nFix Blurhash factor that couldn't be set to 0 (Display settings).\nFix many minor issues."
+		"10.8.7-11": "Users are offered a list of configuration templates which they install by doing a configuration reset (Profile settings).\nProposed templates are defined in config.json and therefore can be easily customized by admins.\nFix Blurhash factor that couldn't be set to 0 (Display settings).\nFix many minor issues.",
+		"10.8.7-12": "Synchronize translations.\nApply patch 'nielsvanvelzen/leftover-likes'.\nApply patch 'nielsvanvelzen/seriesstatus-extended'.\nApply patch 'thornbill/convert-plugin-config'.\nApply patch 'jsayol/patch-1'."
 	}
 }

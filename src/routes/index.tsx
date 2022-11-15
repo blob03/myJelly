@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import ConnectionRequired from '../components/ConnectionRequired';
+import ServerContentPage from '../components/ServerContentPage';
 import { LEGACY_ADMIN_ROUTES, LEGACY_USER_ROUTES, toViewManagerPageRoute } from './legacyRoutes';
 import ViewManagerPage from '../components/viewManager/ViewManagerPage';
 import Search from './search';
@@ -36,6 +37,9 @@ const AppRoutes = () => (
                 <Route path='userlibraryaccess.html' element={<UserLibraryAccess />} />
                 <Route path='userparentalcontrol.html' element={<UserParentalControl />} />
                 <Route path='userpassword.html' element={<UserPassword />} />
+				<Route path='configurationpage' element={
+                    <ServerContentPage view='/web/configurationpage' />
+                } />
 				
 				{LEGACY_ADMIN_ROUTES.map(toViewManagerPageRoute)}
             </Route>
