@@ -1602,6 +1602,7 @@
     "Unmute": "Rétablir le son",
     "Unplayed": "Non lu",
     "Unrated": "Non noté",
+    "Unreleased": "Pas encore diffusé",
     "UnsupportedPlayback": "Jellyfin ne peut pas décoder du contenu protégé par un système de gestion des droits numériques, mais une tentative de lecture sera effectuée sur tout le contenu, y compris les titres protégés. Certains fichiers peuvent apparaître complètement noir du fait de protections ou de fonctionnalités non supportées comme les titres interactifs.",
     "Up": "Haut",
     "Upload": "Téléverser",

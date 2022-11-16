@@ -63,6 +63,7 @@
     "AudioBitrateNotSupported": "Heli bitikiirust ei toetata",
     "AudioChannelsNotSupported": "Helikanalite arvu ei toetata",
     "AudioCodecNotSupported": "Helikoodekit ei toetata",
+    "AudioIsExternal": "Heliriba on väline",
     "AudioProfileNotSupported": "Helikoodeki profiili ei toetata",
     "AudioSampleRateNotSupported": "Heli diskreetimissagedust ei toetata",
     "AuthProviderHelp": "Vali selle kasutaja parooli autentimiseks kasutatav autentimisteenuse pakkuja.",

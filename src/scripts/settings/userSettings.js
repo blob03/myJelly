@@ -1534,7 +1534,7 @@ export class UserSettings {
      */
     getSubtitlesAppearance() {
 		const defaultSubtitlesAppearance = { verticalPosition: -1 };
-        return Object.assign(defaultSubtitlesAppearance, JSON.parse(this.get('subtitlesAppearance')));
+        return Object.assign(defaultSubtitlesAppearance, JSON.parse(this.get('subtitlesAppearance') || '{}'));
     }
 
     /**

@@ -262,6 +262,15 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 		content += `<option value=''>${globalize.translate('Default')}</option>`;
 		content += `<option disabled>${globalize.translate('OptionDivider')}</option>`;
 		if (list) {
+			list.sort((a, b) => {
+				let fa = a.toLowerCase(),
+				fb = b.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
 			for (const x of list) {
 				content += `<option value='${x}'>${x}</option>`;
 			}

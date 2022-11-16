@@ -1602,6 +1602,7 @@
     "Unmute": "Hangosít",
     "Unplayed": "Nem játszott",
     "Unrated": "Besorolatlan",
+    "Unreleased": "Még nem jelent meg",
     "UnsupportedPlayback": "A Jellyfin nem tudja feloldani a DRM-mel védett tartalmak titkosítását, de ettől függetlenül mindig megpróbálja a lejátszást, a védett címek esetén is. Néhány fájl emiatt teljesen feketeként jelenhet meg a titkosítás vagy a nem támogatott funkciók miatt, például az interaktív címeknél.",
     "Up": "Fel",
     "Upload": "Feltöltés",

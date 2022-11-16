@@ -245,6 +245,7 @@
     "EnableBackdropsHelp": "Näytä taustoja joillakin sivuilla kirjastoa selatessasi.",
     "EnableBlurHash": "Ota sumennetut paikkamerkit käyttöön kuville",
     "EnableBlurHashHelp": "Kuvat, joita ladataan vielä, näytetään yksilöllisellä paikkamerkillä.",
+    "EnableCardLayout": "Näytä visuaalinen KorttiLaatikko",
     "EnableCinemaMode": "Teatteritila",
     "EnableColorCodedBackgrounds": "Värikoodatut taustat",
     "EnableDecodingColorDepth10Hevc": "Käytä 10-bittistä laitteistopurkua (HEVC)",
