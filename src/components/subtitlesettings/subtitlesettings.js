@@ -212,12 +212,30 @@ false,
 
 ];
 
-function loadColors(context) {
+function loadColors(context) { 
 	const subColor = context.querySelector('#inputTextColor');
 	const subBGcolor = context.querySelector('#inputTextBackground');
 	const subSTRcolor = context.querySelector('#inputTextStroke');
 	const subSHAcolor = context.querySelector('#inputShadowColor');
 	
+	// Remove previous options but preserve special options such as 'none', 'Auto', ...
+	Array.from(subColor.options).forEach( (opt) => {
+		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
+			opt.remove();
+	});
+	Array.from(subBGcolor.options).forEach( (opt) => {
+		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
+			opt.remove();
+	});
+	Array.from(subSTRcolor.options).forEach( (opt) => {
+		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
+			opt.remove();
+	});
+	Array.from(subSHAcolor.options).forEach( (opt) => {
+		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
+			opt.remove();
+	});
+		
 	for (const COLOR of CSS_COLOR_NAMES) {
 		let w = document.createElement("option");
 		let x = document.createElement("option");
@@ -268,8 +286,8 @@ function loadColors(context) {
 	}
 }
 
-function fillPresets(select, selectedPreset) {
-	skinManager.getPresets().then(presets => {
+function fillSubsPresets(select, selectedPreset) {
+	skinManager.getPresets().then(presets => { 
 		
 		presets.sort((a, b) => {
 			let fa = a.name.toLowerCase(),
@@ -279,6 +297,12 @@ function fillPresets(select, selectedPreset) {
 			if (fa > fb) 
 				return 1;
 			return 0;
+		});
+		
+		// Remove previous options but preserve special options such as 'none', 'Auto', ...
+		Array.from(select.options).forEach( (opt) => {
+			if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
+				opt.remove();
 		});
 		
 		presets.forEach(t => {
@@ -439,7 +463,7 @@ function loadForm(self) {
 	selectSubtitleLanguage.dispatchEvent(event_change);
 
 	let selectSubPreset =  context.querySelector('#selectSubtitlePreset');
-	fillPresets(selectSubPreset, appearanceSettings.preset);
+	fillSubsPresets(selectSubPreset, appearanceSettings.preset);
 	selectSubPreset.addEventListener('change', onSubPresetChange);
 	
 	selectSubPreset.dispatchEvent(event_change);

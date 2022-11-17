@@ -40,6 +40,12 @@ import template from './playbackSettings.template.html';
 
         });
 
+		// Remove previous options but preserve special options such as 'none', 'Auto', ...
+		Array.from(select.options).forEach( (opt) => {
+			if (opt.value !== '' && !opt.value !== 'none' && !opt.disabled)
+				opt.remove();
+		});
+		
         select.innerHTML += options.map(i => {
             // render empty string instead of 0 for the auto option
             return (i.bitrate?`<option value="${i.bitrate}">${i.name}</option>`:'');
@@ -65,6 +71,12 @@ import template from './playbackSettings.template.html';
             maxVideoWidth
         });
 
+		// Remove previous options but preserve special options such as 'none', 'Auto', ...
+		Array.from(select.options).forEach( (opt) => {
+			if (opt.value !== '' && !opt.value !== 'none' && opt.value !== 'any')
+				opt.remove();
+		});
+		
         select.innerHTML += options.map(i => {
             // render empty string instead of 0 for the auto option
             return (i.bitrate?`<option value="${i.bitrate || ''}">${i.name}</option>`:'');

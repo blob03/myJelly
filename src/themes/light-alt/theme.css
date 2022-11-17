@@ -394,7 +394,7 @@ html {
 
 .material-icons {
 	color: #fff;
-	text-shadow: .15em .15em 4px #8b9571;
+	text-shadow: .15em .15em 4px #bec8a6;
 }
 
 .material-icons.navMenuOptionIcon.notifications {
@@ -630,7 +630,7 @@ html {
 .headerClock,
 .headerClock > .material-icons {
 	color: rgb(78, 98, 117) !important;
-	text-shadow: .1em .2em 4px #939c7e !important;
+	text-shadow: .1em .2em 4px #bec8a6 !important;
 }
 
 .headerClockMode1 {
@@ -1227,7 +1227,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	color: #686968;
 	font-weight: 600;
 	font-size: 1.7rem;
-	text-shadow: .1em .1em 4px #8b9571;
+	text-shadow: .1em .1em 4px #bec8a6;
 }
 
 .paperList,
@@ -1386,7 +1386,7 @@ select option:selected {
 
 .headerWthMain {
 	color: rgb(78, 98, 117) !important;
-	text-shadow: .1em .2em 4px #56613a !important;
+	text-shadow: .1em .2em 4px #bec8a6 !important;
 }
 
 .headerWthButton > fieldset {

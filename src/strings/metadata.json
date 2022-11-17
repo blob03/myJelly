@@ -2537,17 +2537,17 @@
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "fsize": 104096,
+        "fsize": 104130,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
         "displayNativeName": "中文",
         "ISO6391": "zh-CN",
         "ISO6392": "chi",
-        "keys#": 1671,
-        "completed%": 93.4,
+        "keys#": 1672,
+        "completed%": 93.46,
         "jellyfinWeb": {
             "filename": "zh-CN.json",
-            "keys#": 1671,
+            "keys#": 1672,
             "orphans#": 14,
             "orphans": [
                 "ButtonNetwork",
@@ -2565,7 +2565,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.94
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

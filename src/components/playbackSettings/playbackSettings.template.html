@@ -8,10 +8,10 @@
             <select is="emby-select" id="selectAllowedAudioChannels" label="${LabelAllowedAudioChannels}">
                 <option value="-1">${Auto}</option>
 				<option disabled>${OptionDivider}</option>
-                <option value="1">${LabelSelectMono}</option>
-                <option value="2">${LabelSelectStereo}</option>
-                <option value="6">5.1 ${LabelSelectAudioChannels}</option>
-                <option value="8">7.1 ${LabelSelectAudioChannels}</option>
+				<option value="8">7.1 ${LabelSelectAudioChannels}</option>
+				<option value="6">5.1 ${LabelSelectAudioChannels}</option>
+				<option value="2">${LabelSelectStereo}</option>
+				<option value="1">${LabelSelectMono}</option>
             </select>
         </div>
 
@@ -70,12 +70,13 @@
 				<select is="emby-select" class="selectLabelMaxVideoWidth" label="${LabelMaxVideoResolution}">
 					<option value="0">${Auto}</option>
 					<option value="-1">${ScreenResolution}</option>
-					<option value="640">360p</option>
-					<option value="852">480p</option>
-					<option value="1280">720p</option>
-					<option value="1920">1080p</option>
-					<option value="3840">4K</option>
+					<option disabled>${OptionDivider}</option>
 					<option value="7680">8K</option>
+					<option value="3840">4K</option>
+					<option value="1920">1080p</option>
+					<option value="1280">720p</option>
+					<option value="852">480p</option>
+					<option value="640">360p</option>
 				</select>
 			</div>
         </div>

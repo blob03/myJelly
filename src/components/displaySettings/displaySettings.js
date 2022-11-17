@@ -34,8 +34,8 @@ import './displaysettings.scss';
 			
 			// Remove previous options but preserve special options such as 'none', 'Auto', ...
 			Array.from(select.options).forEach( (opt) => {
-				if (opt.value !== '' && opt.value !== 'none')
-				opt.remove();
+				if (opt.value !== '' && opt.value !== 'none' || opt.divider)
+					opt.remove();
 			});
 	
 			themes.forEach( x => {
@@ -57,7 +57,6 @@ import './displaysettings.scss';
 				} else {
 					w.text = "-------------\u00A0\u00A0\u00A0" + x;
 					w.disabled = true;
-					//w.style.fontWeight = "bold";
 					w.style.fontSize = "120%";
 					w.style.fontFamily = "quicksand";
 					select.options.add(w, undefined);
@@ -192,7 +191,7 @@ import './displaysettings.scss';
 		
 		// Remove previous options but preserve special options such as 'none', 'Auto', ...
 		Array.from(select.options).forEach( (opt) => {
-			if (opt.value !== '' && opt.value !== 'none' && opt.value !== 'any')
+			if (opt.value !== '' && opt.value !== 'none' && opt.value !== 'any' || opt.divider)
 			opt.remove();
 		});
 
