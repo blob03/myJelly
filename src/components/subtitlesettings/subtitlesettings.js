@@ -541,27 +541,29 @@ function onLanguageFieldChange(e) {
 }
 
 function showSubtitlePreview(persistent) {
-	if (this.subtitlePreviewTimer)
-		clearTimeout(this.subtitlePreviewTimer);
+    clearTimeout(this.subtitlePreviewTimer);
 
     this._fullPreview.classList.remove('subtitleappearance-fullpreview-hide');
 
-    if (persistent) 
-		++this._refFullPreview;
-    if (this._refFullPreview === 0) 
+    if (persistent) {
+        this._refFullPreview++;
+    }
+
+    if (this._refFullPreview === 0) {
         this.subtitlePreviewTimer = setTimeout(hideSubtitlePreview.bind(this), this.subtitlePreviewDelay);
+    }
 }
 
 function hideSubtitlePreview(persistent) {
-	if (this.subtitlePreviewTimer)
-		clearTimeout(this.subtitlePreviewTimer);
+    clearTimeout(this.subtitlePreviewTimer);
 
     if (persistent) {
-		if (--this._refFullPreview < 0)
-			this._refFullPreview = 0;
+        this._refFullPreview--;
     }
-    if (this._refFullPreview === 0) 
+
+    if (this._refFullPreview === 0) {
         this._fullPreview.classList.add('subtitleappearance-fullpreview-hide');
+    }
 }
 
 function embed(self) {
@@ -589,7 +591,6 @@ function embed(self) {
         options.element.querySelector('.subtitleAppearanceSection').classList.remove('hide');
 
         self._fullPreview = options.element.querySelector('.subtitleappearance-fullpreview');
-        self._refFullPreview = 0;
         
 		const sliderVerticalPosition = options.element.querySelector('#sliderVerticalPosition');
         sliderVerticalPosition.addEventListener('input', onAppearanceFieldChange);
@@ -623,6 +624,7 @@ export class SubtitleSettings {
     constructor(options) {
         this.options = options;
 		this.subtitlePreviewDelay = 1000;
+		this.subtitlePreviewTimer = undefined;
 		this.currentUser = options.currentUser;
 		this.adminEdit = options.adminEdit;
         embed(this);
@@ -631,6 +633,7 @@ export class SubtitleSettings {
 	loadData(autoFocus) {
 		loading.show();
 		this.appearanceSettings = this.options.userSettings.getSubtitlesAppearance();
+		this._refFullPreview = 0;
 		loadForm(this);
 		if (autoFocus)
 			focusManager.autoFocus(this.options.element);

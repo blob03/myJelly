@@ -32,6 +32,12 @@ import './displaysettings.scss';
 			let groups = {};
 			const dflgroup = "Jellyfin-web";
 			
+			// Remove previous options but preserve special options such as 'none', 'Auto', ...
+			Array.from(select.options).forEach( (opt) => {
+				if (opt.value !== '' && opt.value !== 'none')
+				opt.remove();
+			});
+	
 			themes.forEach( x => {
 				let grp = dflgroup;
 				if (x.group)
@@ -182,6 +188,12 @@ import './displaysettings.scss';
 			if (!groups[grp])
 				groups[grp] = [];
 			groups[grp].push(x);
+		});
+		
+		// Remove previous options but preserve special options such as 'none', 'Auto', ...
+		Array.from(select.options).forEach( (opt) => {
+			if (opt.value !== '' && opt.value !== 'none' && opt.value !== 'any')
+			opt.remove();
 		});
 
 		let ngroups = Object.keys(groups);

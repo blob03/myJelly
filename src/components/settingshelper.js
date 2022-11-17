@@ -21,6 +21,12 @@ export function populateLanguages(select, languages, view, val) {
 		return 0;
 	});
 	
+	// Remove previous options but preserve special options such as 'none', 'Auto', ...
+	Array.from(select.options).forEach( function(opt) {
+		if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
+			opt.remove();
+	});
+	
 	order.forEach(item => {
 		let ISOName = languages[item].ISO6391;
 		let w = document.createElement("option");
@@ -55,6 +61,12 @@ export function populateServerLanguages(select, languages, view, val) {
 		if (fa > fb) 
 			return 1;
 		return 0;
+	});
+	
+	// Remove previous options but preserve special options such as 'none', 'Auto', ...
+	Array.from(select.options).forEach( function(opt) {
+		if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
+			opt.remove();
 	});
 	
 	order.forEach(item => {
@@ -95,6 +107,12 @@ export function populateSubsLanguages(select, languages, view, val) {
 		if (fa > fb) 
 			return 1;
 		return 0;
+	});
+	
+	// Remove previous options but preserve special options such as 'none', 'Auto', ...
+	Array.from(select.options).forEach( function(opt) {
+		if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
+			opt.remove();
 	});
 
 	order.forEach(item => {

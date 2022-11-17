@@ -11,7 +11,7 @@
 .skinHeader,
 html {
     color: #8997ae;
-	background-color: #202020;
+	background-color: #dce3ee;
 }
 
 ::-moz-selection { 
@@ -40,7 +40,7 @@ html {
 }
 
 .skinHeader-withBackground {
-	background-color: #202020;
+	background-color: #eef0e5;
     color: #fff;
     -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
     box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
@@ -63,7 +63,7 @@ html {
 }
 
 .pageTitleWithDefaultLogo {
-    background-image: url(../../assets/img/banner-light.png);
+    background-image: url(../../assets/img/banner-dark.png);
 }
 
 .layout-tv .pageTitleWithDefaultLogo {
@@ -71,15 +71,18 @@ html {
 }
 
 .backgroundContainer {
-	background-color: rgba(21, 21, 21, 0.9);
+	background: linear-gradient(125deg, rgba(255, 254, 167, 0.4) 0%, rgba(255, 255, 226, 0.4) 40%, rgba(135, 173, 182, 0.4) 70%, rgba(35, 128, 67, 0.4) 100%);
+	background-color: #ffffff;
 }
 
 .backgroundContainer.withBackdrop {
-    background-color: rgba(21, 21, 21, 0.8);
+	background: linear-gradient(125deg, rgba(255, 254, 167, 0.4) 0%, rgba(255, 255, 226, 0.4) 40%, rgba(135, 173, 182, 0.4) 70%, rgba(35, 128, 67, 0.4) 100%);
+	background-color: #ffffff;
 }
 
 .backgroundContainer.withThemeBackdrop {
-    background-color: rgba(21, 21, 21, 0.7);
+	background: linear-gradient(125deg, rgba(255, 254, 167, 0.4) 0%, rgba(255, 255, 226, 0.4) 40%, rgba(135, 173, 182, 0.4) 70%, rgba(35, 128, 67, 0.4) 100%);
+	background-color: #ffffff;
 }
 
 .backdropImage {
@@ -205,11 +208,11 @@ html {
 
 .emby-input,
 .emby-textarea {
-	color: #383e4a !important;
-	font-weight: 600;
+	color: #748693 !important;
+	font-weight: 400;
 	font-style: italic;
-	background-color: #5d676c;
-	border: 0.2em ridge rgb(66, 68, 71);
+	background-color: #e2e7ed;
+	border: 1px solid #000;
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
 }
@@ -370,10 +373,10 @@ html {
 }
 
 .homeLibraryButton {
-	color: #747a7f !important;
-	background-color: rgba(57, 57, 57, 0.6);
-	box-shadow: 0 0 2px #857f7f;
-	font-weight: 600;
+	color: #6a6b65 !important;
+	background-color: rgba(250, 251, 249, 0.6);
+	box-shadow: 0.2em 0.2em 12px #949986;
+	font-weight: 400;
 }
 
 .homeLibraryButton:hover:not(:disabled) {
@@ -391,7 +394,7 @@ html {
 
 .material-icons {
 	color: #fff;
-	text-shadow: 1px 1px 4px #39392d;
+	text-shadow: .15em .15em 4px #8b9571;
 }
 
 .material-icons.navMenuOptionIcon.notifications {
@@ -405,8 +408,8 @@ html {
 }
 
 .homeLibraryButton > .material-icons {
-	color: #a5a5a5;
-	text-shadow: 0 0 4px #39392d;	
+	text-shadow: 0.2em 0.2em 8px #7b7b72;
+	color: rgb(78, 98, 117);
 }
 
 .homeLibraryButton:hover > .material-icons,
@@ -484,7 +487,7 @@ html {
 
 .detailButton > * > .material-icons,
 .headerButton > .material-icons {
-	color: rgb(175, 184, 193);
+	color: rgb(78, 98, 117);
 }
 
 .cardOverlayButtonIcon.material-icons:hover  {
@@ -509,7 +512,7 @@ html {
 }
 
 .listItem > .material-icons {
-	color: rgb(175, 184, 193);
+	color: rgb(78, 98, 117);
 }
 
 .listItem:focus > .listItemBody,
@@ -532,8 +535,8 @@ html {
 
 .mdl-slider-background,
 .mdl-slider-background-flex {
-	box-shadow: 1px 2px 8px #1e1d25;
-	background: #353535;
+	box-shadow: 0.2em 0.2em 4px #8a9b7c;
+	background: #646a6d;
 }
 
 .mdl-slider:focus,
@@ -543,12 +546,12 @@ html {
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(135deg, rgb(47, 51, 64) 0%, rgb(68, 89, 116) 50%, rgb(255, 255, 255) 100%);
+	background: linear-gradient(135deg, rgb(226, 249, 185) 0%, rgb(254, 255, 223) 50%, rgb(255, 255, 255) 100%);
 }
 
 .mdl-slider::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #888;
+	background: #fff;
 }
 
 .mdl-slider::-ms-thumb {
@@ -564,7 +567,7 @@ html {
 .mdl-slider:focus::-moz-range-thumb,
 .mdl-slider:hover:not(:disabled)::-moz-range-thumb {
 	box-shadow: 0px 2px 8px #1e1d25;
-	background: #ccc;
+	background: #888;
 }
 
 .mdl-slider:focus::-ms-thumb,
@@ -626,8 +629,8 @@ html {
 
 .headerClock,
 .headerClock > .material-icons {
-	color: rgba(121, 135, 144, 0.8) !important;
-	text-shadow: 1px 1px 8px #1f2443 !important;
+	color: rgb(78, 98, 117) !important;
+	text-shadow: .1em .2em 4px #939c7e !important;
 }
 
 .headerClockMode1 {
@@ -676,16 +679,16 @@ html {
 
 .aboutframe {
 	padding: 1em !important;
-	background: rgba(43, 46, 49, 0.45) !important;
+	background: rgba(238, 236, 223, 0.45) !important;
 }
 
 .aboutContent {
-	color: #fff;
+	color: rgb(78, 98, 117) !important;
 }
 
 .formDialogHeaderTitle,
 .pageTitle {
-	color: #dbe2ea !important;
+	color: #858d9f !important;
 }
 
 .starIcon {
@@ -832,7 +835,7 @@ legend {
 }
 
 .checkboxIcon-checked {
-	color: #888 !important;
+	color: #fff !important;
 	padding-left: .2em;
 	padding-bottom: .2em;
 	transform: scale(1.5);
@@ -859,14 +862,14 @@ legend {
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
-	background-color: rgb(62, 69, 74);
+	background-color: rgb(203, 211, 192);
 }
 
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline > .checkboxIcon-checked,
 .emby-checkbox:focus + span + .checkboxOutline,
 .emby-checkbox:focus + span + .checkboxOutline > .checkboxIcon-checked {
-	border-color: #ccc;
+	border-color: #7e7e7e;
 	color: #ccc !important;
 }
 
@@ -968,11 +971,11 @@ option.selected {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 3px groove #363d43 !important;
+	border: 3px groove #8a92a1 !important;
 }
 
 .fieldDescription {
-	color: #646e78;
+	color: #93989d;
 	font-style: italic;
 	font-size: 85%;
 }
@@ -987,7 +990,7 @@ fieldset {
 .material-icons.warningIcon,
 .material-icons.hubIcon,
 .material-icons.doneIcon {
-	color: rgb(167, 172, 176) !important;
+	color: #fff !important;
 }
 
 .mdl-spinner__layer-1,
@@ -1215,22 +1218,22 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .checkboxLabel,
 .inputLabel {
 	font-weight: 400;
-	color: #858d9f;
+	color: #45483e;
 	font-size: 1em !important;
 }
 
 .detailSectionHeader, 
 .sectionTitle {
-	color : #dbe2ea;
-	text-shadow: 1px 1px 3px #171c1e;
+	color: #686968;
 	font-weight: 600;
-	font-size: 1.5rem;
+	font-size: 1.7rem;
+	text-shadow: .1em .1em 4px #8b9571;
 }
 
 .paperList,
 .visualCardBox {
-    background-color: #353a3e;
-	border: 3px ridge #3a434c;
+	background-color: #e2e7ed;
+	border: 0.1em solid #3c5b68;
 	padding: .3em;
 }
 
@@ -1281,16 +1284,16 @@ select option:disabled {
 }
 
 .selectArrow {
-	text-shadow: 2px 2px 3px #1e1d25;
-	color: #909090;
+	text-shadow: 2px 2px 3px #768696;
+	color: #fff;
 }
 
 option:not(:disabled), 
 .emby-select-withcolor {
-	color: #a2a5ae;
-	background: #333539;
+	color: #748693;
+	background: #e2e7ed;
 	border: 0.05em solid rgb(61, 68, 73);
-	font-weight: 600;
+	font-weight: 400;
 	padding: .5em 1.9em .5em .5em !important;
 }
 
@@ -1382,8 +1385,8 @@ select option:selected {
 }
 
 .headerWthMain {
-	color: rgba(121, 135, 144, 0.8) !important;
-	text-shadow: 1px 1px 8px #1f2443 !important;
+	color: rgb(78, 98, 117) !important;
+	text-shadow: .1em .2em 4px #56613a !important;
 }
 
 .headerWthButton > fieldset {
@@ -1397,7 +1400,7 @@ select option:selected {
 }
 
 .headerWthIconBg {
-	background: rgba(238, 245, 255, 0.3) !important;
+	background: rgba(130, 144, 164, 0.3) !important;
 }
 
 .infoDetails {
@@ -1405,7 +1408,7 @@ select option:selected {
 }
 
 #backdropWidget {
-	background: rgba(39, 45, 51, 0.5);
+	background: rgba(219, 215, 196, 0.5);
 }
 
 .sliderMarkerContainer {
@@ -1446,6 +1449,11 @@ select option:selected {
 }
 
 .userProfileAvatar {
-	border: 1px solid rgb(136, 157, 167) !important;
-	box-shadow: 4px 4px 12px #202020 !important;
+	border: 1px solid rgb(91, 94, 96) !important;
+	box-shadow: 4px 4px 12px #889178 !important;
+}
+
+.colorPreview {
+	border: 0.1em solid rgb(61, 68, 73);
+	box-shadow: .1em .1em 4px #8b9571;
 }

@@ -142,11 +142,10 @@
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: space-between;'>
-				<label for='inputTextColor'>${LabelTextColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 					<div id='fcolor' class="colorPreview"></div>
 					<div style='width:100%;height: auto;'>
-						<select is="emby-select" id="inputTextColor"
+						<select is="emby-select" id="inputTextColor" label="${LabelTextColor}"
 							onchange='document.getElementById("fcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
 						</select>
 					</div>
@@ -165,11 +164,10 @@
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
-				<label for='inputTextStroke'>${LabelTextStrokeColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 					<div id='strcolor' class="colorPreview"></div>
 					<div style='width: 100%;height: auto;'>
-						<select is="emby-select" id="inputTextStroke"  
+						<select is="emby-select" id="inputTextStroke" label="${LabelTextStrokeColor}" 
 							onchange='document.getElementById("strcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
 						</select>
 					</div>		
@@ -188,11 +186,10 @@
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
-				<label for='inputTextBackground'>${LabelTextBackgroundColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 					<div id='bgcolor' class="colorPreview"></div>
 					<div style='width: 100%;height: auto;'>
-						<select is="emby-select" id="inputTextBackground"  
+						<select is="emby-select" id="inputTextBackground" label="${LabelTextBackgroundColor}" 
 							onchange='document.getElementById("bgcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
 						</select>
 					</div>
@@ -204,11 +201,10 @@
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 		
 			<div class="selectContainer" style='width: 47%;display: flex !important;flex-direction: column;height: auto;align-items: flex-start;justify-content: flex-start;'>
-				<label for='inputShadowColor'>${LabelTextShadowColor}</label>
 				<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;align-items: center;justify-content: space-between;'>
 					<div id='shadowcolor' class="colorPreview"></div>
 					<div style='width: 100%;height: auto;'>
-						<select is="emby-select" id="inputShadowColor"  
+						<select is="emby-select" id="inputShadowColor" label="${LabelTextShadowColor}" 
 							onchange='document.getElementById("shadowcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
 						</select>
 					</div>		

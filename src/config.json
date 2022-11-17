@@ -53,10 +53,10 @@
 		"color": "#0c2450"
 	}, {
 		"name": "Light alt.",
-		"version": "0.37",
+		"version": "0.38",
 		"id": "light-alt",
 		"color": "#303030",
-		"group": "myJelly lab"
+		"group": "myJelly in-dev"
 	}],
 	"menuLinks": [],
 	"servers": [],
