@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-15",
+	"version": "10.8.7-16",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -150,6 +150,7 @@
 		"10.8.7-12": "Synchronize translations.\nApply patch 'nielsvanvelzen/leftover-likes'.\nApply patch 'nielsvanvelzen/seriesstatus-extended'.\nApply patch 'thornbill/convert-plugin-config'.\nApply patch 'jsayol/patch-1'.",
 		"10.8.7-13": "Synchronize translations.\nFix error occuring when no JSON data is available for the parser (Subtitles Settings).\n",
 		"10.8.7-14": "Synchronize translations.\nFix selects' list of options growing up at every opening of some of the user pages.\nFix subtitles' preview functionality which got broken by recent changes.\nFix small layout issues with the subtitles settings.",
-		"10.8.7-15": "Synchronize translations.\nApply patch 'thornbill/async-react-pages'.\nFix more misbehaving selects and other layout issues in user pages.\nInstall latest 'package.json'."
+		"10.8.7-15": "Synchronize translations.\nApply patch 'thornbill/async-react-pages'.\nFix more misbehaving selects and other layout issues in user pages.\nInstall latest 'package.json'.",
+		"10.8.7-16": "Synchronize translations.\nApply patch 'nielsvanvelzen/directory-browser-go-up'.\nApply patch 'Vankerkom/tweak-navigation-sizing'.\nApply patch 'Vankerkom/tweak-active-devices-card'.\nApply patch 'dmitrylyzo/fix-subtitleuploader'."
 	}
 }

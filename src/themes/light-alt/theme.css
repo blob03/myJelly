@@ -112,7 +112,8 @@ html {
 .dialog,
 .nowPlayingPlaylist,
 .nowPlayingContextMenu {
-    background-color: #202020 !important;
+	background: linear-gradient(125deg, rgba(255, 254, 167, 0.4) 0%, rgba(255, 255, 226, 0.4) 40%, rgba(135, 173, 182, 0.4) 70%, rgba(35, 128, 67, 0.4) 100%);
+	background-color: #fff !important;
 }
 
 .emby-scrollbuttons .paper-icon-button-light {
@@ -375,7 +376,8 @@ html {
 .homeLibraryButton {
 	color: #6a6b65 !important;
 	background-color: rgba(250, 251, 249, 0.6);
-	box-shadow: 0.2em 0.2em 12px #949986;
+	box-shadow: 0.2em 0.2em 12px #bec8a6;
+	text-shadow: .15em .15em 4px #bec8a6;
 	font-weight: 400;
 }
 
@@ -408,7 +410,7 @@ html {
 }
 
 .homeLibraryButton > .material-icons {
-	text-shadow: 0.2em 0.2em 8px #7b7b72;
+	text-shadow: .15em .15em 4px #bec8a6;
 	color: rgb(78, 98, 117);
 }
 
@@ -433,7 +435,7 @@ html {
 }
 
 .listItem-border {
-    border-color: #2b2b2b !important;
+    border-color: #bec8a6 !important;
 }
  
  .emby-button {
@@ -783,7 +785,7 @@ html {
 }
 
 .listItemIcon:not(.listItemIcon-transparent) {
-	background-color: #646c70;
+	background-color: #f6f8eb;
 }
 
 /* fix for TV Layout */
@@ -835,7 +837,7 @@ legend {
 }
 
 .checkboxIcon-checked {
-	color: #fff !important;
+	color: rgb(78, 98, 117) !important;
 	padding-left: .2em;
 	padding-bottom: .2em;
 	transform: scale(1.5);
@@ -854,7 +856,7 @@ legend {
 }
 
 .checkboxOutline > .material-icons {
-	text-shadow: 2px 2px 4px #000;
+	text-shadow: 2px 2px 4px #848a75;
 }
 
 .emby-checkbox + span + .checkboxOutline {
@@ -862,7 +864,7 @@ legend {
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
-	background-color: rgb(203, 211, 192);
+	background-color: #fff;
 }
 
 .emby-checkbox:hover:not(:disabled) + span + .checkboxOutline,
@@ -1082,10 +1084,10 @@ button.submit {
 .btnSelectServer,
 .submit,
 .button-submit {
-	color: #5e6871 !important;
-	background-color: #333539;
-	/*background: linear-gradient(105deg, rgb(38, 41, 44) 0%, rgb(64, 72, 78) 30%, rgb(50, 56, 62) 70%, rgb(25, 32, 36) 100%);*/
-	box-shadow: 0 0 4px #17191a;
+	box-shadow: .15em .15em 4px #bec8a6;
+	background: rgb(247, 251, 255);
+	color: rgb(78, 98, 117);
+	border: 0.1em solid rgb(78, 98, 117);
 }
 
 #btnRestartServer,
@@ -1227,7 +1229,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	color: #686968;
 	font-weight: 600;
 	font-size: 1.7rem;
-	text-shadow: .1em .1em 4px #bec8a6;
+	text-shadow: .1em .1em 4px #bec8a6 !important;
 }
 
 .paperList,
@@ -1327,10 +1329,10 @@ select option:selected {
     background-color: #373f48;
 }
 
-.actionsheetDivider {	
+.actionsheetDivider {
 	color: rgb(33, 34, 35);
 	font-weight: 600;
-	background: rgb(49, 59, 65);
+	background: #bec8a6 !important;
 }
 
 .listItem-button:hover:not(:disabled) {
@@ -1347,10 +1349,10 @@ select option:selected {
 	font-size: 0.8rem;
 	border-radius: 10%;
 	background-color: #333539;
-	background: linear-gradient(105deg, rgb(126, 132, 139) 0%, rgb(139, 150, 159) 30%, rgb(85, 88, 92) 70%, rgb(50, 58, 63) 100%);
-	box-shadow: 0 0 4px #17191a;
+	background: linear-gradient(180deg, rgb(251, 251, 251) 0%, rgb(217, 231, 230) 30%, rgb(172, 189, 180) 70%, rgb(97, 124, 100) 100%);
 	border: 0.05em solid rgb(61, 68, 73);
-	text-shadow: rgb(30, 38, 43) -1px -1px 1px;
+	box-shadow: .2em .2em 6px #96b7ab !important;
+	text-shadow: rgb(0, 0, 0) 0px -1px 1px !important;
 }
 
 .weatherbotScreenSaver,
