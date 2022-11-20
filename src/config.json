@@ -53,9 +53,9 @@
 		"color": "#0c2450"
 	}, {
 		"name": "Light alt.",
-		"version": "0.39",
+		"version": "0.40",
 		"id": "light-alt",
-		"color": "#303030",
+		"color": "#eef0e5",
 		"group": "myJelly in-dev"
 	}],
 	"menuLinks": [],

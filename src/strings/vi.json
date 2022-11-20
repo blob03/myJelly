@@ -1592,6 +1592,7 @@
     "Unmute": "Bật Tiếng",
     "Unplayed": "Chưa Phát",
     "Unrated": "Chưa được xếp hạng",
+    "Unreleased": "Chưa phát hành",
     "UnsupportedPlayback": "Jellyfin không thể giải mã nội dung bảo vệ DRM nhưng sẽ cố gắng thử với tất cả nội dung, bao gồm cả các tiêu đề được bảo vệ. Một số tệp có thể xuất hiện toàn màu đen do mã hóa hoặc tính năng không được hỗ trợ, chẳng hạn như tiêu đề tương tác.",
     "Up": "Lên",
     "Upload": "Tải lên",

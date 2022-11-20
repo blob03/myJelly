@@ -2,6 +2,9 @@ import globalize from '../scripts/globalize';
 import cultures from '../scripts/cultures';
 import datetime from '../scripts/datetime';
 import indicators from './indicators/indicators';
+import skinManager from '../scripts/themeManager';
+import layoutManager from './layoutManager';
+import { pluginManager } from './pluginManager';
 
 /**
  * Helper for handling settings.
@@ -9,7 +12,6 @@ import indicators from './indicators/indicators';
  */
 
 export function populateLanguages(select, languages, view, val) {
-   
 	let order = Object.keys(languages);
 	order.sort((a, b) => {
 		let fa = languages[a][view].toLowerCase(),
@@ -92,6 +94,390 @@ export function populateServerLanguages(select, languages, view, val) {
 }
 
 /**
+ * Helper for creating a list of available themes.
+ * @module components/settingsHelper
+ */
+ 
+export function populateThemes(select, selectedTheme) {
+	skinManager.getThemes().then( themes => {
+		
+		let groups = {};
+		const dflgroup = "Jellyfin-web";
+
+		themes.forEach( x => {
+			let grp = dflgroup;
+			if (x.group)
+				grp = x.group;
+			if (!groups[grp]) 
+				groups[grp] = [];
+			groups[grp].push(x);
+		});
+		
+		let ngroups = Object.keys(groups);
+		ngroups.forEach( x => {
+			
+			let w = document.createElement("option");
+			if (layoutManager.tv) {
+				w.divider = x;
+				select.options.add(w, undefined);
+			} else {
+				w.text = "-------------\u00A0\u00A0\u00A0" + x;
+				w.disabled = true;
+				w.style.fontSize = "120%";
+				w.style.fontFamily = "quicksand";
+				select.options.add(w, undefined);
+			}
+			
+			groups[x].sort((a, b) => {
+				let fa = a.name.toLowerCase(),
+					fb = b.name.toLowerCase();
+				if (fa < fb) 
+					return -1;
+				if (fa > fb) 
+					return 1;
+				return 0;
+			});
+			
+			groups[x].forEach( t => {
+				let z = document.createElement("option");
+				if (t.default)
+					z.icon = 'star';
+				z.value = t.id;
+				z.text = t.name;
+				if (t.version) {
+					if (layoutManager.tv)
+						z.asideText = "v" + t.version;
+					else
+						z.text += "  " + t.version;
+				}
+				
+				select.options.add(z, undefined); 
+			});
+		});
+		
+		select.value = selectedTheme;
+		if (selectedTheme === 'Auto' || selectedTheme === 'none')
+			return;
+		
+		// If for some reasons selectedTheme doesn't exist anymore (eg. theme was renamed/deleted),
+		// the value field of the selection will be set to the id of the default theme defined in 'config.json'.
+	
+		skinManager.getThemeStylesheetInfo(selectedTheme).then(function (info) {
+			select.value = info.themeId}); 
+	});
+}
+
+/**
+ * Helper for creating a list of available screensavers.
+ * @module components/settingsHelper
+ */
+ 
+export function populateScreensavers(select, val) {
+	const options = pluginManager.ofType('screensaver').map( ss => {
+		return {
+			name: ss.name,
+			value: ss.id,
+			version: ss.version || '',
+			description: ss.description || '',
+			group: ss.group
+		};
+	});
+	
+	let groups = {};
+	const dflgroup = "Jellyfin-web";
+
+	options.forEach( x => {
+		let grp = dflgroup;
+		if (x.group)
+			grp = x.group;
+		if (!groups[grp])
+			groups[grp] = [];
+		groups[grp].push(x);
+	});
+
+	let ngroups = Object.keys(groups);
+	ngroups.forEach( x => {
+		
+		if (layoutManager.tv) {
+			let w = document.createElement("option");
+			w.divider = x;
+			select.options.add(w, undefined);
+		} else {
+			let w = document.createElement("option");
+			w.text = "-------------\u00A0\u00A0\u00A0" + x;
+			w.disabled = true;
+			w.style.fontSize = "120%";
+			w.style.fontFamily = "quicksand";
+			select.options.add(w, undefined);
+		}
+
+		groups[x].sort((a, b) => {
+			let fa = a.name.toLowerCase(),
+			fb = b.name.toLowerCase();
+			if (fa < fb) 
+				return -1;
+			if (fa > fb) 
+				return 1;
+			return 0;
+		});
+
+		groups[x].forEach( t => {
+			let z = document.createElement("option");
+			z.value = t.value;
+			z.text = t.name;
+
+			if (t.version) {
+				if (layoutManager.tv)
+					z.asideText = "v" + t.version;
+				else 
+					z.text += "  " + t.version;
+			}
+
+			select.options.add(z, undefined); 
+		});
+		
+	});	
+	select.value = val;
+}
+
+/**
+ * Helper for creating a list of available colors.
+ * @module components/settingsHelper
+ */
+ 
+ const HTML_COLOR_NAMES = [
+	"Transparent",
+	"Black",
+	"White",
+
+	false,
+	// red color names
+
+	"IndianRed",
+	"LightCoral",
+	"Salmon",
+	"DarkSalmon",
+	"LightSalmon",
+	"Crimson",
+	"Red",
+	"FireBrick",
+	"DarkRed",
+
+	false,
+	// orange color names
+
+	"Coral",
+	"Tomato",
+	"OrangeRed",
+	"DarkOrange",
+	"Orange",
+
+	false,
+	// pink color names
+
+	"Pink",
+	"LightPink",
+	"HotPink",
+	"DeepPink",
+	"MediumVioletRed",
+	"PaleVioletRed",
+
+	false,
+	// purple color names
+
+	"Lavender",
+	"Thistle",
+	"Plum",
+	"Violet",
+	"Orchid",
+	"Fuchsia",
+	"Magenta",
+	"MediumOrchid",
+	"MediumPurple",
+	"BlueViolet",
+	"DarkViolet",
+	"DarkOrchid",
+	"DarkMagenta",
+	"Purple",
+	"Indigo",
+	"SlateBlue",
+	"DarkSlateBlue",
+
+	false,
+	// gray color names
+
+	"Gainsboro",
+	"LightGray",
+	"Silver",
+	"DarkGray",
+	"Gray",
+	"DimGray",
+	"LightSlateGray",
+	"SlateGray",
+	"DarkSlateGray",
+
+	false,
+	// green color names
+
+	"GreenYellow",
+	"Chartreuse",
+	"LawnGreen",
+	"Lime",
+	"LimeGreen",
+	"PaleGreen",
+	"LightGreen",
+	"MediumSpringGreen",
+	"SpringGreen",
+	"MediumSeaGreen",
+	"seaGreen",
+	"ForestGreen",
+	"Green",
+	"DarkGreen",
+	"YellowGreen",
+	"OliveDrab",
+	"Olive",
+	"DarkOliveGreen",
+	"MediumAquaMarine",
+	"DarkSeaGreen",
+	"LightSeaGreen",
+	"DarkCyan",
+	"Teal",
+
+	false,
+	// brown color names
+
+	"CornSilk",
+	"BlanchedAlmond",
+	"Bisque",
+	"NavajoWhite",
+	"Wheat",
+	"BurlyWood",
+	"Tan",
+	"RosyBrown",
+	"SandyBrown",
+	"GoldenRod",
+	"DarkGoldenRod",
+	"Peru",
+	"Chocolate",
+	"SaddleBrown",
+	"Sienna",
+	"Brown",
+	"Maroon",
+
+	false,
+	// blue color names
+
+	"Aqua",
+	"Cyan",
+	"LightCyan",
+	"PaleTurquoise",
+	"Aquamarine",
+	"Turquoise",
+	"MediumTurquoise",
+	"DarkTurquoise",
+	"CadetBlue",
+	"SteelBlue",
+	"LightSteelBlue",
+	"PowderBlue",
+	"LightBlue",
+	"SkyBlue",
+	"LightSkyBlue",
+	"DeepSkyBlue",
+	"DodgerBlue",
+	"CornflowerBlue",
+	"MediumSlateBlue",
+	"RoyalBlue",
+	"Blue",
+	"MediumBlue",
+	"DarkBlue",
+	"Navy",
+	"MidnightBlue",
+
+	false,
+	// yellow color names
+
+	"Gold",
+	"Yellow",
+	"LightYellow",
+	"LemonChiffon",
+	"LightGoldenRodYellow",
+	"PapayaWhip",
+	"Moccasin",
+	"PeachPuff",
+	"PaleGoldenRod",
+	"Khaki",
+	"DarkKhaki",
+
+	false,
+	// white color names
+
+	"Snow",
+	"HoneyDew",
+	"MintCream",
+	"Azure",
+	"AliceBlue",
+	"GhostWhite",
+	"WhiteSmoke",
+	"SeaShell",
+	"Beige",
+	"OldLace",
+	"FloralWhite",
+	"Ivory",
+	"AntiqueWhite",
+	"Linen",
+	"LavenderBlush",
+	"MistyRose"
+];
+
+export function populateColors(x) {
+	const divider = globalize.translate('OptionDivider');
+	for (const COLOR of HTML_COLOR_NAMES) {
+		let w = document.createElement("option");
+
+		if (COLOR === false) {
+			w.text = divider;
+			w.disabled = true;
+			x.options.add(w, undefined); 
+			continue;
+		}
+
+		w.text = COLOR;
+		w.value = COLOR;
+		w.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
+		x.options.add(w, undefined); 
+	}
+}
+
+/**
+ * Helper for creating a list of available subtitles presets.
+ * @module components/settingsHelper
+ */
+ 
+export function populateSubsPresets(select, val) {
+	skinManager.getPresets().then(presets => {
+		presets.sort((a, b) => {
+			let fa = a.name.toLowerCase(),
+				fb = b.name.toLowerCase();
+			if (fa < fb) 
+				return -1;
+			if (fa > fb) 
+				return 1;
+			return 0;
+		});
+
+		presets.forEach(t => {
+			let z = document.createElement("option");
+			if (t.default)
+				z.icon = 'star';
+			z.value = t.id;
+			z.text = t.name;
+			select.options.add(z, undefined);
+		});
+		select.value = val || '';
+	});
+}
+
+/**
  * Helper for creating a list of available subtitles languages.
  * @module components/settingsHelper
  */
@@ -108,12 +494,6 @@ export function populateSubsLanguages(select, languages, view, val) {
 			return 1;
 		return 0;
 	});
-	
-	// Remove previous options but preserve special options such as 'none', 'Auto', ...
-	Array.from(select.options).forEach( function(opt) {
-		if (opt.value !== 'Auto' && opt.value !== 'none' && !opt.disabled)
-			opt.remove();
-	});
 
 	order.forEach(item => {
 		let ISO6392 = languages[item].ISO6392;
@@ -126,7 +506,7 @@ export function populateSubsLanguages(select, languages, view, val) {
 		w.setAttribute('ISO6391', ISO6391);
 		if (val && val === ISO6392)
 			w.selected = true;
-	
+
 		w.text = languages[item][view];
 		select.options.add(w, undefined); 
 	});
@@ -137,11 +517,18 @@ export function populateSubsLanguages(select, languages, view, val) {
  * @module components/settingsHelper
  */
  
-export function populateDictionaries(select, languages, view, val, ban) {
+export function populateDictionaries(select, languages, view, val, exclude) {
 	let activeLang = { "DisplayName": "", "ISO6391": "" };
 	let ccodeSrc = globalize.getSourceCulture();
 	let lang = val? val: globalize.getDefaultCulture().ccode; 
 	let order = Object.keys(languages);
+	
+	// This function can be called multiple times so we need
+	// to remove previous content with the exception of static options such as 'none', 'Auto', ...
+	Array.from(select.options).forEach( (opt) => {
+		if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
+			opt.remove();
+	});
 	
 	order.sort((a, b) => {
 		let fa = languages[a][view].toLowerCase();
@@ -151,12 +538,6 @@ export function populateDictionaries(select, languages, view, val, ban) {
 		if (fa > fb) 
 			return 1;
 		return 0;
-	});
-	
-	// Remove previous options but preserve special options such as 'none', 'Auto', ...
-	Array.from(select.options).forEach( function(opt) {
-		if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
-			opt.remove();
 	});
 	
 	order.forEach(item => {
@@ -173,7 +554,7 @@ export function populateDictionaries(select, languages, view, val, ban) {
 					return;
 			}
 			
-			if (ban && ban === ISOName)
+			if (exclude && exclude === ISOName)
 				return;
 			
 			if (lang && lang === ISOName) {
@@ -284,7 +665,7 @@ export function showAggregateInfo(x) {
 	});
 }
 
-// Refresh the progress bar lying underneath the language widgets.
+// Refresh the progress bar underneath the language widgets.
 export function showLangProgress(x, alt) {
 	if (!x)
 		return;
@@ -313,8 +694,12 @@ export function showLangProgress(x, alt) {
 }
 
 export default {
-    populateLanguages: populateLanguages,
+	populateLanguages: populateLanguages,
+	populateThemes: populateThemes,
+	populateScreensavers: populateScreensavers,
 	populateServerLanguages: populateServerLanguages,
+	populateColors: populateColors,
+	populateSubsPresets: populateSubsPresets,
 	populateSubsLanguages: populateSubsLanguages,
 	populateDictionaries: populateDictionaries,
 	showAggregateInfo: showAggregateInfo,

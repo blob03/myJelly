@@ -26,81 +26,6 @@ import './displaysettings.scss';
 
 /* eslint-disable indent */
 
-    function fillThemes(select, selectedTheme) {
-        skinManager.getThemes().then( themes => {
-			
-			let groups = {};
-			const dflgroup = "Jellyfin-web";
-			
-			// Remove previous options but preserve special options such as 'none', 'Auto', ...
-			Array.from(select.options).forEach( (opt) => {
-				if (opt.value !== '' && opt.value !== 'none' || opt.divider)
-					opt.remove();
-			});
-	
-			themes.forEach( x => {
-				let grp = dflgroup;
-				if (x.group)
-					grp = x.group;
-				if (!groups[grp]) 
-					groups[grp] = [];
-				groups[grp].push(x);
-			});
-			
-			let ngroups = Object.keys(groups);
-			ngroups.forEach( x => {
-				
-				let w = document.createElement("option");
-				if (layoutManager.tv) {
-					w.divider = x;
-					select.options.add(w, undefined);
-				} else {
-					w.text = "-------------\u00A0\u00A0\u00A0" + x;
-					w.disabled = true;
-					w.style.fontSize = "120%";
-					w.style.fontFamily = "quicksand";
-					select.options.add(w, undefined);
-				}
-				
-				groups[x].sort((a, b) => {
-					let fa = a.name.toLowerCase(),
-						fb = b.name.toLowerCase();
-					if (fa < fb) 
-						return -1;
-					if (fa > fb) 
-						return 1;
-					return 0;
-				});
-				
-				groups[x].forEach( t => {
-					let z = document.createElement("option");
-					if (t.default)
-						z.icon = 'star';
-					z.value = t.id;
-					z.text = t.name;
-					if (t.version) {
-						if (layoutManager.tv)
-							z.asideText = "v" + t.version;
-						else
-							z.text += "  " + t.version;
-					}
-					
-					select.options.add(z, undefined); 
-				});
-			});
-            
-			select.value = selectedTheme;
-			if (selectedTheme === 'Auto' || selectedTheme === 'none')
-				return;
-			
-			// If for some reasons selectedTheme doesn't exist anymore (eg. theme was renamed/deleted),
-			// the value field of the selection will be set to the id of the default theme defined in 'config.json'.
-		
-			skinManager.getThemeStylesheetInfo(selectedTheme).then(function (info) {
-				select.value = info.themeId}); 
-        });
-    }
-
 	function onClockChange(e) {
 		const val = e.target.value;
 		
@@ -166,88 +91,6 @@ import './displaysettings.scss';
 			ssmanager.showScreenSaver(ss, true);
 	}
 	
-    function loadScreensavers(select, val) {
-        const options = pluginManager.ofType('screensaver').map( ss => {
-            return {
-                name: ss.name,
-                value: ss.id,
-				version: ss.version || '',
-				description: ss.description || '',
-				group: ss.group
-            };
-        });
-		
-		let groups = {};
-		const dflgroup = "Jellyfin-web";
-
-		options.forEach( x => {
-			let grp = dflgroup;
-			if (x.group)
-				grp = x.group;
-			if (!groups[grp])
-				groups[grp] = [];
-			groups[grp].push(x);
-		});
-		
-		// Remove previous options but preserve special options such as 'none', 'Auto', ...
-		Array.from(select.options).forEach( (opt) => {
-			if (opt.value !== '' && opt.value !== 'none' && opt.value !== 'any' || opt.divider)
-			opt.remove();
-		});
-
-		let ngroups = Object.keys(groups);
-		ngroups.forEach( x => {
-			
-			if (layoutManager.tv) {
-				let w = document.createElement("option");
-				w.divider = x;
-				select.options.add(w, undefined);
-			} else {
-				let w = document.createElement("option");
-				w.text = "-------------\u00A0\u00A0\u00A0" + x;
-				w.disabled = true;
-				w.style.fontSize = "120%";
-				w.style.fontFamily = "quicksand";
-				select.options.add(w, undefined);
-			}
-
-			groups[x].sort((a, b) => {
-				let fa = a.name.toLowerCase(),
-				fb = b.name.toLowerCase();
-				if (fa < fb) 
-					return -1;
-				if (fa > fb) 
-					return 1;
-				return 0;
-			});
-
-			groups[x].forEach( t => {
-				let z = document.createElement("option");
-				z.value = t.value;
-				z.text = t.name;
-
-				if (t.version) {
-					if (layoutManager.tv)
-						z.asideText = "v" + t.version;
-					else 
-						z.text += "  " + t.version;
-				}
-
-				select.options.add(z, undefined); 
-			});
-			
-		});	
-		select.value = val;
-    }
-
-    function showOrHideMissingEpisodesField(context) {
-		if (browser.tizen) {
-            context.querySelector('.fldDisplayMissingEpisodes').classList.add('hide');
-            return;
-        }
-        context.querySelector('.fldDisplayMissingEpisodes').classList.remove('hide');
-    }
-	
 	function onScreensaverTimeChange(e) {
 		const pnode = e.target.parentNode.parentNode;
 		if (pnode) 
@@ -283,47 +126,25 @@ import './displaysettings.scss';
 	}
 
 	function loadForm(self) {
-		let context = self.options.element;
-		let user = self.currentUser;
-		let userSettings = self.options.userSettings;
-		const apiClient = self.options.apiClient;
-		let event_change = new Event('change');
-		let allCultures = cultures.getDictionaries();
+		const context = self.options.element;
+		const user = self.currentUser;
+		const userSettings = self.options.userSettings;
+		const event_change = new Event('change');
 		
 		if (appHost.supports('displaylanguage')) { 
 			let selectLanguage = context.querySelector('#selectLanguage');
 			let selectLanguageAlt = context.querySelector('#selectLanguageAlt');
-			self._savedDisplayLang = userSettings.language();
-			self._savedDisplayLangAlt = userSettings.languageAlt();
-			settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", self._savedDisplayLang);
-			settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", self._savedDisplayLangAlt, self._savedDisplayLang);
-			selectLanguage.addEventListener('change', function(x) {
-				const lang = x.target;
-				const langAlt = lang.parentElement.parentElement.querySelector('#selectLanguageAlt');
-				let newLang = lang.value;
-				// Auto mode
-				if (newLang === '')
-					newLang = globalize.getDefaultCulture().ccode;
-				// Remove the latest selection from the list of selectable secondary languages.
-				settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", langAlt.value, newLang);
-				settingsHelper.showLangProgress(lang);
-				settingsHelper.showLangProgress(langAlt, true);
-				settingsHelper.showAggregateInfo(lang); 
-			});
-			selectLanguageAlt.addEventListener('change', function(x) {
-				const langAlt = x.target;
-				settingsHelper.showLangProgress(langAlt, true);
-				settingsHelper.showAggregateInfo(langAlt);
-			});
+			selectLanguage.value = userSettings.language();
+			selectLanguageAlt.value = userSettings.languageAlt();
 			selectLanguage.dispatchEvent(event_change);
 			selectLanguageAlt.dispatchEvent(event_change);
 			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
 		} else 
 			context.querySelector('.DisplayLanguageArea').classList.add('hide');
 		
-		if (datetime.supportsLocalization()) { 
-			let selectDateTimeLocale = context.querySelector('.selectDateTimeLocale');
-			settingsHelper.populateLanguages(selectDateTimeLocale, allCultures, "displayNativeName", userSettings.dateTimeLocale() || '');
+		if (datetime.supportsLocalization()) {
+			let x = context.querySelector('.selectDateTimeLocale');
+			x.value = userSettings.dateTimeLocale() || '';
 			context.querySelector('.fldDateTimeLocale').classList.remove('hide');
 		} else 
 			context.querySelector('.fldDateTimeLocale').classList.add('hide');
@@ -335,56 +156,27 @@ import './displaysettings.scss';
 			});
         }
 		
+		context.querySelector('#selectTheme').value = userSettings.theme();
+		context.querySelector('#selectDashboardTheme').value = userSettings.dashboardTheme();
+		
 		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
 		dashboardthemeNodes.forEach( function(userItem) {
 			userItem.classList.toggle('hide', !user.Policy.IsAdministrator);});
 		
-		let btnFindIt =  context.querySelector('#btnFindIt');
-		if (btnFindIt) {
-			if (isSecure()) {
-				btnFindIt.classList.remove('hide');
-				btnFindIt.addEventListener('click', findPosition);
-			} else 
-				btnFindIt.classList.add('hide');
-		}
-		
         if (appHost.supports('screensaver')) {
-			let btnTryIt = context.querySelector('#btnTryIt');
-			btnTryIt.addEventListener('click', onScreenSaverTry);
-			
-			let selectScreensaver = context.querySelector('.selectScreensaver');
-			loadScreensavers(selectScreensaver, userSettings.screensaver() || 'none');
-			selectScreensaver.addEventListener('change', onScreenSaverChange);
-			
+			context.querySelector('.selectScreensaver').value = userSettings.screensaver();
+			context.querySelector('#sliderScreensaverTime').value = userSettings.screensaverTime();
+			context.querySelector('#sliderScreensaverTime').dispatchEvent(event_change);
+			context.querySelector('.selectScreensaver').dispatchEvent(event_change);
 			context.querySelector('.ScreensaverArea').classList.remove('hide');
-			
-			let sliderScreensaverTime =  context.querySelector('#sliderScreensaverTime');
-			sliderScreensaverTime.value = (userSettings.screensaverTime()/60000) || 3;
-			sliderScreensaverTime.addEventListener('input', onScreensaverTimeChange);
-			sliderScreensaverTime.addEventListener('change', onScreensaverTimeChange);
-			sliderScreensaverTime.dispatchEvent(event_change);
-			selectScreensaver.dispatchEvent(event_change);
         } else 
             context.querySelector('.ScreensaverArea').classList.add('hide');
 
-		if (browser.tizen) {
-            context.querySelector('.fldThemeSong').classList.add('hide');
-            context.querySelector('.fldThemeVideo').classList.add('hide');
-        } else {
-			context.querySelector('.fldThemeSong').classList.remove('hide');
-			context.querySelector('.fldThemeVideo').classList.remove('hide');
-		}
+		context.querySelector('.fldThemeSong').classList.toggle('hide', browser.tizen);
+		context.querySelector('.fldThemeVideo').classList.toggle('hide', browser.tizen);
+		context.querySelector('#btnFindIt').classList.toggle('hide', !isSecure());
+		context.querySelector('.fldDetailsBanner').classList.toggle('hide', layoutManager.tv || layoutManager.mobile);
 		
-		if (!layoutManager.tv && !layoutManager.mobile) 
-			context.querySelector('.fldDetailsBanner').classList.remove('hide');
-		else
-			context.querySelector('.fldDetailsBanner').classList.add('hide');
-		
-        fillThemes(context.querySelector('#selectTheme'), userSettings.theme());
-		context.querySelector('#selectTheme').addEventListener('change', function() {  skinManager.setTheme(this.value); });
-		
-        fillThemes(context.querySelector('#selectDashboardTheme'), userSettings.dashboardTheme());
-
         context.querySelector('.chkDisplayMissingEpisodes').checked = user.Configuration.DisplayMissingEpisodes || false;
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
@@ -392,27 +184,14 @@ import './displaysettings.scss';
 		self._savedClock = context.querySelector('#selectClock').value = userSettings.enableClock();
 		self._savedWBot = context.querySelector('#selectWeatherBot').value = userSettings.enableWeatherBot();
 		
-		let backdropToolbox = context.querySelector('#backdropToolsAll');
-		let backdropToolsList = context.querySelector('#backdropToolsList');
-		let toolbox = userSettings.enableBackdropWidget();
-		
-		backdropToolbox.checked = (toolbox == 7);
-		context.querySelector('#backdropToolsDetails').checked = (toolbox & 1);
-		context.querySelector('#backdropToolsControl').checked = (toolbox & 2);
-		context.querySelector('#backdropToolsContrast').checked = (toolbox & 4);
-		
-		if (backdropToolbox.checked)
-			backdropToolsList.classList.add('hide');
-		else
-			backdropToolsList.classList.remove('hide');
-		
-		backdropToolbox.addEventListener('change', (ev) => {
-			if (ev.target.checked)
-				backdropToolsList.classList.add('hide');
-			else
-				backdropToolsList.classList.remove('hide');
-		});
-		
+		const bWidget = userSettings.enableBackdropWidget();
+		context.querySelector('#backdropToolsAll').checked = (bWidget == 7);
+		context.querySelector('#backdropToolsDetails').checked = (bWidget & 1);
+		context.querySelector('#backdropToolsControl').checked = (bWidget & 2);
+		context.querySelector('#backdropToolsContrast').checked = (bWidget & 4);
+		context.querySelector('#backdropToolsList').classList.toggle('hide', 
+			context.querySelector('#backdropToolsAll').checked);
+	
 		context.querySelector('#inputLat').value = userSettings.getlatitude();
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
@@ -422,34 +201,27 @@ import './displaysettings.scss';
 		context.querySelector('#sliderAPIFrequency').value = userSettings.APIDelay();
 		context.querySelector('#selectSwiperFX').value = userSettings.swiperFX();
         context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
-		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops() || "none";
+		context.querySelector('#srcBackdrops').value = userSettings.enableBackdrops();
 		context.querySelector('#sliderBackdropDelay').value = userSettings.backdropDelay();
-		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize() || 0;
+		context.querySelector('#sliderDisplayFontSize').value = userSettings.displayFontSize();
+		context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize();
 		self._savedLayout = context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 			
 		/* If an admin is actually impersonating a user,
 			there is no point exposing the layout settings. */
-		if (!self.adminEdit && (browser.web0s || appHost.supports('displaymode')))
-			context.querySelector('.fldDisplayMode').classList.remove('hide');
-        else 
-			context.querySelector('.fldDisplayMode').classList.add('hide');
-	
+		context.querySelector('.fldDisplayMode').classList.toggle('hide', 
+			self.adminEdit || !(browser.web0s || appHost.supports('displaymode')));
+        
 		if (layoutManager.tv) {
-			if (browser.web0s || appHost.supports('displaymode'))
-				context.querySelector('.fldDisplaySeparator').classList.remove('hide');
-			context.querySelector('.fldDisplayFontSize').classList.remove('hide');
-			
-			let sliderDisplayFontSize = context.querySelector('#sliderDisplayFontSize');
-			sliderDisplayFontSize.addEventListener('change', onDisplayFontSizeChange);
-			sliderDisplayFontSize.dispatchEvent(event_change);
-		} else {
-			context.querySelector('.fldDisplaySeparator').classList.add('hide');
-			context.querySelector('.fldDisplayFontSize').classList.add('hide');
-        }
+			context.querySelector('.fldDisplaySeparator').classList.toggle('hide', 
+				self.adminEdit || !(browser.web0s || appHost.supports('displaymode')));
+			context.querySelector('.fldDisplayFontSize').classList.toggle('hide',
+				self.adminEdit || !(browser.web0s || appHost.supports('displaymode')));
+			context.querySelector('#sliderDisplayFontSize').dispatchEvent(event_change);
+		}
 		
-        context.querySelector('#sliderLibraryPageSize').value = userSettings.libraryPageSize() || 60;
-        showOrHideMissingEpisodesField(context);
-    }
+		context.querySelector('.fldDisplayMissingEpisodes').classList.toggle('hide', browser.tizen);
+	}
 
 	function translateUserMenu() {
 		// Refresh the translation of the user settings main page.
@@ -474,8 +246,6 @@ import './displaysettings.scss';
 		const userSettingsInstance = self.options.userSettings;
 		const context = self.options.element;
 		const apiClient = self.options.apiClient;
-		let newDisplayLanguage = self._savedDisplayLang;
-		let newDisplayLanguageAlt = self._savedDisplayLangAlt;
 		let reload = false;
 		
 		if (!self.adminEdit) {
@@ -485,25 +255,23 @@ import './displaysettings.scss';
 				self._savedLayout = newLayout;
 				reload = true;
 			}
-		}
 		
-		if (!self.adminEdit && ((self._savedClock != context.querySelector('#selectClock').value) ||
-			(self._savedWBot != context.querySelector('#selectWeatherBot').value))) {
-			reload = true;
-		}
-		
-        if (appHost.supports('displaylanguage')) {
-			newDisplayLanguage = context.querySelector('#selectLanguage').value;
-			if (newDisplayLanguage !== self._savedDisplayLang) {
-				userSettingsInstance.language(newDisplayLanguage);
+			if (self._savedClock != context.querySelector('#selectClock').value ||
+				self._savedWBot != context.querySelector('#selectWeatherBot').value) {
 				reload = true;
 			}
-			newDisplayLanguageAlt = context.querySelector('#selectLanguageAlt').value;
-			if (newDisplayLanguageAlt !== self._savedDisplayLangAlt) {
-				userSettingsInstance.languageAlt(newDisplayLanguageAlt);
+		}
+		
+		if (appHost.supports('displaylanguage')) {
+			if (context.querySelector('#selectLanguage').value != userSettingsInstance.language()) {
+				userSettingsInstance.language(context.querySelector('#selectLanguage').value);
 				reload = true;
 			}
-        }
+			if (context.querySelector('#selectLanguageAlt').value != userSettingsInstance.languageAlt()) {
+				userSettingsInstance.languageAlt(context.querySelector('#selectLanguageAlt').value);
+				reload = true;
+			}
+		}
 
 		user.Configuration.DisplayMissingEpisodes = context.querySelector('.chkDisplayMissingEpisodes').checked;
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
@@ -512,31 +280,13 @@ import './displaysettings.scss';
         userSettingsInstance.theme(context.querySelector('#selectTheme').value);
 		userSettingsInstance.dashboardTheme(context.querySelector('#selectDashboardTheme').value);
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
-		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value * 60000);
+		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
 		userSettingsInstance.enableClock(context.querySelector('#selectClock').value, self.adminEdit);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
-		
-		let toolbox = 0;
-		if (context.querySelector('#backdropToolsAll').checked)
-			toolbox = 7;
-		else {
-			if (context.querySelector('#backdropToolsDetails').checked)
-				toolbox = toolbox | 1;
-			if (context.querySelector('#backdropToolsControl').checked)
-				toolbox = toolbox | 2;
-			if (context.querySelector('#backdropToolsContrast').checked)
-				toolbox = toolbox | 4;
-		}
-		userSettingsInstance.enableBackdropWidget(toolbox);
-		
-		// When controls are turned off, backdrops rotation must be resumed.
-		if (toolbox & 2) {
-			pauseBackdrop(false);
-		}
-		
-        userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
+		userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
+		userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);
 		userSettingsInstance.swiperFX(context.querySelector('#selectSwiperFX').value);
@@ -546,18 +296,34 @@ import './displaysettings.scss';
 		userSettingsInstance.weatherApiKey(context.querySelector('#inputApikey').value);
 		userSettingsInstance.enableWeatherBot(context.querySelector('#selectWeatherBot').value, self.adminEdit);
 		
+		let bWidget = 0;
+		if (context.querySelector('#backdropToolsAll').checked)
+			bWidget = 7;
+		else {
+			if (context.querySelector('#backdropToolsDetails').checked)
+				bWidget = bWidget | 1;
+			if (context.querySelector('#backdropToolsControl').checked)
+				bWidget = bWidget | 2;
+			if (context.querySelector('#backdropToolsContrast').checked)
+				bWidget = bWidget | 4;
+		}
+		userSettingsInstance.enableBackdropWidget(bWidget);
+		
+		// When controls are turned off, backdrops rotation must be resumed.
+		if (bWidget & 2) {
+			pauseBackdrop(false);
+		}
+		
 		if (layoutManager.tv) 
 			userSettingsInstance.displayFontSize(context.querySelector('#sliderDisplayFontSize').value);
 		else
 			displayFontSizeRset();
 
-        userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
-     
 		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 			userSettingsInstance.commit();
 			setTimeout(() => {
 				if (!self.adminEdit && reload === true) {
-					embed(self, newDisplayLanguage).then( () => {
+					embed(self, context.querySelector('#selectLanguage').value).then( () => {
 						translateUserMenu();
 						LibraryMenu.setTitle(globalize.translate(self.title));
 						LibraryMenu.updateUserInHeader();
@@ -586,13 +352,67 @@ import './displaysettings.scss';
     }
 	
     function embed(self, culture) {
+		const context = self.options.element;
+		const userSettings = self.options.userSettings;
+		const allCultures = cultures.getDictionaries();
+		
 		return globalize.getCoreDictionary(culture).then( () => {
 			self.options.element.innerHTML = globalize.translateHtml(template, 'core', culture);
 			self.options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
 			if (self.options.enableSaveButton) {
 				self.options.element.querySelector('.btnSave').classList.remove('hide');
 			}
-			self.loadData(self.options.autoFocus);
+			
+			if (appHost.supports('displaylanguage')) {
+				let selectLanguage = context.querySelector('#selectLanguage');
+				let selectLanguageAlt = context.querySelector('#selectLanguageAlt');
+				settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", userSettings.language());
+				settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", userSettings.languageAlt(), userSettings.language());
+				selectLanguage.addEventListener('change', (e) => {
+					let newLang = e.target.value;
+					// Auto mode
+					if (newLang === '')
+						newLang = globalize.getDefaultCulture().ccode;
+					// Remove the latest selection from the list of selectable secondary languages.
+					settingsHelper.populateDictionaries(selectLanguageAlt, allCultures, "displayNativeName", selectLanguageAlt.value, newLang);
+					settingsHelper.showLangProgress(e.target);
+					settingsHelper.showLangProgress(selectLanguageAlt, true);
+					settingsHelper.showAggregateInfo(e.target); 
+				});
+				selectLanguageAlt.addEventListener('change', (e) => {
+					const selectLanguageAlt = e.target;
+					settingsHelper.showLangProgress(selectLanguageAlt, true);
+					settingsHelper.showAggregateInfo(selectLanguageAlt);
+				});
+			}
+			
+			if (datetime.supportsLocalization()) {
+				let x = context.querySelector('.selectDateTimeLocale');
+				settingsHelper.populateLanguages(x, allCultures, "displayNativeName", userSettings.dateTimeLocale() || '');
+			}
+			
+			if (appHost.supports('screensaver')) {
+				let btnTryIt = context.querySelector('#btnTryIt');
+				btnTryIt.addEventListener('click', onScreenSaverTry);
+				
+				let selectScreensaver = context.querySelector('.selectScreensaver');
+				settingsHelper.populateScreensavers(selectScreensaver, userSettings.screensaver() || 'none');
+				selectScreensaver.addEventListener('change', onScreenSaverChange);
+				sliderScreensaverTime.addEventListener('input', onScreensaverTimeChange);
+				sliderScreensaverTime.addEventListener('change', onScreensaverTimeChange);
+			}
+			
+			settingsHelper.populateThemes(context.querySelector('#selectTheme'), userSettings.theme());
+			context.querySelector('#selectTheme').addEventListener('change', (e) => { skinManager.setTheme(e.target.value); });
+			settingsHelper.populateThemes(context.querySelector('#selectDashboardTheme'), userSettings.dashboardTheme());
+			
+			context.querySelector('#btnFindIt').addEventListener('click', findPosition);
+			context.querySelector('#backdropToolsAll').addEventListener('change', (e) => {
+				context.querySelector('#backdropToolsList').classList.toggle('hide', e.target.checked); });
+			
+			context.querySelector('#sliderDisplayFontSize').addEventListener('change', onDisplayFontSizeChange);
+			
+			setTimeout(() => {self.loadData(self.options.autoFocus);}, 100);
 		});
 	}
 
@@ -600,8 +420,6 @@ import './displaysettings.scss';
         constructor(options) {
             this.options = options;
 			this.title = 'Display';
-			this._savedDisplayLang = '';
-			this._savedDisplayLangAlt = '';
 			this._savedLayout = '';
 			this._savedWBot = '';
 			this._savedClock = '';

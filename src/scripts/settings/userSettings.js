@@ -431,7 +431,6 @@ export class UserSettings {
 	commit() {
 		if (this.displayPrefs)
 			saveServerPreferences(this);
-		
 		return true;
 	}
 
@@ -1067,7 +1066,7 @@ export class UserSettings {
         
 		const blurhash = parseInt(this.get('blurhash'), 10);
 		// 0 is a valid value.
-		if (blurhash == NaN || blurhash < 0 || blurhash > 32) 
+		if (isNaN(blurhash) || blurhash < 0 || blurhash > 32) 
 			return 8; // default to 8 (performance).
         else 
             return blurhash;
@@ -1087,8 +1086,8 @@ export class UserSettings {
 		if (val !== undefined) 
             return this.set('backdropWidget', parseInt(val, 10));
         
-		const bw = parseInt(this.get('backdropWidget'), 10) || 0;
-		if (bw < 0 || bw > 7) 
+		const bw = parseInt(this.get('backdropWidget'), 10);
+		if (isNaN(bw) || bw < 0 || bw > 7) 
 			return 0; // default to 0 (none).
         else 
             return bw;
@@ -1136,7 +1135,7 @@ export class UserSettings {
             return this.set('swiperDelay', parseInt(val, 10));
         
 		const swiperDelay = parseInt(this.get('swiperDelay'), 10);
-		if (swiperDelay < 4 || swiperDelay > 60) 
+		if (isNaN(swiperDelay) || swiperDelay < 4 || swiperDelay > 60) 
 			return 4; // default to minimum.
         else 
             return swiperDelay;
@@ -1152,7 +1151,7 @@ export class UserSettings {
             return this.set('backdropDelay', parseInt(val, 10));
         
 		const backdropDelay = parseInt(this.get('backdropDelay'), 10);
-		if (backdropDelay < 0 || backdropDelay > 300) 
+		if (isNaN(backdropDelay) || backdropDelay < 0 || backdropDelay > 300) 
 			return 30;
         else 
             return backdropDelay;
@@ -1168,7 +1167,7 @@ export class UserSettings {
             return this.set('APIDelay', parseInt(val, 10));
         
 		const APIDelay = parseInt(this.get('APIDelay'), 10);
-		if (APIDelay < 1 || APIDelay > 30) 
+		if (isNaN(APIDelay) || APIDelay < 1 || APIDelay > 30) 
 			return 5; // default to 5.
         else 
             return APIDelay;
@@ -1332,15 +1331,31 @@ export class UserSettings {
      */		
     skipBackLength(val) {
         if (val !== undefined) 
-            return this.set('skipBackLength', parseInt(val, 10));
+            return this.set('skipBackLength', parseInt(val, 10) * 1000);
         
 		const skipBackLength = parseInt(this.get('skipBackLength'), 10);
-		if (skipBackLength < 5000 || skipBackLength > 60000) 
-			return 30000; // default to 30s in ms.
+		if (isNaN(skipBackLength) || skipBackLength < 5000 || skipBackLength > 60000) 
+			return 30; // default to 30s.
         else 
-            return skipBackLength;
+            return skipBackLength/1000;
     }
 
+    /**
+     * Get or set amount of fast forward.
+     * @param {number|undefined} val - Amount of fast forward.
+     * @return {number} Amount of fast forward.
+     */
+    skipForwardLength(val) {
+		if (val !== undefined) 
+            return this.set('skipForwardLength', parseInt(val, 10) * 1000);
+        
+		const skipForwardLength = parseInt(this.get('skipForwardLength'), 10);
+		if (isNaN(skipForwardLength) || skipForwardLength < 5000 || skipForwardLength > 60000) 
+			return 30; // default to 30s.
+        else 
+            return skipForwardLength/1000;
+    }
+	
     /**
      * Get or set the amount of resizing expressed in % of the value set by the application.
      * @param {number|undefined} % of resizing, between -20 and 20 inclusively.
@@ -1351,26 +1366,10 @@ export class UserSettings {
             return this.set('displayFontSize', parseInt(val, 10));
         
 		const fontSize = parseInt(this.get('displayFontSize'), 10);
-		if (fontSize < -20 || fontSize > 20) 
+		if (isNaN(fontSize) || fontSize < -20 || fontSize > 20) 
 			return 0; // use application default.
         else 
             return fontSize;
-    }
-	
-    /**
-     * Get or set amount of fast forward.
-     * @param {number|undefined} val - Amount of fast forward.
-     * @return {number} Amount of fast forward.
-     */
-    skipForwardLength(val) {
-		if (val !== undefined) 
-            return this.set('skipForwardLength', parseInt(val, 10));
-        
-		const skipForwardLength = parseInt(this.get('skipForwardLength'), 10);
-		if (skipForwardLength < 5000 || skipForwardLength > 60000) 
-			return 30000; // default to 30s in ms.
-        else 
-            return skipForwardLength;
     }
 
     /**
@@ -1426,19 +1425,19 @@ export class UserSettings {
     }
 
     /**
-     * Get or set screensaver minimum time before activation.
+     * Get or set screensaver delay before activation.
      * @param {number|undefined} val - Screensaver-idletime.
      * @return {number} Screensaver-idletime.
      */
     screensaverTime(val) {
         if (val !== undefined) 
-            return this.set('screensaverTime', parseInt(val, 10));
+            return this.set('screensaverTime', parseInt(val, 10) * 60000);
         
 		const screensaverTime = parseInt(this.get('screensaverTime'), 10);
-		if (screensaverTime > 1800000) 
-			return 180000; // default to 3min in ms.
+		if (isNaN(screensaverTime) || screensaverTime < 0 || screensaverTime > 1800000) 
+			return 10; // default to 10min.
         else 
-            return screensaverTime;
+            return screensaverTime/60000;
     }
 	
     /**
@@ -1447,12 +1446,12 @@ export class UserSettings {
      * @return {number} Library page size.
      */
     libraryPageSize(val) {
-		const defaultPageSize = 60;
+		const defaultPageSize = 64;
         if (val !== undefined) 
             return this.set('libraryPageSize', parseInt(val, 10));
 
 		const libraryPageSize = parseInt(this.get('libraryPageSize'), 10) || defaultPageSize;
-		if (libraryPageSize < 0 || libraryPageSize > 128) 
+		if (isNaN(libraryPageSize) || libraryPageSize < 0 || libraryPageSize > 128) 
 			return defaultPageSize;
         else 
             return libraryPageSize;
@@ -1468,7 +1467,7 @@ export class UserSettings {
             return this.set('maxDaysForNextUp', parseInt(val, 10));
 
 		const maxDaysForNextUp = parseInt(this.get('maxDaysForNextUp'), 10);
-        if (!maxDaysForNextUp || maxDaysForNextUp > 365) 
+        if (isNaN(maxDaysForNextUp) || maxDaysForNextUp <= 0 || maxDaysForNextUp > 365) 
 			return 30;
         else 
             return maxDaysForNextUp;

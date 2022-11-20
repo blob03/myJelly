@@ -27,299 +27,8 @@ import template from './subtitlesettings.template.html';
  * @module components/subtitleSettings/subtitleSettings
  */
 
-const CSS_COLOR_NAMES = [
-"Transparent",
-"Black",
-"White",
-
-false,
-// red color names
-
-"IndianRed",
-"LightCoral",
-"Salmon",
-"DarkSalmon",
-"LightSalmon",
-"Crimson",
-"Red",
-"FireBrick",
-"DarkRed",
-
-false,
-// orange color names
-
-"Coral",
-"Tomato",
-"OrangeRed",
-"DarkOrange",
-"Orange",
-
-false,
-// pink color names
-
-"Pink",
-"LightPink",
-"HotPink",
-"DeepPink",
-"MediumVioletRed",
-"PaleVioletRed",
-
-false,
-// purple color names
-
-"Lavender",
-"Thistle",
-"Plum",
-"Violet",
-"Orchid",
-"Fuchsia",
-"Magenta",
-"MediumOrchid",
-"MediumPurple",
-"BlueViolet",
-"DarkViolet",
-"DarkOrchid",
-"DarkMagenta",
-"Purple",
-"Indigo",
-"SlateBlue",
-"DarkSlateBlue",
-
-false,
-// gray color names
-
-"Gainsboro",
-"LightGray",
-"Silver",
-"DarkGray",
-"Gray",
-"DimGray",
-"LightSlateGray",
-"SlateGray",
-"DarkSlateGray",
-
-false,
-// green color names
-
-"GreenYellow",
-"Chartreuse",
-"LawnGreen",
-"Lime",
-"LimeGreen",
-"PaleGreen",
-"LightGreen",
-"MediumSpringGreen",
-"SpringGreen",
-"MediumSeaGreen",
-"seaGreen",
-"ForestGreen",
-"Green",
-"DarkGreen",
-"YellowGreen",
-"OliveDrab",
-"Olive",
-"DarkOliveGreen",
-"MediumAquaMarine",
-"DarkSeaGreen",
-"LightSeaGreen",
-"DarkCyan",
-"Teal",
-
-false,
-// brown color names
-
-"CornSilk",
-"BlanchedAlmond",
-"Bisque",
-"NavajoWhite",
-"Wheat",
-"BurlyWood",
-"Tan",
-"RosyBrown",
-"SandyBrown",
-"GoldenRod",
-"DarkGoldenRod",
-"Peru",
-"Chocolate",
-"SaddleBrown",
-"Sienna",
-"Brown",
-"Maroon",
-
-false,
-// blue color names
-
-"Aqua",
-"Cyan",
-"LightCyan",
-"PaleTurquoise",
-"Aquamarine",
-"Turquoise",
-"MediumTurquoise",
-"DarkTurquoise",
-"CadetBlue",
-"SteelBlue",
-"LightSteelBlue",
-"PowderBlue",
-"LightBlue",
-"SkyBlue",
-"LightSkyBlue",
-"DeepSkyBlue",
-"DodgerBlue",
-"CornflowerBlue",
-"MediumSlateBlue",
-"RoyalBlue",
-"Blue",
-"MediumBlue",
-"DarkBlue",
-"Navy",
-"MidnightBlue",
-
-false,
-// yellow color names
-
-"Gold",
-"Yellow",
-"LightYellow",
-"LemonChiffon",
-"LightGoldenRodYellow",
-"PapayaWhip",
-"Moccasin",
-"PeachPuff",
-"PaleGoldenRod",
-"Khaki",
-"DarkKhaki",
-
-false,
-// white color names
-
-"Snow",
-"HoneyDew",
-"MintCream",
-"Azure",
-"AliceBlue",
-"GhostWhite",
-"WhiteSmoke",
-"SeaShell",
-"Beige",
-"OldLace",
-"FloralWhite",
-"Ivory",
-"AntiqueWhite",
-"Linen",
-"LavenderBlush",
-"MistyRose"
-
-];
-
-function loadColors(context) { 
-	const subColor = context.querySelector('#inputTextColor');
-	const subBGcolor = context.querySelector('#inputTextBackground');
-	const subSTRcolor = context.querySelector('#inputTextStroke');
-	const subSHAcolor = context.querySelector('#inputShadowColor');
-	
-	// Remove previous options but preserve special options such as 'none', 'Auto', ...
-	Array.from(subColor.options).forEach( (opt) => {
-		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
-			opt.remove();
-	});
-	Array.from(subBGcolor.options).forEach( (opt) => {
-		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
-			opt.remove();
-	});
-	Array.from(subSTRcolor.options).forEach( (opt) => {
-		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
-			opt.remove();
-	});
-	Array.from(subSHAcolor.options).forEach( (opt) => {
-		if (opt.value !== '' && opt.value !== 'none' || opt.disabled)
-			opt.remove();
-	});
-		
-	for (const COLOR of CSS_COLOR_NAMES) {
-		let w = document.createElement("option");
-		let x = document.createElement("option");
-		let y = document.createElement("option");
-		let z = document.createElement("option");
-		
-		if (COLOR === false) {
-			let divider = globalize.translate('OptionDivider');
-			
-			w.text = divider;
-			w.disabled = true;
-			subColor.options.add(w, undefined); 
-		
-			x.text = divider;
-			x.disabled = true;
-			subBGcolor.options.add(x, undefined); 
-			
-			y.text = divider;
-			y.disabled = true;
-			subSTRcolor.options.add(y, undefined); 
-			
-			z.text = divider;
-			z.disabled = true;
-			subSHAcolor.options.add(z, undefined); 
-			
-			continue;
-		}
-		
-		w.text = COLOR;
-		w.value = COLOR;
-		w.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subColor.options.add(w, undefined); 
-		
-		x.text = COLOR;
-		x.value = COLOR;
-		x.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subBGcolor.options.add(x, undefined); 
-		
-		y.text = COLOR;
-		y.value = COLOR;
-		y.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subSTRcolor.options.add(y, undefined);
-		
-		z.text = COLOR;
-		z.value = COLOR;
-		z.asideText =  `<div style="width: 2.8em;height: 1.6em;border-radius: 5px 5px 5px;border: 1px solid LightSkyBlue;background-color: ${COLOR}"></div>`;
-		subSHAcolor.options.add(z, undefined);
-	}
-}
-
-function fillSubsPresets(select, selectedPreset) {
-	skinManager.getPresets().then(presets => { 
-		
-		presets.sort((a, b) => {
-			let fa = a.name.toLowerCase(),
-				fb = b.name.toLowerCase();
-			if (fa < fb) 
-				return -1;
-			if (fa > fb) 
-				return 1;
-			return 0;
-		});
-		
-		// Remove previous options but preserve special options such as 'none', 'Auto', ...
-		Array.from(select.options).forEach( (opt) => {
-			if (opt.value !== '' && opt.value !== 'none' && !opt.disabled)
-				opt.remove();
-		});
-		
-		presets.forEach(t => {
-			let z = document.createElement("option");
-			if (t.default)
-				z.icon = 'star';
-			z.value = t.id;
-			z.text = t.name;
-			select.options.add(z, undefined);
-		});
-		select.value = selectedPreset || '';
-	});
-}
-
 function getSubtitleAppearanceObject(context) {
     const appearanceSettings = {};
-
     appearanceSettings.textSize = context.querySelector('#sliderTextSize').value;
 	appearanceSettings.strokeSize = context.querySelector('#sliderStrokeSize').value;
     appearanceSettings.dropShadow = context.querySelector('#selectDropShadow').value;
@@ -335,10 +44,10 @@ function getSubtitleAppearanceObject(context) {
     return appearanceSettings;
 }
 
-function onSliderInput(e) {
-	const pnode = e.target.parentNode.parentNode;
+function onSliderChange(e) {
+	const pnode = e.target?.parentNode?.parentNode?.querySelector('.fieldDescription');
 	if (pnode) 
-		pnode.querySelector('.fieldDescription').innerHTML = e.target.value;
+		pnode.innerHTML = e.target.value;
 }
 
 function cancelPreset(e) {
@@ -384,7 +93,6 @@ function onSubPresetChange(e) {
 				document.getElementById("bgcolor").style.backgroundColor = t.bgcolor;
 				document.getElementById("inputShadowColor").value = t.shcolor;
 				document.getElementById("shadowcolor").style.backgroundColor = t.shcolor;
-				
 				document.getElementById("selectDropShadow").value = t.shadow;
 				
 				// Force a refresh of the preview.
@@ -396,82 +104,47 @@ function onSubPresetChange(e) {
 
 function loadForm(self) {
 	const context = self.options.element;
-	const apiClient = self.options.apiClient;
-	const userSettings = self.options.userSettings;
 	const appearanceSettings = self.appearanceSettings;
 	const user = self.currentUser;
-        
-	let event_change = new Event('change');
+	const event_change = new Event('change');
 	
 	if (appHost.supports('subtitleburnsettings') && user.Policy.EnableVideoPlaybackTranscoding) 
 		context.querySelector('.fldBurnIn').classList.remove('hide');
 	
 	context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || 'none';
-	loadColors(context);
-
 	context.querySelector('#inputShadowColor').value = appearanceSettings.textShadow || 'Transparent';
-	context.querySelector('#inputShadowColor').addEventListener('change', cancelPreset);
 	context.querySelector('#shadowcolor').style.backgroundColor = context.querySelector('#inputShadowColor').value;
 	context.querySelector('#inputTextBackground').value = appearanceSettings.textBackground || 'Transparent';
-	context.querySelector('#inputTextBackground').addEventListener('change', cancelPreset);
 	context.querySelector('#bgcolor').style.backgroundColor = context.querySelector('#inputTextBackground').value;
 	context.querySelector('#inputTextStroke').value = appearanceSettings.textStroke || 'Transparent';
-	context.querySelector('#inputTextStroke').addEventListener('change', cancelPreset);
 	context.querySelector('#strcolor').style.backgroundColor = context.querySelector('#inputTextStroke').value;
 	context.querySelector('#inputTextColor').value = appearanceSettings.textColor || 'White';
-	context.querySelector('#inputTextColor').addEventListener('change', cancelPreset);
 	context.querySelector('#fcolor').style.backgroundColor = context.querySelector('#inputTextColor').value;
 	context.querySelector('#selectFont').value = appearanceSettings.font || '';
-	context.querySelector('#selectFont').addEventListener('change', cancelPreset);
+	context.querySelector('#selectSubtitleLanguage').value = user.Configuration.SubtitleLanguagePreference || '';
+	context.querySelector('#selectSubtitlePlaybackMode').value = user.Configuration.SubtitleMode || '';
+	context.querySelector('.chkRememberSubtitleSelections').checked = user.Configuration.RememberSubtitleSelections || false;
+	context.querySelector('#sliderTextSize').value = appearanceSettings.textSize || 1.36;
+	context.querySelector('#sliderStrokeSize').value = appearanceSettings.strokeSize || 1;
+	context.querySelector('#sliderVerticalPosition').value = appearanceSettings.verticalPosition;
+	context.querySelector('#selectSubtitleBurnIn').value = appSettings.get('subtitleburnin') || '';
+	context.querySelector('#chkPreview').checked = appearanceSettings.chkPreview;
 	
 	let sliderOblique =  context.querySelector('#sliderOblique');
-	sliderOblique.addEventListener('input', onSliderInput);
-	sliderOblique.addEventListener('change', onSliderInput);
-	sliderOblique.addEventListener('change', cancelPreset);
 	if (browser.web0s) {
 		sliderOblique.min = 0;
 		sliderOblique.max = 4;
 		sliderOblique.step = 4;
 	}
 	sliderOblique.value = appearanceSettings.oblique || 0;
-	
-	let sliderTextSize =  context.querySelector('#sliderTextSize');
-	sliderTextSize.addEventListener('input', onSliderInput);
-	sliderTextSize.addEventListener('change', onSliderInput);
-	sliderTextSize.addEventListener('change', cancelPreset);
-	sliderTextSize.value = appearanceSettings.textSize || 1.36;
-	
-	let sliderStrokeSize =  context.querySelector('#sliderStrokeSize');
-	sliderStrokeSize.addEventListener('input', onSliderInput);
-	sliderStrokeSize.addEventListener('change', onSliderInput);
-	sliderStrokeSize.addEventListener('change', cancelPreset);
-	sliderStrokeSize.value = appearanceSettings.strokeSize || 1;
-	
-	context.querySelector('#sliderVerticalPosition').value = appearanceSettings.verticalPosition;
-	context.querySelector('#selectSubtitleBurnIn').value = appSettings.get('subtitleburnin') || '';
-	context.querySelector('#chkPreview').checked = appearanceSettings.chkPreview;
-	
-	context.querySelector('.chkRememberSubtitleSelections').checked = user.Configuration.RememberSubtitleSelections || false;	
-	
-	let selectSubtitlePlaybackMode = context.querySelector('#selectSubtitlePlaybackMode');
-	selectSubtitlePlaybackMode.value = user.Configuration.SubtitleMode || '';
-	
-	let allCultures = cultures.getCultures();	
-	let selectSubtitleLanguage = context.querySelector('#selectSubtitleLanguage');
-	settingsHelper.populateSubsLanguages(selectSubtitleLanguage, allCultures, "displayNativeName", 
-					user.Configuration.SubtitleLanguagePreference || 'Auto');
-	selectSubtitleLanguage.dispatchEvent(event_change);
-
-	let selectSubPreset =  context.querySelector('#selectSubtitlePreset');
-	fillSubsPresets(selectSubPreset, appearanceSettings.preset);
-	selectSubPreset.addEventListener('change', onSubPresetChange);
-	
-	selectSubPreset.dispatchEvent(event_change);
-	selectSubtitlePlaybackMode.dispatchEvent(event_change);
-	context.querySelector('#chkPreview').dispatchEvent(event_change);
 	sliderOblique.dispatchEvent(event_change);
-	sliderTextSize.dispatchEvent(event_change);
-	sliderStrokeSize.dispatchEvent(event_change);
+	
+	context.querySelector('#selectSubtitleLanguage').dispatchEvent(event_change);
+	context.querySelector('#selectSubtitlePreset').dispatchEvent(event_change);
+	context.querySelector('#selectSubtitlePlaybackMode').dispatchEvent(event_change);
+	context.querySelector('#chkPreview').dispatchEvent(event_change);
+	context.querySelector('#sliderTextSize').dispatchEvent(event_change);
+	context.querySelector('#sliderStrokeSize').dispatchEvent(event_change);
 }
 
 function save(self) {
@@ -538,7 +211,7 @@ function onLanguageFieldChange(e) {
 	loading.show();
 	globalize.getCoreDictionary(Lang).then((dictionary) => {
 		let html;
-		if (dictionary) {			
+		if (dictionary) {
 			html = dictionary['HeaderSubtitleAppearance'] || '';
 			if (html) html += '<br>';
 			html += dictionary['TheseSettingsAffectSubtitlesOnThisDevice'] || '';
@@ -592,56 +265,77 @@ function hideSubtitlePreview(persistent) {
 
 function embed(self) {
 	let options = self.options;
-
-    options.element.classList.add('subtitlesettings');
-    options.element.innerHTML = globalize.translateHtml(template, 'core');
-    options.element.querySelector('form').addEventListener('submit', self.onSubmit.bind(self));
-    options.element.querySelector('#selectSubtitlePlaybackMode').addEventListener('change', onSubtitleModeChange);
-	options.element.querySelector('#selectSubtitleLanguage').addEventListener('change', onLanguageFieldChange);
-    options.element.querySelector('#selectDropShadow').addEventListener('change', onAppearanceFieldChange);
-    options.element.querySelector('#selectFont').addEventListener('change', onAppearanceFieldChange);
-    options.element.querySelector('#inputTextColor').addEventListener('change', onAppearanceFieldChange);
-    options.element.querySelector('#inputTextBackground').addEventListener('change', onAppearanceFieldChange);
-	options.element.querySelector('#inputTextStroke').addEventListener('change', onAppearanceFieldChange);
-	options.element.querySelector('#inputShadowColor').addEventListener('change', onAppearanceFieldChange);
-	options.element.querySelector('#sliderOblique').addEventListener('input', onAppearanceFieldChange);
-	options.element.querySelector('#sliderTextSize').addEventListener('input', onAppearanceFieldChange);
-	options.element.querySelector('#sliderStrokeSize').addEventListener('input', onAppearanceFieldChange);
+	const context = self.options.element;
+	const appearanceSettings = self.appearanceSettings;
+	const user = self.currentUser;
+	const allCultures = cultures.getCultures();
 	
-    if (options.enableSaveButton)
-        options.element.querySelector('.btnSave').classList.remove('hide');
+	context.classList.add('subtitlesettings');
+	context.innerHTML = globalize.translateHtml(template, 'core');
+	
+	settingsHelper.populateSubsPresets(context.querySelector('#selectSubtitlePreset'), appearanceSettings.preset);
+	settingsHelper.populateSubsLanguages(context.querySelector('#selectSubtitleLanguage'), allCultures, "displayNativeName", 
+					user.Configuration.SubtitleLanguagePreference || '');
+	settingsHelper.populateColors(context.querySelector('#inputTextColor'));
+	settingsHelper.populateColors(context.querySelector('#inputTextBackground'));
+	settingsHelper.populateColors(context.querySelector('#inputTextStroke'));
+	settingsHelper.populateColors(context.querySelector('#inputShadowColor'));
+	
+	context.querySelector('form').addEventListener('submit', self.onSubmit.bind(self));
+	context.querySelector('#selectSubtitlePreset').addEventListener('change', onSubPresetChange);
+    context.querySelector('#selectSubtitlePlaybackMode').addEventListener('change', onSubtitleModeChange);
+	context.querySelector('#selectSubtitleLanguage').addEventListener('change', onLanguageFieldChange);
+    context.querySelector('#selectDropShadow').addEventListener('change', onAppearanceFieldChange);
+    context.querySelector('#selectFont').addEventListener('change', onAppearanceFieldChange);
+    context.querySelector('#inputTextColor').addEventListener('change', onAppearanceFieldChange);
+    context.querySelector('#inputTextBackground').addEventListener('change', onAppearanceFieldChange);
+	context.querySelector('#inputTextStroke').addEventListener('change', onAppearanceFieldChange);
+	context.querySelector('#inputShadowColor').addEventListener('change', onAppearanceFieldChange);
+	context.querySelector('#inputShadowColor').addEventListener('change', cancelPreset);
+	context.querySelector('#inputTextBackground').addEventListener('change', cancelPreset);
+	context.querySelector('#inputTextStroke').addEventListener('change', cancelPreset);
+	context.querySelector('#inputTextColor').addEventListener('change', cancelPreset);
+	context.querySelector('#selectFont').addEventListener('change', cancelPreset);
+	context.querySelector('#sliderOblique').addEventListener('change', onSliderChange);
+	context.querySelector('#sliderOblique').addEventListener('change', cancelPreset);
+	context.querySelector('#sliderTextSize').addEventListener('change', onSliderChange);
+	context.querySelector('#sliderTextSize').addEventListener('change', cancelPreset);
+	context.querySelector('#sliderStrokeSize').addEventListener('change', onSliderChange);
+	context.querySelector('#sliderStrokeSize').addEventListener('change', cancelPreset);
+	context.querySelector('#sliderOblique').addEventListener('input', onAppearanceFieldChange);
+	context.querySelector('#sliderTextSize').addEventListener('input', onAppearanceFieldChange);
+	context.querySelector('#sliderStrokeSize').addEventListener('input', onAppearanceFieldChange);
+	
+	context.querySelector('.btnSave').classList.toggle('hide', !options.enableSaveButton);
 
-    if (appHost.supports('subtitleappearancesettings')) {
-        options.element.querySelector('.subtitleAppearanceSection').classList.remove('hide');
+	if (appHost.supports('subtitleappearancesettings')) {
+		context.querySelector('.subtitleAppearanceSection').classList.remove('hide');
 
-        self._fullPreview = options.element.querySelector('.subtitleappearance-fullpreview');
-        
-		const sliderVerticalPosition = options.element.querySelector('#sliderVerticalPosition');
-        sliderVerticalPosition.addEventListener('input', onAppearanceFieldChange);
-        sliderVerticalPosition.addEventListener('input', () => showSubtitlePreview.call(self));
-		
-        const eventPrefix = window.PointerEvent ? 'pointer' : 'mouse';
-        sliderVerticalPosition.addEventListener(`${eventPrefix}enter`, () => showSubtitlePreview.call(self, true));
-        sliderVerticalPosition.addEventListener(`${eventPrefix}leave`, () => hideSubtitlePreview.call(self, true));
-		
-        if (layoutManager.tv) {
-            sliderVerticalPosition.addEventListener('focus', () => showSubtitlePreview.call(self, true));
-            sliderVerticalPosition.addEventListener('blur', () => hideSubtitlePreview.call(self, true));
-        }
+		self._fullPreview = context.querySelector('.subtitleappearance-fullpreview');
+		context.querySelector('#sliderVerticalPosition').addEventListener('input', onAppearanceFieldChange);
+		context.querySelector('#sliderVerticalPosition').addEventListener('input', () => showSubtitlePreview.call(self));
 
-        options.element.querySelector('.chkPreview').addEventListener('change', (e) => {
+		const eventPrefix = window.PointerEvent ? 'pointer' : 'mouse';
+		context.querySelector('#sliderVerticalPosition').addEventListener(`${eventPrefix}enter`, () => showSubtitlePreview.call(self, true));
+		context.querySelector('#sliderVerticalPosition').addEventListener(`${eventPrefix}leave`, () => hideSubtitlePreview.call(self, true));
+		if (layoutManager.tv) {
+			context.querySelector('#sliderVerticalPosition').addEventListener('focus', () => showSubtitlePreview.call(self, true));
+			context.querySelector('#sliderVerticalPosition').addEventListener('blur', () => hideSubtitlePreview.call(self, true));
+		}
+
+		context.querySelector('.chkPreview').addEventListener('change', (e) => {
 			onAppearanceFieldChange(e);
-            if (e.target.checked)
-                showSubtitlePreview.call(self, true);
-            else
-                hideSubtitlePreview.call(self, true);
-        });
-    }
+			if (e.target.checked)
+				showSubtitlePreview.call(self, true);
+			else
+				hideSubtitlePreview.call(self, true);
+		});
+	}
 
-    self.loadData();
+	setTimeout(() => {self.loadData();}, 100);
 
-    if (options.autoFocus)
-        focusManager.autoFocus(options.element);
+	if (options.autoFocus)
+		focusManager.autoFocus(context);
 }
 
 export class SubtitleSettings {
@@ -651,12 +345,13 @@ export class SubtitleSettings {
 		this.subtitlePreviewTimer = undefined;
 		this.currentUser = options.currentUser;
 		this.adminEdit = options.adminEdit;
+		this.appearanceSettings = options.userSettings.getSubtitlesAppearance();
         embed(this);
     }
 
 	loadData(autoFocus) {
 		loading.show();
-		this.appearanceSettings = this.options.userSettings.getSubtitlesAppearance();
+		
 		this._refFullPreview = 0;
 		loadForm(this);
 		if (autoFocus)

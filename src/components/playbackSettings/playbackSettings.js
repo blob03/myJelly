@@ -19,9 +19,9 @@ import template from './playbackSettings.template.html';
 /* eslint-disable indent */
 	
     function onSkipLengthChange(e) {
-		const pnode = e.target.parentNode.parentNode;
+		const pnode = e.target?.parentNode?.parentNode?.querySelector('.fieldDescription');
 		if (pnode) 
-			pnode.querySelector('.fieldDescription').innerHTML = globalize.translate('ValueSeconds', e.target.value);
+			pnode.innerHTML = globalize.translate('ValueSeconds', e.target.value);
     }
 
     function fillQuality(select, isInNetwork, mediatype, maxVideoWidth) {
@@ -39,7 +39,7 @@ import template from './playbackSettings.template.html';
             maxVideoWidth
 
         });
-
+		
 		// Remove previous options but preserve special options such as 'none', 'Auto', ...
 		Array.from(select.options).forEach( (opt) => {
 			if (opt.value !== '' && !opt.value !== 'none' && !opt.disabled)
@@ -139,15 +139,12 @@ import template from './playbackSettings.template.html';
 
     function onMaxVideoWidthChange(e) {
         const context = this.options.element;
-
         const selectVideoInNetworkQuality = context.querySelector('.selectVideoInNetworkQuality');
         const selectVideoInternetQuality = context.querySelector('.selectVideoInternetQuality');
         const selectChromecastVideoQuality = context.querySelector('.selectChromecastVideoQuality');
-
         const selectVideoInNetworkQualityValue = selectVideoInNetworkQuality.value;
         const selectVideoInternetQualityValue = selectVideoInternetQuality.value;
         const selectChromecastVideoQualityValue = selectChromecastVideoQuality.value;
-
         const maxVideoWidth = parseInt(e.target.value || '0', 10) || 0;
 
         fillQuality(selectVideoInNetworkQuality, true, 'Video', maxVideoWidth);
@@ -164,72 +161,41 @@ import template from './playbackSettings.template.html';
         const userSettings = self.options.userSettings;
 		const context = self.options.element;
 		const user = self.options.currentUser;
+		const event_change = new Event('change');
 
         showHideQualityFields(context, user, apiClient);
-
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
-		
-		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
-		selectAudioLanguage.value = '';
-		let allCultures = cultures.getCultures();
-		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "displayNativeName", user.Configuration.AudioLanguagePreference || '');
-
+		context.querySelector('#selectAudioLanguage').value = user.Configuration.AudioLanguagePreference || '';
         context.querySelector('.fldExternalPlayer').classList.toggle('hide', !appHost.supports('externalplayerintent'));
-        
+         
         if (user.Policy.EnableVideoPlaybackTranscoding || user.Policy.EnableAudioPlaybackTranscoding) {
             context.querySelector('.qualitySections').classList.remove('hide');
             if (appHost.supports('chromecast'))
 				context.querySelector('.fldChromecastQuality').classList.toggle('hide', !user.Policy.EnableVideoPlaybackTranscoding);
-        } else {
-            context.querySelector('.qualitySections').classList.add('hide');
-            context.querySelector('.fldChromecastQuality').classList.add('hide');
-        }
+		} else {
+			context.querySelector('.qualitySections').classList.add('hide');
+			context.querySelector('.fldChromecastQuality').classList.add('hide');
+		}
 
-        context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
-        context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
+		context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
+		context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
 		context.querySelector('.chkRememberAudioSelections').checked = user.Configuration.RememberAudioSelections || false;
-		
-        setMaxBitrateIntoField(context.querySelector('.selectVideoInNetworkQuality'), true, 'Video');
-        setMaxBitrateIntoField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
-        setMaxBitrateIntoField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
-
-        fillChromecastQuality(context.querySelector('.selectChromecastVideoQuality'));
-        context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
-
+		context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
 		context.querySelector('.chkMuteButton').checked = userSettings.muteButton();
-
-		const selectLabelMaxVideoWidth = context.querySelector('.selectLabelMaxVideoWidth');
-        selectLabelMaxVideoWidth.value = appSettings.maxVideoWidth();
+		context.querySelector('.selectLabelMaxVideoWidth').value = appSettings.maxVideoWidth();
 		
 		// Following two options (checkboxes) are mutually exclusive.
 		// chkEnableNextVideoOverlay has precedence if both happen to be set in the configuration.
-		let chkEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay');
-		let chkEnableNextVideoOverlay = context.querySelector('.chkEnableNextVideoOverlay');
-		
-		chkEnableNextVideoOverlay.checked = userSettings.enableNextVideoInfoOverlay();
-		chkEpisodeAutoPlay.checked = user.Configuration.EnableNextEpisodeAutoPlay && !chkEnableNextVideoOverlay.checked;
-		chkEpisodeAutoPlay.addEventListener('change', function(ev) {  if (ev.target.checked) chkEnableNextVideoOverlay.checked = false });
-		chkEnableNextVideoOverlay.addEventListener('change', function(ev) {  if (ev.target.checked) chkEpisodeAutoPlay.checked = false });
-		
-		if (browser.tizen) {
-            context.querySelector('.fldEpisodeAutoPlay').classList.add('hide');	
-			context.querySelector('.fldEnableNextVideoOverlay').classList.add('hide');
-        } else {
-			context.querySelector('.fldEpisodeAutoPlay').classList.remove('hide');
-			context.querySelector('.fldEnableNextVideoOverlay').classList.remove('hide');
-		}
-		
-		let event = new Event('change');
-        let sliderSkipForward = context.querySelector('#sliderSkipForwardLength');
-		sliderSkipForward.addEventListener('input', onSkipLengthChange);
-		sliderSkipForward.addEventListener('change', onSkipLengthChange);
-        sliderSkipForward.value = userSettings.skipForwardLength()/1000 || 30;
-		sliderSkipForward.dispatchEvent(event);
-        let sliderSkipBack = context.querySelector('#sliderSkipBackLength');
-		sliderSkipBack.addEventListener('input', onSkipLengthChange);
-		sliderSkipBack.addEventListener('change', onSkipLengthChange);
-        sliderSkipBack.value = userSettings.skipBackLength()/1000 || 30;
-		sliderSkipBack.dispatchEvent(event);
+		context.querySelector('.chkEnableNextVideoOverlay').checked = userSettings.enableNextVideoInfoOverlay();
+		context.querySelector('.chkEpisodeAutoPlay').checked = user.Configuration.EnableNextEpisodeAutoPlay 
+			&& !context.querySelector('.chkEnableNextVideoOverlay').checked;
+
+		context.querySelector('.fldEpisodeAutoPlay').classList.toggle('hide', browser.tizen);
+		context.querySelector('.fldEnableNextVideoOverlay').classList.toggle('hide', browser.tizen);
+		context.querySelector('#sliderSkipForwardLength').value = userSettings.skipForwardLength();
+		context.querySelector('#sliderSkipBackLength').value = userSettings.skipBackLength();
+		context.querySelector('#sliderSkipForwardLength').dispatchEvent(event_change);
+		context.querySelector('#sliderSkipBackLength').dispatchEvent(event_change);
     }
 
 	function save(self) {
@@ -252,8 +218,8 @@ import template from './playbackSettings.template.html';
         userSettings.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
         userSettings.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
 		userSettings.muteButton(context.querySelector('.chkMuteButton').checked);
-        userSettings.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value * 1000);
-        userSettings.skipBackLength(context.querySelector('#sliderSkipBackLength').value * 1000);
+        userSettings.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value);
+        userSettings.skipBackLength(context.querySelector('#sliderSkipBackLength').value);
 		
 		user.Configuration.RememberAudioSelections = context.querySelector('.chkRememberAudioSelections').checked;
 		user.Configuration.AudioLanguagePreference = context.querySelector('#selectAudioLanguage').value;
@@ -285,19 +251,40 @@ import template from './playbackSettings.template.html';
     }
 
     function embed(self) {
-        self.options.element.innerHTML = globalize.translateHtml(template, 'core');
-        self.options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
+		const context = self.options.element;
+		const user = self.options.currentUser;
+		const allCultures = cultures.getCultures();
 		
-        if (self.options.enableSaveButton)
-            self.options.element.querySelector('.btnSave').classList.remove('hide');
+		self.options.element.innerHTML = globalize.translateHtml(template, 'core');
+		self.options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
+		
+		if (self.options.enableSaveButton)
+			self.options.element.querySelector('.btnSave').classList.remove('hide');
 		
 		self.options.element.querySelector('.selectLabelMaxVideoWidth').addEventListener('change', onMaxVideoWidthChange.bind(self));
 
-        self.loadData();
+		let selectAudioLanguage = context.querySelector('#selectAudioLanguage');
+		settingsHelper.populateLanguages(selectAudioLanguage, allCultures, "displayNativeName", user.Configuration.AudioLanguagePreference || '');
 
-        if (self.options.autoFocus) 
-            focusManager.autoFocus(self.options.element);
-    }
+		context.querySelector('.chkEpisodeAutoPlay').addEventListener('change', 
+			(e) => { if (e.target.checked) context.querySelector('.chkEnableNextVideoOverlay').checked = false });
+		context.querySelector('.chkEnableNextVideoOverlay').addEventListener('change', 
+			(e) => { if (e.target.checked) context.querySelector('.chkEpisodeAutoPlay').checked = false });
+		
+		context.querySelector('#sliderSkipForwardLength').addEventListener('change', onSkipLengthChange);
+		context.querySelector('#sliderSkipBackLength').addEventListener('change', onSkipLengthChange);
+		
+		setMaxBitrateIntoField(context.querySelector('.selectVideoInNetworkQuality'), true, 'Video');
+		setMaxBitrateIntoField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
+		setMaxBitrateIntoField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
+		
+		fillChromecastQuality(context.querySelector('.selectChromecastVideoQuality'));
+		
+		setTimeout(() => {self.loadData();}, 100);
+		
+		if (self.options.autoFocus) 
+			focusManager.autoFocus(self.options.element);
+	}
 
     class PlaybackSettings {
         constructor(options) {

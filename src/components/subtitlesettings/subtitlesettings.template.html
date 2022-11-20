@@ -6,7 +6,7 @@
 		
         <div class="selectContainer">
             <select is="emby-select" id="selectSubtitleLanguage" label="${LabelPreferredSubtitleLanguage}">
-				<option value="Auto">${Auto}</option>
+				<option value="">${Auto}</option>
 				<option disabled>${OptionDivider}</option>
 			</select>
         </div>
@@ -21,7 +21,7 @@
 
         <div class="selectContainer">
             <select is="emby-select" id="selectSubtitlePlaybackMode" label="${LabelSubtitlePlaybackMode}">
-				<option value="none">${None}</option>
+				<option value="">${None}</option>
 				<option disabled>${OptionDivider}</option>
                 <option value="Smart">${Smart}</option>
 				<option value="Default">${Default}</option>
@@ -157,7 +157,7 @@
 					<input is="emby-slider" id="sliderTextSize" label="${LabelTextSize}" type="range" min="1" max="16" step="1"/>
 				</div>
 				<div class="fieldDescription" style="float:right"></div>
-			</div>			
+			</div>
 
 		</div>
 		
@@ -170,7 +170,7 @@
 						<select is="emby-select" id="inputTextStroke" label="${LabelTextStrokeColor}" 
 							onchange='document.getElementById("strcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
 						</select>
-					</div>		
+					</div>
 				</div>
 			</div>
 
@@ -207,7 +207,7 @@
 						<select is="emby-select" id="inputShadowColor" label="${LabelTextShadowColor}" 
 							onchange='document.getElementById("shadowcolor").style.backgroundColor = this.options[this.selectedIndex].value;'>
 						</select>
-					</div>		
+					</div>
 				</div>
 			</div>
 			

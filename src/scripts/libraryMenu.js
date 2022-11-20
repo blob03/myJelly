@@ -67,7 +67,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		
 		//html += '<h3 class="pageTitle" style="color: rgba(255,255,255,0.4);" aria-hidden="true"></h3>';
 		
-		html += '<div style="overflow: hidden !important;max-width: 43vw;min-width: 2vw;width: 2vw;flex-grow: 2;">';
+		html += '<div style="overflow: visible !important;max-width: 43vw;min-width: 2vw;width: 2vw;flex-grow: 2;">';
 		html += '<span aria-hidden="true" class="pageTitle" style="color: rgba(255,255,255,0.4);"></span>';
 		html += '</div>';
 		

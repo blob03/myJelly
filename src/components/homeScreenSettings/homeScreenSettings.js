@@ -366,30 +366,28 @@ import template from './homeScreenSettings.template.html';
 		const apiClient = self.options.apiClient;
 		const userSettings = self.options.userSettings;
 		const user = self.currentUser;
+		const event_change = new Event('change');
 		
 		context.querySelector('#chkHidePlayedFromLatest').checked = user.Configuration.HidePlayedInLatest || false;
 		context.querySelector('#chkUseCardLayoutInHomeSections').checked = userSettings.useCardLayoutInHomeSections() || false;
 		context.querySelector('#sliderMaxDaysForNextUp').value = userSettings.maxDaysForNextUp() || 30;	
 		context.querySelector('#chkUseEpisodeImagesInNextUp').checked = userSettings.useEpisodeImagesInNextUpAndResume();		
-        context.querySelector('#chkRewatchingNextUp').checked = userSettings.enableRewatchingInNextUp();
+		context.querySelector('#chkRewatchingNextUp').checked = userSettings.enableRewatchingInNextUp();
 		updateHomeSectionValues(context, userSettings);
 		
-		let chgevent = new Event('change');
 		for (let i = 1; i <= homeSections.numConfigurableSections; i++)
-			context.querySelector('#selectHomeSection' + i).addEventListener('change', onHomeSectionChange);
-		for (let i = 1; i <= homeSections.numConfigurableSections; i++)
-			context.querySelector('#selectHomeSection' + i).dispatchEvent(chgevent);
+			context.querySelector('#selectHomeSection' + i).dispatchEvent(event_change);
 
-        const promise1 = apiClient.getUserViews({ IncludeHidden: true }, user.Id);
-        const promise2 = apiClient.getJSON(apiClient.getUrl(`Users/${user.Id}/GroupingOptions`));
-	
-        Promise.all([promise1, promise2]).then(responses => {
-            renderViewOrder(context, user, responses[0]);
-            renderPerLibrarySettings(context, user, responses[0].Items, userSettings);
-            renderViews(context, user, responses[1]);
-            loading.hide();
-        });
-    }
+		const promise1 = apiClient.getUserViews({ IncludeHidden: true }, user.Id);
+		const promise2 = apiClient.getJSON(apiClient.getUrl(`Users/${user.Id}/GroupingOptions`));
+
+		Promise.all([promise1, promise2]).then(responses => {
+			renderViewOrder(context, user, responses[0]);
+			renderPerLibrarySettings(context, user, responses[0].Items, userSettings);
+			renderViews(context, user, responses[1]);
+			loading.hide();
+		});
+	}
 
     function onSectionOrderListClick(e) {
         const target = dom.parentWithClass(e.target, 'btnViewItemMove');
@@ -485,9 +483,7 @@ import template from './homeScreenSettings.template.html';
 
     function onSubmit(e) {
         const self = this;
-		
 		save(self);
-
         // Disable default form submission
         if (e)
             e.preventDefault();
@@ -512,20 +508,28 @@ import template from './homeScreenSettings.template.html';
 
     function embed(self) {
 		const options = self.options;
-        let workingTemplate = template;
+		const context = self.options.element;
+		let workingTemplate = template;
 		
-        for (let i = 1; i <= homeSections.numConfigurableSections; i++) 
-            workingTemplate = workingTemplate.replace(`{section${i}label}`, globalize.translate('LabelHomeScreenSectionValue', i));
-
-        options.element.innerHTML = globalize.translateHtml(workingTemplate, 'core');
-        options.element.querySelector('.viewOrderList').addEventListener('click', onSectionOrderListClick);
-        options.element.querySelector('form').addEventListener('submit', onSubmit.bind(self));
-        options.element.addEventListener('change', onChange);
-        options.element.querySelector('.btnSave').classList.toggle('hide', !options.enableSaveButton);
-        options.element.querySelector('.selectTVHomeScreenContainer').classList.toggle('hide', layoutManager.tv);
-
-        return self.loadData(options.autoFocus);
-    }
+		for (let i = 1; i <= homeSections.numConfigurableSections; i++) {
+			workingTemplate = workingTemplate.replace(`{section${i}label}`, globalize.translate('LabelHomeScreenSectionValue', i));
+		}
+		
+		context.innerHTML = globalize.translateHtml(workingTemplate, 'core');
+		
+		for (let i = 1; i <= homeSections.numConfigurableSections; i++) {
+			context.querySelector('#selectHomeSection' + i).addEventListener('change', onHomeSectionChange);
+		}
+		
+		context.querySelector('.btnSave').classList.toggle('hide', !options.enableSaveButton);
+		context.querySelector('.selectTVHomeScreenContainer').classList.toggle('hide', layoutManager.tv);
+		
+		context.querySelector('.viewOrderList').addEventListener('click', onSectionOrderListClick);
+		context.querySelector('form').addEventListener('submit', onSubmit.bind(self));
+		context.addEventListener('change', onChange);
+		
+		setTimeout(() => {self.loadData(options.autoFocus);}, 100);
+	}
 
     class HomeScreenSettings {
         constructor(options) {

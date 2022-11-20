@@ -2448,7 +2448,7 @@
     },
     "ur-PK": {
         "ccode": "ur-PK",
-        "fsize": 5090,
+        "fsize": 5070,
         "ccodeSrc": "en-US",
         "displayName": "Urdu",
         "displayNativeName": "اردو",
@@ -2498,17 +2498,17 @@
     },
     "vi": {
         "ccode": "vi",
-        "fsize": 131478,
+        "fsize": 131517,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
         "displayNativeName": "Việtnam",
         "ISO6391": "vi",
         "ISO6392": "vie",
-        "keys#": 1660,
-        "completed%": 92.79,
+        "keys#": 1661,
+        "completed%": 92.85,
         "jellyfinWeb": {
             "filename": "vi.json",
-            "keys#": 1660,
+            "keys#": 1661,
             "orphans#": 13,
             "orphans": [
                 "OptionDislikes",
@@ -2525,7 +2525,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.28
+            "completed%": 99.34
         },
         "myJelly": {
             "filename": "",
@@ -2608,17 +2608,17 @@
     },
     "zh-TW": {
         "ccode": "zh-TW",
-        "fsize": 97753,
+        "fsize": 97847,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Traditional",
         "displayNativeName": "中文(台灣)‬",
         "ISO6391": "zh-TW",
         "ISO6392": "chi",
-        "keys#": 1580,
-        "completed%": 88.32,
+        "keys#": 1583,
+        "completed%": 88.49,
         "jellyfinWeb": {
             "filename": "zh-TW.json",
-            "keys#": 1580,
+            "keys#": 1583,
             "orphans#": 13,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -2635,7 +2635,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 94.5
+            "completed%": 94.68
         },
         "myJelly": {
             "filename": "",
