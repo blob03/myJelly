@@ -108,9 +108,6 @@ function loadForm(self) {
 	const user = self.currentUser;
 	const event_change = new Event('change');
 	
-	if (appHost.supports('subtitleburnsettings') && user.Policy.EnableVideoPlaybackTranscoding) 
-		context.querySelector('.fldBurnIn').classList.remove('hide');
-	
 	context.querySelector('#selectDropShadow').value = appearanceSettings.dropShadow || 'none';
 	context.querySelector('#inputShadowColor').value = appearanceSettings.textShadow || 'Transparent';
 	context.querySelector('#shadowcolor').style.backgroundColor = context.querySelector('#inputShadowColor').value;
@@ -130,15 +127,14 @@ function loadForm(self) {
 	context.querySelector('#selectSubtitleBurnIn').value = appSettings.get('subtitleburnin') || '';
 	context.querySelector('#chkPreview').checked = appearanceSettings.chkPreview;
 	
-	let sliderOblique =  context.querySelector('#sliderOblique');
+	context.querySelector('#sliderOblique').value = appearanceSettings.oblique || 0;
 	if (browser.web0s) {
-		sliderOblique.min = 0;
-		sliderOblique.max = 4;
-		sliderOblique.step = 4;
+		context.querySelector('#sliderOblique').min = 0;
+		context.querySelector('#sliderOblique').max = 4;
+		context.querySelector('#sliderOblique').step = 4;
 	}
-	sliderOblique.value = appearanceSettings.oblique || 0;
-	sliderOblique.dispatchEvent(event_change);
 	
+	context.querySelector('#sliderOblique').dispatchEvent(event_change);
 	context.querySelector('#selectSubtitleLanguage').dispatchEvent(event_change);
 	context.querySelector('#selectSubtitlePreset').dispatchEvent(event_change);
 	context.querySelector('#selectSubtitlePlaybackMode').dispatchEvent(event_change);
@@ -194,13 +190,13 @@ function onAppearanceFieldChange(e) {
 }
 
 function onLanguageFieldChange(e) {
-	const subselector = document.getElementById('selectSubtitleLanguage');
-	let Lang = subselector.value;
-	if (Lang === "Auto")
+	let Lang = e.target.value;
+	// "" for 'Auto-detect'
+	if (Lang === "")
 		Lang = globalize.getCurrentLocale();
 	else
 		// get the two letters name (ISO 639-1) correspondence needed to obtain a dictionary.
-		Lang = subselector.options[subselector.selectedIndex].getAttribute("ISO6391");
+		Lang = e.target.options[e.target.selectedIndex].getAttribute("ISO6391");
 		
 	if (!Lang)
 		return;
@@ -275,7 +271,7 @@ function embed(self) {
 	
 	settingsHelper.populateSubsPresets(context.querySelector('#selectSubtitlePreset'), appearanceSettings.preset);
 	settingsHelper.populateSubsLanguages(context.querySelector('#selectSubtitleLanguage'), allCultures, "displayNativeName", 
-					user.Configuration.SubtitleLanguagePreference || '');
+		user.Configuration.SubtitleLanguagePreference || '');
 	settingsHelper.populateColors(context.querySelector('#inputTextColor'));
 	settingsHelper.populateColors(context.querySelector('#inputTextBackground'));
 	settingsHelper.populateColors(context.querySelector('#inputTextStroke'));
@@ -305,6 +301,9 @@ function embed(self) {
 	context.querySelector('#sliderOblique').addEventListener('input', onAppearanceFieldChange);
 	context.querySelector('#sliderTextSize').addEventListener('input', onAppearanceFieldChange);
 	context.querySelector('#sliderStrokeSize').addEventListener('input', onAppearanceFieldChange);
+	
+	if (appHost.supports('subtitleburnsettings') && user.Policy.EnableVideoPlaybackTranscoding) 
+		context.querySelector('.fldBurnIn').classList.remove('hide');
 	
 	context.querySelector('.btnSave').classList.toggle('hide', !options.enableSaveButton);
 

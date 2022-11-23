@@ -357,6 +357,7 @@ export class UserSettings {
 		userPrefs.dashboardTheme = "";
 		userPrefs.datetimelocale = "";
 		userPrefs.detailsBanner = "false";
+		userPrefs.displayFontSize = "0";
 		userPrefs.enableBackdrops = "none";
 		userPrefs.enableNextVideoInfoOverlay = "false";
 		userPrefs.enableThemeSongs = "false";
@@ -373,7 +374,7 @@ export class UserSettings {
 		userPrefs.swiperDelay = "";
 		userPrefs.swiperFX = "horizontal";
 		userPrefs.tvhome = "";
-		userPrefs.weatherApiKey = "";
+		//userPrefs.weatherApiKey = "";
 		userPrefs.weatherbot = "0";
 		prefs.CustomPrefs = { ...userPrefs };
 		

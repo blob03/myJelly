@@ -157,26 +157,14 @@ import template from './playbackSettings.template.html';
     }
 
 	function loadForm(self) {
-		const apiClient = self.options.apiClient;
         const userSettings = self.options.userSettings;
 		const context = self.options.element;
 		const user = self.options.currentUser;
 		const event_change = new Event('change');
 
-        showHideQualityFields(context, user, apiClient);
         context.querySelector('#selectAllowedAudioChannels').value = userSettings.allowedAudioChannels();
 		context.querySelector('#selectAudioLanguage').value = user.Configuration.AudioLanguagePreference || '';
-        context.querySelector('.fldExternalPlayer').classList.toggle('hide', !appHost.supports('externalplayerintent'));
          
-        if (user.Policy.EnableVideoPlaybackTranscoding || user.Policy.EnableAudioPlaybackTranscoding) {
-            context.querySelector('.qualitySections').classList.remove('hide');
-            if (appHost.supports('chromecast'))
-				context.querySelector('.fldChromecastQuality').classList.toggle('hide', !user.Policy.EnableVideoPlaybackTranscoding);
-		} else {
-			context.querySelector('.qualitySections').classList.add('hide');
-			context.querySelector('.fldChromecastQuality').classList.add('hide');
-		}
-
 		context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
 		context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
 		context.querySelector('.chkRememberAudioSelections').checked = user.Configuration.RememberAudioSelections || false;
@@ -190,8 +178,6 @@ import template from './playbackSettings.template.html';
 		context.querySelector('.chkEpisodeAutoPlay').checked = user.Configuration.EnableNextEpisodeAutoPlay 
 			&& !context.querySelector('.chkEnableNextVideoOverlay').checked;
 
-		context.querySelector('.fldEpisodeAutoPlay').classList.toggle('hide', browser.tizen);
-		context.querySelector('.fldEnableNextVideoOverlay').classList.toggle('hide', browser.tizen);
 		context.querySelector('#sliderSkipForwardLength').value = userSettings.skipForwardLength();
 		context.querySelector('#sliderSkipBackLength').value = userSettings.skipBackLength();
 		context.querySelector('#sliderSkipForwardLength').dispatchEvent(event_change);
@@ -252,6 +238,7 @@ import template from './playbackSettings.template.html';
 
     function embed(self) {
 		const context = self.options.element;
+		const apiClient = self.options.apiClient;
 		const user = self.options.currentUser;
 		const allCultures = cultures.getCultures();
 		
@@ -278,7 +265,22 @@ import template from './playbackSettings.template.html';
 		setMaxBitrateIntoField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
 		setMaxBitrateIntoField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
 		
+		showHideQualityFields(context, user, apiClient);
 		fillChromecastQuality(context.querySelector('.selectChromecastVideoQuality'));
+		
+		context.querySelector('.fldExternalPlayer').classList.toggle('hide', !appHost.supports('externalplayerintent'));
+		
+		if (user.Policy.EnableVideoPlaybackTranscoding || user.Policy.EnableAudioPlaybackTranscoding) {
+            context.querySelector('.qualitySections').classList.remove('hide');
+            if (appHost.supports('chromecast'))
+				context.querySelector('.fldChromecastQuality').classList.toggle('hide', !user.Policy.EnableVideoPlaybackTranscoding);
+		} else {
+			context.querySelector('.qualitySections').classList.add('hide');
+			context.querySelector('.fldChromecastQuality').classList.add('hide');
+		}
+		
+		context.querySelector('.fldEpisodeAutoPlay').classList.toggle('hide', browser.tizen);
+		context.querySelector('.fldEnableNextVideoOverlay').classList.toggle('hide', browser.tizen);
 		
 		setTimeout(() => {self.loadData();}, 100);
 		

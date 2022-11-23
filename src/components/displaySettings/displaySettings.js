@@ -131,50 +131,27 @@ import './displaysettings.scss';
 		const userSettings = self.options.userSettings;
 		const event_change = new Event('change');
 		
-		if (appHost.supports('displaylanguage')) { 
-			let selectLanguage = context.querySelector('#selectLanguage');
-			let selectLanguageAlt = context.querySelector('#selectLanguageAlt');
-			selectLanguage.value = userSettings.language();
-			selectLanguageAlt.value = userSettings.languageAlt();
-			selectLanguage.dispatchEvent(event_change);
-			selectLanguageAlt.dispatchEvent(event_change);
-			context.querySelector('.DisplayLanguageArea').classList.remove('hide');
-		} else 
-			context.querySelector('.DisplayLanguageArea').classList.add('hide');
+		if (appHost.supports('displaylanguage')) {
+			context.querySelector('#selectLanguage').value = userSettings.language();
+			context.querySelector('#selectLanguageAlt').value = userSettings.languageAlt();
+			context.querySelector('#selectLanguage').dispatchEvent(event_change);
+			context.querySelector('#selectLanguageAlt').dispatchEvent(event_change);
+		} 
 		
 		if (datetime.supportsLocalization()) {
-			let x = context.querySelector('.selectDateTimeLocale');
-			x.value = userSettings.dateTimeLocale() || '';
-			context.querySelector('.fldDateTimeLocale').classList.remove('hide');
-		} else 
-			context.querySelector('.fldDateTimeLocale').classList.add('hide');
-	
-        if (appHost.supports('externallinks')) {
-			var els = context.getElementsByClassName('hyperlink');
-			Array.prototype.forEach.call(els, function(el) {
-				el.classList.remove('hide');
-			});
-        }
+			context.querySelector('.selectDateTimeLocale').value = userSettings.dateTimeLocale() || '';
+		}
 		
 		context.querySelector('#selectTheme').value = userSettings.theme();
 		context.querySelector('#selectDashboardTheme').value = userSettings.dashboardTheme();
-		
-		const dashboardthemeNodes = context.querySelectorAll(".selectDashboardThemeContainer");
-		dashboardthemeNodes.forEach( function(userItem) {
-			userItem.classList.toggle('hide', !user.Policy.IsAdministrator);});
 		
         if (appHost.supports('screensaver')) {
 			context.querySelector('.selectScreensaver').value = userSettings.screensaver();
 			context.querySelector('#sliderScreensaverTime').value = userSettings.screensaverTime();
 			context.querySelector('#sliderScreensaverTime').dispatchEvent(event_change);
 			context.querySelector('.selectScreensaver').dispatchEvent(event_change);
-			context.querySelector('.ScreensaverArea').classList.remove('hide');
-        } else 
-            context.querySelector('.ScreensaverArea').classList.add('hide');
-
-		context.querySelector('.fldThemeSong').classList.toggle('hide', browser.tizen);
-		context.querySelector('.fldThemeVideo').classList.toggle('hide', browser.tizen);
-		context.querySelector('#btnFindIt').classList.toggle('hide', !isSecure());
+        }
+		
 		context.querySelector('.fldDetailsBanner').classList.toggle('hide', layoutManager.tv || layoutManager.mobile);
 		
         context.querySelector('.chkDisplayMissingEpisodes').checked = user.Configuration.DisplayMissingEpisodes || false;
@@ -353,6 +330,7 @@ import './displaysettings.scss';
 	
     function embed(self, culture) {
 		const context = self.options.element;
+		const user = self.currentUser;
 		const userSettings = self.options.userSettings;
 		const allCultures = cultures.getDictionaries();
 		
@@ -384,26 +362,47 @@ import './displaysettings.scss';
 					settingsHelper.showLangProgress(selectLanguageAlt, true);
 					settingsHelper.showAggregateInfo(selectLanguageAlt);
 				});
-			}
+				
+				context.querySelector('.DisplayLanguageArea').classList.remove('hide');
+			} else 
+				context.querySelector('.DisplayLanguageArea').classList.add('hide');
 			
 			if (datetime.supportsLocalization()) {
-				let x = context.querySelector('.selectDateTimeLocale');
-				settingsHelper.populateLanguages(x, allCultures, "displayNativeName", userSettings.dateTimeLocale() || '');
+				settingsHelper.populateLanguages(context.querySelector('.selectDateTimeLocale'), allCultures, "displayNativeName", userSettings.dateTimeLocale() || '');
+				context.querySelector('.fldDateTimeLocale').classList.remove('hide');
+			}	else
+				context.querySelector('.fldDateTimeLocale').classList.add('hide'); 
+			
+			if (appHost.supports('externallinks')) {
+				var els = context.getElementsByClassName('hyperlink');
+				Array.prototype.forEach.call(els, function(el) {
+					el.classList.remove('hide');
+				});
 			}
 			
+			context.querySelectorAll(".selectDashboardThemeContainer").forEach( (elem) => {
+				elem.classList.toggle('hide', !user.Policy.IsAdministrator);});
+
 			if (appHost.supports('screensaver')) {
 				let btnTryIt = context.querySelector('#btnTryIt');
 				btnTryIt.addEventListener('click', onScreenSaverTry);
 				
-				let selectScreensaver = context.querySelector('.selectScreensaver');
-				settingsHelper.populateScreensavers(selectScreensaver, userSettings.screensaver() || 'none');
-				selectScreensaver.addEventListener('change', onScreenSaverChange);
-				sliderScreensaverTime.addEventListener('input', onScreensaverTimeChange);
-				sliderScreensaverTime.addEventListener('change', onScreensaverTimeChange);
-			}
+				settingsHelper.populateScreensavers(context.querySelector('.selectScreensaver'), userSettings.screensaver() || 'none');
+				context.querySelector('.selectScreensaver').addEventListener('change', onScreenSaverChange);
+				context.querySelector('#sliderScreensaverTime').addEventListener('input', onScreensaverTimeChange);
+				context.querySelector('#sliderScreensaverTime').addEventListener('change', onScreensaverTimeChange);
+				context.querySelector('.ScreensaverArea').classList.remove('hide');
+			} else 
+				context.querySelector('.ScreensaverArea').classList.add('hide');
 			
+			context.querySelector('.fldThemeSong').classList.toggle('hide', browser.tizen);
+			context.querySelector('.fldThemeVideo').classList.toggle('hide', browser.tizen);
+			context.querySelector('#btnFindIt').classList.toggle('hide', !isSecure());
+		
 			settingsHelper.populateThemes(context.querySelector('#selectTheme'), userSettings.theme());
-			context.querySelector('#selectTheme').addEventListener('change', (e) => { skinManager.setTheme(e.target.value); });
+			// If the theme isn't changed by an admin, load it up.
+			if (!self.adminEdit)
+				context.querySelector('#selectTheme').addEventListener('change', (e) => { skinManager.setTheme(e.target.value); });
 			settingsHelper.populateThemes(context.querySelector('#selectDashboardTheme'), userSettings.dashboardTheme());
 			
 			context.querySelector('#btnFindIt').addEventListener('click', findPosition);

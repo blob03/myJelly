@@ -53,9 +53,9 @@
 		"color": "#0c2450"
 	}, {
 		"name": "Light alt.",
-		"version": "0.40",
+		"version": "0.42",
 		"id": "light-alt",
-		"color": "#eef0e5",
+		"color": "#fff",
 		"group": "myJelly in-dev"
 	}],
 	"menuLinks": [],
@@ -360,6 +360,7 @@
 				"dashboardTheme": "",
 				"datetimelocale": "",
 				"detailsBanner": "true",
+				"displayFontSize": "0",
 				"enableBackdrops": "Theme",
 				"enableNextVideoInfoOverlay": "false",
 				"enableThemeSongs": "false",
@@ -375,7 +376,6 @@
 				"swiperDelay": "",
 				"swiperFX": "horizontal",
 				"tvhome": "",
-				"weatherApiKey": "",
 				"weatherbot": "0"
 			},
 			"userConf": {
@@ -409,6 +409,7 @@
 				"dashboardTheme": "dark",
 				"datetimelocale": "",
 				"detailsBanner": "false",
+				"displayFontSize": "2",
 				"enableBackdrops": "none",
 				"enableNextVideoInfoOverlay": "false",
 				"enableThemeSongs": "false",
@@ -424,7 +425,6 @@
 				"swiperDelay": "",
 				"swiperFX": "none",
 				"tvhome": "",
-				"weatherApiKey": "",
 				"weatherbot": "0"
 			},
 			"userConf": {
@@ -458,6 +458,7 @@
 				"dashboardTheme": "dark-alt",
 				"datetimelocale": "",
 				"detailsBanner": "true",
+				"displayFontSize": "-8",
 				"enableBackdrops": "Theme",
 				"enableNextVideoInfoOverlay": "false",
 				"enableThemeSongs": "true",
@@ -485,7 +486,6 @@
 				"tvhome": "",
 				"useCardLayoutInHomeSections": "true",
 				"useEpisodeImagesInNextUpAndResume": "true",
-				"weatherApiKey": "",
 				"weatherbot": "0"
 			},
 			"userConf": {

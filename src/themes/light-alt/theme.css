@@ -11,7 +11,7 @@
 .skinHeader,
 html {
     color: #8997ae;
-	background-color: #dce3ee;
+	background-color: #fff !important;
 }
 
 ::-moz-selection { 
@@ -72,21 +72,19 @@ html {
 
 .backgroundContainer {
 	background: linear-gradient(125deg, rgba(255, 254, 167, 0.4) 0%, rgba(255, 255, 226, 0.4) 40%, rgba(135, 173, 182, 0.4) 70%, rgba(35, 128, 67, 0.4) 100%);
-	background-color: #ffffff;
+	background-color: #fff;
 }
 
 .backgroundContainer.withBackdrop {
 	background: linear-gradient(125deg, rgba(255, 254, 167, 0.4) 0%, rgba(255, 255, 226, 0.4) 40%, rgba(135, 173, 182, 0.4) 70%, rgba(35, 128, 67, 0.4) 100%);
-	background-color: #ffffff;
 }
 
 .backgroundContainer.withThemeBackdrop {
 	background: linear-gradient(125deg, rgba(255, 254, 167, 0.4) 0%, rgba(255, 255, 226, 0.4) 40%, rgba(135, 173, 182, 0.4) 70%, rgba(35, 128, 67, 0.4) 100%);
-	background-color: #ffffff;
 }
 
 .backdropImage {
-    background-color: rgb(40, 40, 40) !important;
+    background-color: #fff !important;
 }
 
 .backdropImage.themeBackdrop {
@@ -233,11 +231,11 @@ html {
 }
 
 .itemProgressBarForeground {
-    background-color: #d3f6c7;
+    background-color: #f7dc74;
 }
 
 .itemProgressBarForeground2 {
-    background-color: #73efaf;
+    background-color: #acd7de;
 }
 
 .itemProgressBarForeground-recording {
@@ -381,8 +379,7 @@ html {
 .homeLibraryButton {
 	color: #6a6b65 !important;
 	background-color: rgba(250, 251, 249, 0.6);
-	box-shadow: 0.2em 0.2em 12px #bec8a6;
-	text-shadow: .15em .15em 4px #bec8a6;
+	box-shadow: 0.1em 0.1em 8px #585954;
 	font-weight: 400;
 }
 
@@ -394,13 +391,14 @@ html {
 
 .homeLibraryButton:focus {
 	color: #fff !important;
-	background-color: rgba(94, 106, 136, 0.2) !important;
-	transform: scale(1.1) !important;
+	background-color: rgba(251, 255, 117, 0.2) !important;
+	transform: scale(1.0) !important;
 	box-shadow: 0 0 8px #282828, 1px 1px 18px #282828;
+	box-shadow: 0 0 5px #cb9b5d, 0 0 10px #dfd763, 0 0 15px #f4e6ae, 0 0 20px #faffc5, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 }
 
 .material-icons {
-	color: #fff;
+	color: rgb(78, 98, 117);
 	text-shadow: .15em .15em 4px #bec8a6;
 }
 
@@ -430,7 +428,7 @@ html {
 }
 
 .homeLibraryButton:focus > .material-icons {
-	color: #ccc;
+	color: #fff;
 	text-shadow: 0 0 4px #39392d;	
 }
 
@@ -512,7 +510,7 @@ html {
 .headerButton:focus > .material-icons,
 .headerButton:hover > .material-icons,
 .headerButton:active > .material-icons {
-	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 55px #ffffff;
+	text-shadow: 0 0 5px #c2cb5d, 0 0 10px #dfd763, 0 0 15px #f4e6ae, 0 0 20px #faffc5, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 	color: #fff;
 }
 
@@ -666,8 +664,8 @@ html {
 }
 
 .nightMode > * {
-	color: #d7e2e9;
-	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+	color: #fff !important;
+	text-shadow: 0 0 5px #cc701f, 0 0 10px #deaa2f, 0 0 15px #ffcb4f, 0 0 20px #ffebc5, 0 0 25px #f2f9a5, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -699,9 +697,8 @@ html {
 
 .formDialogHeaderTitle,
 .pageTitle {
-	color: #fff !important;
+	color: #d0cca6 !important;
 	font-size: 120%;
-	text-shadow: .1em .1em 12px #535747;
 	overflow: visible;
 }
 
@@ -727,8 +724,10 @@ html {
 }
 
 .itemName {
-	color: #7c898b !important;
-	text-shadow: 3px 3px 6px #171716;
+	color: #8a8c7b;
+	font-weight: 600;
+	text-shadow: .2em .2em 6px #aeae9a;
+	overflow: visible;
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {
@@ -744,8 +743,8 @@ html {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-	color: #717274;
-	font-size: 85%;
+	color: #779c9c;
+	font-size: 80%;
 }
 
 .skinHeader.osdHeader {
@@ -986,7 +985,7 @@ option.selected {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 3px groove #8a92a1 !important;
+	border: 0.1em solid #3c5b68 !important;
 }
 
 .fieldDescription {
@@ -1009,10 +1008,13 @@ fieldset {
 }
 
 .mdl-spinner__layer-1,
+.mdl-spinner__layer-3 {
+	border-color: #add9db !important;
+}
+
 .mdl-spinner__layer-2,
-.mdl-spinner__layer-3,
 .mdl-spinner__layer-4 {
-    border-color: rgb(201, 160, 230) !important;
+	border-color: #ffffff !important;
 }
 
 .button-link,
@@ -1022,7 +1024,7 @@ fieldset {
 .sliderLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: #aaa !important;
+    color: #9acc99 !important;
 }
 
 .button-link {
@@ -1206,8 +1208,9 @@ button.submit {
 
 .trackSelectionFieldContainer > .selectLabel,
 .detailsGroupItem > .label {
-	color: white;
+	color: #8a8c7b;
 	font-weight: 600;
+	text-shadow: 3px 3px 6px #aeae9a;
 }
 
 .pageTabContent {
@@ -1239,17 +1242,19 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .detailSectionHeader, 
 .sectionTitle {
-	color: #686968;
 	font-weight: 600;
 	font-size: 1.7rem;
-	text-shadow: .1em .1em 4px #bec8a6 !important;
+	color: #d0cca6 !important;
 }
 
 .paperList,
 .visualCardBox {
-	background-color: #e2e7ed;
-	border: 0.1em solid #3c5b68;
 	padding: .3em;
+	border: 0.1em solid #3c5b68;
+	color: #6a6b65 !important;
+	background-color: rgba(250, 251, 249, 0.6);
+	box-shadow: 0.1em 0.1em 8px #585954;
+	font-weight: 400;
 }
 
 /* tab buttons */
@@ -1271,14 +1276,14 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .emby-tab-button:hover:not(:disabled) > * > .material-icons {
-    color: rgb(175, 184, 193) !important;
+    color: rgb(252, 246, 214) !important;
 }
 
 .emby-tab-button-active > * > .material-icons,
 .emby-tab-button-active:focus > * > .material-icons,
 .emby-tab-button-active:hover:not(:disabled) > * > .material-icons {
-	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01cdfc !important;
-    color: #fff !important;
+	text-shadow: 0 0 5px #e3a658, 0 0 10px #dfd763, 0 0 15px #f3f04a, 0 0 20px #f7ffa3, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
+	color: #fff !important;
 	animation-name: buttonfocus !important;
 	animation-duration: .15s !important;
 	transform: scale(1.5) !important;
@@ -1423,7 +1428,19 @@ select option:selected {
 }
 
 #backdropWidget {
-	background: rgba(219, 215, 196, 0.5);
+	background: rgba(240, 239, 233, 0.5);
+}
+
+#backdropControlButton {
+	font-size: 90% !important;
+}
+
+#backdropTools {
+	box-shadow: none !important;
+}
+
+.aboutTitle2 {
+	text-shadow: 1px 1px 10px #ffbc54;
 }
 
 .sliderMarkerContainer {
