@@ -147,20 +147,20 @@ function save(self) {
 	const user = self.currentUser;
 	const userSettings = self.options.userSettings;
 	const context = self.options.element;
-    const apiClient = self.options.apiClient;
+	const apiClient = self.options.apiClient;
 	const enableSaveConfirmation = self.options.enableSaveConfirmation;
-	
+
 	appSettings.set('subtitleburnin', context.querySelector('#selectSubtitleBurnIn').value);
-	
-    let appearanceSettings = userSettings.getSubtitlesAppearance();
-    appearanceSettings = Object.assign(appearanceSettings, getSubtitleAppearanceObject(context));
-    userSettings.setSubtitlesAppearance(appearanceSettings);
+
+	let old_appearanceSettings = userSettings.getSubtitlesAppearance();
+	self.appearanceSettings = Object.assign(old_appearanceSettings, getSubtitleAppearanceObject(context));
+	userSettings.setSubtitlesAppearance(self.appearanceSettings);
 
 	user.Configuration.RememberSubtitleSelections = context.querySelector('.chkRememberSubtitleSelections').checked;
-    user.Configuration.SubtitleLanguagePreference = context.querySelector('#selectSubtitleLanguage').value;
-    user.Configuration.SubtitleMode = context.querySelector('#selectSubtitlePlaybackMode').value;
-	
-    apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
+	user.Configuration.SubtitleLanguagePreference = context.querySelector('#selectSubtitleLanguage').value;
+	user.Configuration.SubtitleMode = context.querySelector('#selectSubtitlePlaybackMode').value;
+
+	apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
 		userSettings.commit();
 		setTimeout(() => { 
 			loading.hide();
@@ -250,7 +250,7 @@ function showSubtitlePreview(persistent) {
 function hideSubtitlePreview(persistent) {
     clearTimeout(this.subtitlePreviewTimer);
 
-    if (persistent) {
+    if (persistent && this._refFullPreview > 0) {
         this._refFullPreview--;
     }
 

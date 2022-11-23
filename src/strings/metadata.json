@@ -2448,20 +2448,20 @@
     },
     "ur-PK": {
         "ccode": "ur-PK",
-        "fsize": 5070,
+        "fsize": 158145,
         "ccodeSrc": "en-US",
         "displayName": "Urdu",
         "displayNativeName": "اردو",
         "ISO6391": "ur-PK",
         "ISO6392": "urd",
-        "keys#": 57,
-        "completed%": 3.19,
+        "keys#": 1672,
+        "completed%": 93.46,
         "jellyfinWeb": {
             "filename": "ur-PK.json",
-            "keys#": 57,
+            "keys#": 1672,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 3.41
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

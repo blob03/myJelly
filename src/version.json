@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-18",
+	"version": "10.8.7-19",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -153,6 +153,7 @@
 		"10.8.7-15": "Synchronize translations.\nApply patch 'thornbill/async-react-pages'.\nFix more misbehaving selects and other layout issues in user pages.\nInstall latest 'package.json'.",
 		"10.8.7-16": "Synchronize translations.\nApply patch 'nielsvanvelzen/directory-browser-go-up'.\nApply patch 'Vankerkom/tweak-navigation-sizing'.\nApply patch 'Vankerkom/tweak-active-devices-card'.\nApply patch 'dmitrylyzo/fix-subtitleuploader'.",
 		"10.8.7-17": "Synchronize translations.\nCleanup and optimization of the user pages.",
-		"10.8.7-18": "Synchronize translations.\nCleanup and optimization of the user pages.\nCorrect subtitles language value for auto-detection.\nEditing a user's theme on their behalf doesn't affect the theme currently displayed.\nMove theme 'Light alt.' to 0.42."
+		"10.8.7-18": "Synchronize translations.\nCleanup and optimization of the user pages.\nCorrect subtitles language value for auto-detection.\nEditing a user's theme on their behalf doesn't affect the theme currently displayed.\nMove theme 'Light alt.' to 0.42.",
+		"10.8.7-19": "Synchronize translations.\nFix subtitles page going out of sync with saved settings.\nFix subtitles preview bug."
 	}
 }
