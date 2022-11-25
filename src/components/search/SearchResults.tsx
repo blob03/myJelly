@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import globalize from '../../scripts/globalize';
+import * as userSettings from '../../scripts/settings/userSettings';
 import ServerConnections from '../ServerConnections';
 import SearchResultsRow from './SearchResultsRow';
 
@@ -34,7 +35,8 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({ serverId = windo
     const [ books, setBooks ] = useState<BaseItemDto[]>([]);
     const [ people, setPeople ] = useState<BaseItemDto[]>([]);
 	const [ collections, setCollections ] = useState<BaseItemDto[]>([]);
-
+	const [ cardLayout, setCardLayout ] = useState(false);
+	
     useEffect(() => {
         const getDefaultParameters = () => ({
             ParentId: parentId,
@@ -101,6 +103,7 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({ serverId = windo
         setBooks([]);
         setPeople([]);
 		setCollections([]);
+		setCardLayout(userSettings.useCardLayoutInHomeSections(undefined) || false);
 
         if (query) {
             const apiClient = ServerConnections['getApiClient'](serverId);
@@ -187,25 +190,25 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({ serverId = windo
             <SearchResultsRow
                 title={globalize.translate('Movies')}
                 items={movies}
-                cardOptions={{ showYear: true }}
+                cardOptions={{ showYear: true, cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Shows')}
                 items={shows}
-                cardOptions={{ showYear: true }}
+                cardOptions={{ showYear: true, cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Episodes')}
                 items={episodes}
                 cardOptions={{
                     coverImage: true,
-                    showParentTitle: true
+                    showParentTitle: true, cardLayout: cardLayout
                 }}
             />
             <SearchResultsRow
                 title={globalize.translate('HeaderVideos')}
                 items={videos}
-                cardOptions={{ showParentTitle: true }}
+                cardOptions={{ showParentTitle: true, cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Programs')}
@@ -219,7 +222,7 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({ serverId = windo
                     overlayMoreButton: true,
                     showAirTime: true,
                     showAirDateTime: true,
-                    showChannelName: true
+                    showChannelName: true, cardLayout: cardLayout
                 }}
             />
             <SearchResultsRow
@@ -230,46 +233,52 @@ const SearchResults: FunctionComponent<SearchResultsProps> = ({ serverId = windo
             <SearchResultsRow
                 title={globalize.translate('Playlists')}
                 items={playlists}
+				cardOptions={{ cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Artists')}
                 items={artists}
-                cardOptions={{ coverImage: true }}
+                cardOptions={{ coverImage: true, cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Albums')}
                 items={albums}
-                cardOptions={{ showParentTitle: true }}
+                cardOptions={{ showParentTitle: true, cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Songs')}
                 items={songs}
-                cardOptions={{ showParentTitle: true }}
+                cardOptions={{ showParentTitle: true, cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('HeaderPhotoAlbums')}
                 items={photoAlbums}
+				cardOptions={{ cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Photos')}
                 items={photos}
+				cardOptions={{ cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('HeaderAudioBooks')}
                 items={audioBooks}
+				cardOptions={{ cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('Books')}
                 items={books}
+				cardOptions={{ cardLayout: cardLayout }}
             />
 			<SearchResultsRow
                 title={globalize.translate('Collections')}
                 items={collections}
+				cardOptions={{ cardLayout: cardLayout }}
             />
             <SearchResultsRow
                 title={globalize.translate('People')}
                 items={people}
-                cardOptions={{ coverImage: true }}
+                cardOptions={{ coverImage: true, cardLayout: cardLayout }}
             />
         </div>
     );

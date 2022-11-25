@@ -215,7 +215,7 @@
     "DirectPlayError": "Er is een fout opgetreden tijdens het starten van direct playback",
     "DirectPlayHelp": "Het bronbestand is volledig compatibel met deze client, en de sessie ontvangt het bestand zonder wijzigingen.",
     "DirectPlaying": "Direct afspelen",
-    "DirectStreamHelp1": "De resolutie en codec wordt ondersteund door het apparaat, maar het audioformaat (DTS, Dolby TrueHD, etc.) of nummer van audiokanalen wordt niet ondersteund. De stream zal zonder kwaliteitsverlies worden verpakt voor deze naar het apparaat gestuurd wordt. Alleen de audio wordt geconverteerd.",
+    "DirectStreamHelp1": "De videostream wordt ondersteund door het apparaat, maar het audioformaat (DTS, Dolby TrueHD, etc.) of aantal audiokanalen wordt niet ondersteund. De videostream zal zonder kwaliteitsverlies worden verpakt voor deze naar het apparaat gestuurd wordt. Alleen de audio wordt geconverteerd.",
     "DirectStreamHelp2": "Direct streamen van een bestand gebruikt weinig processorkracht zonder verlies van beeldkwaliteit.",
     "DirectStreaming": "Direct streamen",
     "Director": "Regiseur",

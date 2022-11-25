@@ -333,7 +333,7 @@ export class UserSettings {
 		userConf.EnableLocalPassword = false;
 		userConf.EnableNextEpisodeAutoPlay = false;
 		userConf.GroupedFolders = [];
-		userConf.HidePlayedInLatest = false;
+		userConf.HidePlayedInLatest = true;
 		userConf.LatestItemsExcludes = [];
 		userConf.MyMediaExcludes = [];
 		userConf.OrderedViews = [];
@@ -360,12 +360,14 @@ export class UserSettings {
 		userPrefs.displayFontSize = "0";
 		userPrefs.enableBackdrops = "none";
 		userPrefs.enableNextVideoInfoOverlay = "false";
+		userPrefs.enableRewatchingInNextUp = "false";
 		userPrefs.enableThemeSongs = "false";
 		userPrefs.enableThemeVideos = "false";
 		userPrefs.fastFadein = "false";
 		userPrefs.latitude = "";
 		userPrefs.libraryPageSize = "";
 		userPrefs.longitude = "";
+		userPrefs.preferFmp4HlsContainer = "false";
 		userPrefs.screensaver = "none";
 		userPrefs.screensaverTime = "0";
 		userPrefs.skipBackLength = "";
@@ -374,6 +376,8 @@ export class UserSettings {
 		userPrefs.swiperDelay = "";
 		userPrefs.swiperFX = "horizontal";
 		userPrefs.tvhome = "";
+		userPrefs.useCardLayoutInHomeSections = "false";
+		userPrefs.useEpisodeImagesInNextUpAndResume = "false";
 		//userPrefs.weatherApiKey = "";
 		userPrefs.weatherbot = "0";
 		prefs.CustomPrefs = { ...userPrefs };
@@ -414,9 +418,10 @@ export class UserSettings {
         const currentValue = this.get(name, enableOnServer);
         const result = appSettings.set(name, value, userId);
 
-        if (enableOnServer !== false && this.displayPrefs) {
+        if (this.displayPrefs) {
             this.displayPrefs.CustomPrefs[name] = value == null ? value : value.toString();
-            saveServerPreferences(this);
+			if (enableOnServer === true)
+				saveServerPreferences(this);
         }
 
         if (currentValue !== value) {
@@ -624,7 +629,7 @@ export class UserSettings {
 		return toBoolean(this.get('useCardLayoutInHomeSections'), false);
     }
 	
-	    /**
+	/**
      * Get or set 'Meteo' state.
      * @param {boolean|undefined} val - Flag to (en|dis)able 'Meteo' (Set) or undefined (Get).
      * @return {boolean} 'Meteo' state (Get) or success/failure status (Set).

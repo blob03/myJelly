@@ -880,7 +880,7 @@
     "LabelSSDPTracingFilterHelp": "Adreça IP opcional sobre la qual es registra un filtrat de el tràfic de SSDP.",
     "LabelSaveLocalMetadata": "Desa l'artwork i les metadades als directoris dels multimèdia",
     "LabelSaveLocalMetadataHelp": "Desar l'artwork i les metadades directament als directoris dels multimèdia els posarà tots en llocs on podran ser editats fàcilment.",
-    "LabelScheduledTaskLastRan": "Darrera execució {0}, tenint {1}.",
+    "LabelScheduledTaskLastRan": "Darrera execució {0}, va trigar {1}.",
     "LabelScreensaver": "Salva pantalla:",
     "LabelSeasonNumber": "Temporada:",
     "LabelSelectAudioChannels": "Canals",

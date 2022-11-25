@@ -1,8 +1,3 @@
-@font-face {
-	font-family: "Shangai";
-    src: url("fonts/shanghai.ttf") format("truetype"); 
-}
-
 * {
 	scrollbar-color: #eef0e5 #2c2c2c;
 	scrollbar-width: thin;
@@ -532,7 +527,7 @@ html {
 .listItem:focus > .material-icons,
 .listItem:hover > .material-icons,
 .listItem:active > .material-icons {
-	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01cdfc;
+	text-shadow: 0 0 5px #c2cb5d, 0 0 10px #dfd763, 0 0 15px #f4e6ae, 0 0 20px #faffc5, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 	color: #fff;
 }
 
@@ -596,7 +591,7 @@ html {
 }
 
 .sliderBubbleText {
-	font-family: "Shangai";
+	font-family: "Shanghai";
 	font-size: 170% !important;
 }
 
@@ -655,7 +650,7 @@ html {
 }
 	
 .headerClockTime {
-	font-family: "Shangai";
+	font-family: "Shanghai";
 	font-size: 170% !important;
 }
 
@@ -1115,9 +1110,10 @@ button.submit {
 .button-cancel,
 .cancel,
 .button-cancel {
-	background-color: rgb(82, 99, 109);
-	box-shadow: 0 0 4px #17191a;
-	color: rgb(52, 61, 63) !important;
+	background-color: rgb(233, 222, 201);
+	color: rgb(197, 159, 69) !important;
+	box-shadow: .15em .15em 4px #bec8a6;
+	border: 0.1em solid rgb(78, 98, 117);
 }
 
 .button-delete:hover:not(:disabled),
@@ -1131,8 +1127,8 @@ button.submit {
 .btnSelectServer:hover:not(:disabled),
 .submit:hover:not(:disabled),
 .button-submit:hover:not(:disabled) {
-    color: #d7e9eb !important;
-    background-color: rgba(36, 43, 48, 0.8) !important;
+    color: #f7f4e2 !important;
+	background-color: rgba(245, 196, 152);
     box-shadow: 0 0 4px #d7e0e8, 0 0 6px #cccedf, 0 0 17px #b2c3cf, 0 0 38px #a3bec9;
 }
 
@@ -1244,7 +1240,9 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .sectionTitle {
 	font-weight: 600;
 	font-size: 1.7rem;
-	color: #d0cca6 !important;
+	color: #fff7b4 !important;
+	text-shadow: 0.1em 0.1em 8px #585954;
+	-webkit-text-stroke: 1px rgb(78, 98, 117);
 }
 
 .paperList,
@@ -1355,12 +1353,12 @@ select option:selected {
 
 .listItem-button:hover:not(:disabled) {
 	color: #c1c8d4 !important;
-	background-color: #35373b;
+	background-color: #dde0e6 !important;
 }
 
 .listItem-button:focus {
 	color: #c1c8d4 !important;
-	background-color: #404040 !important;
+	background-color: #fff !important;
 }
 
 .btnTryIt {
@@ -1393,7 +1391,7 @@ select option:selected {
 
 .ssWeatherData,
 .ssClockTime {
-	font-family: "Shangai";
+	font-family: "Shanghai";
 }
 
 .ssBackplane {
@@ -1415,7 +1413,7 @@ select option:selected {
 }
 
 .headerWthTemp {
-	font-family: "Shangai";
+	font-family: "Shanghai";
 	font-size: 170% !important;
 }
 
