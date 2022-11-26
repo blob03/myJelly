@@ -16,12 +16,9 @@ import '../../elements/emby-button/emby-button';
 import ServerConnections from '../ServerConnections';
 import toast from '../toast/toast';
 import template from './displaySettings.template.html';
-import templateUserMenu from '../../controllers/user/menu/index.html';
 import * as LibraryMenu from '../../scripts/libraryMenu';
-import viewManager from '../viewManager/viewManager';
 import * as ssmanager from '../../scripts/screensavermanager';
 import { pauseBackdrop } from '../backdrop/backdrop';
-import viewContainer from '../viewContainer';
 import './displaysettings.scss';
 
 /* eslint-disable indent */
@@ -200,23 +197,6 @@ import './displaysettings.scss';
 		context.querySelector('.fldDisplayMissingEpisodes').classList.toggle('hide', browser.tizen);
 	}
 
-	function translateUserMenu() {
-		// Refresh the translation of the user settings main page.
-		let old = document.querySelector('.readOnlyContent');
-		if (old) {
-			let patch = document.createElement('div');
-			patch.innerHTML = globalize.translateHtml(templateUserMenu, 'core');
-			old.innerHTML = patch.querySelector('.readOnlyContent').innerHTML;
-		}
-			
-		let prefs = document.querySelector('#myPreferencesMenuPage');
-		if (prefs)
-			prefs.setAttribute('data-title', globalize.translate('Settings'));
-		prefs = document.querySelector('#displayPreferencesPage');
-		if (prefs)
-			prefs.setAttribute('data-title', globalize.translate('Display'));
-	}
-
     function saveForm(self) {
 		const user = self.currentUser;
 		const enableSaveConfirmation = self.options.enableSaveConfirmation;
@@ -297,11 +277,11 @@ import './displaysettings.scss';
 			displayFontSizeRset();
 
 		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
-			userSettingsInstance.commit();
-			setTimeout(() => {
+			userSettingsInstance.commit().then( () => {
 				if (!self.adminEdit && reload === true) {
+					if (document.querySelector('#myPreferencesMenuPage'))
+						document.querySelector('#myPreferencesMenuPage').dispatchEvent(new CustomEvent('viewreload', null));
 					embed(self, context.querySelector('#selectLanguage').value).then( () => {
-						translateUserMenu();
 						LibraryMenu.setTitle(globalize.translate(self.title));
 						LibraryMenu.updateUserInHeader();
 						loading.hide();
@@ -312,7 +292,8 @@ import './displaysettings.scss';
 					loading.hide();
 					if (enableSaveConfirmation) 
 						toast(globalize.translate('SettingsSaved'));
-				}}, 1000);
+				}
+			});
 		});
     }
 

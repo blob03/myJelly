@@ -11,6 +11,10 @@ function onSaveTimeout() {
     this.currentApiClient.updateDisplayPreferences('usersettings', this.displayPrefs, this.currentUserId, 'emby');
 }
 
+function getSavePromise(self) {
+    return self.currentApiClient.updateDisplayPreferences('usersettings', self.displayPrefs, self.currentUserId, 'emby');
+}
+
 function saveServerPreferences(instance) {
     if (instance.saveTimeout) {
         clearTimeout(instance.saveTimeout);
@@ -432,12 +436,13 @@ export class UserSettings {
     }
 	
 	/**
-	 * Save the user preferences into the server storage, all at once.
+	 * Ask the API to save the user preferences into the server storage, all at once
+	 * and provide a promise to the caller.
 	 */
 	commit() {
 		if (this.displayPrefs)
-			saveServerPreferences(this);
-		return true;
+			return getSavePromise(this);
+		return new Promise((resolve, reject) => {});
 	}
 
     /**

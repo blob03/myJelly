@@ -212,12 +212,12 @@ import template from './playbackSettings.template.html';
 		user.Configuration.EnableNextEpisodeAutoPlay = context.querySelector('.chkEpisodeAutoPlay').checked 
 													|| context.querySelector('.chkEnableNextVideoOverlay').checked;
 		apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => { 
-			userSettings.commit(); 
-			setTimeout(() => { 
+			userSettings.commit().then( () => { 
 				loading.hide();
 				if (enableSaveConfirmation) 
-					toast(globalize.translate('SettingsSaved'));}, 1000);
+					toast(globalize.translate('SettingsSaved'));
 				Events.trigger(self, 'saved');
+			});
 		});
     }
 

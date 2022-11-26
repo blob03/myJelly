@@ -472,12 +472,12 @@ import template from './homeScreenSettings.template.html';
         }
 		
         apiClient.updateUserConfiguration(user.Id, user.Configuration).then( () => {
-			userSettings.commit();
-			setTimeout(() => { 
+			userSettings.commit().then( () => {
 				loading.hide();
 				if (enableSaveConfirmation) 
-					toast(globalize.translate('SettingsSaved'));}, 1000);
-			Events.trigger(self, 'saved');
+					toast(globalize.translate('SettingsSaved'));
+				Events.trigger(self, 'saved');
+			});
 		});
     }
 
