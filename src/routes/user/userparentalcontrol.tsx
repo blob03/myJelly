@@ -316,7 +316,7 @@ const UserParentalControl: FunctionComponent = () => {
 
     const optionMaxParentalRating = () => {
         let content = '';
-        content += `<option value=''>${globalize.translate('none')}</option>`;
+        content += `<option value=''>${globalize.translate('None')}</option>`;
 		content += `<option disabled>${globalize.translate('OptionDivider')}</option>`;
         for (const rating of parentalRatings) {
             content += `<option value='${rating.Value}'>${escapeHTML(rating.Name)}</option>`;

@@ -1602,6 +1602,7 @@
     "Unmute": "Unmute",
     "Unplayed": "Unplayed",
     "Unrated": "Unrated",
+    "Unreleased": "Not yet released",
     "UnsupportedPlayback": "Jellyfin cannot decrypt content protected by DRM but all content will be attempted regardless, including protected titles. Some files may appear completely black due to encryption or other unsupported features, such as interactive titles.",
     "Up": "Up",
     "Upload": "Upload",

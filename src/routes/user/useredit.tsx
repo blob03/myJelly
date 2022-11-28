@@ -292,7 +292,7 @@ const UserEdit: FunctionComponent = () => {
         let content = '';
         content += `<option value='CreateAndJoinGroups'>${globalize.translate('LabelSyncPlayAccessCreateAndJoinGroups')}</option>`;
         content += `<option value='JoinGroups'>${globalize.translate('LabelSyncPlayAccessJoinGroups')}</option>`;
-        content += `<option value='none'>${globalize.translate('LabelSyncPlayAccessnone')}</option>`;
+        content += `<option value='none'>${globalize.translate('LabelSyncPlayAccessNone')}</option>`;
         return content;
     };
 

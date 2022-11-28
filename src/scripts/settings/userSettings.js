@@ -1,5 +1,5 @@
 import appSettings from './appSettings';
-import { loadUserPresets, listUserPresets } from './webSettings';
+import { getDefaultTheme, loadUserPresets, listUserPresets } from './webSettings';
 import Events from '../../utils/events.ts';
 import { toBoolean, toPrecision } from '../../utils/string.ts';
 import globalize from '../globalize';
@@ -316,7 +316,7 @@ export class UserSettings {
 	* @param {string} - User identifier.
 	* @param {Object} - ApiClient instance.
 	*/
-    resetUserInfo(userId, presetsName) {
+    resetUserInfo(userId, presetsName, resetLocalization) {
         if (!userId)
 			userId = this.currentUserId;
 		let apiClient = this.currentApiClient;
@@ -346,20 +346,18 @@ export class UserSettings {
 		userConf.RememberSubtitleSelections = false;
 		userConf.SubtitleLanguagePreference = "";
 		userConf.SubtitleMode = "Default";
-		userConf = { ...userConf };
 		
 		// usersettings.CustomPrefs contains parameters for the web client.
-		let userPrefs = {};
-		userPrefs.APIDelay = "15";
-		userPrefs.appTheme = "";
+		let defaultTheme = getDefaultTheme();
+		let userPrefs = { ...prefs.CustomPrefs };
+		userPrefs.appTheme = defaultTheme? defaultTheme.id : "";
 		userPrefs.backdropDelay = "150";
 		userPrefs.backdropWidget = "0";
 		userPrefs.blurhash = "8";
 		userPrefs.chromecastVersion = "stable";
 		userPrefs.clock = "0";
 		userPrefs.clock_pos = "0";
-		userPrefs.dashboardTheme = "";
-		userPrefs.datetimelocale = "";
+		userPrefs.dashboardTheme = defaultTheme? defaultTheme.id : "";
 		userPrefs.detailsBanner = "false";
 		userPrefs.displayFontSize = "0";
 		userPrefs.enableBackdrops = "none";
@@ -368,22 +366,29 @@ export class UserSettings {
 		userPrefs.enableThemeSongs = "false";
 		userPrefs.enableThemeVideos = "false";
 		userPrefs.fastFadein = "false";
-		userPrefs.latitude = "";
 		userPrefs.libraryPageSize = "";
-		userPrefs.longitude = "";
+		userPrefs.muteButton = "false";
 		userPrefs.preferFmp4HlsContainer = "false";
 		userPrefs.screensaver = "none";
 		userPrefs.screensaverTime = "0";
-		userPrefs.skipBackLength = "";
-		userPrefs.skipForwardLength = "";
+		userPrefs.skipBackLength = "30000";
+		userPrefs.skipForwardLength = "30000";
 		userPrefs.subtitlesAppearance = "{}";
 		userPrefs.swiperDelay = "";
 		userPrefs.swiperFX = "horizontal";
 		userPrefs.tvhome = "";
 		userPrefs.useCardLayoutInHomeSections = "false";
 		userPrefs.useEpisodeImagesInNextUpAndResume = "false";
-		//userPrefs.weatherApiKey = "";
-		userPrefs.weatherbot = "0";
+		if (resetLocalization) {
+			userPrefs.latitude = "";
+			userPrefs.longitude = "";
+			userPrefs.weatherApiKey = "";
+			userPrefs.APIDelay = "";
+			userPrefs.weatherbot = "0";
+			userPrefs.language = "";
+			userPrefs.languageAlt = "";
+			userPrefs.datetimelocale = "";
+		}
 		prefs.CustomPrefs = { ...userPrefs };
 		
 		const x = loadUserPresets(presetsName);
@@ -393,11 +398,7 @@ export class UserSettings {
 			userConf = { ...userConf, ...x.userConf };
 	
 		return apiClient.updateUserConfiguration(userId, userConf).then( () => {
-			apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby').then( () => {
-				enableClock(enableClock());
-				enableWeatherBot(enableWeatherBot());
-			});
-		});
+					apiClient.updateDisplayPreferences('usersettings', prefs, userId, 'emby')} );
 	}
 
     // FIXME: Seems unused
@@ -1179,7 +1180,7 @@ export class UserSettings {
         
 		const APIDelay = parseInt(this.get('APIDelay'), 10);
 		if (isNaN(APIDelay) || APIDelay < 1 || APIDelay > 30) 
-			return 5; // default to 5.
+			return 10; // default to 10.
         else 
             return APIDelay;
     }

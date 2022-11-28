@@ -212,6 +212,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
             confirm(msg, globalize.translate('HeaderResetSettings')).then(function () {
                 loading.show();
 				const userPresets = (page.querySelector('#selectPresets') as HTMLSelectElement).value;
+				const resetLocalization = (page.querySelector('.chkResetLocalisation') as HTMLInputElement).checked;
 				let _uSettings = userSettings.currentSettings;
 				let _uid = _uSettings.getCurrentUserId();
 				if (_uid !== userId) {
@@ -222,19 +223,27 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 						_uid = userId;
 						const _ac = window.ApiClient;
 						_uSettings.setUserInfo(_uid, _ac).then(() => {
-							_uSettings.resetUserInfo(_uid, userPresets).then(() => {
+							_uSettings.resetUserInfo(_uid, userPresets, resetLocalization).then(() => {
 								loading.hide();
 								Dashboard.alert({
 									message: globalize.translate('SettingsResetComplete'),
 									title: globalize.translate('HeaderResetSettings')
 								});
-								// Resetting custom prefs shouldn't affect account login related stuff.
 								//loadUser();
 							});
 						});
 					}
 				} else {
-					_uSettings.resetUserInfo(_uid, userPresets).then(() => {
+					_uSettings.resetUserInfo(_uid, userPresets, resetLocalization).then(() => {
+						if (resetLocalization) {
+							globalize.updateCurrentCulture();
+							let x = document.querySelector('#myPreferencesMenuPage');
+							if (x)
+								x.dispatchEvent(new CustomEvent('viewreload', undefined));
+							LibraryMenu.updateUserInHeader();
+						}
+						_uSettings.enableClock(_uSettings.enableClock(undefined, false), false);
+						_uSettings.enableWeatherBot(_uSettings.enableWeatherBot(undefined, false), false);
 						loading.hide();
 						Dashboard.alert({
 							message: globalize.translate('SettingsResetComplete'),
@@ -242,8 +251,8 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 						});
 						//loadUser();
 					});
+					viewContainer.reset();
 				}
-				viewContainer.reset();
 				loading.hide();
             });
         };
@@ -404,6 +413,16 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                         </SelectElement>
                         <div className='fieldDescription'>
                             {globalize.translate('LabelUserPresetsHelp')}
+                        </div>
+                    </div>
+					<br />
+                    <div className='checkboxContainer checkboxContainer-withDescription'>
+                        <CheckBoxElement
+							className='chkResetLocalisation'
+                            title='LabelResetLocalisation'
+                        />
+                        <div className='fieldDescription checkboxFieldDescription'>
+                            {globalize.translate('LabelResetLocalisationHelp')}
                         </div>
                     </div>
 					<br />

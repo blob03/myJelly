@@ -881,6 +881,8 @@
     "LabelRepositoryUrlHelp": "The location of the repository manifest you want to include.",
     "LabelRequireHttps": "Require HTTPS",
     "LabelRequireHttpsHelp": "If checked, the server will automatically redirect all requests over HTTP to HTTPS. This has no effect if the server is not listening on HTTPS.",
+    "LabelResetLocalisation": "Reset localization",
+    "LabelResetLocalisationHelp": "Localization related data will be erased. This includes the OpenWeatherMap API key, coordinates, UI languages etc...",
     "LabelRuntimeMinutes": "Runtime:",
     "LabelSSDPTracingFilter": "SSDP Filter:",
     "LabelSSDPTracingFilterHelp": "Optional IP address upon which to filter the logged SSDP traffic.",

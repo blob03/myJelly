@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-21",
+	"version": "10.8.7-23",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -156,6 +156,8 @@
 		"10.8.7-18": "Synchronize translations.\nCleanup and optimization of the user pages.\nCorrect subtitles language value for auto-detection.\nEditing a user's theme on their behalf doesn't affect the theme currently displayed.\nMove theme 'Light alt.' to 0.42.",
 		"10.8.7-19": "Synchronize translations.\nFix subtitles page going out of sync with saved settings.\nFix subtitles preview bug.",
 		"10.8.7-20": "Synchronize translations.\nCardBox format option now affects search results as well (home settings).\nAdd font 'Shanghai' to selectable subtitles fonts.\nImprove configuration presets (profile settings).\nCleanup and optimization of the user pages.",
-		"10.8.7-21": "Synchronize translations.\nSaving user preferences returns a promise which is more reliable and faster.\nUser main menu page takes care of its own retranslation through the mean of a dedicated event."
+		"10.8.7-21": "Synchronize translations.\nSaving user preferences returns a promise which is more reliable and faster.\nUser main menu page takes care of its own retranslation through the mean of a dedicated event.",
+		"10.8.7-22": "Synchronize translations.\nCleanup and optimization of the user pages.",
+		"10.8.7-23": "Synchronize translations.\nAdd an option to preserve localization settings through resets (profile settings)."
 	}
 }
