@@ -348,6 +348,7 @@
 	}],
 	"userPresets": {
 		"Base": {
+			"description": "UserPresetBase",
 			"userPrefs": {
 				"backdropDelay": "150",
 				"backdropWidget":"0",
@@ -395,13 +396,16 @@
 			}
 		},
 		"Performance": {
+			"description": "UserPresetPerformance",
 			"userPrefs": {
+				"appTheme": "dark",
 				"backdropDelay": "150",
 				"backdropWidget":"0",
 				"blurhash": "0",
 				"chromecastVersion": "stable",
 				"clock": "0",
 				"clock_pos": "0",
+				"dashboardTheme": "dark",
 				"detailsBanner": "false",
 				"displayFontSize": "2",
 				"enableBackdrops": "none",
@@ -442,6 +446,7 @@
 			}
 		},
 		"Confort": {
+			"description": "UserPresetConfort",
 			"userPrefs": {
 				"backdropDelay": "150",
 				"backdropWidget":"7",

@@ -11,7 +11,7 @@ import CheckBoxElement from '../../../elements/CheckBoxElement';
 import SelectElement from '../../../elements/SelectElement';
 import InputElement from '../../../elements/InputElement';
 import * as userSettings from '../../../scripts/settings/userSettings';
-import { listUserPresets } from '../../../scripts/settings/webSettings';
+import { loadUserPresets, listUserPresets } from '../../../scripts/settings/webSettings';
 import viewContainer from '../../viewContainer';
 
 type IProps = {
@@ -101,6 +101,14 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 
         loadUser();
 
+		const onPresetChange = (e: Event) => {
+			const target = (e.target as HTMLInputElement);
+			const x = loadUserPresets(target.value);
+			const pnode = target?.parentNode?.parentNode?.querySelector('.fieldDescription');
+			if (pnode)
+				pnode.innerHTML = globalize.translate(x?.description || "");
+		};
+		
         const onSubmit = (e: Event) => {
             if ((page.querySelector('#txtNewPassword') as HTMLInputElement).value != (page.querySelector('#txtNewPasswordConfirm') as HTMLInputElement).value) {
                 toast(globalize.translate('PasswordMatchError'));
@@ -257,6 +265,8 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
             });
         };
 
+		(page.querySelector('#selectPresets') as HTMLSelectElement).addEventListener('change', onPresetChange);
+		(page.querySelector('#selectPresets') as HTMLSelectElement).dispatchEvent(new CustomEvent('change', undefined));
         (page.querySelector('.updatePasswordForm') as HTMLFormElement).addEventListener('submit', onSubmit);
         (page.querySelector('.localAccessForm') as HTMLFormElement).addEventListener('submit', onLocalAccessSubmit);
 
@@ -268,8 +278,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 	const optionConfigPresets = () => {
 		let content = '';
 		const list = listUserPresets();
-		content += `<option value=''>${globalize.translate('Default')}</option>`;
-		content += `<option disabled>${globalize.translate('OptionDivider')}</option>`;
 		if (list) {
 			list.sort((a, b) => {
 				let fa = a.toLowerCase(),

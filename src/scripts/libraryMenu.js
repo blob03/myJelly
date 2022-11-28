@@ -984,7 +984,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		viewContainer.reset();
 		
 		if (playbackManager.isPlayingAudio()) {
-			toast(globalize.translate('playbackStopped'));
+			toast(globalize.translate('PlaybackStopped'));
 			playbackManager.stop().then( () => {
 				Dashboard.logout();
 			});
