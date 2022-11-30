@@ -26,15 +26,17 @@ type IProps = {
     itemType?: string;
     itemId?: string;
     itemAppName?: string;
+	itemAppVersion?: string;
     itemCheckedAttribute?: string;
     itemName?: string
     title?: string
 }
 
-const CheckBoxElement: FunctionComponent<IProps> = ({ labelClassName, className, elementId, dataFilter, itemType, itemId, itemAppName, itemCheckedAttribute, itemName, title }: IProps) => {
+const CheckBoxElement: FunctionComponent<IProps> = ({ labelClassName, className, elementId, dataFilter, itemType, itemId, itemAppName, itemAppVersion, itemCheckedAttribute, itemName, title }: IProps) => {
     const appName = itemAppName ? `- ${itemAppName}` : '';
+	const appVersion = itemAppVersion ? ` ${itemAppVersion}` : '';
     const renderContent = itemName ?
-        `<span>${escapeHTML(itemName || '')} ${appName}</span>` :
+        `<span>${escapeHTML(itemName || '')} ${appName}${appVersion}</span>` :
         `<span>${globalize.translate(title)}</span>`;
 
     return (

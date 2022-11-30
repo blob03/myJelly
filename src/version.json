@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-24",
+	"version": "10.8.7-25",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -159,6 +159,7 @@
 		"10.8.7-21": "Synchronize translations.\nSaving user preferences returns a promise which is more reliable and faster.\nUser main menu page takes care of its own retranslation through the mean of a dedicated event.",
 		"10.8.7-22": "Synchronize translations.\nCleanup and optimization of the user pages.",
 		"10.8.7-23": "Synchronize translations.\nAdd an option to preserve localization settings through resets (profile settings).",
-		"10.8.7-24": "Synchronize translations.\nAdd a brief description into each configuration presets.\nFix issues affecting user resets done by an admin."
+		"10.8.7-24": "Synchronize translations.\nAttach a brief description to each configuration presets.\nFix issues affecting user resets done by an admin.",
+		"10.8.7-25": "Synchronize translations.\nApply patch 'Shadowghost/fix-parental'.\nApply patch 'Fix keyboard navigation for INPUT and TEXTAREA'.\nApply patch 'Fix item details banner image alignment'.\nIdentify 'myJelly' as a Web device and show the correct icon (Dashboard).\nSaving new passwords doesn't ask the current password anylonger.Since password resets can be performed without it, asking it was pointless anyway."
 	}
 }

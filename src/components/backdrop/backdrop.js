@@ -498,10 +498,8 @@ import './backdrop.scss';
 		const _delay = userSettings.backdropDelay();
 		if (!_delay) {
 			_bpp.classList.add('hide');
-			_bdc.style.fontSize = '90%';
 			return;
 		} else {
-			_bdc.style.fontSize = '70%';
 			_bpp.classList.remove('hide');
 		}
 		

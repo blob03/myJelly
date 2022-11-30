@@ -192,7 +192,7 @@
     "DateAdded": "Data d'afegit",
     "DatePlayed": "Data reproduït",
     "DeathDateValue": "Mort: {0}",
-    "Default": "Defecto",
+    "Default": "Defecte",
     "DefaultMetadataLangaugeDescription": "Aquests són els teus valors per defecte i poden ser personalitats per cada biblioteca.",
     "DefaultSubtitlesHelp": "Els subtítols es carreguen en funció de les marques forçades i per defecte de les metadades incrustades. Les preferències d'idioma es consideren quan hi ha diverses opcions disponibles.",
     "DeinterlaceMethodHelp": "Seleccioneu el mètode de desentrellaçat que voleu utilitzar quan transcodifiqueu el programari de contingut entrellaçat. Quan està activada l'acceleració de maquinari que admet el desentrellaçat de maquinari, s'utilitzarà el desentrellaçador de maquinari en lloc d'aquesta configuració.",

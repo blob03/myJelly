@@ -17,6 +17,7 @@ type ItemsArr = {
     Name?: string;
     Id?: string;
     AppName?: string;
+	AppVersion?: string;
     checkedAttribute?: string
 }
 
@@ -111,6 +112,7 @@ const UserLibraryAccess: FunctionComponent = () => {
                 Id: device.Id,
                 Name: device.Name,
                 AppName: device.AppName,
+				AppVersion: device.AppVersion,
                 checkedAttribute: checkedAttribute
             });
         }
@@ -299,6 +301,7 @@ const UserLibraryAccess: FunctionComponent = () => {
                                 itemId={Item.Id}
                                 itemName={Item.Name}
                                 itemAppName={Item.AppName}
+								itemAppVersion={Item.AppVersion}
                                 itemCheckedAttribute={Item.checkedAttribute}
                             />
                         ))}

@@ -39,17 +39,13 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                     throw new Error('Unexpected null user.Configuration');
                 }
 
-                //LibraryMenu.setTitle(user.Name);
-
                 let showLocalAccessSection = false;
 
                 if (user.HasConfiguredPassword) {
                     (page.querySelector('#btnResetPassword') as HTMLDivElement).classList.remove('hide');
-                    (page.querySelector('#fldCurrentPassword') as HTMLDivElement).classList.remove('hide');
                     showLocalAccessSection = true;
                 } else {
                     (page.querySelector('#btnResetPassword') as HTMLDivElement).classList.add('hide');
-                    (page.querySelector('#fldCurrentPassword') as HTMLDivElement).classList.add('hide');
                 }
 
                 if (loggedInUser?.Policy?.IsAdministrator || user.Policy.EnableUserPreferenceAccess) {
@@ -86,7 +82,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
             });
         });
 
-        (page.querySelector('#txtCurrentPassword') as HTMLInputElement).value = '';
         (page.querySelector('#txtNewPassword') as HTMLInputElement).value = '';
         (page.querySelector('#txtNewPasswordConfirm') as HTMLInputElement).value = '';
     }, [userId]);
@@ -122,27 +117,29 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
         };
 
         const savePassword = () => {
-            let currentPassword = (page.querySelector('#txtCurrentPassword') as HTMLInputElement).value;
             const newPassword = (page.querySelector('#txtNewPassword') as HTMLInputElement).value;
+			
+			// In the previous version, saving a password required knowledge of the current one 
+			// but resetting a password didn't.
+			// Since to get here the user has already been authenticated, just get rid of the useless confirmation. 
+			// We reset then we save the new password.
+			window.ApiClient.resetUserPassword(userId).then(function () {
+				loading.hide();
+				window.ApiClient.updateUserPassword(userId, '', newPassword).then(
+					function () {
+						loading.hide();
+						toast(globalize.translate('PasswordSaved'));
 
-            if ((page.querySelector('#fldCurrentPassword') as HTMLDivElement).classList.contains('hide')) {
-                // Firefox does not respect autocomplete=off, so clear it if the field is supposed to be hidden (and blank)
-                // This should only happen when user.HasConfiguredPassword is false, but this information is not passed on
-                currentPassword = '';
-            }
-
-            window.ApiClient.updateUserPassword(userId, currentPassword, newPassword).then(function () {
-                loading.hide();
-                toast(globalize.translate('PasswordSaved'));
-
-                loadUser();
-            }, function () {
-                loading.hide();
-                Dashboard.alert({
-                    title: globalize.translate('HeaderLoginFailure'),
-                    message: globalize.translate('MessageInvalidUser')
-                });
-            });
+						loadUser();
+					}, function () {
+						loading.hide();
+						Dashboard.alert({
+							title: globalize.translate('HeaderLoginFailure'),
+							message: globalize.translate('MessageInvalidUser')
+						});
+					}
+				);
+			});
         };
 
         const onLocalAccessSubmit = (e: Event) => {
@@ -305,14 +302,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                     <h2 className='sectionTitle'>
                         {globalize.translate('HeaderPassword')}
                     </h2>
-                    <div id='fldCurrentPassword' className='inputContainer hide'>
-                        <InputElement
-                            type='password'
-                            id='txtCurrentPassword'
-                            label='LabelCurrentPassword'
-                            options={'autoComplete="off"'}
-                        />
-                    </div>
                     <div className='inputContainer'>
                         <InputElement
                             type='password'

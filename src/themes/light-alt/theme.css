@@ -556,7 +556,8 @@ html {
 }
 
 .mdl-slider-background-lower  {
-	background: linear-gradient(135deg, rgb(226, 249, 185) 0%, rgb(254, 255, 223) 50%, rgb(255, 255, 255) 100%);
+	background: linear-gradient(135deg, rgb(142, 166, 100) 0%, rgb(181, 217, 156) 50%, rgb(253, 253, 253) 100%);
+	border-bottom: .1em solid #768d5a;
 }
 
 .mdl-slider::-moz-range-thumb {
@@ -732,10 +733,10 @@ html {
 }
 
 .itemName {
-	color: #fff;
 	font-weight: 600;
-	text-shadow: .2em .2em 6px #aeae9a;
-	overflow: visible;
+	color: #fff7b4 !important;
+	text-shadow: 0.1em 0.1em 8px #585954;
+	-webkit-text-stroke: 1px rgb(78, 98, 117);
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {

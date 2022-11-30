@@ -1,3 +1,5 @@
+
+import appInfo from '../version.json';
 const BASE_DEVICE_IMAGE_URL = 'assets/img/devices/';
 
 function getWebDeviceIcon(browser) {
@@ -59,6 +61,7 @@ function getWebDeviceIcon(browser) {
             case 'Finamp':
                 return BASE_DEVICE_IMAGE_URL + 'finamp.svg';
             case 'Jellyfin Web':
+			case appInfo.name:
                 return getWebDeviceIcon(device.Name || device.DeviceName);
             default:
                 return BASE_DEVICE_IMAGE_URL + 'other.svg';
