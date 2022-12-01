@@ -1646,17 +1646,17 @@
     },
     "nb": {
         "ccode": "nb",
-        "fsize": 112136,
+        "fsize": 113661,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Bokmål",
         "displayNativeName": "Norsk, Bokmål",
         "ISO6391": "nb",
         "ISO6392": "nob",
-        "keys#": 1650,
-        "completed%": 91.97,
+        "keys#": 1672,
+        "completed%": 93.2,
         "jellyfinWeb": {
             "filename": "nb.json",
-            "keys#": 1650,
+            "keys#": 1672,
             "orphans#": 13,
             "orphans": [
                 "ButtonNetwork",
@@ -1673,7 +1673,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 98.68
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

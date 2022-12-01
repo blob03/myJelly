@@ -398,6 +398,11 @@ html {
 	text-shadow: .1em .1em 3px #60625c !important;
 }
 
+.material-icons.cardOverlayButtonIcon {
+	color: rgb(181, 189, 89);
+	text-shadow: .15em .15em 6px #000;
+}
+
 .material-icons {
 	color: rgb(78, 98, 117);
 	text-shadow: .15em .15em 4px #bec8a6;

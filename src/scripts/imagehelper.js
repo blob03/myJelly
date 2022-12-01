@@ -4,6 +4,8 @@ const BASE_DEVICE_IMAGE_URL = 'assets/img/devices/';
 
 function getWebDeviceIcon(browser) {
     switch (browser) {
+		case 'LG Smart TV':
+			return BASE_DEVICE_IMAGE_URL + 'lg-electronics.png';
         case 'Opera':
         case 'Opera TV':
         case 'Opera Android':

@@ -119,10 +119,11 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
         const savePassword = () => {
             const newPassword = (page.querySelector('#txtNewPassword') as HTMLInputElement).value;
 			
-			// In the previous version, saving a password required knowledge of the current one 
-			// but resetting a password didn't.
-			// Since to get here the user has already been authenticated, just get rid of the useless confirmation. 
-			// We reset then we save the new password.
+			// In previous versions, saving a password required knowledge of the one currently set
+			// yet resetting it didn't.
+			// Since to get there a user has to be authenticated and the server allows it,
+			// we don't have to bother the user with typing the current password. 
+			// We ask the server to reset the current password, then we save the new one.
 			window.ApiClient.resetUserPassword(userId).then(function () {
 				loading.hide();
 				window.ApiClient.updateUserPassword(userId, '', newPassword).then(

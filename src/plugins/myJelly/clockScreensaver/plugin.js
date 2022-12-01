@@ -10,7 +10,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.93';
+	self.version = '0.94';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -19,22 +19,16 @@ export default function () {
 	self.hideOnMouse = true;
 	self.hideOnKey = true;
     self.interval = null;
+	self._bpstr_ ;
 	self._datestr_;
 	self._timestr_;
-		
+	self._opts_date = {};
+	self._opts_time = {};
+	
 	function clock(LOCALE) {
 		const x = new Date();
-		const _date_ = x.toLocaleDateString(LOCALE, {
-			weekday: 'long',
-			year: 'numeric',
-			month: 'long',
-			day: '2-digit'
-		});
-		const _time_ = x.toLocaleTimeString(LOCALE, {
-			hour: 'numeric',
-			minute: '2-digit',
-			second: '2-digit'
-		});
+		const _date_ = x.toLocaleDateString(LOCALE, self._opts_date);
+		const _time_ = x.toLocaleTimeString(LOCALE, self._opts_time);
 		self._datestr_.innerHTML = _date_;
 		self._timestr_.innerHTML = _time_;
 	}
@@ -70,6 +64,7 @@ export default function () {
 				+ '</div>';
 			document.body.appendChild(elem);
 			
+			self._bpstr_ = document.getElementById("ssBackplane");
 			self._datestr_ = document.getElementById("ssClockDate");
 			self._timestr_ = document.getElementById("ssClockTime");
 			
@@ -91,6 +86,14 @@ export default function () {
 				dateTimeLocale = globalize.getCurrentDateTimeLocale();
 			}
 			
+			// We use the same format currently set by the user 
+			// with seconds added to the time format.
+			const format = userSettings.getClockFormat(userSettings.currentSettings._clkmode);
+			self._opts_date = format._opts_date;
+			self._opts_time = { 'second': '2-digit', ...format._opts_time };
+			self._datestr_.classList.toggle('hide', format.hideDate);
+			self._bpstr_.style.fontSize = format.fontSize;
+		
 			if (dateTimeLocale != null) {
 				clock(dateTimeLocale);
 				self.interval = setInterval(function() { clock(dateTimeLocale) }, 1000);
