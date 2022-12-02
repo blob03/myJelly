@@ -106,7 +106,7 @@ export function getPlayedIndicatorHtml(item) {
 export function getChildCountIndicatorHtml(item, options) {
     const minCount = options && options.minCount ? options.minCount : 0;
 
-    if (item.ChildCount && item.ChildCount > minCount) {
+    if (item.ChildCount && item.ChildCount >= minCount) {
         return '<div class="countIndicator indicator">' + datetime.toLocaleString(item.ChildCount) + '</div>';
     }
 

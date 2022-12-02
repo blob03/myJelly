@@ -162,10 +162,10 @@ import './login.scss';
 
     function loadUserList(context, apiClient, users) {
         let html = '';
-
+		
         for (let i = 0; i < users.length; i++) {
             const user = users[i];
-
+			
             // TODO move card creation code to Card component
             let cssClass = 'card squareCard scalableCard squareCard-scalable';
 
@@ -200,6 +200,15 @@ import './login.scss';
             }
 
             html += '</div>';
+			
+			if (user?.HasPassword === true) {
+				html += '<div class="cardIndicators">';
+				html += '<div class="countIndicator indicator">';
+				html += '<span class="material-icons cardImageIcon password" style="font-size: 1.5em;color: #000;"></span>';
+				html += '</div>';
+				html += '</div>';
+			}
+			
             html += '</div>';
             html += '<div class="cardFooter visualCardBox-cardFooter">';
             html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';

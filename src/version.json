@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.7-26",
+	"version": "10.8.8-0",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -161,6 +161,7 @@
 		"10.8.7-23": "Synchronize translations.\nAdd an option to preserve localization settings through resets (profile settings).",
 		"10.8.7-24": "Synchronize translations.\nAttach a brief description to each configuration presets.\nFix issues affecting user resets done by an admin.",
 		"10.8.7-25": "Synchronize translations.\nApply patch 'Shadowghost/fix-parental'.\nApply patch 'Fix keyboard navigation for INPUT and TEXTAREA'.\nApply patch 'Fix item details banner image alignment'.\nIdentify 'myJelly' as a Web device and show the correct icon (Dashboard).\nSaving new passwords doesn't ask the current password anylonger.Since password resets can be performed without it, asking it was pointless anyway.",
-		"10.8.7-26": "Synchronize translations.\nApply patch 'fix-pagination-limit'.\nUpgrade ss 'Digital Clock' to make use of the clock format as it is set by the user rather than a static format.\nFix minor issues found in the code handling the clock formats.\nIdentify LG Smart TV devices and use their dedicated icon (Dashboard)."
+		"10.8.7-26": "Synchronize translations.\nApply patch 'fix-pagination-limit'.\nUpgrade ss 'Digital Clock' to make use of the clock format as it is set by the user rather than a static format.\nFix minor issues found in the code handling the clock formats.\nIdentify LG Smart TV devices and use their dedicated icon (Dashboard).",
+		"10.8.8-0": "Attach an indicator to password protected accounts (login screen)."
 	}
 }
