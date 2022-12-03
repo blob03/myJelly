@@ -201,13 +201,25 @@ import './login.scss';
 
             html += '</div>';
 			
+			html += '<div class="cardIndicators" style="top: .125em !important;">';
+			
 			if (user?.HasPassword === true) {
-				html += '<div class="cardIndicators">';
-				html += '<div class="countIndicator indicator">';
-				html += '<span class="material-icons cardImageIcon password" style="font-size: 1.5em;color: #000;"></span>';
-				html += '</div>';
+				html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
+				if (user?.HasConfiguredEasyPassword === true && user?.Configuration.EnableLocalPassword === true) {
+					html += '<span class="material-icons cardImageIcon pin" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
+				} else
+					html += '<span class="material-icons cardImageIcon password" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
 				html += '</div>';
 			}
+			
+			if (user?.Policy?.IsAdministrator === true) {
+				html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
+				html += '<span class="material-icons cardImageIcon local_police" style="font-size: 1em;color: #202020;text-shadow: none;">';
+				html += '</span>';
+				html += '</div>';
+			}
+			
+			html += '</div>';
 			
             html += '</div>';
             html += '<div class="cardFooter visualCardBox-cardFooter">';

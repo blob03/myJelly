@@ -78,8 +78,7 @@ import './displaysettings.scss';
 	}
 	
 	function onScreenSaverTry(e) {
-		const pnode = e.target.parentNode.parentNode;
-		const newval =  pnode.querySelector('#selectScreensaver');
+		const newval =  e.target?.parentNode?.parentNode?.querySelector('#selectScreensaver');
 		if (!newval?.value)
 			return;
 		

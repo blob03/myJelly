@@ -10,13 +10,13 @@
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.41",
+		"version": "2.42",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "2.01",
+		"version": "2.02",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly",
@@ -53,7 +53,7 @@
 		"color": "#0c2450"
 	}, {
 		"name": "Light alt.",
-		"version": "0.46",
+		"version": "0.47",
 		"id": "light-alt",
 		"color": "#fff",
 		"group": "myJelly in-dev"
@@ -66,6 +66,7 @@
 		"myJelly/weatherbotScreensaver/plugin",
 		"myJelly/backdropScreensaver/plugin",
 		"myJelly/blackoutScreensaver/plugin",
+		"myJelly/autoLogoutScreensaver/plugin",
 		"experimentalWarnings/plugin",
 		"htmlAudioPlayer/plugin",
 		"htmlVideoPlayer/plugin",

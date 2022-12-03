@@ -251,6 +251,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 
     export function updateUserInHeader(user) {
+		requiresUserRefresh = false;
 		retranslateUi();
 		
 		if (!user)
@@ -267,13 +268,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 				headerUserButton.classList.add('hide');
 			updateHeaderUserButton(url); 
 		}
-		
-		if (headerPinButton)
-			headerPinButton.classList.remove('hide');
-		
-		const pinIcon = document.getElementById('pin');
-		if (pinIcon)
-			togglePin(false);
 
 		if (user && user.localUser) {
 			if (headerReloadButton)
@@ -334,7 +328,13 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 					headerReloadButton.classList.add('hide');
 			}
 		}
-		requiresUserRefresh = false;
+		
+		if (headerPinButton) {
+			const pinIcon = document.getElementById('pin');
+			if (pinIcon)
+				togglePin(false);
+			headerPinButton.classList.remove('hide');
+		}
 	}
 	
     function updateHeaderUserButton(src) {
@@ -1106,13 +1106,9 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
     }
 
     function updateBackButton(page) {
-        if (headerBackButton) {
-            if (page.getAttribute('data-backbutton') !== 'false' && appRouter.canGoBack()) {
-                headerBackButton.classList.remove('hide');
-            } else {
-                headerBackButton.classList.add('hide');
-            }
-        }
+        if (headerBackButton)
+			headerBackButton.classList.toggle('hide', 
+				page.getAttribute('data-backbutton') === 'false' || !appRouter.canGoBack());
     }
 
     function initHeadRoom(elem) {
@@ -1305,6 +1301,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         updateTitle(page);
         updateBackButton(page);
         updateLibraryNavLinks(page);
+		
+		updateUserInHeader();
     });
 
     Events.on(ServerConnections, 'localusersignedin', function (e, user) {

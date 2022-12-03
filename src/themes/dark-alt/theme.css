@@ -1364,6 +1364,7 @@ select option:selected {
 	margin: 30% 0px 0px 0px;
 }
 
+.ssAutoLogoutCountdown,
 .ssWeatherData,
 .ssClockTime {
 	font-family: "Shanghai";
@@ -1455,4 +1456,8 @@ select option:selected {
 .btnFilter.inUse > .material-icons {
 	text-shadow: 0 0 5px #060606, 0 0 10px #4c4645, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01cdfc !important;
 	color: #000 !important;
+}
+
+.countIndicator {
+	font-size: 70%;
 }
