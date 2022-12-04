@@ -9,10 +9,9 @@ import { ssmanager } from '../../../scripts/screensavermanager';
 
 export default function () {
     const self = this;
-
 	self.name = 'AutoLogout';
 	self.group = 'myJelly';
-	self.version = '0.1';
+	self.version = '0.2';
 	self.description = 'AutoLogoutScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'autologoutscreensaver';
@@ -25,22 +24,26 @@ export default function () {
 	self._counter_ = 10;
 	
 	self.countdown = function () {
-		
 		self._counter_ --;
 		switch(self._counter_) {
 			case -1:
-				self.stopInterval();
 				self._display_.innerHTML = globalize.translate('LogingOut');
-				self.interval = setTimeout(self.countdown, 2000);
 				break;
 				
 			case -2:
+				self.stopInterval();
 				const elem = document.querySelector('.screenSaver');
 				if (elem)
-					elem.parentNode.removeChild(elem);
-				document.body.classList.remove('screensaver-noScroll');
-				ssmanager.activeScreenSaver = null;
-				onLogoutClick();
+					elem.classList.remove('themeBackdrop');
+					self._display_.innerHTML = '';
+				if (self.test !== true)
+					onLogoutClick();
+				setTimeout(() => {
+					if (elem)
+						elem.parentNode.removeChild(elem);
+					document.body.classList.remove('screensaver-noScroll');
+					ssmanager.activeScreenSaver = null;
+				}, 2000);
 				break;
 				
 			default:
@@ -59,7 +62,8 @@ export default function () {
 		// Stop any instance that could be running.
 		self.stopInterval();
 		self._counter_ = 10;
-		self.hideOnMouse = TEST !== true;
+		self.test = TEST;
+		self.hideOnMouse = self.test !== true;
 		
 		import('./style.scss').then(() => {
             let elem = document.querySelector('.screenSaver');

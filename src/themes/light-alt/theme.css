@@ -1261,7 +1261,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	font-size: 1.7rem;
 	color: #fff7b4 !important;
 	text-shadow: 0.1em 0.1em 8px #585954;
-	-webkit-text-stroke: 1px rgb(78, 98, 117);
+	-webkit-text-stroke: 1px rgb(184, 175, 100);
 }
 
 .paperList,
