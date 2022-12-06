@@ -20,7 +20,8 @@ type IProps = {
 
 const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
     const element = useRef<HTMLDivElement>(null);
-
+	const _PLACEHOLDER_ = '********';
+	
     const loadUser = useCallback(() => {
         const page = element.current;
 
@@ -41,10 +42,19 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 
                 let showLocalAccessSection = false;
 
+				const txtNewPassword = page.querySelector('#txtNewPassword') as HTMLInputElement;
+				const txtNewPasswordConfirm = page.querySelector('#txtNewPasswordConfirm') as HTMLInputElement;
+				txtNewPassword.value = '';
+				txtNewPasswordConfirm.value = '';
+				
                 if (user.HasConfiguredPassword) {
+					txtNewPassword.placeholder = _PLACEHOLDER_;
+					txtNewPasswordConfirm.placeholder = _PLACEHOLDER_;
                     (page.querySelector('#btnResetPassword') as HTMLDivElement).classList.remove('hide');
                     showLocalAccessSection = true;
                 } else {
+					txtNewPassword.removeAttribute('placeholder');
+					txtNewPasswordConfirm.removeAttribute('placeholder');
                     (page.querySelector('#btnResetPassword') as HTMLDivElement).classList.add('hide');
                 }
 
@@ -64,16 +74,14 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 txtEasyPassword.value = '';
 
                 if (user.HasConfiguredEasyPassword) {
-                    txtEasyPassword.placeholder = '*****';
+                    txtEasyPassword.placeholder = _PLACEHOLDER_;
                     (page.querySelector('#btnResetEasyPassword') as HTMLDivElement).classList.remove('hide');
                 } else {
                     txtEasyPassword.removeAttribute('placeholder');
-                    txtEasyPassword.placeholder = '';
                     (page.querySelector('#btnResetEasyPassword') as HTMLDivElement).classList.add('hide');
                 }
 
                 const chkEnableLocalEasyPassword = page.querySelector('.chkEnableLocalEasyPassword') as HTMLInputElement;
-
                 chkEnableLocalEasyPassword.checked = user.Configuration.EnableLocalPassword || false;
 
                 import('../../autoFocuser').then(({default: autoFocuser}) => {
@@ -81,9 +89,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 });
             });
         });
-
-        (page.querySelector('#txtNewPassword') as HTMLInputElement).value = '';
-        (page.querySelector('#txtNewPasswordConfirm') as HTMLInputElement).value = '';
     }, [userId]);
 
     useEffect(() => {
@@ -122,8 +127,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 			// In previous versions, saving a password required knowledge of the one currently set
 			// yet resetting it didn't.
 			// Since to get there a user has to be authenticated and the server allows it,
-			// we don't have to bother the user with typing the current password. 
-			// We ask the server to reset the current password, then we save the new one.
+			// we don't have to ask a password, we reset and save the new one.
 			window.ApiClient.resetUserPassword(userId).then(function () {
 				loading.hide();
 				window.ApiClient.updateUserPassword(userId, '', newPassword).then(
@@ -176,7 +180,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 window.ApiClient.updateUserConfiguration(user.Id, user.Configuration).then(function () {
                     loading.hide();
                     toast(globalize.translate('SettingsSaved'));
-
                     loadUser();
                 });
             });

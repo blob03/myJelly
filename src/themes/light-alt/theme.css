@@ -1457,10 +1457,6 @@ select option:selected {
 	box-shadow: none !important;
 }
 
-.aboutTitle2 {
-	text-shadow: 1px 1px 10px #ffbc54;
-}
-
 .sliderMarkerContainer {
     position: absolute;
     left: 0;
@@ -1506,4 +1502,16 @@ select option:selected {
 .colorPreview {
 	border: 0.1em solid rgb(61, 68, 73);
 	box-shadow: .1em .1em 4px #8b9571;
+}
+
+.aboutTitle1 {
+	font-size: 250%;
+	color: #fff7b4 !important;
+	text-shadow: 0.1em 0.1em 8px #585954;
+	-webkit-text-stroke: .01em rgb(173, 169, 125);
+}
+
+.aboutTitle2 {
+	color: #564d3d !important;
+	text-shadow: none !important;
 }

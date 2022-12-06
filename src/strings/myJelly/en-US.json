@@ -86,7 +86,7 @@
     "LabelWeatherApiKey": "OpenWeather API key:",
     "LabelmyJelly": "myJelly:",
     "LockHeader": "Pin the menu bar",
-    "LogingOut": "Logging out...",
+    "LoggingOut": "Logging out...",
     "LogoScreensaverHelp": "Show the Jellyfin logo in motion.",
     "MJBackdropScreensaverHelp": "Show the backdrops from the source defined above.",
     "MissingAPIKey": "API KEY MISSING",

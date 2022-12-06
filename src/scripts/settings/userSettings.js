@@ -1423,7 +1423,7 @@ export class UserSettings {
             return this.set('screensaverTime', parseInt(val, 10) * 60000);
         
 		const screensaverTime = parseInt(this.get('screensaverTime'), 10);
-		if (isNaN(screensaverTime) || screensaverTime < 0 || screensaverTime > 1800000) 
+		if (isNaN(screensaverTime) || screensaverTime < 0 || screensaverTime > 7200000) 
 			return 10; // default to 10min.
         else 
             return screensaverTime/60000;

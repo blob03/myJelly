@@ -11,7 +11,7 @@ export default function () {
     const self = this;
 	self.name = 'AutoLogout';
 	self.group = 'myJelly';
-	self.version = '0.2';
+	self.version = '0.3';
 	self.description = 'AutoLogoutScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'autologoutscreensaver';
@@ -27,7 +27,8 @@ export default function () {
 		self._counter_ --;
 		switch(self._counter_) {
 			case -1:
-				self._display_.innerHTML = globalize.translate('LogingOut');
+				self._display_.classList.add('ssAutoLogoutLogoutMesg');
+				self._display_.innerHTML = globalize.translate('LoggingOut');
 				break;
 				
 			case -2:

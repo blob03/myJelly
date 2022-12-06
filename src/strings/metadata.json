@@ -893,7 +893,7 @@
     },
     "fr": {
         "ccode": "fr",
-        "fsize": 125697,
+        "fsize": 125699,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
@@ -1378,7 +1378,7 @@
     },
     "ko": {
         "ccode": "ko",
-        "fsize": 113937,
+        "fsize": 113935,
         "ccodeSrc": "en-US",
         "displayName": "Korean",
         "displayNativeName": "한국어",

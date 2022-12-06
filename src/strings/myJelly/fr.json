@@ -86,7 +86,7 @@
     "LabelWeatherApiKey": "Clef pour l'API OpenWeather :",
     "LabelmyJelly": "myJelly :",
     "LockHeader": "Épingler la barre de menu",
-    "LogingOut": "Fermeture de session...",
+    "LoggingOut": "Fermeture de session...",
     "LogoScreensaverHelp": "Afficher et animer le logo de Jellyfin.",
     "MJBackdropScreensaverHelp": "Afficher les arrière-plans définis au-dessus.",
     "MissingAPIKey": "CLEF API MANQUANTE",
