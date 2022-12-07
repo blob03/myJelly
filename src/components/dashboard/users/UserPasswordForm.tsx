@@ -225,8 +225,8 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 				let _uSettings = userSettings.currentSettings;
 				let _uid = _uSettings.getCurrentUserId();
 				if (_uid !== userId) {
-					// In case an admin is editing a user, 
-					// we use a new instance that we bind to the target userId.
+					// In case an admin is editing this user, 
+					// we use a new instance that we bind to the targeted userId.
 					_uSettings = new userSettings.UserSettings;
 					if (_uSettings) {
 						_uid = userId;

@@ -161,75 +161,95 @@ import './login.scss';
     }
 
     function loadUserList(context, apiClient, users) {
-        let html = '';
-		
-        for (let i = 0; i < users.length; i++) {
-            const user = users[i];
+		apiClient.getEndpointInfo().then((endpoint) => {
 			
-            // TODO move card creation code to Card component
-            let cssClass = 'card squareCard scalableCard squareCard-scalable';
-
-            if (layoutManager.tv) {
-                cssClass += ' show-focus';
-
-                if (enableFocusTransform) {
-                    cssClass += ' show-animation';
-                }
-            }
-
-            const cardBoxCssClass = 'cardBox cardBox-bottompadded';
-            html += '<button type="button" class="' + cssClass + '">';
-            html += '<div class="' + cardBoxCssClass + '">';
-            html += '<div class="cardScalable">';
-            html += '<div class="cardPadder cardPadder-square"></div>';
-            html += `<div class="cardContent" data-haspw="${user.HasPassword}" data-username="${user.Name}" data-userid="${user.Id}">`;
-            let imgUrl;
-
-            if (user.PrimaryImageTag && user.Id) {
-                imgUrl = apiClient.getUserImageUrl(user.Id, {
-                    width: 300,
-                    tag: user.PrimaryImageTag,
-                    type: 'Primary'
-                });
-
-                html += '<div class="cardImageContainer coveredImage" style="background-image:url(\'' + imgUrl + "');\"></div>";
-            } else {
-                html += `<div class="cardImage flex align-items-center justify-content-center ${cardBuilder.getDefaultBackgroundClass()}">`;
-                html += '<span class="material-icons cardImageIcon person"></span>';
-                html += '</div>';
-            }
-
-            html += '</div>';
+			let html = '';
+			const inLocalNet = endpoint?.IsInNetwork || endpoint?.IsLocal;
 			
-			html += '<div class="cardIndicators" style="top: .125em !important;">';
-			
-			if (user?.HasPassword === true) {
-				html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-				if (user?.HasConfiguredEasyPassword === true && user?.Configuration.EnableLocalPassword === true) {
-					html += '<span class="material-icons cardImageIcon pin" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
-				} else
-					html += '<span class="material-icons cardImageIcon password" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
+			for (let i = 0; i < users.length; i++) {
+				const user = users[i];
+				
+				// TODO move card creation code to Card component
+				let cssClass = 'card squareCard scalableCard squareCard-scalable';
+
+				if (layoutManager.tv) {
+					cssClass += ' show-focus';
+
+					if (enableFocusTransform) {
+						cssClass += ' show-animation';
+					}
+				}
+
+				const cardBoxCssClass = 'cardBox cardBox-bottompadded';
+				html += '<button type="button" class="' + cssClass + '">';
+				html += '<div class="' + cardBoxCssClass + '">';
+				html += '<div class="cardScalable">';
+				html += '<div class="cardPadder cardPadder-square"></div>';
+				let haspw = false;
+				if (user?.HasPassword === true) {
+					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
+						if (user?.HasConfiguredEasyPassword === true)
+							haspw = true;
+					} else
+						haspw = true;
+				}
+
+				html += `<div class="cardContent" data-haspw="${haspw}" data-username="${user.Name}" data-userid="${user.Id}">`;
+				let imgUrl;
+
+				if (user.PrimaryImageTag && user.Id) {
+					imgUrl = apiClient.getUserImageUrl(user.Id, {
+						width: 300,
+						tag: user.PrimaryImageTag,
+						type: 'Primary'
+					});
+
+					html += '<div class="cardImageContainer coveredImage" style="background-image:url(\'' + imgUrl + "');\"></div>";
+				} else {
+					html += `<div class="cardImage flex align-items-center justify-content-center ${cardBuilder.getDefaultBackgroundClass()}">`;
+					html += '<span class="material-icons cardImageIcon person"></span>';
+					html += '</div>';
+				}
+
 				html += '</div>';
-			}
-			
-			if (user?.Policy?.IsAdministrator === true) {
-				html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-				html += '<span class="material-icons cardImageIcon local_police" style="font-size: 1em;color: #202020;text-shadow: none;">';
-				html += '</span>';
+				
+				html += '<div class="cardIndicators" style="top: .125em !important;">';
+				
+				if (user?.HasPassword === true) {
+					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
+						// If EnableLocalPassword is set and no EasyPassword has been configured
+						// Access to this account from the Local network requires no password.
+						if (user?.HasConfiguredEasyPassword === true) {
+							html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
+							html += '<span class="material-icons cardImageIcon pin" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
+							html += '</div>';
+						}
+					} else {
+						html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
+						html += '<span class="material-icons cardImageIcon password" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
+						html += '</div>';
+					}
+				}
+				
+				if (user?.Policy?.IsAdministrator === true) {
+					html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
+					html += '<span class="material-icons cardImageIcon local_police" style="font-size: 1em;color: #202020;text-shadow: none;">';
+					html += '</span>';
+					html += '</div>';
+				}
+				
 				html += '</div>';
+				
+				html += '</div>';
+				html += '<div class="cardFooter visualCardBox-cardFooter">';
+				html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';
+				html += '</div>';
+				html += '</div>';
+				html += '</button>';
 			}
-			
-			html += '</div>';
-			
-            html += '</div>';
-            html += '<div class="cardFooter visualCardBox-cardFooter">';
-            html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';
-            html += '</div>';
-            html += '</div>';
-            html += '</button>';
-        }
 
-        context.querySelector('#divUsers').innerHTML = html;
+			context.querySelector('#divUsers').innerHTML = html;
+		});
     }
 
     export default function (view, params) {
