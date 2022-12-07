@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-4",
+	"version": "10.8.8-5",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -166,6 +166,7 @@
 		"10.8.8-1": "Synchronize translations.\nFix menu bar pin button disappearing after a reload (login screen/Desktop).\nAdd ss 'AutoLogout' which, after a 10s countdown, closes the session and jump to the login screen.\nAttach icons to user avatars in order to quickly identify password/pin protected accounts as well as admins (login screen).",
 		"10.8.8-2": "Synchronize translations.\nUpgrade ss 'AutoLogout' to 0.2.",
 		"10.8.8-3": "Synchronize translations.\nUpgrade ss 'AutoLogout' to 0.3.\nExpand screensaver timer limit to 120 minutes.\nAdd missing placeholder to the password fields (profile settings).",
-		"10.8.8-4": "Synchronize translations.\nFix users avatar showing a PIN icon with EnableLocalPassword policy in effect and no Easypassword set (login screen).\nAlso in this particular setup, clicking on the user image doesn't need to prompt a password screen.\nMake a public API call to getEndpointInfo() to check whether EnableLocalPassword policy is relevant upon login; this call can be made anonymously with a small server patch. See https://github.com/blob03/jellyfin/commit/1c2f2077de290b59302d1c7dfe0caf9203735512"
+		"10.8.8-4": "Synchronize translations.\nFix users avatar showing a PIN icon with EnableLocalPassword policy in effect and no Easypassword set (login screen).\nAlso in this particular setup, clicking on the user image doesn't need to prompt a password screen.\nMake a public API call to getEndpointInfo() to check whether EnableLocalPassword policy is relevant upon login; this call can be made anonymously with a small server patch. See https://github.com/blob03/jellyfin/commit/1c2f2077de290b59302d1c7dfe0caf9203735512",
+		"10.8.8-5": "For the user list, assume the client to be remote by default when connecting an unpatched server (login screen)."
 	}
 }

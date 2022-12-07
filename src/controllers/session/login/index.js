@@ -161,10 +161,11 @@ import './login.scss';
     }
 
     function loadUserList(context, apiClient, users) {
+		let inLocalNet = false;
 		apiClient.getEndpointInfo().then((endpoint) => {
-			
+			inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
+		}).finally(() => {
 			let html = '';
-			const inLocalNet = endpoint?.IsInNetwork || endpoint?.IsLocal;
 			
 			for (let i = 0; i < users.length; i++) {
 				const user = users[i];
