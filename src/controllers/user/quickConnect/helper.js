@@ -16,8 +16,8 @@ export function isActive() {
 	})
 }
 
-export const authorize = (code) => {
-    const url = ApiClient.getUrl('/QuickConnect/Authorize?Code=' + code);
+export const authorize = (code, userId) => {
+    const url = ApiClient.getUrl('/QuickConnect/Authorize?Code=' + code + '&UserId=' + userId);
     ApiClient.ajax({
         type: 'POST',
         url: url

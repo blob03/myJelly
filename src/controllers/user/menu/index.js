@@ -18,8 +18,8 @@ export default function (view, params) {
 		view.querySelector('.adminSection').classList.toggle('hide', adminEdit || !_user.Policy.IsAdministrator || layoutManager.tv);
 		
 		view.addEventListener('viewshow', function () {
-				// As it seems there is a lack of support for doing QC requests on behalf of a user.
-				// This needs further investigation, in the meantime just keep it disabled.
+				// As it seems there is a lack of support for authorizing QC requests on behalf of a user.
+				// This needs further investigation, in the meantime we just keep the button hidden.
 				if (!adminEdit) {
 					// Check whether QuickConnect is active or not.
 					isActive().then((ret) => {
@@ -43,6 +43,8 @@ export default function (view, params) {
 			view.querySelector('.adminSection').classList.toggle('hide', adminEdit || !_user.Policy.IsAdministrator || layoutManager.tv);
 			_page_setup();
 		});
+		
+		view.dispatchEvent(new CustomEvent('viewshow', { detail: {} }));
 	});
 
 	function _page_setup() {
@@ -55,7 +57,7 @@ export default function (view, params) {
 		view.querySelector('.lnkHomePreferences').setAttribute('href', '#/mypreferenceshome.html?userId=' + userId);
 		view.querySelector('.lnkPlaybackPreferences').setAttribute('href', '#/mypreferencesplayback.html?userId=' + userId);
 		view.querySelector('.lnkSubtitlePreferences').setAttribute('href', '#/mypreferencessubtitles.html?userId=' + userId);
-		view.querySelector('.lnkQuickConnectPreferences').setAttribute('href', '#/mypreferencesquickconnect.html');
+		view.querySelector('.lnkQuickConnectPreferences').setAttribute('href', '#/mypreferencesquickconnect.html?userId=' + userId);
 		view.querySelector('.lnkControlsPreferences').setAttribute('href', '#/mypreferencescontrols.html?userId=' + userId);
 		
 		const supportsClientSettings = appHost.supports('clientsettings');

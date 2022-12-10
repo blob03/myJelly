@@ -7,7 +7,7 @@
         "displayNativeName": "English",
         "ISO6391": "en-US",
         "ISO6392": "eng",
-        "keys#": 1796,
+        "keys#": 1798,
         "completed%": 100.0,
         "jellyfinWeb": {
             "filename": "en-US.json",
@@ -18,7 +18,7 @@
         },
         "myJelly": {
             "filename": "en-US.json",
-            "keys#": 124,
+            "keys#": 126,
             "orphans#": 0,
             "orphans": [],
             "completed%": 100.0
@@ -33,7 +33,7 @@
         "ISO6391": "af",
         "ISO6392": "afr",
         "keys#": 812,
-        "completed%": 45.21,
+        "completed%": 45.16,
         "jellyfinWeb": {
             "filename": "af.json",
             "keys#": 812,
@@ -61,7 +61,7 @@
         "ISO6391": "ar",
         "ISO6392": "ara",
         "keys#": 1667,
-        "completed%": 92.82,
+        "completed%": 92.71,
         "jellyfinWeb": {
             "filename": "ar.json",
             "keys#": 1667,
@@ -148,7 +148,7 @@
         "ISO6391": "bg-BG",
         "ISO6392": "bul",
         "keys#": 1445,
-        "completed%": 80.46,
+        "completed%": 80.37,
         "jellyfinWeb": {
             "filename": "bg-BG.json",
             "keys#": 1445,
@@ -185,7 +185,7 @@
         "ISO6391": "bn-BD",
         "ISO6392": "ben",
         "keys#": 324,
-        "completed%": 18.04,
+        "completed%": 18.02,
         "jellyfinWeb": {
             "filename": "bn-BD.json",
             "keys#": 324,
@@ -212,7 +212,7 @@
         "ISO6391": "ca",
         "ISO6392": "cat",
         "keys#": 1639,
-        "completed%": 91.26,
+        "completed%": 91.16,
         "jellyfinWeb": {
             "filename": "ca.json",
             "keys#": 1639,
@@ -248,7 +248,7 @@
         "ISO6391": "cs",
         "ISO6392": "cze",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "cs.json",
             "keys#": 1672,
@@ -288,7 +288,7 @@
         "ISO6391": "cy",
         "ISO6392": "wel",
         "keys#": 591,
-        "completed%": 32.91,
+        "completed%": 32.87,
         "jellyfinWeb": {
             "filename": "cy.json",
             "keys#": 591,
@@ -319,7 +319,7 @@
         "ISO6391": "da",
         "ISO6392": "dan",
         "keys#": 1637,
-        "completed%": 91.15,
+        "completed%": 91.05,
         "jellyfinWeb": {
             "filename": "da.json",
             "keys#": 1637,
@@ -350,17 +350,17 @@
     },
     "de": {
         "ccode": "de",
-        "fsize": 120148,
+        "fsize": 120356,
         "ccodeSrc": "en-US",
         "displayName": "German",
         "displayNativeName": "Deutsch",
         "ISO6391": "de",
         "ISO6392": "ger",
-        "keys#": 1668,
-        "completed%": 92.87,
+        "keys#": 1671,
+        "completed%": 92.94,
         "jellyfinWeb": {
             "filename": "de.json",
-            "keys#": 1668,
+            "keys#": 1671,
             "orphans#": 14,
             "orphans": [
                 "ButtonNetwork",
@@ -378,7 +378,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.76
+            "completed%": 99.94
         },
         "myJelly": {
             "filename": "de.json",
@@ -397,7 +397,7 @@
         "ISO6391": "el",
         "ISO6392": "gre",
         "keys#": 1241,
-        "completed%": 69.1,
+        "completed%": 69.02,
         "jellyfinWeb": {
             "filename": "el.json",
             "keys#": 1241,
@@ -433,7 +433,7 @@
         "ISO6391": "en-GB",
         "ISO6392": "en-GB",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "en-GB.json",
             "keys#": 1672,
@@ -473,7 +473,7 @@
         "ISO6391": "eo",
         "ISO6392": "epo",
         "keys#": 1642,
-        "completed%": 91.43,
+        "completed%": 91.32,
         "jellyfinWeb": {
             "filename": "eo.json",
             "keys#": 1642,
@@ -509,7 +509,7 @@
         "ISO6391": "es-419",
         "ISO6392": "es-419",
         "keys#": 1544,
-        "completed%": 85.97,
+        "completed%": 85.87,
         "jellyfinWeb": {
             "filename": "es-419.json",
             "keys#": 1544,
@@ -546,7 +546,7 @@
         "ISO6391": "es-AR",
         "ISO6392": "es-AR",
         "keys#": 1667,
-        "completed%": 92.82,
+        "completed%": 92.71,
         "jellyfinWeb": {
             "filename": "es-AR.json",
             "keys#": 1667,
@@ -610,7 +610,7 @@
         "ISO6391": "es-MX",
         "ISO6392": "es-MX",
         "keys#": 1603,
-        "completed%": 89.25,
+        "completed%": 89.15,
         "jellyfinWeb": {
             "filename": "es-MX.json",
             "keys#": 1603,
@@ -650,7 +650,7 @@
         "ISO6391": "es",
         "ISO6392": "spa",
         "keys#": 1655,
-        "completed%": 92.15,
+        "completed%": 92.05,
         "jellyfinWeb": {
             "filename": "es.json",
             "keys#": 1655,
@@ -690,7 +690,7 @@
         "ISO6391": "et",
         "ISO6392": "est",
         "keys#": 1640,
-        "completed%": 91.31,
+        "completed%": 91.21,
         "jellyfinWeb": {
             "filename": "et.json",
             "keys#": 1640,
@@ -725,7 +725,7 @@
         "ISO6391": "eu",
         "ISO6392": "es-PV",
         "keys#": 1617,
-        "completed%": 90.03,
+        "completed%": 89.93,
         "jellyfinWeb": {
             "filename": "eu.json",
             "keys#": 1617,
@@ -759,7 +759,7 @@
         "ISO6391": "fa",
         "ISO6392": "per",
         "keys#": 1432,
-        "completed%": 79.73,
+        "completed%": 79.64,
         "jellyfinWeb": {
             "filename": "fa.json",
             "keys#": 1432,
@@ -789,14 +789,14 @@
     },
     "fi": {
         "ccode": "fi",
-        "fsize": 114666,
+        "fsize": 114652,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
         "displayNativeName": "Suomi",
         "ISO6391": "fi",
         "ISO6392": "fin",
         "keys#": 1665,
-        "completed%": 92.71,
+        "completed%": 92.6,
         "jellyfinWeb": {
             "filename": "fi.json",
             "keys#": 1665,
@@ -834,7 +834,7 @@
         "ISO6391": "fil",
         "ISO6392": "fil",
         "keys#": 1618,
-        "completed%": 90.09,
+        "completed%": 89.99,
         "jellyfinWeb": {
             "filename": "fil.json",
             "keys#": 1618,
@@ -870,7 +870,7 @@
         "ISO6391": "fr-CA",
         "ISO6392": "frc",
         "keys#": 951,
-        "completed%": 52.95,
+        "completed%": 52.89,
         "jellyfinWeb": {
             "filename": "fr-CA.json",
             "keys#": 951,
@@ -899,7 +899,7 @@
         "displayNativeName": "Français",
         "ISO6391": "fr",
         "ISO6392": "fre",
-        "keys#": 1796,
+        "keys#": 1798,
         "completed%": 100.0,
         "jellyfinWeb": {
             "filename": "fr.json",
@@ -925,7 +925,7 @@
         },
         "myJelly": {
             "filename": "fr.json",
-            "keys#": 124,
+            "keys#": 126,
             "orphans#": 0,
             "orphans": [],
             "completed%": 100.0
@@ -940,7 +940,7 @@
         "ISO6391": "gl",
         "ISO6392": "glg",
         "keys#": 209,
-        "completed%": 11.64,
+        "completed%": 11.62,
         "jellyfinWeb": {
             "filename": "gl.json",
             "keys#": 209,
@@ -965,7 +965,7 @@
         "ISO6391": "gsw",
         "ISO6392": "gsw",
         "keys#": 127,
-        "completed%": 7.07,
+        "completed%": 7.06,
         "jellyfinWeb": {
             "filename": "gsw.json",
             "keys#": 127,
@@ -990,7 +990,7 @@
         "ISO6391": "he",
         "ISO6392": "heb",
         "keys#": 1040,
-        "completed%": 57.91,
+        "completed%": 57.84,
         "jellyfinWeb": {
             "filename": "he.json",
             "keys#": 1040,
@@ -1023,7 +1023,7 @@
         "ISO6391": "hi-IN",
         "ISO6392": "hin",
         "keys#": 130,
-        "completed%": 7.24,
+        "completed%": 7.23,
         "jellyfinWeb": {
             "filename": "hi-IN.json",
             "keys#": 130,
@@ -1043,17 +1043,17 @@
     },
     "hr": {
         "ccode": "hr",
-        "fsize": 89138,
+        "fsize": 90032,
         "ccodeSrc": "en-US",
         "displayName": "Croatian",
         "displayNativeName": "Hrvatski",
         "ISO6391": "hr",
         "ISO6392": "hrv",
-        "keys#": 1339,
-        "completed%": 74.55,
+        "keys#": 1352,
+        "completed%": 75.19,
         "jellyfinWeb": {
             "filename": "hr.json",
-            "keys#": 1339,
+            "keys#": 1352,
             "orphans#": 8,
             "orphans": [
                 "ButtonNetwork",
@@ -1065,7 +1065,7 @@
                 "OptionLikes",
                 "Screenshots"
             ],
-            "completed%": 80.08
+            "completed%": 80.86
         },
         "myJelly": {
             "filename": "",
@@ -1084,7 +1084,7 @@
         "ISO6391": "hu",
         "ISO6392": "hun",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "hu.json",
             "keys#": 1672,
@@ -1124,7 +1124,7 @@
         "ISO6391": "id",
         "ISO6392": "ind",
         "keys#": 1663,
-        "completed%": 92.59,
+        "completed%": 92.49,
         "jellyfinWeb": {
             "filename": "id.json",
             "keys#": 1663,
@@ -1163,7 +1163,7 @@
         "ISO6391": "is-IS",
         "ISO6392": "ice",
         "keys#": 447,
-        "completed%": 24.89,
+        "completed%": 24.86,
         "jellyfinWeb": {
             "filename": "is-IS.json",
             "keys#": 447,
@@ -1192,7 +1192,7 @@
         "ISO6391": "it",
         "ISO6392": "ita",
         "keys#": 1671,
-        "completed%": 93.04,
+        "completed%": 92.94,
         "jellyfinWeb": {
             "filename": "it.json",
             "keys#": 1671,
@@ -1232,7 +1232,7 @@
         "ISO6391": "ja",
         "ISO6392": "jpn",
         "keys#": 1566,
-        "completed%": 87.19,
+        "completed%": 87.1,
         "jellyfinWeb": {
             "filename": "ja.json",
             "keys#": 1566,
@@ -1319,7 +1319,7 @@
         "ISO6391": "kk",
         "ISO6392": "kaz",
         "keys#": 1647,
-        "completed%": 91.7,
+        "completed%": 91.6,
         "jellyfinWeb": {
             "filename": "kk.json",
             "keys#": 1647,
@@ -1385,7 +1385,7 @@
         "ISO6391": "ko",
         "ISO6392": "kor",
         "keys#": 1575,
-        "completed%": 87.69,
+        "completed%": 87.6,
         "jellyfinWeb": {
             "filename": "ko.json",
             "keys#": 1575,
@@ -1422,7 +1422,7 @@
         "ISO6391": "lt-LT",
         "ISO6392": "lit",
         "keys#": 988,
-        "completed%": 55.01,
+        "completed%": 54.95,
         "jellyfinWeb": {
             "filename": "lt-LT.json",
             "keys#": 988,
@@ -1454,7 +1454,7 @@
         "ISO6391": "lv",
         "ISO6392": "lav",
         "keys#": 1271,
-        "completed%": 70.77,
+        "completed%": 70.69,
         "jellyfinWeb": {
             "filename": "lv.json",
             "keys#": 1271,
@@ -1487,7 +1487,7 @@
         "ISO6391": "mk",
         "ISO6392": "mac",
         "keys#": 199,
-        "completed%": 11.08,
+        "completed%": 11.07,
         "jellyfinWeb": {
             "filename": "mk.json",
             "keys#": 199,
@@ -1512,7 +1512,7 @@
         "ISO6391": "ml",
         "ISO6392": "mal",
         "keys#": 1578,
-        "completed%": 87.86,
+        "completed%": 87.76,
         "jellyfinWeb": {
             "filename": "ml.json",
             "keys#": 1578,
@@ -1547,7 +1547,7 @@
         "ISO6391": "mn",
         "ISO6392": "mon",
         "keys#": 97,
-        "completed%": 5.4,
+        "completed%": 5.39,
         "jellyfinWeb": {
             "filename": "mn.json",
             "keys#": 97,
@@ -1572,7 +1572,7 @@
         "ISO6391": "mr",
         "ISO6392": "mar",
         "keys#": 665,
-        "completed%": 37.03,
+        "completed%": 36.99,
         "jellyfinWeb": {
             "filename": "mr.json",
             "keys#": 665,
@@ -1601,7 +1601,7 @@
         "ISO6391": "ms",
         "ISO6392": "may",
         "keys#": 241,
-        "completed%": 13.42,
+        "completed%": 13.4,
         "jellyfinWeb": {
             "filename": "ms.json",
             "keys#": 241,
@@ -1628,7 +1628,7 @@
         "ISO6391": "my",
         "ISO6392": "bur",
         "keys#": 257,
-        "completed%": 14.31,
+        "completed%": 14.29,
         "jellyfinWeb": {
             "filename": "my.json",
             "keys#": 257,
@@ -1653,7 +1653,7 @@
         "ISO6391": "nb",
         "ISO6392": "nob",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "nb.json",
             "keys#": 1672,
@@ -1717,7 +1717,7 @@
         "ISO6391": "nl",
         "ISO6392": "dut",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "nl.json",
             "keys#": 1672,
@@ -1756,7 +1756,7 @@
         "ISO6391": "nn",
         "ISO6392": "nno",
         "keys#": 754,
-        "completed%": 41.98,
+        "completed%": 41.94,
         "jellyfinWeb": {
             "filename": "nn.json",
             "keys#": 754,
@@ -1785,7 +1785,7 @@
         "ISO6391": "pa",
         "ISO6392": "pan",
         "keys#": 96,
-        "completed%": 5.35,
+        "completed%": 5.34,
         "jellyfinWeb": {
             "filename": "pa.json",
             "keys#": 96,
@@ -1812,7 +1812,7 @@
         "ISO6391": "pl",
         "ISO6392": "pol",
         "keys#": 1665,
-        "completed%": 92.71,
+        "completed%": 92.6,
         "jellyfinWeb": {
             "filename": "pl.json",
             "keys#": 1665,
@@ -1877,7 +1877,7 @@
         "ISO6391": "pt-BR",
         "ISO6392": "pob",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "pt-BR.json",
             "keys#": 1672,
@@ -1916,7 +1916,7 @@
         "ISO6391": "pt-PT",
         "ISO6392": "por",
         "keys#": 1665,
-        "completed%": 92.71,
+        "completed%": 92.6,
         "jellyfinWeb": {
             "filename": "pt-PT.json",
             "keys#": 1665,
@@ -1953,7 +1953,7 @@
         "ISO6391": "pt",
         "ISO6392": "prt",
         "keys#": 1345,
-        "completed%": 74.89,
+        "completed%": 74.81,
         "jellyfinWeb": {
             "filename": "pt.json",
             "keys#": 1345,
@@ -1989,7 +1989,7 @@
         "ISO6391": "ro",
         "ISO6392": "rum",
         "keys#": 1648,
-        "completed%": 91.76,
+        "completed%": 91.66,
         "jellyfinWeb": {
             "filename": "ro.json",
             "keys#": 1648,
@@ -2029,7 +2029,7 @@
         "ISO6391": "ru",
         "ISO6392": "rus",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "ru.json",
             "keys#": 1672,
@@ -2069,7 +2069,7 @@
         "ISO6391": "sk",
         "ISO6392": "slo",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "sk.json",
             "keys#": 1672,
@@ -2109,7 +2109,7 @@
         "ISO6391": "sl-SI",
         "ISO6392": "slv",
         "keys#": 1646,
-        "completed%": 91.65,
+        "completed%": 91.55,
         "jellyfinWeb": {
             "filename": "sl-SI.json",
             "keys#": 1646,
@@ -2147,7 +2147,7 @@
         "ISO6391": "sq",
         "ISO6392": "alb",
         "keys#": 355,
-        "completed%": 19.77,
+        "completed%": 19.74,
         "jellyfinWeb": {
             "filename": "sq.json",
             "keys#": 355,
@@ -2174,7 +2174,7 @@
         "ISO6391": "sr",
         "ISO6392": "srp",
         "keys#": 1628,
-        "completed%": 90.65,
+        "completed%": 90.55,
         "jellyfinWeb": {
             "filename": "sr.json",
             "keys#": 1628,
@@ -2207,7 +2207,7 @@
         "ISO6391": "sv",
         "ISO6392": "swe",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "sv.json",
             "keys#": 1672,
@@ -2246,7 +2246,7 @@
         "ISO6391": "ta",
         "ISO6392": "tam",
         "keys#": 1661,
-        "completed%": 92.48,
+        "completed%": 92.38,
         "jellyfinWeb": {
             "filename": "ta.json",
             "keys#": 1661,
@@ -2301,7 +2301,7 @@
         "ISO6391": "te",
         "ISO6392": "tel",
         "keys#": 1498,
-        "completed%": 83.41,
+        "completed%": 83.31,
         "jellyfinWeb": {
             "filename": "te.json",
             "keys#": 1498,
@@ -2334,7 +2334,7 @@
         "ISO6391": "th",
         "ISO6392": "tha",
         "keys#": 142,
-        "completed%": 7.91,
+        "completed%": 7.9,
         "jellyfinWeb": {
             "filename": "th.json",
             "keys#": 142,
@@ -2359,7 +2359,7 @@
         "ISO6391": "tr",
         "ISO6392": "tur",
         "keys#": 1667,
-        "completed%": 92.82,
+        "completed%": 92.71,
         "jellyfinWeb": {
             "filename": "tr.json",
             "keys#": 1667,
@@ -2418,7 +2418,7 @@
         "ISO6391": "uk",
         "ISO6392": "ukr",
         "keys#": 1667,
-        "completed%": 92.82,
+        "completed%": 92.71,
         "jellyfinWeb": {
             "filename": "uk.json",
             "keys#": 1667,
@@ -2455,7 +2455,7 @@
         "ISO6391": "ur-PK",
         "ISO6392": "urd",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "ur-PK.json",
             "keys#": 1672,
@@ -2480,7 +2480,7 @@
         "ISO6391": "uz",
         "ISO6392": "uzb",
         "keys#": 651,
-        "completed%": 36.25,
+        "completed%": 36.21,
         "jellyfinWeb": {
             "filename": "uz.json",
             "keys#": 651,
@@ -2505,7 +2505,7 @@
         "ISO6391": "vi",
         "ISO6392": "vie",
         "keys#": 1661,
-        "completed%": 92.48,
+        "completed%": 92.38,
         "jellyfinWeb": {
             "filename": "vi.json",
             "keys#": 1661,
@@ -2544,7 +2544,7 @@
         "ISO6391": "zh-CN",
         "ISO6392": "chi",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "zh-CN.json",
             "keys#": 1672,
@@ -2584,7 +2584,7 @@
         "ISO6391": "zh-HK",
         "ISO6392": "chi",
         "keys#": 1091,
-        "completed%": 60.75,
+        "completed%": 60.68,
         "jellyfinWeb": {
             "filename": "zh-HK.json",
             "keys#": 1091,
@@ -2615,7 +2615,7 @@
         "ISO6391": "zh-TW",
         "ISO6392": "chi",
         "keys#": 1672,
-        "completed%": 93.1,
+        "completed%": 92.99,
         "jellyfinWeb": {
             "filename": "zh-TW.json",
             "keys#": 1672,
@@ -2654,7 +2654,7 @@
         "ISO6391": "zu",
         "ISO6392": "zul",
         "keys#": 114,
-        "completed%": 6.35,
+        "completed%": 6.34,
         "jellyfinWeb": {
             "filename": "zu.json",
             "keys#": 114,

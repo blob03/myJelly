@@ -20,7 +20,10 @@ type IProps = {
 
 const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
     const element = useRef<HTMLDivElement>(null);
-	const _PLACEHOLDER_ = '********';
+	const PASS_PLACEHOLDER = '********';
+	const EASYPASS_LEN_MAX = 8;
+	const EASYPASS_PACEHOLDER = '*'.repeat(EASYPASS_LEN_MAX);
+	const EASYPASS_PATTERN = "[0-9]{1," + EASYPASS_LEN_MAX + "}";
 	
     const loadUser = useCallback(() => {
         const page = element.current;
@@ -48,8 +51,8 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 				txtNewPasswordConfirm.value = '';
 				
                 if (user.HasConfiguredPassword) {
-					txtNewPassword.placeholder = _PLACEHOLDER_;
-					txtNewPasswordConfirm.placeholder = _PLACEHOLDER_;
+					txtNewPassword.placeholder = PASS_PLACEHOLDER;
+					txtNewPasswordConfirm.placeholder = PASS_PLACEHOLDER;
                     (page.querySelector('#btnResetPassword') as HTMLDivElement).classList.remove('hide');
                     showLocalAccessSection = true;
                 } else {
@@ -74,7 +77,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 txtEasyPassword.value = '';
 
                 if (user.HasConfiguredEasyPassword) {
-                    txtEasyPassword.placeholder = _PLACEHOLDER_;
+                    txtEasyPassword.placeholder = EASYPASS_PACEHOLDER;
                     (page.querySelector('#btnResetEasyPassword') as HTMLDivElement).classList.remove('hide');
                 } else {
                     txtEasyPassword.removeAttribute('placeholder');
@@ -134,7 +137,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 					function () {
 						loading.hide();
 						toast(globalize.translate('PasswordSaved'));
-
 						loadUser();
 					}, function () {
 						loading.hide();
@@ -156,8 +158,17 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 
         const saveEasyPassword = () => {
             const easyPassword = (page.querySelector('#txtEasyPassword') as HTMLInputElement).value;
-
-            if (easyPassword) {
+			if (easyPassword) {
+				if (isNaN(parseInt(easyPassword, 10))) {
+					loading.hide();
+					toast(globalize.translate('EasyPasswordNumeralsOnly', EASYPASS_LEN_MAX));
+					return;
+				}
+				if (easyPassword.length > EASYPASS_LEN_MAX) {
+					loading.hide();
+					toast(globalize.translate('EasyPasswordLenMax', EASYPASS_LEN_MAX));
+					return;
+				}
                 window.ApiClient.updateEasyPassword(userId, easyPassword).then(function () {
                     onEasyPasswordSaved();
                 });
@@ -192,10 +203,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 loading.show();
                 window.ApiClient.resetEasyPassword(userId).then(function () {
                     loading.hide();
-                    Dashboard.alert({
-                        message: globalize.translate('PinCodeResetComplete'),
-                        title: globalize.translate('HeaderPinCodeReset')
-                    });
+					toast(globalize.translate('PinCodeResetComplete'));
                     loadUser();
                 });
             });
@@ -207,10 +215,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 loading.show();
                 window.ApiClient.resetUserPassword(userId).then(function () {
                     loading.hide();
-                    Dashboard.alert({
-                        message: globalize.translate('PasswordResetComplete'),
-                        title: globalize.translate('ResetPassword')
-                    });
+					toast(globalize.translate('PasswordResetComplete'));
                     loadUser();
                 });
             });
@@ -234,10 +239,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 						_uSettings.setUserInfo(_uid, _ac).then(() => {
 							_uSettings.resetUserInfo(_uid, userPresets, resetLocalization).then(() => {
 								loading.hide();
-								Dashboard.alert({
-									message: globalize.translate('SettingsResetComplete'),
-									title: globalize.translate('HeaderResetSettings')
-								});
+								toast(globalize.translate('SettingsResetComplete'));
 								//loadUser();
 							});
 						});
@@ -254,10 +256,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 						_uSettings.enableClock(_uSettings.enableClock(undefined, false), false);
 						_uSettings.enableWeatherBot(_uSettings.enableWeatherBot(undefined, false), false);
 						loading.hide();
-						Dashboard.alert({
-							message: globalize.translate('SettingsResetComplete'),
-							title: globalize.translate('HeaderResetSettings')
-						});
+						toast(globalize.translate('SettingsResetComplete'));
 						//loadUser();
 					});
 					viewContainer.reset();
@@ -353,10 +352,10 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                     <br />
                     <div className='inputContainer'>
                         <InputElement
-                            type='number'
+                            type='password'
                             id='txtEasyPassword'
                             label='LabelEasyPinCode'
-                            options={'autoComplete="off" pattern="[0-9]*" step="1" maxlength="5"'}
+                            options={'autoComplete="off" pattern="' + EASYPASS_PATTERN + '" maxlength="' + EASYPASS_LEN_MAX + '" title="' + globalize.translate('EasyPasswordNumeralsOnly', EASYPASS_LEN_MAX) + '"'}
                         />
                     </div>
                     <br />

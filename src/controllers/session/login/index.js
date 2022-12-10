@@ -218,8 +218,8 @@ import './login.scss';
 				
 				if (user?.HasPassword === true) {
 					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
-						// If EnableLocalPassword is set and no EasyPassword has been configured
-						// Access to this account from the Local network requires no password.
+						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
+						// access is granted without a password, from the local network.
 						if (user?.HasConfiguredEasyPassword === true) {
 							html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
 							html += '<span class="material-icons cardImageIcon pin" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';

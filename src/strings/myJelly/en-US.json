@@ -26,6 +26,8 @@
     "Connecting": "CONNECTING API SERVER...",
     "DLNA": "DLNA",
     "Diffused": "Diffused",
+    "EasyPasswordLenMax": "A well crafted Easy password must be made of no more than {0} numerals.",
+    "EasyPasswordNumeralsOnly": "A well crafted Easy password is composed of up to {0} numerals.",
     "EnableBackdropWidget": "Enable backdrop tools",
     "EnableBackdropWidgetHelp": "Select which backdrop tools to show in the top bar.",
     "EnableBackdropsHelp": "Select the source of backdrops to display while browsing the library.",

@@ -82,7 +82,7 @@ function loadThemeMedia(item) {
 }
 
 document.addEventListener('viewshow', function (e) {
-    const state = e.detail.state || {};
+    const state = e?.detail.state || {};
     const item = state.item;
 
     if (item && item.ServerId) {
