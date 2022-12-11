@@ -20,13 +20,13 @@ export default function (view, params) {
 		view.addEventListener('viewshow', function () {
 				// As it seems there is a lack of support for authorizing QC requests on behalf of a user.
 				// This needs further investigation, in the meantime we just keep the button hidden.
-				if (!adminEdit) {
+				//if (!adminEdit) {
 					// Check whether QuickConnect is active or not.
 					isActive().then((ret) => {
 						view.querySelector('.lnkQuickConnectPreferences').classList.toggle('hide', !ret);
 					});
-				} else
-					view.querySelector('.lnkQuickConnectPreferences').classList.add('hide');
+				//} else
+				//	view.querySelector('.lnkQuickConnectPreferences').classList.add('hide');
 		 
 			import('../../../components/autoFocuser').then(({default: autoFocuser}) => {
 				autoFocuser.autoFocus(view);

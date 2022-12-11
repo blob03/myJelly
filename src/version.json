@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-6",
+	"version": "10.8.8-7",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -168,6 +168,7 @@
 		"10.8.8-3": "Synchronize translations.\nUpgrade ss 'AutoLogout' to 0.3.\nExpand screensaver timer limit to 120 minutes.\nAdd missing placeholder to the password fields (profile settings).",
 		"10.8.8-4": "Synchronize translations.\nFix users avatar showing a PIN icon with EnableLocalPassword policy in effect and no Easypassword set (login screen).\nAlso in this particular setup, clicking on the user image doesn't need to prompt a password screen.\nMake a public API call to getEndpointInfo() to check whether EnableLocalPassword policy is relevant upon login; this call can be made anonymously with a small server patch. See https://github.com/blob03/jellyfin/commit/1c2f2077de290b59302d1c7dfe0caf9203735512",
 		"10.8.8-5": "For the user list, assume the client to be remote by default when connecting an unpatched server (login screen).",
-		"10.8.8-6": "Synchronize translations.\nRaise Easy passwords size limit from 5 to 8 digits.\nReplace some Dashboard alerts with toasts (profile settings).\nCheck that submitted Easy passwords are well formatted before doing the call to the API.\nFix 'QuickConnect' link not appearing upon first initialization of the user menu even though QC is active on the server."
+		"10.8.8-6": "Synchronize translations.\nRaise Easy passwords size limit from 5 to 8 digits.\nReplace some Dashboard alerts with toasts (profile settings).\nCheck that submitted Easy passwords are well formatted before doing the call to the API.\nFix 'QuickConnect' link not appearing upon first initialization of the user menu even though QC is active on the server.",
+		"10.8.8-7": "Apply patch 'Support admin login in QuickConnect #4194' which allows admins to authorize QC requests on behalf of users. Note that the server must also be patched for the feature to work. Either install Jellyfin server or https://github.com/blob03/myJelly-srv-10.8.8"
 	}
 }
