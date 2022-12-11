@@ -19,6 +19,7 @@ import globalize from '../scripts/globalize';
         if (typeof text === 'string') {
             options = {
                 title: title,
+				buttonTitle: buttonTitle,
                 text: text
             };
         } else {
@@ -34,7 +35,7 @@ import globalize from '../scripts/globalize';
             const items = [];
 
             items.push({
-                name: globalize.translate('ButtonGotIt'),
+                name: globalize.translate(options.buttonTitle || 'ButtonGotIt'),
                 id: 'ok',
                 type: 'submit'
             });

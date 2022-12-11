@@ -156,7 +156,8 @@ export function alert(options) {
     } else {
         baseAlert({
             title: options.title || globalize.translate('HeaderAlert'),
-            text: options.message
+            text: options.message,
+			buttonTitle: options.buttonTitle || ''
         }).then(options.callback || function () {});
     }
 }

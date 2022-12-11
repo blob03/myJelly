@@ -50,23 +50,10 @@ import './login.scss';
         });
     }
 	
-	let _qc_interval = null;
-	let _qc_prevCode = null;
-	
-	function resetQuickConnect() {
-		if (_qc_interval) {
-			clearInterval(_qc_interval);
-			toast(globalize.translate('QuickConnectCancelCode', _qc_prevCode));
-		}
-		_qc_interval = null;
-		_qc_prevCode = null;
-	}
+	let _QCinterval = null;
 	
     function authenticateQuickConnect(apiClient) {
 		
-		if (_qc_interval)
-			clearInterval(_qc_interval);
-			
         const url = apiClient.getUrl('/QuickConnect/Initiate');
         apiClient.getJSON(url).then(function (json) {
             if (!json.Secret || !json.Code) {
@@ -74,29 +61,15 @@ import './login.scss';
                 return false;
             }
 			
-            baseAlert({
-                dialogOptions: {
-                    id: 'quickConnectAlert'
-                },
-                title: globalize.translate('QuickConnect'),
-                text: globalize.translate('QuickConnectAuthorizeCode', json.Code)
-            });
-			
-			if (_qc_prevCode) {
-				toast(globalize.translate('QuickConnectCancelCode', _qc_prevCode));
-			}
-			
-			_qc_prevCode = json.Code;
-			
             const connectUrl = apiClient.getUrl('/QuickConnect/Connect?Secret=' + json.Secret);
 			
-            _qc_interval = setInterval(function() {
+            _QCinterval = setInterval(function() {
                 apiClient.getJSON(connectUrl).then(async function(data) {
                     if (!data.Authenticated) {
                         return;
                     }
 
-                    clearInterval(_qc_interval);
+                    clearInterval(_QCinterval);
 
                     // Close the QuickConnect dialog
                     const dlg = document.getElementById('quickConnectAlert');
@@ -104,11 +77,10 @@ import './login.scss';
                         dialogHelper.close(dlg);
                     }
 
-                    //const result = await apiClient.quickConnect(data.Authentication);
 					const result = await apiClient.quickConnect(data.Secret);
                     onLoginSuccessful(result.User.Id, result.AccessToken, apiClient);
                 }, function (e) {
-                    clearInterval(_qc_interval);
+                    clearInterval(_QCinterval);
 
                     // Close the QuickConnect dialog
                     const dlg = document.getElementById('quickConnectAlert');
@@ -125,6 +97,17 @@ import './login.scss';
                 });
             }, 5000, connectUrl);
 
+			Dashboard.alert({
+				title: globalize.translate('QuickConnect'),
+				buttonTitle: 'ButtonCancel',
+				message: globalize.translate('QuickConnectAuthorizeCode', json.Code),
+				callback: () => {
+						toast(globalize.translate('QuickConnectCancelCode', json.Code));
+						if (_QCinterval)
+							clearInterval(_QCinterval);
+				}
+			});
+			
             return true;
         }, function(e) {
             Dashboard.alert({
@@ -138,7 +121,6 @@ import './login.scss';
     }
 
     function onLoginSuccessful(id, accessToken, apiClient) {
-		resetQuickConnect();
         Dashboard.onServerChanged(id, accessToken, apiClient);
 		Dashboard.navigate('home.html');
     }
