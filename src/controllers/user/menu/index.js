@@ -20,11 +20,15 @@ export default function (view, params) {
 		view.addEventListener('viewshow', function () {
 				// As it seems there is a lack of support for authorizing QC requests on behalf of a user.
 				// This needs further investigation, in the meantime we just keep the button hidden.
+				// Update: This feature has been implemented in a recent server patch; we can re-activate the link to QC.
+				
 				//if (!adminEdit) {
+					
 					// Check whether QuickConnect is active or not.
 					isActive().then((ret) => {
 						view.querySelector('.lnkQuickConnectPreferences').classList.toggle('hide', !ret);
 					});
+					
 				//} else
 				//	view.querySelector('.lnkQuickConnectPreferences').classList.add('hide');
 		 

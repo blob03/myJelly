@@ -1307,7 +1307,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 
     Events.on(ServerConnections, 'localusersignedin', function (e, user) {
         const currentApiClient = ServerConnections.getApiClient(user.ServerId);
-
         currentDrawerType = null;
         currentUser = {
             localUser: user

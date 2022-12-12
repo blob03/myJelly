@@ -14,7 +14,8 @@ import { appRouter } from '../../../components/appRouter';
                 message: msg,
                 title: globalize.translate('HeaderPasswordReset'),
                 callback: function () {
-                    window.location.href = 'index.html';
+					const serverId = ApiClient.serverId();
+					Dashboard.navigate('login.html?serverid=' + serverId, false)
                 }
             });
 			return;
