@@ -68,25 +68,27 @@ import template from './dialog.template.html';
             const item = options.buttons[i];
             const autoFocus = i === 0 ? ' autofocus' : '';
 
-            let buttonClass = 'btnOption raised formDialogFooterItem formDialogFooterItem-autosize';
+            let buttonClass = '';
+			if (item.class) 
+				buttonClass += item.class;
+			else
+				buttonClass += 'btnOption';
+			
+			buttonClass += ' raised formDialogFooterItem formDialogFooterItem-autosize';
 
-            if (item.type) {
+            if (item.type)
                 buttonClass += ` button-${item.type}`;
-            }
-
-            if (item.description) {
+            
+            if (item.description)
                 hasDescriptions = true;
-            }
 
-            if (hasDescriptions) {
+            if (hasDescriptions)
                 buttonClass += ' formDialogFooterItem-vertical formDialogFooterItem-nomarginbottom';
-            }
 
             html += `<button is="emby-button" type="button" class="${buttonClass}" data-id="${item.id}"${autoFocus}>${item.name}</button>`;
 
-            if (item.description) {
+            if (item.description)
                 html += `<div class="formDialogFooterItem formDialogFooterItem-autosize fieldDescription" style="margin-top:.25em!important;margin-bottom:1.25em!important;">${item.description}</div>`;
-            }
         }
 
         dlg.querySelector('.formDialogFooter').innerHTML = html;
@@ -101,11 +103,11 @@ import template from './dialog.template.html';
             dialogHelper.close(dlg);
         }
 
-        const buttons = dlg.querySelectorAll('.btnOption');
+        const buttons = dlg.querySelectorAll('.btnOption, .btnCancel');
         for (i = 0, length = buttons.length; i < length; i++) {
             buttons[i].addEventListener('click', onButtonClick);
         }
-
+		
         return dialogHelper.open(dlg).then(() => {
             if (enableTvLayout) {
                 scrollHelper.centerFocus.off(dlg.querySelector('.formDialogContent'), false);

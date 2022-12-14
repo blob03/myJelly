@@ -13,6 +13,7 @@ import dialogHelper from '../components/dialogHelper/dialogHelper';
 import itemIdentifier from '../components/itemidentifier/itemidentifier';
 import { showClock } from '../scripts/settings/userSettings';
 import { getLocationSearch } from './url.ts';
+import browser from '../scripts/browser';
 
 export function getCurrentUser() {
     return window.ApiClient.getCurrentUser(false);
@@ -91,11 +92,14 @@ export function logout() {
 	const apiClient = window.ApiClient;
 	const serverId = apiClient._serverInfo.Id;
 	
+	/*
     ServerConnections.logout().then(function () {
         webSettings.getMultiServer().then(multi => {
             multi ? navigate('selectserver.html') : navigate('login.html?serverid=' + serverId, false);
         });
     });
+	*/
+	ServerConnections.logout().then(() => {navigate('login.html?serverid=' + serverId, false)});
 }
 
 export function getPluginUrl(name) {
@@ -157,7 +161,8 @@ export function alert(options) {
         baseAlert({
             title: options.title || globalize.translate('HeaderAlert'),
             text: options.message,
-			buttonTitle: options.buttonTitle || ''
+			buttonTitle: options.buttonTitle || '',
+			buttonClass: options.buttonClass || ''
         }).then(options.callback || function () {});
     }
 }
@@ -172,10 +177,10 @@ export function capabilities(appHost) {
 }
 
 export function selectServer() {
-    if (window.NativeShell && typeof window.NativeShell.selectServer === 'function') {
+    if (!browser.web0s && window.NativeShell && typeof window.NativeShell.selectServer === 'function') {
         window.NativeShell.selectServer();
     } else {
-        navigate('selectserver.html');
+        navigate('selectserver.html', true);
     }
 }
 

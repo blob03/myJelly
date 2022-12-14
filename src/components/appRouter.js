@@ -15,7 +15,8 @@ export const history = createHashHistory();
 /**
  * Page types of "no return" (when "Go back" should behave differently, probably quitting the application).
  */
-const START_PAGE_TYPES = ['home', 'login', 'selectserver'];
+//const START_PAGE_TYPES = ['home', 'login', 'selectserver'];
+const START_PAGE_TYPES = ['home', 'login'];
 
 class AppRouter {
     allRoutes = new Map();
@@ -187,11 +188,9 @@ class AppRouter {
         if (!curr) {
             return false;
         }
-
         if (!document.querySelector('.dialogContainer') && START_PAGE_TYPES.includes(curr.type)) {
             return false;
         }
-
         return window.history.length > 1;
     }
 

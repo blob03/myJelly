@@ -20,6 +20,8 @@ import cardBuilder from '../../../components/cardbuilder/cardBuilder';
 import settingsHelper from '../../../components/settingshelper';
 import cultures from '../../../scripts/cultures';
 import * as userSettings from '../../../scripts/settings/userSettings';
+import { formatDistanceToNow } from 'date-fns';
+import { getLocaleWithSuffix } from '../../../utils/dateFnsLocale';
 import './login.scss';
 
 /* eslint-disable indent */
@@ -99,11 +101,12 @@ import './login.scss';
 			Dashboard.alert({
 				title: globalize.translate('QuickConnect'),
 				buttonTitle: 'ButtonCancel',
+				buttonClass: 'btnCancel cancel', 
 				message: globalize.translate('QuickConnectAuthorizeCode', json.Code),
 				callback: () => {
-						toast(globalize.translate('QuickConnectCancelCode', json.Code));
-						if (_QCinterval)
-							clearInterval(_QCinterval);
+					toast(globalize.translate('QuickConnectCancelCode', json.Code));
+					if (_QCinterval)
+						clearInterval(_QCinterval);
 				}
 			});
 			
@@ -141,6 +144,13 @@ import './login.scss';
 			context.querySelector('.btnCancel').classList.add('hide');
     }
 
+	function getLastSeenText(lastActivityDate) {
+		if (lastActivityDate) {
+			return formatDistanceToNow(Date.parse(lastActivityDate), getLocaleWithSuffix());
+		}
+		return '';
+	};
+
     function loadUserList(context, apiClient, users, inLocalNet) {
 		let html = '';
 		
@@ -158,7 +168,6 @@ import './login.scss';
 
 			if (layoutManager.tv) {
 				cssClass += ' show-focus';
-
 				if (enableFocusTransform) {
 					cssClass += ' show-animation';
 				}
@@ -227,6 +236,10 @@ import './login.scss';
 			html += '</div>';
 			html += '<div class="cardFooter visualCardBox-cardFooter">';
 			html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';
+			
+			const lastSeen = getLastSeenText(user.LastActivityDate);
+			html += '<div className="cardText cardText-secondary"><span style="font-size: .5em;overflow: hidden;white-space: nowrap;opacity: 70%">' + (lastSeen != '' ? lastSeen : '') + '</span></div>';
+			 
 			html += '</div>';
 			html += '</div>';
 			html += '</button>';
@@ -236,7 +249,8 @@ import './login.scss';
     }
 
     export default function (view, params) {
-		let inLocalNet = false;
+		// If we are connecting an unpatched server, it's best to assume we are inside a local Net.
+		let inLocalNet = true;
 		
 		loading.show();
 		
@@ -344,7 +358,7 @@ import './login.scss';
 			
 			apiClient.getEndpointInfo().then((endpoint) => {
 				inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
-			}).finally(() => {
+			}).catch(() => {inLocalNet = false;}).finally(() => {
 				
 				// Initiating a password recovery from a remote location is forbidden per server policy.
 				// In this case, we have no valid reason to show the link.

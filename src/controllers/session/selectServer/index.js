@@ -190,17 +190,23 @@ import { ConnectionState } from '../../../utils/jellyfin-apiclient/ConnectionSta
             const isRestored = e.detail.isRestored;
             libraryMenu.setTitle(null);
             libraryMenu.setTransparentMenu(true);
-
+			
+			view.querySelector('.btnCancel').classList.toggle('hide', !appRouter.canGoBack());
             if (!isRestored) {
                 loadServers();
             }
         });
+		
+		view.querySelector('.btnAddServer').addEventListener('click', function (e) {
+           Dashboard.navigate("addserver.html", true);
+        });
+		view.querySelector('.btnCancel').addEventListener('click', function (e) {
+           appRouter.back();
+        });
         view.querySelector('.servers').addEventListener('click', function (e) {
             const card = dom.parentWithClass(e.target, 'card');
-
             if (card) {
                 const url = card.getAttribute('data-url');
-
                 if (url) {
                     appRouter.show(url);
                 } else {
