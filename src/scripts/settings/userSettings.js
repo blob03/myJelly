@@ -994,15 +994,21 @@ export class UserSettings {
 			elm.classList.add('headerClockActive');
 	}
 	 
-	placeClock(val) {
+	placeClock(val, abs) {
 		let pos = parseInt(this.get('clock_pos'), 10);
 		if (isNaN(pos) || pos < 0 || pos > 1)
 			pos = 0;
         if (val !== undefined) {
-			const offset = parseInt(val, 10) || 0;
-			if (offset == -1 || offset == 1)
-				pos = Math.abs(pos + offset) % 2; 
-			
+			const x = parseInt(val, 10);
+			if (abs === true){
+				// val contains the new position.
+				if (x == 0 || x == 1)
+					pos = x;
+			} else {
+				// val is an offset.
+				if (x == -1 || x == 1)
+					pos = Math.abs(pos + x) % 2; 
+			}
 			let _l_hdrclck = document.getElementById("headerClockLeft");
 			let _r_hdrclck = document.getElementById("headerClockRight");
 			if (!_l_hdrclck || !_r_hdrclck)

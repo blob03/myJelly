@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-11",
+	"version": "10.8.8-12",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -173,6 +173,7 @@
 		"10.8.8-8": "Synchronize translations.\nQuickconnect authentification process is only active from inside the QC submenu which acts as a waiting room (login screen).",
 		"10.8.8-9": "Ensure the login screen is refreshed everytime it is invoked.\nHide the password recovery button when connecting from remote (login screen).\nFix app router confused after leaving the password recovery procedure with a call to window.location() (login screen).",
 		"10.8.8-10": "Update package.json.\nLogging out from the user menu always redirects to the login page even if the client is flagged 'multiserver'.\nOption 'multiserver' enabled in config.json.\nAdd a cancel button to the server selection page.\nAdd a 'Last Seen...' line under the account names (login screen).\nIf the (unpatched) server refuses to tell, assume the client to be inside a local network by default (login screen).",
-		"10.8.8-11": "Show the spinner while waiting for a QC authorization (login screen).\nApply patch 'thornbill/fix-home-navigation'.\nMake the 'Last seen...' line underneath the login screen avatars, a new option of config.json.\nMake the login screen clock another option of config.json.\nInitial position of the clock can also be set here.\n"
+		"10.8.8-11": "Show the spinner while waiting for a QC authorization (login screen).\nApply patch 'thornbill/fix-home-navigation'.\nMake the 'Last seen...' line underneath the login screen avatars, a new option of config.json.\nMake the login screen clock another option of config.json.\nInitial position of the clock can also be set here.\n",
+		"10.8.8-12": "Apply patch 'thornbill/add-api-context'.\nMake the exposure of account details (role and auth method), an option of config.json.\nFix: value set to setLoginClockPos() is an absolute not an offset."
 	}
 }

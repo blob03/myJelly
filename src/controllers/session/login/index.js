@@ -209,34 +209,34 @@ import './login.scss';
 			}
 
 			html += '</div>';
-			
 			html += '<div class="cardIndicators" style="top: .125em !important;">';
 			
-			if (user?.HasPassword === true) {
-				if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
-					// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
-					// access is granted without a password, from the local network.
-					if (user?.HasConfiguredEasyPassword === true) {
+			if (webSettings.showLoginInfo()) {
+				if (user?.HasPassword === true) {
+					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
+						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
+						// access is granted without a password, from the local network.
+						if (user?.HasConfiguredEasyPassword === true) {
+							html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
+							html += '<span class="material-icons cardImageIcon pin" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
+							html += '</div>';
+						}
+					} else {
 						html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-						html += '<span class="material-icons cardImageIcon pin" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
+						html += '<span class="material-icons cardImageIcon password" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
 						html += '</div>';
 					}
-				} else {
+				}
+				
+				if (user?.Policy?.IsAdministrator === true) {
 					html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-					html += '<span class="material-icons cardImageIcon password" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
+					html += '<span class="material-icons cardImageIcon local_police" style="font-size: 1em;color: #202020;text-shadow: none;">';
+					html += '</span>';
 					html += '</div>';
 				}
 			}
 			
-			if (user?.Policy?.IsAdministrator === true) {
-				html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-				html += '<span class="material-icons cardImageIcon local_police" style="font-size: 1em;color: #202020;text-shadow: none;">';
-				html += '</span>';
-				html += '</div>';
-			}
-			
 			html += '</div>';
-			
 			html += '</div>';
 			html += '<div class="cardFooter visualCardBox-cardFooter">';
 			html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';

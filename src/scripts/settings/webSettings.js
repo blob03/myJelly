@@ -198,6 +198,11 @@ export function showLoginLastSeen() {
 	return Boolean(_config_data.showLoginLastSeen);
 }
 
+// Boolean to display (or not) the account role (user or admin) and auth method (password/PIN/open).
+export function showLoginInfo() {
+	return Boolean(_config_data.showLoginInfo);
+}
+
 // Boolean to show or hide the clock in the menu bar of the login screen.
 export function showLoginClock() {
 	return Boolean(_config_data.showLoginClock);
