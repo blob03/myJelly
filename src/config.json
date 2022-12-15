@@ -1,5 +1,8 @@
 {
 	"includeCorsCredentials": false,
+	"showLoginLastSeen": true,
+	"showLoginClock": true,
+	"setLoginClockPos": 1,
 	"multiserver": true,
 	"themes": [
 	{

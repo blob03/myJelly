@@ -1,6 +1,6 @@
 import DefaultConfig from '../../config.json';
 
-let data;
+let _config_data;
 const urlResolver = document.createElement('a');
 
 // `fetch` with `file:` support
@@ -41,7 +41,7 @@ async function fetchLocal(url, options) {
 }
 
 async function getConfig() {
-    if (data) return Promise.resolve(data);
+    if (_config_data) return Promise.resolve(_config_data);
     try {
         const response = await fetchLocal('config.json', {
             cache: 'no-cache'
@@ -51,13 +51,13 @@ async function getConfig() {
             throw new Error('network response was not ok');
         }
 
-        data = await response.json();
+        _config_data = await response.json();
 
-        return data;
+        return _config_data;
     } catch (error) {
         console.warn('failed to fetch the web config file:', error);
-        data = DefaultConfig;
-        return data;
+        _config_data = DefaultConfig;
+        return _config_data;
     }
 }
 
@@ -191,6 +191,24 @@ export function getMenuLinks() {
         console.log('cannot get web config:', error);
         return [];
     });
+}
+
+// Boolean to set (or not) a 'Last seen...' line underneath the user avatars in the login screen.
+export function showLoginLastSeen() {
+	return Boolean(_config_data.showLoginLastSeen);
+}
+
+// Boolean to show or hide the clock in the menu bar of the login screen.
+export function showLoginClock() {
+	return Boolean(_config_data.showLoginClock);
+}
+
+// Set the position of the clock, 0/Left or 1/Right.
+export function setLoginClockPos() {
+	let x = parseInt(_config_data.setLoginClockPos, 10);
+	if (isNaN(x) || x < 0 || x > 1)
+		x = 0;
+	return x;
 }
 
 export function getPlugins() {

@@ -17,7 +17,7 @@ import keyboardNavigation from './scripts/keyboardNavigation';
 import './scripts/mouseManager';
 import autoFocuser from './components/autoFocuser';
 import { appHost } from './components/apphost';
-import { getPlugins } from './scripts/settings/webSettings';
+import { getPlugins, showLoginClock, setLoginClockPos } from './scripts/settings/webSettings';
 import { pluginManager } from './components/pluginManager';
 import packageManager from './components/packageManager';
 import { appRouter, history } from './components/appRouter';
@@ -274,7 +274,10 @@ function registerServiceWorker() {
 init();
 
 pageClassOn('viewshow', 'standalonePage', function () {
-	currentSettings.showClock(true);
+	if (showLoginClock()) {
+		currentSettings.showClock(showLoginClock());
+		currentSettings.placeClock(setLoginClockPos());
+	}
     //document.querySelector('.skinHeader').classList.add('noHeaderRight');
 });
 

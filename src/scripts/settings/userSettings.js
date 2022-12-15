@@ -759,7 +759,7 @@ export class UserSettings {
 	enableClock(val, norefresh) {
         if (val !== undefined) {
 			let newval = parseInt(val, 10);
-			if (newval < 0 || newval > 3)
+			if (isNaN(newval) || newval < 0 || newval > 3)
 				newval = 0;
 			
 			/*** Save the new value. ***/
@@ -995,11 +995,10 @@ export class UserSettings {
 	}
 	 
 	placeClock(val) {
-		let pos = parseInt(this.get('clock_pos'), 10) || 0;
-		if (pos < 0 || pos > 1)
+		let pos = parseInt(this.get('clock_pos'), 10);
+		if (isNaN(pos) || pos < 0 || pos > 1)
 			pos = 0;
         if (val !== undefined) {
-			
 			const offset = parseInt(val, 10) || 0;
 			if (offset == -1 || offset == 1)
 				pos = Math.abs(pos + offset) % 2; 

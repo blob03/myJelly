@@ -2,6 +2,7 @@ import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { appHost } from '../../../components/apphost';
 import appSettings from '../../../scripts/settings/appSettings';
+import * as webSettings from '../../../scripts/settings/webSettings';
 import dom from '../../../scripts/dom';
 import loading from '../../../components/loading/loading';
 import layoutManager from '../../../components/layoutManager';
@@ -53,51 +54,50 @@ import './login.scss';
 	
 	let _QCinterval = null;
 	
+	function QCAuth(apiClient, url) {
+		apiClient.getJSON(url).then(async function(data) {
+			if (!data.Authenticated) {
+				return;
+			}
+			loading.hide();
+			clearInterval(_QCinterval);
+
+			// Close the QuickConnect dialog
+			const dlg = document.getElementById('quickConnectAlert');
+			if (dlg)
+				dialogHelper.close(dlg);
+
+			const result = await apiClient.quickConnect(data.Secret);
+			onLoginSuccessful(result.User.Id, result.AccessToken, apiClient);
+		}, function (e) {
+			loading.hide();
+			clearInterval(_QCinterval);
+
+			// Close the QuickConnect dialog
+			const dlg = document.getElementById('quickConnectAlert');
+			if (dlg)
+				dialogHelper.close(dlg);
+
+			Dashboard.alert({
+				message: globalize.translate('QuickConnectDeactivated'),
+				title: globalize.translate('HeaderError')
+			});
+
+			console.error('Unable to login with quick connect', e);
+		});
+	}
+
     function authenticateQuickConnect(apiClient) {
+        const URL_QC_INITIATE = apiClient.getUrl('/QuickConnect/Initiate');
 		
-        const url = apiClient.getUrl('/QuickConnect/Initiate');
-        apiClient.getJSON(url).then(function (json) {
+        apiClient.getJSON(URL_QC_INITIATE).then(function (json) {
             if (!json.Secret || !json.Code) {
                 console.error('Malformed quick connect response', json);
                 return false;
             }
 			
-            const connectUrl = apiClient.getUrl('/QuickConnect/Connect?Secret=' + json.Secret);
+			const URL_QC_CONNECT = apiClient.getUrl('/QuickConnect/Connect?Secret=' + json.Secret);
 			
-            _QCinterval = setInterval(function() {
-                apiClient.getJSON(connectUrl).then(async function(data) {
-                    if (!data.Authenticated) {
-                        return;
-                    }
-
-                    clearInterval(_QCinterval);
-
-                    // Close the QuickConnect dialog
-                    const dlg = document.getElementById('quickConnectAlert');
-                    if (dlg) {
-                        dialogHelper.close(dlg);
-                    }
-
-					const result = await apiClient.quickConnect(data.Secret);
-                    onLoginSuccessful(result.User.Id, result.AccessToken, apiClient);
-                }, function (e) {
-                    clearInterval(_QCinterval);
-
-                    // Close the QuickConnect dialog
-                    const dlg = document.getElementById('quickConnectAlert');
-                    if (dlg) {
-                        dialogHelper.close(dlg);
-                    }
-
-                    Dashboard.alert({
-                        message: globalize.translate('QuickConnectDeactivated'),
-                        title: globalize.translate('HeaderError')
-                    });
-
-                    console.error('Unable to login with quick connect', e);
-                });
-            }, 5000, connectUrl);
-
 			Dashboard.alert({
 				title: globalize.translate('QuickConnect'),
 				buttonTitle: 'ButtonCancel',
@@ -107,16 +107,20 @@ import './login.scss';
 					toast(globalize.translate('QuickConnectCancelCode', json.Code));
 					if (_QCinterval)
 						clearInterval(_QCinterval);
+					loading.hide();
 				}
 			});
 			
+			loading.show();
+			QCAuth(apiClient, URL_QC_CONNECT);
+            _QCinterval = setInterval( QCAuth , 5000, apiClient, URL_QC_CONNECT);
             return true;
         }, function(e) {
             Dashboard.alert({
                 message: globalize.translate('QuickConnectNotActive'),
                 title: globalize.translate('HeaderError')
             });
-
+			
             console.error('Quick connect error: ', e);
             return false;
         });
@@ -237,9 +241,11 @@ import './login.scss';
 			html += '<div class="cardFooter visualCardBox-cardFooter">';
 			html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';
 			
-			const lastSeen = getLastSeenText(user.LastActivityDate);
-			html += '<div className="cardText cardText-secondary"><span style="font-size: .5em;overflow: hidden;white-space: nowrap;opacity: 70%">' + (lastSeen != '' ? lastSeen : '') + '</span></div>';
-			 
+			if (webSettings.showLoginLastSeen() === true) {
+				const lastSeen = getLastSeenText(user.LastActivityDate);
+				html += '<div className="cardText cardText-secondary"><span style="font-size: .5em;overflow: hidden;white-space: nowrap;opacity: 70%">' + (lastSeen != '' ? lastSeen : '') + '</span></div>';
+			}
+			
 			html += '</div>';
 			html += '</div>';
 			html += '</button>';
@@ -251,8 +257,6 @@ import './login.scss';
     export default function (view, params) {
 		// If we are connecting an unpatched server, it's best to assume we are inside a local Net.
 		let inLocalNet = true;
-		
-		loading.show();
 		
         function getApiClient() {
             const serverId = params? params.serverid: null;
@@ -338,8 +342,6 @@ import './login.scss';
         view.addEventListener('viewshow', function () {
             libraryMenu.setTransparentMenu(true);
 			
-			loading.show();
-			
 			const apiClient = getApiClient();
 			if (!apiClient) {
 				loading.hide();
@@ -358,8 +360,7 @@ import './login.scss';
 			
 			apiClient.getEndpointInfo().then((endpoint) => {
 				inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
-			}).catch(() => {inLocalNet = false;}).finally(() => {
-				
+			}).catch(() => {inLocalNet = true;}).finally(() => {
 				// Initiating a password recovery from a remote location is forbidden per server policy.
 				// In this case, we have no valid reason to show the link.
 				view.querySelector('.btnForgotPassword').classList.toggle('hide', !inLocalNet);
@@ -390,7 +391,6 @@ import './login.scss';
 							}
 						}
 					});
-					loading.hide();
 				});
 			});
         });
@@ -398,7 +398,6 @@ import './login.scss';
             libraryMenu.setTransparentMenu(false);
         });
 		
-		loading.hide();
     }
 
 /* eslint-enable indent */
