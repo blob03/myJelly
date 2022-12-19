@@ -1596,6 +1596,7 @@
     "Unmute": "Lopeta vaimennus",
     "Unplayed": "Toistamattomat",
     "Unrated": "Luokittelematon",
+    "Unreleased": "Ei vielä julkaistu",
     "UnsupportedPlayback": "Jellyfin ei voi purkaa DRM-suojatun sisällön salausta, mutta kaiken sisällön toistoa yritetään, salatut nimikkeet mukaan lukien. Jotkin tiedostot saattavat näyttää salauksen vuoksi täysin mustilta tai saattaa ilmetä muita ei tuettuja ominaisuuksia, kuten vuorovaikutteisia valikoita.",
     "Up": "Ylös",
     "Upload": "Lähetä",

@@ -16,7 +16,7 @@ import browser from './browser';
 import globalize from './globalize';
 import toast from '../components/toast/toast';
 import imageHelper from './imagehelper';
-import { getMenuLinks } from '../scripts/settings/webSettings';
+import { getMenuLinks, pinButton, reloadButton } from '../scripts/settings/webSettings';
 import Dashboard, { pageClassOn } from '../utils/dashboard';
 import { getParameterByName } from '../utils/url';
 import ServerConnections from '../components/ServerConnections';
@@ -304,6 +304,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			) {
 				headerSyncButton.classList.remove('hide');
 			}
+			if (headerPinButton) {
+				const pinIcon = document.getElementById('pin');
+				if (pinIcon)
+					togglePin(false);
+				headerPinButton.classList.remove('hide');
+			}
 		} else {
 			if (mainDrawerButton)
 				mainDrawerButton.classList.add('hide');
@@ -320,20 +326,17 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			if (backdropInfoButton) 
 				backdropInfoButton.classList.add('hide');
 
-			// At this point, we only keep it for dev.
-			if (headerReloadButton) {
-				/*if (layoutManager.tv)
-					headerReloadButton.classList.remove('hide');
-				else*/
-					headerReloadButton.classList.add('hide');
+			// At this point, we only keep the reload button for dev.
+			// it is settable in config.json.
+			if (headerReloadButton && reloadButton() === true) {
+				headerReloadButton.classList.remove('hide');
 			}
-		}
-		
-		if (headerPinButton) {
-			const pinIcon = document.getElementById('pin');
-			if (pinIcon)
-				togglePin(false);
-			headerPinButton.classList.remove('hide');
+			if (headerPinButton && pinButton() === true) {
+				const pinIcon = document.getElementById('pin');
+				if (pinIcon)
+					togglePin(false);
+				headerPinButton.classList.remove('hide');
+			}
 		}
 	}
 	

@@ -54,7 +54,7 @@ import './login.scss';
 	
 	let _QCinterval = null;
 	
-	function QCAuth(apiClient, url) {
+	function QCAuth(apiClient, view, url) {
 		apiClient.getJSON(url).then(async function(data) {
 			if (!data.Authenticated) {
 				return;
@@ -79,15 +79,17 @@ import './login.scss';
 				dialogHelper.close(dlg);
 
 			Dashboard.alert({
+				dialogOptions: { enableHistory: false },
 				message: globalize.translate('QuickConnectDeactivated'),
-				title: globalize.translate('HeaderError')
+				title: globalize.translate('HeaderError'),
+				callback: () => { view.querySelector('#btnQuick').focus(); }
 			});
 
 			console.error('Unable to login with quick connect', e);
 		});
 	}
 
-    function authenticateQuickConnect(apiClient) {
+    function authenticateQuickConnect(view, apiClient) {
         const URL_QC_INITIATE = apiClient.getUrl('/QuickConnect/Initiate');
 		
         apiClient.getJSON(URL_QC_INITIATE).then(function (json) {
@@ -97,28 +99,32 @@ import './login.scss';
             }
 			
 			const URL_QC_CONNECT = apiClient.getUrl('/QuickConnect/Connect?Secret=' + json.Secret);
+			QCAuth(apiClient, view, URL_QC_CONNECT);
+            _QCinterval = setInterval( QCAuth , 5000, apiClient, view, URL_QC_CONNECT);
 			
 			Dashboard.alert({
+				dialogOptions: { enableHistory: false, id: 'quickConnectAlert' },
 				title: globalize.translate('QuickConnect'),
+				message: globalize.translate('QuickConnectAuthorizeCode', json.Code),
 				buttonTitle: 'ButtonCancel',
 				buttonClass: 'btnCancel cancel', 
-				message: globalize.translate('QuickConnectAuthorizeCode', json.Code),
 				callback: () => {
-					toast(globalize.translate('QuickConnectCancelCode', json.Code));
 					if (_QCinterval)
 						clearInterval(_QCinterval);
 					loading.hide();
+					toast(globalize.translate('QuickConnectCancelCode', json.Code));
+					view.querySelector('#btnQuick').focus();
 				}
 			});
 			
 			loading.show();
-			QCAuth(apiClient, URL_QC_CONNECT);
-            _QCinterval = setInterval( QCAuth , 5000, apiClient, URL_QC_CONNECT);
-            return true;
-        }, function(e) {
+            return false;
+        }).catch((e) => {
             Dashboard.alert({
+				dialogOptions: { enableHistory: false },
                 message: globalize.translate('QuickConnectNotActive'),
-                title: globalize.translate('HeaderError')
+                title: globalize.translate('HeaderError'),
+				callback: () => { view.querySelector('#btnQuick').focus(); }
             });
 			
             console.error('Quick connect error: ', e);
@@ -211,7 +217,7 @@ import './login.scss';
 			html += '</div>';
 			html += '<div class="cardIndicators" style="top: .125em !important;">';
 			
-			if (webSettings.showLoginInfo()) {
+			if (webSettings.loginAuth()) {
 				if (user?.HasPassword === true) {
 					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
 						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
@@ -227,7 +233,9 @@ import './login.scss';
 						html += '</div>';
 					}
 				}
-				
+			}
+			
+			if (webSettings.loginRole()) {
 				if (user?.Policy?.IsAdministrator === true) {
 					html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
 					html += '<span class="material-icons cardImageIcon local_police" style="font-size: 1em;color: #202020;text-shadow: none;">';
@@ -241,7 +249,7 @@ import './login.scss';
 			html += '<div class="cardFooter visualCardBox-cardFooter">';
 			html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';
 			
-			if (webSettings.showLoginLastSeen() === true) {
+			if (webSettings.loginLastSeen() === true) {
 				const lastSeen = getLastSeenText(user.LastActivityDate);
 				html += '<div className="cardText cardText-secondary"><span style="font-size: .5em;overflow: hidden;white-space: nowrap;opacity: 70%">' + (lastSeen != '' ? lastSeen : '') + '</span></div>';
 			}
@@ -299,20 +307,15 @@ import './login.scss';
             }
         });
         view.querySelector('.manualLoginForm').addEventListener('submit', function (e) {
-            appSettings.enableAutoLogin(view.querySelector('.chkRememberLogin').checked);
-            const apiClient = getApiClient();
+			appSettings.enableAutoLogin(view.querySelector('.chkRememberLogin').checked);
+			const apiClient = getApiClient();
 			if (apiClient)
 				authenticateUserByName(view, apiClient, view.querySelector('#txtManualName').value, view.querySelector('#txtManualPassword').value);
-            e.preventDefault();
-            return false;
+			e.preventDefault();
+			return false;
         });
         view.querySelector('.btnCancel').addEventListener('click', showVisualForm);
-        view.querySelector('.btnQuick').addEventListener('click', function () {
-            const apiClient = getApiClient();
-			if (apiClient)
-				authenticateQuickConnect(apiClient);
-            return false;
-        });
+
         view.querySelector('.btnManual').addEventListener('click', function () {
             view.querySelector('#txtManualName').value = '';
             showManualForm(view, true);
@@ -338,66 +341,73 @@ import './login.scss';
 			});
 		});
 
+		view.querySelector('#visualHeader').classList.toggle('hide', !webSettings.loginVisualHeader());
+		view.querySelector('#manualHeader').classList.toggle('hide', !webSettings.loginManualHeader());
 		view.querySelector('.btnSelectServer').classList.toggle('hide', !appHost.supports('multiserver'));
-        view.addEventListener('viewshow', function () {
-            libraryMenu.setTransparentMenu(true);
-			
-			const apiClient = getApiClient();
-			if (!apiClient) {
-				loading.hide();
-				return;
-			}
-			
+		
+		const apiClient = getApiClient();
+		if (!apiClient) {
+			loading.hide();
+			return;
+		}
+		
+		if (webSettings.quickConnect() === true) {
 			apiClient.getQuickConnect('Enabled').then(enabled => {
-				view.querySelector('.btnQuick').classList.toggle('hide', !enabled);
+				view.querySelector('#btnQuick').classList.toggle('hide', !enabled);
 			}).catch(() => {
-				view.querySelector('.btnQuick').classList.add('hide');
+				view.querySelector('#btnQuick').classList.add('hide');
 				console.debug('Failed to get QuickConnect status');
 			});
+		}
 
-			// Flush the last EndpointInfo.
-			apiClient.onNetworkChange();
-			
-			apiClient.getEndpointInfo().then((endpoint) => {
-				inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
-			}).catch(() => {inLocalNet = true;}).finally(() => {
-				// Initiating a password recovery from a remote location is forbidden per server policy.
-				// In this case, we have no valid reason to show the link.
-				view.querySelector('.btnForgotPassword').classList.toggle('hide', !inLocalNet);
-			
-				apiClient.getPublicUsers().then(function (users) {
-					if (users && users.length) {
-						showVisualForm();
-						loadUserList(view, apiClient, users, inLocalNet);
-					} else {
-						view.querySelector('#txtManualName').value = '';
-						showManualForm(view, false, false);
-					}
-				}).catch().finally( () => {
-					apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
-						const disclaimer = view.querySelector('.disclaimer');
+		// Flush the last EndpointInfo.
+		apiClient.onNetworkChange();
+		
+		apiClient.getEndpointInfo().then((endpoint) => {
+			inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
+		}).catch(() => {inLocalNet = true;}).finally(() => {
+			// Initiating a password recovery from a remote location is forbidden per server policy.
+			// In this case, we have no valid reason to show the link.
+			view.querySelector('.btnForgotPassword').classList.toggle('hide', webSettings.passRecovery() !== true || !inLocalNet);
+		
+			apiClient.getPublicUsers().then(function (users) {
+				if (webSettings.view() === "visual" && users && users.length) {
+					showVisualForm();
+					loadUserList(view, apiClient, users, inLocalNet);
+				} else {
+					view.querySelector('#txtManualName').value = '';
+					showManualForm(view, false, false);
+				}
+			}).catch().finally( () => {
+				apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
+					const disclaimer = view.querySelector('.disclaimer');
+					disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
+					for (const elem of disclaimer.querySelectorAll('a')) {
+						elem.rel = 'noopener noreferrer';
+						elem.target = '_blank';
+						elem.classList.add('button-link');
+						elem.setAttribute('is', 'emby-linkbutton');
 
-						disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
-
-						for (const elem of disclaimer.querySelectorAll('a')) {
-							elem.rel = 'noopener noreferrer';
-							elem.target = '_blank';
-							elem.classList.add('button-link');
-							elem.setAttribute('is', 'emby-linkbutton');
-
-							if (layoutManager.tv) {
-								// Disable links navigation on TV
-								elem.tabIndex = -1;
-							}
+						if (layoutManager.tv) {
+							// Disable links navigation on TV
+							elem.tabIndex = -1;
 						}
-					});
+					}
 				});
 			});
+		});
+        view.addEventListener('viewshow', function () {
+            libraryMenu.setTransparentMenu(true);
         });
         view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);
         });
-		
+	
+		view.querySelector('#btnQuick').addEventListener('click', function () {
+			const apiClient = getApiClient();
+			if (apiClient)
+				authenticateQuickConnect(view, apiClient);
+		});
     }
 
 /* eslint-enable indent */

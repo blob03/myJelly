@@ -1,9 +1,24 @@
 {
 	"includeCorsCredentials": false,
-	"showLoginLastSeen": true,
-	"showLoginInfo": true,
-	"showLoginClock": true,
-	"setLoginClockPos": 1,
+	"login": {
+		"accountLastSeen": true,
+		"accountRole": true,
+		"accountAuthMethods": true,
+		"auth": {
+			"quickConnect": true,
+			"view": "visual",
+			"visualHeader": true,
+			"manualHeader": true
+		},
+		"clock": true,
+		"clockPos": "right",
+		"clockFormat": 6,
+		"header": {
+			"pin": true,
+			"reload": false
+		},
+		"recovery": true
+	},
 	"multiserver": true,
 	"themes": [
 	{

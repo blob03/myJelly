@@ -194,24 +194,78 @@ export function getMenuLinks() {
 }
 
 // Boolean to set (or not) a 'Last seen...' line underneath the user avatars in the login screen.
-export function showLoginLastSeen() {
-	return Boolean(_config_data.showLoginLastSeen);
+export function loginLastSeen() {
+	return Boolean(_config_data?.login?.accountLastSeen);
 }
 
-// Boolean to display (or not) the account role (user or admin) and auth method (password/PIN/open).
-export function showLoginInfo() {
-	return Boolean(_config_data.showLoginInfo);
+// Boolean to display (or not) the account role (user or admin).
+export function loginRole() {
+	return Boolean(_config_data?.login?.accountRole);
+}
+
+// Boolean to display (or not) the account auth methods (password/PIN/open).
+export function loginAuth() {
+	return Boolean(_config_data?.login?.accountAuthMethods);
 }
 
 // Boolean to show or hide the clock in the menu bar of the login screen.
-export function showLoginClock() {
-	return Boolean(_config_data.showLoginClock);
+export function loginClock() {
+	return Boolean(_config_data?.login?.clock);
 }
 
-// Set the position of the clock, 0/Left or 1/Right.
-export function setLoginClockPos() {
-	let x = parseInt(_config_data.setLoginClockPos, 10);
-	if (isNaN(x) || x < 0 || x > 1)
+// Set the position of the clock, 0/left or 1/right.
+export function loginClockPos() {
+	switch(_config_data?.login?.clockPos) {
+		case "right":
+			return 1;
+		case "left":
+		default:
+			return 0;
+	}
+}
+
+// Boolean to show or hide the pin button in the header of the login screen.
+export function pinButton() {
+	return Boolean(_config_data?.login?.header?.pin);
+}
+
+// Boolean to show or hide the reload button in the header of the login screen.
+export function reloadButton() {
+	return Boolean(_config_data?.login?.header?.reload);
+}
+
+// Boolean to show or hide the quickConnect authentication button in the login menu.
+export function quickConnect() {
+	return Boolean(_config_data?.login?.auth?.quickConnect);
+}
+
+// Boolean to show or hide the password recovery button in the login menu.
+export function passRecovery() {
+	return Boolean(_config_data?.login?.recovery);
+}
+
+// Boolean to show or hide the header above the user list.
+export function loginVisualHeader() {
+	return Boolean(_config_data?.login?.auth?.visualHeader);
+}
+
+// Boolean to show or hide the header above the manual authentication form.
+export function loginManualHeader() {
+	return Boolean(_config_data?.login?.auth?.manualHeader);
+}
+
+// value to set which view to show when loading up.
+export function view() {
+	let view = _config_data?.login?.auth?.view;
+	if (view !== "manual")
+		view = "visual";
+	return view;
+}
+
+// Set the format index used by the clock, from 0 up to 7.
+export function loginClockFormat() {
+	let x = parseInt(_config_data?.login?.clockFormat, 10);
+	if (isNaN(x) || x < 0 || x > 7)
 		x = 0;
 	return x;
 }

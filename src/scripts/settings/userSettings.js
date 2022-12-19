@@ -882,13 +882,21 @@ export class UserSettings {
 		return {'_opts_date': _opts_date, '_opts_time': _opts_time, 'fontSize': fontSize, 'hideDate': hideDate };
 	}
 	
-	nextClockFormat() {
+	setClockFormat(val) {
 		const FORMATS_NBR = 8;
 		const elms = document.getElementsByClassName("headerClockMain");
 		if (!elms || !elms.length)
 			return;
 		const _prevMode = currentSettings._clkmode || 0;
-		currentSettings._clkmode = (currentSettings._clkmode + 1) % FORMATS_NBR;
+		
+		if (val !== undefined) {
+			let idx = parseInt(val, 10);
+			if (isNaN(idx) || idx < 0 || idx >= FORMATS_NBR)
+				return;
+			currentSettings._clkmode = idx;
+		} else {
+			currentSettings._clkmode = (currentSettings._clkmode + 1) % FORMATS_NBR;
+		}
 	
 		const format = currentSettings.getClockFormat(currentSettings._clkmode);
 		currentSettings._opts_date = format._opts_date;
@@ -902,18 +910,19 @@ export class UserSettings {
 		
 		setTimeout(hdrClock, 10);
 	}
-		
+	
 	initButtons(pos) {
 		let elm;
 		if (!pos)
 			return;
 		
 		const self = this;
+		const x = function() {self.setClockFormat();};
 		
 		elm = pos.getElementsByClassName("headerClockMain")[0];
 		if (elm) {
-			elm.removeEventListener('click', self.nextClockFormat);
-			elm.addEventListener('click', self.nextClockFormat);
+			elm.removeEventListener('click', x);
+			elm.addEventListener('click', x);
 		}
 		
 		elm = pos.getElementsByClassName("moveLeftButton")[0];
@@ -1611,6 +1620,7 @@ export const initClockPlaces = currentSettings.initClockPlaces.bind(currentSetti
 export const WB_init = currentSettings.WB_init.bind(currentSettings);
 export const showClock = currentSettings.showClock.bind(currentSettings);
 export const getClockFormat = currentSettings.getClockFormat.bind(currentSettings);
+export const setClockFormat = currentSettings.setClockFormat.bind(currentSettings);
 export const showWeatherBot = currentSettings.showWeatherBot.bind(currentSettings);
 export const placeClock = currentSettings.placeClock.bind(currentSettings);
 export const toggleNightMode = currentSettings.toggleNightMode.bind(currentSettings);
