@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-14",
+	"version": "10.8.8-15",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -176,6 +176,7 @@
 		"10.8.8-11": "Show the spinner while waiting for a QC authorization (login screen).\nApply patch 'thornbill/fix-home-navigation'.\nMake the 'Last seen...' line underneath the login screen avatars, a new option of config.json.\nMake the login screen clock another option of config.json.\nInitial position of the clock can also be set here.\n",
 		"10.8.8-12": "Apply patch 'thornbill/add-api-context'.\nMake the exposure of account details (role and auth method), an option of config.json.\nFix: value set to setLoginClockPos() is an absolute not an offset.",
 		"10.8.8-13": "Synchronize translations.\nApply patch 'Convert-emby-scroller-emby-button'.\nAdd more customization options for the login screen (config.json).\nCleanup and optimization of Quick Connect authentication (login screen).",
-		"10.8.8-14": "Synchronize translations.\nFix: Not reporting back wrong PINs when resetting a password (Password recovery).\nFix: Add missing class to the 'Add Server' button (Login screen).\nSort the list of supported languages alphabetically and add an 'Auto' selection (Wizard screen).\nReintroduce cache buster to avoid caching issues when switching between languages (Login screen).\nAdd an early version of theme 'Arctic' by jakehamilton@hachyderm.io."
+		"10.8.8-14": "Synchronize translations.\nFix: Not reporting back wrong PINs when resetting a password (Password recovery).\nFix: Add missing class to the 'Add Server' button (Login screen).\nSort the list of supported languages alphabetically and add an 'Auto' selection (Wizard screen).\nReintroduce cache buster to avoid caching issues when switching between languages (Login screen).\nAdd an early version of theme 'Arctic' by jakehamilton@hachyderm.io.",
+		"10.8.8-15": "Leave the password fields blank when showing the credentials page for the startup user (Wizard user).\nActually use any custom language set by the user for the setup process (Wizard screens).\nFlag the Wizard start page as of type 'login' and get rid of the back button (Wizard start).\nFix the wizard library help button (Wizard library)."
 	}
 }

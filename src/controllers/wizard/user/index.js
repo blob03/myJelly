@@ -27,7 +27,7 @@ function submit(form) {
         type: 'POST',
         data: JSON.stringify({
             Name: form.querySelector('#txtUsername').value,
-            Password: form.querySelector('#txtManualPassword').value
+            Password: form.querySelector('#txtPassword').value
         }),
         url: apiClient.getUrl('Startup/User'),
         contentType: 'application/json'
@@ -37,7 +37,7 @@ function submit(form) {
 function onSubmit(e) {
     const form = this;
 
-    if (form.querySelector('#txtManualPassword').value != form.querySelector('#txtPasswordConfirm').value) {
+    if (form.querySelector('#txtPassword').value != form.querySelector('#txtPasswordConfirm').value) {
         toast(globalize.translate('PasswordMatchError'));
     } else {
         submit(form);
@@ -53,7 +53,8 @@ function onViewShow() {
     const apiClient = getApiClient();
     apiClient.getJSON(apiClient.getUrl('Startup/User')).then(function (user) {
         page.querySelector('#txtUsername').value = user.Name || '';
-        page.querySelector('#txtManualPassword').value = user.Password || '';
+		page.querySelector('#txtPassword').value = '';
+		page.querySelector('#txtPasswordConfirm').value = '';
         loading.hide();
     });
 }

@@ -107,7 +107,8 @@ import { appRouter } from '../components/appRouter';
         path: 'wizard/start/index.html',
         autoFocus: false,
         anonymous: true,
-        controller: 'wizard/start/index'
+        controller: 'wizard/start/index',
+		type: 'login'
     });
 
     defineRoute({
