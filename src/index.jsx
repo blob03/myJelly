@@ -72,7 +72,7 @@ function init() {
 
         keyboardNavigation.enable();
         autoFocuser.enable();
-
+		
         Events.on(ServerConnections, 'localusersignedin', globalize.updateCurrentCulture);
     });
 }
@@ -271,11 +271,6 @@ function registerServiceWorker() {
 init();
 
 pageClassOn('viewshow', 'standalonePage', function () {
-	if (loginClock()) {
-		currentSettings.showClock(loginClock());
-		currentSettings.placeClock(loginClockPos(), true);
-		currentSettings.setClockFormat(loginClockFormat(), true);
-	}
     //document.querySelector('.skinHeader').classList.add('noHeaderRight');
 });
 

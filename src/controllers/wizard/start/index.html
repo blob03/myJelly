@@ -13,7 +13,10 @@
                 <p>${ThisWizardWillGuideYou}</p>
                 <br />
                 <div class="selectContainer">
-                    <select is="emby-select" id="selectLocalizationLanguage" label="${LabelPreferredDisplayLanguage}"></select>
+                    <select is="emby-select" id="selectLocalizationLanguage" label="${LabelPreferredDisplayLanguage}">
+						<option value="">${Auto}</option>
+						<option disabled>${OptionDivider}</option>
+					</select>
                 </div>
                 <br />
 

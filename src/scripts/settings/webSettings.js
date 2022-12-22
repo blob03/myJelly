@@ -239,9 +239,19 @@ export function quickConnect() {
 	return Boolean(_config_data?.login?.auth?.quickConnect);
 }
 
+// Boolean to use a fadein/out animation when popping in/out alert windows.
+export function enableFastFadein() {
+	return Boolean(_config_data?.login?.enableFastFadein, false);
+}
+
+// Boolean to show or hide the server selection button in the login menu.
+export function serverSelection() {
+	return Boolean(_config_data?.login?.serverSelection);
+}
+
 // Boolean to show or hide the password recovery button in the login menu.
 export function passRecovery() {
-	return Boolean(_config_data?.login?.recovery);
+	return Boolean(_config_data?.login?.auth?.passwordRecovery);
 }
 
 // Boolean to show or hide the header above the user list.

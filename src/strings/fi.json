@@ -1077,6 +1077,7 @@
     "MediaInfoDoViTitle": "DV-nimike",
     "MediaInfoDvLevel": "DV-taso",
     "MediaInfoDvProfile": "DV-profiili",
+    "MediaInfoDvVersionMajor": "DV-versio pääaine",
     "MediaInfoExternal": "Ulkoinen",
     "MediaInfoForced": "Pakotettu",
     "MediaInfoFramerate": "Ruudunpäivitysnopeus",

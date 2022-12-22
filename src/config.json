@@ -5,10 +5,11 @@
 		"accountRole": true,
 		"accountAuthMethods": true,
 		"auth": {
+			"manualHeader": true,
+			"passwordRecovery": true,
 			"quickConnect": true,
 			"view": "visual",
-			"visualHeader": true,
-			"manualHeader": true
+			"visualHeader": true
 		},
 		"clock": true,
 		"clockPos": "right",
@@ -17,7 +18,8 @@
 			"pin": true,
 			"reload": false
 		},
-		"recovery": true
+		"serverSelection": true,
+		"enableFastFadein": false
 	},
 	"multiserver": true,
 	"themes": [
@@ -35,7 +37,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "2.02",
+		"version": "2.03",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly",
@@ -75,7 +77,13 @@
 		"version": "0.47",
 		"id": "light-alt",
 		"color": "#fff",
-		"group": "myJelly in-dev"
+		"group": "myJelly dev"
+	}, {
+		"name": "Arctic",
+		"id": "arctic",
+		"color": "#ff0000",
+		"author": "jakehamilton@hachyderm.io",
+		"group": "Jellyfin-web dev"
 	}],
 	"menuLinks": [],
 	"servers": [],

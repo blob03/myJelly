@@ -159,10 +159,7 @@ export function alert(options) {
         });
     } else {
         baseAlert({
-			dialogOptions: { 
-				enableHistory: options.dialogOptions.enableHistory !== false,
-				id: options.dialogOptions.id || ''
-			},
+			dialogOptions: { ...options.dialogOptions },
             title: options.title || globalize.translate('HeaderAlert'),
             text: options.message,
 			buttonTitle: options.buttonTitle || '',

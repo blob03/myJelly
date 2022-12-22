@@ -1461,3 +1461,9 @@ select option:selected {
 .countIndicator {
 	font-size: 70%;
 }
+
+.wizardNavigation > .emby-button > .material-icons {
+	margin: 0 .3em 0 .3em;
+	text-shadow: 2px 2px 3px #1e1d25;
+	color: #909090;
+}

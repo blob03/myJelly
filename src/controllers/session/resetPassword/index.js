@@ -37,7 +37,13 @@ import { appRouter } from '../../../components/appRouter';
                     Pin: view.querySelector('#txtPin').value
                 }),
                 contentType: 'application/json'
-            }).then(processForgotPasswordResult);
+            }).then(processForgotPasswordResult)
+			.catch((err) => {
+				Dashboard.alert({
+					message: globalize.translate('MessageInvalidForgotPasswordPin'),
+					title: globalize.translate('HeaderPasswordReset')
+				});
+			});
             e.preventDefault();
             return false;
         }

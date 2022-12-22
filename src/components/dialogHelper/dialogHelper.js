@@ -3,6 +3,7 @@ import focusManager from '../focusManager';
 import browser from '../../scripts/browser';
 import layoutManager from '../layoutManager';
 import inputManager from '../../scripts/inputManager';
+import * as webSettings from '../../scripts/settings/webSettings';
 import { toBoolean } from '../../utils/string.ts';
 import dom from '../../scripts/dom';
 
@@ -15,11 +16,11 @@ import '../../assets/css/scrollstyles.scss';
 
     function enableAnimation() {
         // too slow
-        if (browser.tv) {
-            return false;
-        }
-
-        return browser.supportsCssAnimation();
+        //if (browser.tv) {
+			
+		return (browser.supportsCssAnimation() && webSettings.enableFastFadein() !== true);
+        
+        //return browser.supportsCssAnimation();
     }
 
     function removeCenterFocus(dlg) {
@@ -429,8 +430,10 @@ import '../../assets/css/scrollstyles.scss';
             dlg.setAttribute('data-autofocus', 'true');
         }
 
-        const defaultEntryAnimation = 'scaleup';
-        const defaultExitAnimation = 'scaledown';
+        //const defaultEntryAnimation = 'scaleup';
+        //const defaultExitAnimation = 'scaledown';
+		const defaultEntryAnimation = 'fadein';
+        const defaultExitAnimation = 'fadeout';
         const entryAnimation = options.entryAnimation || defaultEntryAnimation;
         const exitAnimation = options.exitAnimation || defaultExitAnimation;
 

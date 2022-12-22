@@ -265,6 +265,7 @@ import './login.scss';
     export default function (view, params) {
 		// If we are connecting an unpatched server, it's best to assume we are inside a local Net.
 		let inLocalNet = true;
+		const apiClient = getApiClient();
 		
         function getApiClient() {
             const serverId = params? params.serverid: null;
@@ -295,8 +296,7 @@ import './login.scss';
                 if (id === 'manual') {
                     view.querySelector('#txtManualName').value = '';
                     showManualForm(view, true);
-                } else if (haspw == 'false') {
-					const apiClient = getApiClient();
+                } else if (haspw === 'false') {
 					if (apiClient)
 						authenticateUserByName(view, apiClient, name, '');
                 } else {
@@ -308,7 +308,6 @@ import './login.scss';
         });
         view.querySelector('.manualLoginForm').addEventListener('submit', function (e) {
 			appSettings.enableAutoLogin(view.querySelector('.chkRememberLogin').checked);
-			const apiClient = getApiClient();
 			if (apiClient)
 				authenticateUserByName(view, apiClient, view.querySelector('#txtManualName').value, view.querySelector('#txtManualPassword').value);
 			e.preventDefault();
@@ -326,6 +325,10 @@ import './login.scss';
 		view.querySelector('.btnForgotPassword').addEventListener('click', function () {
 			Dashboard.navigate('forgotpassword.html', true);
 		});
+		view.querySelector('#btnQuick').addEventListener('click', function () {
+			if (apiClient)
+				authenticateQuickConnect(view, apiClient);
+		});
 		
 		const defaultLang = globalize.getDefaultCulture().ccode;
 		const lang = globalize.getCurrentLocale();
@@ -337,18 +340,27 @@ import './login.scss';
 			const lang = x.target.value || defaultLang;
 			globalize.getCoreDictionary(lang).then(() => {
 				userSettings.language(lang);
-				appRouter.reload();
+				const serverId = apiClient.serverId();
+				const rnd = Math.floor(Math.random() * 1000000);
+				Dashboard.navigate('login.html?serverid=' + serverId + '&_cb=' + rnd, false)
+				//appRouter.reload(); 
 			});
 		});
 
 		view.querySelector('#visualHeader').classList.toggle('hide', !webSettings.loginVisualHeader());
 		view.querySelector('#manualHeader').classList.toggle('hide', !webSettings.loginManualHeader());
 		view.querySelector('.btnSelectServer').classList.toggle('hide', !appHost.supports('multiserver'));
-		
-		const apiClient = getApiClient();
 		if (!apiClient) {
 			loading.hide();
 			return;
+		}
+		
+		view.querySelector('#btnSelectServer').classList.toggle('hide', !webSettings.serverSelection());
+		
+		if (webSettings.loginClock()) {
+			userSettings.showClock(webSettings.loginClock());
+			userSettings.placeClock(webSettings.loginClockPos(), true);
+			userSettings.setClockFormat(webSettings.loginClockFormat(), true);
 		}
 		
 		if (webSettings.quickConnect() === true) {
@@ -402,12 +414,6 @@ import './login.scss';
         view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);
         });
-	
-		view.querySelector('#btnQuick').addEventListener('click', function () {
-			const apiClient = getApiClient();
-			if (apiClient)
-				authenticateQuickConnect(view, apiClient);
-		});
     }
 
 /* eslint-enable indent */

@@ -2,13 +2,19 @@ import 'jquery';
 import loading from '../../../components/loading/loading';
 import '../../../elements/emby-button/emby-button';
 import '../../../elements/emby-select/emby-select';
+import settingsHelper from '../../../components/settingshelper';
 import Dashboard from '../../../utils/dashboard';
 
 function loadPage(page, config, languageOptions) {
-    $('#selectLocalizationLanguage', page).html(languageOptions.map(function (l) {
-        return '<option value="' + l.Value + '">' + l.Name + '</option>';
-    })).val(config.UICulture);
-    loading.hide();
+	let selectLanguage = page.querySelector('#selectLocalizationLanguage');
+	let allCultures = languageOptions.map(x => {
+		return {
+			Name: x.Name,
+			ISO6391: x.Value,
+		};
+	});
+	settingsHelper.populateLanguages(selectLanguage, allCultures, 'Name', config.UICulture);
+	loading.hide();
 }
 
 function save(page) {
@@ -34,6 +40,7 @@ function onSubmit() {
 
 export default function (view) {
     $('.wizardStartForm', view).on('submit', onSubmit);
+	
     view.addEventListener('viewshow', function () {
         document.querySelector('.skinHeader').classList.add('noHomeButtonHeader');
         loading.show();

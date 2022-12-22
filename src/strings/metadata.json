@@ -752,17 +752,17 @@
     },
     "fa": {
         "ccode": "fa",
-        "fsize": 130992,
+        "fsize": 131525,
         "ccodeSrc": "en-US",
         "displayName": "Persian",
         "displayNativeName": "فارسی",
         "ISO6391": "fa",
         "ISO6392": "per",
-        "keys#": 1432,
-        "completed%": 79.64,
+        "keys#": 1435,
+        "completed%": 79.81,
         "jellyfinWeb": {
             "filename": "fa.json",
-            "keys#": 1432,
+            "keys#": 1435,
             "orphans#": 11,
             "orphans": [
                 "OptionDislikes",
@@ -777,7 +777,7 @@
                 "LabelMaxScreenshotsPerItem",
                 "LabelMinScreenshotDownloadWidth"
             ],
-            "completed%": 85.65
+            "completed%": 85.83
         },
         "myJelly": {
             "filename": "",
@@ -789,17 +789,17 @@
     },
     "fi": {
         "ccode": "fi",
-        "fsize": 114693,
+        "fsize": 114747,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
         "displayNativeName": "Suomi",
         "ISO6391": "fi",
         "ISO6392": "fin",
-        "keys#": 1666,
-        "completed%": 92.66,
+        "keys#": 1667,
+        "completed%": 92.71,
         "jellyfinWeb": {
             "filename": "fi.json",
-            "keys#": 1666,
+            "keys#": 1667,
             "orphans#": 12,
             "orphans": [
                 "ButtonNetwork",
@@ -815,7 +815,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.64
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "fi.json",
@@ -893,7 +893,7 @@
     },
     "fr": {
         "ccode": "fr",
-        "fsize": 125699,
+        "fsize": 125705,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
