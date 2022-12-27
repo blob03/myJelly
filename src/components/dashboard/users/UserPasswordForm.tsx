@@ -159,12 +159,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
         const saveEasyPassword = () => {
             const easyPassword = (page.querySelector('#txtEasyPassword') as HTMLInputElement).value;
 			if (easyPassword) {
-				if (isNaN(parseInt(easyPassword, 10))) {
-					loading.hide();
-					toast(globalize.translate('EasyPasswordNumeralsOnly', EASYPASS_LEN_MAX));
-					return;
-				}
-				if (easyPassword.length > EASYPASS_LEN_MAX) {
+				if (isNaN(parseInt(easyPassword, 10)) || easyPassword.length > EASYPASS_LEN_MAX) {
 					loading.hide();
 					toast(globalize.translate('EasyPasswordLenMax', EASYPASS_LEN_MAX));
 					return;
@@ -355,7 +350,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                             type='password'
                             id='txtEasyPassword'
                             label='LabelEasyPinCode'
-                            options={'autoComplete="off" pattern="' + EASYPASS_PATTERN + '" maxlength="' + EASYPASS_LEN_MAX + '" title="' + globalize.translate('EasyPasswordNumeralsOnly', EASYPASS_LEN_MAX) + '"'}
+                            options={'autoComplete="off" pattern="' + EASYPASS_PATTERN + '" maxlength="' + EASYPASS_LEN_MAX + '" title="' + globalize.translate('EasyPasswordLenMax', EASYPASS_LEN_MAX) + '"'}
                         />
                     </div>
                     <br />

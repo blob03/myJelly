@@ -23,12 +23,13 @@ function onUpdateUserComplete(result) {
 function submit(form) {
     loading.show();
     const apiClient = getApiClient();
+	let data = { Name: form.querySelector('#txtUsername').value };
+	if (form.querySelector('#txtPassword').value != '********')
+		data = { ...data, Password: form.querySelector('#txtPassword').value };
+
     apiClient.ajax({
         type: 'POST',
-        data: JSON.stringify({
-            Name: form.querySelector('#txtUsername').value,
-            Password: form.querySelector('#txtPassword').value
-        }),
+        data: JSON.stringify({ ...data }),
         url: apiClient.getUrl('Startup/User'),
         contentType: 'application/json'
     }).then(onUpdateUserComplete);
@@ -47,25 +48,35 @@ function onSubmit(e) {
     return false;
 }
 
-function onViewShow() {
+function onViewShow(page) {
     loading.show();
-    const page = this;
+	const SALTED_HASH = '$PBKDF2-SHA512$';
     const apiClient = getApiClient();
-    apiClient.getJSON(apiClient.getUrl('Startup/User')).then(function (user) {
-        page.querySelector('#txtUsername').value = user.Name || '';
-		page.querySelector('#txtPassword').value = '';
-		page.querySelector('#txtPasswordConfirm').value = '';
-        loading.hide();
-    });
+	page.querySelector('#txtUsername').value = '';
+	page.querySelector('#txtPassword').value = '';
+	page.querySelector('#txtPasswordConfirm').value = '';
+    apiClient.getJSON(apiClient.getUrl('Startup/User')).then( (user) => {
+		if (user.Name)
+			page.querySelector('#txtUsername').value = user.Name;
+		
+		if (user.Password && user.Password.startsWith(SALTED_HASH)) {
+			page.querySelector('#txtPassword').value = "********";
+			page.querySelector('#txtPasswordConfirm').value = "********";
+		}
+		
+	}).finally( () => {
+		loading.hide();
+	});
 }
 
 export default function (view) {
     view.querySelector('.wizardUserForm').addEventListener('submit', onSubmit);
+	
     view.addEventListener('viewshow', function () {
         document.querySelector('.skinHeader').classList.add('noHomeButtonHeader');
+		onViewShow(view);
     });
     view.addEventListener('viewhide', function () {
         document.querySelector('.skinHeader').classList.remove('noHomeButtonHeader');
     });
-    view.addEventListener('viewshow', onViewShow);
 }

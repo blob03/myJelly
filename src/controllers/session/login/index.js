@@ -7,7 +7,6 @@ import dom from '../../../scripts/dom';
 import loading from '../../../components/loading/loading';
 import layoutManager from '../../../components/layoutManager';
 import libraryMenu from '../../../scripts/libraryMenu';
-import { appRouter } from '../../../components/appRouter';
 import browser from '../../../scripts/browser';
 import globalize from '../../../scripts/globalize';
 import '../../../components/cardbuilder/card.scss';
@@ -267,6 +266,11 @@ import './login.scss';
 		let inLocalNet = true;
 		const apiClient = getApiClient();
 		
+		if (webSettings.loginClock()) {
+			userSettings.placeClock(webSettings.loginClockPos(), true);
+			userSettings.setClockFormat(webSettings.loginClockFormat(), true);
+		}
+
         function getApiClient() {
             const serverId = params? params.serverid: null;
             if (serverId) {
@@ -343,7 +347,6 @@ import './login.scss';
 				const serverId = apiClient.serverId();
 				const rnd = Math.floor(Math.random() * 1000000);
 				Dashboard.navigate('login.html?serverid=' + serverId + '&_cb=' + rnd, false)
-				//appRouter.reload(); 
 			});
 		});
 
@@ -356,13 +359,7 @@ import './login.scss';
 		}
 		
 		view.querySelector('#btnSelectServer').classList.toggle('hide', !webSettings.serverSelection());
-		
-		if (webSettings.loginClock()) {
-			userSettings.showClock(webSettings.loginClock());
-			userSettings.placeClock(webSettings.loginClockPos(), true);
-			userSettings.setClockFormat(webSettings.loginClockFormat(), true);
-		}
-		
+
 		if (webSettings.quickConnect() === true) {
 			apiClient.getQuickConnect('Enabled').then(enabled => {
 				view.querySelector('#btnQuick').classList.toggle('hide', !enabled);
@@ -374,7 +371,6 @@ import './login.scss';
 
 		// Flush the last EndpointInfo.
 		apiClient.onNetworkChange();
-		
 		apiClient.getEndpointInfo().then((endpoint) => {
 			inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
 		}).catch(() => {inLocalNet = true;}).finally(() => {
@@ -410,6 +406,8 @@ import './login.scss';
 		});
         view.addEventListener('viewshow', function () {
             libraryMenu.setTransparentMenu(true);
+			view.querySelector('#manualServerName').innerHTML = apiClient._serverInfo.Name;
+			view.querySelector('#visualServerName').innerHTML = apiClient._serverInfo.Name;
         });
         view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);

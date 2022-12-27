@@ -19,11 +19,21 @@ import ServerConnections from '../../../components/ServerConnections';
 import alert from '../../../components/alert';
 import cardBuilder from '../../../components/cardbuilder/cardBuilder';
 import { ConnectionState } from '../../../utils/jellyfin-apiclient/ConnectionState.ts';
+import { formatDistanceToNow } from 'date-fns';
+import { getLocaleWithSuffix } from '../../../utils/dateFnsLocale';
 
 /* eslint-disable indent */
 
     const enableFocusTransform = !browser.slow && !browser.edge;
 
+	function getLastAccessedText(DateLastAccessed) {
+		if (DateLastAccessed) {
+			var date = new Date(DateLastAccessed);
+			return formatDistanceToNow(Date.parse(date), getLocaleWithSuffix());
+		}
+		return '';
+	};
+	
     function renderSelectServerItems(view, servers) {
         const items = servers.map(function (server) {
             return {
@@ -31,7 +41,8 @@ import { ConnectionState } from '../../../utils/jellyfin-apiclient/ConnectionSta
                 icon: 'storage',
                 cardType: '',
                 id: server.Id,
-                server: server
+                server: server,
+				DateLastAccessed: server.DateLastAccessed
             };
         });
         let html = items.map(function (item) {
@@ -64,6 +75,11 @@ import { ConnectionState } from '../../../utils/jellyfin-apiclient/ConnectionSta
             cardContainer += '</div>';
             cardContainer += '<div class="cardFooter">';
             cardContainer += '<div class="cardText cardTextCentered">' + item.name + '</div>';
+			
+			const DateLastAccessed = getLastAccessedText(item.DateLastAccessed);
+			if (DateLastAccessed)
+				cardContainer += '<div className="cardText cardText-secondary"><span style="font-size: .5em;overflow: hidden;white-space: nowrap;opacity: 70%">' + DateLastAccessed + '</span></div>';
+	
             cardContainer += '</div></div></button>';
             return cardContainer;
         }).join('');

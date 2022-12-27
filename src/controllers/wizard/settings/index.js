@@ -2,6 +2,7 @@ import loading from '../../../components/loading/loading';
 import '../../../elements/emby-checkbox/emby-checkbox';
 import '../../../elements/emby-button/emby-button';
 import '../../../elements/emby-select/emby-select';
+import settingsHelper from '../../../components/settingshelper';
 import Dashboard from '../../../utils/dashboard';
 
 function save(page) {
@@ -23,6 +24,8 @@ function save(page) {
 }
 
 function populateLanguages(select, languages) {
+	settingsHelper.populateServerLanguages(select, languages, "DisplayName");
+	/*
     let html = '';
     html += "<option value=''></option>";
 
@@ -32,18 +35,18 @@ function populateLanguages(select, languages) {
     }
 
     select.innerHTML = html;
+	*/
 }
 
 function populateCountries(select, allCountries) {
-    let html = '';
-    html += "<option value=''></option>";
-
+	let html = '';
+	
     for (let i = 0, length = allCountries.length; i < length; i++) {
         const culture = allCountries[i];
         html += "<option value='" + culture.TwoLetterISORegionName + "'>" + culture.DisplayName + '</option>';
     }
 
-    select.innerHTML = html;
+    select.innerHTML += html;
 }
 
 function reloadData(page, config, cultures, countries) {

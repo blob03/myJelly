@@ -245,6 +245,7 @@
     "EnableBackdropsHelp": "Zeige während des Blätterns durch die Bibliothek passenden Hintergründe auf einigen Seiten an.",
     "EnableBlurHash": "Verschwommene Platzhalter für Bilder zulassen",
     "EnableBlurHashHelp": "Bilder, die noch nicht fertig geladen wurden, werden mit einem verschwommenen Platzhalter dargestellt.",
+    "EnableCardLayout": "Visuelle CardBox anzeigen",
     "EnableCinemaMode": "Kinomodus",
     "EnableColorCodedBackgrounds": "Farbige Hintergründe",
     "EnableDecodingColorDepth10Hevc": "10-Bit-Hardware-Dekodierung für HEVC aktivieren",

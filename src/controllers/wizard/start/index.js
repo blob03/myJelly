@@ -4,10 +4,11 @@ import '../../../elements/emby-button/emby-button';
 import '../../../elements/emby-select/emby-select';
 import settingsHelper from '../../../components/settingshelper';
 import * as userSettings from '../../../scripts/settings/userSettings';
+import * as webSettings from '../../../scripts/settings/webSettings';
 import Dashboard from '../../../utils/dashboard';
 import globalize from '../../../scripts/globalize';
 
-function loadPage(page, lang, languageOptions) {
+function load(page, lang, languageOptions) {
 	let selectLanguage = page.querySelector('#selectLocalizationLanguage');
 	let allCultures = languageOptions.map( x => {
 		return {
@@ -43,13 +44,21 @@ export default function (view) {
     $('.wizardStartForm', view).on('submit', onSubmit);
 	
 	loading.show();
+	
+	if (webSettings.loginClock()) {
+		userSettings.placeClock(webSettings.loginClockPos(), true);
+		userSettings.setClockFormat(webSettings.loginClockFormat(), true);
+	}
+	
 	const defaultLang = globalize.getDefaultCulture().ccode;
 	const promise1 = ApiClient.getJSON(ApiClient.getUrl('Startup/Configuration'));
 	const promise2 = ApiClient.getJSON(ApiClient.getUrl('Localization/Options'));
 	let config = [];
 	Promise.all([promise1, promise2]).then(function (responses) {
 		config = { ...responses[0] };
-		loadPage(view, config.UICulture, responses[1]);
+		if (!config.UICulture)
+			config.UICulture = defaultLang;
+		load(view, config.UICulture, responses[1]);
 	});
 
 	let selectLanguage = view.querySelector('#selectLocalizationLanguage');

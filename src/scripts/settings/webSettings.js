@@ -224,6 +224,14 @@ export function loginClockPos() {
 	}
 }
 
+// Set the format index used by the clock, from 0 up to 7.
+export function loginClockFormat() {
+	let x = parseInt(_config_data?.login?.clockFormat, 10);
+	if (isNaN(x) || x < 0 || x > 7)
+		x = 0;
+	return x;
+}
+
 // Boolean to show or hide the pin button in the header of the login screen.
 export function pinButton() {
 	return Boolean(_config_data?.login?.header?.pin);
@@ -270,14 +278,6 @@ export function view() {
 	if (view !== "manual")
 		view = "visual";
 	return view;
-}
-
-// Set the format index used by the clock, from 0 up to 7.
-export function loginClockFormat() {
-	let x = parseInt(_config_data?.login?.clockFormat, 10);
-	if (isNaN(x) || x < 0 || x > 7)
-		x = 0;
-	return x;
 }
 
 export function getPlugins() {

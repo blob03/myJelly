@@ -8,7 +8,7 @@ import settingsHelper from '../../components/settingshelper';
 
 /* eslint-disable indent */
 
-    function populateLanguages(selectLanguage) {        
+    function populateLanguages(selectLanguage) {
 		return ApiClient.getCultures().then(allCultures => {
 			settingsHelper.populateServerLanguages(selectLanguage, allCultures, "DisplayName");
 		});

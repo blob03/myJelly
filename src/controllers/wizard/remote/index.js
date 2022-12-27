@@ -15,10 +15,11 @@ function save(page) {
         data: JSON.stringify(config),
         url: apiClient.getUrl('Startup/RemoteAccess'),
         contentType: 'application/json'
-    }).then(function () {
-        loading.hide();
+    }).then( () => {
         navigateToNextPage();
-    });
+    }).finally( () => {
+		loading.hide();
+	});
 }
 
 function navigateToNextPage() {
@@ -33,6 +34,7 @@ function onSubmit(e) {
 
 export default function (view) {
     view.querySelector('.wizardSettingsForm').addEventListener('submit', onSubmit);
+	
     view.addEventListener('viewshow', function () {
         document.querySelector('.skinHeader').classList.add('noHomeButtonHeader');
     });

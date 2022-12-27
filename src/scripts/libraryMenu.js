@@ -16,7 +16,7 @@ import browser from './browser';
 import globalize from './globalize';
 import toast from '../components/toast/toast';
 import imageHelper from './imagehelper';
-import { getMenuLinks, pinButton, reloadButton } from '../scripts/settings/webSettings';
+import { getMenuLinks, pinButton, reloadButton, loginClock, loginClockPos, loginClockFormat } from '../scripts/settings/webSettings';
 import Dashboard, { pageClassOn } from '../utils/dashboard';
 import { getParameterByName } from '../utils/url';
 import ServerConnections from '../components/ServerConnections';
@@ -30,7 +30,7 @@ import '../assets/css/backdropControl.scss';
 import '../assets/css/digitalClock.scss';
 
 import appSettings from './settings/appSettings';
-import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, placeClock, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -41,9 +41,9 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 	
 		// Extra feature thought for the TV layout.
 		// That one pin the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerPinButton headerButtonRight hide"><span id="pin" class="material-icons lock_open"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerPinButton headerButtonLeft hide"><span id="pin" class="material-icons lock_open"></span></button>';
 		
-		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonRight hide"><span class="material-icons light_mode"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonLeft hide"><span class="material-icons light_mode"></span></button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the clock widget*/
@@ -59,7 +59,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton mainDrawerButton barsMenuButton headerButtonLeft hide"><span class="material-icons menu"></span></button>';	
 		
-		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonRight hide"><span class="material-icons search"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerSearchButton headerButtonLeft hide"><span class="material-icons search"></span></button>';
 		
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerHomeButton barsMenuButton headerButtonLeft hide"><span class="material-icons home"></span></button>';
 		
@@ -326,6 +326,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			if (backdropInfoButton) 
 				backdropInfoButton.classList.add('hide');
 
+			showClock(loginClock());
 			// At this point, we only keep the reload button for dev.
 			// it is settable in config.json.
 			if (headerReloadButton && reloadButton() === true) {
@@ -566,7 +567,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
             html += '</h3>';
 
             if (appHost.supports('multiserver')) {
-                html += `<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnSelectServer" data-itemid="selectserver" href="#"><span class="material-icons navMenuOptionIcon storage" aria-hidden="true"></span><span class="navMenuOptionText">${globalize.translate('SelectServer')}</span></a>`;
+                html += `<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnChangeServer" data-itemid="selectserver" href="#"><span class="material-icons navMenuOptionIcon storage" aria-hidden="true"></span><span class="navMenuOptionText">${globalize.translate('SelectServer')}</span></a>`;
             }
 
             html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnSettings" data-itemid="settings" href="#"><span class="material-icons navMenuOptionIcon settings"></span><span class="navMenuOptionText">' + globalize.translate('Settings') + '</span></a>';
@@ -582,12 +583,12 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         // add buttons to navigation drawer
         navDrawerScrollContainer.innerHTML = html;
 
-        const btnSelectServer = navDrawerScrollContainer.querySelector('.btnSelectServer');
+        const btnChangeServer = navDrawerScrollContainer.querySelector('.btnChangeServer');
 		const btnSettings = navDrawerScrollContainer.querySelector('.btnSettings');
 		const btnExit = navDrawerScrollContainer.querySelector('.exitApp');
 		const btnLogout = navDrawerScrollContainer.querySelector('.btnLogout');
-        if (btnSelectServer)
-            btnSelectServer.addEventListener('click', onSelectServerClick);
+        if (btnChangeServer)
+            btnChangeServer.addEventListener('click', onChangeServerClick);
         if (btnSettings)
             btnSettings.addEventListener('click', onSettingsClick);
         if (btnExit)
@@ -969,7 +970,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
         }
     }
 
-    function onSelectServerClick() {
+    function onChangeServerClick() {
         Dashboard.selectServer();
     }
 
