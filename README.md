@@ -11,6 +11,13 @@ Homepage for the official web client can be found here: https://github.com/jelly
 Homepage for Jellyfin LG launcher can be found here: https://github.com/jellyfin/jellyfin-webos
 <br>
 
+UPDATE: Official launcher, for at least WebOS 6 and 5, can be installed directly from LG's content store.
+From the TV's main menu, open the content store and from there, search the keyword "jellyfin" then install the
+proposed application.
+<br>
+More information on how to install new applications on WebOS can be found here:
+<br>
+https://www.lg.com/us/support/help-library/installing-apps-from-the-lg-content-store-CT32003203-20152176397085
 
 ## Build Process
 
