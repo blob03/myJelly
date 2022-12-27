@@ -31,6 +31,7 @@ const config = {
     target: 'browserslist',
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+		alias: { "axios/lib": path.resolve(__dirname, "node_modules/axios/lib") },
         modules: [
             path.resolve(__dirname, 'node_modules')
         ]
@@ -243,3 +244,5 @@ if (!DEV_MODE) {
 }
 
 module.exports = config;
+
+

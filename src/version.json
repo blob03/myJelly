@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-16",
+	"version": "10.8.8-17",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -178,6 +178,7 @@
 		"10.8.8-13": "Synchronize translations.\nApply patch 'Convert-emby-scroller-emby-button'.\nAdd more customization options for the login screen (config.json).\nCleanup and optimization of Quick Connect authentication (login screen).",
 		"10.8.8-14": "Synchronize translations.\nFix: Not reporting back wrong PINs when resetting a password (Password recovery).\nFix: Add missing class to the 'Add Server' button (Login screen).\nSort the list of supported languages alphabetically and add an 'Auto' selection (Wizard screen).\nReintroduce cache buster to avoid caching issues when switching between languages (Login screen).\nAdd an early version of theme 'Arctic' by jakehamilton@hachyderm.io.",
 		"10.8.8-15": "Leave the password fields blank when showing the credentials page for the startup user (Wizard user).\nActually use any custom language set by the user for the setup process (Wizard screens).\nFlag the Wizard start page as of type 'login' and get rid of the back button (Wizard start).\nFix the wizard library help button (Wizard library).",
-		"10.8.8-16": "Synchronize translations.\nImprove credentials management (Wizard user).\nWizard pages can be tuned with relevant login options from 'config.json'.\nAdd last access timestamp underneath each pickable server slot (Server selection screen)."
+		"10.8.8-16": "Synchronize translations.\nImprove credentials management (Wizard user).\nWizard pages can be tuned with relevant login options from 'config.json'.\nAdd last access timestamp underneath each pickable server slot (Server selection screen).",
+		"10.8.8-17": "Fix: App build fails due to jellyfin API unable to resolve a symbol from Node module 'axios'.\nInstall a fresh copy of project build files 'package.json', 'webpack*' etc..."
 	}
 }
