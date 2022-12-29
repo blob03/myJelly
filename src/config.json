@@ -4,6 +4,7 @@
 		"accountLastSeen": true,
 		"accountRole": true,
 		"accountAuthMethods": true,
+		"attemptLeft": true,
 		"auth": {
 			"manualHeader": true,
 			"passwordRecovery": true,

@@ -82,7 +82,7 @@ function loadThemeMedia(item) {
 }
 
 document.addEventListener('viewshow', function (e) {
-    const state = e?.detail.state || {};
+    const state = e?.detail?.state || {};
     const item = state.item;
 
     if (item && item.ServerId) {
@@ -90,7 +90,7 @@ document.addEventListener('viewshow', function (e) {
         return;
     }
 
-    const viewOptions = e.detail.options || {};
+    const viewOptions = e?.detail?.options || {};
 
     if (viewOptions.supportsThemeMedia) {
         // Do nothing here, allow it to keep playing

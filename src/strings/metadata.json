@@ -205,17 +205,17 @@
     },
     "ca": {
         "ccode": "ca",
-        "fsize": 119514,
+        "fsize": 120310,
         "ccodeSrc": "en-US",
         "displayName": "Catalan; Valencian",
         "displayNativeName": "Català",
         "ISO6391": "ca",
         "ISO6392": "cat",
-        "keys#": 1639,
-        "completed%": 91.21,
+        "keys#": 1649,
+        "completed%": 91.76,
         "jellyfinWeb": {
             "filename": "ca.json",
-            "keys#": 1639,
+            "keys#": 1649,
             "orphans#": 10,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -229,7 +229,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 98.03
+            "completed%": 98.62
         },
         "myJelly": {
             "filename": "",

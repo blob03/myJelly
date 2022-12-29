@@ -203,6 +203,11 @@ export function loginRole() {
 	return Boolean(_config_data?.login?.accountRole);
 }
 
+// Boolean to display (or not) the remaining failed attempts before the account lockdown.
+export function loginAttemptLeft() {
+	return Boolean(_config_data?.login?.attemptLeft);
+}
+
 // Boolean to display (or not) the account auth methods (password/PIN/open).
 export function loginAuth() {
 	return Boolean(_config_data?.login?.accountAuthMethods);

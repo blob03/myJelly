@@ -42,6 +42,8 @@ import './login.scss';
             if (UnauthorizedOrForbidden.includes(response.status)) {
                 const messageKey = response.status === 401 ? 'MessageInvalidUser' : 'MessageUnauthorizedUser';
                 toast(globalize.translate(messageKey));
+				// Refresh the login page to update accounts indicators, QC availability, etc...
+				page.dispatchEvent(new CustomEvent('viewshow', {}));
             } else {
                 Dashboard.alert({
                     message: globalize.translate('MessageUnableToConnectToServer'),
@@ -163,6 +165,11 @@ import './login.scss';
     function loadUserList(context, apiClient, users, inLocalNet) {
 		let html = '';
 		
+		if (layoutManager.tv) {
+			context.querySelector('#divUsers').classList.remove('itemsContainer');
+			context.querySelector('#divUsers').classList.add('itemsContainer-tv');
+		}
+		
 		for (let i = 0; i < users.length; i++) {
 			const user = users[i];
 			
@@ -171,6 +178,15 @@ import './login.scss';
 			// just skip it.
 			if (user?.Policy?.EnableRemoteAccess === false && !inLocalNet)
 				continue;
+
+			let haspw = false;
+			if (user?.HasPassword === true) {
+				if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
+					if (user?.HasConfiguredEasyPassword === true)
+						haspw = true;
+				} else
+					haspw = true;
+			}
 			
 			// TODO move card creation code to Card component
 			let cssClass = 'card squareCard scalableCard squareCard-scalable';
@@ -185,17 +201,34 @@ import './login.scss';
 			const cardBoxCssClass = 'cardBox cardBox-bottompadded';
 			html += '<button type="button" class="' + cssClass + '">';
 			html += '<div class="' + cardBoxCssClass + '">';
+			html += '<div style="display: flex;flex-direction: row;justify-content: space-between;height: 1.3em;padding: .2em .6em;">';
+			
+			if (webSettings.loginAuth()) {
+				if (haspw === true) {
+					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
+						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
+						// then access is granted without a password, from a local network only.
+						html += '<div class="countIndicator" style="height: 2em;width: 2em;border-radius: 0;background: none">';
+						html += '<span class="material-icons cardImageIcon pin" style="font-size: 2.8em;background: #202020;text-shadow: none;"></span>';
+						html += '</div>';
+					} else {
+						html += '<div class="countIndicator" style="height: 2em;width: 2em;border-radius: 0;background: none">';
+						html += '<span class="material-icons cardImageIcon password" style="font-size: 1.7em;color: #fff;text-shadow: none;"></span>';
+						html += '</div>';
+					}
+				}
+			}
+			if (webSettings.loginRole()) {
+				if (user?.Policy?.IsAdministrator === true) {
+					html += '<div class="countIndicator" style="height: 2em;width: 2em;background: none">';
+					html += '<span class="material-icons cardImageIcon local_police" style="font-size: 2.2em;color: #fff;background: #202020;text-shadow: none;"></span>';
+					html += '</div>';
+				}
+			}
+			html += '</div>';
 			html += '<div class="cardScalable">';
 			html += '<div class="cardPadder cardPadder-square"></div>';
-			let haspw = false;
-			if (user?.HasPassword === true) {
-				if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
-					if (user?.HasConfiguredEasyPassword === true)
-						haspw = true;
-				} else
-					haspw = true;
-			}
-
+			
 			html += `<div class="cardContent" data-haspw="${haspw}" data-username="${user.Name}" data-userid="${user.Id}">`;
 			let imgUrl;
 
@@ -213,31 +246,15 @@ import './login.scss';
 				html += '</div>';
 			}
 
-			html += '</div>';
-			html += '<div class="cardIndicators" style="top: .125em !important;">';
-			
-			if (webSettings.loginAuth()) {
-				if (user?.HasPassword === true) {
-					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
-						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
-						// access is granted without a password, from the local network.
-						if (user?.HasConfiguredEasyPassword === true) {
-							html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-							html += '<span class="material-icons cardImageIcon pin" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
-							html += '</div>';
-						}
-					} else {
-						html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-						html += '<span class="material-icons cardImageIcon password" style="font-size: 1em;color: #202020;text-shadow: none;"></span>';
-						html += '</div>';
-					}
-				}
-			}
-			
-			if (webSettings.loginRole()) {
-				if (user?.Policy?.IsAdministrator === true) {
-					html += '<div class="countIndicator indicator" style="height: 1.5em;width: 1.5em">';
-					html += '<span class="material-icons cardImageIcon local_police" style="font-size: 1em;color: #202020;text-shadow: none;">';
+			if (webSettings.loginAttemptLeft()) {
+				//if (user?.Policy?.InvalidLoginAttemptCount > 0 && user?.Policy?.LoginAttemptsBeforeLockout > 0) {
+				if (haspw === true && user?.Policy?.LoginAttemptsBeforeLockout > 0) {
+					let attemptLeft = user.Policy.LoginAttemptsBeforeLockout - user.Policy.InvalidLoginAttemptCount;
+					if (attemptLeft <= 0)
+						attemptLeft = 1;
+					html += '<div class="countIndicator" style="height: 4em;width: 4em;position: absolute;top: 5px;right: 5px;opacity: .6;background: #e6a220;font-size: 80%">';
+					html += '<span style="color: #fff;font-weight: 600;font-size: 120%;">';
+					html += attemptLeft;
 					html += '</span>';
 					html += '</div>';
 				}
@@ -250,7 +267,9 @@ import './login.scss';
 			
 			if (webSettings.loginLastSeen() === true) {
 				const lastSeen = getLastSeenText(user.LastActivityDate);
-				html += '<div className="cardText cardText-secondary"><span style="font-size: .5em;overflow: hidden;white-space: nowrap;opacity: 70%">' + (lastSeen != '' ? lastSeen : '') + '</span></div>';
+				html += '<div className="cardText cardText-secondary">'
+				html += '<span style="font-size: .6em;overflow: hidden;white-space: nowrap;opacity: 70%">' + (lastSeen != '' ? lastSeen : '') + '</span>';
+				html += '</div>';
 			}
 			
 			html += '</div>';
@@ -265,6 +284,10 @@ import './login.scss';
 		// If we are connecting an unpatched server, it's best to assume we are inside a local Net.
 		let inLocalNet = true;
 		const apiClient = getApiClient();
+		if (!apiClient) {
+			loading.hide();
+			return;
+		}
 		
 		if (webSettings.loginClock()) {
 			userSettings.placeClock(webSettings.loginClockPos(), true);
@@ -353,61 +376,60 @@ import './login.scss';
 		view.querySelector('#visualHeader').classList.toggle('hide', !webSettings.loginVisualHeader());
 		view.querySelector('#manualHeader').classList.toggle('hide', !webSettings.loginManualHeader());
 		view.querySelector('.btnSelectServer').classList.toggle('hide', !appHost.supports('multiserver'));
-		if (!apiClient) {
-			loading.hide();
-			return;
-		}
-		
 		view.querySelector('#btnSelectServer').classList.toggle('hide', !webSettings.serverSelection());
 
-		if (webSettings.quickConnect() === true) {
-			apiClient.getQuickConnect('Enabled').then(enabled => {
-				view.querySelector('#btnQuick').classList.toggle('hide', !enabled);
-			}).catch(() => {
-				view.querySelector('#btnQuick').classList.add('hide');
-				console.debug('Failed to get QuickConnect status');
-			});
-		}
-
-		// Flush the last EndpointInfo.
-		apiClient.onNetworkChange();
-		apiClient.getEndpointInfo().then((endpoint) => {
-			inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
-		}).catch(() => {inLocalNet = true;}).finally(() => {
-			// Initiating a password recovery from a remote location is forbidden per server policy.
-			// In this case, we have no valid reason to show the link.
-			view.querySelector('.btnForgotPassword').classList.toggle('hide', webSettings.passRecovery() !== true || !inLocalNet);
-		
-			apiClient.getPublicUsers().then(function (users) {
-				if (webSettings.view() === "visual" && users && users.length) {
-					showVisualForm();
-					loadUserList(view, apiClient, users, inLocalNet);
-				} else {
-					view.querySelector('#txtManualName').value = '';
-					showManualForm(view, false, false);
-				}
-			}).catch().finally( () => {
-				apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
-					const disclaimer = view.querySelector('.disclaimer');
-					disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
-					for (const elem of disclaimer.querySelectorAll('a')) {
-						elem.rel = 'noopener noreferrer';
-						elem.target = '_blank';
-						elem.classList.add('button-link');
-						elem.setAttribute('is', 'emby-linkbutton');
-
-						if (layoutManager.tv) {
-							// Disable links navigation on TV
-							elem.tabIndex = -1;
-						}
-					}
-				});
-			});
-		});
         view.addEventListener('viewshow', function () {
             libraryMenu.setTransparentMenu(true);
 			view.querySelector('#manualServerName').innerHTML = apiClient._serverInfo.Name;
 			view.querySelector('#visualServerName').innerHTML = apiClient._serverInfo.Name;
+			
+			// Check the availability of QuickConnect on the remote.
+			if (webSettings.quickConnect() === true) {
+				apiClient.getQuickConnect('Enabled').then(enabled => {
+					view.querySelector('#btnQuick').classList.toggle('hide', !enabled);
+				}).catch(() => {
+					view.querySelector('#btnQuick').classList.add('hide');
+					console.debug('Failed to get QuickConnect status');
+				});
+			}
+			
+			// Flush the last EndpointInfo.
+			apiClient.onNetworkChange();
+			// Try to get fresh Endpoint Info. This will work with a patched server.
+			// If that fails, we simply assume that we are inside a local network.
+			apiClient.getEndpointInfo().then((endpoint) => {
+				inLocalNet = endpoint?.IsInNetwork === true || endpoint?.IsLocal === true;
+			}).catch(() => {inLocalNet = true;}).finally(() => {
+				// Initiating a password recovery from a remote location is forbidden per server policy.
+				// In this case, we have no valid reason to show the link.
+				view.querySelector('.btnForgotPassword').classList.toggle('hide', webSettings.passRecovery() !== true || !inLocalNet);
+			
+				apiClient.getPublicUsers().then(function (users) {
+					if (webSettings.view() === "visual" && users && users.length) {
+						showVisualForm();
+						loadUserList(view, apiClient, users, inLocalNet);
+					} else {
+						view.querySelector('#txtManualName').value = '';
+						showManualForm(view, false, false);
+					}
+				}).catch().finally( () => {
+					apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
+						const disclaimer = view.querySelector('.disclaimer');
+						disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
+						for (const elem of disclaimer.querySelectorAll('a')) {
+							elem.rel = 'noopener noreferrer';
+							elem.target = '_blank';
+							elem.classList.add('button-link');
+							elem.setAttribute('is', 'emby-linkbutton');
+
+							if (layoutManager.tv) {
+								// Disable links navigation on TV
+								elem.tabIndex = -1;
+							}
+						}
+					});
+				});
+			});
         });
         view.addEventListener('viewhide', function () {
             libraryMenu.setTransparentMenu(false);
