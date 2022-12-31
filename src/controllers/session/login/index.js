@@ -13,6 +13,7 @@ import '../../../components/cardbuilder/card.scss';
 import '../../../elements/emby-checkbox/emby-checkbox';
 import Dashboard from '../../../utils/dashboard';
 import ServerConnections from '../../../components/ServerConnections';
+import { showNextBackdrop, setBackdropThemeImage, setBackdropTransparency } from '../../../components/backdrop/backdrop';
 import toast from '../../../components/toast/toast';
 import dialogHelper from '../../../components/dialogHelper/dialogHelper';
 import baseAlert from '../../../components/alert';
@@ -22,6 +23,7 @@ import cultures from '../../../scripts/cultures';
 import * as userSettings from '../../../scripts/settings/userSettings';
 import { formatDistanceToNow } from 'date-fns';
 import { getLocaleWithSuffix } from '../../../utils/dateFnsLocale';
+import { showBackdrop } from '../../../scripts/autoBackdrops';
 import './login.scss';
 
 /* eslint-disable indent */
@@ -83,7 +85,11 @@ import './login.scss';
 				dialogOptions: { enableHistory: false },
 				message: globalize.translate('QuickConnectDeactivated'),
 				title: globalize.translate('HeaderError'),
-				callback: () => { view.querySelector('#btnQuick').focus(); }
+				callback: () => {
+					// Refresh the login page to update accounts indicators, QC availability, etc...
+					view.dispatchEvent(new CustomEvent('viewshow', {}));
+					view.querySelector('#btnQuick').focus();
+				}
 			});
 
 			console.error('Unable to login with quick connect', e);
@@ -114,6 +120,8 @@ import './login.scss';
 						clearInterval(_QCinterval);
 					loading.hide();
 					toast(globalize.translate('QuickConnectCancelCode', json.Code));
+					// Refresh the login page to update accounts indicators, QC availability, etc...
+					view.dispatchEvent(new CustomEvent('viewshow', {}));
 					view.querySelector('#btnQuick').focus();
 				}
 			});
@@ -198,30 +206,32 @@ import './login.scss';
 				}
 			}
 
-			const cardBoxCssClass = 'cardBox cardBox-bottompadded';
+			let cardBoxCssClass = 'cardBox cardBox-bottompadded';
+			if (webSettings.loginVisualCardBox() === true)
+				cardBoxCssClass += ' visualCardBox';
 			html += '<button type="button" class="' + cssClass + '">';
 			html += '<div class="' + cardBoxCssClass + '">';
 			html += '<div style="display: flex;flex-direction: row;justify-content: space-between;height: 1.3em;padding: .2em .6em;">';
 			
-			if (webSettings.loginAuth()) {
+			if (webSettings.loginAuth() === true) {
 				if (haspw === true) {
 					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
 						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
 						// then access is granted without a password, from a local network only.
-						html += '<div class="countIndicator" style="height: 2em;width: 2em;border-radius: 0;background: none">';
-						html += '<span class="material-icons cardImageIcon pin" style="font-size: 2.8em;background: #202020;text-shadow: none;"></span>';
+						html += '<div class="countIndicator" style="border-radius: 0;background: none;box-shadow: none">';
+						html += '<span class="material-icons cardImageIcon pin" title="' + globalize.translate('HeaderEasyPinCode') + '" style="color: #afb2bd;font-size: 2.5em;"></span>';
 						html += '</div>';
 					} else {
-						html += '<div class="countIndicator" style="height: 2em;width: 2em;border-radius: 0;background: none">';
-						html += '<span class="material-icons cardImageIcon password" style="font-size: 1.7em;color: #fff;text-shadow: none;"></span>';
+						html += '<div class="countIndicator" style="border-radius: 0;background: none;box-shadow: none">';
+						html += '<span class="material-icons cardImageIcon password" title="' + globalize.translate('HeaderPassword') + '"style="color: #afb2bd;font-size: 1.7em;"></span>';
 						html += '</div>';
 					}
 				}
 			}
-			if (webSettings.loginRole()) {
+			if (webSettings.loginRole() === true) {
 				if (user?.Policy?.IsAdministrator === true) {
-					html += '<div class="countIndicator" style="height: 2em;width: 2em;background: none">';
-					html += '<span class="material-icons cardImageIcon local_police" style="font-size: 2.2em;color: #fff;background: #202020;text-shadow: none;"></span>';
+					html += '<div class="countIndicator" style="background: none;box-shadow: none">';
+					html += '<span class="material-icons cardImageIcon local_police" title="' + globalize.translate('HeaderAdmin') + '"style="color: #afb2bd;font-size: 2em;"></span>';
 					html += '</div>';
 				}
 			}
@@ -246,24 +256,31 @@ import './login.scss';
 				html += '</div>';
 			}
 
-			if (webSettings.loginAttemptLeft()) {
-				//if (user?.Policy?.InvalidLoginAttemptCount > 0 && user?.Policy?.LoginAttemptsBeforeLockout > 0) {
-				if (haspw === true && user?.Policy?.LoginAttemptsBeforeLockout > 0) {
-					let attemptLeft = user.Policy.LoginAttemptsBeforeLockout - user.Policy.InvalidLoginAttemptCount;
-					if (attemptLeft <= 0)
-						attemptLeft = 1;
-					html += '<div class="countIndicator" style="height: 4em;width: 4em;position: absolute;top: 5px;right: 5px;opacity: .6;background: #e6a220;font-size: 80%">';
-					html += '<span style="color: #fff;font-weight: 600;font-size: 120%;">';
-					html += attemptLeft;
-					html += '</span>';
-					html += '</div>';
+			if (webSettings.loginAttemptLeft() === true) {
+				if (user?.Policy?.InvalidLoginAttemptCount > 0 && user?.Policy?.LoginAttemptsBeforeLockout > 0) {
+					if (haspw === true && user?.Policy?.LoginAttemptsBeforeLockout > 0) {
+						let attemptLeft = user.Policy.LoginAttemptsBeforeLockout - user.Policy.InvalidLoginAttemptCount;
+						if (attemptLeft <= 0)
+							attemptLeft = 1;
+						html += '<div class="countIndicator" style="position: absolute;top: 5px;right: 5px;opacity: .6;background: #6d7075;font-size: 70%">';
+						
+						html += '<span class="material-icons cardImageIcon face" style="background: none;position: absolute;z-index: 99;font-size: 3.2em;color: #000;"></span>';
+						html += '<span class="material-icons cardImageIcon block" style="color: #bebcbc;background: none;z-index: 99;"></span>';
+						html += '<span style="color: #fff;font-weight: 600;font-size: 150%;position: absolute;z-index: 99;">';
+						html += attemptLeft;
+						html += '</span>';
+						html += '</div>';
+					}
 				}
 			}
 			
 			html += '</div>';
 			html += '</div>';
 			html += '<div class="cardFooter visualCardBox-cardFooter">';
-			html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';
+			
+			if (webSettings.loginShowName() === true) {
+				html += '<div class="cardText singleCardText cardTextCentered">' + user.Name + '</div>';
+			}
 			
 			if (webSettings.loginLastSeen() === true) {
 				const lastSeen = getLastSeenText(user.LastActivityDate);
@@ -289,7 +306,7 @@ import './login.scss';
 			return;
 		}
 		
-		if (webSettings.loginClock()) {
+		if (webSettings.loginClock() === true) {
 			userSettings.placeClock(webSettings.loginClockPos(), true);
 			userSettings.setClockFormat(webSettings.loginClockFormat(), true);
 		}
@@ -378,8 +395,32 @@ import './login.scss';
 		view.querySelector('.btnSelectServer').classList.toggle('hide', !appHost.supports('multiserver'));
 		view.querySelector('#btnSelectServer').classList.toggle('hide', !webSettings.serverSelection());
 
+		apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
+			const disclaimer = view.querySelector('.disclaimer');
+			disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
+			for (const elem of disclaimer.querySelectorAll('a')) {
+				elem.rel = 'noopener noreferrer';
+				elem.target = '_blank';
+				elem.classList.add('button-link');
+				elem.setAttribute('is', 'emby-linkbutton');
+
+				if (layoutManager.tv) {
+					// Disable links navigation on TV
+					elem.tabIndex = -1;
+				}
+			}
+		});
+		userSettings.enableBackdrops("Theme");
+		
         view.addEventListener('viewshow', function () {
             libraryMenu.setTransparentMenu(true);
+			
+			if (webSettings.loginBackdrops() === true) {
+				const type = view.getAttribute('data-backdroptype');
+				const parentId = view.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
+				showBackdrop(type, parentId);
+			}
+			
 			view.querySelector('#manualServerName').innerHTML = apiClient._serverInfo.Name;
 			view.querySelector('#visualServerName').innerHTML = apiClient._serverInfo.Name;
 			
@@ -412,22 +453,6 @@ import './login.scss';
 						view.querySelector('#txtManualName').value = '';
 						showManualForm(view, false, false);
 					}
-				}).catch().finally( () => {
-					apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
-						const disclaimer = view.querySelector('.disclaimer');
-						disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
-						for (const elem of disclaimer.querySelectorAll('a')) {
-							elem.rel = 'noopener noreferrer';
-							elem.target = '_blank';
-							elem.classList.add('button-link');
-							elem.setAttribute('is', 'emby-linkbutton');
-
-							if (layoutManager.tv) {
-								// Disable links navigation on TV
-								elem.tabIndex = -1;
-							}
-						}
-					});
 				});
 			});
         });

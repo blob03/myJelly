@@ -99,7 +99,7 @@ function getBackdropItemIds(apiClient, userId, reqtypes, parentId) {
 	}
 }
 
-function showBackdrop(type, parentId) {
+export function showBackdrop(type, parentId) {
 	const x = userSettings.enableBackdrops();
 	switch(x) {
 		case "Libraries":

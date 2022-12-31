@@ -212,7 +212,7 @@
     "DetectingDevices": "Suche Geräte",
     "DeviceAccessHelp": "Dies wird nur auf Geräte angewendet, die eindeutig identifiziert werden können, und verhindert nicht den Web-Zugriff. Gefilterter Zugriff auf Geräte verhindert die Nutzung neuer Geräte solange, bis der Zugriff für diese freigegeben wird.",
     "Digital": "Digital",
-    "DirectPlayError": "Es gab einen Fehler beim start der direkt Wiedergabe",
+    "DirectPlayError": "Es gab einen Fehler beim Start der Direktwiedergabe",
     "DirectPlayHelp": "Die Quelldatei ist vollständig mit diesem Client kompatibel, und die Sitzung empfängt die Datei ohne Änderungen.",
     "DirectPlaying": "Direktes Abspielen",
     "DirectStreamHelp1": "Der Videostream ist mit dem Abspielgerät kompatibel, hat jedoch ein inkompatibles Audioformat (DTS, Dolby TrueHD usw.) oder eine inkompatible Anzahl von Audiokanälen. Der Videostream wird im laufenden Betrieb verlustfrei neu verpackt, bevor er an das Gerät gesendet wird. Nur der Audiostream wird transkodiert.",

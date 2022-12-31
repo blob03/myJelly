@@ -205,17 +205,17 @@
     },
     "ca": {
         "ccode": "ca",
-        "fsize": 120310,
+        "fsize": 122177,
         "ccodeSrc": "en-US",
         "displayName": "Catalan; Valencian",
         "displayNativeName": "Català",
         "ISO6391": "ca",
         "ISO6392": "cat",
-        "keys#": 1649,
-        "completed%": 91.76,
+        "keys#": 1672,
+        "completed%": 93.04,
         "jellyfinWeb": {
             "filename": "ca.json",
-            "keys#": 1649,
+            "keys#": 1672,
             "orphans#": 10,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -229,7 +229,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 98.62
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -350,7 +350,7 @@
     },
     "de": {
         "ccode": "de",
-        "fsize": 120409,
+        "fsize": 120408,
         "ccodeSrc": "en-US",
         "displayName": "German",
         "displayNativeName": "Deutsch",
@@ -1735,7 +1735,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 117226,
+        "fsize": 117220,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
@@ -2523,7 +2523,7 @@
     },
     "vi": {
         "ccode": "vi",
-        "fsize": 131517,
+        "fsize": 131516,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
         "displayNativeName": "Việtnam",

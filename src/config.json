@@ -1,9 +1,10 @@
 {
 	"includeCorsCredentials": false,
 	"login": {
-		"accountLastSeen": true,
-		"accountRole": true,
 		"accountAuthMethods": true,
+		"accountLastSeen": true,
+		"accountName": true,
+		"accountRole": true,
 		"attemptLeft": true,
 		"auth": {
 			"manualHeader": true,
@@ -12,15 +13,18 @@
 			"view": "visual",
 			"visualHeader": true
 		},
+		
 		"clock": true,
-		"clockPos": "right",
 		"clockFormat": 6,
+		"clockPos": "right",
+		"enableBackdrops": true,
+		"enableFastFadein": false,
 		"header": {
 			"pin": true,
 			"reload": false
 		},
 		"serverSelection": true,
-		"enableFastFadein": false
+		"visualCardBox": true
 	},
 	"multiserver": true,
 	"themes": [

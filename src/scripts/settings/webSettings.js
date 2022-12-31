@@ -198,14 +198,29 @@ export function loginLastSeen() {
 	return Boolean(_config_data?.login?.accountLastSeen);
 }
 
+// Boolean to display (or not) a username underneath avatars in the login screen.
+export function loginShowName() {
+	return Boolean(_config_data?.login?.accountName);
+}
+
 // Boolean to display (or not) the account role (user or admin).
 export function loginRole() {
 	return Boolean(_config_data?.login?.accountRole);
 }
 
+// Boolean to use (or not) theme backdrops if any.
+export function loginBackdrops() {
+	return Boolean(_config_data?.login?.enableBackdrops);
+}
+
 // Boolean to display (or not) the remaining failed attempts before the account lockdown.
 export function loginAttemptLeft() {
 	return Boolean(_config_data?.login?.attemptLeft);
+}
+
+// Boolean to display (or not) account cards in visual cardBox format.
+export function loginVisualCardBox() {
+	return Boolean(_config_data?.login?.visualCardBox);
 }
 
 // Boolean to display (or not) the account auth methods (password/PIN/open).

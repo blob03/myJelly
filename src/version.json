@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-19",
+	"version": "10.8.8-20",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -181,6 +181,7 @@
 		"10.8.8-16": "Synchronize translations.\nImprove credentials management (Wizard user).\nWizard pages can be tuned with relevant login options from 'config.json'.\nAdd last access timestamp underneath each pickable server slot (Server selection screen).",
 		"10.8.8-17": "Install a fresh copy of project build files 'package.json', 'webpack*' etc...\nFix: App build fails due to jellyfin SDK unable to resolve an unexported symbol from Node module 'axios'.",
 		"10.8.8-18": "Fix: App build failure caused by missing Node module 'compare-versions' needed by Jellyfin SDK.",
-		"10.8.8-19": "Synchronize translations.\nAttach 'loginAttemptLeft' indicator to password protected accounts (login page).\nAdd 'attemptLeft' option to config file 'config.json'.\nTweak indicators positionning and style some more (login page)."
+		"10.8.8-19": "Synchronize translations.\nAttach 'loginAttemptLeft' indicator to password protected accounts (login page).\nAdd 'attemptLeft' option to config file 'config.json'.\nTweak indicators positionning and style some more (login page).",
+		"10.8.8-20": "Synchronize translations.\nCleanup and optimization of the login page.\nDo not show indicator 'attemptLeft' until at least one failed attempt has been registered.\nAdd an option to draw account cards in the same visualCardBox format as library items.\nTurn the username, normally shown underneath accounts' avatar, an option from 'config.json'.\nAdd a title attribute to indicators for browser users.\nAdd an option in config.json to enable theme backdrops in the login page."
 	}
 }

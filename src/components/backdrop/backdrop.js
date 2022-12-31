@@ -61,6 +61,7 @@ import './backdrop.scss';
 					
 					backdropImage.classList.add('backdropImageFadeIn');
 					parent.appendChild(backdropImage);
+					
 					const onAnimationComplete = () => {
 						dom.removeEventListener(backdropImage, dom.whichAnimationEvent(), onAnimationComplete, {
 							once: true
@@ -435,7 +436,6 @@ import './backdrop.scss';
         }
 
         let i = _currentRotationIndex + (x !== undefined? x:1);
-		
 		switch(userSettings.enableBackdrops()) {
 			case 'Theme':
 				if (i < 0)
