@@ -13,7 +13,7 @@ import '../../../components/cardbuilder/card.scss';
 import '../../../elements/emby-checkbox/emby-checkbox';
 import Dashboard from '../../../utils/dashboard';
 import ServerConnections from '../../../components/ServerConnections';
-import { showNextBackdrop, setBackdropThemeImage, setBackdropTransparency } from '../../../components/backdrop/backdrop';
+import { showNextBackdrop, setBackdropThemeImage, setBackdropTransparency, pauseBackdrop, setBackdrops, startRotation } from '../../../components/backdrop/backdrop';
 import toast from '../../../components/toast/toast';
 import dialogHelper from '../../../components/dialogHelper/dialogHelper';
 import baseAlert from '../../../components/alert';
@@ -63,8 +63,10 @@ import './login.scss';
 				return;
 			}
 			loading.hide();
-			clearInterval(_QCinterval);
-
+			if (_QCinterval) {
+				clearInterval(_QCinterval);
+				_QCinterval = null;
+			}
 			// Close the QuickConnect dialog
 			const dlg = document.getElementById('quickConnectAlert');
 			if (dlg)
@@ -74,8 +76,10 @@ import './login.scss';
 			onLoginSuccessful(result.User.Id, result.AccessToken, apiClient);
 		}, function (e) {
 			loading.hide();
-			clearInterval(_QCinterval);
-
+			if (_QCinterval) {
+				clearInterval(_QCinterval);
+				_QCinterval = null;
+			}
 			// Close the QuickConnect dialog
 			const dlg = document.getElementById('quickConnectAlert');
 			if (dlg)
@@ -110,14 +114,16 @@ import './login.scss';
             _QCinterval = setInterval( QCAuth , 5000, apiClient, view, URL_QC_CONNECT);
 			
 			Dashboard.alert({
-				dialogOptions: { enableHistory: false, id: 'quickConnectAlert' },
+				dialogOptions: { enableHistory: false, id: 'quickConnectAlert', size: 'fullscreen' },
 				title: globalize.translate('QuickConnect'),
 				message: globalize.translate('QuickConnectAuthorizeCode', json.Code),
 				buttonTitle: 'ButtonCancel',
 				buttonClass: 'btnCancel cancel', 
 				callback: () => {
-					if (_QCinterval)
+					if (_QCinterval) {
 						clearInterval(_QCinterval);
+						_QCinterval = null;
+					}
 					loading.hide();
 					toast(globalize.translate('QuickConnectCancelCode', json.Code));
 					// Refresh the login page to update accounts indicators, QC availability, etc...
@@ -410,15 +416,21 @@ import './login.scss';
 				}
 			}
 		});
+		
+		appSettings.enableNightMode(webSettings.loginNightMode());
+		userSettings.toggleNightMode(false);
 		userSettings.enableBackdrops("Theme");
+		userSettings.backdropDelay(webSettings.loginBackdropsRotationDelay());
 		
         view.addEventListener('viewshow', function () {
             libraryMenu.setTransparentMenu(true);
 			
 			if (webSettings.loginBackdrops() === true) {
-				const type = view.getAttribute('data-backdroptype');
-				const parentId = view.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
-				showBackdrop(type, parentId);
+				setTimeout(() => {
+					setBackdropThemeImage(webSettings.loginBackdrop());
+					if (webSettings.loginBackdropsRotation() === true)
+						startRotation();
+				}, 500);
 			}
 			
 			view.querySelector('#manualServerName').innerHTML = apiClient._serverInfo.Name;

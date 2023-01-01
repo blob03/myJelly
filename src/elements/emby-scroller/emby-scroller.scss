@@ -8,8 +8,13 @@
 }
 
 .servers > .card > .cardBox {
-    margin-left: 0.6em;
-    margin-right: 0.6em;
+	margin-left: 0.6em;
+	margin-right: 0.6em;
+}
+
+.itemsContainer.centered > .card > .cardBox {
+	margin-left: 0.6em !important;
+	margin-right: 0.6em !important;
 }
 
 /* align first card in scroller to heading */

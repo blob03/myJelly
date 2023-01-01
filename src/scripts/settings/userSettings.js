@@ -737,7 +737,7 @@ export class UserSettings {
 		}
 		
 		switch (val) {
-			case true:
+			case false:
 				_icon.classList.add('light_mode');
 				_icon.classList.remove('dark_mode');
 				_hdrwtb.classList.remove('nightMode');

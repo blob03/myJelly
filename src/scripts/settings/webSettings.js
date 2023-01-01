@@ -213,6 +213,39 @@ export function loginBackdrops() {
 	return Boolean(_config_data?.login?.enableBackdrops);
 }
 
+// Boolean to set (or not) the night mode.
+export function loginNightMode() {
+	return Boolean(_config_data?.login?.nightMode);
+}
+
+// Boolean to set (or not) the night mode.
+export function loginServerLastSeen() {
+	return Boolean(_config_data?.login?.serverLastSeen);
+}
+
+// Boolean to rotate (or not) between available theme backdrops if any.
+export function loginBackdropsRotation() {
+	return Boolean(_config_data?.login?.enableBackdropsRotation);
+}
+
+// Integer to set the delay in seconds between each backdrop rotation.
+export function loginBackdropsRotationDelay() {
+	let val = parseInt(_config_data?.login?.setBackdropsRotationDelay, 10);
+	if (val === isNaN || val < 10 || val > 300)
+		val = 30;
+	return (val);
+}
+
+// String to set a default backdrop image.
+export function loginBackdrop() {
+	let val = _config_data?.login?.defaultBackdrop.toString();
+	if (!val) {
+		// returning null will randomly pick a backdrop from the theme pool.
+		val = null;
+	}
+	return (val);
+}
+
 // Boolean to display (or not) the remaining failed attempts before the account lockdown.
 export function loginAttemptLeft() {
 	return Boolean(_config_data?.login?.attemptLeft);

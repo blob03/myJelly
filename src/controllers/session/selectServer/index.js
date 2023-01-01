@@ -3,6 +3,7 @@ import { appRouter } from '../../../components/appRouter';
 import layoutManager from '../../../components/layoutManager';
 import libraryMenu from '../../../scripts/libraryMenu';
 import appSettings from '../../../scripts/settings/appSettings';
+import * as webSettings from '../../../scripts/settings/webSettings';
 import focusManager from '../../../components/focusManager';
 import globalize from '../../../scripts/globalize';
 import actionSheet from '../../../components/actionSheet/actionSheet';
@@ -58,9 +59,11 @@ import { getLocaleWithSuffix } from '../../../utils/dateFnsLocale';
                 }
             }
 
-            const cardBoxCssClass = 'cardBox';
-
+			let cardBoxCssClass = 'cardBox cardBox-bottompadded';
+			if (webSettings.loginVisualCardBox() === true)
+				cardBoxCssClass += ' visualCardBox';
             const innerOpening = '<div class="' + cardBoxCssClass + '">';
+			
             let cardContainer = '';
             cardContainer += '<button raised class="' + cssClass + '" style="display:inline-block;" data-id="' + item.id + '" data-url="' + (item.url || '') + '" data-cardtype="' + item.cardType + '">';
             cardContainer += innerOpening;
@@ -77,8 +80,8 @@ import { getLocaleWithSuffix } from '../../../utils/dateFnsLocale';
             cardContainer += '<div class="cardText cardTextCentered">' + item.name + '</div>';
 			
 			const DateLastAccessed = getLastAccessedText(item.DateLastAccessed);
-			if (DateLastAccessed)
-				cardContainer += '<div className="cardText cardText-secondary"><span style="font-size: .5em;overflow: hidden;white-space: nowrap;opacity: 70%">' + DateLastAccessed + '</span></div>';
+			if (DateLastAccessed && webSettings.loginServerLastSeen())
+				cardContainer += '<div className="cardText cardText-secondary"><span style="font-size: .6em;overflow: hidden;white-space: nowrap;opacity: 70%">' + DateLastAccessed + '</span></div>';
 	
             cardContainer += '</div></div></button>';
             return cardContainer;

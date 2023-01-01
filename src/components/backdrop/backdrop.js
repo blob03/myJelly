@@ -245,7 +245,7 @@ import './backdrop.scss';
 		const elem = getBackdropContainer();
 		// Check if ref isn't already in use in which case, we do nothing.
 		const existingBackdropImage = elem.querySelector('.displayingBackdropImage');
-		if (existingBackdropImage) {
+		if (ref && existingBackdropImage) {
 			if (existingBackdropImage.classList.contains(ref))
 				return;
 			existingBackdropImage.classList.remove('displayingBackdropImage');
@@ -335,7 +335,7 @@ import './backdrop.scss';
 		startRotation(images, enableImageRotation);
 	}
 
-    function startRotation(images, enableImageRotation) {
+    export function startRotation(images, enableImageRotation) {
 		clearRotation();
 		
 		if (images && images.list.length) {
@@ -460,8 +460,10 @@ import './backdrop.scss';
 
 	export function showNextBackdrop() {
 		const _delay = userSettings.backdropDelay();
-		if (_delay && !_onPause)
+		if (_delay && !_onPause) {
 			clearInterval(_rotationInterval);
+			_rotationInterval = null;
+		}
 		onRotationInterval(+1);
 		if (_delay && !_onPause)
 			_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
@@ -469,8 +471,10 @@ import './backdrop.scss';
 	
 	export function showPrevBackdrop() {
 		const _delay = userSettings.backdropDelay();
-		if (_delay && !_onPause)
+		if (_delay && !_onPause) {
 			clearInterval(_rotationInterval);
+			_rotationInterval = null;
+		}
 		onRotationInterval(-1);
 		if (_delay && !_onPause)
 			_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
@@ -492,33 +496,33 @@ import './backdrop.scss';
 		const _bpa = document.querySelector('#backdropRotationPause');
 		const _bpl = document.querySelector('#backdropRotationPlay');
 		const _bdc = document.querySelector('#backdropControlButton');
-		if (!_bpa || !_bpl || !_bpp || !_bdc)
+
+		if (!_bpp || !_bpa || !_bpl || !_bdc)
 			return;
 		
 		const _delay = userSettings.backdropDelay();
 		if (!_delay) {
 			_bpp.classList.add('hide');
 			return;
-		} else {
-			_bpp.classList.remove('hide');
 		}
 		
+		_bpp.classList.remove('hide');
+		
 		if (x === undefined) {
-			if (!_onPause) {
+			if (_onPause === false) {
+				_onPause = true;
 				toast(globalize.translate('RotationOnPause'));
-				clearInterval(_rotationInterval);
-				_rotationInterval = null;
 				_bpa.classList.add('hide');
 				_bpl.classList.remove('hide');
-				_onPause = true;
-			} else {
-				toast(globalize.translate('RotationResume'));
 				clearInterval(_rotationInterval);
-				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
-				onRotationInterval(+1);
+				_rotationInterval = null;
+			} else {
+				_onPause = false;
+				toast(globalize.translate('RotationResume'));
 				_bpl.classList.add('hide');
 				_bpa.classList.remove('hide');
-				_onPause = false;
+				_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
+				onRotationInterval(+1);
 			}
 		} else { 
 			x = (x === true);
@@ -538,8 +542,8 @@ import './backdrop.scss';
 	
     function clearRotation() {
         if (_rotationInterval)
-            clearInterval(_rotationInterval);
-        _rotationInterval = null;
+			clearInterval(_rotationInterval);
+		_rotationInterval = null;
     }
 
     export function setBackdrop(url, imageOptions) {

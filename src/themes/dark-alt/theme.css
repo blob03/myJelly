@@ -1467,3 +1467,7 @@ select option:selected {
 	text-shadow: 2px 2px 3px #1e1d25;
 	color: #909090;
 }
+
+.disclaimer {
+	font-style: italic;
+}

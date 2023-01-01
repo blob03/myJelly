@@ -13,17 +13,21 @@
 			"view": "visual",
 			"visualHeader": true
 		},
-		
 		"clock": true,
 		"clockFormat": 6,
 		"clockPos": "right",
+		"defaultBackdrop": "alt4",
 		"enableBackdrops": true,
+		"enableBackdropsRotation": true,
 		"enableFastFadein": false,
 		"header": {
 			"pin": true,
 			"reload": false
 		},
+		"nightMode": false,
 		"serverSelection": true,
+		"serverLastSeen": true,
+		"setBackdropsRotationDelay": 30,
 		"visualCardBox": true
 	},
 	"multiserver": true,
@@ -42,7 +46,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "2.03",
+		"version": "2.04",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly",
