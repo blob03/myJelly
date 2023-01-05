@@ -362,7 +362,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 	}
 	
 	function onBackdropContrast(e) {
-		setBackdropContrast(e);
+		setBackdropContrast(e.target.value);
 	}
 	
 	function onNextBackdropClick() {

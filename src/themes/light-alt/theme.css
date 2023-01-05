@@ -5,7 +5,7 @@
 
 .skinHeader,
 html {
-    color: #8997ae;
+    color: #4E6071;
 	background-color: #fff !important;
 }
 
@@ -145,7 +145,7 @@ html {
 
 .toast {
 	background: #eef0e5;
-	color: rgb(78, 98, 117) !important;
+	color: #4E6071 !important;
 	text-shadow: .1em .2em 4px #bec8a6 !important;
 }
 
@@ -244,8 +244,6 @@ html {
 .indicator {
 	color: #6a6344;
 	background: White;
-	box-shadow: 0px 2px 8px #1e1d25;
-	text-shadow: 1px 1px 3px #727272;
 }
 
 .fullSyncIndicator {
@@ -404,12 +402,12 @@ html {
 }
 
 .material-icons {
-	color: rgb(78, 98, 117);
+	color: #4E6071;
 	text-shadow: .15em .15em 4px #bec8a6;
 }
 
 .btnCloseActionSheet > .material-icons {
-	color: rgb(78, 98, 117) !important;
+	color: #4E6071 !important;
 }
 
 .material-icons.navMenuOptionIcon.notifications {
@@ -424,7 +422,7 @@ html {
 
 .homeLibraryButton > .material-icons {
 	text-shadow: .15em .15em 4px #bec8a6;
-	color: rgb(78, 98, 117);
+	color: #4E6071;
 }
 
 .homeLibraryButton:hover > .material-icons,
@@ -502,7 +500,7 @@ html {
 
 .detailButton > * > .material-icons,
 .headerButton > .material-icons {
-	color: rgb(78, 98, 117);
+	color: #4E6071;
 }
 
 .cardOverlayButtonIcon.material-icons:hover  {
@@ -527,7 +525,7 @@ html {
 }
 
 .listItem > .material-icons {
-	color: rgb(78, 98, 117);
+	color: #4E6071 !important;
 }
 
 .listItem:focus > .listItemBody,
@@ -647,7 +645,7 @@ html {
 
 .headerClock,
 .headerClock > .material-icons {
-	color: rgb(78, 98, 117) !important;
+	color: #4E6071 !important;
 	text-shadow: .1em .2em 4px #bec8a6 !important;
 }
 
@@ -701,7 +699,7 @@ html {
 }
 
 .aboutContent {
-	color: rgb(78, 98, 117) !important;
+	color: #4E6071 !important;
 }
 
 .formDialogHeaderTitle,
@@ -741,7 +739,7 @@ html {
 	font-weight: 600;
 	color: #fff7b4 !important;
 	text-shadow: 0.1em 0.1em 8px #585954;
-	-webkit-text-stroke: 1px rgb(78, 98, 117);
+	-webkit-text-stroke: 1px #4E6071;
 }
 
 .formDialogHeader:not(.formDialogHeader-clear) {
@@ -862,7 +860,7 @@ legend {
 }
 
 .checkboxIcon-checked {
-	color: rgb(78, 98, 117) !important;
+	color: #4E6071 !important;
 	padding-left: .2em;
 	padding-bottom: .2em;
 	transform: scale(1.5);
@@ -1038,7 +1036,8 @@ fieldset {
 .sliderLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: #9acc99 !important;
+    color: #fff !important;
+	text-shadow: 0 0 5px #e3a658, 0 0 10px #dfd763, 0 0 15px #f3f04a, 0 0 20px #f7ffa3, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 }
 
 .button-link {
@@ -1115,8 +1114,8 @@ button.submit {
 .button-submit {
 	box-shadow: .15em .15em 4px #bec8a6;
 	background: rgb(247, 251, 255);
-	color: rgb(78, 98, 117);
-	border: 0.1em solid rgb(78, 98, 117);
+	color: #4E6071;
+	border: 0.1em solid #4E6071;
 }
 
 #btnRestartServer,
@@ -1132,7 +1131,7 @@ button.submit {
 	background-color: rgb(233, 222, 201);
 	color: rgb(197, 159, 69) !important;
 	box-shadow: .15em .15em 4px #bec8a6;
-	border: 0.1em solid rgb(78, 98, 117);
+	border: 0.1em solid #4E6071;
 }
 
 .button-delete:hover:not(:disabled),
@@ -1251,7 +1250,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .checkboxLabel,
 .inputLabel {
 	font-weight: 400;
-	color: #45483e;
+	color:#4E6071;
 	font-size: 1em !important;
 }
 
@@ -1423,7 +1422,7 @@ select option:selected {
 }
 
 .headerWthMain {
-	color: rgb(78, 98, 117) !important;
+	color: #4E6071 !important;
 	text-shadow: .1em .2em 4px #bec8a6 !important;
 }
 
@@ -1496,7 +1495,7 @@ select option:selected {
 
 .userProfileAvatar {
 	border: 1px solid rgb(91, 94, 96) !important;
-	box-shadow: 4px 4px 12px #889178 !important;
+	box-shadow: .1em .1em 4px #c0c4b9 !important;
 }
 
 .colorPreview {
@@ -1515,3 +1514,21 @@ select option:selected {
 	color: #564d3d !important;
 	text-shadow: none !important;
 }
+
+.disclaimer {
+	font-style: italic;
+}
+
+.material-icons.cardImageIcon {
+	color: #4E6071 !important;
+}
+
+.material-icons.cardImageIcon.face {
+	color: #000 !important;
+}
+
+.material-icons.cardImageIcon.block {
+	color: #f7a82d !important;
+	text-shadow: none !important;
+}
+

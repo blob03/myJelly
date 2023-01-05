@@ -1444,7 +1444,7 @@ select option:selected {
 
 .userProfileAvatar {
 	border: 1px solid rgb(136, 157, 167) !important;
-	box-shadow: 4px 4px 12px #202020 !important;
+	box-shadow: .1em .1em .2em #221f1f !important;
 }
 
 .btnSort,

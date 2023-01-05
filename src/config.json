@@ -27,6 +27,7 @@
 		"nightMode": false,
 		"serverSelection": true,
 		"serverLastSeen": true,
+		"setBackdropsContrast": 5,
 		"setBackdropsRotationDelay": 30,
 		"visualCardBox": true
 	},
@@ -46,7 +47,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "2.04",
+		"version": "2.05",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly",
@@ -83,7 +84,7 @@
 		"color": "#0c2450"
 	}, {
 		"name": "Light alt.",
-		"version": "0.47",
+		"version": "0.48",
 		"id": "light-alt",
 		"color": "#fff",
 		"group": "myJelly dev"

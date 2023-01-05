@@ -236,6 +236,14 @@ export function loginBackdropsRotationDelay() {
 	return (val);
 }
 
+// Integer to set the delay in seconds between each backdrop rotation.
+export function loginBackdropsContrast() {
+	let val = parseInt(_config_data?.login?.setBackdropsContrast, 10);
+	if (val === isNaN || val < 0 || val > 10)
+		val = 5;
+	return (val);
+}
+
 // String to set a default backdrop image.
 export function loginBackdrop() {
 	let val = _config_data?.login?.defaultBackdrop.toString();

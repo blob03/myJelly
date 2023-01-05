@@ -13,7 +13,7 @@ import '../../../components/cardbuilder/card.scss';
 import '../../../elements/emby-checkbox/emby-checkbox';
 import Dashboard from '../../../utils/dashboard';
 import ServerConnections from '../../../components/ServerConnections';
-import { showNextBackdrop, setBackdropThemeImage, setBackdropTransparency, pauseBackdrop, setBackdrops, startRotation } from '../../../components/backdrop/backdrop';
+import { showNextBackdrop, setBackdropThemeImage, setBackdropTransparency, pauseBackdrop, setBackdrops, startRotation, setBackdropContrast } from '../../../components/backdrop/backdrop';
 import toast from '../../../components/toast/toast';
 import dialogHelper from '../../../components/dialogHelper/dialogHelper';
 import baseAlert from '../../../components/alert';
@@ -421,6 +421,7 @@ import './login.scss';
 		userSettings.toggleNightMode(false);
 		userSettings.enableBackdrops("Theme");
 		userSettings.backdropDelay(webSettings.loginBackdropsRotationDelay());
+		setBackdropContrast(webSettings.loginBackdropsContrast());
 		
         view.addEventListener('viewshow', function () {
             libraryMenu.setTransparentMenu(true);

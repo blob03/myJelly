@@ -480,15 +480,17 @@ import './backdrop.scss';
 			_rotationInterval = setInterval(onRotationInterval, _delay * 1000);
     }
 	
-	export function setBackdropContrast(e) {
-		let _val = e?.target?.value;
-		if (!_val)
-			_val = document.querySelector('#backdropContrastSlider').value;
+	export function setBackdropContrast(val) {
+		if (val === undefined)
+			val = document.querySelector('#backdropContrastSlider').value;
 		const _bc = document.querySelector('.backdropContainer');
-		if (!_val || !_bc)
+		if (val === undefined || _bc === undefined)
 			return;
-		_bc.style.opacity = parseFloat(_val/10);
-		appSettings.set('opacity', _bc.style.opacity);
+		val = parseFloat(val/10);
+		if (val !== isNaN) {
+			_bc.style.opacity = val;
+			appSettings.set('opacity', val);
+		}
 	}
 	
 	export function pauseBackdrop(x) {
