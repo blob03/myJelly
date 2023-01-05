@@ -893,17 +893,17 @@
     },
     "fr": {
         "ccode": "fr",
-        "fsize": 125705,
+        "fsize": 125746,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
         "ISO6391": "fr",
         "ISO6392": "fre",
-        "keys#": 1797,
-        "completed%": 99.94,
+        "keys#": 1798,
+        "completed%": 100.0,
         "jellyfinWeb": {
             "filename": "fr.json",
-            "keys#": 1672,
+            "keys#": 1673,
             "orphans#": 14,
             "orphans": [
                 "ButtonNetwork",
@@ -921,7 +921,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.94
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "fr.json",
