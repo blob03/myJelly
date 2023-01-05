@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-22",
+	"version": "10.8.8-23",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -184,6 +184,7 @@
 		"10.8.8-19": "Synchronize translations.\nAttach 'loginAttemptLeft' indicator to password protected accounts (login page).\nAdd 'attemptLeft' option to config file 'config.json'.\nTweak indicators positionning and style some more (login page).",
 		"10.8.8-20": "Synchronize translations.\nCleanup and optimization of the login page.\nDo not show indicator 'attemptLeft' until at least one failed attempt has been registered.\nAdd an option to draw account cards in the same visualCardBox format as library items.\nTurn the username, normally shown underneath accounts' avatar, an option from 'config.json'.\nAdd a title attribute to indicators for browser users.\nAdd an option in config.json to enable theme backdrops in the login page.",
 		"10.8.8-21": "Synchronize translations.\nMake option 'visualCardBox' effect cards from the server selection screen.\nCorrect server cards padding to have them perfectly centered.\nForce Quick Connect dialog into fullscreen mode as a workaround to prevent direct clicks into the backdrop overlay.\nA default login screen backdrop can be set and backdrops rotation can be turned off inside config.json.\nAdd two options nightmode and serverLastSeen into config.json.",
-		"10.8.8-22": "Synchronize translations.\nLogin page backdrop contrast can be set inside 'config.json'.\nApply patch 'more-granular-access-schedule'.\nSynchronize 'package.json' with master.\nApply patch 'downloadAll'.\nApply patch 'Add getAdditionalParts method to playbackmanager'."
+		"10.8.8-22": "Synchronize translations.\nLogin page backdrop contrast can be set inside 'config.json'.\nApply patch 'more-granular-access-schedule'.\nSynchronize 'package.json' with master.\nApply patch 'downloadAll'.\nApply patch 'Add getAdditionalParts method to playbackmanager'.",
+		"10.8.8-23": "Fix: disable series' 'downloadAll' option for hosts that don't support file downloading."
 	}
 }
