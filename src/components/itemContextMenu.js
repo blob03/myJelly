@@ -142,7 +142,7 @@ import toast from './toast/toast';
             });
         }
 		
-		if (appHost.supports('filedownload') && (item.Type === 'Season' || item.Type == 'Series')) {
+		if (user.Policy.EnableContentDownloading && appHost.supports('filedownload') && (item.Type === 'Season' || item.Type == 'Series')) {
             commands.push({
                 name: globalize.translate('DownloadAll'),
                 id: 'downloadall',
