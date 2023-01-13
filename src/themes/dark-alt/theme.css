@@ -693,12 +693,8 @@ html {
 }
 
 .detailRibbon {
-    background-color: rgba(32,32,32,.3);
+    background-color: rgba(20, 27, 34, 0.4);
     color: rgba(255, 255, 255, 0.87);
-}
-
-.layout-tv .detailRibbon {
-    background: none;
 }
 
 .mediaInfoItem {
@@ -781,9 +777,9 @@ html {
 
 /* fix for TV Layout */
 
-.layout-tv .detailPageWrapperContainer {
-	margin-top: 2%;
-}
+/*.layout-tv .detailPageWrapperContainer {
+	margin-top: .3em;
+}*/
 
 /* upNext dialog box */
 

@@ -231,6 +231,7 @@ import './backdrop.scss';
 		if (existingBackdropImage) { 
 			if (existingBackdropImage.getAttribute('data-url') === url)
 				return;
+			
 			existingBackdropImage.classList.remove('displayingBackdropImage');
 		}
 		if (_instance) {
@@ -239,6 +240,7 @@ import './backdrop.scss';
 		}
 		_instance = new Backdrop();
 		_instance.load({'url': url}, elem, existingBackdropImage);
+		
     }
 	
 	export function setBackdropThemeImage(ref) {
@@ -306,7 +308,7 @@ import './backdrop.scss';
     }
 
     function enabled() {
-        return userSettings.enableBackdrops();
+        return userSettings.enableBackdrops() !== 'none';
     }
 
     var _rotationInterval;

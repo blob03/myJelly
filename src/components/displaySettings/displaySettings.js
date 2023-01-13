@@ -148,7 +148,8 @@ import './displaysettings.scss';
 			context.querySelector('.selectScreensaver').dispatchEvent(event_change);
         }
 		
-		context.querySelector('.fldDetailsBanner').classList.toggle('hide', layoutManager.tv || layoutManager.mobile);
+		//context.querySelector('.fldDetailsBanner').classList.toggle('hide', layoutManager.tv || layoutManager.mobile);
+		context.querySelector('.fldDetailsBanner').classList.toggle('hide', layoutManager.mobile);
 		
         context.querySelector('.chkDisplayMissingEpisodes').checked = user.Configuration.DisplayMissingEpisodes || false;
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();

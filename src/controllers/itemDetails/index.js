@@ -525,14 +525,6 @@ function renderBackdrop(item) {
 function renderDetailPageBackdrop(page, item, apiClient) {
 	
 	const itemBackdropElement = page.querySelector('#itemBackdrop');
-	
-    // Details banner is disabled in user settings
-    if (!userSettings.detailsBanner()) {
-		if (itemBackdropElement)
-			itemBackdropElement.classList.add("hide");
-        return false;
-    }
-
 	if (itemBackdropElement)
 		itemBackdropElement.classList.remove("hide");
 		
@@ -582,15 +574,22 @@ function reloadFromItem(instance, page, params, item, user) {
 
     libraryMenu.setTitle('');
 
-    // Start rendering the artwork first
+    // Start rendering the item card first
     renderImage(page, item);
-    // Save some screen real estate in TV mode
-    if (!layoutManager.tv) {
-        renderLogo(page, item, apiClient);
-        renderDetailPageBackdrop(page, item, apiClient);
-    }
-
-    renderBackdrop(item);
+    
+	// Save some screen real estate in mobile mode
+	if (!layoutManager.mobile) {
+		const itemBackdropElement = page.querySelector('#itemBackdrop');
+		// Check whether 'Details Banner' is disabled in the user settings.
+		if (!userSettings.detailsBanner()) {
+			if (itemBackdropElement)
+				itemBackdropElement.classList.add("hide");
+		} else {
+			// Render the ribbon.
+			renderLogo(page, item, apiClient);
+			renderDetailPageBackdrop(page, item, apiClient);
+		}
+	}
 
     // Render the main information for the item
     page.querySelector('.detailPagePrimaryContainer').classList.add('detailRibbon');
@@ -692,6 +691,7 @@ function reloadFromItem(instance, page, params, item, user) {
         hideAll(page, 'btnDownload', true);
     }
 
+	renderBackdrop(item);
     autoFocus(page);
 }
 

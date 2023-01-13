@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-26",
+	"version": "10.8.8-27",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -188,6 +188,7 @@
 		"10.8.8-23": "Fix: disable series' 'downloadAll' option for hosts that don't support file downloading.",
 		"10.8.8-24": "Synchronize translations and package.json.",
 		"10.8.8-25": "Synchronize package.json.\nCheck user permission to download files before offering series' 'downloadAll' option.\nIf an option list ends with a divider, take it off the item's context menu.",
-		"10.8.8-26": "Synchronize translations."
+		"10.8.8-26": "Synchronize translations.",
+		"10.8.8-27": "Synchronize translations and node packages.\nEnable option 'Details Banner' for TVs (display settings)."
 	}
 }

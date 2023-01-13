@@ -87,12 +87,17 @@
     overflow: hidden;
 }
 
-.libraryPage.noSecondaryNavPage {
-    padding-top: 5.1em !important;
+.layout-tv .libraryPage.noSecondaryNavPage {
+   padding-top: 5.6em !important;
 }
 
-.layout-tv .libraryPage.noSecondaryNavPage {
-    padding-top: 6.5em !important;
+.libraryPage.noSecondaryNavPage {
+    padding-top: 5.4em !important;
+}
+
+.layout-tv .libraryPage.itemDetailPage {
+//	padding-top: 8% !important;
+//	padding-top: 4.9rem !important;
 }
 
 .libraryPage:not(.noSecondaryNavPage) {
@@ -105,10 +110,6 @@
 
 .layout-tv body::-webkit-scrollbar {
     display: none;
-}
-
-.layout-tv .itemDetailPage {
-    padding-top: 8% !important;
 }
 
 .standalonePage {
@@ -510,14 +511,19 @@
 }
 
 .detailLogo {
-    height: 60%;
-    position: absolute;
-    top: 10%;
-    right: 0%;
-	left: 0%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 70%;
+
+//    height: 60%;
+//    position: absolute;
+//    top: 10%;
+//    right: 0%;
+//	  left: 0%;
+//    background-size: contain;
+//    background-repeat: no-repeat;
+//    background-position: center center;
 }
 
 .criticReview:first-child {
@@ -583,10 +589,10 @@
 .itemBackdrop {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    //background-position: center center;
     background-attachment: fixed;
-    height: 40vh;
-    position: relative;
+    //height: 40vh;
+    //position: relative;
     animation: backdrop-fadein 800ms ease-in normal both;
 
     .layout-mobile & {
@@ -602,15 +608,15 @@
     .layout-desktop &::after {
         content: "";
         width: 100%;
-        height: 100%;
+//		height: 100%;
         background: rgba(0, 0, 0, 0.65);
         display: block;
     }
 }
 
-.layout-tv .itemBackdrop {
-    display: none;
-}
+//.layout-tv .itemBackdrop {
+//    display: none;
+//}
 
 .detailPageContent {
     display: flex;
@@ -899,7 +905,7 @@
     // important is needed here to override :focus setting
     // the position to relative in the tv layout
     position: absolute !important;
-    top: 20%;
+//    top: 20%;
     max-width: 25vw;
     max-height: 80vh;
     z-index: 3;
@@ -942,7 +948,7 @@
 
     .layout-tv & {
         left: 5%;
-        top: 8rem;
+//      top: 20em;
         width: 25vw;
         /*transform: translateY(-50%);*/
     }
@@ -1210,6 +1216,7 @@ div.itemDetailGalleryLink.defaultCardBackground {
 .detailPageWrapperContainer {
     border-spacing: 0;
     border-collapse: collapse;
+	margin-top: .5em;
 }
 
 .mediaInfoContent .btnCopy .material-icons {
@@ -1271,7 +1278,8 @@ div.itemDetailGalleryLink.defaultCardBackground {
 }
 
 .itemBackdrop {
-	height: 12em;
+	height: 8em;
+	padding: .8em 0em;
 }
 
 .listViewUserDataButtons {

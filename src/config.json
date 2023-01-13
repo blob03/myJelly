@@ -15,7 +15,7 @@
 		},
 		"clock": true,
 		"clockFormat": 6,
-		"clockPos": "right",
+		"clockPos": "left",
 		"defaultBackdrop": "alt4",
 		"enableBackdrops": true,
 		"enableBackdropsRotation": true,
@@ -47,7 +47,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "2.05",
+		"version": "2.06",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly",
