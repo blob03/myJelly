@@ -303,6 +303,7 @@
     "EveryXHours": "Toutes les {0} heures",
     "EveryXMinutes": "Toutes les {0} minutes",
     "ExitFullscreen": "Sortir du plein écran",
+    "Experimental": "Expérimental",
     "ExtraLarge": "Très grand",
     "ExtractChapterImagesHelp": "L'extraction d'images de chapitre permettra aux applications d'afficher des menus visuels pour la sélection des scènes. Le processus peut être lent, gourmand en ressources et peut nécessiter plusieurs gigaoctets de stockage. Il s'exécute lorsque des vidéos sont découvertes et également comme tâche planifiée. L'horaire est configurable dans les options du planificateur de tâches. Il n'est pas recommandé d'exécuter cette tâche pendant les heures d'usage intensif.",
     "Extras": "Extras",

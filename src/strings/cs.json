@@ -303,6 +303,7 @@
     "EveryXHours": "Každých {0} hodin",
     "EveryXMinutes": "Každých {0} minut",
     "ExitFullscreen": "Opustit celou obrazovku",
+    "Experimental": "Experimentální",
     "ExtraLarge": "Extra velký",
     "ExtractChapterImagesHelp": "Extrakce obrázků kapitol umožní klientům zobrazit menu pro výběr scény. Tento proces může být náročný na zdroje a může vyžadovat několik GB prostoru. Úloha je standardně spuštěna při analýze videí v nočních hodinách. Není doporučeno spouštět tuto úlohu během standardních hodin, kdy je server vytížen.",
     "Extras": "Doplňky",

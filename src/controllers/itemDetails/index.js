@@ -577,19 +577,23 @@ function reloadFromItem(instance, page, params, item, user) {
     // Start rendering the item card first
     renderImage(page, item);
     
+	const itemBackdropElement = page.querySelector('#itemBackdrop');
+	
 	// Save some screen real estate in mobile mode
-	if (!layoutManager.mobile) {
-		const itemBackdropElement = page.querySelector('#itemBackdrop');
-		// Check whether 'Details Banner' is disabled in the user settings.
-		if (!userSettings.detailsBanner()) {
-			if (itemBackdropElement)
-				itemBackdropElement.classList.add("hide");
-		} else {
-			// Render the ribbon.
-			renderLogo(page, item, apiClient);
-			renderDetailPageBackdrop(page, item, apiClient);
-		}
+	// Check whether 'Details Banner' is disabled in the user settings.
+	if (!layoutManager.mobile && userSettings.detailsBanner()) {	
+		// Render the ribbon.
+		renderLogo(page, item, apiClient);
+		renderDetailPageBackdrop(page, item, apiClient);
+		if (itemBackdropElement)
+			itemBackdropElement.classList.remove("hide");
+	} else {
+		// Hide the ribbon.
+		if (itemBackdropElement)
+			itemBackdropElement.classList.add("hide");
 	}
+
+	renderBackdrop(item);
 
     // Render the main information for the item
     page.querySelector('.detailPagePrimaryContainer').classList.add('detailRibbon');
@@ -691,7 +695,6 @@ function reloadFromItem(instance, page, params, item, user) {
         hideAll(page, 'btnDownload', true);
     }
 
-	renderBackdrop(item);
     autoFocus(page);
 }
 
@@ -2074,9 +2077,27 @@ export default function (view, params) {
 
             if (e.detail.isRestored) {
                 if (currentItem) {
+					const apiClient = ServerConnections.getApiClient(currentItem.ServerId);
                     libraryMenu.setTitle('');
+					
+					const itemBackdropElement = page.querySelector('#itemBackdrop');
+
+					// Save some screen real estate in mobile mode
+					// Check whether 'Details Banner' is disabled in the user settings.
+					if (!layoutManager.mobile && userSettings.detailsBanner()) {	
+						// Render the ribbon.
+						renderLogo(page, currentItem, apiClient);
+						renderDetailPageBackdrop(page, currentItem, apiClient);
+						if (itemBackdropElement)
+							itemBackdropElement.classList.remove("hide");
+					} else {
+						// Hide the ribbon.
+						if (itemBackdropElement)
+							itemBackdropElement.classList.add("hide");
+					}
+					
                     renderTrackSelections(page, self, currentItem, true);
-                    renderBackdrop(currentItem);
+                    renderBackdrop(currentItem); 
                 }
             } else {
                 reload(self, page, params);
