@@ -2074,35 +2074,9 @@ export default function (view, params) {
             const page = this;
 
             libraryMenu.setTransparentMenu(!layoutManager.mobile);
-
-            if (e.detail.isRestored) {
-                if (currentItem) {
-					const apiClient = ServerConnections.getApiClient(currentItem.ServerId);
-                    libraryMenu.setTitle('');
-					
-					const itemBackdropElement = page.querySelector('#itemBackdrop');
-
-					// Save some screen real estate in mobile mode
-					// Check whether 'Details Banner' is disabled in the user settings.
-					if (!layoutManager.mobile && userSettings.detailsBanner()) {	
-						// Render the ribbon.
-						renderLogo(page, currentItem, apiClient);
-						renderDetailPageBackdrop(page, currentItem, apiClient);
-						if (itemBackdropElement)
-							itemBackdropElement.classList.remove("hide");
-					} else {
-						// Hide the ribbon.
-						if (itemBackdropElement)
-							itemBackdropElement.classList.add("hide");
-					}
-					
-                    renderTrackSelections(page, self, currentItem, true);
-                    renderBackdrop(currentItem); 
-                }
-            } else {
-                reload(self, page, params);
-            }
-
+			
+			reload(self, page, params);
+			
             Events.on(apiClient, 'message', onWebSocketMessage);
             Events.on(playbackManager, 'playerchange', onPlayerChange);
 

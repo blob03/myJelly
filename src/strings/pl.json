@@ -303,6 +303,7 @@
     "EveryXHours": "Co {0} godzin",
     "EveryXMinutes": "Co {0} minut",
     "ExitFullscreen": "Opuść pełny ekran",
+    "Experimental": "Eksperymentalne",
     "ExtraLarge": "Największe",
     "ExtractChapterImagesHelp": "Wydobywanie obrazów rozdziałów pozwoli klientom, na wyświetlanie graficznego menu wyboru scen. Proces ten może być wolny, mocno wykorzystujący zasoby i może wymagać kilku gigabajtów przestrzeni dyskowej. Jest uruchamiany gdy filmy są wykrywane oraz podczas nocnych zaplanowanych zadań. Zadania są konfigurowalne w części zaplanowanych zadań. Nie jest zalecane uruchamianie tego zadania podczas szczytowych godzin użycia serwera.",
     "Extras": "Materiały dodatkowe",
