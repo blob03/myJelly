@@ -141,17 +141,17 @@
     },
     "bg-BG": {
         "ccode": "bg-BG",
-        "fsize": 144723,
+        "fsize": 145322,
         "ccodeSrc": "en-US",
         "displayName": "Bulgarian",
         "displayNativeName": "Български",
         "ISO6391": "bg-BG",
         "ISO6392": "bul",
-        "keys#": 1445,
-        "completed%": 80.32,
+        "keys#": 1450,
+        "completed%": 80.6,
         "jellyfinWeb": {
             "filename": "bg-BG.json",
-            "keys#": 1445,
+            "keys#": 1450,
             "orphans#": 11,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -166,7 +166,7 @@
                 "OptionDownloadImagesInAdvanceHelp",
                 "OptionAllowContentDownloading"
             ],
-            "completed%": 86.32
+            "completed%": 86.62
         },
         "myJelly": {
             "filename": "",
@@ -390,17 +390,17 @@
     },
     "el": {
         "ccode": "el",
-        "fsize": 130238,
+        "fsize": 145657,
         "ccodeSrc": "en-US",
         "displayName": "Greek, Modern (1453-)",
         "displayNativeName": "Ελληνικά",
         "ISO6391": "el",
         "ISO6392": "gre",
-        "keys#": 1271,
-        "completed%": 70.65,
+        "keys#": 1376,
+        "completed%": 76.49,
         "jellyfinWeb": {
             "filename": "el.json",
-            "keys#": 1271,
+            "keys#": 1376,
             "orphans#": 10,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -414,7 +414,7 @@
                 "Screenshots",
                 "ButtonNetwork"
             ],
-            "completed%": 75.93
+            "completed%": 82.2
         },
         "myJelly": {
             "filename": "",
@@ -893,7 +893,7 @@
     },
     "fr": {
         "ccode": "fr",
-        "fsize": 125786,
+        "fsize": 125797,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
@@ -1735,17 +1735,17 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 117231,
+        "fsize": 117261,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
         "ISO6391": "nl",
         "ISO6392": "dut",
-        "keys#": 1673,
-        "completed%": 93.0,
+        "keys#": 1674,
+        "completed%": 93.05,
         "jellyfinWeb": {
             "filename": "nl.json",
-            "keys#": 1673,
+            "keys#": 1674,
             "orphans#": 13,
             "orphans": [
                 "ButtonNetwork",
@@ -1762,7 +1762,7 @@
                 "SetUsingLastTracks",
                 "SetUsingLastTracksHelp"
             ],
-            "completed%": 99.94
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -2562,17 +2562,17 @@
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "fsize": 104171,
+        "fsize": 104207,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
         "displayNativeName": "中文",
         "ISO6391": "zh-CN",
         "ISO6392": "chi",
-        "keys#": 1673,
-        "completed%": 93.0,
+        "keys#": 1674,
+        "completed%": 93.05,
         "jellyfinWeb": {
             "filename": "zh-CN.json",
-            "keys#": 1673,
+            "keys#": 1674,
             "orphans#": 14,
             "orphans": [
                 "ButtonNetwork",
@@ -2590,7 +2590,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.94
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -2602,17 +2602,17 @@
     },
     "zh-HK": {
         "ccode": "zh-HK",
-        "fsize": 65525,
+        "fsize": 65807,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Hong Kong",
         "displayNativeName": "廣東話 (香港)",
         "ISO6391": "zh-HK",
         "ISO6392": "chi",
-        "keys#": 1091,
-        "completed%": 60.64,
+        "keys#": 1093,
+        "completed%": 60.76,
         "jellyfinWeb": {
             "filename": "zh-HK.json",
-            "keys#": 1091,
+            "keys#": 1093,
             "orphans#": 5,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -2621,7 +2621,7 @@
                 "OptionLikes",
                 "ButtonNetwork"
             ],
-            "completed%": 65.17
+            "completed%": 65.29
         },
         "myJelly": {
             "filename": "",

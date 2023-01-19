@@ -1003,6 +1003,13 @@ option.sourceDictionaryOption {
 	visibility: hidden;
 }
 
+#backdropWidget,
+#headerWthRight {
+	margin: 0 !important;
+	padding: .2em .4em .2em .4em !important;
+	border: 3px groove #333035 !important;
+}
+
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
@@ -1431,11 +1438,6 @@ option:selected {
 	text-shadow: 1px 1px 8px #411c5b !important;
 }
 
-.headerWthButton > fieldset {
-	margin: .1rem .5rem .1rem .5rem !important;
-	border: 2px groove #684828 !important;
-}
-
 .headerWthTemp {
 	font-size: 170% !important;
 }
@@ -1500,3 +1502,8 @@ option:selected {
 	text-shadow: 0 0 4px #fff, 0 0 16px #ffce9a, 0 0 32px #ff9b52, 0 0 54px #ff7f33 !important;
 	color: #ffeec5 !important;
 }
+
+.nightFilter {
+	background-color: #7700d9 !important;
+}
+

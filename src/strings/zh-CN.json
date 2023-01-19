@@ -303,6 +303,7 @@
     "EveryXHours": "每 {0} 小时",
     "EveryXMinutes": "每 {0} 分钟",
     "ExitFullscreen": "退出全屏",
+    "Experimental": "实验功能",
     "ExtraLarge": "特大",
     "ExtractChapterImagesHelp": "提取章节图片将允许客户端显示一个图像形式的场景选择菜单。这个提取的过程可能会非常缓慢、占用大量 CPU 资源，并且可能需要几个GB的硬盘空间。提取将会在视频被发现时启动，同时也作为一个夜间计划任务运行。这个任务可以在“计划任务”选项中进行设置。不建议在高峰使用时间运行这个任务。",
     "Extras": "额外",

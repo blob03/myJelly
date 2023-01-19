@@ -17,6 +17,7 @@
 		"clockFormat": 6,
 		"clockPos": "left",
 		"defaultBackdrop": "alt4",
+		"displayFontSize": -8,
 		"enableBackdrops": true,
 		"enableBackdropsRotation": true,
 		"enableFastFadein": false,
@@ -35,19 +36,19 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "1.99",
+		"version": "2.00",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.42",
+		"version": "2.43",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "2.06",
+		"version": "2.08",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly",

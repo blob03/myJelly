@@ -228,6 +228,16 @@ export function loginBackdropsRotation() {
 	return Boolean(_config_data?.login?.enableBackdropsRotation);
 }
 
+// Integer to set the base font size for the TV layout only.
+// This value can be further adjusted by users in the display settings screen.
+// val ranges from -20 to 20.
+export function loginDisplayFontSize() {
+	let val = parseInt(_config_data?.login?.displayFontSize, 10);
+	if (val === isNaN || val < -20 || val > 20)
+		val = 0;
+	return (val);
+}
+
 // Integer to set the delay in seconds between each backdrop rotation.
 export function loginBackdropsRotationDelay() {
 	let val = parseInt(_config_data?.login?.setBackdropsRotationDelay, 10);

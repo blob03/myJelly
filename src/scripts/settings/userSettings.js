@@ -728,6 +728,9 @@ export class UserSettings {
 		const _icon = _hdrnmb.getElementsByClassName('material-icons')[0];
 		if (!_icon)
 			return;
+		const _hdrnf = document.getElementsByClassName('nightFilter')[0]; 
+		if (!_hdrnf)
+			return;
 		
 		let val = appSettings.enableNightMode() || false;
 
@@ -736,19 +739,11 @@ export class UserSettings {
 			appSettings.enableNightMode(val);
 		}
 		
-		switch (val) {
-			case false:
-				_icon.classList.add('light_mode');
-				_icon.classList.remove('dark_mode');
-				_hdrwtb.classList.remove('nightMode');
-				_hdrclck.classList.remove('nightMode');
-				break;
-			default:
-				_icon.classList.add('dark_mode');
-				_icon.classList.remove('light_mode');
-				_hdrwtb.classList.add('nightMode');
-				_hdrclck.classList.add('nightMode');
-		}
+		_hdrnf.classList.toggle('hide', !val);
+		_icon.classList.toggle('light_mode', !val);
+		_icon.classList.toggle('dark_mode', val);
+		_hdrwtb.classList.toggle('nightMode', val);
+		_hdrclck.classList.toggle('nightMode', val);
 	}
 	
     /**

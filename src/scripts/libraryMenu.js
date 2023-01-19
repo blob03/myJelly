@@ -79,7 +79,7 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
 		html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
 		
-		html += '<div id="backdropWidget" style="display: flex;flex-direction: row;padding: 0 .29em 0 .29em;justify-content: center;align-items: center;">';
+		html += '<div id="backdropWidget" class="hide" style="height: 2.85em;margin: 0 .29em !important;display: flex;flex-direction: row;justify-content: center;align-items: center;padding: .2em .4em .2em .4em;border: 1px groove #99a5ad;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
 		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;font-size: 90%;">';
 		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_previous"></span></button>';
@@ -88,13 +88,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '</button>';
 		html += '<button href="#" type="button" id="backdropNextButton" is="paper-icon-button-light" class="headerButton headerBackdropNextButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_next"></span></button>';
 		html += '</div>';
-		
 		html += '<div id="backdropContrast" class="hide">';
 		html += '<div class="sliderContainer">';
 		html += '<input is="emby-slider" id="backdropContrastSlider" label="" nobubble="" type="range" min="0" max="10" />';
 		html += '</div>';
 		html += '</div>';
-		
 		html += '</div>';
 			
 		/* Added: Right most casing for the clock widget */
@@ -108,15 +106,11 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '</div>';
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
-		html += '<div class="headerWthButton hide" id="headerWthRight" style="display: flex;flex-direction: row;margin: 0 .29em;height: 3.4em;">';
-		html += '<fieldset style="margin: 0 !important;padding: .2em .4em .2em .4em;border: 1px groove #99a5ad;">';
-		
+		html += '<div class="headerWthButton hide" id="headerWthRight" style="margin: 0 .29em !important;padding: .2em .4em .2em .4em;border: 1px groove #99a5ad;">';	
 		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
-		
 		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;height: 3.2em;">';
 		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
 		html += '</div>';
-		
 		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;height: 3.2em;">';
 		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .1em;">';
 		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.1em;width: 2.1em;">';
@@ -159,7 +153,6 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 		html += '</div>';
 		
 		html += '</button>';
-		html += '</fieldset>';
 		html += '</div>';
 		/* ********************************** */
         html += '<button is="paper-icon-button-light" class="headerButton headerButtonRight headerUserButton hide"><span class="material-icons person"></span></button>';			

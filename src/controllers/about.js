@@ -47,7 +47,15 @@ class AboutTab {
 		html += '<br>';
 		html += '<div style="display: flex">';
 		html += '<div class="aboutLabel">' + globalize.translate('LabelAppHost') + '</div>';
-		html += '<div class="aboutContent">' + appHost.deviceName() + ' - ' + getHostVersion(browser)  + '</div>';
+		html += '<div class="aboutContent">';
+		if (layoutManager.mobile)
+			html += globalize.translate('Mobile') + ' ';
+		else if (layoutManager.tv) 
+			html += globalize.translate('TV') + ' ';
+		else if (layoutManager.desktop) 
+			html += globalize.translate('Desktop') + ' ';
+		html += '/ ' + appHost.deviceName() + ' - ' + getHostVersion(browser);
+		html += '</div>';	
 		html += '</div>';
 		html += '<div style="display: flex">';
 		html += '<div class="aboutLabel">' + globalize.translate('LabelAppVersion') + '</div>';

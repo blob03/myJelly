@@ -1379,8 +1379,10 @@ select option:selected {
 	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
-.headerWthButton > fieldset {
-	margin: .1rem .5rem .1rem .5rem !important;
+#backdropWidget,
+#headerWthRight {
+	margin: 0 !important;
+	padding: .2em .4em .2em .4em !important;
 	border: 2px groove #363d43 !important;
 }
 
@@ -1395,10 +1397,6 @@ select option:selected {
 
 .infoDetails {
 	font-size: 90% !important;
-}
-
-#backdropWidget {
-	background: rgba(39, 45, 51, 0.5);
 }
 
 .sliderMarkerContainer {
@@ -1466,4 +1464,8 @@ select option:selected {
 
 .disclaimer {
 	font-style: italic;
+}
+
+.nightFilter {
+	background-color: #0342ff !important;
 }

@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-29",
+	"version": "10.8.8-30",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -191,6 +191,7 @@
 		"10.8.8-26": "Synchronize translations.",
 		"10.8.8-27": "Synchronize translations and node packages.\nEnable option 'Details Banner' for TVs (display settings).",
 		"10.8.8-28": "Synchronize translations.\nApply patch 'experimental-display-mode'.\nFix: When restoring a detail page, re-check the value of 'Detail Banner' option.",
-		"10.8.8-29": "Synchronize translations.\nFix alignment of ribbon backdrop with page backdrop (desktop layout)."
+		"10.8.8-29": "Synchronize translations.\nFix alignment of ribbon backdrop with page backdrop (desktop layout).",
+		"10.8.8-30": "Synchronize translations.\nAdd option 'displayFontSize' to config.json which allows to adjust the base font size (TV layout).\nReplace button icon to access display options of videos and images libraries, make it consistent with movies and series.\nAdd a colorized overlay to the night mode to make things easier for the tired eyes.\nImprove style for the backdrop controller widget.\nAdd host hardware type to host details (About tab)."
 	}
 }

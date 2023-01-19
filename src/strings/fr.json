@@ -547,7 +547,7 @@
     "HttpsRequiresCert": "Pour activer les connexions sécurisées, il est demandé de fournir un certificat SSL vérifié comme ceux fournis par 'Let's Encrypt'. Fournir ce certificat ou désactiver les connexions sécurisées.",
     "Identify": "Identifier",
     "IgnoreDts": "Ignorer le DTS (horodatage de décodage)",
-    "IgnoreDtsHelp": "La désactivation de cette option peut résoudre certains problèmes, par ex. audio manquant sur les canaux avec des flux audio et vidéo séparés.",
+    "IgnoreDtsHelp": "La désactivation de cette option peut résoudre certains problèmes, par exemple une piste audio manquante sur des canaux avec flux audio et vidéo séparés.",
     "Image": "Image",
     "Images": "Images",
     "ImportFavoriteChannelsHelp": "Seules les chaînes ajoutées aux favoris sur le tuner seront importées.",

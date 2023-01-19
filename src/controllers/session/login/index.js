@@ -334,6 +334,10 @@ import './login.scss';
                 autoFocuser.autoFocus(view);
             });
         }
+		
+		function setDisplayFontSize(val) {
+			document.body.style.fontSize = 1 + (val/100) + "rem"; 
+		}
 
         view.querySelector('#divUsers').addEventListener('click', function (e) {
             const card = dom.parentWithClass(e.target, 'card');
@@ -433,7 +437,9 @@ import './login.scss';
 						startRotation();
 				}, 500);
 			}
-			
+			if (layoutManager.tv) 
+				setDisplayFontSize(webSettings.loginDisplayFontSize());
+		
 			view.querySelector('#manualServerName').innerHTML = apiClient._serverInfo.Name;
 			view.querySelector('#visualServerName').innerHTML = apiClient._serverInfo.Name;
 			

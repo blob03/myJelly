@@ -1260,7 +1260,10 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	text-shadow: 1px 1px 8px #39708b !important;
 }
 
-.headerWthButton > fieldset {
+#backdropWidget,
+#headerWthRight {
+	margin: 0 !important;
+	padding: .2em .4em .2em .4em !important;
 	border: 2px groove #8cbdc8 !important;
 }
 
@@ -1301,4 +1304,8 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .userProfileAvatar {
 	border: 1px solid rgb(81, 107, 116) !important;
 	box-shadow: rgb(87, 116, 141) 4px 4px 12px !important;
+}
+
+.nightFilter {
+	background: linear-gradient(90deg, rgb(206, 14, 245) 0%, rgb(242, 7, 150) 100%) !important;
 }
