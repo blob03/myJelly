@@ -68,10 +68,8 @@ export function showLayoutMenu (button, currentLayout, views) {
                     cancelable: false
                 }));
 
-                if (!dispatchEvent) {
-                    if (window.$) {
-                        $(button).trigger('layoutchange', [id]);
-                    }
+                if (!dispatchEvent && window.$) {
+                    $(button).trigger('layoutchange', [id]);
                 }
             }
         });
@@ -79,46 +77,46 @@ export function showLayoutMenu (button, currentLayout, views) {
 }
 
 export function getQueryPagingHtml (options) {
-    const startIndex = parseInt(options.startIndex, 10);
-    const limit = parseInt(options.limit, 10);
-    const totalRecordCount = parseInt(options.totalRecordCount, 10);
+    const startIndex = options.startIndex;
+    const limit = options.limit;
+    const totalRecordCount = options.totalRecordCount;
     let html = '';
-	
-    const recordsEnd = Math.min(startIndex + limit, totalRecordCount);
-    const showControls = limit < totalRecordCount;
+    const recordsStart = totalRecordCount ? startIndex + 1 : 0;
+    const recordsEnd = limit ? Math.min(startIndex + limit, totalRecordCount) : totalRecordCount;
+    const showControls = limit > 0 && limit < totalRecordCount;
 
     html += '<div class="listPaging">';
 
-    if (showControls) {
-        html += '<span style="vertical-align:middle;">';
-        html += globalize.translate('ListPaging', totalRecordCount ? startIndex + 1 : 0, recordsEnd, totalRecordCount);
-        html += '</span>';
-    }
- 
+    html += '<span style="vertical-align:middle;">';
+	if (totalRecordCount)
+		html += globalize.translate('ListPaging', recordsStart, recordsEnd, totalRecordCount);
+    html += '</span>';
+
     if (showControls || options.viewButton || options.filterButton || options.sortButton || options.addLayoutButton) {
         html += '<div style="display:inline-block;">';
 
         if (showControls) {
-            html += '<button is="paper-icon-button-light" class="btnPreviousPage autoSize" ' + (startIndex ? '' : 'disabled') + '><span class="material-icons arrow_back"></span></button>';
-            html += '<button is="paper-icon-button-light" class="btnNextPage autoSize" ' + (startIndex + limit >= totalRecordCount ? 'disabled' : '') + '><span class="material-icons arrow_forward"></span></button>';
+            html += '<button is="paper-icon-button-light" class="btnPreviousPage autoSize" ' + (startIndex ? '' : 'disabled') + '><span class="material-icons arrow_back" aria-hidden="true"></span></button>';
+            html += '<button is="paper-icon-button-light" class="btnNextPage autoSize" ' + (startIndex + limit >= totalRecordCount ? 'disabled' : '') + '><span class="material-icons arrow_forward" aria-hidden="true"></span></button>';
         }
 
         if (options.addLayoutButton) {
-            html += '<button is="paper-icon-button-light" title="' + globalize.translate('ButtonSelectView') + '" class="btnChangeLayout autoSize" data-layouts="' + (options.layouts || '') + '" onclick="LibraryBrowser.showLayoutMenu(this, \'' + (options.currentLayout || '') + '\');"><span class="material-icons view_comfy"></span></button>';
+            html += '<button is="paper-icon-button-light" title="' + globalize.translate('ButtonSelectView') + '" class="btnChangeLayout autoSize" data-layouts="' + (options.layouts || '') + '" onclick="LibraryBrowser.showLayoutMenu(this, \'' + (options.currentLayout || '') + '\');"><span class="material-icons view_comfy" aria-hidden="true"></span></button>';
         }
 
         if (options.sortButton) {
-            html += '<button is="paper-icon-button-light" class="btnSort autoSize" title="' + globalize.translate('Sort') + '"><span class="material-icons sort_by_alpha"></span></button>';
+            html += '<button is="paper-icon-button-light" class="btnSort autoSize" title="' + globalize.translate('Sort') + '"><span class="material-icons sort_by_alpha" aria-hidden="true"></span></button>';
         }
 
         if (options.filterButton) {
-            html += '<button is="paper-icon-button-light" class="btnFilter autoSize" title="' + globalize.translate('Filter') + '"><span class="material-icons filter_list"></span></button>';
+            html += '<button is="paper-icon-button-light" class="btnFilter autoSize" title="' + globalize.translate('Filter') + '"><span class="material-icons filter_list" aria-hidden="true"></span></button>';
         }
 
         html += '</div>';
     }
 
-    return html += '</div>';
+    html += '</div>';
+    return html;
 }
 
 export function showSortMenu (options) {
