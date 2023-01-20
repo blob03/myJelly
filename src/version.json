@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-31",
+	"version": "10.8.8-32",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -193,6 +193,7 @@
 		"10.8.8-28": "Synchronize translations.\nApply patch 'experimental-display-mode'.\nFix: When restoring a detail page, re-check the value of 'Detail Banner' option.",
 		"10.8.8-29": "Synchronize translations.\nFix alignment of ribbon backdrop with page backdrop (desktop layout).",
 		"10.8.8-30": "Synchronize translations.\nAdd option 'displayFontSize' to config.json which allows to adjust the base font size (TV layout).\nReplace button icon to access display options of videos and images libraries, make it consistent with movies and series.\nAdd a colorized overlay to the night mode to make things easier for the tired eyes.\nImprove style for the backdrop controller widget.\nAdd host hardware type to host details (About tab).",
-		"10.8.8-31": "Synchronize translations.\nApply patch 'Add stereo downmix setting'.\nApply patch 'Show total count when no pagination is applied'.\nFix: Hide total count message when total count is null."
+		"10.8.8-31": "Synchronize translations.\nApply patch 'Add stereo downmix setting'.\nApply patch 'Show total count when no pagination is applied'.\nFix: Hide total count message when total count is null.",
+		"10.8.8-32": "Synchronize translations and node packages.\nFix details page layout for people and books when option 'Details Banner' in use."
 	}
 }

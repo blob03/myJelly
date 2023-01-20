@@ -523,18 +523,19 @@ function renderBackdrop(item) {
 }
 
 function renderDetailPageBackdrop(page, item, apiClient) {
+	let imgUrl;
+    let hasbackdrop = false;
 	
-	const itemBackdropElement = page.querySelector('#itemBackdrop');
-	if (itemBackdropElement)
-		itemBackdropElement.classList.remove("hide");
-		
     // Disable item backdrop for books and people because they only have primary images
     if (item.Type === 'Person' || item.Type === 'Book') {
         return false;
     }
-
-    let imgUrl;
-    let hasbackdrop = false;
+	
+	const itemBackdropElement = page.querySelector('#itemBackdrop');
+	if (itemBackdropElement)
+		itemBackdropElement.classList.remove("hide");
+	else
+		return false;
     
     if (item.BackdropImageTags && item.BackdropImageTags.length) {
         imgUrl = apiClient.getScaledImageUrl(item.Id, {
@@ -576,8 +577,6 @@ function reloadFromItem(instance, page, params, item, user) {
 
     // Start rendering the item card first
     renderImage(page, item);
-    
-	const itemBackdropElement = page.querySelector('#itemBackdrop');
 	
 	// Save some screen real estate in mobile mode
 	// Check whether 'Details Banner' is disabled in the user settings.
@@ -585,12 +584,6 @@ function reloadFromItem(instance, page, params, item, user) {
 		// Render the ribbon.
 		renderLogo(page, item, apiClient);
 		renderDetailPageBackdrop(page, item, apiClient);
-		if (itemBackdropElement)
-			itemBackdropElement.classList.remove("hide");
-	} else {
-		// Hide the ribbon.
-		if (itemBackdropElement)
-			itemBackdropElement.classList.add("hide");
 	}
 
 	renderBackdrop(item);

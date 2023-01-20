@@ -160,12 +160,11 @@ import './displaysettings.scss';
 		
 		const bWidget = userSettings.enableBackdropWidget();
 		context.querySelector('#backdropToolsAll').checked = (bWidget == 7);
+		context.querySelector('#backdropToolsList').classList.toggle('hide', (bWidget == 7));
 		context.querySelector('#backdropToolsDetails').checked = (bWidget & 1);
 		context.querySelector('#backdropToolsControl').checked = (bWidget & 2);
 		context.querySelector('#backdropToolsContrast').checked = (bWidget & 4);
-		context.querySelector('#backdropToolsList').classList.toggle('hide', 
-			context.querySelector('#backdropToolsAll').checked);
-	
+		
 		context.querySelector('#inputLat').value = userSettings.getlatitude();
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
@@ -388,7 +387,13 @@ import './displaysettings.scss';
 			
 			context.querySelector('#btnFindIt').addEventListener('click', findPosition);
 			context.querySelector('#backdropToolsAll').addEventListener('change', (e) => {
-				context.querySelector('#backdropToolsList').classList.toggle('hide', e.target.checked); });
+				context.querySelector('#backdropToolsList').classList.toggle('hide', e.target.checked);
+				if (e.target.checked) {
+					context.querySelector('#backdropToolsDetails').checked = true;
+					context.querySelector('#backdropToolsControl').checked = true;
+					context.querySelector('#backdropToolsContrast').checked = true;
+				}
+			});
 			
 			context.querySelector('#sliderDisplayFontSize').addEventListener('change', onDisplayFontSizeChange);
 			
