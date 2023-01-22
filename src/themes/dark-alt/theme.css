@@ -652,6 +652,10 @@ html {
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 }
 
+.nightMode .headerWthIconBg {
+	box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
+}
+
 .headerClockButton:hover > .headerClockTime,
 .headerClockButton:focus > .headerClockTime {
 	font-size: 170% !important;

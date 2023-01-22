@@ -207,7 +207,21 @@
 			</div>
 					
 		</div>
+				
+		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
 		
+			<div class="selectContainer" style="width: 47%;height: auto;">
+				<select is="emby-select" id="selectNightModeSwitch" label="${EnableNightModeSwitch}">
+				<option value=0>${Never}</option>
+				<option value=1>${Auto}</option>
+				<option value=2>${Manual}</option>
+				<option value=3>${Auto} - ${Manual}</option>
+				</select>
+				<div class="fieldDescription ">${EnableNightModeSwitchHelp}</div>
+			</div>
+		
+		</div>		
+			
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
 		
 			<div class="selectContainer" style="width: 47%;height: auto;">

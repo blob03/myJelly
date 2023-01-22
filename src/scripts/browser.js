@@ -23,6 +23,8 @@ function isTv() {
 }
 
 function isWeb0s() {
+	const userAgent = navigator.userAgent.toLowerCase();
+	
 	return userAgent.indexOf('netcast') !== -1
 		|| userAgent.indexOf('web0s') !== -1;
 }
@@ -280,8 +282,10 @@ if (userAgent.toLowerCase().indexOf('xbox') !== -1) {
     browser.tv = true;
 }
 browser.animate = typeof document !== 'undefined' && document.documentElement.animate != null;
+browser.hisense = userAgent.toLowerCase().includes('hisense');
 browser.tizen = userAgent.toLowerCase().indexOf('tizen') !== -1 || window.tizen != null;
-browser.web0s = userAgent.toLowerCase().indexOf('Web0S'.toLowerCase()) !== -1;
+browser.vidaa = userAgent.toLowerCase().includes('vidaa');
+browser.web0s = isWeb0s();
 browser.edgeUwp = browser.edge && (userAgent.toLowerCase().indexOf('msapphost') !== -1 || userAgent.toLowerCase().indexOf('webview') !== -1);
 
 if (browser.web0s) {

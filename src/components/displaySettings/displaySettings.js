@@ -169,6 +169,8 @@ import './displaysettings.scss';
 		context.querySelector('#inputLon').value = userSettings.getlongitude();
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
+		context.querySelector('#selectNightModeSwitch').value = userSettings.enableNightModeSwitch();
+		
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
 		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
 		context.querySelector('#sliderAPIFrequency').value = userSettings.APIDelay();
@@ -242,6 +244,13 @@ import './displaysettings.scss';
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
+		userSettingsInstance.enableNightModeSwitch(context.querySelector('#selectNightModeSwitch').value);
+		let headerNightmodeButton = document.querySelector('.headerNightmodeButton');
+		if (headerNightmodeButton)
+			headerNightmodeButton.classList.toggle('hide', context.querySelector('#selectNightModeSwitch').value < 2);
+		if (!(context.querySelector('#selectNightModeSwitch').value & 0x1))
+			userSettingsInstance.toggleNightMode(false, false);
+		
 		userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);
 		userSettingsInstance.swiperDelay(context.querySelector('#sliderSwiperDelay').value);

@@ -914,13 +914,11 @@
         margin: 0;
     }
 
-    &.backdropCard {
-        top: 35%;
-    }
-
-    &.squareCard {
-        top: 40%;
-    }
+    &,
+	&.backdropCard,
+	&.squareCard {
+		top: auto;
+	}
 
     .layout-mobile & {
         left: 5%;

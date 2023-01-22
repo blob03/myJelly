@@ -1403,6 +1403,10 @@ option:selected {
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
 }
 
+.nightMode .headerWthIconBg {
+	box-shadow: 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906;
+}
+
 .ssClockDate {
 	font-size: 120% !important;
 }

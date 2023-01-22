@@ -178,13 +178,16 @@ function hdrWeather() {
 			}
 		}
 		
+		let _date_sunset;
+		let _date_sunrise;
+		
 		if (_data.sunrise) {
 			 if (_data.sunrise.charAt(_data.sunrise.length - 1).toUpperCase() !== 'Z')
 				_data.sunrise += 'Z';
-			let _date = new Date(_data.sunrise);
-			const _date_localized = datetime.toLocaleTimeString(_date, currentSettings._opts_time); 
+			_date_sunrise = new Date(_data.sunrise);
+			const _date_sunrise_localized = datetime.toLocaleTimeString(_date_sunrise, currentSettings._opts_time); 
 	
-			self._hdrwth.sunrise.innerHTML = _date_localized;
+			self._hdrwth.sunrise.innerHTML = _date_sunrise_localized;
 			if (self._hdrwth.sunrise.parentNode)
 				self._hdrwth.sunrise.parentNode.title = globalize.translate('Sunrise');
 		}
@@ -192,12 +195,24 @@ function hdrWeather() {
 		if (_data.sunset) {
 			if (_data.sunset.charAt(_data.sunset.length - 1).toUpperCase() !== 'Z')
 				_data.sunset += 'Z'; 
-			let _date = new Date(_data.sunset);
-			const _date_localized = datetime.toLocaleTimeString(_date, currentSettings._opts_time);
+			_date_sunset = new Date(_data.sunset);
+			const _date_sunset_localized = datetime.toLocaleTimeString(_date_sunset, currentSettings._opts_time);
 			
-			self._hdrwth.sunset.innerHTML = _date_localized;
+			self._hdrwth.sunset.innerHTML = _date_sunset_localized;
 			if (self._hdrwth.sunset.parentNode)
 				self._hdrwth.sunset.parentNode.title = globalize.translate('Sunset');
+		}
+		
+		if (self.enableNightModeSwitch() & 0x1) {
+			if (_date_sunrise && _date_sunset) {
+				const x = _date_sunrise.getTime();
+				const y = _date_sunset.getTime();
+				const z = new Date();
+				if (z >= x && z < y)
+					self.toggleNightMode(false, false);
+				else
+					self.toggleNightMode(false, true);
+			}			
 		}
 		
 		self.WB_setButtons();
@@ -715,7 +730,7 @@ export class UserSettings {
 		return true;
 	}
 
-	toggleNightMode(TOGGLE) {
+	toggleNightMode(TOGGLE, newval) {
 		const _hdrwtb = document.getElementsByClassName('headerWthMain')[0];
 		if (!_hdrwtb) 
 			return;
@@ -736,6 +751,9 @@ export class UserSettings {
 
 		if (TOGGLE === undefined || TOGGLE === true) {
 			val = !val;
+			appSettings.enableNightMode(val);
+		} else if (newval !== undefined) {
+			val = newval;
 			appSettings.enableNightMode(val);
 		}
 		
@@ -1051,6 +1069,23 @@ export class UserSettings {
         }
 
         return toBoolean(this.get('fastFadein'), false);
+    }
+	
+	/**
+     * Get or set 'Night Mode Switch' state.
+     * @param {int|undefined} val - mode ref to enable 'Night Mode Switch' or undefined.
+     * @return {boolean} 'Night Mode Switch' state.
+     */
+    enableNightModeSwitch(val) {
+        if (val !== undefined)
+            return this.set('nightModeSwitch', parseInt(val, 10));
+
+		const x = parseInt(this.get('nightModeSwitch'), 10);
+		// 0 is a valid value.
+		if (isNaN(x) || x < 0 || x > 3) 
+			return 0; // default to 0 (disabled).
+        else 
+            return x;
     }
 
     /**
@@ -1608,6 +1643,7 @@ export const getlatitude = currentSettings.getlatitude.bind(currentSettings);
 export const getlongitude = currentSettings.getlongitude.bind(currentSettings);
 export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
+export const enableNightModeSwitch = currentSettings.enableNightModeSwitch.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableBackdropWidget = currentSettings.enableBackdropWidget.bind(currentSettings);
 export const enableWeatherBot = currentSettings.enableWeatherBot.bind(currentSettings);

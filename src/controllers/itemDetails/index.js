@@ -532,9 +532,7 @@ function renderDetailPageBackdrop(page, item, apiClient) {
     }
 	
 	const itemBackdropElement = page.querySelector('#itemBackdrop');
-	if (itemBackdropElement)
-		itemBackdropElement.classList.remove("hide");
-	else
+	if (!itemBackdropElement)
 		return false;
     
     if (item.BackdropImageTags && item.BackdropImageTags.length) {
@@ -545,6 +543,7 @@ function renderDetailPageBackdrop(page, item, apiClient) {
             tag: item.BackdropImageTags[0]
         });
         imageLoader.lazyImage(itemBackdropElement, imgUrl);
+		itemBackdropElement.classList.remove("hide");
         hasbackdrop = true;
     } else if (item.ParentBackdropItemId && item.ParentBackdropImageTags && item.ParentBackdropImageTags.length) {
         imgUrl = apiClient.getScaledImageUrl(item.ParentBackdropItemId, {
@@ -554,6 +553,7 @@ function renderDetailPageBackdrop(page, item, apiClient) {
             tag: item.ParentBackdropImageTags[0]
         });
         imageLoader.lazyImage(itemBackdropElement, imgUrl);
+		itemBackdropElement.classList.remove("hide");
         hasbackdrop = true;
     } else if (item.ImageTags && item.ImageTags.Primary) {
         imgUrl = apiClient.getScaledImageUrl(item.Id, {
@@ -562,6 +562,7 @@ function renderDetailPageBackdrop(page, item, apiClient) {
             tag: item.ImageTags.Primary
         });
         imageLoader.lazyImage(itemBackdropElement, imgUrl);
+		itemBackdropElement.classList.remove("hide");
         hasbackdrop = true;
     } else {
         itemBackdropElement.style.backgroundImage = '';

@@ -292,16 +292,24 @@ import browser from './browser';
         return bitrate;
     }
 
+    let maxChannelCount = null;
+	
     function getSpeakerCount() {
+		if (maxChannelCount != null) {
+            return maxChannelCount;
+        }
+
+        maxChannelCount = -1;
+		
         const AudioContext = window.AudioContext || window.webkitAudioContext || false; /* eslint-disable-line compat/compat */
 
         if (AudioContext) {
             const audioCtx = new AudioContext();
 
-            return audioCtx.destination.maxChannelCount;
+            maxChannelCount = audioCtx.destination.maxChannelCount;
         }
 
-        return -1;
+        return maxChannelCount;
     }
 
     function getPhysicalAudioChannels(options, videoTestElement) {
@@ -343,6 +351,23 @@ import browser from './browser';
         return 2;
     }
 	
+	/**
+	 * Checks if the web engine supports secondary audio.
+	 * @param {HTMLVideoElement} videoTestElement The video test element
+	 * @returns {boolean} _true_ if the web engine supports secondary audio.
+	 */
+	export function canPlaySecondaryAudio(videoTestElement) {
+		// We rely on HTMLMediaElement.audioTracks
+		// It works in Chrome 79+ with "Experimental Web Platform features" enabled
+		return !!videoTestElement.audioTracks
+			// It doesn't work in Firefox 108 even with "media.track.enabled" enabled (it only sees the first audio track)
+			&& !browser.firefox
+			// It seems to work on Tizen 5.5+ (2020, Chrome 69+). See https://developer.tizen.org/forums/web-application-development/video-tag-not-work-audiotracks
+			&& (browser.tizenVersion >= 5.5 || !browser.tizen)
+			// Assume webOS 5+ (2020, Chrome 68+) supports secondary audio like Tizen 5.5+
+			&& (browser.web0sVersion >= 5.0 || !browser.web0sVersion);
+	}
+
     export default function (options) {
         options = options || {};
 
@@ -752,8 +777,8 @@ import browser from './browser';
 
         profile.CodecProfiles = [];
 
-        const supportsSecondaryAudio = browser.tizen || videoTestElement.audioTracks;
-
+        const supportsSecondaryAudio = canPlaySecondaryAudio(videoTestElement);
+			
         const aacCodecProfileConditions = [];
 
         // Handle he-aac not supported

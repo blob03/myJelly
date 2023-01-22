@@ -30,7 +30,7 @@ import '../assets/css/backdropControl.scss';
 import '../assets/css/digitalClock.scss';
 
 import appSettings from './settings/appSettings';
-import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -269,10 +269,8 @@ import { currentSettings, toggleNightMode, enableClock, enableWeatherBot, showWe
 			if (headerHomeButton) 
 				headerHomeButton.classList.remove('hide');
 			
-			if (headerNightmodeButton && (enableClock() == 1 || enableClock() == 2 || enableWeatherBot() == 1 || enableWeatherBot() == 2))
-				headerNightmodeButton.classList.remove('hide');
-			else
-				headerNightmodeButton.classList.add('hide');
+			if (headerNightmodeButton)
+				headerNightmodeButton.classList.toggle('hide', enableNightModeSwitch() < 2);
 			
 			if (headerSearchButton)
 				headerSearchButton.classList.remove('hide');

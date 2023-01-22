@@ -34,6 +34,8 @@
     "EnableBlurHashSomeMoreHelp": "Defining a lower value should provide better performance.",
     "EnableClock": "Enable clock:",
     "EnableClockHelp": "Show the clock in the top bar.",
+    "EnableNightModeSwitch": "Night mode:",
+    "EnableNightModeSwitchHelp": "Night mode can be activated from the menu bar or automatically if Weatherbot has been enabled.",
     "EnableThemeVideosHelp": "Play theme videos in the background while browsing the library.",
     "EnableWeatherBot": "Enable WeatherBot:",
     "EnableWeatherBotHelp": "Show current condition in the top bar.",
