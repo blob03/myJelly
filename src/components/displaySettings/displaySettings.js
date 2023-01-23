@@ -244,12 +244,21 @@ import './displaysettings.scss';
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
-		userSettingsInstance.enableNightModeSwitch(context.querySelector('#selectNightModeSwitch').value);
+		const nightModeSwitchVal = context.querySelector('#selectNightModeSwitch').value;
+		userSettingsInstance.enableNightModeSwitch(nightModeSwitchVal);
 		let headerNightmodeButton = document.querySelector('.headerNightmodeButton');
 		if (headerNightmodeButton)
-			headerNightmodeButton.classList.toggle('hide', context.querySelector('#selectNightModeSwitch').value < 2);
-		if (!(context.querySelector('#selectNightModeSwitch').value & 0x1))
-			userSettingsInstance.toggleNightMode(false, false);
+			headerNightmodeButton.classList.toggle('hide', nightModeSwitchVal !== '3');
+		switch(nightModeSwitchVal) {
+			case '0':
+			case '2':
+			case '3':
+				userSettingsInstance.toggleNightMode(false, false);
+				break;
+			case '1':
+				userSettingsInstance.toggleNightMode(false, true);
+				break;
+		}
 		
 		userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
         userSettingsInstance.enableBlurhash(context.querySelector('#sliderBlurhash').value);

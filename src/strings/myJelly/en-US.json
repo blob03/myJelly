@@ -92,6 +92,7 @@
     "LoggingOut": "Logging out...",
     "LogoScreensaverHelp": "Show the Jellyfin logo in motion.",
     "MJBackdropScreensaverHelp": "Show the backdrops from the source defined above.",
+    "Manual": "Manual",
     "MissingAPIKey": "API KEY MISSING",
     "MoreDiffused": "More diffused",
     "MuteButton": "Mute button",

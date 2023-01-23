@@ -270,7 +270,7 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
 				headerHomeButton.classList.remove('hide');
 			
 			if (headerNightmodeButton)
-				headerNightmodeButton.classList.toggle('hide', enableNightModeSwitch() < 2);
+				headerNightmodeButton.classList.toggle('hide', enableNightModeSwitch() != 3);
 			
 			if (headerSearchButton)
 				headerSearchButton.classList.remove('hide');

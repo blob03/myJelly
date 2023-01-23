@@ -92,6 +92,7 @@
     "LoggingOut": "Fermeture de session...",
     "LogoScreensaverHelp": "Afficher et animer le logo de Jellyfin.",
     "MJBackdropScreensaverHelp": "Afficher les arrière-plans définis au-dessus.",
+    "Manual": "Manuel",
     "MissingAPIKey": "CLEF API MANQUANTE",
     "MoreDiffused": "Plus diffus",
     "MuteButton": "Bouton 'Silence'",

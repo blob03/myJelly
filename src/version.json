@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-33",
+	"version": "10.8.8-34",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -195,6 +195,7 @@
 		"10.8.8-30": "Synchronize translations.\nAdd option 'displayFontSize' to config.json which allows to adjust the base font size (TV layout).\nReplace button icon to access display options of videos and images libraries, make it consistent with movies and series.\nAdd a colorized overlay to the night mode to make things easier for the tired eyes.\nImprove style for the backdrop controller widget.\nAdd host hardware type to host details (About tab).",
 		"10.8.8-31": "Synchronize translations.\nApply patch 'Add stereo downmix setting'.\nApply patch 'Show total count when no pagination is applied'.\nFix: Hide total count message when total count is null.",
 		"10.8.8-32": "Synchronize translations and node packages.\nFix details page layout for people and books when option 'Details Banner' in use.",
-		"10.8.8-33": "Synchronize translations.\nFix layout when rendering backdropless items, such as people, with option 'Details Banner' enabled.\nThe night mode switch button can be disabled in the display settings.\nEnabling night mode manually (using the button) doesn't need the clock or the weather bot though if set as 'auto', the latter must be running.\nApply patch 'Fix detection of SecondaryAudio support'.\nApply patch 'Fix HTML escaping in MediaSession and on remote page'.\nApply patch 'Fix change audio track'.\nApply patch 'Fix AudioContext limit exceeded'.\nApply patch 'Fix XSS vulnerability in plugin repo pages'.\nApply patch 'Fix back action on Hisense TV'."
+		"10.8.8-33": "Synchronize translations.\nFix layout when rendering backdropless items, such as people, with option 'Details Banner' enabled.\nThe night mode switch button can be disabled in the display settings.\nEnabling night mode manually (using the button) doesn't need the clock or the weather bot though if set as 'auto', the latter must be running.\nApply patch 'Fix detection of SecondaryAudio support'.\nApply patch 'Fix HTML escaping in MediaSession and on remote page'.\nApply patch 'Fix change audio track'.\nApply patch 'Fix AudioContext limit exceeded'.\nApply patch 'Fix XSS vulnerability in plugin repo pages'.\nApply patch 'Fix back action on Hisense TV'.",
+		"10.8.8-34": "Synchronize translations.\nApply patch 'Fix the progressive mp4 transcoding profile'.\nReplace 'Auto/Manual' night mode with 'Always'.\nAdd missing translation key."
 	}
 }

@@ -178,16 +178,16 @@ function hdrWeather() {
 			}
 		}
 		
-		let _date_sunset;
-		let _date_sunrise;
+		self._date_sunrise = 0;
+		self._date_sunset = 0;
 		
 		if (_data.sunrise) {
 			 if (_data.sunrise.charAt(_data.sunrise.length - 1).toUpperCase() !== 'Z')
 				_data.sunrise += 'Z';
-			_date_sunrise = new Date(_data.sunrise);
-			const _date_sunrise_localized = datetime.toLocaleTimeString(_date_sunrise, currentSettings._opts_time); 
-	
-			self._hdrwth.sunrise.innerHTML = _date_sunrise_localized;
+			const x = new Date(_data.sunrise);
+			self._date_sunrise = x.getTime();
+			const y = datetime.toLocaleTimeString(x, currentSettings._opts_time); 
+			self._hdrwth.sunrise.innerHTML = y;
 			if (self._hdrwth.sunrise.parentNode)
 				self._hdrwth.sunrise.parentNode.title = globalize.translate('Sunrise');
 		}
@@ -195,20 +195,18 @@ function hdrWeather() {
 		if (_data.sunset) {
 			if (_data.sunset.charAt(_data.sunset.length - 1).toUpperCase() !== 'Z')
 				_data.sunset += 'Z'; 
-			_date_sunset = new Date(_data.sunset);
-			const _date_sunset_localized = datetime.toLocaleTimeString(_date_sunset, currentSettings._opts_time);
-			
-			self._hdrwth.sunset.innerHTML = _date_sunset_localized;
+			const x = new Date(_data.sunset);
+			self._date_sunset = x.getTime();
+			const y = datetime.toLocaleTimeString(x, currentSettings._opts_time);
+			self._hdrwth.sunset.innerHTML = y;
 			if (self._hdrwth.sunset.parentNode)
 				self._hdrwth.sunset.parentNode.title = globalize.translate('Sunset');
 		}
 		
-		if (self.enableNightModeSwitch() & 0x1) {
-			if (_date_sunrise && _date_sunset) {
-				const x = _date_sunrise.getTime();
-				const y = _date_sunset.getTime();
-				const z = new Date();
-				if (z >= x && z < y)
+		if (self.enableNightModeSwitch() === 2) {
+			if (self._date_sunrise && self._date_sunset) {
+				const z = new Date().getTime();
+				if (z >= self._date_sunrise && z < self._date_sunset)
 					self.toggleNightMode(false, false);
 				else
 					self.toggleNightMode(false, true);
@@ -249,6 +247,8 @@ export class UserSettings {
 		this._pwrButtons = false;
 		this._opts_date = {year: 'numeric', day: '2-digit', weekday: 'long', month: 'long', timeZoneName: undefined};
 		this._opts_time = {hour: 'numeric', minute: '2-digit'};
+		this._date_sunrise = 0;
+		this._date_sunset = 0;
     }
 	
 	/**

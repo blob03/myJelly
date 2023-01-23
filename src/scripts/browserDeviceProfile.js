@@ -106,7 +106,7 @@ import browser from './browser';
     function canPlayAudioFormat(format) {
         let typeString;
 
-        if (format === 'flac') {
+        if (format === 'flac' || format === 'asf') {
             if (browser.tizen || browser.web0s || browser.edgeUwp) {
                 return true;
             }
@@ -114,12 +114,8 @@ import browser from './browser';
             if (browser.tizen || browser.edgeUwp) {
                 return true;
             }
-        } else if (format === 'asf') {
-            if (browser.tizen || browser.web0s || browser.edgeUwp) {
-                return true;
-            }
         } else if (format === 'opus') {
-			if (browser.web0s) {
+            if (browser.web0s) {
                 // canPlayType lies about OPUS support
                 return browser.web0sVersion >= 3.5;
             }
@@ -159,13 +155,11 @@ import browser from './browser';
             return true;
         }
 
-       return !!browser.edgeUwp;
+        return !!browser.edgeUwp;
     }
 
     function testCanPlayAv1(videoTestElement) {
-        if (browser.tizenVersion >= 5.5) {
-            return true;
-        } else if (browser.web0sVersion >= 5) {
+        if (browser.tizenVersion >= 5.5 || browser.web0sVersion >= 5) {
             return true;
         }
 
@@ -191,6 +185,7 @@ import browser from './browser';
 
         switch (container) {
             case 'asf':
+            case 'wmv':
                 supported = browser.tizen || browser.web0s || browser.edgeUwp;
                 videoAudioCodecs = [];
                 break;
@@ -232,10 +227,6 @@ import browser from './browser';
                 if (supportsMpeg2Video()) {
                     videoCodecs.push('mpeg2video');
                 }
-                break;
-            case 'wmv':
-                supported = browser.tizen || browser.web0s || browser.edgeUwp;
-                videoAudioCodecs = [];
                 break;
             case 'ts':
                 supported = testCanPlayTs();
@@ -293,14 +284,14 @@ import browser from './browser';
     }
 
     let maxChannelCount = null;
-	
+
     function getSpeakerCount() {
-		if (maxChannelCount != null) {
+        if (maxChannelCount != null) {
             return maxChannelCount;
         }
 
         maxChannelCount = -1;
-		
+
         const AudioContext = window.AudioContext || window.webkitAudioContext || false; /* eslint-disable-line compat/compat */
 
         if (AudioContext) {
@@ -324,14 +315,14 @@ import browser from './browser';
         }
 
         const isSurroundSoundSupportedBrowser = browser.safari || browser.chrome || browser.edgeChromium || browser.firefox || browser.tv || browser.ps4 || browser.xboxOne;
-		const isAc3Eac3Supported = supportsAc3(videoTestElement) || supportsEac3(videoTestElement);
+        const isAc3Eac3Supported = supportsAc3(videoTestElement) || supportsEac3(videoTestElement);
         const speakerCount = getSpeakerCount();
 
-		// AC3/EAC3 hinted that device is able to play dolby surround sound.
+        // AC3/EAC3 hinted that device is able to play dolby surround sound.
         if (isAc3Eac3Supported && isSurroundSoundSupportedBrowser) {
             return speakerCount > 6 ? speakerCount : 6;
         }
-		
+
         if (speakerCount > 2) {
             if (isSurroundSoundSupportedBrowser) {
                 return speakerCount;
@@ -350,43 +341,45 @@ import browser from './browser';
 
         return 2;
     }
-	
-	/**
-	 * Checks if the web engine supports secondary audio.
-	 * @param {HTMLVideoElement} videoTestElement The video test element
-	 * @returns {boolean} _true_ if the web engine supports secondary audio.
-	 */
-	export function canPlaySecondaryAudio(videoTestElement) {
-		// We rely on HTMLMediaElement.audioTracks
-		// It works in Chrome 79+ with "Experimental Web Platform features" enabled
-		return !!videoTestElement.audioTracks
-			// It doesn't work in Firefox 108 even with "media.track.enabled" enabled (it only sees the first audio track)
-			&& !browser.firefox
-			// It seems to work on Tizen 5.5+ (2020, Chrome 69+). See https://developer.tizen.org/forums/web-application-development/video-tag-not-work-audiotracks
-			&& (browser.tizenVersion >= 5.5 || !browser.tizen)
-			// Assume webOS 5+ (2020, Chrome 68+) supports secondary audio like Tizen 5.5+
-			&& (browser.web0sVersion >= 5.0 || !browser.web0sVersion);
-	}
+
+/**
+ * Checks if the web engine supports secondary audio.
+ * @param {HTMLVideoElement} videoTestElement The video test element
+ * @returns {boolean} _true_ if the web engine supports secondary audio.
+ */
+export function canPlaySecondaryAudio(videoTestElement) {
+    // We rely on HTMLMediaElement.audioTracks
+    // It works in Chrome 79+ with "Experimental Web Platform features" enabled
+    return !!videoTestElement.audioTracks
+        // It doesn't work in Firefox 108 even with "media.track.enabled" enabled (it only sees the first audio track)
+        && !browser.firefox
+        // It seems to work on Tizen 5.5+ (2020, Chrome 69+). See https://developer.tizen.org/forums/web-application-development/video-tag-not-work-audiotracks
+        && (browser.tizenVersion >= 5.5 || !browser.tizen)
+        // Assume webOS 5+ (2020, Chrome 68+) supports secondary audio like Tizen 5.5+
+        && (browser.web0sVersion >= 5.0 || !browser.web0sVersion);
+}
 
     export default function (options) {
         options = options || {};
 
         const bitrateSetting = getMaxBitrate();
+
         const videoTestElement = document.createElement('video');
-		const physicalAudioChannels = getPhysicalAudioChannels(options, videoTestElement);
+
+        const physicalAudioChannels = getPhysicalAudioChannels(options, videoTestElement);
+
         const canPlayVp8 = videoTestElement.canPlayType('video/webm; codecs="vp8"').replace(/no/, '');
         const canPlayVp9 = videoTestElement.canPlayType('video/webm; codecs="vp9"').replace(/no/, '');
         const webmAudioCodecs = ['vorbis'];
 
         const canPlayMkv = testCanPlayMkv(videoTestElement);
 
-        const profile = {};
-
-        profile.MaxStreamingBitrate = bitrateSetting;
-        profile.MaxStaticBitrate = 100000000;
-        profile.MusicStreamingTranscodingBitrate = Math.min(bitrateSetting, 384000);
-
-        profile.DirectPlayProfiles = [];
+        const profile = {
+            MaxStreamingBitrate: bitrateSetting,
+            MaxStaticBitrate: 100000000,
+            MusicStreamingTranscodingBitrate: Math.min(bitrateSetting, 384000),
+            DirectPlayProfiles: []
+        };
 
         let videoAudioCodecs = [];
         let hlsInTsVideoAudioCodecs = [];
@@ -404,11 +397,11 @@ import browser from './browser';
             if (supportsMp3VideoAudio && (browser.chrome || browser.edgeChromium || (browser.firefox && browser.versionMajor >= 83))) {
                 supportsMp2VideoAudio = true;
             }
-			if (browser.android) {
+            if (browser.android) {
                 supportsMp2VideoAudio = false;
             }
         }
-		
+
         /* eslint-disable compat/compat */
         let maxVideoWidth = browser.xboxOne ? window.screen?.width : null;
 
@@ -462,19 +455,18 @@ import browser from './browser';
 
         if (supportsMp2VideoAudio) {
             videoAudioCodecs.push('mp2');
-			hlsInTsVideoAudioCodecs.push('mp2');
+            hlsInTsVideoAudioCodecs.push('mp2');
             hlsInFmp4VideoAudioCodecs.push('mp2');
         }
-		
+
         let supportsDts = options.supportsDts;
         if (supportsDts == null) {
-            supportsDts = browser.tizen || browser.web0sVersion 
-				|| videoTestElement.canPlayType('video/mp4; codecs="dts-"').replace(/no/, '') 
-				|| videoTestElement.canPlayType('video/mp4; codecs="dts+"').replace(/no/, '');
-			
-		    // DTS audio is not supported by Samsung TV 2018+ (Tizen 4.0+) and LG TV 2020+ (webOS 5.0+) models
-            if (browser.tizenVersion >= 4 || browser.web0sVersion >= 5) 
-                supportsDts = false;	
+            supportsDts = browser.tizen || browser.web0sVersion || videoTestElement.canPlayType('video/mp4; codecs="dts-"').replace(/no/, '') || videoTestElement.canPlayType('video/mp4; codecs="dts+"').replace(/no/, '');
+
+            // DTS audio is not supported by Samsung TV 2018+ (Tizen 4.0+) and LG TV 2020+ (webOS 5.0+) models
+            if (browser.tizenVersion >= 4 || browser.web0sVersion >= 5) {
+                supportsDts = false;
+            }
         }
 
         if (supportsDts) {
@@ -567,7 +559,6 @@ import browser from './browser';
         }
 
         if (canPlayVp8) {
-            mp4VideoCodecs.push('vp8');
             webmVideoCodecs.push('vp8');
         }
 
@@ -750,16 +741,15 @@ import browser from './browser';
             }
         }
 
-        if (canPlayVp8) {
+        // Progressive mp4 transcoding
+        if (mp4VideoCodecs.length && videoAudioCodecs.length) {
             profile.TranscodingProfiles.push({
-                Container: 'webm',
+                Container: 'mp4',
                 Type: 'Video',
-                AudioCodec: 'vorbis',
-                VideoCodec: 'vpx',
+                AudioCodec: videoAudioCodecs.join(','),
+                VideoCodec: mp4VideoCodecs.join(','),
                 Context: 'Streaming',
                 Protocol: 'http',
-                // If audio transcoding is needed, limit channels to number of physical audio channels
-                // Trying to transcode to 5 channels when there are only 2 speakers generally does not sound good
                 MaxAudioChannels: physicalAudioChannels.toString()
             });
         }
@@ -778,7 +768,7 @@ import browser from './browser';
         profile.CodecProfiles = [];
 
         const supportsSecondaryAudio = canPlaySecondaryAudio(videoTestElement);
-			
+
         const aacCodecProfileConditions = [];
 
         // Handle he-aac not supported
@@ -836,12 +826,12 @@ import browser from './browser';
             maxH264Level = 52;
         }
 
-        if (browser.tizen ||
-            videoTestElement.canPlayType('video/mp4; codecs="avc1.6e0033"').replace(/no/, '')) {
+        if ((browser.tizen ||
+            videoTestElement.canPlayType('video/mp4; codecs="avc1.6e0033"').replace(/no/, ''))
             // These tests are passing in safari, but playback is failing
-            if (!browser.safari && !browser.iOS && !browser.web0s && !browser.edge && !browser.mobile) {
-                h264Profiles += '|high 10';
-            }
+            && !browser.safari && !browser.iOS && !browser.web0s && !browser.edge && !browser.mobile
+        ) {
+            h264Profiles += '|high 10';
         }
 
         let maxHevcLevel = 120;
@@ -874,7 +864,7 @@ import browser from './browser';
             hevcProfiles = 'main|main 10';
         }
 
-		const h264VideoRangeTypes = 'SDR';
+        const h264VideoRangeTypes = 'SDR';
         let hevcVideoRangeTypes = 'SDR';
         let vp9VideoRangeTypes = 'SDR';
         let av1VideoRangeTypes = 'SDR';
@@ -896,7 +886,7 @@ import browser from './browser';
             vp9VideoRangeTypes += '|HDR10|HLG';
             av1VideoRangeTypes += '|HDR10|HLG';
         }
-		
+
         const h264CodecProfileConditions = [
             {
                 Condition: 'NotEquals',
@@ -910,7 +900,7 @@ import browser from './browser';
                 Value: h264Profiles,
                 IsRequired: false
             },
-			{
+            {
                 Condition: 'EqualsAny',
                 Property: 'VideoRangeType',
                 Value: h264VideoRangeTypes,
@@ -937,7 +927,7 @@ import browser from './browser';
                 Value: hevcProfiles,
                 IsRequired: false
             },
-			{
+            {
                 Condition: 'EqualsAny',
                 Property: 'VideoRangeType',
                 Value: hevcVideoRangeTypes,
@@ -950,8 +940,8 @@ import browser from './browser';
                 IsRequired: false
             }
         ];
-		
-		const vp9CodecProfileConditions = [
+
+        const vp9CodecProfileConditions = [
             {
                 Condition: 'EqualsAny',
                 Property: 'VideoRangeType',
@@ -1057,8 +1047,8 @@ import browser from './browser';
             Codec: 'hevc',
             Conditions: hevcCodecProfileConditions
         });
-		
-		 profile.CodecProfiles.push({
+
+        profile.CodecProfiles.push({
             Type: 'Video',
             Codec: 'vp9',
             Conditions: vp9CodecProfileConditions
