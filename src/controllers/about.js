@@ -12,8 +12,11 @@ import './about.scss';
 
 function getHostVersion(browser) {
 	if (browser.web0s) {
-		const ver = browser.web0sVersion();
-		return 'WebOS' + (ver? (' ' + ver) : '');
+		let ver = 'WebOS';
+		const x = browser.web0sVersion;
+		if (x !== undefined)
+			ver += ' ' + x;
+		return ver;
 	}
 	if (browser.iOS) {
 		let version = browser.iOSVersion;
