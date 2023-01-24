@@ -214,11 +214,6 @@ export function loginBackdrops() {
 }
 
 // Boolean to set (or not) the night mode.
-export function loginNightMode() {
-	return Boolean(_config_data?.login?.nightMode);
-}
-
-// Boolean to set (or not) the night mode.
 export function loginServerLastSeen() {
 	return Boolean(_config_data?.login?.serverLastSeen);
 }
@@ -305,12 +300,27 @@ export function loginClockFormat() {
 
 // Boolean to show or hide the pin button in the header of the login screen.
 export function pinButton() {
-	return Boolean(_config_data?.login?.header?.pin);
+	return Boolean(_config_data?.login?.header?.buttons?.pin);
+}
+
+// Boolean to pin or unpin the header when kicking off.
+export function pinStatus() {
+	return Boolean(_config_data?.login?.header?.status?.pin);
+}
+
+// Boolean to show or hide the nightMode button.
+export function nightModeButton() {
+	return Boolean(_config_data?.login?.header?.buttons?.nightMode);
+}
+
+// Boolean to set (or not) the night mode when kicking off the login screen.
+export function nightModeStatus() {
+	return Boolean(_config_data?.login?.header?.status?.nightMode);
 }
 
 // Boolean to show or hide the reload button in the header of the login screen.
 export function reloadButton() {
-	return Boolean(_config_data?.login?.header?.reload);
+	return Boolean(_config_data?.login?.header?.buttons?.reload);
 }
 
 // Boolean to show or hide the quickConnect authentication button in the login menu.

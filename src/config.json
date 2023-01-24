@@ -22,10 +22,16 @@
 		"enableBackdropsRotation": true,
 		"enableFastFadein": false,
 		"header": {
-			"pin": true,
-			"reload": false
+			"buttons": {
+				"nightMode": true,
+				"pin": true,
+				"reload": false
+			},
+			"status": {
+				"nightMode": false,
+				"pin": true
+			}
 		},
-		"nightMode": false,
 		"serverSelection": true,
 		"serverLastSeen": true,
 		"setBackdropsContrast": 5,

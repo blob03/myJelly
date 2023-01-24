@@ -11,8 +11,10 @@ import Dashboard from '../utils/dashboard';
 import './about.scss';
 
 function getHostVersion(browser) {
-	if (browser.web0s) 
-		return 'WebOS ' + browser.web0sVersion;
+	if (browser.web0s) {
+		const ver = browser.web0sVersion();
+		return 'WebOS' + (ver? (' ' + ver) : '');
+	}
 	if (browser.iOS) {
 		let version = browser.iOSVersion;
 		if (browser.ipad)
@@ -49,12 +51,12 @@ class AboutTab {
 		html += '<div class="aboutLabel">' + globalize.translate('LabelAppHost') + '</div>';
 		html += '<div class="aboutContent">';
 		if (layoutManager.mobile)
-			html += globalize.translate('Mobile') + ' ';
+			html += globalize.translate('Mobile') + ' / ';
 		else if (layoutManager.tv) 
-			html += globalize.translate('TV') + ' ';
+			html += globalize.translate('TV') + ' / ';
 		else if (layoutManager.desktop) 
-			html += globalize.translate('Desktop') + ' ';
-		html += '/ ' + appHost.deviceName() + ' - ' + getHostVersion(browser);
+			html += globalize.translate('Desktop') + ' / ';
+		html += appHost.deviceName() + ' - ' + getHostVersion(browser);
 		html += '</div>';	
 		html += '</div>';
 		html += '<div style="display: flex">';

@@ -764,6 +764,26 @@ export class UserSettings {
 		_hdrclck.classList.toggle('nightMode', val);
 	}
 	
+	togglePin(TOGGLE, newval) {
+		const pinIcon = document.getElementById("pin");
+		const skinHeader = document.querySelector('.skinHeader');
+		if (!pinIcon)
+			return;
+		
+		let _pinned = appSettings.pinMenubar();
+		if (TOGGLE === undefined || TOGGLE === true) {
+			_pinned = !_pinned;
+			appSettings.pinMenubar(_pinned);
+		}
+		if (TOGGLE === false && newval !== undefined) {
+			_pinned = newval === true;
+			appSettings.pinMenubar(_pinned);
+		}
+		skinHeader.classList.toggle('pinned', _pinned);
+		pinIcon.classList.toggle('lock_open', !_pinned);
+		pinIcon.classList.toggle('lock', _pinned);
+	}
+	
     /**
      * Get or set 'Clock' state.
      * @param {boolean|undefined} val - Flag to (en|dis)able 'Clock' (Set) or undefined (Get).
@@ -1655,6 +1675,7 @@ export const setClockFormat = currentSettings.setClockFormat.bind(currentSetting
 export const showWeatherBot = currentSettings.showWeatherBot.bind(currentSettings);
 export const placeClock = currentSettings.placeClock.bind(currentSettings);
 export const toggleNightMode = currentSettings.toggleNightMode.bind(currentSettings);
+export const togglePin = currentSettings.togglePin.bind(currentSettings);
 export const enableBlurhash = currentSettings.enableBlurhash.bind(currentSettings);
 export const TVHome = currentSettings.TVHome.bind(currentSettings);
 export const swiperDelay = currentSettings.swiperDelay.bind(currentSettings);

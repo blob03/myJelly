@@ -16,7 +16,7 @@ import browser from './browser';
 import globalize from './globalize';
 import toast from '../components/toast/toast';
 import imageHelper from './imagehelper';
-import { getMenuLinks, pinButton, reloadButton, loginClock, loginClockPos, loginClockFormat } from '../scripts/settings/webSettings';
+import { getMenuLinks, pinButton, reloadButton, loginClock, nightModeButton, loginClockPos, loginClockFormat } from '../scripts/settings/webSettings';
 import Dashboard, { pageClassOn } from '../utils/dashboard';
 import { getParameterByName } from '../utils/url';
 import ServerConnections from '../components/ServerConnections';
@@ -30,7 +30,7 @@ import '../assets/css/backdropControl.scss';
 import '../assets/css/digitalClock.scss';
 
 import appSettings from './settings/appSettings';
-import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, togglePin, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -308,8 +308,6 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
 				headerHomeButton.classList.add('hide');
 			if (headerCastButton)
 				headerCastButton.classList.add('hide');
-			if (headerNightmodeButton)
-				headerNightmodeButton.classList.add('hide');
 			if (headerSyncButton)
 				headerSyncButton.classList.add('hide');
 			if (headerSearchButton) 
@@ -318,16 +316,16 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
 				backdropInfoButton.classList.add('hide');
 
 			showClock(loginClock());
-			// At this point, we only keep the reload button for dev.
-			// it is settable in config.json.
-			if (headerReloadButton && reloadButton() === true) {
-				headerReloadButton.classList.remove('hide');
+			// We keep a reload button mostly for dev purposes.
+			// it is settable at login.header.buttons.reload in config.json.
+			if (headerReloadButton) {
+				headerReloadButton.classList.toggle('hide', reloadButton() !== true);
 			}
-			if (headerPinButton && pinButton() === true) {
-				const pinIcon = document.getElementById('pin');
-				if (pinIcon)
-					togglePin(false);
-				headerPinButton.classList.remove('hide');
+			if (headerPinButton) {
+				headerPinButton.classList.toggle('hide', pinButton() !== true);
+			}
+			if (headerNightmodeButton) {
+				headerNightmodeButton.classList.toggle('hide', nightModeButton() !== true);
 			}
 		}
 	}
@@ -367,21 +365,6 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
     function showSearch() {
         inputManager.handleCommand('search');
     }
-	
-	function togglePin(TOGGLE) {
-		const pinIcon = document.getElementById("pin");
-		if (!pinIcon)
-			return;
-		
-		let _pinned = appSettings.pinMenubar();
-		if (TOGGLE === undefined || TOGGLE === true) {
-			_pinned = !_pinned;
-			appSettings.pinMenubar(_pinned);
-		}
-		skinHeader.classList.toggle('pinned', _pinned);
-		pinIcon.classList.toggle('lock_open', !_pinned);
-		pinIcon.classList.toggle('lock', _pinned);
-	}
 
     function onHeaderUserButtonClick() {
         Dashboard.navigate('mypreferencesmenu.html');

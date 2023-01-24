@@ -421,8 +421,13 @@ import './login.scss';
 			}
 		});
 		
-		appSettings.enableNightMode(webSettings.loginNightMode());
-		userSettings.toggleNightMode(false);
+		const pinIcon = document.getElementById('pin');
+		if (pinIcon)
+			userSettings.togglePin(false, webSettings.pinStatus()); 
+		
+		appSettings.enableNightMode(webSettings.nightModeStatus());
+		userSettings.toggleNightMode(false, webSettings.nightModeStatus());
+				
 		userSettings.enableBackdrops("Theme");
 		userSettings.backdropDelay(webSettings.loginBackdropsRotationDelay());
 		setBackdropContrast(webSettings.loginBackdropsContrast());
