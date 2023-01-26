@@ -170,6 +170,7 @@ import './displaysettings.scss';
 		context.querySelector('#inputApikey').value = userSettings.weatherApiKey();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
 		context.querySelector('#selectNightModeSwitch').value = userSettings.enableNightModeSwitch();
+		context.querySelector('#selectMenuPin').value = userSettings.enableMenuPin();
 		
         context.querySelector('#sliderBlurhash').value = userSettings.enableBlurhash();
 		context.querySelector('#sliderSwiperDelay').value = userSettings.swiperDelay();
@@ -244,6 +245,24 @@ import './displaysettings.scss';
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
+
+		const menuPinVal = context.querySelector('#selectMenuPin').value;
+		userSettingsInstance.enableMenuPin(menuPinVal);
+		let headerPinButton = document.querySelector('.headerPinButton');
+		if (headerPinButton)
+			headerPinButton.classList.toggle('hide', menuPinVal !== '2');
+		switch(menuPinVal) {
+			case '0':
+				userSettingsInstance.togglePin(false, false);
+				break;
+			case '1':
+				userSettingsInstance.togglePin(false, true);
+				break;
+			case '2':
+				userSettingsInstance.togglePin(false);
+				break;
+		}
+
 		const nightModeSwitchVal = context.querySelector('#selectNightModeSwitch').value;
 		userSettingsInstance.enableNightModeSwitch(nightModeSwitchVal);
 		let headerNightmodeButton = document.querySelector('.headerNightmodeButton');
@@ -251,7 +270,6 @@ import './displaysettings.scss';
 			headerNightmodeButton.classList.toggle('hide', nightModeSwitchVal !== '3');
 		switch(nightModeSwitchVal) {
 			case '0':
-			case '2':
 			case '3':
 				userSettingsInstance.toggleNightMode(false, false);
 				break;

@@ -244,7 +244,7 @@
     position: relative;
 }
 
-.skinHeader.pinned {
+.pinned .skinHeader {
     position: fixed;
 }
 
@@ -1280,8 +1280,12 @@ div.itemDetailGalleryLink.defaultCardBackground {
 	padding: .8em 0em;
 }
 
-.layout-desktop .itemBackdrop {
-	background-position: 0em 3.6em;
+.pinned .itemBackdrop {
+	background-position: 0em 5.5em !important;
+}
+
+.itemBackdrop {
+	background-position: 0em 0em;
 }
 
 .listViewUserDataButtons {

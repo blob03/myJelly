@@ -34,6 +34,8 @@
     "EnableBlurHashSomeMoreHelp": "Le cas échéant, baisser la valeur pour améliorer les performances.",
     "EnableClock": "Activer l'horloge :",
     "EnableClockHelp": "Afficher l'horloge dans la barre du haut.",
+    "EnableMenuPin": "Menu épinglé:",
+    "EnableMenuPinHelp": "La barre de menu peut être épinglée à la demande depuis l'icone visible dans le coin supérieur gauche.",
     "EnableNightModeSwitch": "Mode nocturne :",
     "EnableNightModeSwitchHelp": "La vue nocture peut être activée depuis la barre de menu ou bien automatiquement si MétéoRobot est actif.",
     "EnableThemeVideosHelp": "Lire les vidéos thématiques en arrière-plan pendant la navigation dans la médiathèque.",

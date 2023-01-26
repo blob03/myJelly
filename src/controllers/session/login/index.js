@@ -425,8 +425,9 @@ import './login.scss';
 		if (pinIcon)
 			userSettings.togglePin(false, webSettings.pinStatus()); 
 		
-		appSettings.enableNightMode(webSettings.nightModeStatus());
-		userSettings.toggleNightMode(false, webSettings.nightModeStatus());
+		const nightmode = webSettings.nightModeStatus();
+		appSettings.enableNightMode(nightmode);
+		userSettings.toggleNightMode(false, nightmode);
 				
 		userSettings.enableBackdrops("Theme");
 		userSettings.backdropDelay(webSettings.loginBackdropsRotationDelay());

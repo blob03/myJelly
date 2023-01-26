@@ -779,7 +779,7 @@ export class UserSettings {
 			_pinned = newval === true;
 			appSettings.pinMenubar(_pinned);
 		}
-		skinHeader.classList.toggle('pinned', _pinned);
+		document.body.classList.toggle('pinned', _pinned);
 		pinIcon.classList.toggle('lock_open', !_pinned);
 		pinIcon.classList.toggle('lock', _pinned);
 	}
@@ -1103,6 +1103,23 @@ export class UserSettings {
 		const x = parseInt(this.get('nightModeSwitch'), 10);
 		// 0 is a valid value.
 		if (isNaN(x) || x < 0 || x > 3) 
+			return 0; // default to 0 (disabled).
+        else 
+            return x;
+    }
+	
+	/**
+     * Get or set 'Menu Pin' state.
+     * @param {int|undefined} val - mode ref to enable 'Menu Pin' or undefined.
+     * @return {boolean} 'Menu Pin' state.
+     */
+    enableMenuPin(val) {
+        if (val !== undefined)
+            return this.set('menuPin', parseInt(val, 10));
+
+		const x = parseInt(this.get('menuPin'), 10);
+		// 0 is a valid value.
+		if (isNaN(x) || x < 0 || x > 2) 
 			return 0; // default to 0 (disabled).
         else 
             return x;
@@ -1664,6 +1681,7 @@ export const getlongitude = currentSettings.getlongitude.bind(currentSettings);
 export const weatherApiKey = currentSettings.weatherApiKey.bind(currentSettings);
 export const enableFastFadein = currentSettings.enableFastFadein.bind(currentSettings);
 export const enableNightModeSwitch = currentSettings.enableNightModeSwitch.bind(currentSettings);
+export const enableMenuPin = currentSettings.enableMenuPin.bind(currentSettings);
 export const enableClock = currentSettings.enableClock.bind(currentSettings);
 export const enableBackdropWidget = currentSettings.enableBackdropWidget.bind(currentSettings);
 export const enableWeatherBot = currentSettings.enableWeatherBot.bind(currentSettings);

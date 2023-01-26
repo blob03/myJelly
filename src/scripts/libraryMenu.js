@@ -30,7 +30,7 @@ import '../assets/css/backdropControl.scss';
 import '../assets/css/digitalClock.scss';
 
 import appSettings from './settings/appSettings';
-import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, togglePin, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
+import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, togglePin, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';
 
 /* eslint-disable indent */
 	
@@ -265,19 +265,16 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
 		if (user && user.localUser) {
 			if (headerReloadButton)
 				headerReloadButton.classList.add('hide');
-			
 			if (headerHomeButton) 
 				headerHomeButton.classList.remove('hide');
-			
 			if (headerNightmodeButton)
 				headerNightmodeButton.classList.toggle('hide', enableNightModeSwitch() != 3);
-			
+			if (headerPinButton) 
+				headerPinButton.classList.toggle('hide', enableMenuPin() != 2);
 			if (headerSearchButton)
 				headerSearchButton.classList.remove('hide');
-			
 			if (mainDrawerButton)
 				mainDrawerButton.classList.toggle('hide', layoutManager.tv);
-			
 			if (headerCastButton)
 				headerCastButton.classList.toggle('hide', layoutManager.tv);
 
@@ -294,12 +291,6 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
 				&& policy?.SyncPlayAccess !== 'none'
 			) {
 				headerSyncButton.classList.remove('hide');
-			}
-			if (headerPinButton) {
-				const pinIcon = document.getElementById('pin');
-				if (pinIcon)
-					togglePin(false);
-				headerPinButton.classList.remove('hide');
 			}
 		} else {
 			if (mainDrawerButton)
@@ -318,15 +309,12 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
 			showClock(loginClock());
 			// We keep a reload button mostly for dev purposes.
 			// it is settable at login.header.buttons.reload in config.json.
-			if (headerReloadButton) {
+			if (headerReloadButton)
 				headerReloadButton.classList.toggle('hide', reloadButton() !== true);
-			}
-			if (headerPinButton) {
+			if (headerPinButton)
 				headerPinButton.classList.toggle('hide', pinButton() !== true);
-			}
-			if (headerNightmodeButton) {
+			if (headerNightmodeButton)
 				headerNightmodeButton.classList.toggle('hide', nightModeButton() !== true);
-			}
 		}
 	}
 	
@@ -1295,6 +1283,29 @@ import { currentSettings, enableNightModeSwitch, toggleNightMode, enableClock, e
         ServerConnections.user(currentApiClient).then(function (user) {
 			currentUser = user;
 			globalize.updateCurrentCulture();
+			let x = enableMenuPin();
+			switch(x) {
+				case 0:
+					togglePin(false, false);
+					break;
+				case 1:
+					togglePin(false, true);
+					break;
+				case 2:
+					togglePin(false);
+					break;
+			}
+			x = enableNightModeSwitch();
+			switch(x) {
+				case 0:
+				case 2:
+				case 3:
+					toggleNightMode(false, false);
+					break;
+				case 1:
+					toggleNightMode(false, true);
+					break;
+			}
 			updateUserInHeader(user);
 			enableClock(enableClock());
 			WB_init();
