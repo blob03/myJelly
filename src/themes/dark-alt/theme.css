@@ -647,9 +647,11 @@ html {
 	font-size: 70% !important;
 }
 
-.nightMode > * {
-	color: #d7e2e9;
-	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+.nightMode .aboutTitle1,
+.nightMode .headerWthMain,
+.nightMode .headerClockActive {
+	color: #d7e2e9 !important;
+	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc !important;
 }
 
 .nightMode .headerWthIconBg {
@@ -1471,5 +1473,5 @@ select option:selected {
 }
 
 .nightFilter {
-	background-color: #0342ff !important;
+	background-color: rgba(3, 66, 255, .1) !important;
 }

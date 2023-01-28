@@ -267,7 +267,8 @@ html {
 }
 
 .button-link {
-    color: #00a4dc;
+    color: #5acaf0 !important;
+	text-shadow: 2px 2px 5px #1f485b !important;
 }
 
 .mediaInfoText {
@@ -275,10 +276,14 @@ html {
     background: rgba(170, 170, 190, 0.2);
 }
 
+.emby-textarea {
+	padding: .5rem .5rem .5rem .5rem !important;
+}
+
 .emby-input,
 .emby-textarea {
     color: inherit;
-    background: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(105deg, rgba(127, 213, 255, 0.3) 0%, rgba(17, 134, 219, 0.4) 40%, rgba(0, 106, 158, 0.5) 70%, rgba(42, 145, 255, 0.4) 100%) !important;
     border: 0.16em solid rgba(255, 255, 255, 0.135);
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
@@ -581,9 +586,20 @@ html {
 	font-size: 70% !important;
 }
 
-.nightmode > * {
-	color: #fff;
-	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2bd726, 0 0 40px #22ee1d, 0 0 50px #49f00d, 0 0 60px #16da3e, 0 0 70px #00e60e;
+.nightMode .headerWthIconBg {
+	box-shadow: 0 0 10px #40c86f, 0 0 40px #95ffce, 0 0 50px #95f8e1, 0 0 60px #86ffc0 !important;
+	color: #e0f1d7 !important;
+}
+
+.nightMode .aboutTitle1,
+.nightMode .headerWthMain,
+.nightMode .headerClockActive {
+	color: #b6fd8f !important;
+	text-shadow: 0 0 10px #40c86f, 0 0 40px #95ffce, 0 0 50px #95f8e1, 0 0 60px #86ffc0 !important;
+}
+
+.nightFilter {
+	background: linear-gradient(125deg, rgba(221, 255, 209, .1) 10%, rgba(184, 255, 144, .1) 30%, rgba(50, 155, 96, .1) 50%, rgba(14, 121, 61, .1) 60%, rgba(184, 255, 144, .1) 80%, rgba(221, 255, 209, .1) 100%) !important;
 }
 
 .headerClockButton:hover > .headerClockTime,

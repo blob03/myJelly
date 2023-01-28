@@ -539,17 +539,17 @@
     },
     "es-AR": {
         "ccode": "es-AR",
-        "fsize": 123585,
+        "fsize": 123787,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Argentina",
         "displayNativeName": "Español, República Argentina",
         "ISO6391": "es-AR",
         "ISO6392": "es-AR",
-        "keys#": 1673,
-        "completed%": 92.64,
+        "keys#": 1676,
+        "completed%": 92.8,
         "jellyfinWeb": {
             "filename": "es-AR.json",
-            "keys#": 1673,
+            "keys#": 1676,
             "orphans#": 13,
             "orphans": [
                 "ButtonNetwork",
@@ -566,7 +566,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.82
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -1185,7 +1185,7 @@
     },
     "it": {
         "ccode": "it",
-        "fsize": 119311,
+        "fsize": 119313,
         "ccodeSrc": "en-US",
         "displayName": "Italian",
         "displayNativeName": "Italiano",
@@ -1735,7 +1735,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 117221,
+        "fsize": 117225,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
@@ -1830,7 +1830,7 @@
     },
     "pl": {
         "ccode": "pl",
-        "fsize": 118572,
+        "fsize": 118568,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
         "displayNativeName": "Polski",
@@ -2047,17 +2047,17 @@
     },
     "ru": {
         "ccode": "ru",
-        "fsize": 173678,
+        "fsize": 173999,
         "ccodeSrc": "en-US",
         "displayName": "Russian",
         "displayNativeName": "Русский",
         "ISO6391": "ru",
         "ISO6392": "rus",
-        "keys#": 1673,
-        "completed%": 92.64,
+        "keys#": 1676,
+        "completed%": 92.8,
         "jellyfinWeb": {
             "filename": "ru.json",
-            "keys#": 1673,
+            "keys#": 1676,
             "orphans#": 14,
             "orphans": [
                 "ButtonNetwork",
@@ -2075,7 +2075,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.82
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

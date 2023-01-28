@@ -7,7 +7,7 @@
 
 .skinHeader,
 html {
-    color: #135090;
+    color: #213953;
 }
 
 .headerLeft, .headerRight {
@@ -465,11 +465,11 @@ option:disabled {
 
 .emby-input,
 .emby-textarea {
-	background: #8cbec6;
 	border: .2rem ridge rgb(109, 157, 169);
 	font-weight: 600;
 	line-height: 1.35;
-	color: rgb(170, 232, 254) !important;
+	color: rgb(185, 232, 214) !important;
+	background: linear-gradient(105deg, rgba(55, 95, 172, 0.2) 0%, rgba(60, 152, 126, 0.2) 40%, rgba(38, 112, 148, 0.2) 70%, rgba(185, 217, 219, 0.2) 100%) !important;
 }
 
 option:not(:disabled),
@@ -607,9 +607,15 @@ h3 {
 	font-size: 70% !important;
 }
 
-.nightMode > * {
-	color: #fff;
-	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
+.nightMode .headerWthIconBg {
+  box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
+}
+
+.nightMode .aboutTitle1,
+.nightMode .headerWthMain,
+.nightMode .headerClockActive {
+	color: #fff !important;
+	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4 !important;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -629,8 +635,8 @@ h3 {
 }
 
 .material-icons {
-	color: #135090;
-	text-shadow: 1px 1px 4px #304753;
+	text-shadow: 1px 1px 4px #558c8c;
+	color: rgb(34, 75, 90);
 }
 
 .cardOverlayButton > .material-icons {
@@ -757,15 +763,14 @@ h3 {
 	align-items: flex-start !important;
 	width: auto;
 	font-weight: 600;
-	text-shadow: 1px 1px 4px #9fa8ac;
-	color: rgb(57, 110, 129);
+	text-shadow: 1px 1px 4px #44756b;
+	color: rgb(34, 75, 90);
 }
 
 .aboutframe {
 	padding: .2em 1em .2em 1em !important;
 	background: rgba(117, 195, 195, 0.25) !important;
 	font-size: 100% !important;
-	line-height: 1.65 !important;
 }
 
 .aboutContent {
@@ -858,7 +863,7 @@ option.sourceDictionaryOption {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 4px groove #fcfcfc !important;
+	border: 3px groove #fcfcfc !important;
 	border-color: #b7e3f4 !important;
 }
 
@@ -1132,7 +1137,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .checkboxLabel,
 .inputLabel {
 	font-weight: 600;
-	color: rgb(57, 110, 129);
+	color: rgb(34, 75, 90);
 	font-size: 1em !important;
 	margin-bottom: .2em !important;
 }
@@ -1307,5 +1312,5 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .nightFilter {
-	background: linear-gradient(90deg, rgb(206, 14, 245) 0%, rgb(242, 7, 150) 100%) !important;
+	background: linear-gradient(90deg, rgba(206, 14, 245, .1) 0%, rgba(242, 7, 150, .1) 100%) !important;
 }

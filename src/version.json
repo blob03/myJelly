@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.8-37",
+	"version": "10.8.9-0",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -199,6 +199,7 @@
 		"10.8.8-34": "Synchronize translations.\nApply patch 'Fix the progressive mp4 transcoding profile'.\nReplace 'Auto/Manual' night mode with 'Always'.\nAdd missing translation key.",
 		"10.8.8-35": "Synchronize translations.\nHeader pin button default state and visibility for the login screens can be set in config.json.\nFix: Hide 'undefined' Web0s version showing up with a built-in browser (tab 'About').\nLogin screens can have night mode forced or set manually as defined in config.json.",
 		"10.8.8-36": "Fix: a syntax error causing tab 'About' to break with webOS.",
-		"10.8.8-37": "Synchronize translations.\nUsers can disable/configure the menu pin feature in the display settings.\nAuto-adjust backdrops position to reflect the current state of the pin."
+		"10.8.8-37": "Synchronize translations.\nUsers can disable/configure the menu pin feature in the display settings.\nAuto adjust backdrops position to reflect the current state of the pin.",
+		"10.8.9-0": "Synchronize translations.\nUpdate themes 'Light alt. blue', 'Halloween', 'Dark alt.', 'WMC alt.', 'Light alt.'."
 	}
 }

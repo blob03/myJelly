@@ -731,12 +731,6 @@ export class UserSettings {
 	}
 
 	toggleNightMode(TOGGLE, newval) {
-		const _hdrwtb = document.getElementsByClassName('headerWthMain')[0];
-		if (!_hdrwtb) 
-			return;
-		const _hdrclck = document.getElementsByClassName('headerClockActive')[0]; 
-		if (!_hdrclck) 
-			return;
 		const _hdrnmb = document.getElementsByClassName('headerNightmodeButton')[0]; 
 		if (!_hdrnmb)
 			return;
@@ -758,10 +752,9 @@ export class UserSettings {
 		}
 		
 		_hdrnf.classList.toggle('hide', !val);
+		document.body.classList.toggle('nightMode', val);
 		_icon.classList.toggle('light_mode', !val);
 		_icon.classList.toggle('dark_mode', val);
-		_hdrwtb.classList.toggle('nightMode', val);
-		_hdrclck.classList.toggle('nightMode', val);
 	}
 	
 	togglePin(TOGGLE, newval) {

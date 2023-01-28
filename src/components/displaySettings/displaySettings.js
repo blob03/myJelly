@@ -270,11 +270,13 @@ import './displaysettings.scss';
 			headerNightmodeButton.classList.toggle('hide', nightModeSwitchVal !== '3');
 		switch(nightModeSwitchVal) {
 			case '0':
-			case '3':
 				userSettingsInstance.toggleNightMode(false, false);
 				break;
 			case '1':
 				userSettingsInstance.toggleNightMode(false, true);
+				break;
+			case '3':
+				userSettingsInstance.toggleNightMode(false);
 				break;
 		}
 		

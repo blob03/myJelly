@@ -36,7 +36,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 	
     function renderHeader() {
         let html = '';
-        html += '<div class="flex align-items-center flex-grow headerTop" style="justify-content: center;">';
+        html += '<div class="headerTop flex align-items-center flex-grow" style="justify-content: center;">';
         html += '<div class="headerLeft">';
 	
 		// Extra feature thought for the TV layout.
