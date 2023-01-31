@@ -647,6 +647,7 @@ html {
 	font-size: 70% !important;
 }
 
+.nightMode .dark_mode,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
@@ -1473,5 +1474,5 @@ select option:selected {
 }
 
 .nightFilter {
-	background-color: rgba(3, 66, 255, .1) !important;
+	background: linear-gradient(125deg, rgba(12, 127, 250, 0.1) 0%, rgba(7, 102, 249, 0.15) 40%, rgba(49, 255, 255, 0.15) 70%, rgba(6, 116, 255, 0.1) 100%) !important;
 }

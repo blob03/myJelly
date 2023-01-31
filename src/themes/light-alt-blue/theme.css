@@ -611,6 +611,7 @@ h3 {
   box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
 }
 
+.nightMode .dark_mode,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
@@ -632,6 +633,12 @@ h3 {
 .pageTitle {
 	color: #fff !important;
 	text-shadow: 1px 1px 4px #304753;
+}
+
+.osdControls .material-icons, 
+.osdHeader .material-icons {
+	text-shadow: none !important;
+	color: rgb(96, 161, 185) !important;
 }
 
 .material-icons {
@@ -1153,7 +1160,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .paperList,
 .visualCardBox {
     background: rgba(103, 164, 161,.4);
-	border: 3px ridge #8fcad4;
+	border: 3px ridge #5ec3d0;
 }
 
 /* tab buttons */
@@ -1312,5 +1319,5 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .nightFilter {
-	background: linear-gradient(90deg, rgba(206, 14, 245, .1) 0%, rgba(242, 7, 150, .1) 100%) !important;
+	background: linear-gradient(125deg, rgba(255, 227, 1, 0.1) 0%, rgba(199, 0, 255, 0.18) 40%, rgba(223, 0, 255, 0.2) 70%, rgba(255, 184, 15, 0.1) 100%) !important;
 }

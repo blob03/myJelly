@@ -123,14 +123,15 @@ html {
 .checkboxListLabel,
 .inputLabel,
 .inputLabelUnfocused,
+.selectLabel,
 .paperListLabel,
 .textareaLabelUnfocused {
     color: rgba(255, 255, 255, 0.7);
 }
 
 .sliderBubble {
-	    background: #00a4dc;
-		color: #ffffff;
+	background: #00a4dc;
+	color: #ffffff;
 }
 
 .inputLabelFocused,
@@ -268,7 +269,7 @@ html {
 
 .button-link {
     color: #5acaf0 !important;
-	text-shadow: 2px 2px 5px #1f485b !important;
+	text-shadow: none;
 }
 
 .mediaInfoText {
@@ -587,19 +588,20 @@ html {
 }
 
 .nightMode .headerWthIconBg {
-	box-shadow: 0 0 10px #40c86f, 0 0 40px #95ffce, 0 0 50px #95f8e1, 0 0 60px #86ffc0 !important;
+	box-shadow: 0 0 20px #3aff7e, 0 0 30px #95ffce, 0 0 50px #5ed7cb, 0 0 60px #59b0b5 !important;
 	color: #e0f1d7 !important;
 }
 
+.nightMode .dark_mode,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
 	color: #b6fd8f !important;
-	text-shadow: 0 0 10px #40c86f, 0 0 40px #95ffce, 0 0 50px #95f8e1, 0 0 60px #86ffc0 !important;
+	  text-shadow: 0 0 20px #3aff7e, 0 0 30px #95ffce, 0 0 50px #5ed7cb, 0 0 60px #59b0b5 !important;
 }
 
 .nightFilter {
-	background: linear-gradient(125deg, rgba(221, 255, 209, .1) 10%, rgba(184, 255, 144, .1) 30%, rgba(50, 155, 96, .1) 50%, rgba(14, 121, 61, .1) 60%, rgba(184, 255, 144, .1) 80%, rgba(221, 255, 209, .1) 100%) !important;
+	background: linear-gradient(125deg, rgba(48, 219, 219, 0.1) 0%, rgba(0, 255, 135, 0.15) 40%, rgba(241, 4, 248, 0.2) 70%, rgba(135, 14, 93, 0.1) 100%) !important;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -692,10 +694,24 @@ legend {
 	color: #fbfdff;
 }
 
+.checkboxList {
+	background-color: rgb(37, 89, 135) !important;
+}
+
+.headerWthIconBg {
+	background: rgba(106, 247, 182, 0.6) !important;
+}
+
+.homeLibraryButton,
+.headerWthButton,
+#backdropWidget {
+	border: 1px solid #63ffbd !important;
+}
+
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 2px solid #203f59 !important;
+	border: 1px solid #63ffbd !important;
 }
 
 /* Pseudo radio widget (a radio button that allows deselecting) */

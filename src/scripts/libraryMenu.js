@@ -37,13 +37,13 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
     function renderHeader() {
         let html = '';
         html += '<div class="headerTop flex align-items-center flex-grow" style="justify-content: center;">';
-        html += '<div class="headerLeft">';
+        html += '<div class="headerLeft" style="overflow: visible;">';
 	
 		// Extra feature thought for the TV layout.
 		// That one pin the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerPinButton headerButtonLeft hide"><span id="pin" class="material-icons lock_open"></span></button>';
 		
-		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonLeft hide"><span class="material-icons light_mode"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonLeft hide" style="overflow: visible;"><span class="material-icons light_mode"></span></button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the clock widget*/
@@ -73,7 +73,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		
 		html += '</div>';
 		
-		html += '<div class="headerRight">';
+		html += '<div class="headerRight" style="overflow: visible;">';
 		html += '<span class="headerSelectedPlayer"></span>';
 		html += '<button is="paper-icon-button-light" class="headerSyncButton syncButton headerButton headerButtonRight hide"><span class="material-icons groups"></span></button>';
 		html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';

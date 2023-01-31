@@ -262,7 +262,7 @@
     "EnableFallbackFontHelp": "Enable custom alternate fonts. This can avoid the problem of incorrect subtitle rendering.",
     "EnableFasterAnimations": "Faster animations",
     "EnableFasterAnimationsHelp": "Use faster animations and transitions.",
-    "EnableGamepadHelp": "Listen for input from any connected controllers.",
+    "EnableGamepadHelp": "Listen for input from any connected controllers. (Requires: 'TV' Display Mode)",
     "EnableHardwareEncoding": "Enable hardware encoding",
     "EnableIntelLowPowerH264HwEncoder": "Enable Intel Low-Power H.264 hardware encoder",
     "EnableIntelLowPowerHevcHwEncoder": "Enable Intel Low-Power HEVC hardware encoder",

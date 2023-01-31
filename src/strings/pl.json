@@ -927,6 +927,7 @@
     "LabelStable": "Stabilny",
     "LabelStartWhenPossible": "Zaczynaj kiedy możliwe:",
     "LabelStatus": "Stan:",
+    "LabelStereoDownmixAlgorithm": "Algorytm Stereo Downmix",
     "LabelStopWhenPossible": "Zatrzymuj kiedy możliwe:",
     "LabelStopping": "Zatrzymywanie",
     "LabelStreamType": "Typ transmisji:",

@@ -670,6 +670,7 @@ html {
 	font-size: 70% !important;
 }
 
+.nightMode .dark_mode,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
