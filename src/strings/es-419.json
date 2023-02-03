@@ -659,7 +659,7 @@
     "LabelEnableHttps": "Habilitar HTTPS",
     "LabelEnableHttpsHelp": "Escuchar en el puerto HTTPS configurado. También se debe proporcionar un certificado válido para que esto surta efecto.",
     "LabelEnableIP4": "Habilitar IPv4",
-    "LabelEnableIP4Help": "Habilita la funcionalidad IPv4.",
+    "LabelEnableIP4Help": "Habilitar la funcionalidad IPv4.",
     "LabelEnableIP6": "Habilitar IPv6",
     "LabelEnableIP6Help": "Habilita la funcionalidad IPv6.",
     "LabelEnableRealtimeMonitor": "Activar monitoreo en tiempo real",

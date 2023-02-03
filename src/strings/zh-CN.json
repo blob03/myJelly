@@ -262,7 +262,7 @@
     "EnableFallbackFontHelp": "使用自定义的备用字体。这可以避免一些字幕渲染不正确的问题。",
     "EnableFasterAnimations": "更快的动画",
     "EnableFasterAnimationsHelp": "使用更快的动画和转场效果。",
-    "EnableGamepadHelp": "监听来自任何连接的控制器输入。",
+    "EnableGamepadHelp": "监听来自任何连接的控制器的输入。（需开启“电视”模式）",
     "EnableHardwareEncoding": "启用硬件编码",
     "EnableIntelLowPowerH264HwEncoder": "启用低电压模式的 Intel H.264 硬件编码器",
     "EnableIntelLowPowerHevcHwEncoder": "启用低电压模式的 Intel HEVC 硬件编码器",

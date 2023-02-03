@@ -262,7 +262,7 @@
     "EnableFallbackFontHelp": "Activer des polices alternatives personnalisées. Ceci peut éviter les problèmes de rendu incorrect des sous-titres.",
     "EnableFasterAnimations": "Animations plus rapides",
     "EnableFasterAnimationsHelp": "Utiliser des animations et transitions plus rapides.",
-    "EnableGamepadHelp": "Détecter le signal d'entrée de toute manette connectée.",
+    "EnableGamepadHelp": "Détecter le signal d'entrée de toute manette connectée. (Nécessite le mode d’affichage 'TV'.)",
     "EnableHardwareEncoding": "Activer l'encodage matériel",
     "EnableIntelLowPowerH264HwEncoder": "Activer l'encodeur matériel H.264 basse consommation de Intel",
     "EnableIntelLowPowerHevcHwEncoder": "Activer l'encodeur matériel HEVC basse consommation de Intel",

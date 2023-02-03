@@ -262,7 +262,7 @@
     "EnableFallbackFontHelp": "Включить пользовательские альтернативные шрифты. Это может устранить проблему неверного рендеринга субтитров.",
     "EnableFasterAnimations": "Ускоренная анимация",
     "EnableFasterAnimationsHelp": "Использовать ускоренную анимацию и переходы.",
-    "EnableGamepadHelp": "Слушать ввод от любых подключенных контроллеров.",
+    "EnableGamepadHelp": "Слушать ввод от любых подключенных контроллеров. (Необходим режим отображения \"TV\")",
     "EnableHardwareEncoding": "Включить аппаратное кодирование",
     "EnableIntelLowPowerH264HwEncoder": "Включить энергосберегающий аппаратный кодёр Intel H.264",
     "EnableIntelLowPowerHevcHwEncoder": "Включить энергосберегающий аппаратный кодёр Intel HEVC",

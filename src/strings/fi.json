@@ -262,7 +262,7 @@
     "EnableFallbackFontHelp": "Käytä omia vaihtoehtoisia fontteja. Tämän avulla voidaan välttää tekstitysten renderöintiongelmia.",
     "EnableFasterAnimations": "Nopeammat animaatiot",
     "EnableFasterAnimationsHelp": "Käytä nopeampia animaatioita ja siirtymiä.",
-    "EnableGamepadHelp": "Kuuntele syötteitä kiinnitetyistä peliohjaimista.",
+    "EnableGamepadHelp": "Seuraa kytkettyjen ohjainten syötteitä (edellytys: TV-näyttötila).",
     "EnableHardwareEncoding": "Käytä laitteistokiihdytystä",
     "EnableIntelLowPowerH264HwEncoder": "Käytä Intelin alhaisen virrankulutuksen H.264-laitteistodekooderia",
     "EnableIntelLowPowerHevcHwEncoder": "Käytä Intelin alhaisen virrankulutuksen HEVC-laitteistodekooderia",
