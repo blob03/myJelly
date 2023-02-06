@@ -407,10 +407,10 @@
     }
 
     .headerTabs {
-        align-self: center;
-        width: auto;
-        align-items: center;
-        justify-content: center;
+		align-self: center;
+		width: 100% !important;
+		align-items: center;
+		justify-content: center;
         position: relative;
         margin-top: -4.3em;
     }

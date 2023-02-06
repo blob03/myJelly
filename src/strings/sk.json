@@ -262,7 +262,7 @@
     "EnableFallbackFontHelp": "Povoliť vlastné alternatívne fonty. Toto môže vyriešiť problémy s nesprávnym vykreslením titulkov.",
     "EnableFasterAnimations": "Rýchlejšia animácia",
     "EnableFasterAnimationsHelp": "Použiť rýchlejšiu animáciu a prechody.",
-    "EnableGamepadHelp": "Počúvať na vstupe z pripojených herných ovládačov.",
+    "EnableGamepadHelp": "Počúvať na vstupe z akýchkoľvek pripojených ovládačov. (Vyžaduje: režim zobrazenia „TV“)",
     "EnableHardwareEncoding": "Povoliť hardvérové kódovanie",
     "EnableIntelLowPowerH264HwEncoder": "Povoliť nízkoenergetický hardvérový kóder Intel H.264",
     "EnableIntelLowPowerHevcHwEncoder": "Povoliť nízkoenergetický hardvérový kóder Intel HEVC",

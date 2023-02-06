@@ -48,7 +48,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.47",
+		"version": "2.48",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
@@ -410,6 +410,8 @@
 				"enableThemeVideos": "false",
 				"fastFadein": "false",
 				"libraryPageSize": "",
+				"menuPin": "1",
+				"nightModeSwitch": "0",
 				"muteButton": "false",
 				"preferFmp4HlsContainer": "false",
 				"screensaver": "none",
@@ -460,6 +462,8 @@
 				"enableThemeVideos": "false",
 				"fastFadein": "true",
 				"libraryPageSize": "16",
+				"menuPin": "0",
+				"nightModeSwitch": "0",
 				"muteButton": "false",
 				"preferFmp4HlsContainer": "false",
 				"screensaver": "none",
@@ -516,6 +520,8 @@
 				"homesection6": "none",
 				"homesection7": "none",
 				"libraryPageSize": "64",
+				"menuPin": "2",
+				"nightModeSwitch": "3",
 				"muteButton": "true",
 				"maxDaysForNextUp": "30",
 				"preferFmp4HlsContainer": "true",

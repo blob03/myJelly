@@ -45,12 +45,6 @@ html {
     color: #282828;
 }
 
-.headerLeft, .headerRight, .headerMiddle {
-	overflow: visible !important;
-	margin-right: .5em;
-	margin-left: .5em;
-}
-
 ::-moz-selection { 
 	color: #ffa700;
 	background: #282828;
@@ -76,10 +70,7 @@ html {
 }
 
 .skinHeader-withBackground {
-	background-color: #282828;
     color: rgba(255, 255, 255, 0.87);
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
 	overflow: visible !important;
 }
 
@@ -1513,3 +1504,22 @@ option:selected {
 	background: linear-gradient(125deg, rgba(247, 245, 245, 0.1) 0%, rgba(202, 4, 4, 0.2) 40%, rgba(38, 255, 7, 0.2) 70%, rgba(255, 10, 10, 0.1) 100%) !important;
 }
 
+.headerTop {
+	background-color: #282828;
+}
+
+.headerTabs {
+	background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgba(40,40,40,0.75) 40%, rgba(247, 130, 5, 0.25) 100%) !important;
+}
+
+.headerLeft, .headerRight {
+	overflow: visible !important;
+	margin-right: .5em;
+	margin-left: .5em;
+}
+
+@media all and (min-width: 100em) {
+    .headerTabs {
+        margin-top: -2.5em !important;
+    }
+}

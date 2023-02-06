@@ -262,7 +262,7 @@
     "EnableFallbackFontHelp": "Benutzerdefinierte, alternative Schriftarten aktivieren. Dies kann Probleme mit inkorrekt dargestellten Untertiteln vermeiden.",
     "EnableFasterAnimations": "Schnellere Animationen",
     "EnableFasterAnimationsHelp": "Benutze schnellere Animationen und Übergänge.",
-    "EnableGamepadHelp": "Auf Eingaben aller verbundenen Controller hören.",
+    "EnableGamepadHelp": "Auf Eingaben aller verbundenen Controller hören. (Erfordert: 'TV'-Anzeigemodus)",
     "EnableHardwareEncoding": "Hardwarekodierung aktivieren",
     "EnableIntelLowPowerH264HwEncoder": "Intel Low-Power-Hardwarekodierer für H.264 aktivieren",
     "EnableIntelLowPowerHevcHwEncoder": "Intel Low-Power-Hardwarekodierer für HEVC aktivieren",

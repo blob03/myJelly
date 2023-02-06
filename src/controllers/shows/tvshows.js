@@ -4,6 +4,7 @@ import imageLoader from '../../components/images/imageLoader';
 import listView from '../../components/listview/listview';
 import cardBuilder from '../../components/cardbuilder/cardBuilder';
 import AlphaPicker from '../../components/alphaPicker/alphaPicker';
+import { playbackManager } from '../../components/playback/playbackmanager';
 import * as userSettings from '../../scripts/settings/userSettings';
 import globalize from '../../scripts/globalize';
 import Events from '../../utils/events.ts';
@@ -11,7 +12,7 @@ import Events from '../../utils/events.ts';
 import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
 /* eslint-disable indent */
-
+		
     export default function (view, params, tabContent) {
         function getPageData(context) {
             const key = getSavedQueryKey(context);
@@ -54,6 +55,15 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
             return context.savedQueryKey;
         }
+		
+		function shuffle() {
+			ApiClient.getItem(
+				ApiClient.getCurrentUserId(),
+				params.topParentId
+			).then((item) => {
+				playbackManager.shuffle(item);
+			});
+		}
 
         const onViewStyleChange = () => {
             const viewStyle = this.getCurrentViewStyle();
@@ -188,6 +198,11 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                 itemsContainer.innerHTML = html;
                 imageLoader.lazyChildren(itemsContainer);
                 libraryBrowser.saveQueryValues(getSavedQueryKey(page), query);
+				
+				const btnShuffle = tabContent.querySelector('.btnShuffle');
+				if (btnShuffle)
+					btnShuffle.classList.toggle('hide', result.TotalRecordCount < 1);
+			
                 loading.hide();
                 isLoading = false;
 
@@ -283,6 +298,11 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                     button: e.target
                 });
             });
+			
+			const btnShuffle = tabContent.querySelector('.btnShuffle');
+			if (btnShuffle)
+				btnShuffle.addEventListener('click', shuffle);
+			
             const btnSelectView = tabContent.querySelector('.btnSelectView');
             btnSelectView.addEventListener('click', (e) => {
                 libraryBrowser.showLayoutMenu(e.target, this.getCurrentViewStyle(), 'Banner,List,Poster,PosterCard,Thumb,ThumbCard'.split(','));

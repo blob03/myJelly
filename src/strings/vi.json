@@ -373,7 +373,7 @@
     "HeaderConnectToServer": "Kết Nối Đến Máy Chủ",
     "HeaderConnectionFailure": "Kế Nối Thất Bại",
     "HeaderContainerProfile": "Hồ Sơ Định Dạng",
-    "HeaderContainerProfileHelp": "Hồ sơ định dạng chỉ ra những định dạng nhất định mà một thiết bị có thể phát. Nếu nội dung có định dạng không thể phát, nội dung sẽ được chuyển đổi định dạng, kể cả khi định dạng đó được cấu hình để phát lại trực tiếp.",
+    "HeaderContainerProfileHelp": "Cấu hình vùng chứa cho biết các giới hạn của thiết bị khi phát các định dạng cụ thể. Nếu giới hạn được áp dụng thì phương tiện sẽ được chuyển mã, ngay cả khi định dạng được định cấu hình để phát lại trực tiếp.",
     "HeaderContinueListening": "Tiếp Tục Nghe",
     "HeaderContinueReading": "Tiếp Tục Đọc",
     "HeaderContinueWatching": "Xem Tiếp",

@@ -382,7 +382,9 @@ export class UserSettings {
 		userPrefs.enableThemeVideos = "false";
 		userPrefs.fastFadein = "false";
 		userPrefs.libraryPageSize = "";
+		userPrefs.menuPin = "0";
 		userPrefs.muteButton = "false";
+		userPrefs.nightModeSwitch = "0";
 		userPrefs.preferFmp4HlsContainer = "false";
 		userPrefs.screensaver = "none";
 		userPrefs.screensaverTime = "0";

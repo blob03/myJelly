@@ -116,20 +116,20 @@
     },
     "be-BY": {
         "ccode": "be-BY",
-        "fsize": 2515,
+        "fsize": 167939,
         "ccodeSrc": "en-US",
         "displayName": "Belarusian",
         "displayNativeName": "Беларуская",
         "ISO6391": "be-BY",
         "ISO6392": "bel",
-        "keys#": 30,
-        "completed%": 1.66,
+        "keys#": 1676,
+        "completed%": 92.8,
         "jellyfinWeb": {
             "filename": "be-BY.json",
-            "keys#": 30,
+            "keys#": 1676,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 1.79
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -350,7 +350,7 @@
     },
     "de": {
         "ccode": "de",
-        "fsize": 120648,
+        "fsize": 120679,
         "ccodeSrc": "en-US",
         "displayName": "German",
         "displayNativeName": "Deutsch",
@@ -893,7 +893,7 @@
     },
     "fr": {
         "ccode": "fr",
-        "fsize": 126052,
+        "fsize": 126054,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
@@ -958,7 +958,7 @@
     },
     "gsw": {
         "ccode": "gsw",
-        "fsize": 6908,
+        "fsize": 6907,
         "ccodeSrc": "en-US",
         "displayName": "Swiss German; Alemannic; Alsatian",
         "displayNativeName": "Alemannisch",
@@ -1185,7 +1185,7 @@
     },
     "it": {
         "ccode": "it",
-        "fsize": 119313,
+        "fsize": 119354,
         "ccodeSrc": "en-US",
         "displayName": "Italian",
         "displayNativeName": "Italiano",
@@ -1440,17 +1440,17 @@
     },
     "lt-LT": {
         "ccode": "lt-LT",
-        "fsize": 59792,
+        "fsize": 63661,
         "ccodeSrc": "en-US",
         "displayName": "Lithuanian",
         "displayNativeName": "Lietuvių",
         "ISO6391": "lt-LT",
         "ISO6392": "lit",
-        "keys#": 988,
-        "completed%": 54.71,
+        "keys#": 1043,
+        "completed%": 57.75,
         "jellyfinWeb": {
             "filename": "lt-LT.json",
-            "keys#": 988,
+            "keys#": 1043,
             "orphans#": 6,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -1460,7 +1460,7 @@
                 "Screenshots",
                 "ButtonNetwork"
             ],
-            "completed%": 58.95
+            "completed%": 62.23
         },
         "myJelly": {
             "filename": "",
@@ -1735,7 +1735,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 117423,
+        "fsize": 117431,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
@@ -2047,7 +2047,7 @@
     },
     "ru": {
         "ccode": "ru",
-        "fsize": 174061,
+        "fsize": 174090,
         "ccodeSrc": "en-US",
         "displayName": "Russian",
         "displayNativeName": "Русский",
@@ -2112,7 +2112,7 @@
     },
     "sk": {
         "ccode": "sk",
-        "fsize": 120269,
+        "fsize": 120314,
         "ccodeSrc": "en-US",
         "displayName": "Slovak",
         "displayNativeName": "Slovenčina",
@@ -2548,7 +2548,7 @@
     },
     "vi": {
         "ccode": "vi",
-        "fsize": 131806,
+        "fsize": 131788,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
         "displayNativeName": "Việtnam",

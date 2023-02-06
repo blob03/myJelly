@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-2",
+	"version": "10.8.9-3",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -202,6 +202,7 @@
 		"10.8.8-37": "Synchronize translations.\nUsers can disable/configure the menu pin feature in the display settings.\nAuto adjust backdrops position to reflect the current state of the pin.",
 		"10.8.9-0": "Synchronize translations.\nUpdate themes 'Light alt. blue', 'Halloween', 'Dark alt.', 'WMC alt.', 'Light alt.'.",
 		"10.8.9-1": "Synchronize translations.\nUpdate themes 'Light alt. blue', 'Halloween', 'Dark alt.', 'WMC alt.', 'Light alt.'.",
-		"10.8.9-2": "Synchronize translations.\nApply patch 'Fixed scss problems in item detail pages'."
+		"10.8.9-2": "Synchronize translations.\nApply patch 'Fixed scss problems in item detail pages'.",
+		"10.8.9-3": "Synchronize translations and Node.js packages.\nEnable shuffle button for videomusic collections and TV shows ('Shows' and 'Episodes' tabs).\nUpdate theme 'Halloween'.\nUpdate configuration presets to include 'menuPin' and 'nightModeSwitch'."
 	}
 }

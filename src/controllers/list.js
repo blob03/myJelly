@@ -865,8 +865,8 @@ class ItemsView {
                 if ((itemType === 'MusicGenre' || params.type !== 'Programs' && params.type !== 'nextup' && itemType !== 'Channel')
                     // Folder, Playlist views
                     && itemType !== 'UserView'
-                    // Only Photo (homevideos) CollectionFolders are supported
-                    && !(itemType === 'CollectionFolder' && item?.CollectionType !== 'homevideos')
+                    // Only Photo (homevideos) and Clip (musicvideos) CollectionFolders are supported
+                    && !(itemType === 'CollectionFolder' && item?.CollectionType !== 'homevideos' && item?.CollectionType !== 'musicvideos')
                 ) {
                     // Show Shuffle buttons
                     hideOrShowAll(view.querySelectorAll('.btnShuffle'), false);

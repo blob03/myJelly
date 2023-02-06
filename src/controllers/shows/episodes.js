@@ -3,6 +3,7 @@ import libraryBrowser from '../../scripts/libraryBrowser';
 import imageLoader from '../../components/images/imageLoader';
 import listView from '../../components/listview/listview';
 import cardBuilder from '../../components/cardbuilder/cardBuilder';
+import { playbackManager } from '../../components/playback/playbackmanager';
 import * as userSettings from '../../scripts/settings/userSettings';
 import globalize from '../../scripts/globalize';
 import Dashboard from '../../utils/dashboard';
@@ -56,6 +57,15 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
             return context.savedQueryKey;
         }
+		
+		function shuffle() {
+			ApiClient.getItem(
+				ApiClient.getCurrentUserId(),
+				params.topParentId
+			).then((item) => {
+				playbackManager.shuffle(item);
+			});
+		}
 
         function onViewStyleChange() {
             const viewStyle = self.getCurrentViewStyle();
@@ -180,6 +190,11 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                 itemsContainer.innerHTML = html;
                 imageLoader.lazyChildren(itemsContainer);
                 libraryBrowser.saveQueryValues(getSavedQueryKey(page), query);
+				
+				const btnShuffle = tabContent.querySelector('.btnShuffle');
+				if (btnShuffle)
+					btnShuffle.classList.toggle('hide', result.TotalRecordCount < 1);
+			
                 loading.hide();
                 isLoading = false;
 
@@ -249,6 +264,11 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                     button: e.target
                 });
             });
+			
+			const btnShuffle = tabContent.querySelector('.btnShuffle');
+			if (btnShuffle)
+				btnShuffle.addEventListener('click', shuffle);
+			
             const btnSelectView = tabContent.querySelector('.btnSelectView');
             btnSelectView.addEventListener('click', function (e) {
 				libraryBrowser.showLayoutMenu(e.target, self.getCurrentViewStyle(), 'List,Thumb,ThumbCard'.split(','));
