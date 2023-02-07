@@ -184,8 +184,6 @@
     "Cursive": "Kursivschrift",
     "CustomDlnaProfilesHelp": "Erstelle ein benutzerdefiniertes Profil für ein neues Zielgerät, oder um ein vorhandenes Systemprofil zu überschreiben.",
     "DailyAt": "Täglich um {0}",
-    "DashboardArchitecture": "Architektur: {0}",
-    "DashboardOperatingSystem": "Betriebssystem: {0}",
     "DashboardServerName": "Server: {0}",
     "DashboardVersionNumber": "Version: {0}",
     "Data": "Daten",

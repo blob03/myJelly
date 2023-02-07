@@ -173,8 +173,6 @@
     "Cursive": "കൂട്ടെഴുത്ത്",
     "CustomDlnaProfilesHelp": "ഒരു പുതിയ ഉപകരണം ടാർഗെറ്റുചെയ്യുന്നതിനോ സിസ്റ്റം പ്രൊഫൈൽ അസാധുവാക്കുന്നതിനോ ഒരു ഇഷ്‌ടാനുസൃത പ്രൊഫൈൽ സൃഷ്‌ടിക്കുക.",
     "DailyAt": "പ്രതിദിനം {0}",
-    "DashboardArchitecture": "വാസ്തുവിദ്യ: {0}",
-    "DashboardOperatingSystem": "ഓപ്പറേറ്റിംഗ് സിസ്റ്റം: {0}",
     "DashboardServerName": "സെർവർ: {0}",
     "DashboardVersionNumber": "പതിപ്പ്: {0}",
     "Data": "ഡാറ്റ",

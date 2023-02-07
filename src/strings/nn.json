@@ -148,8 +148,6 @@
     "CriticRating": "Kritikarvurdering",
     "CustomDlnaProfilesHelp": "Lag ein tilpassa profil til ei ny eining eller for å overstyra ein system-profil.",
     "DailyAt": "Dagleg kl. {0}",
-    "DashboardArchitecture": "Arkitektur: {0}",
-    "DashboardOperatingSystem": "Operativsystem: {0}",
     "DashboardServerName": "Tenar: {0}",
     "DashboardVersionNumber": "Versjon: {0}",
     "Data": "Data",

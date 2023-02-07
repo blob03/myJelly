@@ -183,8 +183,6 @@
     "Cursive": "Kursiv",
     "CustomDlnaProfilesHelp": "Lav brugerdefinerede profiler til nye enheder eller for at overstyre en systemprofil.",
     "DailyAt": "Dagligt kl. {0}",
-    "DashboardArchitecture": "Arkitektur: {0}",
-    "DashboardOperatingSystem": "Styresystem: {0}",
     "DashboardServerName": "Server: {0}",
     "DashboardVersionNumber": "Version: {0}",
     "Data": "Data",

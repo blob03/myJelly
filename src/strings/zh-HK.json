@@ -159,8 +159,6 @@
     "CriticRating": "評論家評分",
     "CustomDlnaProfilesHelp": "為新的設備建立自定配置或覆蓋原有系統配置。",
     "DailyAt": "毎日 {0}",
-    "DashboardArchitecture": "架構: {0}",
-    "DashboardOperatingSystem": "作業系統: {0}",
     "DashboardServerName": "伺服器: {0}",
     "DashboardVersionNumber": "版本: {0}",
     "Data": "資料",

@@ -184,8 +184,6 @@
     "Cursive": "متّصل",
     "CustomDlnaProfilesHelp": "إنشاء عرائض مخصوصه تستهدف جهازاً جديداً أو يمتطي حساباً نظامياً.",
     "DailyAt": "يومياً على {0}",
-    "DashboardArchitecture": "المعمارية: {0}",
-    "DashboardOperatingSystem": "نظام التشغيل: {0}",
     "DashboardServerName": "الخادم: {0}",
     "DashboardVersionNumber": "الإصدار: {0}",
     "Data": "بيانات",

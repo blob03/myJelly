@@ -184,8 +184,6 @@
     "Cursive": "Kursivointi",
     "CustomDlnaProfilesHelp": "Luo uusi profiili kohdistaaksesi uuteen laitteeseen tai ohittaaksesi järjestelmäprofiilin.",
     "DailyAt": "Päivittäin klo {0}",
-    "DashboardArchitecture": "Arkkitehtuuri: {0}",
-    "DashboardOperatingSystem": "Käyttöjärjestelmä: {0}",
     "DashboardServerName": "Palvelin: {0}",
     "DashboardVersionNumber": "Versio: {0}",
     "Data": "Tieto",

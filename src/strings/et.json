@@ -183,8 +183,6 @@
     "Cursive": "Kursiiv",
     "CustomDlnaProfilesHelp": "Loo kohandatud profiil uue seadme jaoks või tühista süsteemi profiil.",
     "DailyAt": "Iga päev kell {0}",
-    "DashboardArchitecture": "Arhitektuur: {0}",
-    "DashboardOperatingSystem": "Operatsioonisüsteem: {0}",
     "DashboardServerName": "Server: {0}",
     "DashboardVersionNumber": "Versioon: {0}",
     "Data": "Andmed",

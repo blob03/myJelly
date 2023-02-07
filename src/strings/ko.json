@@ -173,8 +173,6 @@
     "Cursive": "이탤릭체",
     "CustomDlnaProfilesHelp": "새 장치를 대상으로 하거나 시스템 프로필을 재정의 할 사용자 지정 프로필을 만듭니다.",
     "DailyAt": "매일 {0}",
-    "DashboardArchitecture": "아키텍처: {0}",
-    "DashboardOperatingSystem": "운영체제: {0}",
     "DashboardServerName": "서버: {0}",
     "DashboardVersionNumber": "버전: {0}",
     "Data": "데이터",

@@ -184,8 +184,6 @@
     "Cursive": "筆記体",
     "CustomDlnaProfilesHelp": "カスタムプロファイルを作成して新しいデバイスをターゲットにするか、システムプロファイルを上書きします。",
     "DailyAt": "毎日 {0}",
-    "DashboardArchitecture": "アーキテクチャ: {0}",
-    "DashboardOperatingSystem": "オペレーションシステム: {0}",
     "DashboardServerName": "サーバー: {0}",
     "DashboardVersionNumber": "バージョン: {0}",
     "Data": "データ",
