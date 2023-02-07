@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-3",
+	"version": "10.8.9-4",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -203,6 +203,7 @@
 		"10.8.9-0": "Synchronize translations.\nUpdate themes 'Light alt. blue', 'Halloween', 'Dark alt.', 'WMC alt.', 'Light alt.'.",
 		"10.8.9-1": "Synchronize translations.\nUpdate themes 'Light alt. blue', 'Halloween', 'Dark alt.', 'WMC alt.', 'Light alt.'.",
 		"10.8.9-2": "Synchronize translations.\nApply patch 'Fixed scss problems in item detail pages'.",
-		"10.8.9-3": "Synchronize translations and Node.js packages.\nEnable shuffle button for videomusic collections and TV shows ('Shows' and 'Episodes' tabs).\nUpdate theme 'Halloween'.\nUpdate configuration presets to include 'menuPin' and 'nightModeSwitch'."
+		"10.8.9-3": "Synchronize translations and Node.js packages.\nEnable shuffle button for videomusic collections and TV shows ('Shows' and 'Episodes' tabs).\nUpdate theme 'Halloween'.\nUpdate configuration presets to include 'menuPin' and 'nightModeSwitch'.",
+		"10.8.9-4": "Synchronize translations and Node.js packages.\nApply patch 'DVR: Add options to disable NFO and image saving'.\nApply patch 'Show production studio'.\nApply patch 'Fix html lang attribute'.\nApply patch 'Merge branch 'master' into master'."
 	}
 }

@@ -1,17 +1,17 @@
 {
     "en-US": {
         "ccode": "en-US",
-        "fsize": 108067,
+        "fsize": 108425,
         "ccodeSrc": "en-US",
         "displayName": "English",
         "displayNativeName": "English",
         "ISO6391": "en-US",
         "ISO6392": "eng",
-        "keys#": 1806,
+        "keys#": 1811,
         "completed%": 100.0,
         "jellyfinWeb": {
             "filename": "en-US.json",
-            "keys#": 1676,
+            "keys#": 1681,
             "orphans#": 0,
             "orphans": [],
             "completed%": 100.0
@@ -33,7 +33,7 @@
         "ISO6391": "af",
         "ISO6392": "afr",
         "keys#": 812,
-        "completed%": 44.96,
+        "completed%": 44.84,
         "jellyfinWeb": {
             "filename": "af.json",
             "keys#": 812,
@@ -42,7 +42,7 @@
                 "ButtonNetwork",
                 "Screenshot"
             ],
-            "completed%": 48.45
+            "completed%": 48.3
         },
         "myJelly": {
             "filename": "",
@@ -61,7 +61,7 @@
         "ISO6391": "ar",
         "ISO6392": "ara",
         "keys#": 1673,
-        "completed%": 92.64,
+        "completed%": 92.38,
         "jellyfinWeb": {
             "filename": "ar.json",
             "keys#": 1673,
@@ -79,7 +79,7 @@
                 "SetUsingLastTracks",
                 "Screenshots"
             ],
-            "completed%": 99.82
+            "completed%": 99.52
         },
         "myJelly": {
             "filename": "",
@@ -116,20 +116,20 @@
     },
     "be-BY": {
         "ccode": "be-BY",
-        "fsize": 167939,
+        "fsize": 168079,
         "ccodeSrc": "en-US",
         "displayName": "Belarusian",
         "displayNativeName": "Беларуская",
         "ISO6391": "be-BY",
         "ISO6392": "bel",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "be-BY.json",
             "keys#": 1676,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -148,7 +148,7 @@
         "ISO6391": "bg-BG",
         "ISO6392": "bul",
         "keys#": 1450,
-        "completed%": 80.29,
+        "completed%": 80.07,
         "jellyfinWeb": {
             "filename": "bg-BG.json",
             "keys#": 1450,
@@ -166,7 +166,7 @@
                 "OptionDownloadImagesInAdvanceHelp",
                 "OptionAllowContentDownloading"
             ],
-            "completed%": 86.52
+            "completed%": 86.26
         },
         "myJelly": {
             "filename": "",
@@ -185,7 +185,7 @@
         "ISO6391": "bn-BD",
         "ISO6392": "ben",
         "keys#": 324,
-        "completed%": 17.94,
+        "completed%": 17.89,
         "jellyfinWeb": {
             "filename": "bn-BD.json",
             "keys#": 324,
@@ -193,7 +193,7 @@
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 19.33
+            "completed%": 19.27
         },
         "myJelly": {
             "filename": "",
@@ -212,7 +212,7 @@
         "ISO6391": "ca",
         "ISO6392": "cat",
         "keys#": 1672,
-        "completed%": 92.58,
+        "completed%": 92.32,
         "jellyfinWeb": {
             "filename": "ca.json",
             "keys#": 1672,
@@ -229,7 +229,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.76
+            "completed%": 99.46
         },
         "myJelly": {
             "filename": "",
@@ -248,7 +248,7 @@
         "ISO6391": "cs",
         "ISO6392": "cze",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "cs.json",
             "keys#": 1676,
@@ -269,7 +269,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "cs.json",
@@ -288,7 +288,7 @@
         "ISO6391": "cy",
         "ISO6392": "wel",
         "keys#": 591,
-        "completed%": 32.72,
+        "completed%": 32.63,
         "jellyfinWeb": {
             "filename": "cy.json",
             "keys#": 591,
@@ -300,7 +300,7 @@
                 "Screenshot",
                 "OptionDislikes"
             ],
-            "completed%": 35.26
+            "completed%": 35.16
         },
         "myJelly": {
             "filename": "",
@@ -319,7 +319,7 @@
         "ISO6391": "da",
         "ISO6392": "dan",
         "keys#": 1637,
-        "completed%": 90.64,
+        "completed%": 90.39,
         "jellyfinWeb": {
             "filename": "da.json",
             "keys#": 1637,
@@ -338,7 +338,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 97.67
+            "completed%": 97.38
         },
         "myJelly": {
             "filename": "",
@@ -357,7 +357,7 @@
         "ISO6391": "de",
         "ISO6392": "ger",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "de.json",
             "keys#": 1676,
@@ -378,7 +378,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "de.json",
@@ -397,7 +397,7 @@
         "ISO6391": "el",
         "ISO6392": "gre",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "el.json",
             "keys#": 1676,
@@ -414,7 +414,7 @@
                 "Screenshots",
                 "ButtonNetwork"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -433,7 +433,7 @@
         "ISO6391": "en-GB",
         "ISO6392": "en-GB",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "en-GB.json",
             "keys#": 1676,
@@ -454,7 +454,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "en-GB.json",
@@ -473,7 +473,7 @@
         "ISO6391": "eo",
         "ISO6392": "epo",
         "keys#": 1642,
-        "completed%": 90.92,
+        "completed%": 90.67,
         "jellyfinWeb": {
             "filename": "eo.json",
             "keys#": 1642,
@@ -490,7 +490,7 @@
                 "SetUsingLastTracksHelp",
                 "NextUpRewatching"
             ],
-            "completed%": 97.97
+            "completed%": 97.68
         },
         "myJelly": {
             "filename": "",
@@ -509,7 +509,7 @@
         "ISO6391": "es-419",
         "ISO6392": "es-419",
         "keys#": 1555,
-        "completed%": 86.1,
+        "completed%": 85.86,
         "jellyfinWeb": {
             "filename": "es-419.json",
             "keys#": 1555,
@@ -527,7 +527,7 @@
                 "LabelMaxScreenshotsPerItem",
                 "ButtonNetwork"
             ],
-            "completed%": 92.78
+            "completed%": 92.5
         },
         "myJelly": {
             "filename": "",
@@ -546,7 +546,7 @@
         "ISO6391": "es-AR",
         "ISO6392": "es-AR",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "es-AR.json",
             "keys#": 1676,
@@ -566,7 +566,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -610,7 +610,7 @@
         "ISO6391": "es-MX",
         "ISO6392": "es-MX",
         "keys#": 1626,
-        "completed%": 90.03,
+        "completed%": 89.78,
         "jellyfinWeb": {
             "filename": "es-MX.json",
             "keys#": 1626,
@@ -631,7 +631,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 97.02
+            "completed%": 96.73
         },
         "myJelly": {
             "filename": "",
@@ -650,7 +650,7 @@
         "ISO6391": "es",
         "ISO6392": "spa",
         "keys#": 1665,
-        "completed%": 92.19,
+        "completed%": 91.94,
         "jellyfinWeb": {
             "filename": "es.json",
             "keys#": 1665,
@@ -671,7 +671,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.34
+            "completed%": 99.05
         },
         "myJelly": {
             "filename": "es.json",
@@ -690,7 +690,7 @@
         "ISO6391": "et",
         "ISO6392": "est",
         "keys#": 1640,
-        "completed%": 90.81,
+        "completed%": 90.56,
         "jellyfinWeb": {
             "filename": "et.json",
             "keys#": 1640,
@@ -706,7 +706,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 97.85
+            "completed%": 97.56
         },
         "myJelly": {
             "filename": "",
@@ -725,7 +725,7 @@
         "ISO6391": "eu",
         "ISO6392": "es-PV",
         "keys#": 1620,
-        "completed%": 89.7,
+        "completed%": 89.45,
         "jellyfinWeb": {
             "filename": "eu.json",
             "keys#": 1620,
@@ -740,7 +740,7 @@
                 "OptionLikes",
                 "LabelMaxScreenshotsPerItem"
             ],
-            "completed%": 96.66
+            "completed%": 96.37
         },
         "myJelly": {
             "filename": "",
@@ -759,7 +759,7 @@
         "ISO6391": "fa",
         "ISO6392": "per",
         "keys#": 1439,
-        "completed%": 79.68,
+        "completed%": 79.46,
         "jellyfinWeb": {
             "filename": "fa.json",
             "keys#": 1439,
@@ -777,7 +777,7 @@
                 "LabelMaxScreenshotsPerItem",
                 "LabelMinScreenshotDownloadWidth"
             ],
-            "completed%": 85.86
+            "completed%": 85.6
         },
         "myJelly": {
             "filename": "",
@@ -796,7 +796,7 @@
         "ISO6391": "fi",
         "ISO6392": "fin",
         "keys#": 1670,
-        "completed%": 92.47,
+        "completed%": 92.21,
         "jellyfinWeb": {
             "filename": "fi.json",
             "keys#": 1670,
@@ -815,7 +815,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.64
+            "completed%": 99.35
         },
         "myJelly": {
             "filename": "fi.json",
@@ -834,7 +834,7 @@
         "ISO6391": "fil",
         "ISO6392": "fil",
         "keys#": 1618,
-        "completed%": 89.59,
+        "completed%": 89.34,
         "jellyfinWeb": {
             "filename": "fil.json",
             "keys#": 1618,
@@ -851,7 +851,7 @@
                 "ButtonNetwork",
                 "NextUpRewatching"
             ],
-            "completed%": 96.54
+            "completed%": 96.25
         },
         "myJelly": {
             "filename": "",
@@ -870,7 +870,7 @@
         "ISO6391": "fr-CA",
         "ISO6392": "frc",
         "keys#": 1018,
-        "completed%": 56.37,
+        "completed%": 56.21,
         "jellyfinWeb": {
             "filename": "fr-CA.json",
             "keys#": 1018,
@@ -881,7 +881,7 @@
                 "Screenshots",
                 "OptionDislikes"
             ],
-            "completed%": 60.74
+            "completed%": 60.56
         },
         "myJelly": {
             "filename": "",
@@ -900,7 +900,7 @@
         "ISO6391": "fr",
         "ISO6392": "fre",
         "keys#": 1806,
-        "completed%": 100.0,
+        "completed%": 99.72,
         "jellyfinWeb": {
             "filename": "fr.json",
             "keys#": 1676,
@@ -921,7 +921,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "fr.json",
@@ -940,13 +940,13 @@
         "ISO6391": "gl",
         "ISO6392": "glg",
         "keys#": 209,
-        "completed%": 11.57,
+        "completed%": 11.54,
         "jellyfinWeb": {
             "filename": "gl.json",
             "keys#": 209,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 12.47
+            "completed%": 12.43
         },
         "myJelly": {
             "filename": "",
@@ -965,13 +965,13 @@
         "ISO6391": "gsw",
         "ISO6392": "gsw",
         "keys#": 127,
-        "completed%": 7.03,
+        "completed%": 7.01,
         "jellyfinWeb": {
             "filename": "gsw.json",
             "keys#": 127,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 7.58
+            "completed%": 7.56
         },
         "myJelly": {
             "filename": "",
@@ -990,7 +990,7 @@
         "ISO6391": "he",
         "ISO6392": "heb",
         "keys#": 1044,
-        "completed%": 57.81,
+        "completed%": 57.65,
         "jellyfinWeb": {
             "filename": "he.json",
             "keys#": 1044,
@@ -1004,7 +1004,7 @@
                 "ButtonNetwork",
                 "Screenshot"
             ],
-            "completed%": 62.29
+            "completed%": 62.11
         },
         "myJelly": {
             "filename": "",
@@ -1023,7 +1023,7 @@
         "ISO6391": "hi-IN",
         "ISO6392": "hin",
         "keys#": 130,
-        "completed%": 7.2,
+        "completed%": 7.18,
         "jellyfinWeb": {
             "filename": "hi-IN.json",
             "keys#": 130,
@@ -1031,7 +1031,7 @@
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 7.76
+            "completed%": 7.73
         },
         "myJelly": {
             "filename": "",
@@ -1050,7 +1050,7 @@
         "ISO6391": "hr",
         "ISO6392": "hrv",
         "keys#": 1352,
-        "completed%": 74.86,
+        "completed%": 74.65,
         "jellyfinWeb": {
             "filename": "hr.json",
             "keys#": 1352,
@@ -1065,7 +1065,7 @@
                 "OptionLikes",
                 "Screenshots"
             ],
-            "completed%": 80.67
+            "completed%": 80.43
         },
         "myJelly": {
             "filename": "",
@@ -1084,7 +1084,7 @@
         "ISO6391": "hu",
         "ISO6392": "hun",
         "keys#": 1673,
-        "completed%": 92.64,
+        "completed%": 92.38,
         "jellyfinWeb": {
             "filename": "hu.json",
             "keys#": 1673,
@@ -1105,7 +1105,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.82
+            "completed%": 99.52
         },
         "myJelly": {
             "filename": "hu.json",
@@ -1124,7 +1124,7 @@
         "ISO6391": "id",
         "ISO6392": "ind",
         "keys#": 1665,
-        "completed%": 92.19,
+        "completed%": 91.94,
         "jellyfinWeb": {
             "filename": "id.json",
             "keys#": 1665,
@@ -1144,7 +1144,7 @@
                 "OptionLikes",
                 "OptionDislikes"
             ],
-            "completed%": 99.34
+            "completed%": 99.05
         },
         "myJelly": {
             "filename": "",
@@ -1163,7 +1163,7 @@
         "ISO6391": "is-IS",
         "ISO6392": "ice",
         "keys#": 447,
-        "completed%": 24.75,
+        "completed%": 24.68,
         "jellyfinWeb": {
             "filename": "is-IS.json",
             "keys#": 447,
@@ -1173,7 +1173,7 @@
                 "Screenshots",
                 "Screenshot"
             ],
-            "completed%": 26.67
+            "completed%": 26.59
         },
         "myJelly": {
             "filename": "",
@@ -1192,7 +1192,7 @@
         "ISO6391": "it",
         "ISO6392": "ita",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "it.json",
             "keys#": 1676,
@@ -1213,7 +1213,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "it.json",
@@ -1232,7 +1232,7 @@
         "ISO6391": "ja",
         "ISO6392": "jpn",
         "keys#": 1675,
-        "completed%": 92.75,
+        "completed%": 92.49,
         "jellyfinWeb": {
             "filename": "ja.json",
             "keys#": 1675,
@@ -1250,7 +1250,7 @@
                 "OptionDownloadImagesInAdvanceHelp",
                 "OptionDownloadImagesInAdvance"
             ],
-            "completed%": 99.94
+            "completed%": 99.64
         },
         "myJelly": {
             "filename": "",
@@ -1269,13 +1269,13 @@
         "ISO6391": "jbo",
         "ISO6392": "jbo",
         "keys#": 74,
-        "completed%": 4.1,
+        "completed%": 4.09,
         "jellyfinWeb": {
             "filename": "jbo.json",
             "keys#": 74,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 4.42
+            "completed%": 4.4
         },
         "myJelly": {
             "filename": "",
@@ -1344,7 +1344,7 @@
         "ISO6391": "kk",
         "ISO6392": "kaz",
         "keys#": 1647,
-        "completed%": 91.2,
+        "completed%": 90.94,
         "jellyfinWeb": {
             "filename": "kk.json",
             "keys#": 1647,
@@ -1366,7 +1366,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 98.27
+            "completed%": 97.98
         },
         "myJelly": {
             "filename": "",
@@ -1410,7 +1410,7 @@
         "ISO6391": "ko",
         "ISO6392": "kor",
         "keys#": 1583,
-        "completed%": 87.65,
+        "completed%": 87.41,
         "jellyfinWeb": {
             "filename": "ko.json",
             "keys#": 1583,
@@ -1428,7 +1428,7 @@
                 "OptionDownloadImagesInAdvance",
                 "LabelSyncPlayTimeOffset"
             ],
-            "completed%": 94.45
+            "completed%": 94.17
         },
         "myJelly": {
             "filename": "",
@@ -1447,7 +1447,7 @@
         "ISO6391": "lt-LT",
         "ISO6392": "lit",
         "keys#": 1043,
-        "completed%": 57.75,
+        "completed%": 57.59,
         "jellyfinWeb": {
             "filename": "lt-LT.json",
             "keys#": 1043,
@@ -1460,7 +1460,7 @@
                 "Screenshots",
                 "ButtonNetwork"
             ],
-            "completed%": 62.23
+            "completed%": 62.05
         },
         "myJelly": {
             "filename": "",
@@ -1479,7 +1479,7 @@
         "ISO6391": "lv",
         "ISO6392": "lav",
         "keys#": 1271,
-        "completed%": 70.38,
+        "completed%": 70.18,
         "jellyfinWeb": {
             "filename": "lv.json",
             "keys#": 1271,
@@ -1493,7 +1493,7 @@
                 "OptionAllowContentDownloading",
                 "LabelMaxScreenshotsPerItem"
             ],
-            "completed%": 75.84
+            "completed%": 75.61
         },
         "myJelly": {
             "filename": "",
@@ -1512,13 +1512,13 @@
         "ISO6391": "mk",
         "ISO6392": "mac",
         "keys#": 199,
-        "completed%": 11.02,
+        "completed%": 10.99,
         "jellyfinWeb": {
             "filename": "mk.json",
             "keys#": 199,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 11.87
+            "completed%": 11.84
         },
         "myJelly": {
             "filename": "",
@@ -1537,7 +1537,7 @@
         "ISO6391": "ml",
         "ISO6392": "mal",
         "keys#": 1578,
-        "completed%": 87.38,
+        "completed%": 87.13,
         "jellyfinWeb": {
             "filename": "ml.json",
             "keys#": 1578,
@@ -1553,7 +1553,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 94.15
+            "completed%": 93.87
         },
         "myJelly": {
             "filename": "",
@@ -1572,13 +1572,13 @@
         "ISO6391": "mn",
         "ISO6392": "mon",
         "keys#": 97,
-        "completed%": 5.37,
+        "completed%": 5.36,
         "jellyfinWeb": {
             "filename": "mn.json",
             "keys#": 97,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 5.79
+            "completed%": 5.77
         },
         "myJelly": {
             "filename": "",
@@ -1597,7 +1597,7 @@
         "ISO6391": "mr",
         "ISO6392": "mar",
         "keys#": 665,
-        "completed%": 36.82,
+        "completed%": 36.72,
         "jellyfinWeb": {
             "filename": "mr.json",
             "keys#": 665,
@@ -1607,7 +1607,7 @@
                 "Screenshot",
                 "Screenshots"
             ],
-            "completed%": 39.68
+            "completed%": 39.56
         },
         "myJelly": {
             "filename": "",
@@ -1626,7 +1626,7 @@
         "ISO6391": "ms",
         "ISO6392": "may",
         "keys#": 241,
-        "completed%": 13.34,
+        "completed%": 13.31,
         "jellyfinWeb": {
             "filename": "ms.json",
             "keys#": 241,
@@ -1634,7 +1634,7 @@
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 14.38
+            "completed%": 14.34
         },
         "myJelly": {
             "filename": "",
@@ -1653,13 +1653,13 @@
         "ISO6391": "my",
         "ISO6392": "bur",
         "keys#": 257,
-        "completed%": 14.23,
+        "completed%": 14.19,
         "jellyfinWeb": {
             "filename": "my.json",
             "keys#": 257,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 15.33
+            "completed%": 15.29
         },
         "myJelly": {
             "filename": "",
@@ -1678,7 +1678,7 @@
         "ISO6391": "nb",
         "ISO6392": "nob",
         "keys#": 1674,
-        "completed%": 92.69,
+        "completed%": 92.44,
         "jellyfinWeb": {
             "filename": "nb.json",
             "keys#": 1674,
@@ -1698,7 +1698,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.88
+            "completed%": 99.58
         },
         "myJelly": {
             "filename": "",
@@ -1723,7 +1723,7 @@
             "keys#": 34,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 2.03
+            "completed%": 2.02
         },
         "myJelly": {
             "filename": "",
@@ -1742,7 +1742,7 @@
         "ISO6391": "nl",
         "ISO6392": "dut",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "nl.json",
             "keys#": 1676,
@@ -1762,7 +1762,7 @@
                 "SetUsingLastTracks",
                 "SetUsingLastTracksHelp"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -1781,7 +1781,7 @@
         "ISO6391": "nn",
         "ISO6392": "nno",
         "keys#": 754,
-        "completed%": 41.75,
+        "completed%": 41.63,
         "jellyfinWeb": {
             "filename": "nn.json",
             "keys#": 754,
@@ -1791,7 +1791,7 @@
                 "Screenshot",
                 "ButtonNetwork"
             ],
-            "completed%": 44.99
+            "completed%": 44.85
         },
         "myJelly": {
             "filename": "",
@@ -1810,7 +1810,7 @@
         "ISO6391": "pa",
         "ISO6392": "pan",
         "keys#": 96,
-        "completed%": 5.32,
+        "completed%": 5.3,
         "jellyfinWeb": {
             "filename": "pa.json",
             "keys#": 96,
@@ -1818,7 +1818,7 @@
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 5.73
+            "completed%": 5.71
         },
         "myJelly": {
             "filename": "",
@@ -1830,17 +1830,17 @@
     },
     "pl": {
         "ccode": "pl",
-        "fsize": 118630,
+        "fsize": 118775,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
         "displayNativeName": "Polski",
         "ISO6391": "pl",
         "ISO6392": "pol",
-        "keys#": 1675,
-        "completed%": 92.75,
+        "keys#": 1676,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "pl.json",
-            "keys#": 1675,
+            "keys#": 1676,
             "orphans#": 14,
             "orphans": [
                 "ButtonNetwork",
@@ -1858,7 +1858,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.94
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "pl.json",
@@ -1877,13 +1877,13 @@
         "ISO6391": "pr",
         "ISO6392": "pir",
         "keys#": 94,
-        "completed%": 5.2,
+        "completed%": 5.19,
         "jellyfinWeb": {
             "filename": "pr.json",
             "keys#": 94,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 5.61
+            "completed%": 5.59
         },
         "myJelly": {
             "filename": "",
@@ -1902,7 +1902,7 @@
         "ISO6391": "pt-BR",
         "ISO6392": "pob",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "pt-BR.json",
             "keys#": 1676,
@@ -1922,7 +1922,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -1941,7 +1941,7 @@
         "ISO6391": "pt-PT",
         "ISO6392": "por",
         "keys#": 1668,
-        "completed%": 92.36,
+        "completed%": 92.1,
         "jellyfinWeb": {
             "filename": "pt-PT.json",
             "keys#": 1668,
@@ -1959,7 +1959,7 @@
                 "OptionDownloadImagesInAdvance",
                 "LabelSyncPlayTimeOffset"
             ],
-            "completed%": 99.52
+            "completed%": 99.23
         },
         "myJelly": {
             "filename": "",
@@ -1978,7 +1978,7 @@
         "ISO6391": "pt",
         "ISO6392": "prt",
         "keys#": 1346,
-        "completed%": 74.53,
+        "completed%": 74.32,
         "jellyfinWeb": {
             "filename": "pt.json",
             "keys#": 1346,
@@ -1995,7 +1995,7 @@
                 "ButtonNetwork",
                 "OptionLikes"
             ],
-            "completed%": 80.31
+            "completed%": 80.07
         },
         "myJelly": {
             "filename": "",
@@ -2014,7 +2014,7 @@
         "ISO6391": "ro",
         "ISO6392": "rum",
         "keys#": 1654,
-        "completed%": 91.58,
+        "completed%": 91.33,
         "jellyfinWeb": {
             "filename": "ro.json",
             "keys#": 1654,
@@ -2035,7 +2035,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 98.69
+            "completed%": 98.39
         },
         "myJelly": {
             "filename": "",
@@ -2054,7 +2054,7 @@
         "ISO6391": "ru",
         "ISO6392": "rus",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "ru.json",
             "keys#": 1676,
@@ -2075,7 +2075,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -2119,7 +2119,7 @@
         "ISO6391": "sk",
         "ISO6392": "slo",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "sk.json",
             "keys#": 1676,
@@ -2140,7 +2140,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -2159,7 +2159,7 @@
         "ISO6391": "sl-SI",
         "ISO6392": "slv",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "sl-SI.json",
             "keys#": 1676,
@@ -2178,7 +2178,7 @@
                 "Screenshots",
                 "YadifBob"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -2197,7 +2197,7 @@
         "ISO6391": "sq",
         "ISO6392": "alb",
         "keys#": 355,
-        "completed%": 19.66,
+        "completed%": 19.6,
         "jellyfinWeb": {
             "filename": "sq.json",
             "keys#": 355,
@@ -2205,7 +2205,7 @@
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 21.18
+            "completed%": 21.12
         },
         "myJelly": {
             "filename": "",
@@ -2224,7 +2224,7 @@
         "ISO6391": "sr",
         "ISO6392": "srp",
         "keys#": 1628,
-        "completed%": 90.14,
+        "completed%": 89.9,
         "jellyfinWeb": {
             "filename": "sr.json",
             "keys#": 1628,
@@ -2238,7 +2238,7 @@
                 "OptionLikes",
                 "OptionDislikes"
             ],
-            "completed%": 97.14
+            "completed%": 96.85
         },
         "myJelly": {
             "filename": "",
@@ -2257,7 +2257,7 @@
         "ISO6391": "sv",
         "ISO6392": "swe",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "sv.json",
             "keys#": 1676,
@@ -2277,7 +2277,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -2296,7 +2296,7 @@
         "ISO6391": "ta",
         "ISO6392": "tam",
         "keys#": 1661,
-        "completed%": 91.97,
+        "completed%": 91.72,
         "jellyfinWeb": {
             "filename": "ta.json",
             "keys#": 1661,
@@ -2332,7 +2332,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.11
+            "completed%": 98.81
         },
         "myJelly": {
             "filename": "",
@@ -2351,7 +2351,7 @@
         "ISO6391": "te",
         "ISO6392": "tel",
         "keys#": 1498,
-        "completed%": 82.95,
+        "completed%": 82.72,
         "jellyfinWeb": {
             "filename": "te.json",
             "keys#": 1498,
@@ -2365,7 +2365,7 @@
                 "LabelMaxScreenshotsPerItem",
                 "ButtonNetwork"
             ],
-            "completed%": 89.38
+            "completed%": 89.11
         },
         "myJelly": {
             "filename": "",
@@ -2384,13 +2384,13 @@
         "ISO6391": "th",
         "ISO6392": "tha",
         "keys#": 142,
-        "completed%": 7.86,
+        "completed%": 7.84,
         "jellyfinWeb": {
             "filename": "th.json",
             "keys#": 142,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 8.47
+            "completed%": 8.45
         },
         "myJelly": {
             "filename": "",
@@ -2409,7 +2409,7 @@
         "ISO6391": "tr",
         "ISO6392": "tur",
         "keys#": 1668,
-        "completed%": 92.36,
+        "completed%": 92.1,
         "jellyfinWeb": {
             "filename": "tr.json",
             "keys#": 1668,
@@ -2424,7 +2424,7 @@
                 "Screenshots",
                 "Screenshot"
             ],
-            "completed%": 99.52
+            "completed%": 99.23
         },
         "myJelly": {
             "filename": "",
@@ -2443,7 +2443,7 @@
         "ISO6391": "ug",
         "ISO6392": "uig",
         "keys#": 27,
-        "completed%": 1.5,
+        "completed%": 1.49,
         "jellyfinWeb": {
             "filename": "ug.json",
             "keys#": 27,
@@ -2468,7 +2468,7 @@
         "ISO6391": "uk",
         "ISO6392": "ukr",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "uk.json",
             "keys#": 1676,
@@ -2486,7 +2486,7 @@
                 "SetUsingLastTracks",
                 "Screenshots"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -2505,13 +2505,13 @@
         "ISO6391": "ur-PK",
         "ISO6392": "urd",
         "keys#": 1672,
-        "completed%": 92.58,
+        "completed%": 92.32,
         "jellyfinWeb": {
             "filename": "ur-PK.json",
             "keys#": 1672,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 99.76
+            "completed%": 99.46
         },
         "myJelly": {
             "filename": "",
@@ -2530,13 +2530,13 @@
         "ISO6391": "uz",
         "ISO6392": "uzb",
         "keys#": 651,
-        "completed%": 36.05,
+        "completed%": 35.95,
         "jellyfinWeb": {
             "filename": "uz.json",
             "keys#": 651,
             "orphans#": 0,
             "orphans": [],
-            "completed%": 38.84
+            "completed%": 38.73
         },
         "myJelly": {
             "filename": "",
@@ -2555,7 +2555,7 @@
         "ISO6391": "vi",
         "ISO6392": "vie",
         "keys#": 1665,
-        "completed%": 92.19,
+        "completed%": 91.94,
         "jellyfinWeb": {
             "filename": "vi.json",
             "keys#": 1665,
@@ -2575,7 +2575,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.34
+            "completed%": 99.05
         },
         "myJelly": {
             "filename": "",
@@ -2594,7 +2594,7 @@
         "ISO6391": "zh-CN",
         "ISO6392": "chi",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "zh-CN.json",
             "keys#": 1676,
@@ -2615,7 +2615,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -2634,7 +2634,7 @@
         "ISO6391": "zh-HK",
         "ISO6392": "chi",
         "keys#": 1093,
-        "completed%": 60.52,
+        "completed%": 60.35,
         "jellyfinWeb": {
             "filename": "zh-HK.json",
             "keys#": 1093,
@@ -2646,7 +2646,7 @@
                 "OptionLikes",
                 "ButtonNetwork"
             ],
-            "completed%": 65.21
+            "completed%": 65.02
         },
         "myJelly": {
             "filename": "",
@@ -2665,7 +2665,7 @@
         "ISO6391": "zh-TW",
         "ISO6392": "chi",
         "keys#": 1676,
-        "completed%": 92.8,
+        "completed%": 92.55,
         "jellyfinWeb": {
             "filename": "zh-TW.json",
             "keys#": 1676,
@@ -2685,7 +2685,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 100.0
+            "completed%": 99.7
         },
         "myJelly": {
             "filename": "",
@@ -2704,7 +2704,7 @@
         "ISO6391": "zu",
         "ISO6392": "zul",
         "keys#": 114,
-        "completed%": 6.31,
+        "completed%": 6.29,
         "jellyfinWeb": {
             "filename": "zu.json",
             "keys#": 114,
@@ -2712,7 +2712,7 @@
             "orphans": [
                 "ButtonNetwork"
             ],
-            "completed%": 6.8
+            "completed%": 6.78
         },
         "myJelly": {
             "filename": "",

@@ -97,6 +97,7 @@ const Direction = {
 
     export function updateCurrentCulture() {
 		_currentCulture = userSettings.language() || getDefaultCulture().ccode;
+		document.documentElement.setAttribute('lang', _currentCulture);
 		_currentCultureAlt = userSettings.languageAlt() || getDefaultCulture().ccode;
 		_currentDateTimeCulture = userSettings.dateTimeLocale() || _currentCulture;
 		updateLocale(_currentDateTimeCulture);
