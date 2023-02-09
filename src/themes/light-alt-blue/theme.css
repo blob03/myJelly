@@ -38,13 +38,6 @@ html {
     background-color: #eaeaea;
 }
 
-.skinHeader-withBackground {
-	background: linear-gradient(105deg, rgb(133, 200, 197) 0%, rgb(96, 147, 177) 100%);
-    color: #fff;
-    -webkit-box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 0.0725em 0.29em 0 rgba(0, 0, 0, 0.37);
-}
-
 .osdHeader {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -1320,4 +1313,44 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .nightFilter {
 	background: linear-gradient(125deg, rgba(255, 227, 1, 0.1) 0%, rgba(199, 0, 255, 0.18) 40%, rgba(223, 0, 255, 0.2) 70%, rgba(255, 184, 15, 0.1) 100%) !important;
+}
+
+.skinHeader {
+	contain: layout style !important;
+}
+
+.skinHeader-withBackground {
+	background: none;
+    color: #fff;
+    box-shadow: none;
+}
+
+.skinHeader.semiTransparent {
+    backdrop-filter: none !important;
+}
+
+.headerTop {
+	padding: .5em 0 0 0 !important;
+	background: linear-gradient(180deg, rgb(96, 147, 177) 0%, rgb(133, 200, 197) 100%) !important;
+}
+	
+.headerTabs {
+	height: auto;
+	background: linear-gradient(180deg, rgb(133, 200, 197) 30%, rgba(132, 255, 249, 0.2) 100%) !important;
+}
+
+.pinned .backdropImage,
+.pinned .itemBackdrop {
+  background-position: 0 4.5em !important;
+}
+ 
+.libraryPage.noSecondaryNavPage {
+	padding-top: 5em !important;
+}
+
+@media all and (min-width: 100em) {
+    .headerTabs {
+       	margin-top: -2.5em !important;
+		height: 2.5em !important;
+    }
 }

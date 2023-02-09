@@ -560,6 +560,19 @@ export class UserSettings {
     }
 	
 	/**
+     * Get or set 'Video Remaining/Total Time' state.
+     * @param {boolean|undefined} val - Flag to enable 'Video Remaining/Total Time' or undefined.
+     * @return {boolean} 'Video Remaining/Total Time' state.
+     */
+    enableVideoRemainingTime(val) {
+        if (val !== undefined) {
+            return this.set('enableVideoRemainingTime', val.toString());
+        }
+
+        return toBoolean(this.get('enableVideoRemainingTime', false), true);
+    }
+	
+	/**
      * Get or set 'Latitude' coordinate.
      * @param {boolean|undefined} val - Value to set 'Latitude' or undefined.
      * @return {boolean} 'Latitude' currently set.
@@ -1668,6 +1681,7 @@ export const preferFmp4HlsContainer = currentSettings.preferFmp4HlsContainer.bin
 export const enableCinemaMode = currentSettings.enableCinemaMode.bind(currentSettings);
 export const AudioLanguagePreference = currentSettings.AudioLanguagePreference.bind(currentSettings);
 export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOverlay.bind(currentSettings);
+export const enableVideoRemainingTime = currentSettings.enableVideoRemainingTime.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
 export const enableThemeVideos = currentSettings.enableThemeVideos.bind(currentSettings);
 export const convertCountryCode = currentSettings.convertCountryCode.bind(currentSettings);

@@ -406,9 +406,9 @@ import './login.scss';
 		view.querySelector('#btnSelectServer').classList.toggle('hide', !webSettings.serverSelection());
 
 		apiClient.getJSON(apiClient.getUrl('Branding/Configuration')).then(function (options) {
-			const disclaimer = view.querySelector('.disclaimer');
-			disclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
-			for (const elem of disclaimer.querySelectorAll('a')) {
+			const loginDisclaimer = view.querySelector('.loginDisclaimer');
+			loginDisclaimer.innerHTML = DOMPurify.sanitize(marked(options.LoginDisclaimer || ''));
+			for (const elem of loginDisclaimer.querySelectorAll('a')) {
 				elem.rel = 'noopener noreferrer';
 				elem.target = '_blank';
 				elem.classList.add('button-link');

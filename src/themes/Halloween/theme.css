@@ -69,11 +69,6 @@ html {
     background-color: #eaeaea;
 }
 
-.skinHeader-withBackground {
-    color: rgba(255, 255, 255, 0.87);
-	overflow: visible !important;
-}
-
 .scrollX {
 	overflow: hidden;
 }
@@ -85,13 +80,6 @@ html {
 .osdHeader {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-}
-
-.skinHeader.semiTransparent {
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-    background-color: #282828;
-	overflow: visible !important;
 }
 
 .pageTitleWithDefaultLogo {
@@ -1502,6 +1490,17 @@ option:selected {
 
 .nightFilter {
 	background: linear-gradient(125deg, rgba(247, 245, 245, 0.1) 0%, rgba(202, 4, 4, 0.2) 40%, rgba(38, 255, 7, 0.2) 70%, rgba(255, 10, 10, 0.1) 100%) !important;
+}
+
+.skinHeader-withBackground {
+    color: rgba(255, 255, 255, 0.87);
+	overflow: visible !important;
+}
+
+.skinHeader.semiTransparent {
+    backdrop-filter: none !important;
+    background-color: #282828;
+	overflow: visible !important;
 }
 
 .headerTop {
