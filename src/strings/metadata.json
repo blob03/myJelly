@@ -449,17 +449,17 @@
     },
     "en-GB": {
         "ccode": "en-GB",
-        "fsize": 109267,
+        "fsize": 110148,
         "ccodeSrc": "en-US",
         "displayName": "English, Great Britain",
         "displayNativeName": "English, Great Britain",
         "ISO6391": "en-GB",
         "ISO6392": "en-GB",
-        "keys#": 1674,
-        "completed%": 92.13,
+        "keys#": 1687,
+        "completed%": 92.85,
         "jellyfinWeb": {
             "filename": "en-GB.json",
-            "keys#": 1674,
+            "keys#": 1687,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -479,7 +479,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.23
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "en-GB.json",
@@ -1505,17 +1505,17 @@
     },
     "lt-LT": {
         "ccode": "lt-LT",
-        "fsize": 63661,
+        "fsize": 71200,
         "ccodeSrc": "en-US",
         "displayName": "Lithuanian",
         "displayNativeName": "Lietuvių",
         "ISO6391": "lt-LT",
         "ISO6392": "lit",
-        "keys#": 1041,
-        "completed%": 57.29,
+        "keys#": 1124,
+        "completed%": 61.86,
         "jellyfinWeb": {
             "filename": "lt-LT.json",
-            "keys#": 1041,
+            "keys#": 1124,
             "orphans#": 8,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -1527,7 +1527,7 @@
                 "DashboardOperatingSystem",
                 "DashboardArchitecture"
             ],
-            "completed%": 61.71
+            "completed%": 66.63
         },
         "myJelly": {
             "filename": "",
@@ -1917,17 +1917,17 @@
     },
     "pl": {
         "ccode": "pl",
-        "fsize": 118775,
+        "fsize": 119699,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
         "displayNativeName": "Polski",
         "ISO6391": "pl",
         "ISO6392": "pol",
-        "keys#": 1674,
-        "completed%": 92.13,
+        "keys#": 1687,
+        "completed%": 92.85,
         "jellyfinWeb": {
             "filename": "pl.json",
-            "keys#": 1674,
+            "keys#": 1687,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -1947,7 +1947,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.23
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "pl.json",
@@ -2357,17 +2357,17 @@
     },
     "sv": {
         "ccode": "sv",
-        "fsize": 114409,
+        "fsize": 115361,
         "ccodeSrc": "en-US",
         "displayName": "Swedish",
         "displayNativeName": "Svenska",
         "ISO6391": "sv",
         "ISO6392": "swe",
-        "keys#": 1674,
-        "completed%": 92.13,
+        "keys#": 1687,
+        "completed%": 92.85,
         "jellyfinWeb": {
             "filename": "sv.json",
-            "keys#": 1674,
+            "keys#": 1687,
             "orphans#": 15,
             "orphans": [
                 "ButtonNetwork",
@@ -2386,7 +2386,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.23
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

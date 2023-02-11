@@ -86,27 +86,6 @@
     overflow: hidden;
 }
 
-.layout-tv .libraryPage.noSecondaryNavPage {
-   padding-top: 5.6em !important;
-}
-
-.libraryPage.noSecondaryNavPage {
-    padding-top: 5.4em !important;
-}
-
-.layout-tv .libraryPage.itemDetailPage {
-//	padding-top: 8% !important;
-//	padding-top: 4.9rem !important;
-}
-
-.libraryPage:not(.noSecondaryNavPage) {
-    padding-top: 7.5em !important;
-}
-
-.itemDetailPage {
-    padding-top: 0 !important;
-}
-
 .layout-tv body::-webkit-scrollbar {
     display: none;
 }
@@ -400,11 +379,23 @@
     }
 }
 
+.itemDetailPage {
+    padding-top: 0;
+}
+
+.libraryPage.noSecondaryNavPage {
+   padding-top: 5.05em;
+}
+
+.libraryPage:not(.noSecondaryNavPage) {
+    padding-top: 6.5em;
+}
+
 @media all and (min-width: 100em) {
     .headerTop {
         padding: 0.8em 0.8em;
     }
-
+	
     .headerTabs {
 		align-self: center;
 		width: 100% !important;
@@ -414,8 +405,12 @@
         margin-top: -4.3em;
     }
 
+	.libraryPage.noSecondaryNavPage {
+		padding-top: 5.65em !important;
+	}
+	
     .libraryPage:not(.noSecondaryNavPage) {
-        padding-top: 4.6em !important;
+        padding-top: 7.1em !important;
     }
 
     .pageWithAbsoluteTabs:not(.noSecondaryNavPage) {
@@ -1190,7 +1185,7 @@ div.itemDetailGalleryLink.defaultCardBackground {
 .detailPageWrapperContainer {
     border-spacing: 0;
     border-collapse: collapse;
-	margin-top: .5em;
+	margin-top: .1em;
 }
 
 .mediaInfoContent .btnCopy .material-icons {
@@ -1257,7 +1252,7 @@ div.itemDetailGalleryLink.defaultCardBackground {
 }
 
 .pinned .itemBackdrop {
-	background-position: 0em 5.4em !important;
+	background-position: 0em 4.8em !important;
 }
 
 .itemBackdrop {

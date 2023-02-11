@@ -718,7 +718,7 @@ html {
 }
 
 .layout-tv .detailRibbon {
-    background: none;
+    background: rgba(245, 182, 101, 0.4);
 }
 
 .mediaInfoItem {
@@ -802,12 +802,6 @@ html {
 
 .listItemIcon:not(.listItemIcon-transparent) {
 	background-color: #ffb43e !important;
-}
-
-/* fix for TV Layout */
-
-.layout-tv .detailPageWrapperContainer {
-	margin-top: 2%;
 }
 
 /* upNext dialog box */
@@ -929,10 +923,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 .radio:focus + * + .checkboxOutline > .checkboxIcon-checked,
 .radio:focus + * + .checkboxOutline > .checkboxIcon-unchecked {
 	color: #5539b8 !important;
-}
-
-.libraryPage {
-	padding-top: 4.1em !important;
 }
 
  .radioButtonLabel,
@@ -1492,23 +1482,23 @@ option:selected {
 	background: linear-gradient(125deg, rgba(247, 245, 245, 0.1) 0%, rgba(202, 4, 4, 0.2) 40%, rgba(38, 255, 7, 0.2) 70%, rgba(255, 10, 10, 0.1) 100%) !important;
 }
 
-.skinHeader-withBackground {
-    color: rgba(255, 255, 255, 0.87);
-	overflow: visible !important;
-}
-
-.skinHeader.semiTransparent {
-    backdrop-filter: none !important;
-    background-color: #282828;
+.skinHeader {
+	background: none !important;
+	contain: layout style !important;
+	box-shadow: none;
 	overflow: visible !important;
 }
 
 .headerTop {
-	background-color: #282828;
+	background: rgb(40, 40, 40);
+}
+
+.osdHeader .headerTop {
+	background: rgba(40, 40, 40, .7) !important;
 }
 
 .headerTabs {
-	background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgba(40,40,40,0.75) 40%, rgba(247, 130, 5, 0.25) 100%) !important;
+	background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgba(40, 40, 40, 0.6) 75%, rgba(40, 40, 40, 0.2) 100%) !important;
 }
 
 .headerLeft, .headerRight {
@@ -1517,8 +1507,14 @@ option:selected {
 	margin-left: .5em;
 }
 
+.pinned .backdropImage,
+.pinned .itemBackdrop {
+  background-position: 0 4.5em !important;
+}
+
 @media all and (min-width: 100em) {
     .headerTabs {
         margin-top: -2.5em !important;
+		height: 2.5em !important;
     }
 }
