@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-7",
+	"version": "10.8.9-8",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -207,6 +207,7 @@
 		"10.8.9-4": "Synchronize translations and Node.js packages.\nApply patch 'DVR: Add options to disable NFO and image saving'.\nApply patch 'Show production studio'.\nApply patch 'Fix html lang attribute'.\nApply patch 'Merge branch 'master' into master'.",
 		"10.8.9-5": "Synchronize translations.\nApply patch 'Remove OS and Arch from dashboard'.",
 		"10.8.9-6": "Synchronize translations.\nApply patch 'Move image resolution settings to Libraries > Metadata'.\nApply patch 'Rename login disclaimer'.\nApply patch 'SeriesTimerUI'.\nApply patch 'remaining-time-toggle'.\nUpdate theme 'Light Alt. Blue'.",
-		"10.8.9-7": "Synchronize translations.\nUpdate themes 'Light Alt. Blue' and 'Halloween'."
+		"10.8.9-7": "Synchronize translations.\nUpdate themes 'Light Alt. Blue' and 'Halloween'.",
+		"10.8.9-8": "Synchronize translations.\nApply patch 'Prefer embedded extras titles'.\nUpdate themes 'Light Alt. Blue' and 'Halloween'."
 	}
 }

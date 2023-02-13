@@ -754,13 +754,6 @@ html {
 	font-size: 85%;
 }
 
-.skinHeader.osdHeader {
-	background: linear-gradient(90deg, rgba(40, 40, 40, 0.85), rgba(40, 40, 40, 0.55));
-	height: 4.5em;
-	transition: opacity .6s ease-out;
-	color: #fe9001;
-}
-
 .jstree-default .jstree-wholerow-clicked {
     background: #edeabc !important;
 }
@@ -1483,22 +1476,25 @@ option:selected {
 }
 
 .skinHeader {
-	background: none !important;
 	contain: layout style !important;
 	box-shadow: none;
 	overflow: visible !important;
 }
 
-.headerTop {
-	background: rgb(40, 40, 40);
+.withSectionTabs .skinHeader {
+	background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(40, 40, 40) 50%, rgba(40, 40, 40, 0.6) 75%, rgba(40, 40, 40, 0.2) 100%) !important;
+	height: 9em;
 }
 
-.osdHeader .headerTop {
+.skinHeader {
+	background: rgb(40, 40, 40) !important;
+}
+
+.skinHeader.osdHeader {
+	height: 4.5em;
+	transition: opacity .6s ease-out;
+	color: #fe9001;
 	background: rgba(40, 40, 40, .7) !important;
-}
-
-.headerTabs {
-	background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgba(40, 40, 40, 0.6) 75%, rgba(40, 40, 40, 0.2) 100%) !important;
 }
 
 .headerLeft, .headerRight {
@@ -1514,7 +1510,7 @@ option:selected {
 
 @media all and (min-width: 100em) {
     .headerTabs {
-        margin-top: -2.5em !important;
-		height: 2.5em !important;
+        //margin-top: -2.5em !important;
+		//height: 2.5em !important;
     }
 }

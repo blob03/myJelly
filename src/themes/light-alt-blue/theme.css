@@ -681,12 +681,6 @@ h3 {
 	font-size: 85%;
 }
 
-.skinHeader.osdHeader {
-	background: linear-gradient(180deg,hsla(213.8, 35.9%, 30%, 0.85),hsla(240, 100%, 0.2%, 0.05));
-	height: 6.5em;
-	transition: opacity .6s ease-out;
-}
-
 .jstree-default .jstree-wholerow-clicked {
     background: #edeabc !important;
 }
@@ -1108,10 +1102,6 @@ div[data-role="controlgroup"] a.ui-btn-active {
 	color: white;
 }
 
-.pageTabContent {
-    padding-top: 0.5em !important;
-}
-
 .sectionTitle-cards,
 div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .sectionTitleContainer-cards {
@@ -1266,9 +1256,11 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 	border: 2px groove #8cbdc8 !important;
 }
 
+/*
 .homePage {
     padding-top: 9.5em !important;
 }
+*/
 
 .infoDetails {
 	font-size: 90% !important;
@@ -1306,24 +1298,24 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .skinHeader {
-	contain: layout style !important;
-	background: none !important;
     color: #fff;
     box-shadow: none;
 	overflow: visible !important;
 }
 
-.headerTop {
+.withSectionTabs .skinHeader {
+	background: linear-gradient(180deg, rgb(96, 147, 177) 0%, rgb(133, 200, 197) 60%, rgba(133, 200, 197, 0.8) 75%, rgba(133, 200, 197, 0.05) 100%) !important;
+	height: 9em;
+}
+
+.skinHeader.osdHeader {
+	background: linear-gradient(180deg, rgba(96, 147, 177, .2) 0%, rgba(133, 200, 197, .3) 100%) !important;
+	height: 6.5em;
+	transition: opacity .6s ease-out;
+}
+
+.skinHeader {
 	background: linear-gradient(180deg, rgb(96, 147, 177) 0%, rgb(133, 200, 197) 100%);
-}
-
-.osdHeader .headerTop {
-	  background: linear-gradient(180deg, rgba(96, 147, 177, .2) 0%, rgba(133, 200, 197, .3) 100%) !important;
-}
-
-.headerTabs {
-	height: auto;
-	background: linear-gradient(180deg, rgb(133, 200, 197) 30%, rgba(132, 255, 249, 0.2) 100%) !important;
 }
 
 .pinned .backdropImage,
@@ -1333,7 +1325,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 @media all and (min-width: 100em) {
     .headerTabs {
-       	margin-top: -2.5em !important;
-		height: 2.5em !important;
+       	//margin-top: -2.5em !important;
+		//height: 2.5em !important;
     }
 }
