@@ -36,7 +36,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 	
     function renderHeader() {
         let html = '';
-        html += '<div class="headerTop flex align-items-center flex-grow" style="justify-content: center;">';
+        html += '<div class="headerTop flex align-items-center" style="justify-content: center;">';
         html += '<div class="headerLeft" style="overflow: visible;">';
 	
 		// Extra feature thought for the TV layout.
@@ -112,7 +112,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
 		html += '</div>';
 		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;height: 3.2em;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .1em;">';
+		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .3em;">';
 		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.1em;width: 2.1em;">';
 		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.1em;">';
 		html += '</div>';
@@ -159,9 +159,9 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
         html += '</div>';
         html += '</div>';
 		if (browser.tv) {
-			html += '<div class="headerTabs sectionTabs hide" style="position: relative;top: 2.5em;padding-bottom:2.5em;font-size: 80%;">';
+			html += '<div class="headerTabs sectionTabs hide flex-grow" style="position: relative;top: 2.5em;padding-bottom:2.5em;font-size: 80%;">';
 		} else {
-			html += '<div class="headerTabs sectionTabs hide">';
+			html += '<div class="headerTabs sectionTabs hide flex-grow">';
 		}
         html += '</div>';
 

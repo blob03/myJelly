@@ -612,10 +612,6 @@ html {
 	border: .2em ridge #474c52;
 }
 
-.itemBackdrop {
-	background: rgba(211, 219, 199, 0.65) !important;
-}
-
 /* dashboard menu */
 
 .navMenuOption:hover:not(:disabled) {
@@ -761,12 +757,6 @@ html {
 .secondaryText {
 	color: #779c9c;
 	font-size: 80%;
-}
-
-.skinHeader.osdHeader {
-	background: linear-gradient(180deg,hsla(0, 9.1%, 2.2%, 0.55),hsla(0,0%,6%,0));
-	height: 6.5em;
-	transition: opacity .6s ease-out;
 }
 
 .jstree-default .jstree-wholerow-clicked {
@@ -1531,4 +1521,24 @@ select option:selected {
 	color: #f7a82d !important;
 	text-shadow: none !important;
 }
+ 
+.osdHeader .material-icons {
+	text-shadow: none !important;
+	color: #273E4F !important;
+}
 
+.osdControls .material-icons {
+  color: #DBD9B0 !important;
+  text-shadow: none !important;
+}
+
+.osdControls .mdl-slider-background, .mdl-slider-background-flex {
+  box-shadow: 0.2em 0.2em 4px #000;
+  background: #646a6d;
+}
+
+.skinHeader.osdHeader {
+	height: 6.5em;
+	transition: opacity .6s ease-out;
+	background: linear-gradient(180deg, rgba(255, 255, 255, .4), rgba(251, 245, 188, 0.7)) !important;
+}

@@ -146,13 +146,14 @@ html {
 }
 
 .alphaPickerButton {
-	color: rgb(76, 140, 171);
+	color: rgb(34, 75, 90);
 	background-color: transparent;
 	font-weight: 600;
 }
 
-.alphaPickerButton-selected {
-    background-color: #00a4dc !important;
+.alphaPickerButton-selected,
+.btnFilter.inUse > .material-icons, 
+.btnSort.inUse > .material-icons {
     color: #fff !important;
 }
 
@@ -1147,7 +1148,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .emby-tab-button {
-    color: #277499;
+    color: rgb(34, 75, 90);
 	overflow: visible;
 }
 
@@ -1304,8 +1305,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .withSectionTabs .skinHeader {
-	background: linear-gradient(180deg, rgb(96, 147, 177) 0%, rgb(133, 200, 197) 60%, rgba(133, 200, 197, 0.8) 75%, rgba(133, 200, 197, 0.05) 100%) !important;
-	height: 9em;
+	background: linear-gradient(180deg, rgb(111, 198, 231) 0%, rgb(84, 177, 168) 60%, rgba(51, 128, 125, 0.46) 80%, rgba(75, 153, 170, 0.4) 95%, rgba(255, 255, 255, 0.05) 100%) !important;
 }
 
 .skinHeader.osdHeader {
@@ -1320,7 +1320,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .pinned .backdropImage,
 .pinned .itemBackdrop {
-  background-position: 0 4.5em !important;
+  background-position: 0 4em !important;
 }
 
 @media all and (min-width: 100em) {
@@ -1329,3 +1329,4 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 		//height: 2.5em !important;
     }
 }
+

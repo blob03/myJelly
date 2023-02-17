@@ -177,7 +177,7 @@ html {
 .nowPlayingBarSecondaryText,
 .programSecondaryTitle,
 .secondaryText {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(176, 219, 251, 0.5) !important;
 }
 
 .fieldDescription {
@@ -314,8 +314,9 @@ html {
 }
 
 .emby-checkbox:checked + span + .checkboxOutline,
+.mdl-slider-background-lower,
 .itemProgressBarForeground {
-    background-color: #00a4dc;
+    background-color: rgb(98, 186, 149);
 }
 
 .emby-checkbox:focus:not(:checked) + span + .checkboxOutline {
@@ -519,13 +520,13 @@ html {
 
 @keyframes check-in {
 	from {transform: scale(0,0);}
-	to {transform: scale(1.8,1.8);}
+	to {transform: scale(1.5,1.5);}
 }
 
 .checkboxIcon-checked {
 	padding-left: 5px;
 	padding-bottom: 6px;
-	transform: scale(1.8,1.8);
+	transform: scale(1.5,1.5);
 	text-shadow: 1px 2px 3px #1e1d25;
 	animation-name: check-in;
 	animation-duration: .15s;
@@ -617,25 +618,23 @@ html {
 /* slider widget */
 
 .mdl-slider-background,
-.mdl-slider-background-flex  {
-	box-shadow: 1px 2px 8px #1e1d25;
+.mdl-slider-background-flex {
+	box-shadow: 1px 2px 8px #091f4a !important;
 }
 
-.mdl-slider-background-lower  {
-	background: linear-gradient(135deg, rgba(47,218,16,1) 0%, rgba(203,251,191,1) 50%, rgba(47,218,16,1) 100%);
-}
-
-.mdl-slider::-moz-range-thumb
- {
-	box-shadow: 0px 2px 8px #1e1d25;
-}
-
-.mdl-slider::-webkit-slider-thumb {
-	box-shadow: 0px 2px 8px #1e1d25;
+.mdl-slider::-moz-range-thumb {
+	background: #44cea0  !important;
+	box-shadow: 1px 2px 8px #091f4a !important;	
 }
 
 .mdl-slider::-ms-thumb {
-	box-shadow: 0px 2px 8px #1e1d25;
+	background: #44cea0  !important;
+	box-shadow: 1px 2px 8px #091f4a !important;
+}
+
+.mdl-slider::-webkit-slider-thumb {
+	background: #44cea0  !important;
+	box-shadow: 1px 2px 8px #091f4a !important;
 }
 
 .mdl-slider-container {
@@ -702,10 +701,16 @@ legend {
 	background: rgba(106, 247, 182, 0.6) !important;
 }
 
-.homeLibraryButton,
-.headerWthButton,
-#backdropWidget {
+.homeLibraryButton {
 	border: 1px solid #63ffbd !important;
+}
+
+#backdropWidget {
+	border: none !important;
+}
+
+.headerWthButton {
+	border: 0px solid #63ffbd !important;
 }
 
 fieldset {
@@ -836,5 +841,6 @@ option.sourceDictionaryOption {
 }
 
 .userProfileAvatar {
-	box-shadow: rgb(14, 29, 58) 4px 4px 12px !important;
+	box-shadow: none;
+	border: .1em solid #596179;
 }

@@ -195,8 +195,8 @@ html {
 }
 
 .alphaPickerButton-selected {
-    background-color: #716ddc !important;
-    color: #fff !important;
+    text-shadow: 0 0 4px #fff, 0 0 16px #ffce9a, 0 0 32px #ff9b52, 0 0 54px #ff7f33 !important;
+	color: #ffeec5 !important;
 }
 
 .alphaPickerButton:hover {
@@ -1482,8 +1482,7 @@ option:selected {
 }
 
 .withSectionTabs .skinHeader {
-	background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(40, 40, 40) 50%, rgba(40, 40, 40, 0.6) 75%, rgba(40, 40, 40, 0.2) 100%) !important;
-	height: 9em;
+	background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(40, 40, 40) 60%, rgba(40, 40, 40, .6) 80%, rgba(40, 40, 40, 0.4) 95%, rgba(40, 40, 40, 0.05) 100%) !important;
 }
 
 .skinHeader {
@@ -1505,7 +1504,7 @@ option:selected {
 
 .pinned .backdropImage,
 .pinned .itemBackdrop {
-  background-position: 0 4.5em !important;
+  background-position: 0 4em !important;
 }
 
 @media all and (min-width: 100em) {

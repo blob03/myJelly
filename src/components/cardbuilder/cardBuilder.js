@@ -1460,7 +1460,7 @@ import { appRouter } from '../appRouter';
             if (layoutManager.desktop && !options.disableHoverMenu) {
                 additionalCardContent += getHoverMenuHtml(item, action);
             }
-
+			
             return '<' + tagName + ' data-index="' + index + '"' + timerAttributes + actionAttribute + ' data-isfolder="' + (item.IsFolder || false) + '" data-serverid="' + (item.ServerId || options.serverId) + '" data-id="' + (item.Id || item.ItemId) + '" data-type="' + item.Type + '"' + mediaTypeData + collectionTypeData + channelIdData + pathData + positionTicksData + collectionIdData + playlistIdData + contextData + parentIdData + startDate + endDate + ' data-prefix="' + prefix + '" class="' + className + '"' + ariaLabelAttribute + '>' + cardImageContainerOpen + innerCardFooter + cardImageContainerClose + overlayButtons + additionalCardContent + cardScalableClose + outerCardFooter + cardBoxClose + '</' + tagName + '>';
         }
 
@@ -1493,7 +1493,7 @@ import { appRouter } from '../appRouter';
                 html += '<button is="emby-playstatebutton" type="button" data-action="none" class="' + btnCssClass + '" data-id="' + item.Id + '" data-serverid="' + item.ServerId + '" data-itemtype="' + item.Type + '" data-played="' + (userData.Played) + '"><span class="material-icons cardOverlayButtonIcon cardOverlayButtonIcon-hover check" aria-hidden="true"></span></button>';
             }
 
-            if (itemHelper.canRate(item)) {
+            if (itemHelper.canRate(item)) { 
                 const likes = userData.Likes == null ? '' : userData.Likes;
 
                 /* eslint-disable-next-line  @babel/no-unused-expressions */
