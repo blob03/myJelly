@@ -61,7 +61,7 @@
 		"default": true
 	}, {
 		"name": "WMC alt.",
-		"version": "1.51",
+		"version": "1.54",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"
@@ -95,6 +95,12 @@
 		"id": "light-alt",
 		"color": "#fff",
 		"group": "myJelly"
+	}, {
+		"name": "Flowers",
+		"version": "0.1",
+		"id": "flowers",
+		"color": "#fff",
+		"group": "myJelly dev"
 	}, {
 		"name": "Arctic",
 		"id": "arctic",

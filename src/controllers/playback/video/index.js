@@ -296,7 +296,8 @@ import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components
                 clearHideAnimationEventListeners(elem);
                 elem.classList.remove('hide');
                 elem.classList.remove('videoOsdBottom-hidden');
-
+				userSettings.toggleNightMode(false, undefined, true);
+				
                 if (!layoutManager.mobile) {
                     setTimeout(function () {
                         focusManager.focus(elem.querySelector('.btnPause'));
@@ -311,7 +312,8 @@ import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components
                 const elem = osdBottomElement;
                 clearHideAnimationEventListeners(elem);
                 elem.classList.add('videoOsdBottom-hidden');
-
+				userSettings.toggleNightMode(false, false, true);
+				
                 dom.addEventListener(elem, transitionEndEventName, onHideAnimationComplete, {
                     once: true
                 });

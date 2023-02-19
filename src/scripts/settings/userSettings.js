@@ -745,7 +745,7 @@ export class UserSettings {
 		return true;
 	}
 
-	toggleNightMode(TOGGLE, newval) {
+	toggleNightMode(TOGGLE, newval, NOSAVE) {
 		const _hdrnmb = document.getElementsByClassName('headerNightmodeButton')[0]; 
 		if (!_hdrnmb)
 			return;
@@ -760,10 +760,13 @@ export class UserSettings {
 
 		if (TOGGLE === undefined || TOGGLE === true) {
 			val = !val;
-			appSettings.enableNightMode(val);
-		} else if (newval !== undefined) {
-			val = newval;
-			appSettings.enableNightMode(val);
+			if (NOSAVE !== true)
+				appSettings.enableNightMode(val);
+		} else {
+			if (newval !== undefined)
+				val = newval;
+			if (NOSAVE !== true)
+				appSettings.enableNightMode(val);
 		}
 		
 		_hdrnf.classList.toggle('hide', !val);

@@ -93,7 +93,7 @@ html {
 
 .homeLibraryButton {
 	opacity: 60%;
-    background: #082845;	
+	background: linear-gradient(105deg, rgba(11, 12, 62, 0.3) 0%, rgba(38, 48, 125, 0.4) 40%, rgba(48, 107, 110, 0.5) 70%, rgba(8, 42, 77, 0.4) 100%) !important;
 }
 
 .fab:focus,
@@ -368,20 +368,13 @@ html {
     color: #fff;
 }
 
+.emby-tabs {
+	overflow: visible;
+}
+
 .emby-tab-button {
     color: #61a2c9;
-}
-
-@keyframes tabSelect {
-	from {transform: scale(1);}
-	to {transform: scale(1.3);}
-}
-
-.emby-tab-button-active {
-    color: #fff !important;
-	transform: scale(1.3);
-	animation-name: tabSelect;
-	animation-duration: .15s;
+	overflow: visible !important;
 }
 
 .aboutContent.material-icons,
@@ -389,8 +382,19 @@ html {
 	color: #61a2c9 !important;
 }
 
-.emby-tab-button-active > * > .material-icons {
-	color: #fff !important;
+@keyframes tabSelect {
+	from {transform: scale(1);}
+	to {transform: scale(1.5);}
+}
+
+.emby-tab-button-active > * > .material-icons, 
+.emby-tab-button-active:focus > * > .material-icons, 
+.emby-tab-button-active:hover:not(:disabled) > * > .material-icons {
+  text-shadow: 0 0 15px #93ffbd, 0 0 20px #66ff85, 0 0 25px #fcfcfc, 0 0 30px #fcfcfb, 0 0 35px #01fcf0 !important;
+  color: #fff !important;
+  animation-name: tabSelect !important;
+  animation-duration: .15s !important;
+  transform: scale(1.5) !important;
 }
 
 .emby-tab-button.show-focus:focus {

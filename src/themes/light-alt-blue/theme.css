@@ -1305,7 +1305,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 }
 
 .withSectionTabs .skinHeader {
-	background: linear-gradient(180deg, rgb(111, 198, 231) 0%, rgb(84, 177, 168) 60%, rgba(51, 128, 125, 0.46) 80%, rgba(75, 153, 170, 0.4) 95%, rgba(255, 255, 255, 0.05) 100%) !important;
+	background: linear-gradient(180deg, rgb(111, 198, 231) 0%, rgb(112, 195, 187) 60%, rgba(96, 178, 175, 0.46) 80%, rgba(75, 153, 170, 0.4) 95%, rgba(255, 255, 255, 0.05) 100%) !important;
 }
 
 .skinHeader.osdHeader {
