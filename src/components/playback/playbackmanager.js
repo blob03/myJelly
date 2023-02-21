@@ -4,7 +4,6 @@ import appSettings from '../../scripts/settings/appSettings';
 import itemHelper from '../itemHelper';
 import { pluginManager } from '../pluginManager';
 import PlayQueueManager from './playqueuemanager';
-import * as userSettings from '../../scripts/settings/userSettings';
 import globalize from '../../scripts/globalize';
 import loading from '../loading/loading';
 import { appHost } from '../apphost';
@@ -12,6 +11,7 @@ import Screenfull from 'screenfull';
 import ServerConnections from '../ServerConnections';
 import alert from '../alert';
 import { includesAny } from '../../utils/container.ts';
+import * as userSettings from '../../scripts/settings/userSettings';
 
 const UNLIMITED_ITEMS = -1;
 

@@ -88,12 +88,12 @@ html {
 
 .fab,
 .raised {
-    color: #fff;
+    color: #b7ffd3;
 }
 
 .homeLibraryButton {
 	opacity: 60%;
-	background: linear-gradient(105deg, rgba(11, 12, 62, 0.3) 0%, rgba(38, 48, 125, 0.4) 40%, rgba(48, 107, 110, 0.5) 70%, rgba(8, 42, 77, 0.4) 100%) !important;
+	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
 .fab:focus,
@@ -283,11 +283,11 @@ html {
 
 .emby-input,
 .emby-textarea {
-    color: inherit;
-    background: linear-gradient(105deg, rgba(127, 213, 255, 0.3) 0%, rgba(17, 134, 219, 0.4) 40%, rgba(0, 106, 158, 0.5) 70%, rgba(42, 145, 255, 0.4) 100%) !important;
-    border: 0.16em solid rgba(255, 255, 255, 0.135);
+    color: #94c5c1;
+    background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
+	border: .2em double #0a2c60;
 }
 
 .emby-input:focus,
@@ -310,11 +310,22 @@ html {
 }
 
 .emby-checkbox:focus + span + .checkboxOutline {
-	border-color: #ffffff;
+	border-color: #fff;
 }
 
-.emby-checkbox:checked + span + .checkboxOutline,
-.mdl-slider-background-lower,
+.emby-checkbox:checked + span + .checkboxOutline {
+	background-color: none !important;
+}
+
+.doneIcon,
+.checkboxIcon {
+	color: #77cc5f !important;
+}
+
+.mdl-slider-background-lower {
+	background-color: rgb(24, 201, 255);
+}
+
 .itemProgressBarForeground {
     background-color: rgb(98, 186, 149);
 }
@@ -539,15 +550,15 @@ html {
 .checkboxOutline {
 	overflow: visible;
 	transform: scale(0.7,0.7);
-	border: 2px solid #9edfdf;
+	border: 2px solid #00a4dc;
 	border-radius: 22px;
 }
 
 .btnSave,
 .button-submit {
-	background-color: SteelBlue;
 	color: #9edfdf;
-	border: 2px double #00a4dc;
+	border: .2em double #0a2c60;
+	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
 /* select widget */
@@ -627,7 +638,7 @@ html {
 }
 
 .mdl-slider::-moz-range-thumb {
-	background: #44cea0  !important;
+	background: radial-gradient(#77cc5f , #b8ffe8) !important;
 	box-shadow: 1px 2px 8px #091f4a !important;	
 }
 
@@ -734,17 +745,13 @@ fieldset {
 
 .radio > * > .checkboxIcon-checked,
 .radio > * > .checkboxIcon-unchecked {
-	color: #abb2ba !important;
+	color: #77cc5f !important;
 	font-size: 170%;
 	text-shadow: 1px 2px 3px #1e1d25;
 }
 
 .radio.emby-checkbox + span + .checkboxOutline {
 	border: none !important;
-}
-
-.radio.emby-checkbox:checked + span + .checkboxOutline {
-	background-color: #00a4dc;
 }
 
 .radio:hover:not(:disabled) + * + .checkboxOutline > .checkboxIcon-checked,
@@ -846,5 +853,5 @@ option.sourceDictionaryOption {
 
 .userProfileAvatar {
 	box-shadow: none;
-	border: .1em solid #596179;
+	border: .1em solid rgb(71, 167, 136) !important;
 }

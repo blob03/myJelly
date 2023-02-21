@@ -457,7 +457,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
     }
 	
 	function onNightmodeButtonClicked() {
-		toggleNightMode(true);
+		toggleNightMode({toggle: true, osd: true});
     }
 
     function onSyncButtonClicked() {
@@ -1300,10 +1300,10 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 				case 0:
 				case 2:
 				case 3:
-					toggleNightMode(false, false);
+					toggleNightMode({toggle: false, newval: false});
 					break;
 				case 1:
-					toggleNightMode(false, true);
+					toggleNightMode({toggle: false, newval: true});
 					break;
 			}
 			updateUserInHeader(user);

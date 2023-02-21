@@ -207,9 +207,9 @@ function hdrWeather() {
 			if (self._date_sunrise && self._date_sunset) {
 				const z = new Date().getTime();
 				if (z >= self._date_sunrise && z < self._date_sunset)
-					self.toggleNightMode(false, false);
+					self.toggleNightMode({toggle: false, newval: false});
 				else
-					self.toggleNightMode(false, true);
+					self.toggleNightMode({toggle: false, newval: true});
 			}			
 		}
 		
@@ -234,7 +234,7 @@ const defaultComicsPlayerSettings = {
     langDir: 'ltr',
     pagesPerView: 1
 };
-
+		
 export class UserSettings {
     constructor() {
 		this.clockTimer = null;
@@ -731,7 +731,7 @@ export class UserSettings {
 		
 		if (val === true) {
 			/*** Show ***/
-			this.toggleNightMode(false);
+			this.toggleNightMode({toggle: false});
 			const self = this;
 			const delay = (this.APIDelay()? this.APIDelay() * 60000 : 300000);
 			setTimeout( hdrWeather.bind(self), 10);
@@ -745,7 +745,7 @@ export class UserSettings {
 		return true;
 	}
 
-	toggleNightMode(TOGGLE, newval, NOSAVE) {
+	toggleNightMode(OPTS) {
 		const _hdrnmb = document.getElementsByClassName('headerNightmodeButton')[0]; 
 		if (!_hdrnmb)
 			return;
@@ -755,24 +755,27 @@ export class UserSettings {
 		const _hdrnf = document.getElementsByClassName('nightFilter')[0]; 
 		if (!_hdrnf)
 			return;
-		
+		const _isPlayingVideo = document.getElementsByClassName('videoPlayerContainer')[0]; 
 		let val = appSettings.enableNightMode() || false;
 
-		if (TOGGLE === undefined || TOGGLE === true) {
+		if (OPTS?.toggle !== false) {
 			val = !val;
-			if (NOSAVE !== true)
-				appSettings.enableNightMode(val);
 		} else {
-			if (newval !== undefined)
-				val = newval;
-			if (NOSAVE !== true)
-				appSettings.enableNightMode(val);
+			if (OPTS?.newval !== undefined)
+				val = OPTS.newval;
 		}
 		
-		_hdrnf.classList.toggle('hide', !val);
+		if (OPTS?.nosave !== true) {
+			appSettings.enableNightMode(val);
+			_icon.classList.toggle('light_mode', !val);
+			_icon.classList.toggle('dark_mode', val);
+		}
+		
 		document.body.classList.toggle('nightMode', val);
-		_icon.classList.toggle('light_mode', !val);
-		_icon.classList.toggle('dark_mode', val);
+		// If a night filter should be applied but a video is currently playing with the OSD overlay hidden, then just leave.
+		if (val === true && _isPlayingVideo !== undefined && OPTS?.osd !== true)
+			return;
+		_hdrnf.classList.toggle('hide', !val);
 	}
 	
 	togglePin(TOGGLE, newval) {
@@ -848,7 +851,7 @@ export class UserSettings {
 		
 		if (val === true) {
 			/*** Start and Show ***/
-			this.toggleNightMode(false);
+			this.toggleNightMode({toggle: false});
 			const self = this;
 			setTimeout(hdrClock.bind(self), 10);
 			if (this.clockTimer === null) {

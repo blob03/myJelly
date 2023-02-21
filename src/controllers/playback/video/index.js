@@ -296,7 +296,7 @@ import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components
                 clearHideAnimationEventListeners(elem);
                 elem.classList.remove('hide');
                 elem.classList.remove('videoOsdBottom-hidden');
-				userSettings.toggleNightMode(false, undefined, true);
+				userSettings.toggleNightMode({toggle: false, newval: undefined, osd: true, nosave: true});
 				
                 if (!layoutManager.mobile) {
                     setTimeout(function () {
@@ -312,7 +312,7 @@ import { setBackdropTransparency, TRANSPARENCY_LEVEL } from '../../../components
                 const elem = osdBottomElement;
                 clearHideAnimationEventListeners(elem);
                 elem.classList.add('videoOsdBottom-hidden');
-				userSettings.toggleNightMode(false, false, true);
+				userSettings.toggleNightMode({toggle: false, newval: false, nosave: true});
 				
                 dom.addEventListener(elem, transitionEndEventName, onHideAnimationComplete, {
                     once: true

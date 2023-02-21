@@ -61,7 +61,7 @@
 		"default": true
 	}, {
 		"name": "WMC alt.",
-		"version": "1.54",
+		"version": "1.55",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"

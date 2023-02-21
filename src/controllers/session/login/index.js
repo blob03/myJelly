@@ -427,7 +427,7 @@ import './login.scss';
 		
 		const nightmode = webSettings.nightModeStatus();
 		appSettings.enableNightMode(nightmode);
-		userSettings.toggleNightMode(false, nightmode);
+		userSettings.toggleNightMode({toggle: false, newval: nightmode});
 				
 		userSettings.enableBackdrops("Theme");
 		userSettings.backdropDelay(webSettings.loginBackdropsRotationDelay());
