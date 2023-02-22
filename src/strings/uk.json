@@ -1267,7 +1267,7 @@
     "OptionAutomaticallyGroupSeries": "Автоматично об’єднувати серіали, які розподілені по кількох папках",
     "OptionAutomaticallyGroupSeriesHelp": "Серіали, які розміщені в кількох папках у цій медіатеці, будуть автоматично об’єднані в один серіал.",
     "OptionBluray": "BD",
-    "OptionCaptionInfoExSamsung": "CaptionInfoEx (Samsung)",
+    "OptionCaptionInfoExSamsung": "Функція CaptionInfoEx (Samsung)",
     "OptionCommunityRating": "Рейтинг спільноти",
     "OptionCriticRating": "Рейтинг критиків",
     "OptionCustomUsers": "Користувацький",

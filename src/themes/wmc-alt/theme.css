@@ -145,7 +145,6 @@ html {
 }
 
 .collapseContent,
-.paperList,
 .visualCardBox {
     background-color: #0f3562;
 }
@@ -288,6 +287,8 @@ html {
     -webkit-border-radius: 0.2em;
     border-radius: 0.2em;
 	border: .2em double #0a2c60;
+	font-size: 1em;
+	font-family: Inconsolata-Light;
 }
 
 .emby-input:focus,
@@ -300,8 +301,8 @@ html {
 
 .emby-select-withcolor {
     color: inherit;
-    background-color: rgb(37, 89, 135);
-    border: 0.07em solid rgba(255, 255, 255, 0.135);
+	border: .2em double #0a2c60;
+	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline,
@@ -708,8 +709,14 @@ legend {
 	color: #fbfdff;
 }
 
+.paperList,
 .checkboxList {
 	background-color: rgb(37, 89, 135) !important;
+	border: .2em double #0a2c60;
+}
+
+.checkboxList {
+	padding: 0 .5em;
 }
 
 .headerWthIconBg {

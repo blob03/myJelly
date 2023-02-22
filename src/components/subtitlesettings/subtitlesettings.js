@@ -119,7 +119,7 @@ function loadForm(self) {
 	context.querySelector('#fcolor').style.backgroundColor = context.querySelector('#inputTextColor').value;
 	context.querySelector('#selectFont').value = appearanceSettings.font || '';
 	context.querySelector('#selectSubtitleLanguage').value = user.Configuration.SubtitleLanguagePreference || '';
-	context.querySelector('#selectSubtitlePlaybackMode').value = user.Configuration.SubtitleMode || '';
+	context.querySelector('#selectSubtitlePlaybackMode').value = user.Configuration.SubtitleMode || 'None';
 	context.querySelector('.chkRememberSubtitleSelections').checked = user.Configuration.RememberSubtitleSelections || false;
 	context.querySelector('#sliderTextSize').value = appearanceSettings.textSize || 1.36;
 	context.querySelector('#sliderStrokeSize').value = appearanceSettings.strokeSize || 1;
@@ -176,7 +176,7 @@ function onSubtitleModeChange(e) {
 	
     for (let i = 0, length = subtitlesHelp.length; i < length; i++)
         subtitlesHelp[i].classList.add('hide');
-    view.querySelector('.subtitles' + this.value + 'Help').classList.remove('hide');
+    view.querySelector('.subtitles' + e.target.value + 'Help')?.classList.remove('hide');
 }
 
 function onAppearanceFieldChange(e) {

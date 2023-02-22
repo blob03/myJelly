@@ -40,7 +40,7 @@ import { includesAny } from '../../utils/container.ts';
  */
 function resolveUrl(url) {
     return new Promise((resolve) => {
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.open('HEAD', url, true);
         xhr.onload = function () {
             resolve(xhr.responseURL || url);
@@ -68,16 +68,12 @@ function tryRemoveElement(elem) {
     }
 
     function enableNativeTrackSupport(currentSrc, track) {
-        if (track) {
-            if (track.DeliveryMethod === 'Embed') {
-                return true;
-            }
+        if (track?.DeliveryMethod === 'Embed') {
+            return true;
         }
 
-        if (browser.firefox) {
-            if ((currentSrc || '').toLowerCase().includes('.m3u8')) {
-                return false;
-            }
+        if (browser.firefox && (currentSrc || '').toLowerCase().includes('.m3u8')) {
+            return false;
         }
 
         if (browser.ps4) {
@@ -93,11 +89,9 @@ function tryRemoveElement(elem) {
             return false;
         }
 
-        if (browser.iOS) {
+        if (browser.iOS && (browser.iosVersion || 10) < 10) {
             // works in the browser but not the native app
-            if ((browser.iosVersion || 10) < 10) {
-                return false;
-            }
+            return false;
         }
 
         if (track) {
@@ -161,6 +155,9 @@ function tryRemoveElement(elem) {
         return profileBuilder({});
     }
 
+    const PRIMARY_TEXT_TRACK_INDEX = 0;
+    const SECONDARY_TEXT_TRACK_INDEX = 1;
+
     export class HtmlVideoPlayer {
         /**
          * @type {string}
@@ -184,7 +181,6 @@ function tryRemoveElement(elem) {
          * @type {boolean}
          */
         isFetching = false;
-
         /**
          * @type {HTMLDivElement | null | undefined}
          */
@@ -193,6 +189,10 @@ function tryRemoveElement(elem) {
          * @type {number | undefined}
          */
         #subtitleTrackIndexToSetOnPlaying;
+        /**
+         * @type {number | undefined}
+         */
+        #secondarySubtitleTrackIndexToSetOnPlaying;
         /**
          * @type {number | null}
          */
@@ -214,6 +214,10 @@ function tryRemoveElement(elem) {
          */
         #customTrackIndex;
         /**
+         * @type {number | undefined}
+         */
+        #customSecondaryTrackIndex;
+        /**
          * @type {boolean | undefined}
          */
         #showTrackOffset;
@@ -224,11 +228,23 @@ function tryRemoveElement(elem) {
         /**
          * @type {HTMLElement | null | undefined}
          */
+        #secondaryTrackOffset;
+        /**
+         * @type {HTMLElement | null | undefined}
+         */
         #videoSubtitlesElem;
+        /**
+         * @type {HTMLElement | null | undefined}
+         */
+        #videoSecondarySubtitlesElem;
         /**
          * @type {any | null | undefined}
          */
         #currentTrackEvents;
+        /**
+         * @type {any | null | undefined}
+         */
+        #currentSecondaryTrackEvents;
         /**
          * @type {string[] | undefined}
          */
@@ -454,17 +470,38 @@ function tryRemoveElement(elem) {
             destroyFlvPlayer(this);
             destroyCastPlayer(this);
 
+            let secondaryTrackValid = true;
+
             this.#subtitleTrackIndexToSetOnPlaying = options.mediaSource.DefaultSubtitleStreamIndex == null ? -1 : options.mediaSource.DefaultSubtitleStreamIndex;
             if (this.#subtitleTrackIndexToSetOnPlaying != null && this.#subtitleTrackIndexToSetOnPlaying >= 0) {
                 const initialSubtitleStream = options.mediaSource.MediaStreams[this.#subtitleTrackIndexToSetOnPlaying];
                 if (!initialSubtitleStream || initialSubtitleStream.DeliveryMethod === 'Encode') {
                     this.#subtitleTrackIndexToSetOnPlaying = -1;
+                    secondaryTrackValid = false;
                 }
+                // secondary track should not be shown if primary track is no longer a valid pair
+                if (initialSubtitleStream && !playbackManager.trackHasSecondarySubtitleSupport(initialSubtitleStream, this)) {
+                    secondaryTrackValid = false;
+                }
+            } else {
+                secondaryTrackValid = false;
             }
 
             this.#audioTrackIndexToSetOnPlaying = options.playMethod === 'Transcode' ? null : options.mediaSource.DefaultAudioStreamIndex;
 
             this._currentPlayOptions = options;
+
+            if (secondaryTrackValid) {
+                this.#secondarySubtitleTrackIndexToSetOnPlaying = options.mediaSource.DefaultSecondarySubtitleStreamIndex == null ? -1 : options.mediaSource.DefaultSecondarySubtitleStreamIndex;
+                if (this.#secondarySubtitleTrackIndexToSetOnPlaying != null && this.#secondarySubtitleTrackIndexToSetOnPlaying >= 0) {
+                    const initialSecondarySubtitleStream = options.mediaSource.MediaStreams[this.#secondarySubtitleTrackIndexToSetOnPlaying];
+                    if (!initialSecondarySubtitleStream || !playbackManager.trackHasSecondarySubtitleSupport(initialSecondarySubtitleStream, this)) {
+                        this.#secondarySubtitleTrackIndexToSetOnPlaying = -1;
+                    }
+                }
+            } else {
+                this.#secondarySubtitleTrackIndexToSetOnPlaying = -1;
+            }
 
             const crossOrigin = getCrossOriginValue(options.mediaSource);
             if (crossOrigin) {
@@ -496,8 +533,13 @@ function tryRemoveElement(elem) {
             this.setCurrentTrackElement(index);
         }
 
+        setSecondarySubtitleStreamIndex(index) {
+            this.setCurrentTrackElement(index, SECONDARY_TEXT_TRACK_INDEX);
+        }
+
         resetSubtitleOffset() {
             this.#currentTrackOffset = 0;
+            this.#secondaryTrackOffset = 0;
             this.#showTrackOffset = false;
         }
 
@@ -516,11 +558,11 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        getTextTrack() {
+        getTextTracks() {
             const videoElement = this.#mediaElement;
             if (videoElement) {
                 return Array.from(videoElement.textTracks)
-                    .find(function (trackElement) {
+                    .filter(function (trackElement) {
                         // get showing .vtt textTack
                         return trackElement.mode === 'showing';
                     });
@@ -529,9 +571,6 @@ function tryRemoveElement(elem) {
             }
         }
 
-        /**
-         * @private
-         */
         setSubtitleOffset(offset) {
             const offsetValue = parseFloat(offset);
 
@@ -540,12 +579,15 @@ function tryRemoveElement(elem) {
                 this.updateCurrentTrackOffset(offsetValue);
                 this.#currentSubtitlesOctopus.timeOffset = (this._currentPlayOptions.transcodingOffsetTicks || 0) / 10000000 + offsetValue;
             } else {
-                const trackElement = this.getTextTrack();
+                const trackElements = this.getTextTracks();
                 // if .vtt currently rendering
-                if (trackElement) {
-                    this.setTextTrackSubtitleOffset(trackElement, offsetValue);
-                } else if (this.#currentTrackEvents) {
-                    this.setTrackEventsSubtitleOffset(this.#currentTrackEvents, offsetValue);
+                if (trackElements?.length > 0) {
+                    trackElements.forEach((trackElement, index) => {
+                        this.setTextTrackSubtitleOffset(trackElement, offsetValue, index);
+                    });
+                } else if (this.#currentTrackEvents || this.#currentSecondaryTrackEvents) {
+                    this.#currentTrackEvents && this.setTrackEventsSubtitleOffset(this.#currentTrackEvents, offsetValue, PRIMARY_TEXT_TRACK_INDEX);
+                    this.#currentSecondaryTrackEvents && this.setTrackEventsSubtitleOffset(this.#currentSecondaryTrackEvents, offsetValue, SECONDARY_TEXT_TRACK_INDEX);
                 } else {
                     console.debug('No available track, cannot apply offset: ', offsetValue);
                 }
@@ -555,13 +597,25 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        updateCurrentTrackOffset(offsetValue) {
+        updateCurrentTrackOffset(offsetValue, currentTrackIndex = PRIMARY_TEXT_TRACK_INDEX) {
+            let offsetToCompare = this.#currentTrackOffset;
+            if (this.isSecondaryTrack(currentTrackIndex)) {
+                offsetToCompare = this.#secondaryTrackOffset;
+            }
+
             let relativeOffset = offsetValue;
             const newTrackOffset = offsetValue;
-            if (this.#currentTrackOffset) {
-                relativeOffset -= this.#currentTrackOffset;
+
+            if (offsetToCompare) {
+                relativeOffset -= offsetToCompare;
             }
-            this.#currentTrackOffset = newTrackOffset;
+
+            if (this.isSecondaryTrack(currentTrackIndex)) {
+                this.#secondaryTrackOffset = newTrackOffset;
+            } else {
+                this.#currentTrackOffset = newTrackOffset;
+            }
+
             // relative to currentTrackOffset
             return relativeOffset;
         }
@@ -569,9 +623,12 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        setTextTrackSubtitleOffset(currentTrack, offsetValue) {
+        setTextTrackSubtitleOffset(currentTrack, offsetValue, currentTrackIndex) {
             if (currentTrack.cues) {
-                offsetValue = this.updateCurrentTrackOffset(offsetValue);
+                offsetValue = this.updateCurrentTrackOffset(offsetValue, currentTrackIndex);
+                if (offsetValue === 0) {
+                    return;
+                }
                 Array.from(currentTrack.cues)
                     .forEach(function (cue) {
                         cue.startTime -= offsetValue;
@@ -583,9 +640,12 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        setTrackEventsSubtitleOffset(trackEvents, offsetValue) {
+        setTrackEventsSubtitleOffset(trackEvents, offsetValue, currentTrackIndex) {
             if (Array.isArray(trackEvents)) {
-                offsetValue = this.updateCurrentTrackOffset(offsetValue) * 1e7; // ticks
+                offsetValue = this.updateCurrentTrackOffset(offsetValue, currentTrackIndex) * 1e7; // ticks
+                if (offsetValue === 0) {
+                    return;
+                }
                 trackEvents.forEach(function (trackEvent) {
                     trackEvent.StartPositionTicks -= offsetValue;
                     trackEvent.EndPositionTicks -= offsetValue;
@@ -597,10 +657,18 @@ function tryRemoveElement(elem) {
             return this.#currentTrackOffset;
         }
 
+        isPrimaryTrack(textTrackIndex) {
+            return textTrackIndex === PRIMARY_TEXT_TRACK_INDEX;
+        }
+
+        isSecondaryTrack(textTrackIndex) {
+            return textTrackIndex === SECONDARY_TEXT_TRACK_INDEX;
+        }
+
         /**
          * @private
          */
-		isAudioStreamSupported(stream, deviceProfile, container) {
+        isAudioStreamSupported(stream, deviceProfile, container) {
             const codec = (stream.Codec || '').toLowerCase();
 
             if (!codec) {
@@ -825,6 +893,16 @@ function tryRemoveElement(elem) {
             if (this.#audioTrackIndexToSetOnPlaying != null && this.canSetAudioStreamIndex()) {
                 this.setAudioStreamIndex(this.#audioTrackIndexToSetOnPlaying);
             }
+
+            if (this.#secondarySubtitleTrackIndexToSetOnPlaying != null && this.#secondarySubtitleTrackIndexToSetOnPlaying >= 0) {
+                /**
+                 * Using a 0ms timeout to set the secondary subtitles because of some weird race condition when
+                 * setting both primary and secondary tracks at the same time.
+                 * The `TextTrack` content and cues will somehow get mixed up and each track will play a mix of both languages.
+                 * Putting this in a timeout fixes it completely.
+                 */
+                setTimeout(() => this.setSecondarySubtitleStreamIndex(this.#secondarySubtitleTrackIndexToSetOnPlaying), 0);
+            }
         }
 
         /**
@@ -962,28 +1040,75 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        destroyCustomTrack(videoElement) {
-
-            if (this.#videoSubtitlesElem) {
-                const subtitlesContainer = this.#videoSubtitlesElem.parentNode;
-                if (subtitlesContainer) {
-                    tryRemoveElement(subtitlesContainer);
+        destroyCustomRenderedTrackElements(targetTrackIndex) {
+            if (this.isPrimaryTrack(targetTrackIndex)) {
+                if (this.#videoSubtitlesElem) {
+                    tryRemoveElement(this.#videoSubtitlesElem);
+                    this.#videoSubtitlesElem = null;
                 }
-                this.#videoSubtitlesElem = null;
+            } else if (this.isSecondaryTrack(targetTrackIndex)) {
+                if (this.#videoSecondarySubtitlesElem) {
+                    tryRemoveElement(this.#videoSecondarySubtitlesElem);
+                    this.#videoSecondarySubtitlesElem = null;
+                }
+            } else { // destroy all
+                if (this.#videoSubtitlesElem) {
+                    const subtitlesContainer = this.#videoSubtitlesElem.parentNode;
+                    if (subtitlesContainer) {
+                        tryRemoveElement(subtitlesContainer);
+                    }
+                    this.#videoSubtitlesElem = null;
+                    this.#videoSecondarySubtitlesElem = null;
+                }
             }
+        }
 
-            this.#currentTrackEvents = null;
-
+        /**
+         * @private
+         */
+        destroyNativeTracks(videoElement, targetTrackIndex) {
             if (videoElement) {
+                const destroySingleTrack = typeof targetTrackIndex === 'number';
                 const allTracks = videoElement.textTracks || []; // get list of tracks
-                for (const track of allTracks) {
+                for (let index = 0; index < allTracks.length; index++) {
+                    const track = allTracks[index];
+                    // Skip all other tracks if we are targeting just one
+                    if (destroySingleTrack && targetTrackIndex !== index) {
+                        continue;
+                    }
                     if (track.label.includes('manualTrack')) {
                         track.mode = 'disabled';
                     }
                 }
             }
+        }
 
-            this.#customTrackIndex = -1;
+        /**
+         * @private
+         */
+        destroyStoredTrackInfo(targetTrackIndex) {
+            if (this.isPrimaryTrack(targetTrackIndex)) {
+                this.#customTrackIndex = -1;
+                this.#currentTrackEvents = null;
+            } else if (this.isSecondaryTrack(targetTrackIndex)) {
+                this.#customSecondaryTrackIndex = -1;
+                this.#currentSecondaryTrackEvents = null;
+            } else { // destroy all
+                this.#customTrackIndex = -1;
+                this.#customSecondaryTrackIndex = -1;
+                this.#currentTrackEvents = null;
+                this.#currentSecondaryTrackEvents = null;
+            }
+        }
+
+        /**
+         * @private
+         */
+        destroyCustomTrack(videoElement, targetTrackIndex) {
+            this.destroyCustomRenderedTrackElements(targetTrackIndex);
+            this.destroyNativeTracks(videoElement, targetTrackIndex);
+            this.destroyStoredTrackInfo(targetTrackIndex);
+
             this.#currentClock = null;
             this._currentAspectRatio = null;
 
@@ -1036,30 +1161,41 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        setTrackForDisplay(videoElement, track) {
+        setTrackForDisplay(videoElement, track, targetTextTrackIndex = PRIMARY_TEXT_TRACK_INDEX) {
             if (!track) {
-                this.destroyCustomTrack(videoElement);
+                // Destroy all tracks by passing undefined if there is no valid primary track
+                this.destroyCustomTrack(videoElement, this.isSecondaryTrack(targetTextTrackIndex) ? targetTextTrackIndex : undefined);
                 return;
             }
 
+            let targetTrackIndex = this.#customTrackIndex;
+            if (this.isSecondaryTrack(targetTextTrackIndex)) {
+                targetTrackIndex = this.#customSecondaryTrackIndex;
+            }
+
             // skip if already playing this track
-            if (this.#customTrackIndex === track.Index) {
+            if (targetTrackIndex === track.Index) {
                 return;
             }
 
             this.resetSubtitleOffset();
             const item = this._currentPlayOptions.item;
 
-            this.destroyCustomTrack(videoElement);
-            this.#customTrackIndex = track.Index;
-            this.renderTracksEvents(videoElement, track, item);
+            this.destroyCustomTrack(videoElement, targetTextTrackIndex);
+
+            if (this.isSecondaryTrack(targetTextTrackIndex)) {
+                this.#customSecondaryTrackIndex = track.Index;
+            } else {
+                this.#customTrackIndex = track.Index;
+            }
+            this.renderTracksEvents(videoElement, track, item, targetTextTrackIndex);
         }
 
         /**
          * @private
          */
         renderSsaAss(videoElement, track, item) {
-			const supportedFonts = ['application/vnd.ms-opentype', 'application/x-truetype-font', 'font/otf', 'font/ttf', 'font/woff', 'font/woff2'];
+            const supportedFonts = ['application/vnd.ms-opentype', 'application/x-truetype-font', 'font/otf', 'font/ttf', 'font/woff', 'font/woff2'];
             const avaliableFonts = [];
             const attachments = this._currentPlayOptions.mediaSource.MediaAttachments || [];
             const apiClient = ServerConnections.getApiClient(item);
@@ -1092,14 +1228,14 @@ function tryRemoveElement(elem) {
                 timeOffset: (this._currentPlayOptions.transcodingOffsetTicks || 0) / 10000000,
 
                 // new octopus options; override all, even defaults
-                renderMode: 'blend',
+                renderMode: 'wasm-blend',
                 dropAllAnimations: false,
                 libassMemoryLimit: 40,
                 libassGlyphLimit: 40,
                 targetFps: 24,
-                prescaleTradeoff: 0.8,
-                softHeightLimit: 1080,
-                hardHeightLimit: 2160,
+                prescaleFactor: 0.8,
+                prescaleHeightLimit: 1080,
+                maxRenderHeight: 2160,
                 resizeVariation: 0.2,
                 renderAhead: 90
             };
@@ -1112,7 +1248,7 @@ function tryRemoveElement(elem) {
                 ]).then(([config, workerUrl, legacyWorkerUrl]) => {
                     options.workerUrl = workerUrl;
                     options.legacyWorkerUrl = legacyWorkerUrl;
-					
+
                     if (config.EnableFallbackFont) {
                         apiClient.getJSON(fallbackFontList).then((fontFiles = []) => {
                             fontFiles.forEach(font => {
@@ -1140,7 +1276,6 @@ function tryRemoveElement(elem) {
                 return true;
             }
 
-            // This is unfortunate, but we're unable to remove the textTrack that gets added via addTextTrack
             if (browser.web0s) {
                 return true;
             }
@@ -1163,16 +1298,39 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        renderSubtitlesWithCustomElement(videoElement, track, item) {
-            this.fetchSubtitles(track, item).then((data) => {
-                if (!this.#videoSubtitlesElem) {
-                    const subtitlesContainer = document.createElement('div');
-                    subtitlesContainer.classList.add('videoSubtitles');
-                    subtitlesContainer.innerHTML = '<div class="videoSubtitlesInner"></div>';
-                    this.#videoSubtitlesElem = subtitlesContainer.querySelector('.videoSubtitlesInner');
+        renderSubtitlesWithCustomElement(videoElement, track, item, targetTextTrackIndex) {
+            Promise.all([import('../../scripts/settings/userSettings'), this.fetchSubtitles(track, item)]).then((results) => {
+                const [userSettings, subtitleData] = results;
+                const subtitleAppearance = userSettings.getSubtitlesAppearance();
+                const subtitleVerticalPosition = parseInt(subtitleAppearance.verticalPosition, 10);
+
+                if (!this.#videoSubtitlesElem && !this.isSecondaryTrack(targetTextTrackIndex)) {
+                    let subtitlesContainer = document.querySelector('.videoSubtitles');
+                    if (!subtitlesContainer) {
+                        subtitlesContainer = document.createElement('div');
+                        subtitlesContainer.classList.add('videoSubtitles');
+                    }
+                    const subtitlesElement = document.createElement('div');
+                    subtitlesElement.classList.add('videoSubtitlesInner');
+                    subtitlesContainer.appendChild(subtitlesElement);
+                    this.#videoSubtitlesElem = subtitlesElement;
                     this.setSubtitleAppearance(subtitlesContainer, this.#videoSubtitlesElem);
                     videoElement.parentNode.appendChild(subtitlesContainer);
-                    this.#currentTrackEvents = data.TrackEvents;
+                    this.#currentTrackEvents = subtitleData.TrackEvents;
+                } else if (!this.#videoSecondarySubtitlesElem && this.isSecondaryTrack(targetTextTrackIndex)) {
+                    const subtitlesContainer = document.querySelector('.videoSubtitles');
+                    if (!subtitlesContainer) return;
+                    const secondarySubtitlesElement = document.createElement('div');
+                    secondarySubtitlesElement.classList.add('videoSecondarySubtitlesInner');
+                    // determine the order of the subtitles
+                    if (subtitleVerticalPosition < 0) {
+                        subtitlesContainer.insertBefore(secondarySubtitlesElement, subtitlesContainer.firstChild);
+                    } else {
+                        subtitlesContainer.appendChild(secondarySubtitlesElement);
+                    }
+                    this.#videoSecondarySubtitlesElem = secondarySubtitlesElement;
+                    this.setSubtitleAppearance(subtitlesContainer, this.#videoSecondarySubtitlesElem);
+                    this.#currentSecondaryTrackEvents = subtitleData.TrackEvents;
                 }
             });
         }
@@ -1219,7 +1377,7 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        renderTracksEvents(videoElement, track, item) {
+        renderTracksEvents(videoElement, track, item, targetTextTrackIndex = PRIMARY_TEXT_TRACK_INDEX) {
             if (!itemHelper.isLocalItem(item) || track.IsExternal) {
                 const format = (track.Codec || '').toLowerCase();
                 if (format === 'ssa' || format === 'ass') {
@@ -1228,15 +1386,15 @@ function tryRemoveElement(elem) {
                 }
 
                 if (this.requiresCustomSubtitlesElement()) {
-                    this.renderSubtitlesWithCustomElement(videoElement, track, item);
+                    this.renderSubtitlesWithCustomElement(videoElement, track, item, targetTextTrackIndex);
                     return;
                 }
             }
 
             let trackElement = null;
-            if (videoElement.textTracks && videoElement.textTracks.length > 0) {
-                trackElement = videoElement.textTracks[0];
-
+            const updatingTrack = videoElement.textTracks && videoElement.textTracks.length > (this.isSecondaryTrack(targetTextTrackIndex) ? 1 : 0);
+            if (updatingTrack) {
+                trackElement = videoElement.textTracks[targetTextTrackIndex];
                 // This throws an error in IE, but is fine in chrome
                 // In IE it's not necessary anyway because changing the src seems to be enough
                 try {
@@ -1296,24 +1454,29 @@ function tryRemoveElement(elem) {
                 return;
             }
 
-            const trackEvents = this.#currentTrackEvents;
-            const subtitleTextElement = this.#videoSubtitlesElem;
+            const allTrackEvents = [this.#currentTrackEvents, this.#currentSecondaryTrackEvents];
+            const subtitleTextElements = [this.#videoSubtitlesElem, this.#videoSecondarySubtitlesElem];
 
-            if (trackEvents && subtitleTextElement) {
-                const ticks = timeMs * 10000;
-                let selectedTrackEvent;
-                for (const trackEvent of trackEvents) {
-                    if (trackEvent.StartPositionTicks <= ticks && trackEvent.EndPositionTicks >= ticks) {
-                        selectedTrackEvent = trackEvent;
-                        break;
+            for (let i = 0; i < allTrackEvents.length; i++) {
+                const trackEvents = allTrackEvents[i];
+                const subtitleTextElement = subtitleTextElements[i];
+
+                if (trackEvents && subtitleTextElement) {
+                    const ticks = timeMs * 10000;
+                    let selectedTrackEvent;
+                    for (const trackEvent of trackEvents) {
+                        if (trackEvent.StartPositionTicks <= ticks && trackEvent.EndPositionTicks >= ticks) {
+                            selectedTrackEvent = trackEvent;
+                            break;
+                        }
                     }
-                }
 
-                if (selectedTrackEvent && selectedTrackEvent.Text) {
-                    subtitleTextElement.innerHTML = normalizeTrackEventText(selectedTrackEvent.Text, true);
-                    subtitleTextElement.classList.remove('hide');
-                } else {
-                    subtitleTextElement.classList.add('hide');
+                    if (selectedTrackEvent && selectedTrackEvent.Text) {
+                        subtitleTextElement.innerHTML = normalizeTrackEventText(selectedTrackEvent.Text, true);
+                        subtitleTextElement.classList.remove('hide');
+                    } else {
+                        subtitleTextElement.classList.add('hide');
+                    }
                 }
             }
         }
@@ -1321,7 +1484,7 @@ function tryRemoveElement(elem) {
         /**
          * @private
          */
-        setCurrentTrackElement(streamIndex) {
+        setCurrentTrackElement(streamIndex, targetTextTrackIndex) {
             console.debug(`setting new text track index to: ${streamIndex}`);
 
             const mediaStreamTextTracks = getMediaStreamTextTracks(this._currentPlayOptions.mediaSource);
@@ -1330,7 +1493,7 @@ function tryRemoveElement(elem) {
                 return t.Index === streamIndex;
             })[0];
 
-            this.setTrackForDisplay(this.#mediaElement, track);
+            this.setTrackForDisplay(this.#mediaElement, track, targetTextTrackIndex);
             if (enableNativeTrackSupport(this.#currentSrc, track)) {
                 if (streamIndex !== -1) {
                     this.setCueAppearance();
@@ -1352,13 +1515,13 @@ function tryRemoveElement(elem) {
                     return import('./style.scss').then(() => {
                         loading.show();
 
-                        const dlg = document.createElement('div');
-						dlg.setAttribute('dir', 'ltr');
+                        const playerDlg = document.createElement('div');
+                        playerDlg.setAttribute('dir', 'ltr');
 
-                        dlg.classList.add('videoPlayerContainer');
+                        playerDlg.classList.add('videoPlayerContainer');
 
                         if (options.fullscreen) {
-                            dlg.classList.add('videoPlayerContainer-onTop');
+                            playerDlg.classList.add('videoPlayerContainer-onTop');
                         }
 
                         let html = '';
@@ -1367,7 +1530,7 @@ function tryRemoveElement(elem) {
                         // Can't autoplay in these browsers so we need to use the full controls, at least until playback starts
                         if (!appHost.supports('htmlvideoautoplay')) {
                             html += '<video class="' + cssClass + '" preload="metadata" autoplay="autoplay" controls="controls" webkit-playsinline playsinline>';
-						} else if (browser.web0s) {
+                        } else if (browser.web0s) {
                             // in webOS, setting preload auto allows resuming videos
                             html += '<video class="' + cssClass + '" preload="auto" autoplay="autoplay" webkit-playsinline playsinline>';
                         } else {
@@ -1377,8 +1540,8 @@ function tryRemoveElement(elem) {
 
                         html += '</video>';
 
-                        dlg.innerHTML = html;
-                        const videoElement = dlg.querySelector('video');
+                        playerDlg.innerHTML = html;
+                        const videoElement = playerDlg.querySelector('video');
 
                         videoElement.volume = getSavedVolume();
                         videoElement.addEventListener('timeupdate', this.onTimeUpdate);
@@ -1394,8 +1557,8 @@ function tryRemoveElement(elem) {
                             videoElement.poster = options.backdropUrl;
                         }
 
-                        document.body.insertBefore(dlg, document.body.firstChild);
-                        this.#videoDialog = dlg;
+                        document.body.insertBefore(playerDlg, document.body.firstChild);
+                        this.#videoDialog = playerDlg;
                         this.#mediaElement = videoElement;
 
                         delete this.forcedFullscreen;
@@ -1414,7 +1577,7 @@ function tryRemoveElement(elem) {
 
                             // don't animate on smart tv's, too slow
                             if (!browser.slow && browser.supportsCssAnimation()) {
-                                return zoomIn(dlg).then(function () {
+                                return zoomIn(playerDlg).then(function () {
                                     return videoElement;
                                 });
                             }
@@ -1488,14 +1651,14 @@ function tryRemoveElement(elem) {
         if (
             // Check non-standard Safari PiP support
             typeof video.webkitSupportsPresentationMode === 'function' && video.webkitSupportsPresentationMode('picture-in-picture') && typeof video.webkitSetPresentationMode === 'function'
+            // Check non-standard Windows PiP support
+            || (window.Windows
+                && Windows.UI.ViewManagement.ApplicationView.getForCurrentView()
+                    .isViewModeSupported(Windows.UI.ViewManagement.ApplicationViewMode.compactOverlay))
             // Check standard PiP support
             || document.pictureInPictureEnabled
         ) {
             list.push('PictureInPicture');
-        } else if (window.Windows) {
-            if (Windows.UI.ViewManagement.ApplicationView.getForCurrentView().isViewModeSupported(Windows.UI.ViewManagement.ApplicationViewMode.compactOverlay)) {
-                list.push('PictureInPicture');
-            }
         }
 
         if (browser.safari || browser.iOS || browser.iPad) {
@@ -1508,6 +1671,7 @@ function tryRemoveElement(elem) {
 
         list.push('SetBrightness');
         list.push('SetAspectRatio');
+        list.push('SecondarySubtitles');
 
         return list;
     }
@@ -1688,10 +1852,7 @@ function tryRemoveElement(elem) {
 
     // This is a retry after error
     resume() {
-        const mediaElement = this.#mediaElement;
-        if (mediaElement) {
-            mediaElement.play();
-        }
+        this.unpause();
     }
 
     unpause() {
@@ -1886,7 +2047,7 @@ function tryRemoveElement(elem) {
         };
         categories.push(videoCategory);
 
-		const devicePixelRatio = window.devicePixelRatio || 1;
+        const devicePixelRatio = window.devicePixelRatio || 1;
         const rect = mediaElement.getBoundingClientRect ? mediaElement.getBoundingClientRect() : {};
         let height = Math.round(rect.height * devicePixelRatio);
         let width = Math.round(rect.width * devicePixelRatio);
