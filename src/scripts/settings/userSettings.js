@@ -1013,17 +1013,15 @@ export class UserSettings {
 	
 	WB_nextScreen() {
 		if (currentSettings._pwrButtons === true) {
-			currentSettings._wbmode --;
-			currentSettings._wbmode = (currentSettings._wbmode + 1) % 3;
-			currentSettings._wbmode ++;
+			currentSettings._wbmode = (currentSettings._wbmode % 3) + 1;
 			currentSettings.WB_setButtons();
 		}
 	}
 	
 	WB_init() {
-		const self = this;
 		let elm = document.getElementsByClassName("headerWthMain")[0];
 		if (elm) {
+			const self = this;
 			elm.removeEventListener('click', self.WB_nextScreen);
 			elm.addEventListener('click', self.WB_nextScreen);
 		}

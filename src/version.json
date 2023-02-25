@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-12",
+	"version": "10.8.9-13",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -212,6 +212,7 @@
 		"10.8.9-9": "Synchronize translations.\nUpdate themes 'WMC Alt.', 'Light Alt.', 'Light Alt. Blue' and 'Halloween'.",
 		"10.8.9-10": "Synchronize translations and Node.js packages.\nFix: Hide Night Mode overlay while playing videos.\nUpdate theme 'WMC Alt.'.\nApply patch 'Respect server ordering of media sources'.",
 		"10.8.9-11": "Synchronize translations.\nUpdate theme 'WMC Alt.'.\nFix: Night Mode overlay reset by WeatherBot during video playback.",
-		"10.8.9-12": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nApply patch 'Add secondary subtitle support to html video player'.\nFix: set value for subtitles playback 'None' mode to 'None'."
+		"10.8.9-12": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nApply patch 'Add secondary subtitle support to html video player'.\nFix: set value for subtitles playback 'None' mode to 'None'.",
+		"10.8.9-13": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nMake subs loading animation spin clockwise."
 	}
 }

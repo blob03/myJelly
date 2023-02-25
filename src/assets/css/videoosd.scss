@@ -176,6 +176,7 @@
 @keyframes spin {
     100% {
         transform: rotate(360deg);
+		transform-origin: 50% 50%;
     }
 }
 
@@ -326,8 +327,3 @@
     }
 }
 
-@keyframes spin {
-    100% {
-        transform: rotate(-360deg);
-    }
-}

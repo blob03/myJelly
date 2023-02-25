@@ -101,14 +101,34 @@ html {
     background: #143451;
 }
 
-.button-submit {
-    background: #00a4dc;
-    color: #fff;
+option:disabled {
+    color: #9edfdf;
+    text-shadow: 0px 0px 15px #0cf3dd;
+    font-weight: bold;
 }
 
-.button-submit:focus {
-    background: #0cb0e8;
-    color: #fff;
+option:not(:disabled) {
+	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
+	border: .1em ridge rgb(95, 146, 158);
+	font-weight: 600;
+	line-height: 1.35;
+	color: rgb(107, 134, 144) !important;
+}
+
+option:selected {
+	color: #fff !important;
+	background: rgb(107, 134, 144) !important;
+}
+
+.button-cancel,
+.cancel,
+#deviceDeleteAll,
+#btnShutdown,
+#btnRestartServer,
+#btnDeleteImage {
+	color: #a39edf;
+	border: .2em double #0a2c60;
+	background: linear-gradient(45deg, rgba(208, 37, 109, 0.1) 0%, rgba(125, 38, 107, 0.3) 40%, rgba(158, 48, 146, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
 .button-delete {
@@ -147,26 +167,32 @@ html {
 .collapseContent,
 .visualCardBox {
     background-color: #0f3562;
+	border: .2em double #0a2c60;
 }
 
 .defaultCardBackground1 {
-    background-color: #d2b019;
+	color: #dadeac;
+	background: linear-gradient(45deg, rgba(37, 208, 64, 0.1) 0%, rgba(140, 191, 129, 0.3) 40%, rgba(158, 156, 48, 0.4) 70%, rgba(8, 77, 19, 0.1) 100%) !important;
 }
 
 .defaultCardBackground2 {
-    background-color: #338abb;
+	color: #acc4de;
+	background: linear-gradient(45deg, rgba(208, 37, 109, 0.1) 0%, rgba(77, 139, 219, 0.3) 40%, rgba(51, 48, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
 .defaultCardBackground3 {
-    background-color: #6b689d;
+    color: #a39edf;
+	background: linear-gradient(45deg, rgba(208, 37, 109, 0.1) 0%, rgba(125, 38, 107, 0.3) 40%, rgba(158, 48, 146, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
 .defaultCardBackground4 {
-    background-color: #dd452b;
+    color: #a39edf;
+	background: linear-gradient(45deg, rgba(208, 37, 109, 0.1) 0%, rgba(148, 77, 219, 0.3) 40%, rgba(51, 48, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
 .defaultCardBackground5 {
-    background-color: #5ccea9;
+    color: #b7deac;
+	background: linear-gradient(45deg, rgba(208, 37, 109, 0.1) 0%, rgba(131, 191, 129, 0.3) 40%, rgba(51, 158, 48, 0.4) 70%, rgba(8, 77, 19, 0.1) 100%) !important;
 }
 
 .cardText-secondary,
@@ -335,11 +361,6 @@ html {
     border-color: #00a4dc;
 }
 
-.emby-select-withcolor > option {
-	color: #8ca7da;
-	background-color: rgb(41, 85, 131);
-}
-
 .emby-select-tv-withcolor:focus {
     background-color: #00a4dc;
     color: #fff;
@@ -503,7 +524,7 @@ html {
 
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-    border-color: #fff !important;
+	border: .3em solid #6dbbcd !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -556,6 +577,7 @@ html {
 }
 
 .btnSave,
+.btnRefresh,
 .button-submit {
 	color: #9edfdf;
 	border: .2em double #0a2c60;
@@ -565,7 +587,9 @@ html {
 /* select widget */
 
 .selectArrow {
-	text-shadow: 2px 2px 3px #1e1d25;
+	text-shadow: none;
+	color: #00dbff;
+	font-size: 1.9em !important;
 }
 
 .emby-button.show-focus:focus {
@@ -639,7 +663,7 @@ html {
 }
 
 .mdl-slider::-moz-range-thumb {
-	background: radial-gradient(#77cc5f , #b8ffe8) !important;
+	background: #77cc5f !important;
 	box-shadow: 1px 2px 8px #091f4a !important;	
 }
 
@@ -655,12 +679,6 @@ html {
 
 .mdl-slider-container {
     height: 0.83em !important;
-}
-
-select option:disabled {
-    color: #9edfdf;
-    text-shadow: 0px 0px 15px #0cf3dd;
-    font-weight: bold;
 }
 
 /* fix for TV Layout */
@@ -861,4 +879,12 @@ option.sourceDictionaryOption {
 .userProfileAvatar {
 	box-shadow: none;
 	border: .1em solid rgb(71, 167, 136) !important;
+}
+
+.material-icons.keyboard_arrow_down::before {
+  content: "\e5c5";
+}
+
+.material-icons.keyboard_arrow_up::before {
+  content: "\e5c7";
 }
