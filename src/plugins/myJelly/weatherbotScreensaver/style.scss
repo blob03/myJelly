@@ -1,6 +1,9 @@
 
 .weatherbotScreenSaver {
     background: #101010;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: cover;
 	color: #fff;
     position: fixed;
     top: 0;
@@ -76,13 +79,6 @@
 
 .ssIcons {
 	opacity: 50%;
-	[dir="ltr"] & {
-		margin: 0 .3em 0 0;
-	}
-
-	[dir="rtl"] & {
-		margin: 0 0 0 .3em;
-	}
 }
 
 .ssWeatherIcon {
@@ -91,5 +87,5 @@
 
 #ssCond {
 	position: relative;
-	top: -.9em;
+	top: -.3em;
 }

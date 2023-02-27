@@ -1345,12 +1345,6 @@ option:selected {
 	font-size: 0.8rem;
 }
 
-.weatherbotScreenSaver,
-.clockScreenSaver {
-	-webkit-background-size: cover;
-	background-size: cover;
-}
-
 .ssFailure,
 .ssForeplane,
 .ssForeplane > * > .material-icons {
@@ -1500,11 +1494,6 @@ option:selected {
 	overflow: visible !important;
 	margin-right: .5em;
 	margin-left: .5em;
-}
-
-.pinned .backdropImage,
-.pinned .itemBackdrop {
-  background-position: 0 4em !important;
 }
 
 @media all and (min-width: 100em) {

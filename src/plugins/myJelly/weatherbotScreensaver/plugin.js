@@ -24,7 +24,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.35';
+	self.version = '1.45';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -234,12 +234,13 @@ export default function () {
 			elem.classList.add('screenSaver');
 			elem.classList.add('weatherbotScreenSaver');
 			elem.classList.add('backdropImage');
+			elem.classList.add('ssbackdropImage');
 			elem.classList.add('themeBackdrop');
 			const idx = Math.ceil(Math.random() * 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
 			
-			let content ='<div id="ssBackplane" class="ssBackplane skinHeader-withBackground" dir="' + (self.opts.langDir? 'rtl':'ltr') + '">'
+			let content ='<div id="ssBackplane" class="ssBackplane skinHeader-withBackground headerWthMain" dir="' + (self.opts.langDir? 'rtl':'ltr') + '">'
 			+ '<div class="ssFailure hide">'
 			+ '<span id="ssMsg" class="ssWeatherData"></span>'
 			+ '</div>'
@@ -278,14 +279,14 @@ export default function () {
 			+ '<div class="ssForeplane hide">'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons water_drop"></span>'
-			+ '<div dir="ltr" style="display: flex;">'
+			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
 			+ '<span id="ssHum" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">%</span>'
 			+ '</div>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons"></span>'
-			+ '<div dir="ltr" style="display: flex;">'
+			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
 			+ '<span id="ssPressureValue" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">hPa</span>';
 			
@@ -296,7 +297,7 @@ export default function () {
 			
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons air"></span>'
-			+ '<div dir="ltr" style="display: flex;">'
+			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
 			+ '<span id="ssWind" class="ssWeatherData"></span>';
 			
 			if (self.opts.USUnits)
@@ -305,7 +306,7 @@ export default function () {
 				content += '<span class="ssWeatherDataUnit">km/h</span>';
 			
 			content += '</div>'
-			+ '<div dir="ltr" style="display: flex;">'
+			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
 			+ '<span id="ssWindir" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">&deg;</span>'
 			+ '<span id="ssWindircode" class="ssWeatherDataUnit"></span>'

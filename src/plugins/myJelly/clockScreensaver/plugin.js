@@ -10,7 +10,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.94';
+	self.version = '0.96';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -54,11 +54,12 @@ export default function () {
 			elem.classList.add('screenSaver');
 			elem.classList.add('clockScreenSaver');
 			elem.classList.add('backdropImage');
+			elem.classList.add('ssbackdropImage');
 			elem.classList.add('themeBackdrop');
 			const idx = Math.ceil(Math.random() * 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
-			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane skinHeader-withBackground">'
+			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane skinHeader-withBackground headerClock headerClockActive">'
 				+ '<div id="ssClockDate" class="ssForeplane ssClockDate"></div>'
 				+ '<div id="ssClockTime" class="ssForeplane ssClockTime"></div>'
 				+ '</div>';

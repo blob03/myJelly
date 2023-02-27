@@ -1345,12 +1345,6 @@ select option:selected {
 	text-shadow: rgb(30, 38, 43) -1px -1px 1px;
 }
 
-.weatherbotScreenSaver,
-.clockScreenSaver {
-	-webkit-background-size: cover;
-	background-size: cover;
-}
-
 .ssFailure,
 .ssForeplane,
 .ssForeplane > * > .material-icons {

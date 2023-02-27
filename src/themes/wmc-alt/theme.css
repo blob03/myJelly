@@ -101,23 +101,25 @@ html {
     background: #143451;
 }
 
-option:disabled {
-    color: #9edfdf;
-    text-shadow: 0px 0px 15px #0cf3dd;
-    font-weight: bold;
+select option {
+	background: rgb(149, 207, 229) !important;
 }
 
-option:not(:disabled) {
-	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
-	border: .1em ridge rgb(95, 146, 158);
+select option:disabled {
+	color: #fff;
+	text-shadow: 0px 0px 15px #04fe5a;
+	font-weight: bold;
+}
+
+select option:not(:disabled) {
 	font-weight: 600;
 	line-height: 1.35;
-	color: rgb(107, 134, 144) !important;
+	color: #0e5799 !important;
 }
 
-option:selected {
+select option:selected {
 	color: #fff !important;
-	background: rgb(107, 134, 144) !important;
+	background: #0e5799 !important;
 }
 
 .button-cancel,
@@ -584,6 +586,12 @@ option:selected {
 	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
+#btnTryIt {
+	color: #8ea3cc;
+	border: .2em double #0d114f;
+	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(80, 139, 145, 0.3) 40%, rgba(102, 153, 207, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
+}
+
 /* select widget */
 
 .selectArrow {
@@ -633,12 +641,17 @@ option:selected {
 	color: #e0f1d7 !important;
 }
 
+.headerWthMain {
+	color: rgba(98, 186, 149, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
+}
+
 .nightMode .dark_mode,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
 	color: #b6fd8f !important;
-	  text-shadow: 0 0 20px #3aff7e, 0 0 30px #95ffce, 0 0 50px #5ed7cb, 0 0 60px #59b0b5 !important;
+	text-shadow: 0 0 20px #3aff7e, 0 0 30px #95ffce, 0 0 50px #5ed7cb, 0 0 60px #59b0b5 !important;
 }
 
 .nightFilter {
@@ -841,9 +854,9 @@ option.sourceDictionaryOption {
 	background: rgb(41, 111, 150);
 }
 
+.weatherbotScreenSaver
 .clockScreenSaver {
 	color: #fff;
-	text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2bd726, 0 0 40px #22ee1d, 0 0 50px #49f00d, 0 0 60px #16da3e, 0 0 70px #00e60e;
 }
 
 .btnTryIt {
@@ -852,11 +865,6 @@ option.sourceDictionaryOption {
 
 .cardPadder .cardImageIcon {
     color: rgba(0, 0, 0, 0.5);
-}
-
-.headerWthMain {
-	color: rgba(98, 186, 149, 0.8) !important;
-	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
 .headerWthButton > fieldset {
