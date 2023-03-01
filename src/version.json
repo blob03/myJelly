@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-14",
+	"version": "10.8.9-15",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -214,6 +214,7 @@
 		"10.8.9-11": "Synchronize translations.\nUpdate theme 'WMC Alt.'.\nFix: Night Mode overlay reset by WeatherBot during video playback.",
 		"10.8.9-12": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nApply patch 'Add secondary subtitle support to html video player'.\nFix: set value for subtitles playback 'None' mode to 'None'.",
 		"10.8.9-13": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nMake subs loading animation spin clockwise.",
-		"10.8.9-14": "Synchronize translations.\nUpdate theme 'WMC Alt.'.\nUpdate SS 'Digital Clock' and 'Weatherbot'."
+		"10.8.9-14": "Synchronize translations.\nUpdate theme 'WMC Alt.'.\nUpdate SS 'Digital Clock' and 'Weatherbot'.",
+		"10.8.9-15": "Synchronize translations.\nUpdate themes 'WMC Alt.' and 'Halloween'.\nUpdate SS 'Weatherbot'.\nUpdate SS 'Test' button. (Display settings)\nApply patch 'thornbill/fix-login-redirect'.\nApply patch '1337joe/deduplicate-studio-display'."
 	}
 }

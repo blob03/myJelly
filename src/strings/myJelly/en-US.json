@@ -34,7 +34,7 @@
     "EnableBlurHashSomeMoreHelp": "Defining a lower value should provide better performance.",
     "EnableClock": "Enable clock:",
     "EnableClockHelp": "Show the clock in the top bar.",
-    "EnableMenuPin": "Pinned menu :",
+    "EnableMenuPin": "Pin the menu bar:",
     "EnableMenuPinHelp": "Menu bar can be pinned on demand by clicking the pin icon visible in the top left corner.",
     "EnableNightModeSwitch": "Night mode:",
     "EnableNightModeSwitchHelp": "Night mode can be activated from the menu bar or automatically if Weatherbot has been enabled.",

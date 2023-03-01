@@ -14,7 +14,7 @@ function _show(item, visible) {
 	let els = document.getElementsByClassName(item);
 	if (els.length) {
 		Array.prototype.forEach.call(els, function(el) {
-			visible === true? el.classList.remove('hide') : el.classList.add('hide');
+			el.classList.toggle('hide', visible !== true);
 		});
 	}
 }
@@ -24,7 +24,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.45';
+	self.version = '1.46';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -279,14 +279,16 @@ export default function () {
 			+ '<div class="ssForeplane hide">'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons water_drop"></span>'
-			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
+			+ '</div>'
+			+ '<div class="ssDataSection">'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssHum" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">%</span>'
 			+ '</div>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons"></span>'
-			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssPressureValue" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">hPa</span>';
 			
@@ -297,7 +299,9 @@ export default function () {
 			
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons air"></span>'
-			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
+			+ '</div>'
+			+ '<div class="ssDataSection">'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssWind" class="ssWeatherData"></span>';
 			
 			if (self.opts.USUnits)
@@ -306,7 +310,9 @@ export default function () {
 				content += '<span class="ssWeatherDataUnit">km/h</span>';
 			
 			content += '</div>'
-			+ '<div dir="ltr" style="display: flex;margin: 0 0 0 .8em;">'
+			+ '</div>'
+			+ '<div class="ssDataSection">'
+			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssWindir" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">&deg;</span>'
 			+ '<span id="ssWindircode" class="ssWeatherDataUnit"></span>'

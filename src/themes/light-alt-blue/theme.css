@@ -153,6 +153,7 @@ html {
 
 .alphaPickerButton-selected,
 .btnFilter.inUse > .material-icons, 
+.btnTryIt .material-icons,
 .btnSort.inUse > .material-icons {
     color: #fff !important;
 }

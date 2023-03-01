@@ -102,7 +102,7 @@ html {
 }
 
 select option {
-	background: rgb(149, 207, 229) !important;
+	background: rgb(24, 72, 124) !important;
 }
 
 select option:disabled {
@@ -114,7 +114,7 @@ select option:disabled {
 select option:not(:disabled) {
 	font-weight: 600;
 	line-height: 1.35;
-	color: #0e5799 !important;
+	color: #81add5 !important;
 }
 
 select option:selected {
@@ -270,8 +270,8 @@ select option:selected {
 	background-color: rgba(8,27,59,.4);
 }
 
-.layout-tv .detailRibbon {
-    background: none;
+.layout-tv .detailImageContainer .card {
+	margin: .5em 0 0 0;
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
@@ -578,6 +578,7 @@ select option:selected {
 	border-radius: 22px;
 }
 
+#btnTryIt,
 .btnSave,
 .btnRefresh,
 .button-submit {
@@ -587,9 +588,10 @@ select option:selected {
 }
 
 #btnTryIt {
-	color: #8ea3cc;
-	border: .2em double #0d114f;
-	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(80, 139, 145, 0.3) 40%, rgba(102, 153, 207, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
+	margin: 0 0 1.7em 0 !important;
+	height: auto;
+	color: #00dbff;
+	font-size: 0.8rem;
 }
 
 /* select widget */
@@ -678,26 +680,23 @@ select option:selected {
 .mdl-slider::-moz-range-thumb {
 	background: #77cc5f !important;
 	box-shadow: 1px 2px 8px #091f4a !important;	
+	border: .2em double #095815;
 }
 
 .mdl-slider::-ms-thumb {
 	background: #44cea0  !important;
 	box-shadow: 1px 2px 8px #091f4a !important;
+	border: .2em double #095815;
 }
 
 .mdl-slider::-webkit-slider-thumb {
 	background: #44cea0  !important;
 	box-shadow: 1px 2px 8px #091f4a !important;
+	border: .2em double #095815;
 }
 
 .mdl-slider-container {
     height: 0.83em !important;
-}
-
-/* fix for TV Layout */
-
-.layout-tv .detailPageWrapperContainer {
-	margin-top: 2%;
 }
 
 /* upNext dialog box */
@@ -857,10 +856,6 @@ option.sourceDictionaryOption {
 .weatherbotScreenSaver
 .clockScreenSaver {
 	color: #fff;
-}
-
-.btnTryIt {
-	font-size: 0.9rem;
 }
 
 .cardPadder .cardImageIcon {

@@ -669,6 +669,10 @@ html {
 	color: #282828;
 }
 
+.btnTryIt .material-icons {
+	color: #fe9001 !important;
+}
+
 .selectArrowContainer > .material-icons {
 	color: #e88b13;
 }
@@ -719,6 +723,10 @@ html {
 
 .layout-tv .detailRibbon {
     background: rgba(245, 182, 101, 0.4);
+}
+
+.layout-tv .detailImageContainer .card {
+	margin: .5em 0 0 0;
 }
 
 .mediaInfoItem {

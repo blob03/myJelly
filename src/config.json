@@ -42,13 +42,13 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "2.18",
+		"version": "2.19",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.61",
+		"version": "2.63",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
@@ -61,7 +61,7 @@
 		"default": true
 	}, {
 		"name": "WMC alt.",
-		"version": "1.60",
+		"version": "1.70",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"
