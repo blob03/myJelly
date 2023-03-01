@@ -22,12 +22,13 @@ import { getParameterByName } from '../utils/url';
 import ServerConnections from '../components/ServerConnections';
 import Events from '../utils/events.ts';
 import '../elements/emby-button/paper-icon-button-light';
+import '../elements/emby-slider/emby-slider';
 import 'material-design-icons-iconfont';
-import '../assets/css/scrollstyles.scss';
-import '../assets/css/flexstyles.scss';
-import '../assets/css/weatherBot.scss';
-import '../assets/css/backdropControl.scss';
-import '../assets/css/digitalClock.scss';
+import '../styles/scrollstyles.scss';
+import '../styles/flexstyles.scss';
+import '../styles/weatherBot.scss';
+import '../styles/backdropControl.scss';
+import '../styles/digitalClock.scss';
 
 import appSettings from './settings/appSettings';
 import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode, enableClock, enableWeatherBot, showWeatherBot, showClock, togglePin, placeClock, setClockFormat, WB_init, initClockPlaces } from '../scripts/settings/userSettings';

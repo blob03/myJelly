@@ -7,7 +7,7 @@ import cardBuilder from '../../components/cardbuilder/cardBuilder';
 import listView from '../../components/listview/listview';
 import imageLoader from '../../components/images/imageLoader';
 import globalize from '../../scripts/globalize';
-import '../../assets/css/scrollstyles.scss';
+import '../../styles/scrollstyles.scss';
 import '../../elements/emby-itemscontainer/emby-itemscontainer';
 
 /* eslint-disable indent */

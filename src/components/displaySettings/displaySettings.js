@@ -13,6 +13,7 @@ import Events from '../../utils/events.ts';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-checkbox/emby-checkbox';
 import '../../elements/emby-button/emby-button';
+import '../../elements/emby-slider/emby-slider';
 import ServerConnections from '../ServerConnections';
 import toast from '../toast/toast';
 import template from './displaySettings.template.html';

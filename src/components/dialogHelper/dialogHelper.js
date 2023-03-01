@@ -8,7 +8,7 @@ import { toBoolean } from '../../utils/string.ts';
 import dom from '../../scripts/dom';
 
 import './dialoghelper.scss';
-import '../../assets/css/scrollstyles.scss';
+import '../../styles/scrollstyles.scss';
 
 /* eslint-disable indent */
 
