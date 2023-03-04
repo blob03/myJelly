@@ -203,14 +203,23 @@ function hdrWeather() {
 				self._hdrwth.sunset.parentNode.title = globalize.translate('Sunset');
 		}
 		
-		if (self.enableNightModeSwitch() === 2) {
-			if (self._date_sunrise && self._date_sunset) {
-				const z = new Date().getTime();
-				if (z >= self._date_sunrise && z < self._date_sunset)
+		if (self._date_sunrise && self._date_sunset) {
+			const z = new Date().getTime();
+			const _WBdayTime = document.getElementById('WBdayTime'); 
+			const _WBnightTime = document.getElementById('WBnightTime'); 
+			if (!_WBdayTime || !_WBnightTime)
+				return;
+			if (z >= self._date_sunrise && z < self._date_sunset) {
+				_WBdayTime.classList.add('active');
+				_WBnightTime.classList.remove('active');
+				if (self.enableNightModeSwitch() === 2)
 					self.toggleNightMode({toggle: false, newval: false});
-				else
+			} else {
+				_WBdayTime.classList.remove('active');
+				_WBnightTime.classList.add('active');
+				if (self.enableNightModeSwitch() === 2)
 					self.toggleNightMode({toggle: false, newval: true});
-			}			
+			}
 		}
 		
 		self.WB_setButtons();
@@ -767,8 +776,8 @@ export class UserSettings {
 		
 		if (OPTS?.nosave !== true) {
 			appSettings.enableNightMode(val);
-			_icon.classList.toggle('light_mode', !val);
-			_icon.classList.toggle('dark_mode', val);
+			_icon.classList.toggle('wb_sunny', !val);
+			_icon.classList.toggle('bedtime', val);
 		}
 		
 		document.body.classList.toggle('nightMode', val);

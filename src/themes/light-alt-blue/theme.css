@@ -539,9 +539,14 @@ option:selected {
 
 .sliderBubble {
 	background: #f6f6f6;
-	color: #113c6a;
+	color: #4ab7b2;
 	border-radius: 62px;
-	border: 1px solid #cfcfcf;
+	border: 2px solid #cfcfcf;
+}
+
+.sliderBubble.sliderBubbleCurrentValue {
+	background: #4ab7b2;
+	color: #f6f6f6;
 }
 
 /* dashboard menu */
@@ -606,7 +611,16 @@ h3 {
   box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
 }
 
-.nightMode .dark_mode,
+.nightMode #WBdayTime,
+.nightMode #WBdayTime > .material-icons,
+.nightMode #WBnightTime > .material-icons,
+.nightMode #WBnightTime {
+	color: #fff !important;
+	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4 !important;
+}
+
+.nightMode .nightmodeButton,
+.nightMode .nightmodeButton > .material-icons,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
@@ -1248,7 +1262,11 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 #headerWthRight {
 	margin: 0 !important;
 	padding: .2em .4em .2em .4em !important;
-	border: 2px groove #8cbdc8 !important;
+	border: 2px groove #7dd8ed !important;
+}
+
+.osdHeader #headerWthRight {
+	border: none !important;
 }
 
 .infoDetails {
@@ -1298,7 +1316,7 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 .skinHeader.osdHeader {
 	background: linear-gradient(180deg, rgba(96, 147, 177, .2) 0%, rgba(133, 200, 197, .3) 100%) !important;
-	height: 6.5em;
+	height: 4.5em;
 	transition: opacity .6s ease-out;
 }
 

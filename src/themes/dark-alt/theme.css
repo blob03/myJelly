@@ -591,7 +591,10 @@ html {
 	border: .2em ridge #474c52;
 }
 
-
+.sliderBubble.sliderBubbleCurrentValue {
+	background: #ccc;
+	color: #282d32;
+}
 
 /* dashboard menu */
 
@@ -647,16 +650,60 @@ html {
 	font-size: 70% !important;
 }
 
-.nightMode .dark_mode,
+#WBdayTime:not(.active),
+#WBdayTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) {
+	color: #8b9fad !important;
+}
+
+#WBdayTime.active,
+#WBdayTime.active > .material-icons,
+#WBnightTime.active > .material-icons,
+#WBnightTime.active {
+	color: #8b9fad !important;
+}
+
+.nightMode #WBdayTime,
+.nightMode #WBdayTime > .material-icons {
+	color: #101111 !important;
+}
+
+.nightMode #WBnightTime > .material-icons,
+.nightMode #WBnightTime {
+	color: #fff !important;
+}
+
+.nightMode .nightmodeButton,
+.nightMode .nightmodeButton > .material-icons,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
 	color: #d7e2e9 !important;
-	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc !important;
+}
+
+.nightMode #WBdayTime,
+.nightMode #WBdayTime > .material-icons ,
+.nightMode #WBnightTime > .material-icons,
+.nightMode #WBnightTime,
+.nightMode .nightmodeButton,
+.nightMode .nightmodeButton > .material-icons,
+.nightMode .aboutTitle1,
+.nightMode .headerWthMain,
+.nightMode .headerClockActive {
+	text-shadow: 0 0 10px #2a2f35, 0 0 20px #64717e, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #89e9ff !important;
+}
+
+.headerWthUnit {	
+	font-family: initial !important;
+}
+
+.headerWthIconBg {  
+  border: .1em solid #33323f !important;
 }
 
 .nightMode .headerWthIconBg {
-	box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
+	box-shadow: 0 0 10px #282b32, 0 0 20px #2e353c, 0 0 30px #2f3236, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #89e9ff !important;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -731,8 +778,8 @@ html {
 }
 
 .skinHeader.osdHeader {
-	background: linear-gradient(180deg,hsla(0, 9.1%, 2.2%, 0.55),hsla(0,0%,6%,0));
-	height: 6.5em;
+	background: linear-gradient(180deg,hsla(0, 9.1%, 2.2%, 0.75),hsla(0,0%,6%,0.1));
+	height: 4.5em;
 	transition: opacity .6s ease-out;
 }
 
@@ -1349,7 +1396,7 @@ select option:selected {
 .ssForeplane,
 .ssForeplane > * > .material-icons {
 	color: #d7e2e9;
-	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
+	text-shadow: 0 0 10px #1a3e65, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #89e9ff !important;
 	background: rgba(10, 10, 10, 0);
 }
 
@@ -1383,8 +1430,17 @@ select option:selected {
 	border: 2px groove #363d43 !important;
 }
 
+.osdHeader #headerWthRight {
+	border: none !important;
+}
+
+.WBScreen2,
+.WBScreen3,
 .headerWthTemp {
 	font-family: "Shanghai";
+}
+
+.headerWthTemp {
 	font-size: 170% !important;
 }
 
@@ -1416,21 +1472,6 @@ select option:selected {
 
 .sliderMarker.watched {
     background-color: rgba(241, 249, 255, 0.8);
-}
-
-.material-icons.wb_sunny,
-.material-icons.bedtime {
-	color: #8b9fad !important;
-}
-
-.nightMode .material-icons.wb_sunny {
-	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
-	color: #101111 !important;
-}
-
-.nightMode .material-icons.bedtime {
-	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
-	color: #fff !important;
 }
 
 .userProfileAvatar {

@@ -559,6 +559,11 @@ html {
 	font-size: 170% !important;
 }
 
+.sliderBubble.sliderBubbleCurrentValue {
+	background: #282828;
+	color: rgba(255, 155, 0, 0.8);
+}
+
 /* dashboard menu */
 
 .navMenuOption:hover:not(:disabled) {
@@ -1361,18 +1366,6 @@ option:selected {
 	background: rgba(10, 10, 10, 0);
 }
 
-.nightMode .dark_mode,
-.nightMode .aboutTitle1,
-.nightMode .headerWthMain,
-.nightMode .headerClockActive {
-	color: #f8e5bf !important;
-	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906 !important;
-}
-
-.nightMode .headerWthIconBg {
-	box-shadow: 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906;
-}
-
 .ssClockDate {
 	font-size: 120% !important;
 }
@@ -1406,6 +1399,10 @@ option:selected {
 	font-family: "Mystery";
 	color: rgba(230, 138, 57, 0.8) !important;
 	text-shadow: 1px 1px 8px #411c5b !important;
+}
+
+.headerWthUnit {	
+	font-family: initial !important;
 }
 
 .headerWthTemp {
@@ -1442,19 +1439,39 @@ option:selected {
     background-color: #907fae;
 }
 
-.material-icons.wb_sunny,
-.material-icons.bedtime {
-	color: #c67e3e !important;
+#WBdayTime:not(.active),
+#WBdayTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) {
+	color: rgba(230, 138, 57, 0.8) !important;
 }
 
-.nightMode .material-icons.wb_sunny {
-	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
-	color: #101111 !important;
+#WBdayTime.active,
+#WBdayTime.active > .material-icons,
+#WBnightTime.active > .material-icons,
+#WBnightTime.active {
+	color: rgba(230, 138, 57, 1) !important;
 }
 
-.nightMode .material-icons.bedtime {
-	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906;
-	color: #fff !important;
+.nightMode #WBdayTime,
+.nightMode #WBdayTime > .material-icons,
+.nightMode #WBnightTime > .material-icons,
+.nightMode #WBnightTime {
+	color: #f8e5bf !important;
+	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906 !important;
+}
+
+.nightMode .nightmodeButton,
+.nightMode .nightmodeButton > .material-icons,
+.nightMode .aboutTitle1,
+.nightMode .headerWthMain,
+.nightMode .headerClockActive {
+	color: #f8e5bf !important;
+	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906 !important;
+}
+
+.nightMode .headerWthIconBg {
+	box-shadow: 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906;
 }
 
 .userProfileAvatar {

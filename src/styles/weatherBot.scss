@@ -2,13 +2,7 @@
 .headerWthTemp,
 .headerWthSunrise,
 .headerWthSunset {
-	[dir="ltr"] & {
-		margin: 0 0 0 .5em;
-	}
-
-	[dir="rtl"] & {
-		margin: 0 .5em 0 0;
-	}
+	margin: 0 .5em;
 }
 
 .headerWthUnit {
@@ -16,4 +10,14 @@
 	margin: -1em 0 0 .3em;
 }
 
+#WBdayTime.active,
+#WBnightTime.active {
+	font-size: 130% !important;
+	opacity: 100% !important;
+}
 
+#WBdayTime,
+#WBnightTime {
+	font-size: 90%;
+	opacity: 70%;
+}

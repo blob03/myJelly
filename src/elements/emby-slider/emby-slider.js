@@ -127,18 +127,20 @@ import globalize from '../../scripts/globalize';
             bubblePos = Math.min(Math.max(bubblePos, bubbleRect.width / 2), bubbleTrackRect.width - bubbleRect.width / 2);
 
             bubble.style.left = bubblePos + 'px';
-
+			
             if (range.getBubbleHtml) {
                 value = range.getBubbleHtml(value);
+				bubble.classList.toggle('sliderBubbleCurrentValue', range.value === value);
             } else {
                 if (range.getBubbleText) {
                     value = range.getBubbleText(value);
                 } else {
                     value = mapFractionToValue(range, value / 100).toLocaleString();
                 }
-                value = '<h1 class="sliderBubbleText">' + value + '</h1>';
+				bubble.classList.toggle('sliderBubbleCurrentValue', range.value === value);
+				value = '<h1 class="sliderBubbleText">' + value + '</h1>';
             }
-
+			
             bubble.innerHTML = value;
         });
     }

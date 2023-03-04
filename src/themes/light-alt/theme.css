@@ -612,6 +612,11 @@ html {
 	border: .2em ridge #474c52;
 }
 
+.sliderBubble.sliderBubbleCurrentValue {
+	background: #ccc;
+	color: #282d32;
+}
+
 /* dashboard menu */
 
 .navMenuOption:hover:not(:disabled) {
@@ -664,14 +669,6 @@ html {
 
 .headerClockDate {
 	font-size: 70% !important;
-}
-
-.nightMode .dark_mode,
-.nightMode .aboutTitle1,
-.nightMode .headerWthMain,
-.nightMode .headerClockActive {
-	color: #193e79 !important;
-	text-shadow: 0 0 5px #e3a658, 0 0 10px #dfd763, 0 0 15px #f3f04a, 0 0 20px #f7ffa3, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 }
 
 .headerClockButton:hover > .headerClockTime,
@@ -1468,19 +1465,35 @@ select option:selected {
     background-color: rgba(241, 249, 255, 0.8);
 }
 
-.material-icons.wb_sunny,
-.material-icons.bedtime {
+#WBdayTime:not(.active),
+#WBdayTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) {
 	color: #8b9fad !important;
 }
 
-.nightMode .material-icons.wb_sunny {
+#WBdayTime.active,
+#WBdayTime.active > .material-icons,
+#WBnightTime.active > .material-icons,
+#WBnightTime.active {
+	color: #8b9fad !important;
+}
+
+.nightMode #WBdayTime,
+.nightMode #WBdayTime > .material-icons,
+.nightMode #WBnightTime > .material-icons,
+.nightMode #WBnightTime {
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
 	color: #101111 !important;
 }
 
-.nightMode .material-icons.bedtime {
-	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
-	color: #fff !important;
+.nightMode .nightmodeButton,
+.nightMode .nightmodeButton > .material-icons,
+.nightMode .aboutTitle1,
+.nightMode .headerWthMain,
+.nightMode .headerClockActive {
+	color: #193e79 !important;
+	text-shadow: 0 0 5px #e3a658, 0 0 10px #dfd763, 0 0 15px #f3f04a, 0 0 20px #f7ffa3, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 }
 
 .userProfileAvatar {
@@ -1532,7 +1545,7 @@ select option:selected {
   text-shadow: none !important;
 }
 
-.osdControls .mdl-slider-background, .mdl-slider-background-flex {
+.osdControls .mdl-slider-background {
   box-shadow: 0.2em 0.2em 4px #000;
   background: #646a6d;
 }

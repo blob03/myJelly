@@ -237,6 +237,11 @@
     padding: 0.5em 0.75em;
 }
 
+.sliderBubble.sliderBubbleCurrentValue {
+    background: #fff;
+	color: #282828;
+}
+
 /* FIXME: 'sliderContainer' is used to wrap slider's pieces */
 .sliderContainer-settings {
     margin-bottom: 1.8em;

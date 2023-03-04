@@ -153,7 +153,12 @@ select option:selected {
 
 .sliderBubble {
 	background: #00a4dc;
-	color: #ffffff;
+	color: #fff;
+}
+
+.sliderBubble.sliderBubbleCurrentValue {
+	background: #fff;
+	color: #00a4dc;
 }
 
 .inputLabelFocused,
@@ -648,7 +653,32 @@ select option:selected {
 	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
-.nightMode .dark_mode,
+#WBdayTime:not(.active),
+#WBdayTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) > .material-icons,
+#WBnightTime:not(.active) {
+	color: rgba(98, 186, 149, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
+}
+
+#WBdayTime.active,
+#WBdayTime.active > .material-icons,
+#WBnightTime.active > .material-icons,
+#WBnightTime.active {
+	color: rgba(98, 186, 149, 0.8) !important;
+	text-shadow: 1px 1px 8px #1f2443 !important;
+}
+
+.nightMode #WBdayTime,
+.nightMode #WBdayTime > .material-icons,
+.nightMode #WBnightTime > .material-icons,
+.nightMode #WBnightTime {
+	color: #b6fd8f !important;
+	text-shadow: 0 0 20px #3aff7e, 0 0 30px #95ffce, 0 0 50px #5ed7cb, 0 0 60px #59b0b5 !important;
+}
+
+.nightMode .nightmodeButton,
+.nightMode .nightmodeButton > .material-icons,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
@@ -658,6 +688,12 @@ select option:selected {
 
 .nightFilter {
 	background: linear-gradient(125deg, rgba(48, 219, 219, 0.1) 0%, rgba(0, 255, 135, 0.15) 40%, rgba(241, 4, 248, 0.2) 70%, rgba(135, 14, 93, 0.1) 100%) !important;
+}
+
+.skinHeader.osdHeader {
+	height: 4.5em;
+	transition: opacity .6s ease-out;
+	background: rgba(3, 20, 30, 0.7) !important;
 }
 
 .headerClockButton:hover > .headerClockTime,

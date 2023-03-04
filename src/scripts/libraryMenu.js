@@ -44,7 +44,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		// That one pin the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerPinButton headerButtonLeft hide"><span id="pin" class="material-icons lock_open"></span></button>';
 		
-		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonLeft hide" style="overflow: visible;"><span class="material-icons light_mode"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonLeft hide" style="overflow: visible;"><span class="material-icons wb_sunny"></span></button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the clock widget*/
@@ -112,8 +112,8 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;height: 3.2em;">';
 		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
 		html += '</div>';
-		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 90%;height: 3.2em;">';
-		html += '<div style="display: flex;outline: none;height: auto;align-items: center;justify-content: center;width: 100%;margin-bottom: .3em;">';
+		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;flex-direction: column;font-size: 90%;height: 3.2em;align-items: center;justify-content: center;">';
+		html += '<div style="display: flex;outline: none;height: auto;width: 100%;align-items: center;justify-content: space-around;margin-bottom: .4em;">';
 		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.1em;width: 2.1em;">';
 		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.1em;">';
 		html += '</div>';
@@ -136,19 +136,15 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;font-size: 90%;display: flex;flex-direction: column;align-items: center;justify-content: center;height: 3.2em;">';
+		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;font-size: 90%;display: flex;flex-direction: column;align-items: center;justify-content: space-around;height: 3.2em;">';
 		
-		html += '<div style="display: flex;flex-direction: column;align-items: flex-start;justify-content: space-around;height: 3.2em;">';
-		
-		html += '<div style="display: flex;outline: none;margin: .1em;">';
+		html += '<div id="WBdayTime" style="display: flex;outline: none;margin: .1em;">';
 		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunrise" class="headerWthSunrise"></div>';
 		html += '</div>';
-		html += '<div style="display: flex;outline: none;margin: .1em;">';
+		html += '<div id="WBnightTime" style="display: flex;outline: none;margin: .1em;">';
 		html += '<span class="material-icons bedtime" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunset" class="headerWthSunset"></div>';
-		html += '</div>';
-		
 		html += '</div>';
 		
 		html += '</div>';
