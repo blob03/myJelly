@@ -1469,14 +1469,14 @@ select option:selected {
 #WBdayTime:not(.active) > .material-icons,
 #WBnightTime:not(.active) > .material-icons,
 #WBnightTime:not(.active) {
-	color: #8b9fad !important;
+	color: #4E6071 !important;
 }
 
 #WBdayTime.active,
 #WBdayTime.active > .material-icons,
 #WBnightTime.active > .material-icons,
 #WBnightTime.active {
-	color: #8b9fad !important;
+	color: #4E6071 !important;
 }
 
 .nightMode #WBdayTime,
@@ -1484,7 +1484,7 @@ select option:selected {
 .nightMode #WBnightTime > .material-icons,
 .nightMode #WBnightTime {
 	text-shadow: 0 0 10px #060606, 0 0 20px #4c4645, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fcfcfc, 0 0 60px #fcfcfb, 0 0 70px #01cdfc;
-	color: #101111 !important;
+	color: #4E6071 !important;
 }
 
 .nightMode .nightmodeButton,

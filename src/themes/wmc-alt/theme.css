@@ -927,3 +927,7 @@ option.sourceDictionaryOption {
 .material-icons.keyboard_arrow_up::before {
   content: "\e5c7";
 }
+
+.userProfileAvatar {
+	box-shadow: rgb(11, 41, 96) 4px 4px 12px !important;
+}

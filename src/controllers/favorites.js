@@ -135,8 +135,8 @@ import ServerConnections from '../components/ServerConnections';
         return function () {
             const apiClient = this.apiClient;
             const options = {
-                SortBy: 'SeriesName,SortName',
-                SortOrder: 'Ascending',
+				SortBy: 'DateCreated,SortName,ProductionYear',
+				SortOrder: 'Descending',
                 Filters: 'IsFavorite',
                 Recursive: true,
                 Fields: 'PrimaryImageAspectRatio,BasicSyncInfo',
@@ -144,7 +144,7 @@ import ServerConnections from '../components/ServerConnections';
                 ExcludeLocationTypes: 'Virtual',
                 EnableTotalRecordCount: false
             };
-            options.Limit = 20;
+            options.Limit = 60;
             const userId = apiClient.getCurrentUserId();
 
             if (section.types === 'MusicArtist') {

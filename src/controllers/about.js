@@ -133,22 +133,20 @@ class AboutTab {
     }
 
 	switchAutosearch() {
-		const autosearchIcon = document.querySelector('#autosearch');
-		if (autosearchIcon) {
-			if (appSettings.enableAutosearch() === false) {
-				appSettings.enableAutosearch(true);
-				this.refreshAutosearch();
-				this.checkUpdates();
-			} else {
-				if (this._busy === true) {
-					clearInterval(this._contimeout);
-					loading.hide();
-					this._busy = false;
-				}
-				appSettings.enableAutosearch(false);
-				this.refreshAutosearch();
-				this.updateReleaseNotes(appInfo);
+		const _eas = appSettings.enableAutosearch();
+		appSettings.enableAutosearch(!_eas);
+		
+		if (_eas === false) {
+			this.refreshAutosearch();
+			this.checkUpdates();
+		} else {
+			if (this._busy === true) {
+				this._busy = false;
+				clearInterval(this._contimeout);
+				loading.hide();
 			}
+			this.refreshAutosearch();
+			this.updateReleaseNotes(appInfo);
 		}
 	}
 	
@@ -167,17 +165,17 @@ class AboutTab {
 
 	refreshAutosearch() {
 		const autosearchIcon = document.getElementById("autosearch");
-		if (autosearchIcon) {
-			if (appSettings.enableAutosearch() === false) {
-				this.au.innerHTML = '';
-				document.querySelector('#labelUpdate').style.opacity = .5;
-				autosearchIcon.classList.remove('search');
-				autosearchIcon.classList.add('search_off');
-			} else {
-				document.querySelector('#labelUpdate').style.opacity = 1;
-				autosearchIcon.classList.remove('search_off');
-				autosearchIcon.classList.add('search');
-			}
+		if (!autosearchIcon)
+			return;
+		const _eas = appSettings.enableAutosearch();
+		autosearchIcon.classList.toggle('search', _eas);
+		autosearchIcon.classList.toggle('search_off', !_eas);
+		
+		if (_eas === false) {
+			this.au.innerHTML = '';
+			document.querySelector('#labelUpdate').style.opacity = .5;
+		} else {
+			document.querySelector('#labelUpdate').style.opacity = 1;
 		}
 	}
 	
@@ -227,12 +225,12 @@ class AboutTab {
 		req.url = url_proto_SSL + url_base + url_cacheBuster; 
 		if (!this.au || !this.vers)
 			return;
-		
-		loading.show();
 		if (this._busy === true)
 			return;
 		this._busy = true;
 		const self = this;
+		loading.show();
+		
 		this._contimeout = setTimeout(() => {
 			self.au.innerHTML = globalize.translate('LabelUpdateSearching');}, 3000);
 		

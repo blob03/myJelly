@@ -87,9 +87,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 const chkEnableLocalEasyPassword = page.querySelector('.chkEnableLocalEasyPassword') as HTMLInputElement;
                 chkEnableLocalEasyPassword.checked = user.Configuration.EnableLocalPassword || false;
 
-                import('../../autoFocuser').then(({default: autoFocuser}) => {
-                    autoFocuser.autoFocus(page);
-                });
             });
         });
     }, [userId]);

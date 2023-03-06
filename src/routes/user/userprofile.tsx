@@ -17,7 +17,6 @@ import Page from '../../components/Page';
 const UserProfile: FunctionComponent = () => {
     const userId = getParameterByName('userId');
     const [ userName, setUserName ] = useState('');
-
     const element = useRef<HTMLDivElement>(null);
 
     const reloadUser = useCallback(() => {
@@ -59,9 +58,11 @@ const UserProfile: FunctionComponent = () => {
                 if (user.PrimaryImageTag) {
                     (page.querySelector('#btnAddImage') as HTMLButtonElement).classList.add('hide');
                     (page.querySelector('#btnDeleteImage') as HTMLButtonElement).classList.remove('hide');
+					(page.querySelector('#btnDeleteImage') as HTMLButtonElement)?.focus();
                 } else if (appHost.supports('fileinput') && (loggedInUser?.Policy?.IsAdministrator || user.Policy.EnableUserPreferenceAccess)) {
                     (page.querySelector('#btnDeleteImage') as HTMLButtonElement).classList.add('hide');
                     (page.querySelector('#btnAddImage') as HTMLButtonElement).classList.remove('hide');
+					(page.querySelector('#btnAddImage') as HTMLButtonElement)?.focus();
                 }
             });
             loading.hide();
@@ -142,6 +143,7 @@ const UserProfile: FunctionComponent = () => {
         (page.querySelector('#uploadImage') as HTMLInputElement).addEventListener('change', function (evt: Event) {
             setFiles(evt);
         });
+		
     }, [reloadUser, userId]);
 
     return (
