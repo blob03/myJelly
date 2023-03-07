@@ -1,17 +1,38 @@
 
+.headerWthMain {
+	display: flex;
+	flex-direction: column;
+	font-size: 90%;
+	align-items: flex-end;
+	background-color: transparent;
+	color: #fff;
+	padding: 0;
+	margin: 0;
+	border: solid 0px;
+	outline: none;
+}
+	
+.WBScreen {
+	display: flex;
+	flex-direction: column;
+	width: 7em;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 3.2rem;
+}
+
+.WBScreen0 {
+	font-size: 80%;
+}
+
 .headerWthUnit {
 	font-size: 40%;
 	margin: -1em 0 0 .3em;
 }
 
-#WBdayTime.active,
-#WBnightTime.active {
-	opacity: 100% !important;
-}
-
 @keyframes _timerowgrow {
 	from {transform: scale(1);}
-	to {transform: scale(1.3);}
+	to {transform: scale(1.2);}
 }
 
 @keyframes _timerowshrink {
@@ -27,16 +48,17 @@
 
 #WBdayTime.active,
 #WBnightTime.active {
-  animation-name: _timerowgrow !important;
-  animation-duration: .2s !important;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
+	animation-name: _timerowshrink !important;
+	animation-duration: .2s !important;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
 }
 
 #WBdayTime:not(.active),
 #WBnightTime:not(.active) {
-  animation-name: _timerowshrink !important;
-  animation-duration: .2s !important;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
+	opacity: 100% !important;
+	animation-name: _timerowgrow !important;
+	animation-duration: .2s !important;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
 }

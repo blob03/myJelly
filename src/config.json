@@ -66,6 +66,12 @@
 		"color": "#0c2450",
 		"group": "myJelly"
 	}, {
+		"name": "WMC exp.",
+		"version": "0.1",
+		"id": "wmc-exp",
+		"color": "#0c2450",
+		"group": "myJelly dev"
+	}, {
 		"name": "Apple TV",
 		"id": "appletv",
 		"color": "#bcbcbc"

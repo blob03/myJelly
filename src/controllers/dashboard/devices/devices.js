@@ -53,15 +53,11 @@ import confirm from '../../../components/confirm/confirm';
     }
 
     function showDeviceMenu(view, btn, deviceId) {
-        const menuItems = [];
-
-        if (canEdit) {
-            menuItems.push({
-                name: globalize.translate('Edit'),
-                id: 'open',
-                icon: 'mode_edit'
-            });
-        }
+        const menuItems = [{
+            name: globalize.translate('Edit'),
+            id: 'open',
+            icon: 'mode_edit'
+        }];
 
         if (canDelete(deviceId)) {
             menuItems.push({
@@ -99,7 +95,7 @@ import confirm from '../../../components/confirm/confirm';
             deviceHtml += '<div class="cardBox visualCardBox">';
             deviceHtml += '<div class="cardScalable">';
             deviceHtml += '<div class="cardPadder cardPadder-backdrop"></div>';
-            deviceHtml += `<a is="emby-linkbutton" href="${canEdit ? '#/device.html?id=' + device.Id : '#'}" class="cardContent cardImageContainer ${cardBuilder.getDefaultBackgroundClass()}">`;
+            deviceHtml += `<a is="emby-linkbutton" href="#/device.html?id=${device.Id}" class="cardContent cardImageContainer ${cardBuilder.getDefaultBackgroundClass()}">`;
             const iconUrl = imageHelper.getDeviceIcon(device);
 
             if (iconUrl) {
@@ -113,7 +109,7 @@ import confirm from '../../../components/confirm/confirm';
             deviceHtml += '</div>';
             deviceHtml += '<div class="cardFooter">';
 
-            if (canEdit || canDelete(device.Id)) {
+            if (canDelete(device.Id)) {
                 if (globalize.getIsRTL())
                     deviceHtml += '<div style="text-align:left; float:left;padding-top:5px;">';
                 else
@@ -154,7 +150,6 @@ import confirm from '../../../components/confirm/confirm';
         });
     }
 
-    const canEdit = ApiClient.isMinServerVersion('3.4.1.31');
     export default function (view) {
         view.querySelector('.devicesList').addEventListener('click', function (e) {
             const btnDeviceMenu = dom.parentWithClass(e.target, 'btnDeviceMenu');

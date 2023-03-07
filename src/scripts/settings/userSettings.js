@@ -164,14 +164,14 @@ function hdrWeather() {
 			_dyn += '<span class="headerWthUnit">';
 			_dyn += (enableUSUnits? 'mph': 'km/h') + '</span>';
 			self._hdrwth.wind.innerHTML = _dyn;
-			if (self._hdrwth.wind.parentNode)
-				self._hdrwth.wind.parentNode.title = globalize.translate('WindSpeed');
+			self._hdrwth.wind.title = globalize.translate('WindSpeed');
 		}
 		
 		if (_data.dir) {
 			_dyn = _data.dir;
 			_dyn += '<span class="headerWthUnit">&deg;</span>';
 			self._hdrwth.windDir.innerHTML = _dyn;
+			self._hdrwth.windDir.title = globalize.translate('WindDir');
 			if (_data.code) {
 				_dyn = '<span class="headerWthUnit">' + _data.code + '</span>';
 				self._hdrwth.windDir.innerHTML += _dyn;

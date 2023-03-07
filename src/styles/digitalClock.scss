@@ -1,4 +1,28 @@
 
+.headerClockButton {
+	display: flex;
+	flex-direction: row;
+	height: 3.2em;
+	flex-shrink: 0;
+}
+
+.headerClockMain {
+	display: flex;
+	flex-direction: column;
+	outline: none;
+	white-space: nowrap;
+	font-size: 100%;
+	height: auto;
+	align-items: center;
+	border: solid 0px;
+	background-color: transparent;
+	color: #fff;
+	padding:0;
+	margin:0;
+	justify-content: space-evenly;
+	align-content: center;
+}
+
 .material-icons.arrow_right::before {
 	[dir="ltr"] & {
 		content: "\e5df";

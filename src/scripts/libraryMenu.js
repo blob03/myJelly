@@ -48,9 +48,9 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the clock widget*/
-		html += '<div class="headerClockButton hide" id="headerClockLeft" style="display: flex;flex-direction: row;flex-shrink: 0;">';
+		html += '<div class="headerClockButton hide" id="headerClockLeft">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding:0;margin:0;">';
+		html += '<button class="headerClock headerClockMain">';
 		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
@@ -97,9 +97,9 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '</div>';
 			
 		/* Added: Right most casing for the clock widget */
-		html += '<div class="headerClockButton hide" id="headerClockRight" style="display: flex;flex-direction: row;flex-shrink: 0;">';
+		html += '<div class="headerClockButton hide" id="headerClockRight">';
 		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
-		html += '<button class="headerClock headerClockMain" style="display: flex;outline: none;white-space: nowrap;font-size: 100%;flex-direction: column;height: auto;align-items: center;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
+		html += '<button class="headerClock headerClockMain">';
 		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
 		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 140%;"></div>';
 		html += '</button>';
@@ -107,13 +107,13 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '</div>';
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
-		html += '<div class="headerWthButton hide" id="headerWthRight" style="margin: 0 .29em !important;padding: .2em .4em .2em .4em;border: 1px groove #99a5ad;">';	
-		html += '<button class="headerWth headerWthMain" style="display: flex;outline: none;font-size: 100%;flex-direction: column;align-items: flex-end;border: solid 0px;background-color: transparent;color: #fff;padding: 0;margin: 0;">';
-		html += '<div class="WBScreen WBScreen0" style="margin: .1em;width: 7em;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 80%;height: 3.2em;">';
-		html += '<span id="headerWthMsg" style="font-size: 80%"></span>';
+		html += '<div class="headerWthButton hide" id="headerWthRight" style="height: 3.2em;margin: 0 .4em !important;border: 1px groove #99a5ad;">';	
+		html += '<button class="headerWth headerWthMain">';
+		html += '<div class="WBScreen WBScreen0">';
+		html += '<span id="headerWthMsg"></span>';
 		html += '</div>';
-		html += '<div class="hide WBScreen WBScreen1" style="width: 7em;display: flex;flex-direction: column;font-size: 90%;height: 3.2em;align-items: center;justify-content: space-evenly;">';
-		html += '<div style="display: flex;outline: none;height: auto;width: 100%;align-items: center;justify-content: space-evenly;margin-bottom: .4em;">';
+		html += '<div class="hide WBScreen WBScreen1">';
+		html += '<div style="display: flex;outline: none;height: auto;width: 100%;align-items: center;justify-content: space-evenly;">';
 		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.1em;width: 2.1em;">';
 		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.1em;">';
 		html += '</div>';
@@ -122,21 +122,21 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<div id="headerWthCity" class="headerWthCity" style="font-size: 60%;"></div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen2" style="width: 7em;display: flex;align-items: center;justify-content: space-evenly;font-size: 90%;height: 3.2em;">';
+		html += '<div class="hide WBScreen WBScreen2">';
 		
-		html += '<div style="display: flex;flex-direction: column;outline: none;">';
+		html += '<div style="display: flex;flex-direction: row;height: 1em;width: 7em;justify-content: space-evenly;">';
 		html += '<div id="headerWthHum" dir="ltr" class="headerWthHum" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
-		html += '<div id="headerWthWind" dir="ltr" class="headerWthWind" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
-		html += '</div>';
-		html += '<div style="display: flex;flex-direction: column;outline: none;">';
 		html += '<div id="headerWthPressure" dir="ltr" class="headerWthPressure" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
+		html += '</div>';
+		html += '<div style="display: flex;flex-direction: row;height: 1em;width: 7em;justify-content: space-evenly;">';
+		html += '<div id="headerWthWind" dir="ltr" class="headerWthWind" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '<div id="headerWthWindDir" dir="ltr" class="headerWthWindDir" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '<span id="headerWthWindDirCode" dir="ltr" style="font-size: 50%"></span>';
 		html += '</div>';
 		
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen3" style="width: 7em;font-size: 90%;display: flex;flex-direction: column;align-items: center;justify-content: space-evenly;height: 3.2em;">';
+		html += '<div class="hide WBScreen WBScreen3">';
 		
 		html += '<div id="WBdayTime" style="display: flex;outline: none;width: 5.5em;justify-content: space-evenly;">';
 		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 120%;"></span>';
