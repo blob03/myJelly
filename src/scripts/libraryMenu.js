@@ -49,12 +49,12 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		
 		/* Added: Left casing for the clock widget*/
 		html += '<div class="headerClockButton hide" id="headerClockLeft">';
-		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding:0;margin:0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain">';
-		html += '<div id="headerClockDateLeft" class="headerClockDate" style="font-size: 70%;"></div>';
-		html += '<div id="headerClockTimeLeft" class="headerClockTime" style="font-size: 140%;"></div>';
+		html += '<div id="headerClockDateLeft" class="headerClockDate"></div>';
+		html += '<div id="headerClockTimeLeft" class="headerClockTime"></div>';
 		html += '</button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
 		/* ********************************** */
 		
@@ -98,12 +98,12 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 			
 		/* Added: Right most casing for the clock widget */
 		html += '<div class="headerClockButton hide" id="headerClockRight">';
-		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton" style="padding: 0;margin: 0;"><span class="material-icons arrow_left"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveLeftButton"><span class="material-icons arrow_left"></span></button>';
 		html += '<button class="headerClock headerClockMain">';
-		html += '<div id="headerClockDateRight" class="headerClockDate" style="font-size: 70%;"></div>';
-		html += '<div id="headerClockTimeRight" class="headerClockTime" style="font-size: 140%;"></div>';
+		html += '<div id="headerClockDateRight" class="headerClockDate"></div>';
+		html += '<div id="headerClockTimeRight" class="headerClockTime"></div>';
 		html += '</button>';
-		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton" style="padding:0;margin:0;"><span class="material-icons arrow_right"></span></button>';
+		html += '<button type="button" is="paper-icon-button-light" class="headerClock headerButton moveRightButton"><span class="material-icons arrow_right"></span></button>';
 		html += '</div>';
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
@@ -302,8 +302,9 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 				headerSearchButton.classList.add('hide');
 			if (backdropInfoButton) 
 				backdropInfoButton.classList.add('hide');
-
+			
 			showClock(loginClock());
+			
 			// We keep a reload button mostly for dev purposes.
 			// it is settable at login.header.buttons.reload in config.json.
 			if (headerReloadButton)

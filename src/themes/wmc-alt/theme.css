@@ -617,34 +617,10 @@ select option:selected {
 
 /* top bar clock style */
 
-.headerClockButton {
-	padding:0px;
-}
-
 .headerClock,
 .headerClock > .material-icons {
 	color: rgba(98, 186, 149, 0.8) !important;
 	text-shadow: 1px 1px 8px #1f2443 !important;
-}
-
-.headerClock {
-	font-size: 100% !important;
-}
-
-.headerClockMode1 {
-	font-size: 120% !important;
-}
-
-.headerClockMode2 {
-	font-size: 140% !important;
-}
-
-.headerClockMode3 {
-	font-size: 160% !important;
-}
-
-.headerClockDate {
-	font-size: 70% !important;
 }
 
 .nightMode .headerWthIconBg {
@@ -698,16 +674,6 @@ select option:selected {
 	height: 4.5em;
 	transition: opacity .6s ease-out;
 	background: rgba(3, 20, 30, 0.7) !important;
-}
-
-.headerClockButton:hover > .headerClockTime,
-.headerClockButton:focus > .headerClockTime {
-	font-size: 140% !important;
-}
-
-.headerClockButton:hover > .headerClockDate,
-.headerClockButton:focus > .headerClockDate {
-	font-size: 90% !important;
 }
 
 /* slider widget */

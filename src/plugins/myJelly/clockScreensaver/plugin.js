@@ -10,7 +10,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.96';
+	self.version = '0.97';
 	self.description = 'ClockScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'clockscreensaver';
@@ -59,9 +59,9 @@ export default function () {
 			const idx = Math.ceil(Math.random() * 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
-			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane skinHeader-withBackground headerClock headerClockActive">'
-				+ '<div id="ssClockDate" class="ssForeplane ssClockDate"></div>'
-				+ '<div id="ssClockTime" class="ssForeplane ssClockTime"></div>'
+			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane skinHeader-withBackground headerClock headerClockMain headerClockActive">'
+				+ '<div id="ssClockDate" class="ssForeplane ssClockDate headerClockDate"></div>'
+				+ '<div id="ssClockTime" class="ssForeplane ssClockTime headerClockTime"></div>'
 				+ '</div>';
 			document.body.appendChild(elem);
 			
@@ -87,13 +87,13 @@ export default function () {
 				dateTimeLocale = globalize.getCurrentDateTimeLocale();
 			}
 			
-			// We use the same format currently set by the user 
+			// We use the same format currently set in the preferences 
 			// with seconds added to the time format.
-			const format = userSettings.getClockFormat(userSettings.currentSettings._clkmode);
+			const _clkmode = userSettings.currentSettings._clkmode;
+			self._bpstr_.classList.add('clockFmt' + _clkmode);
+			const format = userSettings.getClockFormat(_clkmode);
 			self._opts_date = format._opts_date;
 			self._opts_time = { 'second': '2-digit', ...format._opts_time };
-			self._datestr_.classList.toggle('hide', format.hideDate);
-			self._bpstr_.style.fontSize = format.fontSize;
 		
 			if (dateTimeLocale != null) {
 				clock(dateTimeLocale);

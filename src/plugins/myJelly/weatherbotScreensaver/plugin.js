@@ -24,7 +24,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.47';
+	self.version = '1.48';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = 'screensaver';
 	self.id = 'weatherbotscreensaver';
@@ -259,7 +259,7 @@ export default function () {
 			
 			+'<div style="display: flex;align-items: center;justify-content: space-evenly;align-items: center;width: 22em;">'
 			
-			+ '<div class="ssForeplane hide" style="font-size: 350%">'
+			+ '<div class="ssForeplane hide" style="font-size: 250%">'
 			+ '<div class="ssDataSection">'
 			+ '<span class="material-icons ssIcons thermostat" style="font-size: 60%"></span>'
 			+ '<div dir="ltr" style="display: flex;">'

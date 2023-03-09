@@ -13,7 +13,7 @@
     z-index: 999;
 	outline: none;
 	height: auto;
-	border: solid 0px;
+	border: 0px;
 }
 
 .ssBackplane {
@@ -30,7 +30,8 @@
     z-index: 1000;
 	outline: none;
 	height: auto;
-	border: solid 0px;
+	border: 0px;
+	font-size: 150%;
 }
 
 .ssForeplane {
@@ -40,10 +41,3 @@
 	border: solid 0px;
 }
 
-.ssClockDate {
-	font-size: 140%;
-}
-
-.ssClockTime {
-	font-size: 280%;
-}

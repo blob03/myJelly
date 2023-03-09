@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-19",
+	"version": "10.8.9-20",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -219,6 +219,7 @@
 		"10.8.9-16": "Synchronize translations and Node.js packages.\nApply patch 'iwalton3/add-dashboard-to-pluginManager'.\nApply patch 'thornbill/react-router-public-pages'.\nApply patch 'jellyfin/bond-dummychapcount'.\nApply patch '1netanel/styles-cleanup'.",
 		"10.8.9-17": "Synchronize translations.\nUpdate WeatherBot widget to allow a specific style for day/night time rows.\nUpdate element emby-slider to allow a different bubble style when rendering the value currently set.\nUpdate themes 'Halloween', 'Dark Alt.', 'WMC Alt.', 'Light Alt. Blue', 'Light Alt.'.",
 		"10.8.9-18": "Synchronize translations.\nUpdate theme 'WMC Alt.'.\nUpdate WeatherBot widget layout.\nRemove autofocuser for the profile settings page.\nSort user favorites by date of creation (Date of introduction into the library) in descending order.\nIncrease hardcoded limit from 20 to 60 favorites per row.",
-		"10.8.9-19": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nUpdate WeatherBot widget layout.\nApply patch 'Support markdown in item descriptions'.\nApply patch 'Remove old Emby (3.x) version checks'.\nApply patch 'Fix Time Until Next Episode Text Overflow'."
+		"10.8.9-19": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nUpdate WeatherBot widget layout.\nApply patch 'Support markdown in item descriptions'.\nApply patch 'Remove old Emby (3.x) version checks'.\nApply patch 'Fix Time Until Next Episode Text Overflow'.",
+		"10.8.9-20": "Synchronize translations.\nUpdate widget 'WeatherBot'.\nUpdate widget 'Digital Clock'.\nUpdate themes 'WMC Alt.', 'Light Alt.', 'Light Alt. Blue' and 'Halloween'.\nApply patch 'Fix stuck text track cues for firefox'."
 	}
 }

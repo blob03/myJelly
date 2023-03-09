@@ -576,35 +576,10 @@ h3 {
 
 /* top bar clock style */
 
-
-.headerClockButton {
-	padding:0px;
-}
-
 .headerClock,
 .headerClock > .material-icons {
 	color: rgba(178, 248, 255, 0.8) !important;
-	text-shadow: 1px 1px 8px #39708b !important;
-}
-
-.headerClockMode1 {
-	font-size: 120% !important;
-}
-
-.headerClockMode2 {
-	font-size: 140% !important;
-}
-
-.headerClockMode3 {
-	font-size: 160% !important;
-}
-
-.headerClockTime {
-	font-size: 140% !important;
-}
-
-.headerClockDate {
-	font-size: 70% !important;
+	text-shadow: 2px 2px 3px #316d8b !important;
 }
 
 .nightMode .headerWthIconBg {
@@ -626,16 +601,6 @@ h3 {
 .nightMode .headerClockActive {
 	color: #fff !important;
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4 !important;
-}
-
-.headerClockButton:hover > .headerClockTime,
-.headerClockButton:focus > .headerClockTime {
-	font-size: 140% !important;
-}
-
-.headerClockButton:hover > .headerClockDate,
-.headerClockButton:focus > .headerClockDate {
-	font-size: 90% !important;
 }
 
 .formDialogHeaderTitle,

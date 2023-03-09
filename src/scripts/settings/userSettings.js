@@ -867,6 +867,7 @@ export class UserSettings {
 				this.clockTimer = setInterval( hdrClock.bind(self), 10000);
 			}
 			_hdrclck.parentElement.classList.remove('hide');
+			this.setClockFormat(currentSettings._clkmode);
 		} else {
 			/*** Hide and Halt ***/
 			_hdrclck.parentElement.classList.add('hide');
@@ -897,49 +898,35 @@ export class UserSettings {
 		let _opts_time = {
 			'hour': 'numeric',
 			'minute': '2-digit' };
-		let fontSize = "100%";
-		let hideDate = false;
 		
 		switch (mode) {
 			case 0:
 				_opts_date['month'] = '2-digit';
 				break;
 			case 1:
-				hideDate = true;
-				fontSize = "120%";
-				break;
-			case 2:
-				hideDate = true;
-				fontSize = "140%";
-				break;
-			case 3:
-				hideDate = true;
-				fontSize = "160%";
-				break;
-			case 4:
 				_opts_date['weekday'] = 'long';
 				_opts_date['month'] = 'long';
 				break;
-			case 5:
+			case 2:
 				_opts_date['weekday'] = 'long';
 				_opts_date['month'] = 'long';
 				delete _opts_date['year'];
 				break;
-			case 6:
+			case 3:
 				_opts_date['weekday'] = 'short';
 				_opts_date['month'] = '2-digit';
 				_opts_date['timeZoneName'] = 'short';
 				break;
-			case 7:
+			case 4:
 				_opts_date['weekday'] = 'short';
 				_opts_date['month'] = '2-digit';
 				break;
 		}
-		return {'_opts_date': _opts_date, '_opts_time': _opts_time, 'fontSize': fontSize, 'hideDate': hideDate };
+		return {'_opts_date': _opts_date, '_opts_time': _opts_time};
 	}
 	
 	setClockFormat(val) {
-		const FORMATS_NBR = 8;
+		const FORMATS_NBR = 9;
 		const elms = document.getElementsByClassName("headerClockMain");
 		if (!elms || !elms.length)
 			return;
@@ -958,10 +945,9 @@ export class UserSettings {
 		currentSettings._opts_date = format._opts_date;
 		currentSettings._opts_time = format._opts_time;
 		for (let elm of elms) {
-			elm.classList.add('headerClockMode' + currentSettings._clkmode);
-			elm.classList.remove('headerClockMode' + _prevMode);
-			elm.getElementsByClassName('headerClockDate')[0].classList.toggle('hide', format.hideDate);
-			elm.style.fontSize = format.fontSize;
+			elm.classList.remove('clockFmt' + _prevMode);
+			void elm.offsetWidth; 
+			elm.classList.add('clockFmt' + currentSettings._clkmode);
 		}
 		
 		setTimeout(hdrClock, 10);
