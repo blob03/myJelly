@@ -360,6 +360,10 @@ select option:selected {
 	background-color: rgb(24, 201, 255);
 }
 
+.itemProgressBar {
+  border: 3px ridge #70b5d0 !important;
+}
+
 .itemProgressBarForeground {
     background-color: rgb(98, 186, 149);
 }

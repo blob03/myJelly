@@ -11,7 +11,25 @@
 	border: solid 0px;
 	outline: none;
 }
-	
+
+@keyframes _fmtin {
+	from {opacity: .1;}
+	to {opacity: 1;}
+}
+
+@keyframes _fmtout {
+	from {opacity: 1;}
+	to {opacity: .1;}
+}
+
+.WBScreen.hide {
+	animation: .4s forwards ease-in-out _fmtout;
+}
+
+.WBScreen:not(.hide) {
+	animation: .8s forwards ease-in-out _fmtin;
+}
+
 .WBScreen {
 	display: flex;
 	flex-direction: column;
@@ -49,7 +67,7 @@
 #WBdayTime.active,
 #WBnightTime.active {
 	animation-name: _timerowshrink !important;
-	animation-duration: .2s !important;
+	animation-duration: .5s !important;
 	animation-fill-mode: forwards;
 	animation-timing-function: linear;
 }
@@ -58,7 +76,7 @@
 #WBnightTime:not(.active) {
 	opacity: 100% !important;
 	animation-name: _timerowgrow !important;
-	animation-duration: .2s !important;
+	animation-duration: .5s !important;
 	animation-fill-mode: forwards;
 	animation-timing-function: linear;
 }
