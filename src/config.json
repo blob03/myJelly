@@ -14,7 +14,7 @@
 			"visualHeader": true
 		},
 		"clock": true,
-		"clockFormat": 6,
+		"clockFormat": 3,
 		"clockPos": "left",
 		"defaultBackdrop": "alt4",
 		"displayFontSize": -8,

@@ -3,6 +3,7 @@ import ServerConnections from '../../../components/ServerConnections';
 import * as userSettings from '../../../scripts/settings/userSettings';
 import { onLogoutClick } from '../../../scripts/libraryMenu';
 import globalize from '../../../scripts/globalize';
+import { PluginType } from '../../../types/plugin.ts';
 import { ssmanager } from '../../../scripts/screensavermanager';
 
 // Count every second down from 10 to 0 then terminate the session.
@@ -11,9 +12,9 @@ export default function () {
     const self = this;
 	self.name = 'AutoLogout';
 	self.group = 'myJelly';
-	self.version = '0.3';
+	self.version = '0.31';
 	self.description = 'AutoLogoutScreensaverHelp';
-	self.type = 'screensaver';
+	self.type = PluginType.Screensaver;
 	self.id = 'autologoutscreensaver';
 	self.supportsAnonymous = false;
 	self.hideOnClick = true;

@@ -20,6 +20,7 @@ import { getMenuLinks, pinButton, reloadButton, loginClock, nightModeButton, log
 import Dashboard, { pageClassOn } from '../utils/dashboard';
 import { getParameterByName } from '../utils/url';
 import ServerConnections from '../components/ServerConnections';
+import { PluginType } from '../types/plugin.ts';
 import Events from '../utils/events.ts';
 import '../elements/emby-button/paper-icon-button-light';
 import '../elements/emby-slider/emby-slider';
@@ -44,7 +45,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		// That one pin the top bar and will be useful for owners of an LG's "magic remote" or any other pointing device.
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerPinButton headerButtonLeft hide"><span id="pin" class="material-icons lock_open"></span></button>';
 		
-		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonLeft hide" style="overflow: visible;"><span class="material-icons wb_sunny"></span></button>';
+		html += '<button is="paper-icon-button-light" class="headerNightmodeButton nightmodeButton headerButton headerButtonLeft hide" style="overflow: visible;"><span class="material-icons sunny"></span></button>';
 		html += '<button type="button" is="paper-icon-button-light" class="headerButton headerButtonLeft headerReloadButton hide"><span class="material-icons refresh"></span></button>';
 		
 		/* Added: Left casing for the clock widget*/
@@ -139,7 +140,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<div class="hide WBScreen WBScreen3">';
 		
 		html += '<div id="WBdayTime" style="display: flex;outline: none;width: 5.5em;justify-content: space-evenly;">';
-		html += '<span class="material-icons wb_sunny" style="color: white;font-size: 120%;"></span>';
+		html += '<span class="material-icons sunny" style="color: white;font-size: 120%;"></span>';
 		html += '<div id="headerWthSunrise" class="headerWthSunrise"></div>';
 		html += '</div>';
 		html += '<div id="WBnightTime" style="display: flex;outline: none;width: 5.5em;justify-content: space-evenly;">';
@@ -283,7 +284,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 				// Button is present
 				headerSyncButton
 				// SyncPlay plugin is loaded
-				&& pluginManager.plugins.filter(plugin => plugin.id === 'syncplay').length > 0
+				&& pluginManager.ofType(PluginType.SyncPlay).length > 0
 				// SyncPlay enabled for user
 				&& policy?.SyncPlayAccess !== 'none'
 			) {

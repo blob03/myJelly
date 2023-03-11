@@ -3,7 +3,7 @@ import layoutManager from '../../../components/layoutManager';
 import * as LibraryMenu from '../../../scripts/libraryMenu';
 import {isActive} from '../quickConnect/helper';
 import globalize from '../../../scripts/globalize';
-import templateUserMenu from './_index.html';
+import templateUserMenu from './index.html';
 
 export default function (view, params) {
 	const userId = params.userId || ApiClient.getCurrentUserId();

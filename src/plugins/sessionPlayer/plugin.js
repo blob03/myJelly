@@ -1,6 +1,7 @@
 import { playbackManager } from '../../components/playback/playbackmanager';
 import serverNotifications from '../../scripts/serverNotifications';
 import ServerConnections from '../../components/ServerConnections';
+import { PluginType } from '../../types/plugin.ts';
 import Events from '../../utils/events.ts';
 
 function getActivePlayerId() {
@@ -183,7 +184,7 @@ class SessionPlayer {
         const self = this;
 
         this.name = 'Remote Control';
-        this.type = 'mediaplayer';
+        this.type = PluginType.MediaPlayer;
         this.isLocalPlayer = false;
         this.id = 'remoteplayer';
 

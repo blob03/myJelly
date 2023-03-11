@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import ServerConnections from '../../../components/ServerConnections';
+import { PluginType } from '../../../types/plugin.ts';
 import * as userSettings from '../../../scripts/settings/userSettings';
 import globalize from '../../../scripts/globalize';
 import datetime from '../../../scripts/datetime';
@@ -10,9 +11,9 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.97';
+	self.version = '0.98';
 	self.description = 'ClockScreensaverHelp';
-	self.type = 'screensaver';
+	self.type = PluginType.Screensaver;
 	self.id = 'clockscreensaver';
 	self.supportsAnonymous = false;
 	self.hideOnClick = true;

@@ -9,6 +9,7 @@ import settingsHelper from '../settingshelper';
 import cultures from '../../scripts/cultures';
 import loading from '../loading/loading';
 import skinManager from '../../scripts/themeManager';
+import { PluginType } from '../../types/plugin.ts';
 import Events from '../../utils/events.ts';
 import '../../elements/emby-select/emby-select';
 import '../../elements/emby-checkbox/emby-checkbox';
@@ -41,7 +42,7 @@ import './displaysettings.scss';
 		let key;
 
 		if (_newss !== 'any') {
-			const options = pluginManager.ofType('screensaver').map( ss => {
+			const options = pluginManager.ofType(PluginType.Screensaver).map( ss => {
 				return {
 					value: ss.id,
 					description: ss.description || ''

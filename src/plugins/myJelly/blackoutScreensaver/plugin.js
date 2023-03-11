@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import ServerConnections from '../../../components/ServerConnections';
+import { PluginType } from '../../../types/plugin.ts';
 import * as userSettings from '../../../scripts/settings/userSettings';
 	
 export default function () {
@@ -7,9 +8,9 @@ export default function () {
 
 	self.name = 'Blackout';
 	self.group = 'myJelly';
-	self.version = '0.5';
+	self.version = '0.51';
 	self.description = 'BlackoutScreensaverHelp';
-	self.type = 'screensaver';
+	self.type = PluginType.Screensaver;
 	self.id = 'blackoutscreensaver';
 	self.supportsAnonymous = false;
 	self.hideOnClick = true;

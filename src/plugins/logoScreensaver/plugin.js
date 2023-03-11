@@ -1,10 +1,12 @@
+import { PluginType } from '../../types/plugin.ts';
+
 export default function () {
     const self = this;
 
     self.name = 'Animated Logo';
 	self.version = '1.0';
 	self.description = 'LogoScreensaverHelp';
-    self.type = 'screensaver';
+	self.type = PluginType.Screensaver;
     self.id = 'logoscreensaver';
     self.supportsAnonymous = true;
 

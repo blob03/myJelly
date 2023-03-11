@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import ServerConnections from '../../../components/ServerConnections';
+import { PluginType } from '../../../types/plugin.ts';
 import { ajax } from '../../../components/fetchhelper';
 import * as userSettings from '../../../scripts/settings/userSettings';
 import globalize from '../../../scripts/globalize';
@@ -24,9 +25,9 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.48';
+	self.version = '1.49';
 	self.description = 'WeatherbotScreensaverHelp';
-	self.type = 'screensaver';
+	self.type = PluginType.Screensaver;
 	self.id = 'weatherbotscreensaver';
 	self.supportsAnonymous = false;
 	self.hideOnClick = true;

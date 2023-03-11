@@ -1,14 +1,15 @@
 /* eslint-disable indent */
 import ServerConnections from '../../../components/ServerConnections';
+import { PluginType } from '../../../types/plugin.ts';
 import * as userSettings from '../../../scripts/settings/userSettings';
 
 class BackdropScreensaver {
     constructor() {
         this.name = 'My Backdrop Player';
-		this.version = '1.72';
+		this.version = '1.73';
 		this.group = 'myJelly';
 		this.description = 'MJBackdropScreensaverHelp';
-        this.type = 'screensaver';
+		this.type = PluginType.Screensaver;
         this.id = 'mJbackdropscreensaver';
         this.supportsAnonymous = false;
 		this.hideOnClick = true;

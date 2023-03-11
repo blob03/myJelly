@@ -4,6 +4,7 @@ import { pluginManager } from '../components/pluginManager';
 import inputManager from './inputManager';
 import * as userSettings from './settings/userSettings';
 import ServerConnections from '../components/ServerConnections';
+import { PluginType } from '../types/plugin.ts';
 import layoutManager from '../components/layoutManager';
 import Events from '../utils/events.ts';
 
@@ -43,8 +44,8 @@ export function getScreensaverPlugin(isLoggedIn) {
         option = isLoggedIn ? 'backdropscreensaver' : 'logoscreensaver';
     }
 
-    const plugins = pluginManager.ofType('screensaver');
-
+	const plugins = pluginManager.ofType(PluginType.Screensaver);
+	
 	// If random screensaver was selected.
 	if (option === "any") {
 		let rand = Math.floor(Math.random() * Object.keys(plugins).length);

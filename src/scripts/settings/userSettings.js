@@ -776,7 +776,7 @@ export class UserSettings {
 		
 		if (OPTS?.nosave !== true) {
 			appSettings.enableNightMode(val);
-			_icon.classList.toggle('wb_sunny', !val);
+			_icon.classList.toggle('sunny', !val);
 			_icon.classList.toggle('bedtime', val);
 		}
 		
