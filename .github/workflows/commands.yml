@@ -1,0 +1,28 @@
+name: Commands
+on:
+  issue_comment:
+    types:
+      - created
+      - edited
+
+jobs:
+  rebase:
+    name: Rebase
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '@jellyfin-bot rebase') && github.event.comment.author_association == 'MEMBER'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify as seen
+        uses: peter-evans/create-or-update-comment@67dcc547d311b736a8e6c5c236542148a47adc3d # v2.1.1
+        with:
+          token: ${{ secrets.JF_BOT_TOKEN }}
+          comment-id: ${{ github.event.comment.id }}
+          reactions: '+1'
+      - name: Checkout the latest code
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+        with:
+          token: ${{ secrets.JF_BOT_TOKEN }}
+          fetch-depth: 0
+      - name: Automatic Rebase
+        uses: cirrus-actions/rebase@b87d48154a87a85666003575337e27b8cd65f691 # 1.8
+        env:
+          GITHUB_TOKEN: ${{ secrets.JF_BOT_TOKEN }}
