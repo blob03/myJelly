@@ -94,19 +94,18 @@
 				</select>
 			</div>
 			
-			<div class="inputContainer" style="display: flex;align-items: flex-end;justify-content: space-between;flex-grow: 0;width: 47%;height: auto;">
-			
-				<button is="emby-button" type="button" id="btnFindIt" class="raised btnTryIt block emby-button hide" style="width: auto;height: 50%;margin: 0">
-					<span>${Find}</span>
-				</button>			
+			<div class="inputContainer" style="display: flex;align-items: flex-end;justify-content: space-evenly;flex-grow: 1;width: 37%;height: auto;">		
 				<div style="flex-grow: 0;width: 33%;height: auto;">
 					<input is="emby-input" id="inputLat" label="${LabelLatitude}" type="number" min=-90 max=90 step="0.01" placeholder="78.69" autocomplete="off">
 				</div>
 				<div style="flex-grow: 0;width: 33%;height: auto;">
 					<input is="emby-input" id="inputLon" label="${LabelLongitude}" type="number" min=-180 max=180 step="0.01" placeholder="15.72" autocomplete="off">
 				</div>
-			
 			</div>
+			
+			<button is="emby-button" title="${Geolocation}" type="button" id="btnFindIt" class="raised btnTryIt block emby-button hide" style="display: flex;width: auto;height: 50%;margin: 0 0 .3rem 0 !important;">
+				<span class="material-icons person_pin"></span>
+			</button>
 			
 		</div>
 		
@@ -325,8 +324,8 @@
 				<div class="fieldDescription"></div>
 			</div>
 
-			<button is="emby-button" title="${TryIt}" type="button" id="btnTryIt" class="raised btnTryIt block hide" style="margin:0 0 1.7em 0;align-items: center;display: flex;width: auto;height: auto;justify-content: center;align-content: center;">
-				<span class="material-icons play_arrow" aria-hidden="true"></span>
+			<button is="emby-button" title="${TryIt}" type="button" id="btnTryIt" class="raised btnTryIt block hide" style="display: flex;width: auto;height: 50%;margin: 0 0 1.6rem 0 !important;">
+				<span class="material-icons manage_history" aria-hidden="true"></span>
 			</button>
 		
 			<div class="sliderContainer-settings hide" style="width: 37%;height: auto;">

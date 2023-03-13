@@ -36,6 +36,187 @@ function isSecure() {
    return location.protocol == 'https:';
 }
 
+//
+// api.open-meteo.com
+//
+
+//https://api.open-meteo.com/v1/forecast?latitude=12&longitude=2&hourly=temperature_2m,relativehumidity_2m,dewpoint_2m,weathercode,surface_pressure,windspeed_180m,winddirection_180m,temperature_180m&current_weather=true&forecast_days=1
+
+
+function _hdrWeather() {
+	const self = this;
+	const _lat = this.getlatitude();
+	const _lon = this.getlongitude();
+	const wapikey = this.weatherApiKey();
+	const enableUSUnits = (globalize.getCurrentDateTimeLocale() === 'en-US')? true: false;
+	
+	if (!wapikey) {
+		console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
+		this._hdrwth.msg.innerHTML = globalize.translate('MissingAPIKey');
+		this.WB_setButtons(0);
+		return;
+	}
+	
+	let url = {};
+	url.proto = isSecure() ? 'https://' : 'http://' ;
+	url.base_icon = 'openweathermap.org/img/wn/';
+	url.base = 'api.open-meteo.com/';
+	url.apiMethod = 'v1/forecast';
+	url.params = '&hourly=relativehumidity_2m,surface_pressure&current_weather=true&forecast_days=1'
+	+ '&latitude=' + _lat + '&longitude=' + _lon;
+	
+	let req = {};
+	req.dataType = 'text';
+	req.url = url.proto + url.base + url.apiMethod + url.params; 
+	
+	let _contimeout = setTimeout(() => {
+		self._hdrwth.msg.innerHTML = globalize.translate('Connecting');
+		self.WB_setButtons(0);
+	}, 3000);
+	
+	ajax(req).then(function (_root) {
+		clearInterval(_contimeout);
+		let _xmlDoc;
+		let _parser;
+		let _dyn;
+		let _data = {};
+		
+		if (_root) {
+			_data.title = _root?.current_weather?.weathercode;
+			_data.temp = _root?.current_weather?.temperature;
+			_data.speed = _root?.current_weather?.windspeed;
+			_data.dir = _root?.current_weather?.winddirection;
+			_data.name = "undef";
+			_data.hum = _root?.hourly?.relativehumidity_2m?.['0'];
+			_data.pressure = _root?.hourly?.surface_pressure?.['0'];
+			_data.pressureUnit = _root?.hourly_units?.surface_pressure;
+			_data.code = "undef";
+		}
+			
+		if (_data.title)
+			self._hdrwth.icon.title = _data.title;
+		
+		if (_data.temp) {
+			_dyn = toPrecision(_data.temp, 1);
+			_dyn += '<span class="headerWthUnit">';
+			_dyn += (enableUSUnits? '&#8457;': '&#8451;') + '</span>';
+			self._hdrwth.temp.innerHTML = _dyn;
+			self._hdrwth.temp.title = globalize.translate('Temperature');
+		}
+		
+		if (_data.name) {
+			self._hdrwth.city.innerHTML = _data.name;
+			if (_data.country)
+				self._hdrwth.city.title = _data.country;
+		}
+		
+		if (_data.hum) {
+			_dyn = toPrecision(_data.hum, 1);
+			_dyn += '<span class="headerWthUnit">%</span>';
+			self._hdrwth.hum.innerHTML = _dyn;
+			self._hdrwth.hum.title = globalize.translate('Humidity');
+		}
+		
+		if (_data.pressure) {
+			_dyn = toPrecision(_data.pressure, 1);
+			_dyn += '<span class="headerWthUnit">';
+			if (_data.pressureUnit)
+				_dyn += _data.pressureUnit;
+			else
+				_dyn += 'hPa';
+			_dyn += '</span>';
+			self._hdrwth.pressure.innerHTML = _dyn;
+			self._hdrwth.pressure.title = globalize.translate('Pressure');
+		}
+		
+		if (_data.speed) {
+			let wspeed = _data.speed;
+			if (!enableUSUnits)
+				wspeed *= 3.6; // m/s -> km/h
+			_dyn = toPrecision(wspeed, 1);
+			_dyn += '<span class="headerWthUnit">';
+			_dyn += (enableUSUnits? 'mph': 'km/h') + '</span>';
+			self._hdrwth.wind.innerHTML = _dyn;
+			self._hdrwth.wind.title = globalize.translate('WindSpeed');
+		}
+		
+		if (_data.dir) {
+			_dyn = _data.dir;
+			_dyn += '<span class="headerWthUnit">&deg;</span>';
+			self._hdrwth.windDir.innerHTML = _dyn;
+			self._hdrwth.windDir.title = globalize.translate('WindDir');
+			if (_data.code) {
+				_dyn = '<span class="headerWthUnit">' + _data.code + '</span>';
+				self._hdrwth.windDir.innerHTML += _dyn;
+			}
+		}
+		
+		self._date_sunrise = 0;
+		self._date_sunset = 0;
+		
+		if (_data.sunrise) {
+			 if (_data.sunrise.charAt(_data.sunrise.length - 1).toUpperCase() !== 'Z')
+				_data.sunrise += 'Z';
+			const x = new Date(_data.sunrise);
+			self._date_sunrise = x.getTime();
+			const y = datetime.toLocaleTimeString(x, currentSettings._opts_time); 
+			self._hdrwth.sunrise.innerHTML = y;
+			if (self._hdrwth.sunrise.parentNode)
+				self._hdrwth.sunrise.parentNode.title = globalize.translate('Sunrise');
+		}
+		
+		if (_data.sunset) {
+			if (_data.sunset.charAt(_data.sunset.length - 1).toUpperCase() !== 'Z')
+				_data.sunset += 'Z'; 
+			const x = new Date(_data.sunset);
+			self._date_sunset = x.getTime();
+			const y = datetime.toLocaleTimeString(x, currentSettings._opts_time);
+			self._hdrwth.sunset.innerHTML = y;
+			if (self._hdrwth.sunset.parentNode)
+				self._hdrwth.sunset.parentNode.title = globalize.translate('Sunset');
+		}
+		
+		if (self._date_sunrise && self._date_sunset) {
+			const z = new Date().getTime();
+			const _WBdayTime = document.getElementById('WBdayTime'); 
+			const _WBnightTime = document.getElementById('WBnightTime'); 
+			if (!_WBdayTime || !_WBnightTime)
+				return;
+			if (z >= self._date_sunrise && z < self._date_sunset) {
+				_WBdayTime.classList.add('active');
+				_WBnightTime.classList.remove('active');
+				if (self.enableNightModeSwitch() === 2)
+					self.toggleNightMode({toggle: false, newval: false});
+			} else {
+				_WBdayTime.classList.remove('active');
+				_WBnightTime.classList.add('active');
+				if (self.enableNightModeSwitch() === 2)
+					self.toggleNightMode({toggle: false, newval: true});
+			}
+		}
+		
+		self.WB_setButtons();
+		
+	}).catch(function (data) {
+		clearInterval(_contimeout);
+		console.warn(data);
+		if (data.status) {
+			let _msg = data.status;
+			if (data.statusText)
+				_msg += '<br/>' + data.statusText;
+			self._hdrwth.msg.innerHTML = _msg; 
+		} else
+			self._hdrwth.msg.innerHTML = globalize.translate('NoConnectivity');
+		self.WB_setButtons(0);
+	});
+	return;
+}
+
+
+//
+// api.openweathermap.org
+//
+
 function hdrWeather() {
 	const self = this;
 	const _lat = this.getlatitude();

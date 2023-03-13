@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-22",
+	"version": "10.8.9-24",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -222,6 +222,8 @@
 		"10.8.9-19": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Alt.'.\nUpdate WeatherBot widget layout.\nApply patch 'Support markdown in item descriptions'.\nApply patch 'Remove old Emby (3.x) version checks'.\nApply patch 'Fix Time Until Next Episode Text Overflow'.",
 		"10.8.9-20": "Synchronize translations.\nUpdate widget 'WeatherBot'.\nUpdate widget 'Digital Clock'.\nUpdate themes 'WMC Alt.', 'Light Alt.', 'Light Alt. Blue' and 'Halloween'.\nApply patch 'Fix stuck text track cues for firefox'.",
 		"10.8.9-21": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Exp.'.\nUpdate widget 'WeatherBot'.\nApply patch 'Fix navigation for some types of INPUT'.\nApply patch 'Fix installed plugin version html'.\nApply patch 'Fix subtitle offset reset when seeking progressive stream'.",
-		"10.8.9-22": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Exp.'.\nApply patch 'Add plugin types'."
+		"10.8.9-22": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Exp.'.\nApply patch 'Add plugin types'.",
+		"10.8.9-23": "Apply patch 'Remove NPM prepare script'.",
+		"10.8.9-24": "Synchronize translations.\nUpdate themes 'WMC Exp.', 'WMC Alt.'.\nUpdate layout and style for the autolocation button (display settings through SSL only)."
 	}
 }

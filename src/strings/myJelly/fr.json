@@ -41,7 +41,7 @@
     "EnableThemeVideosHelp": "Lire les vidéos thématiques en arrière-plan pendant la navigation dans la médiathèque.",
     "EnableWeatherBot": "Activer Météorobot :",
     "EnableWeatherBotHelp": "Afficher les conditions météo dans la barre du haut.",
-    "Find": "Chercher",
+    "Geolocation": "Géolocation automatique",
     "GeolocationFailed": "Géolocation impossible.",
     "GeolocationFound": "Latitude: {0}, Longitude: {1}",
     "GeolocationUnsupported": "Géolocation non supportée.",

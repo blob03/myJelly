@@ -41,7 +41,7 @@
     "EnableThemeVideosHelp": "Play theme videos in the background while browsing the library.",
     "EnableWeatherBot": "Enable WeatherBot:",
     "EnableWeatherBotHelp": "Show current condition in the top bar.",
-    "Find": "Find",
+    "Geolocation": "Automatic geolocation",
     "GeolocationFailed": "Geolocation failed.",
     "GeolocationFound": "Latitude: {0}, Longitude: {1}",
     "GeolocationUnsupported": "Geolocation not supported.",

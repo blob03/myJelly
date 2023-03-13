@@ -353,6 +353,8 @@ select option:selected {
 	background-color: none !important;
 }
 
+.playstatebutton-icon-played.check,
+.listItemIcon.check,
 .doneIcon,
 .checkboxIcon {
 	color: #77cc5f !important;
@@ -410,7 +412,7 @@ select option:selected {
 }
 
 .emby-button.show-focus:focus {
-    background: #00a4dc;
+    background: rgba(193, 56, 231, 0.3);
     color: #fff;
 }
 
@@ -589,6 +591,7 @@ select option:selected {
 	border-radius: 22px;
 }
 
+#btnFindIt,
 #btnTryIt,
 .btnSave,
 .btnRefresh,
@@ -598,6 +601,7 @@ select option:selected {
 	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
 
+#btnFindIt,
 #btnTryIt {
 	margin: 0 0 1.7em 0 !important;
 	height: auto;
