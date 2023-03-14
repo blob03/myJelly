@@ -15,7 +15,6 @@ import toast from './toast/toast';
         const user = options.user;
 
         const canPlay = playbackManager.canPlay(item);
-        const restrictOptions = (browser.operaTv || browser.web0s) && !user.Policy.IsAdministrator;
 
         const commands = [];
 
@@ -100,8 +99,8 @@ import toast from './toast/toast';
             });
         }
 
-        if (!restrictOptions) {
-            if (itemHelper.supportsAddingToCollection(item)) {
+        if (!browser.tv) {
+            if (itemHelper.supportsAddingToCollection(item) && options.EnableCollectionManagement) {
                 commands.push({
                     name: globalize.translate('AddToCollection'),
                     id: 'addtocollection',
@@ -285,16 +284,12 @@ import toast from './toast/toast';
             });
         }
 
-        if (!restrictOptions) {
-            if (options.share === true) {
-                if (itemHelper.canShare(item, user)) {
-                    commands.push({
-                        name: globalize.translate('Share'),
-                        id: 'share',
-                        icon: 'share'
-                    });
-                }
-            }
+        if (!browser.tv && options.share === true && itemHelper.canShare(item, user)) {
+			commands.push({
+				name: globalize.translate('Share'),
+				id: 'share',
+				icon: 'share'
+			});
         }
 
         if (options.sync !== false) {

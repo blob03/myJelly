@@ -5,6 +5,7 @@ import { onLogoutClick } from '../../../scripts/libraryMenu';
 import globalize from '../../../scripts/globalize';
 import { PluginType } from '../../../types/plugin.ts';
 import { ssmanager } from '../../../scripts/screensavermanager';
+import { randomInt } from '../../../utils/number.ts';
 
 // Count every second down from 10 to 0 then terminate the session.
 
@@ -12,7 +13,7 @@ export default function () {
     const self = this;
 	self.name = 'AutoLogout';
 	self.group = 'myJelly';
-	self.version = '0.31';
+	self.version = '0.33';
 	self.description = 'AutoLogoutScreensaverHelp';
 	self.type = PluginType.Screensaver;
 	self.id = 'autologoutscreensaver';
@@ -75,8 +76,9 @@ export default function () {
 			elem.classList.add('screenSaver');
 			elem.classList.add('ssAutoLogoutBackdrop');
 			elem.classList.add('backdropImage');
+			elem.classList.add('ssbackdropImage');
 			elem.classList.add('themeBackdrop');
-			const idx = Math.ceil(Math.random() * 4);
+			const idx = randomInt(1, 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
 			elem.innerHTML = '<div class="ssBackplane ssAutoLogoutBackplane">'

@@ -102,6 +102,7 @@
     "NoConnectivity": "NO CONNECTION",
     "Notifications": "Notification",
     "Oblique": "Oblique:",
+    "OptionAllowCollectionManagement": "Allow this user to manage collections",
     "OptionDivider": "...............................",
     "OptionHasThemeVideo": "Theme Video",
     "PlaybackErrorNoStream": "Media is missing.",

@@ -3,7 +3,17 @@ function toLocaleStringSupportsOptions() {
 }
 
 /**
- * Gets the value of a number formatted as a perentage.
+ * Generates a random integer in a given range.
+ * @param {number} min - Minimum of the range.
+ * @param {number} max - Maximum of the range.
+ * @returns {number} Randomly generated number.
+ */
+export function randomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/**
+ * Gets the value of a number formatted as a percentage.
  * @param {number} value The value as a number.
  * @param {string} locale The locale to use for formatting (i.e. en-us).
  * @returns {string} The value formatted as a percentage.

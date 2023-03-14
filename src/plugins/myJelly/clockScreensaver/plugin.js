@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import ServerConnections from '../../../components/ServerConnections';
 import { PluginType } from '../../../types/plugin.ts';
+import { randomInt } from '../../../utils/number.ts';
 import * as userSettings from '../../../scripts/settings/userSettings';
 import globalize from '../../../scripts/globalize';
 import datetime from '../../../scripts/datetime';
@@ -11,7 +12,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.98';
+	self.version = '0.99';
 	self.description = 'ClockScreensaverHelp';
 	self.type = PluginType.Screensaver;
 	self.id = 'clockscreensaver';
@@ -57,7 +58,7 @@ export default function () {
 			elem.classList.add('backdropImage');
 			elem.classList.add('ssbackdropImage');
 			elem.classList.add('themeBackdrop');
-			const idx = Math.ceil(Math.random() * 4);
+			const idx = randomInt(1, 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
 			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane skinHeader-withBackground headerClock headerClockMain headerClockActive">'

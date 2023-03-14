@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-24",
+	"version": "10.8.9-25",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -224,6 +224,7 @@
 		"10.8.9-21": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Exp.'.\nUpdate widget 'WeatherBot'.\nApply patch 'Fix navigation for some types of INPUT'.\nApply patch 'Fix installed plugin version html'.\nApply patch 'Fix subtitle offset reset when seeking progressive stream'.",
 		"10.8.9-22": "Synchronize translations and Node.js packages.\nUpdate theme 'WMC Exp.'.\nApply patch 'Add plugin types'.",
 		"10.8.9-23": "Apply patch 'Remove NPM prepare script'.",
-		"10.8.9-24": "Synchronize translations.\nUpdate themes 'WMC Exp.', 'WMC Alt.'.\nUpdate layout and style for the autolocation button (display settings through SSL only)."
+		"10.8.9-24": "Synchronize translations.\nUpdate themes 'WMC Exp.', 'WMC Alt.'.\nUpdate layout and style for the autolocation button (display settings through SSL only).",
+		"10.8.9-25": "Synchronize translations and Node.js packages.\nApply patch 'Add setting for collection management' with missing translations.\nApply patch 'thornbill/random-int-util'.\nUpdate SS 'Autologout', 'Digital Clock' and 'WeatherBot' with random-int-util.\nFix SS Autologout background mispositioning."
 	}
 }

@@ -102,6 +102,7 @@
     "NoConnectivity": "NON CONNECTÉ",
     "Notifications": "Notifications",
     "Oblique": "Oblique :",
+    "OptionAllowCollectionManagement": "Autoriser la gestion des collections à cet utilisateur",
     "OptionDivider": "...............................",
     "OptionHasThemeVideo": "Vidéo thématique",
     "PlaybackErrorNoStream": "Le média demandé est introuvable.",

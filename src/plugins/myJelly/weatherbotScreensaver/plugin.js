@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import ServerConnections from '../../../components/ServerConnections';
 import { PluginType } from '../../../types/plugin.ts';
+import { randomInt } from '../../../utils/number.ts';
 import { ajax } from '../../../components/fetchhelper';
 import * as userSettings from '../../../scripts/settings/userSettings';
 import globalize from '../../../scripts/globalize';
@@ -25,7 +26,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.49';
+	self.version = '1.5';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = PluginType.Screensaver;
 	self.id = 'weatherbotscreensaver';
@@ -237,7 +238,7 @@ export default function () {
 			elem.classList.add('backdropImage');
 			elem.classList.add('ssbackdropImage');
 			elem.classList.add('themeBackdrop');
-			const idx = Math.ceil(Math.random() * 4);
+			const idx = randomInt(1, 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
 			
