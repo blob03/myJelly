@@ -32,3 +32,9 @@ export function toPercent(value: number | null | undefined, locale: string): str
 
     return `${Math.round(value * 100)}%`;
 }
+
+export function pad(num: number, size: number): string {
+	let numstr = num.toString();
+	while (numstr.length < size) numstr = "0" + numstr;
+	return numstr;
+}

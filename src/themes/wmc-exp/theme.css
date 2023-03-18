@@ -335,7 +335,7 @@ select option:selected {
 }
 
 .emby-select-withcolor {
-    color: inherit;
+	color: inherit;
 	border: .2em double #0a2c60;
 	background: linear-gradient(45deg, rgba(11, 12, 62, 0.1) 0%, rgba(38, 48, 125, 0.3) 40%, rgba(48, 122, 158, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
 }
@@ -517,7 +517,7 @@ select option:selected {
 }
 
 .ratingbutton-icon-withrating {
-    color: #c33;
+    color: #e75ff2;
 }
 
 .downloadbutton-icon-complete,
@@ -611,10 +611,42 @@ select option:selected {
 
 /* select widget */
 
+@keyframes select-in {
+	from {color: #588bcc;}
+	to {color: #a0ecf8;}
+}
+
+@keyframes select-out {
+	from {color: #a0ecf8;}
+	to {color: #588bcc;}
+}
+
 .selectArrow {
 	text-shadow: none;
-	color: #00dbff;
+	color: inherit;
 	font-size: 1.9em !important;
+}
+
+.selectContainer {
+	color: #588bcc
+}
+
+.selectContainer:hover .emby-select-withcolor,
+.selectContainer:hover .selectArrow {
+	color: #a0ecf8;
+	animation-name: select-in;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
+}
+
+.selectContainer:not(:hover) .emby-select-withcolor,
+.selectContainer:not(:hover) .selectArrow {
+	color: inherit;
+	animation-name: select-out;
+	animation-duration: .2s;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
 }
 
 .emby-button.show-focus:focus {
@@ -753,8 +785,8 @@ legend {
 
 .paperList,
 .checkboxList {
-	background-color: rgb(37, 89, 135) !important;
-	border: .2em double #0a2c60;
+	background: linear-gradient(45deg, rgba(248, 19, 148, 0.3) 0%, rgba(87, 58, 230, 0.4) 40%, rgba(135, 107, 236, 0.4) 70%, rgba(8, 42, 77, 0.1) 100%) !important;
+	border: .2em double #a644b9 !important;
 }
 
 .checkboxList {
@@ -780,7 +812,7 @@ legend {
 fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
-	border: 1px solid #63ffbd !important;
+	border: .1em solid #a644b9 !important;
 }
 
 /* Pseudo radio widget (a radio button that allows deselecting) */

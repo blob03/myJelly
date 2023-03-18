@@ -108,28 +108,28 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '</div>';
 		/* ********************************** */
 		/* Added: topbar casing for the weatherbot */
-		html += '<div class="headerWthButton hide" id="headerWthRight" style="height: 3.2em;margin: 0 .4em !important;border: 1px groove #99a5ad;">';	
+		html += '<div class="headerWthButton hide" id="headerWthRight">';	
 		html += '<button class="headerWth headerWthMain">';
 		html += '<div class="WBScreen WBScreen0">';
 		html += '<span id="headerWthMsg"></span>';
 		html += '</div>';
 		html += '<div class="hide WBScreen WBScreen1">';
 		html += '<div style="display: flex;outline: none;height: auto;width: 100%;align-items: center;justify-content: space-evenly;">';
-		html += '<div id="headerWthIconBg" class="headerWthIconBg" style="background: rgba(198, 216, 218, 0.6);border-radius: 100%;height: 2.1em;width: 2.1em;">';
-		html += '<img id="headerWthIcon" class="headerWthIcon" style="width: 2.1em;">';
+		html += '<div id="headerWthIconBg" class="headerWthIconBg">';
+		html += '<img id="headerWthIcon" class="headerWthIcon">';
 		html += '</div>';
-		html += '<div id="headerWthTemp" dir="ltr" class="headerWthTemp" style="display: flex;align-items: center;font-size: 140%;"></div>';
+		html += '<div id="headerWthTemp" dir="ltr" class="headerWthTemp"></div>';
 		html += '</div>';
-		html += '<div id="headerWthCity" class="headerWthCity" style="font-size: 60%;"></div>';
+		html += '<div id="headerWthCity" class="headerWthCity"></div>';
 		html += '</div>';
 		
 		html += '<div class="hide WBScreen WBScreen2">';
 		
-		html += '<div style="display: flex;flex-direction: row;height: 1em;width: 7em;justify-content: space-evenly;">';
+		html += '<div style="display: flex;flex-direction: row;height: 1rem;width: 7rem;justify-content: space-evenly;">';
 		html += '<div id="headerWthHum" dir="ltr" class="headerWthHum" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '<div id="headerWthPressure" dir="ltr" class="headerWthPressure" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '</div>';
-		html += '<div style="display: flex;flex-direction: row;height: 1em;width: 7em;justify-content: space-evenly;">';
+		html += '<div style="display: flex;flex-direction: row;height: 1rem;width: 7rem;justify-content: space-evenly;">';
 		html += '<div id="headerWthWind" dir="ltr" class="headerWthWind" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '<div id="headerWthWindDir" dir="ltr" class="headerWthWindDir" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
 		html += '<span id="headerWthWindDirCode" dir="ltr" style="font-size: 50%"></span>';
@@ -139,13 +139,13 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		
 		html += '<div class="hide WBScreen WBScreen3">';
 		
-		html += '<div id="WBdayTime" style="display: flex;outline: none;width: 5.5em;justify-content: space-evenly;">';
-		html += '<span class="material-icons sunny" style="color: white;font-size: 120%;"></span>';
-		html += '<div id="headerWthSunrise" class="headerWthSunrise"></div>';
+		html += '<div id="WBdayTime">';
+		html += '<span class="material-icons sunny"></span>';
+		html += '<div id="headerWthSunrise" class="headerWthSunrise"><div id="_sra"></div><div id="_srb" class="hide"></div></div>';
 		html += '</div>';
-		html += '<div id="WBnightTime" style="display: flex;outline: none;width: 5.5em;justify-content: space-evenly;">';
-		html += '<span class="material-icons bedtime" style="color: white;font-size: 120%;"></span>';
-		html += '<div id="headerWthSunset" class="headerWthSunset"></div>';
+		html += '<div id="WBnightTime">';
+		html += '<span class="material-icons bedtime"></span>';
+		html += '<div id="headerWthSunset" class="headerWthSunset"><div id="_ssa"></div><div id="_ssb" class="hide"></div></div>';
 		html += '</div>';
 		
 		html += '</div>';
@@ -182,6 +182,8 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		backdropPlayPauseButton = skinHeader.querySelector('#backdropPlayPauseButton');
 		headerReloadButton = skinHeader.querySelector('.headerReloadButton');
 		headerPinButton = skinHeader.querySelector('.headerPinButton');
+		headerWBdayTime = skinHeader.querySelector('#WBdayTime');
+		headerWBnightTime = skinHeader.querySelector('#WBnightTime');
         headerSyncButton = skinHeader.querySelector('.headerSyncButton');
  
         //retranslateUi();
@@ -239,6 +241,10 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 			headerReloadButton.title = globalize.translate('Reload');
 		if (headerPinButton)
 			headerPinButton.title = globalize.translate('LockHeader');
+		if (headerWBdayTime)
+			headerWBdayTime.title = globalize.translate('Sunrise');
+		if (headerWBnightTime)
+			headerWBnightTime.title = globalize.translate('Sunset');
     }
 
     export function updateUserInHeader(user) {
@@ -1148,6 +1154,8 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 	let backdropPlayPauseButton;
 	let headerReloadButton;
 	let headerPinButton;
+	let headerWBdayTime;
+	let headerWBnightTime;
     let headerAudioPlayerButton;
     let headerSyncButton;
     const enableLibraryNavDrawer = layoutManager.desktop;

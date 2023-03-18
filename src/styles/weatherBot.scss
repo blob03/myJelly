@@ -1,51 +1,17 @@
 
-.headerWthMain {
-	display: flex;
-	flex-direction: column;
-	font-size: 90%;
-	align-items: flex-end;
-	background-color: transparent;
-	color: #fff;
-	padding: 0;
-	margin: 0;
-	border: solid 0px;
-	outline: none;
-}
-
 @keyframes _fmtin {
 	from {opacity: .1;}
 	to {opacity: 1;}
 }
 
+@keyframes _fmtin_b {
+	from {opacity: .1;}
+	to {opacity: .7;}
+}
+
 @keyframes _fmtout {
 	from {opacity: 1;}
 	to {opacity: .1;}
-}
-
-.WBScreen.hide {
-	animation: .4s forwards ease-in-out _fmtout;
-}
-
-.WBScreen:not(.hide) {
-	animation: .8s forwards ease-in-out _fmtin;
-}
-
-.WBScreen {
-	display: flex;
-	flex-direction: column;
-	width: 7em;
-	align-items: center;
-	justify-content: space-evenly;
-	height: 3.2rem;
-}
-
-.WBScreen0 {
-	font-size: 80%;
-}
-
-.headerWthUnit {
-	font-size: 40%;
-	margin: -1em 0 0 .3em;
 }
 
 @keyframes _timerowgrow {
@@ -64,6 +30,84 @@
 	}
 }
 
+#headerWthRight {
+	height: 3.2rem;
+	margin: 0 .4em !important;
+	border: 1px groove #99a5ad;
+}
+
+.headerWthMain {
+	display: flex;
+	flex-direction: column;
+	font-size: 100%;
+	align-items: flex-end;
+	background-color: transparent;
+	color: #fff;
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+}
+
+.WBScreen {
+	display: flex;
+	flex-direction: column;
+	width: 8rem;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 3.2rem;
+}
+
+.WBScreen.hide {
+	animation: .4s forwards ease-in-out _fmtout;
+}
+
+.WBScreen:not(.hide) {
+	animation: .8s forwards ease-in-out _fmtin;
+}
+
+.WBScreen0 {
+	font-size: 80%;
+}
+
+.headerWthUnit {
+	font-size: 40%;
+	margin: -1em 0 0 .3em;
+}
+
+#headerWthIconBg {
+	background: rgba(198, 216, 218, 0.6);
+	border-radius: 100%;
+	height: 2rem;
+	width: 2rem;
+}
+
+#headerWthIcon {
+	width: 2rem;
+}
+
+#headerWthTemp {
+	display: flex;
+	align-items: center;
+	font-size: 140%;
+}
+
+#headerWthCity {
+	font-size: 60%;
+}
+
+.WBScreen3 {
+	font-size: 100%;
+}
+
+#WBdayTime,
+#WBnightTime {
+	display: flex;
+	outline: none;
+	width: 6.5em;
+	align-items: center;
+}
+
 #WBdayTime.active,
 #WBnightTime.active {
 	animation-name: _timerowshrink !important;
@@ -79,4 +123,37 @@
 	animation-duration: .5s !important;
 	animation-fill-mode: forwards;
 	animation-timing-function: linear;
+}
+
+.WBScreen3 .material-icons {
+	display: flex;
+	color: white;
+	font-size: 140%;
+	margin: 0 0 0 .5em;
+}
+
+.active #headerWthSunrise,
+.active #headerWthSunset {
+	margin: 0 0 0 .4em;
+}
+
+#headerWthSunrise,
+#headerWthSunset {
+	margin: 0 0 0 .5em;
+}
+
+#_srb,
+#_ssb {
+	opacity: .7;
+	font-size: 80%;
+}
+
+#_sra:not(.hide),
+#_ssa:not(.hide) {
+	animation: 1.6s forwards ease-in-out _fmtin;
+}
+
+#_srb:not(.hide),
+#_ssb:not(.hide) {
+	animation: 1.6s forwards ease-in-out _fmtin_b;
 }

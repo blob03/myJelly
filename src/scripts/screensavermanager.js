@@ -7,6 +7,7 @@ import ServerConnections from '../components/ServerConnections';
 import { PluginType } from '../types/plugin.ts';
 import layoutManager from '../components/layoutManager';
 import Events from '../utils/events.ts';
+import { randomInt } from '../utils/number.ts';
 
 import './screensavermanager.scss';
 
@@ -48,7 +49,7 @@ export function getScreensaverPlugin(isLoggedIn) {
 	
 	// If random screensaver was selected.
 	if (option === "any") {
-		let rand = Math.floor(Math.random() * Object.keys(plugins).length);
+		let rand = randomInt(0, Object.keys(plugins).length);
 		return plugins[rand];
 	}
 		
@@ -69,7 +70,7 @@ export function getScreensaverPluginByName(name) {
 
 	// If random screensaver was selected.
 	if (name === "any") {
-		let rand = Math.floor(Math.random() * Object.keys(plugins).length);
+		let rand = randomInt(0, Object.keys(plugins).length);
 		return plugins[rand];
 	}
 		
