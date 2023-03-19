@@ -1942,17 +1942,17 @@
     },
     "pl": {
         "ccode": "pl",
-        "fsize": 120398,
+        "fsize": 120828,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
         "displayNativeName": "Polski",
         "ISO6391": "pl",
         "ISO6392": "pol",
-        "keys#": 1700,
-        "completed%": 92.54,
+        "keys#": 1705,
+        "completed%": 92.81,
         "jellyfinWeb": {
             "filename": "pl.json",
-            "keys#": 1700,
+            "keys#": 1705,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -1972,7 +1972,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.71
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "pl.json",

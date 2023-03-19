@@ -212,7 +212,7 @@ function getMimeType(type, container) {
 }
 
 function getParam(name, url) {
-    name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    name = name.replace(/[[]/g, '\\[').replace(/[\]]/g, '\\]');
     const regexS = '[\\?&]' + name + '=([^&#]*)';
     const regex = new RegExp(regexS, 'i');
 

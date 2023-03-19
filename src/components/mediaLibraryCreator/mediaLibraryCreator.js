@@ -87,7 +87,7 @@ import template from './mediaLibraryCreator.template.html';
                 const index = this.selectedIndex;
 
                 if (index != -1) {
-                    const name = this.options[index].innerHTML.replace('*', '').replace('&amp;', '&');
+                    const name = this.options[index].innerHTML.replace(/\*/g, '').replace(/\&amp\;/g, '&');
                     $('#txtValue', dlg).val(name);
                 }
             }

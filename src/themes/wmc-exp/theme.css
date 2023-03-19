@@ -668,7 +668,7 @@ select option:selected {
 
 .headerWthMain {
 	color: rgba(98, 186, 149, 0.8) !important;
-	text-shadow: 1px 1px 8px #1f2443 !important;
+	text-shadow: .15rem .15rem .15rem #061932 !important;
 }
 
 #WBdayTime:not(.active),
@@ -676,7 +676,6 @@ select option:selected {
 #WBnightTime:not(.active) > .material-icons,
 #WBnightTime:not(.active) {
 	color: rgba(98, 186, 149, 0.8) !important;
-	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
 #WBdayTime.active,
@@ -684,7 +683,6 @@ select option:selected {
 #WBnightTime.active > .material-icons,
 #WBnightTime.active {
 	color: rgba(98, 186, 149, 0.8) !important;
-	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
 .nightMode #WBdayTime,
@@ -806,7 +804,7 @@ legend {
 }
 
 .headerWthButton {
-	border: 0px solid #63ffbd !important;
+	border: none !important;
 }
 
 fieldset {
