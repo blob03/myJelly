@@ -42,7 +42,7 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "2.21",
+		"version": "2.22",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
@@ -67,7 +67,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "WMC exp.",
-		"version": "0.13",
+		"version": "0.14",
 		"id": "wmc-exp",
 		"color": "#0c2450",
 		"group": "myJelly dev"

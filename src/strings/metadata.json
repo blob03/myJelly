@@ -216,17 +216,17 @@
     },
     "ca": {
         "ccode": "ca",
-        "fsize": 122177,
+        "fsize": 124226,
         "ccodeSrc": "en-US",
         "displayName": "Catalan; Valencian",
         "displayNativeName": "Català",
         "ISO6391": "ca",
         "ISO6392": "cat",
-        "keys#": 1670,
-        "completed%": 90.91,
+        "keys#": 1705,
+        "completed%": 92.81,
         "jellyfinWeb": {
             "filename": "ca.json",
-            "keys#": 1670,
+            "keys#": 1705,
             "orphans#": 12,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -242,7 +242,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 97.95
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -369,17 +369,17 @@
     },
     "de": {
         "ccode": "de",
-        "fsize": 122470,
+        "fsize": 122813,
         "ccodeSrc": "en-US",
         "displayName": "German",
         "displayNativeName": "Deutsch",
         "ISO6391": "de",
         "ISO6392": "ger",
-        "keys#": 1702,
-        "completed%": 92.65,
+        "keys#": 1705,
+        "completed%": 92.81,
         "jellyfinWeb": {
             "filename": "de.json",
-            "keys#": 1702,
+            "keys#": 1705,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -399,7 +399,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.82
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "de.json",
@@ -2698,17 +2698,17 @@
     },
     "vi": {
         "ccode": "vi",
-        "fsize": 133563,
+        "fsize": 133977,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
         "displayNativeName": "Việtnam",
         "ISO6391": "vi",
         "ISO6392": "vie",
-        "keys#": 1688,
-        "completed%": 91.89,
+        "keys#": 1692,
+        "completed%": 92.11,
         "jellyfinWeb": {
             "filename": "vi.json",
-            "keys#": 1688,
+            "keys#": 1692,
             "orphans#": 15,
             "orphans": [
                 "OptionDislikes",
@@ -2727,7 +2727,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.0
+            "completed%": 99.24
         },
         "myJelly": {
             "filename": "",

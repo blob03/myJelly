@@ -576,6 +576,8 @@ h3 {
 
 /* top bar clock style */
 
+.headerWth,
+.headerWth > .material-icons,
 .headerClock,
 .headerClock > .material-icons {
 	color: rgba(178, 248, 255, 0.8) !important;
@@ -586,21 +588,24 @@ h3 {
   box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
 }
 
-.nightMode #WBdayTime,
-.nightMode #WBdayTime > .material-icons,
-.nightMode #WBnightTime > .material-icons,
-.nightMode #WBnightTime {
-	color: #fff !important;
-	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4 !important;
-}
-
 .nightMode .nightmodeButton,
 .nightMode .nightmodeButton > .material-icons,
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
-.nightMode .headerClockActive {
-	color: #fff !important;
+.nightMode .headerClockActive,
+.nightMode #WBdayTime,
+.nightMode #WBdayTime > .material-icons,
+.nightMode #WBnightTime > .material-icons,
+.nightMode #WBnightTime {
+	color: #fff;
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4 !important;
+}
+
+#WBdayTime.active > .material-icons,
+#WBnightTime.active > .material-icons,
+#WBdayTime.active, 
+#WBnightTime.active {
+	color: rgb(34, 75, 90) !important;
 }
 
 .formDialogHeaderTitle,

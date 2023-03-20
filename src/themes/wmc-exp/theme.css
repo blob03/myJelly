@@ -668,7 +668,6 @@ select option:selected {
 
 .headerWthMain {
 	color: rgba(98, 186, 149, 0.8) !important;
-	text-shadow: .15rem .15rem .15rem #061932 !important;
 }
 
 #WBdayTime:not(.active),

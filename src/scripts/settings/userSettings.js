@@ -1002,7 +1002,7 @@ export class UserSettings {
 		const _active = (nb !== undefined)? nb: this._wbmode;
 		let i = 0;
 		for (let elm of elms) {
-			elm.classList.toggle('hide', i++ !== _active);
+			elm.classList.toggle('hide2', i++ !== _active);
 		}
 		
 		const x = function() {
@@ -1050,10 +1050,10 @@ export class UserSettings {
 				this._hdrwth.ssb.innerHTML = _diff_str;
 			}
 			
-			_sra.classList.toggle('hide');
-			_srb.classList.toggle('hide');
-			_ssa.classList.toggle('hide');
-			_ssb.classList.toggle('hide');
+			_sra.classList.toggle('hide2');
+			_srb.classList.toggle('hide2');
+			_ssa.classList.toggle('hide2');
+			_ssb.classList.toggle('hide2');
 		};
 		
 		const self = this;

@@ -81,7 +81,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<button is="paper-icon-button-light" class="headerAudioPlayerButton audioPlayerButton headerButton headerButtonRight hide"><span class="material-icons music_note"></span></button>';
 		html += '<button is="paper-icon-button-light" class="headerCastButton castButton headerButton headerButtonRight hide"><span class="material-icons cast"></span></button>';
 		
-		html += '<div id="backdropWidget" class="hide" style="height: 2.85em;margin: 0 .29em !important;display: flex;flex-direction: row;justify-content: center;align-items: center;padding: .2em .4em .2em .4em;border: 1px groove #99a5ad;">';
+		html += '<div id="backdropWidget" class="hide" style="height: 3.2rem;margin: 0 .29em !important;display: flex;flex-direction: row;justify-content: center;align-items: center;padding: 0 .4rem;border: 1px groove #99a5ad;">';
 		html += '<button href="#" type="button" id="backdropInfoButton" is="paper-icon-button-light" class="hide headerButton headerBackdropInfoButton headerButtonRight paper-icon-button-light" style="margin: 0"><span class="material-icons image_search"></span></button>';
 		html += '<div id="backdropControlButton" class="hide" style="display: flex;flex-direction: row;margin: 0;font-size: 90%;">';
 		html += '<button href="#" type="button" id="backdropPrevButton" is="paper-icon-button-light" class="headerButton headerBackdropPrevButton headerButtonRight paper-icon-button-light" style="padding: 0;margin: 0;width: auto;"><span class="material-icons skip_previous"></span></button>';
@@ -113,8 +113,8 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<div class="WBScreen WBScreen0">';
 		html += '<span id="headerWthMsg"></span>';
 		html += '</div>';
-		html += '<div class="hide WBScreen WBScreen1">';
-		html += '<div style="display: flex;outline: none;height: auto;width: 100%;align-items: center;justify-content: space-evenly;">';
+		html += '<div class="hide2 WBScreen WBScreen1">';
+		html += '<div style="display: flex;outline: none;height: auto;width: 100%;align-items: center;justify-content: center;">';
 		html += '<div id="headerWthIconBg" class="headerWthIconBg">';
 		html += '<img id="headerWthIcon" class="headerWthIcon">';
 		html += '</div>';
@@ -123,7 +123,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<div id="headerWthCity" class="headerWthCity"></div>';
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen2">';
+		html += '<div class="hide2 WBScreen WBScreen2">';
 		
 		html += '<div style="display: flex;flex-direction: row;height: 1rem;width: 7rem;justify-content: space-evenly;">';
 		html += '<div id="headerWthHum" dir="ltr" class="headerWthHum" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
@@ -137,15 +137,15 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		
 		html += '</div>';
 		
-		html += '<div class="hide WBScreen WBScreen3">';
+		html += '<div class="hide2 WBScreen WBScreen3">';
 		
 		html += '<div id="WBdayTime">';
 		html += '<span class="material-icons sunny"></span>';
-		html += '<div id="headerWthSunrise" class="headerWthSunrise"><div id="_sra"></div><div id="_srb" class="hide"></div></div>';
+		html += '<div id="headerWthSunrise" class="headerWthSunrise"><div id="_sra"></div><div id="_srb" class="hide2"></div></div>';
 		html += '</div>';
 		html += '<div id="WBnightTime">';
 		html += '<span class="material-icons bedtime"></span>';
-		html += '<div id="headerWthSunset" class="headerWthSunset"><div id="_ssa"></div><div id="_ssb" class="hide"></div></div>';
+		html += '<div id="headerWthSunset" class="headerWthSunset"><div id="_ssa"></div><div id="_ssb" class="hide2"></div></div>';
 		html += '</div>';
 		
 		html += '</div>';
