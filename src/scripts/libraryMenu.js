@@ -114,7 +114,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		html += '<span id="headerWthMsg"></span>';
 		html += '</div>';
 		html += '<div class="hide2 WBScreen WBScreen1">';
-		html += '<div style="display: flex;outline: none;height: auto;width: 100%;align-items: center;justify-content: center;">';
+		html += '<div id="headerWthMainFrame">';
 		html += '<div id="headerWthIconBg" class="headerWthIconBg">';
 		html += '<img id="headerWthIcon" class="headerWthIcon">';
 		html += '</div>';
@@ -125,14 +125,14 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		
 		html += '<div class="hide2 WBScreen WBScreen2">';
 		
-		html += '<div style="display: flex;flex-direction: row;height: 1rem;width: 7rem;justify-content: space-evenly;">';
-		html += '<div id="headerWthHum" dir="ltr" class="headerWthHum" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
-		html += '<div id="headerWthPressure" dir="ltr" class="headerWthPressure" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
+		html += '<div class="headerWthDataRow">';
+		html += '<div id="headerWthHum" dir="ltr" class="headerWthHum"></div>';
+		html += '<div id="headerWthPressure" dir="ltr" class="headerWthPressure"></div>';
 		html += '</div>';
-		html += '<div style="display: flex;flex-direction: row;height: 1rem;width: 7rem;justify-content: space-evenly;">';
-		html += '<div id="headerWthWind" dir="ltr" class="headerWthWind" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
-		html += '<div id="headerWthWindDir" dir="ltr" class="headerWthWindDir" style="display: flex;align-items: center;margin: 0 .4em;"></div>';
-		html += '<span id="headerWthWindDirCode" dir="ltr" style="font-size: 50%"></span>';
+		html += '<div class="headerWthDataRow">';
+		html += '<div id="headerWthWind" dir="ltr" class="headerWthWind"></div>';
+		html += '<div id="headerWthWindDir" dir="ltr" class="headerWthWindDir"></div>';
+		html += '<span id="headerWthWindDirCode" dir="ltr"></span>';
 		html += '</div>';
 		
 		html += '</div>';
@@ -141,11 +141,11 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 		
 		html += '<div id="WBdayTime">';
 		html += '<span class="material-icons sunny"></span>';
-		html += '<div id="headerWthSunrise" class="headerWthSunrise"><div id="_sra"></div><div id="_srb" class="hide2"></div></div>';
+		html += '<div id="headerWthSunrise" class="headerWthSunrise"><div id="_sr" class="in"></div></div>';
 		html += '</div>';
 		html += '<div id="WBnightTime">';
 		html += '<span class="material-icons bedtime"></span>';
-		html += '<div id="headerWthSunset" class="headerWthSunset"><div id="_ssa"></div><div id="_ssb" class="hide2"></div></div>';
+		html += '<div id="headerWthSunset" class="headerWthSunset"><div id="_ss" class="in"></div></div>';
 		html += '</div>';
 		
 		html += '</div>';

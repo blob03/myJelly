@@ -1284,17 +1284,17 @@
     },
     "ja": {
         "ccode": "ja",
-        "fsize": 136770,
+        "fsize": 139211,
         "ccodeSrc": "en-US",
         "displayName": "Japanese",
         "displayNativeName": "日本語",
         "ISO6391": "ja",
         "ISO6392": "jpn",
-        "keys#": 1673,
-        "completed%": 91.07,
+        "keys#": 1705,
+        "completed%": 92.81,
         "jellyfinWeb": {
             "filename": "ja.json",
-            "keys#": 1673,
+            "keys#": 1705,
             "orphans#": 13,
             "orphans": [
                 "ButtonNetwork",
@@ -1311,7 +1311,7 @@
                 "OptionDownloadImagesInAdvanceHelp",
                 "OptionDownloadImagesInAdvance"
             ],
-            "completed%": 98.12
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -1777,17 +1777,17 @@
     },
     "nb": {
         "ccode": "nb",
-        "fsize": 114183,
+        "fsize": 114310,
         "ccodeSrc": "en-US",
         "displayName": "Norwegian, Bokmål",
         "displayNativeName": "Norsk, Bokmål",
         "ISO6391": "nb",
         "ISO6392": "nob",
-        "keys#": 1679,
-        "completed%": 91.4,
+        "keys#": 1681,
+        "completed%": 91.51,
         "jellyfinWeb": {
             "filename": "nb.json",
-            "keys#": 1679,
+            "keys#": 1681,
             "orphans#": 15,
             "orphans": [
                 "ButtonNetwork",
@@ -1806,7 +1806,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 98.48
+            "completed%": 98.59
         },
         "myJelly": {
             "filename": "",
@@ -1843,7 +1843,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 119442,
+        "fsize": 119449,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
@@ -2603,7 +2603,7 @@
     },
     "uk": {
         "ccode": "uk",
-        "fsize": 171483,
+        "fsize": 171471,
         "ccodeSrc": "en-US",
         "displayName": "Ukrainian",
         "displayNativeName": "Українська",

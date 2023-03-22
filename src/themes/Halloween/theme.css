@@ -953,7 +953,6 @@ option.sourceDictionaryOption {
 
 #backdropWidget,
 #headerWthRight {
-	margin: 0 !important;
 	padding: .2em .4em .2em .4em !important;
 	border: 3px groove #333035 !important;
 }
@@ -1371,7 +1370,7 @@ option:selected {
 }
 
 .headerWthTemp {
-	font-size: 170% !important;
+	font-size: 160% !important;
 }
 
 .headerWthIconBg {
@@ -1408,14 +1407,14 @@ option:selected {
 #WBdayTime:not(.active) > .material-icons,
 #WBnightTime:not(.active) > .material-icons,
 #WBnightTime:not(.active) {
-	color: rgba(230, 138, 57, 1) !important;
+	color: rgba(230, 138, 57, 0.8) !important;
 }
 
 #WBdayTime.active,
 #WBdayTime.active > .material-icons,
 #WBnightTime.active > .material-icons,
 #WBnightTime.active {
-	color: rgba(230, 138, 57, .8) !important;
+	color: #ef6804 !important;
 }
 
 .nightMode #WBdayTime,

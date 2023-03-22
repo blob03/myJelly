@@ -608,6 +608,14 @@ h3 {
 	color: rgb(34, 75, 90) !important;
 }
 
+#WBdayTime:not(.active), 
+#WBdayTime:not(.active) > .material-icons, 
+#WBnightTime:not(.active) > .material-icons, 
+#WBnightTime:not(.active) {
+	color: rgba(178, 248, 255, 0.8) !important;
+	text-shadow: 1px 1px 8px #39708b !important;
+}
+
 .formDialogHeaderTitle,
 .pageTitle {
 	color: #fff !important;
@@ -1230,7 +1238,6 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 
 #backdropWidget,
 #headerWthRight {
-	margin: 0 !important;
 	padding: .2em .4em .2em .4em !important;
 	border: 2px groove #7dd8ed !important;
 }

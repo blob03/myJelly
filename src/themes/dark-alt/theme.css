@@ -1391,7 +1391,6 @@ select option:selected {
 
 #backdropWidget,
 #headerWthRight {
-	margin: 0 !important;
 	padding: .2em .4em .2em .4em !important;
 	border: 2px groove #363d43 !important;
 }

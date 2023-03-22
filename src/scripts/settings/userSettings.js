@@ -194,7 +194,8 @@ function hdrWeather() {
 				_data.sunrise += 'Z';
 			const x = new Date(_data.sunrise);
 			self._date_sunrise = x.getTime();
-			self._hdrwth.sra.innerHTML = datetime.toLocaleTimeString(x, currentSettings._opts_time);
+			self._hdrwth.sr.current = datetime.toLocaleTimeString(x, currentSettings._opts_time);
+			self._hdrwth.sr.innerHTML = self._hdrwth.sr.current;
 		}
 		
 		if (_data.sunset) {
@@ -202,7 +203,8 @@ function hdrWeather() {
 				_data.sunset += 'Z'; 
 			const x = new Date(_data.sunset);
 			self._date_sunset = x.getTime();
-			self._hdrwth.ssa.innerHTML = datetime.toLocaleTimeString(x, currentSettings._opts_time);
+			self._hdrwth.ss.current = datetime.toLocaleTimeString(x, currentSettings._opts_time);
+			self._hdrwth.ss.innerHTML = self._hdrwth.ss.current;
 		}
 		
 		if (self._date_sunrise && self._date_sunset) {
@@ -720,11 +722,9 @@ export class UserSettings {
 		this._hdrwth.temp = document.getElementById('headerWthTemp');
 		this._hdrwth.city = document.getElementById('headerWthCity');
 		this._hdrwth.sunrise = document.getElementById('headerWthSunrise');
-		this._hdrwth.sra = document.getElementById('_sra');
-		this._hdrwth.srb = document.getElementById('_srb');
+		this._hdrwth.sr = document.getElementById('_sr');
 		this._hdrwth.sunset = document.getElementById('headerWthSunset');
-		this._hdrwth.ssa = document.getElementById('_ssa');
-		this._hdrwth.ssb = document.getElementById('_ssb');
+		this._hdrwth.ss = document.getElementById('_ss');
 		this._hdrwth.icon = document.getElementById('headerWthIcon');
 		this._hdrwth.wind = document.getElementById('headerWthWind');
 		this._hdrwth.windDir = document.getElementById('headerWthWindDir');
@@ -1006,19 +1006,19 @@ export class UserSettings {
 		}
 		
 		const x = function() {
-			const _sra = document.getElementById('_sra'); 
-			const _srb = document.getElementById('_srb'); 
-			const _ssa = document.getElementById('_ssa'); 
-			const _ssb = document.getElementById('_ssb');
 			const _WBdayTime = document.getElementById('WBdayTime'); 
 			const _WBnightTime = document.getElementById('WBnightTime');
-			
+			const self = this;
 			const z = Date.now() / 1000;
 			let _sign;
 			
-			if (this._date_sunrise) {
-				const x = new Date(this._date_sunrise);
-				let _sr_ = x.getTime() / 1000;
+			self._hdrwth.sr.classList.toggle('alt');
+			self._hdrwth.ss.classList.toggle('alt');
+					
+			if (this._hdrwth.sr.classList.contains('alt')) {
+				
+				const sr_date = new Date(this._date_sunrise);
+				let _sr_ = sr_date.getTime() / 1000;
 				let _diff;
 				if (_WBdayTime.classList.contains('active')) {
 					_sign = "-";
@@ -1029,14 +1029,11 @@ export class UserSettings {
 						_sr_ += 86400;
 					_diff = _sr_ - z;
 				}
-				const _diff_str = _sign + "&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);
-				this._hdrwth.srb.innerHTML = _diff_str;
-			}
-		
-			if (this._date_sunset) {
-				const x = new Date(this._date_sunset);
-				let _ss_ = x.getTime() / 1000;
-				let _diff;
+				this._hdrwth.sr.differential = _sign + "&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);
+			
+				const ss_date = new Date(this._date_sunset);
+				let _ss_ = ss_date.getTime() / 1000;
+				
 				if (_WBnightTime.classList.contains('active')) {
 					_sign = "-";
 					if (z < _ss_)
@@ -1046,14 +1043,28 @@ export class UserSettings {
 					_sign = "+";
 					_diff = _ss_ - z;
 				}
-				const _diff_str = _sign + "&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);
-				this._hdrwth.ssb.innerHTML = _diff_str;
+				this._hdrwth.ss.differential = _sign + "&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);				
+				this._hdrwth.sr.classList.replace("in", "out");
+				this._hdrwth.ss.classList.replace("in", "out");
+				setTimeout(() => {
+					self._hdrwth.sr.innerHTML = self._hdrwth.sr.differential;
+					self._hdrwth.ss.innerHTML = self._hdrwth.ss.differential;
+					self._hdrwth.sr.classList.replace("out", "in2");
+					self._hdrwth.ss.classList.replace("out", "in2");
+				},700);
+				
+			} else {
+
+				this._hdrwth.sr.classList.replace("in2", "out2");
+				this._hdrwth.ss.classList.replace("in2", "out2");
+				setTimeout(() => {
+					self._hdrwth.sr.innerHTML = self._hdrwth.sr.current;
+					self._hdrwth.ss.innerHTML = self._hdrwth.ss.current;
+					self._hdrwth.sr.classList.replace("out2", "in");
+					self._hdrwth.ss.classList.replace("out2", "in");
+				},800);
+				
 			}
-			
-			_sra.classList.toggle('hide2');
-			_srb.classList.toggle('hide2');
-			_ssa.classList.toggle('hide2');
-			_ssb.classList.toggle('hide2');
 		};
 		
 		const self = this;
