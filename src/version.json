@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-29",
+	"version": "10.8.9-30",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -229,6 +229,7 @@
 		"10.8.9-26": "Synchronize translations.\nUpdate theme 'WMC Exp.'.\nFix SS Digital Clock background margin.\nApply patch 'Add setting for ParallelImageEncodingLimit'.\nUpdate Weatherbot widget to calculate and print time gaps with current sunrise and sunset.",
 		"10.8.9-27": "Synchronize translations.\nFix code flaws of type 'Incomplete string escaping or encoding' reported by online scanner CodeQL.",
 		"10.8.9-28": "Synchronize translations.\nImprove layout and fix animations for widget 'WeatherBot'.\nUpdate theme 'Light alt. Blue'.",
-		"10.8.9-29": "Synchronize translations.\nImprove layout and fix animations for widget 'WeatherBot'.\nApply patch 'Rollback hls.js to 1.2.4'."
+		"10.8.9-29": "Synchronize translations.\nImprove layout and fix animations for widget 'WeatherBot'.\nApply patch 'Rollback hls.js to 1.2.4'.",
+		"10.8.9-30": "Fix WeatherBot updater overwriting time gaps from alt view with actual timestamps."
 	}
 }

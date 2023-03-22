@@ -195,7 +195,8 @@ function hdrWeather() {
 			const x = new Date(_data.sunrise);
 			self._date_sunrise = x.getTime();
 			self._hdrwth.sr.current = datetime.toLocaleTimeString(x, currentSettings._opts_time);
-			self._hdrwth.sr.innerHTML = self._hdrwth.sr.current;
+			if (self._hdrwth.sr.innerHTML === "")
+				self._hdrwth.sr.innerHTML = self._hdrwth.sr.current;
 		}
 		
 		if (_data.sunset) {
@@ -204,7 +205,8 @@ function hdrWeather() {
 			const x = new Date(_data.sunset);
 			self._date_sunset = x.getTime();
 			self._hdrwth.ss.current = datetime.toLocaleTimeString(x, currentSettings._opts_time);
-			self._hdrwth.ss.innerHTML = self._hdrwth.ss.current;
+			if (self._hdrwth.ss.innerHTML === "")
+				self._hdrwth.ss.innerHTML = self._hdrwth.ss.current;
 		}
 		
 		if (self._date_sunrise && self._date_sunset) {
@@ -1012,8 +1014,8 @@ export class UserSettings {
 			const z = Date.now() / 1000;
 			let _sign;
 			
-			self._hdrwth.sr.classList.toggle('alt');
-			self._hdrwth.ss.classList.toggle('alt');
+			this._hdrwth.sr.classList.toggle('alt');
+			this._hdrwth.ss.classList.toggle('alt');
 					
 			if (this._hdrwth.sr.classList.contains('alt')) {
 				
@@ -1051,7 +1053,7 @@ export class UserSettings {
 					self._hdrwth.ss.innerHTML = self._hdrwth.ss.differential;
 					self._hdrwth.sr.classList.replace("out", "in2");
 					self._hdrwth.ss.classList.replace("out", "in2");
-				},700);
+				},800);
 				
 			} else {
 
@@ -1067,10 +1069,11 @@ export class UserSettings {
 			}
 		};
 		
-		const self = this;
 		clearInterval(this._astrodiff);
-		if (_active === 3)
+		if (_active === 3) {
+			const self = this;
 			this._astrodiff = setInterval( x.bind(self), 5000);
+		}
 	}
 	
 	WB_nextScreen() {
