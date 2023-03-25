@@ -185,9 +185,6 @@ function hdrWeather() {
 		
 		self._date_sunrise = 0;
 		self._date_sunset = 0;
-		const z = Date.now();
-		const _WBdayTime = document.getElementById('WBdayTime'); 
-		const _WBnightTime = document.getElementById('WBnightTime'); 
 		
 		if (_data.sunrise) {
 			 if (_data.sunrise.charAt(_data.sunrise.length - 1).toUpperCase() !== 'Z')
@@ -208,6 +205,10 @@ function hdrWeather() {
 			if (self._hdrwth.ss.innerHTML === "")
 				self._hdrwth.ss.innerHTML = self._hdrwth.ss.current;
 		}
+		
+		const z = Date.now();
+		const _WBdayTime = document.getElementById('WBdayTime'); 
+		const _WBnightTime = document.getElementById('WBnightTime'); 
 		
 		if (self._date_sunrise && self._date_sunset) {
 			if (z >= self._date_sunrise && z < self._date_sunset) {
@@ -1011,13 +1012,27 @@ export class UserSettings {
 			const _WBdayTime = document.getElementById('WBdayTime'); 
 			const _WBnightTime = document.getElementById('WBnightTime');
 			const self = this;
-			const z = Date.now() / 1000;
+			let z = Date.now();
 			let _sign;
 			
 			this._hdrwth.sr.classList.toggle('alt');
 			this._hdrwth.ss.classList.toggle('alt');
 					
 			if (this._hdrwth.sr.classList.contains('alt')) {
+						
+				if (z >= this._date_sunrise && z < this._date_sunset) {
+					_WBdayTime.classList.add('active');
+					_WBnightTime.classList.remove('active');
+					if (this.enableNightModeSwitch() === 2)
+						this.toggleNightMode({toggle: false, newval: false});
+				} else {
+					_WBdayTime.classList.remove('active');
+					_WBnightTime.classList.add('active');
+					if (this.enableNightModeSwitch() === 2)
+						this.toggleNightMode({toggle: false, newval: true});
+				}
+				
+				z = z / 1000;
 				
 				const sr_date = new Date(this._date_sunrise);
 				let _sr_ = sr_date.getTime() / 1000;

@@ -598,22 +598,22 @@ h3 {
 .nightMode #WBnightTime > .material-icons,
 .nightMode #WBnightTime {
 	color: #fff;
-	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4 !important;
+	text-shadow: 0 0 5px #82eafb, 0 0 10px #33a6a1, 0 0 20px #c1f1f9, 0 0 30px #e4fffb, 0 0 40px #d8f1fb, 0 0 50px #e7f9f6, 0 0 55px #f0fbfb !important;
 }
 
 #WBdayTime.active > .material-icons,
 #WBnightTime.active > .material-icons,
 #WBdayTime.active, 
 #WBnightTime.active {
-	color: rgb(34, 75, 90) !important;
+	color: rgb(34, 75, 90);
 }
 
 #WBdayTime:not(.active), 
 #WBdayTime:not(.active) > .material-icons, 
 #WBnightTime:not(.active) > .material-icons, 
 #WBnightTime:not(.active) {
-	color: rgba(178, 248, 255, 0.8) !important;
-	text-shadow: 1px 1px 8px #39708b !important;
+	color: rgba(178, 248, 255, 0.8);
+	text-shadow: 1px 1px 8px #39708b;
 }
 
 .formDialogHeaderTitle,

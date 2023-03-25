@@ -10,45 +10,33 @@
 }
 
 @keyframes _wb_fmtin2 {
-	0% {opacity: 0;font-size:80%;}
-	100% {opacity: 1;font-size:80%;}
+	0% {opacity: 0;font-size: 90%;}
+	100% {opacity: 1;font-size: 90%;}
 }
 
 @keyframes _wb_fmtout2 {
-	0% {opacity: 1;font-size:80%;}
-	100% {opacity: 0;font-size:80%;}
+	0% {opacity: 1;font-size: 90%;}
+	100% {opacity: 0;font-size: 90%;}
 }
 
 @keyframes _dayrowgrow {
-	0% {transform: scale(1) translate(0, 0);}
-	100% {transform: scale(1.2) translate(0, .2rem);}
-}
-
-@keyframes _nightrowgrow {
-	0% {transform: scale(1) translate(0, 0);}
-	100% {transform: scale(1.2) translate(0, -.2rem);}
+	0% {transform: scale(.7) translate(0, 0);}
+	100% {transform: scale(1) translate(0, .15rem);}
 }
 
 @keyframes _dayrowshrink {
-	0% {
-		transform: scale(1) translate(0, 0);
-		opacity: 1;
-	}
-	100% {
-		transform: scale(.7) translate(0, .15rem);
-		opacity: .6;
-	}
+	0% {transform: scale(1) translate(0, 0);opacity: 1;}
+	100% {transform: scale(.7) translate(0, .15rem);opacity: .6;}
+}
+
+@keyframes _nightrowgrow {
+	0% {transform: scale(.7) translate(0, 0);}
+	100% {transform: scale(1) translate(0, -.15rem);}
 }
 
 @keyframes _nightrowshrink {
-	0% {
-		transform: scale(1) translate(0, 0);
-		opacity: 1;
-	}
-	100% {
-		transform: scale(.7) translate(0, -.15rem);
-		opacity: .6;
-	}
+	0% {transform: scale(1) translate(0, 0);opacity: 1;}
+	100% {transform: scale(.7) translate(0, -.15rem);opacity: .6;}
 }
 
 #headerWthSunrise,
@@ -56,6 +44,8 @@
 	align-items: center;
 	display: flex;
 	width: 2.7em;
+	white-space: nowrap;
+	overflow: visible;
 }
 
 #headerWthRight {

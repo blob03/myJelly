@@ -1414,7 +1414,7 @@ option:selected {
 #WBdayTime.active > .material-icons,
 #WBnightTime.active > .material-icons,
 #WBnightTime.active {
-	color: #ef6804 !important;
+	color: rgb(157, 95, 40) !important;
 }
 
 .nightMode #WBdayTime,
