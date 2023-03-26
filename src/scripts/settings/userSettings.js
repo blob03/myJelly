@@ -1,5 +1,5 @@
 import appSettings from './appSettings';
-import { getDefaultTheme, loadUserPresets, listUserPresets } from './webSettings';
+import { getDefaultTheme, loadUserPresets, listUserPresets, WBScreen3Refresh } from './webSettings';
 import Events from '../../utils/events.ts';
 import { toBoolean, toPrecision } from '../../utils/string.ts';
 import { pad } from '../../utils/number.ts';
@@ -1013,54 +1013,44 @@ export class UserSettings {
 			const _WBnightTime = document.getElementById('WBnightTime');
 			const self = this;
 			let z = Date.now();
-			let _sign;
 			
 			this._hdrwth.sr.classList.toggle('alt');
 			this._hdrwth.ss.classList.toggle('alt');
 					
 			if (this._hdrwth.sr.classList.contains('alt')) {
-						
+				
+				const sr_date = new Date(this._date_sunrise);
+				const ss_date = new Date(this._date_sunset);
+				let _ss_ = ss_date.getTime() / 1000;
+				let _sr_ = sr_date.getTime() / 1000;
+				let _diff;
+				
 				if (z >= this._date_sunrise && z < this._date_sunset) {
 					_WBdayTime.classList.add('active');
 					_WBnightTime.classList.remove('active');
+					z = z / 1000;
+					_diff = z - _sr_;
+					this._hdrwth.sr.differential = "-&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);
+					_diff = _ss_ - z;
+					this._hdrwth.ss.differential = "+&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);				
 					if (this.enableNightModeSwitch() === 2)
 						this.toggleNightMode({toggle: false, newval: false});
 				} else {
 					_WBdayTime.classList.remove('active');
 					_WBnightTime.classList.add('active');
-					if (this.enableNightModeSwitch() === 2)
-						this.toggleNightMode({toggle: false, newval: true});
-				}
-				
-				z = z / 1000;
-				
-				const sr_date = new Date(this._date_sunrise);
-				let _sr_ = sr_date.getTime() / 1000;
-				let _diff;
-				if (_WBdayTime.classList.contains('active')) {
-					_sign = "-";
-					_diff = z - _sr_;
-				} else {
-					_sign = "+";
+					z = z / 1000;
 					if (z > _sr_)
 						_sr_ += 86400;
 					_diff = _sr_ - z;
-				}
-				this._hdrwth.sr.differential = _sign + "&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);
-			
-				const ss_date = new Date(this._date_sunset);
-				let _ss_ = ss_date.getTime() / 1000;
-				
-				if (_WBnightTime.classList.contains('active')) {
-					_sign = "-";
+					this._hdrwth.sr.differential = "+&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);
 					if (z < _ss_)
 						_ss_ -= 86400;
 					_diff = z - _ss_;
-				} else {
-					_sign = "+";
-					_diff = _ss_ - z;
+					this._hdrwth.ss.differential = "-&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);				
+					if (this.enableNightModeSwitch() === 2)
+						this.toggleNightMode({toggle: false, newval: true});
 				}
-				this._hdrwth.ss.differential = _sign + "&nbsp;" + pad(Math.floor(_diff / 3600), 2) + ":" + pad(Math.floor((_diff % 3600) / 60), 2);				
+					
 				this._hdrwth.sr.classList.replace("in", "out");
 				this._hdrwth.ss.classList.replace("in", "out");
 				setTimeout(() => {
@@ -1087,7 +1077,8 @@ export class UserSettings {
 		clearInterval(this._astrodiff);
 		if (_active === 3) {
 			const self = this;
-			this._astrodiff = setInterval( x.bind(self), 5000);
+			x.bind(this);
+			this._astrodiff = setInterval( x.bind(self), WBScreen3Refresh()*1000); 
 		}
 	}
 	

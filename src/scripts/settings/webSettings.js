@@ -361,6 +361,14 @@ export function view() {
 	return view;
 }
 
+// Integer to set the refresh rate of the epehemerides screen, ranging from 5 to 15 seconds.
+export function WBScreen3Refresh() {
+	let val = parseInt(_config_data?.widgets?.weatherbot?.screen3?.refresh, 10);
+	if (val === isNaN || val < 5 || val > 15)
+		val = 8;
+	return (val);
+}
+
 export function getPlugins() {
     return getConfig().then(config => {
         if (!config.plugins) {

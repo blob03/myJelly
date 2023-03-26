@@ -1457,8 +1457,8 @@ select option:selected {
 .nightMode .aboutTitle1,
 .nightMode .headerWthMain,
 .nightMode .headerClockActive {
-	color: #193e79 !important;
-	text-shadow: 0 0 5px #e3a658, 0 0 10px #dfd763, 0 0 15px #f3f04a, 0 0 20px #f7ffa3, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
+	color: #cabc4e !important;
+	text-shadow: 0 0 5px #ffd803, 0 0 10px #f9f3d4, 0 0 15px #f3f04a, 0 0 20px #f7ffa3, 0 0 25px #fcffd7, 0 0 30px #fbfbdb, 0 0 35px #f8fbed !important;
 }
 
 .userProfileAvatar {

@@ -198,16 +198,17 @@
 }
 
 .skinHeader {
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
     position: fixed;
     right: 0;
     left: 0;
-    z-index: 999;
     top: 0;
     border: 0;
-    display: flex;
-    flex-direction: column;
     contain: layout style paint;
     transition: background ease-in-out 0.5s;
+	padding: 0 .5rem;
 }
 
 .layout-tv .skinHeader {
@@ -397,7 +398,7 @@
     }
 
 	.libraryPage.noSecondaryNavPage {
-		padding-top: 5.65em !important;
+		padding-top: 5.5em !important;
 	}
 	
     .libraryPage:not(.noSecondaryNavPage) {

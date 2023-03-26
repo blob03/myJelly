@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-31",
+	"version": "10.8.9-32",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -231,6 +231,7 @@
 		"10.8.9-28": "Synchronize translations.\nImprove layout and fix animations for widget 'WeatherBot'.\nUpdate theme 'Light alt. Blue'.",
 		"10.8.9-29": "Synchronize translations.\nImprove layout and fix animations for widget 'WeatherBot'.\nApply patch 'Rollback hls.js to 1.2.4'.",
 		"10.8.9-30": "Fix WeatherBot updater overwriting time gaps from alt view with actual timestamps.",
-		"10.8.9-31": "Synchronize translations.\nFix WeatherBot timestamps overflowing their parent's framing when using some locales."
+		"10.8.9-31": "Synchronize translations.\nFix WeatherBot timestamps overflowing their parent's framing when using some locales.",
+		"10.8.9-32": "Synchronize translations.\nForce an immediate refresh when opening the ephemerides screen (Weatherbot).\nIncrease z-index value for active screen to allow titles to show up (Weatherbot/Desktop).\nRefresh rate for the epehemerides screen can be set in config.json, defaults to 8 seconds (Weatherbot)."
 	}
 }
