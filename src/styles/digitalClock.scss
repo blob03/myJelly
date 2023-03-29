@@ -1,16 +1,32 @@
 
+@keyframes _dc_fmtin {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes _dc_fmtout {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
 .headerClockButton {
 	display: flex;
 	flex-direction: row;
-	height: 3.2em;
 	flex-shrink: 0;
+	height: 3.2rem;
+	margin: 0 .4rem !important;
+}
+
+.headerClock.moveLeftButton,
+.headerClock.moveRightButton {
+	padding: 0;
+	margin: 0;
 }
 
 .headerClockMain {
 	display: flex;
 	flex-direction: column;
 	font-size: 100%;
-	justify-content: space-evenly;
 	align-content: center;
 	white-space: nowrap;
 	height: auto;
@@ -21,12 +37,44 @@
 	color: #fff;
 	padding: 0;
 	margin: 0 .3em;
+	height: 6.4rem;
+	justify-content: center;
 }
 
-.headerClock.moveLeftButton,
-.headerClock.moveRightButton {
-	padding: 0;
-	margin: 0;
+._dc_ {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	height: 3.2rem;
+	min-width: 7rem;
+	width: auto;
+}
+
+._dc_1 {
+}
+
+._dc_2 {
+	position: relative;
+	top: -3.2rem;
+}
+
+._dc_next {
+	animation-name: _dc_fmtout;
+	animation-duration: .6s;
+	animation-delay: 0s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+}
+
+._dc_current {
+	animation-name: _dc_fmtin;
+	animation-duration: .4s;
+	animation-delay: 0s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
 }
 
 .headerClockDate {
@@ -35,32 +83,6 @@
 
 .headerClockTime {
 	font-size: 140%;
-}
-
-@keyframes _fmtin {
-	from {opacity: .1;}
-	to {opacity: 1;}
-}
-
-@keyframes _fmtout {
-	from {opacity: 1;}
-	to {opacity: .1;}
-}
-
-.headerClockActive {
-	animation: .4s forwards ease-in-out _fmtout;
-}
-
-.headerClockActive.clockFmt0,
-.headerClockActive.clockFmt1,
-.headerClockActive.clockFmt2,
-.headerClockActive.clockFmt3,
-.headerClockActive.clockFmt4,
-.headerClockActive.clockFmt5,
-.headerClockActive.clockFmt6,
-.headerClockActive.clockFmt7,
-.headerClockActive.clockFmt8 {
-	animation: .8s forwards ease-in-out _fmtin;
 }
 
 .clockFmt5 .headerClockDate,

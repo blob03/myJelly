@@ -50,8 +50,9 @@
 
 #headerWthRight {
 	height: 3.2rem;
-	margin: 0 .4rem !important;
 	border: 1px groove #99a5ad;
+	margin: 0 .4rem !important;
+	padding: 0 .3rem;
 }
 
 .headerWthMain .material-icons {
@@ -74,10 +75,11 @@
 .WBScreen {
 	display: flex;
 	flex-direction: column;
-	width: 8rem;
 	align-items: center;
 	justify-content: space-evenly;
 	height: 3.2rem;
+	min-width: 7rem;
+	width: auto;
 }
 
 .WBScreen0 {

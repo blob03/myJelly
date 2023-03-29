@@ -680,6 +680,8 @@
     "LabelEasyPinCode": "Jednoduchý kód PIN:",
     "LabelEmbedAlbumArtDidl": "Vložit alba do DIDL",
     "LabelEmbedAlbumArtDidlHelp": "Některá zařízení preferují tento způsob pro získání alba. Jiné mohou selhat pokud máte tuto volbu povolenu.",
+    "LabelEnableAudioVbr": "Povolit kódování zvuku VBR",
+    "LabelEnableAudioVbrHelp": "Proměnlivý bitový tok (VBR) nabízí lepší poměr mezi kvalitou a průměrným bitovým tokem, ale někdy může způsobit dodatečné načítání či problémy s kompatibilitou.",
     "LabelEnableAutomaticPortMap": "Povolit automatické mapování portů",
     "LabelEnableAutomaticPortMapHelp": "Automaticky zpřístupní port na vašem routeru pomocí technologie UPnP. Nemusí fungovat u některých routerů. Změny se projeví až po restartování serveru.",
     "LabelEnableBlastAliveMessages": "Vytroubit zprávu do světa",

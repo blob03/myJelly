@@ -680,6 +680,8 @@
     "LabelEasyPinCode": "Code Easy PIN :",
     "LabelEmbedAlbumArtDidl": "Intégrer les images d'album dans le DIDL",
     "LabelEmbedAlbumArtDidlHelp": "Certains appareils préfèrent cette méthode pour obtenir les images d'album. D'autres pourraient ne pas être lu avec l'option activée.",
+    "LabelEnableAudioVbr": "Activer l’encodage audio VBR",
+    "LabelEnableAudioVbrHelp": "Le débit binaire variable offre une qualité supérieure à la moyenne mais peut, dans de rares cas, causer des problèmes de mise en mémoire tampon et de compatibilité.",
     "LabelEnableAutomaticPortMap": "Autoriser le mapping automatique de port",
     "LabelEnableAutomaticPortMapHelp": "Mapper automatiquement les ports publics vers des ports locaux via UPnP. Cela peut ne pas fonctionner avec certains modèles de routeurs. La modification de ce paramètre ne prendra effet qu'après redémarrage du serveur.",
     "LabelEnableBlastAliveMessages": "Diffuser des messages de présence",

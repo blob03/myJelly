@@ -666,8 +666,19 @@ select option:selected {
 	color: #e0f1d7 !important;
 }
 
+.headerClockMain {
+	font-family: Inconsolata-Light !important;
+	font-weight: bold !important;
+}
+
 .headerWthMain {
 	color: rgba(98, 186, 149, 0.8) !important;
+	font-family: Inconsolata-Light !important;
+	font-weight: bold;
+}
+
+#headerWthCity {
+	font-weight: normal !important;
 }
 
 #WBdayTime:not(.active),

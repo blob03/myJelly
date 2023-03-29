@@ -1,6 +1,11 @@
 import type { BaseItemDto } from '@jellyfin/sdk/lib/generated-client';
 import { BaseItemKind } from '@jellyfin/sdk/lib/generated-client/models/base-item-kind';
-import { getItemsApi } from '@jellyfin/sdk/lib/utils/api/items-api';
+
+//import { getItemsApi } from '@jellyfin/sdk/lib/utils/api/items-api';
+import type { Api } from '@jellyfin/sdk/lib/api';
+import { ItemsApi } from '@jellyfin/sdk/lib/generated-client/api/items-api';
+declare function getItemsApi(api: Api): ItemsApi;
+
 import { ItemSortBy } from '@jellyfin/sdk/lib/models/api/item-sort-by';
 import escapeHtml from 'escape-html';
 import React, { FunctionComponent, useEffect, useState } from 'react';

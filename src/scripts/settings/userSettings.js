@@ -28,8 +28,8 @@ function hdrClock() {
 	const x = new Date();
 	const _hdrclk_time = datetime.toLocaleTimeString(x, currentSettings._opts_time); 
 	const _hdrclk_date = datetime.toLocaleDateString(x, currentSettings._opts_date);
-	currentSettings._hdrclkdate_span.innerHTML = _hdrclk_date;
-	currentSettings._hdrclktime_span.innerHTML = _hdrclk_time;
+	currentSettings._hdrclkdate.innerHTML = _hdrclk_date;
+	currentSettings._hdrclktime.innerHTML = _hdrclk_time;
 	return;
 }
 
@@ -250,8 +250,8 @@ export class UserSettings {
     constructor() {
 		this.clockTimer = null;
 		this.weatherTimer = null;
-		this._hdrclkdate_span;
-		this._hdrclktime_span;
+		this._hdrclkdate;
+		this._hdrclktime;
 		this._hdrwth = {};
 		this._clkmode = 4;
 		this._wbmode = 1;
@@ -859,8 +859,9 @@ export class UserSettings {
 			this.placeClock(0);
 			_hdrclck = document.getElementsByClassName('headerClockActive')[0];
 		}
-		this._hdrclkdate_span = _hdrclck.getElementsByClassName('headerClockDate')[0];
-		this._hdrclktime_span = _hdrclck.getElementsByClassName('headerClockTime')[0];
+		const _current = _hdrclck.getElementsByClassName('_dc_current')[0];
+		this._hdrclkdate = _current.getElementsByClassName('headerClockDate')[0];
+		this._hdrclktime = _current.getElementsByClassName('headerClockTime')[0];
 		
 		if (val === true) {
 			/*** Start and Show ***/
@@ -870,8 +871,8 @@ export class UserSettings {
 			if (this.clockTimer === null) {
 				this.clockTimer = setInterval( hdrClock.bind(self), 10000);
 			}
-			_hdrclck.parentElement.classList.remove('hide');
 			this.setClockFormat(currentSettings._clkmode);
+			_hdrclck.parentElement.classList.remove('hide');
 		} else {
 			/*** Hide and Halt ***/
 			_hdrclck.parentElement.classList.add('hide');
@@ -934,7 +935,6 @@ export class UserSettings {
 		const elms = document.getElementsByClassName("headerClockMain");
 		if (!elms || !elms.length)
 			return;
-		const _prevMode = currentSettings._clkmode || 0;
 		
 		if (val !== undefined) {
 			let idx = parseInt(val, 10);
@@ -948,13 +948,20 @@ export class UserSettings {
 		const format = currentSettings.getClockFormat(currentSettings._clkmode);
 		currentSettings._opts_date = format._opts_date;
 		currentSettings._opts_time = format._opts_time;
-		for (let elm of elms) {
-			elm.classList.remove('clockFmt' + _prevMode);
-			void elm.offsetWidth; 
-			elm.classList.add('clockFmt' + currentSettings._clkmode);
-		}
+		
+		let _hdrclck = document.getElementsByClassName('headerClockActive')[0];
+		let _current = _hdrclck.getElementsByClassName('_dc_current')[0];
+		let _next = _hdrclck.getElementsByClassName('_dc_next')[0];
+		_next.className = _next.className.replace(/clockFmt.+?/g, '');
+		_next.classList.add('clockFmt' + currentSettings._clkmode);
+		
+		currentSettings._hdrclkdate = _next.getElementsByClassName('headerClockDate')[0];
+		currentSettings._hdrclktime = _next.getElementsByClassName('headerClockTime')[0];
 		
 		setTimeout(hdrClock, 10);
+		
+		_current.classList.replace('_dc_current', '_dc_next');
+		_next.classList.replace('_dc_next', '_dc_current');
 	}
 	
 	initButtons(pos) {

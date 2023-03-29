@@ -253,6 +253,13 @@
                     </label>
                     <div class="fieldDescription checkboxFieldDescription">${EnableFallbackFontHelp}</div>
                 </div>
+				<div class="checkboxContainer checkboxContainer-withDescription">
+                    <label>
+                        <input is="emby-checkbox" type="checkbox" id="chkEnableAudioVbr" />
+                        <span>${LabelEnableAudioVbr}</span>
+                    </label>
+                    <div class="fieldDescription checkboxFieldDescription">${LabelEnableAudioVbrHelp}</div>
+                </div>
 				<div class="inputContainer">
                     <input is="emby-input" type="number" id="txtMaxMuxingQueueSize" pattern="[0-9]*" required="required" min="128" max="2147483647" step="1" label="${LabelMaxMuxingQueueSize}" />
                     <div class="fieldDescription">${LabelMaxMuxingQueueSizeHelp}</div>
