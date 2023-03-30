@@ -120,23 +120,23 @@
     },
     "be-BY": {
         "ccode": "be-BY",
-        "fsize": 171022,
+        "fsize": 171429,
         "ccodeSrc": "en-US",
         "displayName": "Belarusian",
         "displayNativeName": "Беларуская",
         "ISO6391": "be-BY",
         "ISO6392": "bel",
-        "keys#": 1705,
-        "completed%": 92.71,
+        "keys#": 1707,
+        "completed%": 92.82,
         "jellyfinWeb": {
             "filename": "be-BY.json",
-            "keys#": 1705,
+            "keys#": 1707,
             "orphans#": 2,
             "orphans": [
                 "DashboardArchitecture",
                 "DashboardOperatingSystem"
             ],
-            "completed%": 99.88
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -214,19 +214,44 @@
             "completed%": 0
         }
     },
+    "bn": {
+        "ccode": "bn",
+        "fsize": 960,
+        "ccodeSrc": "en-US",
+        "displayName": "",
+        "displayNativeName": "",
+        "ISO6391": "",
+        "ISO6392": "",
+        "keys#": 17,
+        "completed%": 0.92,
+        "jellyfinWeb": {
+            "filename": "bn.json",
+            "keys#": 17,
+            "orphans#": 0,
+            "orphans": [],
+            "completed%": 1.0
+        },
+        "myJelly": {
+            "filename": "",
+            "keys#": 0,
+            "orphans#": 0,
+            "orphans": [],
+            "completed%": 0
+        }
+    },
     "ca": {
         "ccode": "ca",
-        "fsize": 124249,
+        "fsize": 124298,
         "ccodeSrc": "en-US",
         "displayName": "Catalan; Valencian",
         "displayNativeName": "Català",
         "ISO6391": "ca",
         "ISO6392": "cat",
-        "keys#": 1705,
-        "completed%": 92.71,
+        "keys#": 1706,
+        "completed%": 92.77,
         "jellyfinWeb": {
             "filename": "ca.json",
-            "keys#": 1705,
+            "keys#": 1706,
             "orphans#": 12,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -242,7 +267,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 99.88
+            "completed%": 99.94
         },
         "myJelly": {
             "filename": "",

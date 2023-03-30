@@ -3,13 +3,14 @@
  * @module components/syncPlay/settings/SettingsEditor
  */
 
-import SyncPlay from '../../core';
 import { getSetting, setSetting } from '../../core/Settings';
 import dialogHelper from '../../../../components/dialogHelper/dialogHelper';
 import layoutManager from '../../../../components/layoutManager';
+import { pluginManager } from '../../../../components/pluginManager';
 import loading from '../../../../components/loading/loading';
 import toast from '../../../../components/toast/toast';
 import globalize from '../../../../scripts/globalize';
+import { PluginType } from '../../../../types/plugin.ts';
 import Events from '../../../../utils/events.ts';
 
 import { toBoolean, toFloat } from '../../../../utils/string.ts';
@@ -38,6 +39,7 @@ class SettingsEditor {
         this.apiClient = apiClient;
         this.timeSyncCore = timeSyncCore;
         this.options = options;
+		this.SyncPlay = pluginManager.firstOfType(PluginType.SyncPlay)?.instance;
     }
 
     async embed() {
@@ -82,14 +84,14 @@ class SettingsEditor {
     async initEditor() {
         const { context } = this;
 
-        context.querySelector('#txtExtraTimeOffset').value = toFloat(getSetting('extraTimeOffset'), 0.0);
-        context.querySelector('#chkSyncCorrection').checked = toBoolean(getSetting('enableSyncCorrection'), true);
-        context.querySelector('#txtMinDelaySpeedToSync').value = toFloat(getSetting('minDelaySpeedToSync'), 60.0);
-        context.querySelector('#txtMaxDelaySpeedToSync').value = toFloat(getSetting('maxDelaySpeedToSync'), 3000.0);
-        context.querySelector('#txtSpeedToSyncDuration').value = toFloat(getSetting('speedToSyncDuration'), 1000.0);
-        context.querySelector('#txtMinDelaySkipToSync').value = toFloat(getSetting('minDelaySkipToSync'), 400.0);
-        context.querySelector('#chkSpeedToSync').checked = toBoolean(getSetting('useSpeedToSync'), true);
-        context.querySelector('#chkSkipToSync').checked = toBoolean(getSetting('useSkipToSync'), true);
+        context.querySelector('#txtExtraTimeOffset').value = this.SyncPlay?.Manager.timeSyncCore.extraTimeOffset;
+        context.querySelector('#chkSyncCorrection').checked = this.SyncPlay?.Manager.playbackCore.enableSyncCorrection;
+        context.querySelector('#txtMinDelaySpeedToSync').value = this.SyncPlay?.Manager.playbackCore.minDelaySpeedToSync;
+        context.querySelector('#txtMaxDelaySpeedToSync').value = this.SyncPlay?.Manager.playbackCore.maxDelaySpeedToSync;
+        context.querySelector('#txtSpeedToSyncDuration').value = this.SyncPlay?.Manager.playbackCore.speedToSyncDuration;
+        context.querySelector('#txtMinDelaySkipToSync').value = this.SyncPlay?.Manager.playbackCore.minDelaySkipToSync;
+        context.querySelector('#chkSpeedToSync').checked = this.SyncPlay?.Manager.playbackCore.useSpeedToSync;
+        context.querySelector('#chkSkipToSync').checked = this.SyncPlay?.Manager.playbackCore.useSkipToSync;
 		
 		// Set callbacks for form submission
         this.context.querySelector('form').addEventListener('submit', (event) => {
@@ -176,7 +178,7 @@ class SettingsEditor {
         setSetting('useSpeedToSync', useSpeedToSync);
         setSetting('useSkipToSync', useSkipToSync);
 
-        Events.trigger(SyncPlay.Manager, 'settings-update');
+        Events.trigger(this.SyncPlay?.Manager, 'settings-update');
     }
 }
 

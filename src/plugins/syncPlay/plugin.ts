@@ -13,6 +13,7 @@ class SyncPlayPlugin implements Plugin {
     id: string;
     type: string;
     priority: number;
+	instance: typeof SyncPlay;
 
     constructor() {
         this.name = 'SyncPlay Plugin';
@@ -21,6 +22,7 @@ class SyncPlayPlugin implements Plugin {
         // SyncPlay needs refactored so it does not have an independent playback manager.
         this.type = PluginType.SyncPlay;
         this.priority = 1;
+		this.instance = SyncPlay;
 
         this.init();
     }
