@@ -157,8 +157,17 @@ import './displaysettings.scss';
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
 		
-		self._savedClock = context.querySelector('#selectClock').value = userSettings.enableClock();
-		self._savedWBot = context.querySelector('#selectWeatherBot').value = userSettings.enableWeatherBot();
+		const bClock = self._savedbClock = userSettings.enableClock();
+		context.querySelector('#clockOptAll').checked = (bClock == 3);
+		context.querySelector('#clockOptList').classList.toggle('hide', (bClock == 3));
+		context.querySelector('#clockOptInNav').checked = (bClock & 1);
+		context.querySelector('#clockOptInVideo').checked = (bClock & 2);
+		
+		const bWBot = self._savedWBot = userSettings.enableWeatherBot();
+		context.querySelector('#wbOptAll').checked = (bWBot == 3);
+		context.querySelector('#wbOptList').classList.toggle('hide', (bWBot == 3));
+		context.querySelector('#wbOptInNav').checked = (bWBot & 1);
+		context.querySelector('#wbOptInVideo').checked = (bWBot & 2); 
 		
 		const bWidget = userSettings.enableBackdropWidget();
 		context.querySelector('#backdropToolsAll').checked = (bWidget == 7);
@@ -209,6 +218,20 @@ import './displaysettings.scss';
 		const apiClient = self.options.apiClient;
 		let reload = false;
 		
+		let bWBot = 0;
+		if (context.querySelector('#wbOptInNav').checked)
+			bWBot = bWBot | 1;
+		if (context.querySelector('#wbOptInVideo').checked)
+			bWBot = bWBot | 2;
+		userSettingsInstance.enableWeatherBot(bWBot, self.adminEdit);
+		
+		let bClock = 0;
+		if (context.querySelector('#clockOptInNav').checked)
+			bClock = bClock | 1;
+		if (context.querySelector('#clockOptInVideo').checked)
+			bClock = bClock | 2;
+		userSettingsInstance.enableClock(bClock, self.adminEdit);
+		
 		if (!self.adminEdit) {
 			const newLayout = context.querySelector('.selectLayout').value;
 			if (newLayout !== self._savedLayout) {
@@ -217,8 +240,8 @@ import './displaysettings.scss';
 				reload = true;
 			}
 		
-			if (self._savedClock != context.querySelector('#selectClock').value ||
-				self._savedWBot != context.querySelector('#selectWeatherBot').value) {
+			if (self._savedbClock != bClock ||
+				self._savedWBot != bWBot) {
 				reload = true;
 			}
 		}
@@ -243,7 +266,6 @@ import './displaysettings.scss';
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
 		userSettingsInstance.screensaverTime(context.querySelector('#sliderScreensaverTime').value);
         userSettingsInstance.libraryPageSize(context.querySelector('#sliderLibraryPageSize').value);
-		userSettingsInstance.enableClock(context.querySelector('#selectClock').value, self.adminEdit);
 		userSettingsInstance.enableBackdrops(context.querySelector('#srcBackdrops').value);
 		userSettingsInstance.backdropDelay(context.querySelector('#sliderBackdropDelay').value);
 		userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
@@ -290,7 +312,6 @@ import './displaysettings.scss';
 		userSettingsInstance.getlatitude(context.querySelector('#inputLat').value);
 		userSettingsInstance.getlongitude(context.querySelector('#inputLon').value);
 		userSettingsInstance.weatherApiKey(context.querySelector('#inputApikey').value);
-		userSettingsInstance.enableWeatherBot(context.querySelector('#selectWeatherBot').value, self.adminEdit);
 		
 		let bWidget = 0;
 		if (context.querySelector('#backdropToolsAll').checked)
@@ -435,6 +456,20 @@ import './displaysettings.scss';
 				}
 			});
 			
+			context.querySelector('#clockOptAll').addEventListener('change', (e) => {
+				context.querySelector('#clockOptList').classList.toggle('hide', e.target.checked);
+				if (e.target.checked) {
+					context.querySelector('#clockOptInNav').checked = true;
+					context.querySelector('#clockOptInVideo').checked = true;
+				}
+			});
+			context.querySelector('#wbOptAll').addEventListener('change', (e) => {
+				context.querySelector('#wbOptList').classList.toggle('hide', e.target.checked);
+				if (e.target.checked) {
+					context.querySelector('#wbOptInNav').checked = true;
+					context.querySelector('#wbOptInVideo').checked = true;
+				}
+			});
 			context.querySelector('#sliderDisplayFontSize').addEventListener('change', onDisplayFontSizeChange);
 			
 			setTimeout(() => {self.loadData(self.options.autoFocus);}, 100);

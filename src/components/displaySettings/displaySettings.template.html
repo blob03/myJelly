@@ -184,25 +184,97 @@
 		</div>
 
 		<div style='display: flex !important;width: 100%;height: auto;flex-direction: row;justify-content: space-between;'>
-		
+			
 			<div class="selectContainer" style="width: 47%;height: auto;">
-				<select is="emby-select" id="selectClock" label="${EnableClock}">
-				<option value=0>${Never}</option>
-				<option value=1>${Always}</option>
-				<option value=2>${HeaderNavigation}</option>
-				<option value=3>${HeaderVideos}</option>
-				</select>
-				<div class="fieldDescription ">${EnableClockHelp}</div>
+				<div class="paperListLabel">${EnableClock}</div>
+				<div class="checkboxList paperList" id="clockTools" style="padding: 0.5em 1em;">
+					
+					<div class="sectioncheckbox">
+						<label class="emby-checkbox-label">
+							<input id='clockOptAll' type="checkbox" is="emby-checkbox" class="emby-checkbox" data-embycheckbox="true">
+							<span class="checkboxLabel">${Always}</span>
+							<span class="checkboxOutline">
+								<span class="material-icons checkboxIcon checkboxIcon-checked check"></span>
+								<span class="material-icons checkboxIcon checkboxIcon-unchecked"></span>
+							</span>
+						</label>
+						
+						<div id="clockOptList" style="padding: 1em 0 0 0;">
+						
+							<div class="sectioncheckbox">
+								<label class="emby-checkbox-label">
+									<input id="clockOptInNav" type="checkbox" is="emby-checkbox" class="chkFolder emby-checkbox" data-embycheckbox="true">
+									<span class="checkboxLabel">${HeaderNavigation}</span>
+									<span class="checkboxOutline">
+										<span class="material-icons checkboxIcon checkboxIcon-checked check"></span>
+										<span class="material-icons checkboxIcon checkboxIcon-unchecked"></span>
+									</span>
+								</label>
+							</div>
+							
+							<div class="sectioncheckbox">
+								<label class="emby-checkbox-label">
+									<input id="clockOptInVideo" type="checkbox" is="emby-checkbox" class="chkFolder emby-checkbox" data-embycheckbox="true">
+									<span class="checkboxLabel">${HeaderVideos}</span>
+									<span class="checkboxOutline">
+										<span class="material-icons checkboxIcon checkboxIcon-checked check"></span>
+										<span class="material-icons checkboxIcon checkboxIcon-unchecked "></span>
+									</span>
+								</label>
+							</div>
+					
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="fieldDescription">${EnableClockHelp}</div>
 			</div>
 			
 			<div class="selectContainer" style="width: 47%;height: auto;">
-				<select is="emby-select" id="selectWeatherBot" label="${EnableWeatherBot}">
-				<option value=0>${Never}</option>
-				<option value=1>${Always}</option>
-				<option value=2>${HeaderNavigation}</option>
-				<option value=3>${HeaderVideos}</option>
-				</select>
-				<div class="fieldDescription ">${EnableWeatherBotHelp}</div>
+				<div class="paperListLabel">${EnableWeatherBot}</div>
+				<div class="checkboxList paperList" id="wbTools" style="padding: 0.5em 1em;">
+					
+					<div class="sectioncheckbox">
+						<label class="emby-checkbox-label">
+							<input id='wbOptAll' type="checkbox" is="emby-checkbox" class="emby-checkbox" data-embycheckbox="true">
+							<span class="checkboxLabel">${Always}</span>
+							<span class="checkboxOutline">
+								<span class="material-icons checkboxIcon checkboxIcon-checked check"></span>
+								<span class="material-icons checkboxIcon checkboxIcon-unchecked"></span>
+							</span>
+						</label>
+						
+						<div id="wbOptList" style="padding: 1em 0 0 0;">
+						
+							<div class="sectioncheckbox">
+								<label class="emby-checkbox-label">
+									<input id="wbOptInNav" type="checkbox" is="emby-checkbox" class="chkFolder emby-checkbox" data-embycheckbox="true">
+									<span class="checkboxLabel">${HeaderNavigation}</span>
+									<span class="checkboxOutline">
+										<span class="material-icons checkboxIcon checkboxIcon-checked check"></span>
+										<span class="material-icons checkboxIcon checkboxIcon-unchecked"></span>
+									</span>
+								</label>
+							</div>
+							
+							<div class="sectioncheckbox">
+								<label class="emby-checkbox-label">
+									<input id="wbOptInVideo" type="checkbox" is="emby-checkbox" class="chkFolder emby-checkbox" data-embycheckbox="true">
+									<span class="checkboxLabel">${HeaderVideos}</span>
+									<span class="checkboxOutline">
+										<span class="material-icons checkboxIcon checkboxIcon-checked check"></span>
+										<span class="material-icons checkboxIcon checkboxIcon-unchecked "></span>
+									</span>
+								</label>
+							</div>
+								
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="fieldDescription">${EnableWeatherBotHelp}</div>
 			</div>
 					
 		</div>

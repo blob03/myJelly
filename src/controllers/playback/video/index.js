@@ -1430,7 +1430,7 @@ import { PluginType } from '../../../types/plugin.ts';
         view.addEventListener('viewbeforeshow', function () {
             headerElement.classList.add('osdHeader');
 			switch(userSettings.enableClock()) {
-				case 1:
+				case 2:
 				case 3:
 					userSettings.showClock(true);
 					break;
@@ -1438,8 +1438,9 @@ import { PluginType } from '../../../types/plugin.ts';
 				default:
 					userSettings.showClock(false);
 			}
+			
 			switch(userSettings.enableWeatherBot()) {
-				case 1:
+				case 2:
 				case 3:
 					userSettings.showWeatherBot(true);
 					break;
@@ -1536,7 +1537,7 @@ import { PluginType } from '../../../types/plugin.ts';
             headerElement.classList.remove('osdHeader');
 			switch(userSettings.enableClock()) {
 				case 1:
-				case 2:
+				case 3:
 					userSettings.showClock(true);
 					break;
 					
@@ -1545,7 +1546,7 @@ import { PluginType } from '../../../types/plugin.ts';
 			}
 			switch(userSettings.enableWeatherBot()) {
 				case 1:
-				case 2:
+				case 3:
 					userSettings.showWeatherBot(true);
 					break;
 					

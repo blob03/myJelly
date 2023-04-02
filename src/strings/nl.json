@@ -680,6 +680,8 @@
     "LabelEasyPinCode": "Easy-pincode:",
     "LabelEmbedAlbumArtDidl": "Insluiten van albumhoezen in DIDL",
     "LabelEmbedAlbumArtDidlHelp": "Sommige apparaten verkiezen deze methode voor het verkrijgen van albumhoezen. Bij andere is afspelen onmogelijk met deze optie ingeschakeld.",
+    "LabelEnableAudioVbr": "VBR-audiocodering inschakelen",
+    "LabelEnableAudioVbrHelp": "Een variabele bitsnelheid biedt betere kwaliteit bij een vergelijkbare gemiddelde bitsnelheid, maar kan in zeldzame gevallen tot bufferen of compatibiliteitsproblemen leiden.",
     "LabelEnableAutomaticPortMap": "Automatische portmapping inschakelen",
     "LabelEnableAutomaticPortMapHelp": "Publieke poort automatisch doorsturen naar een lokale poort via UPnP. Dit werkt niet op alle routers en netwerk configuraties. De wijzigingen worden pas actief na een herstart van de server.",
     "LabelEnableBlastAliveMessages": "'Blast alive'-berichten",

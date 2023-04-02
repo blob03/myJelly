@@ -225,11 +225,11 @@ import './login.scss';
 						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
 						// then access is granted without a password, from a local network only.
 						html += '<div class="countIndicator" style="border-radius: 0;background: none;box-shadow: none">';
-						html += '<span class="material-icons cardImageIcon pin" title="' + globalize.translate('HeaderEasyPinCode') + '" style="color: #afb2bd;font-size: 2.5em;"></span>';
+						html += '<span class="material-icons cardImageIcon pin" title="' + globalize.translate('HeaderEasyPinCode') + '" style="color: #afb2bd;font-size: 2rem;"></span>';
 						html += '</div>';
 					} else {
 						html += '<div class="countIndicator" style="border-radius: 0;background: none;box-shadow: none">';
-						html += '<span class="material-icons cardImageIcon password" title="' + globalize.translate('HeaderPassword') + '"style="color: #afb2bd;font-size: 1.7em;"></span>';
+						html += '<span class="material-icons cardImageIcon password" title="' + globalize.translate('HeaderPassword') + '"style="color: #afb2bd;font-size: 1.5rem;"></span>';
 						html += '</div>';
 					}
 				}
@@ -237,7 +237,7 @@ import './login.scss';
 			if (webSettings.loginRole() === true) {
 				if (user?.Policy?.IsAdministrator === true) {
 					html += '<div class="countIndicator" style="background: none;box-shadow: none">';
-					html += '<span class="material-icons cardImageIcon local_police" title="' + globalize.translate('HeaderAdmin') + '"style="color: #afb2bd;font-size: 2em;"></span>';
+					html += '<span class="material-icons cardImageIcon local_police" title="' + globalize.translate('HeaderAdmin') + '"style="color: #afb2bd;font-size: 1.6rem;"></span>';
 					html += '</div>';
 				}
 			}

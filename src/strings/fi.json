@@ -680,6 +680,8 @@
     "LabelEasyPinCode": "Helppo PIN -koodi:",
     "LabelEmbedAlbumArtDidl": "Upota albumitaide DIDL:iin",
     "LabelEmbedAlbumArtDidlHelp": "Jotkin laitteet suosivat tätä albumitaiteen noutomenetelmää. Joillakin laitteilla toisto voi epäonnistua tätä valintaa käytettäessä.",
+    "LabelEnableAudioVbr": "Käytä äänen VBR-enkoodausta",
+    "LabelEnableAudioVbrHelp": "Muuttuva bittinopeus (variable bitrate, VBR) tuottaa keskitasoista paremman laadun, mutta saattaa joissakin harvoissa tapauksissa aiheuttaa puskurointi ja yhteensopivuusongelmia.",
     "LabelEnableAutomaticPortMap": "Käytä automaattista porttikartoitusta",
     "LabelEnableAutomaticPortMapHelp": "Ohjaa reitittimesi julkiset portit automaattisesti palvelimesi paikallisiin portteihin UPnP:n avulla. Tämä ei välttämättä toimi kaikkien reitittimien tai verkkoasetusten kanssa. Muutokset tulevat voimaan vasta palvelimen uudelleenkäynnistyksen yhteydessä.",
     "LabelEnableBlastAliveMessages": "Lähetä hereilläolo -viesti",

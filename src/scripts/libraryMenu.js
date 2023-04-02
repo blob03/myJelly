@@ -294,7 +294,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 			if (headerCastButton)
 				headerCastButton.classList.toggle('hide', layoutManager.tv);
 
-			enableWeatherBot(enableWeatherBot());
+			//enableWeatherBot(enableWeatherBot());
 			
 			const policy = user.Policy ? user.Policy : user.localUser.Policy;
 
@@ -452,7 +452,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
             headerAudioPlayerButton.classList.add('hide');
         }
 		
-		if (headerNightmodeButton && playbackManager.isPlayingVideo() && (enableClock() == 3 || enableWeatherBot() == 3))
+		if (playbackManager.isPlayingVideo() && enableNightModeSwitch() == 2)
 			headerNightmodeButton.classList.remove('hide');
     }
 
@@ -461,7 +461,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
             headerAudioPlayerButton.classList.add('hide');
         }
 		
-		if (headerNightmodeButton && playbackManager.isPlayingVideo() && (enableClock() == 3 || enableWeatherBot() == 3))
+		if (playbackManager.isPlayingVideo() && enableNightModeSwitch() == 2)
 			headerNightmodeButton.classList.add('hide');
     }
 

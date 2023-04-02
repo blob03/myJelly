@@ -74,7 +74,7 @@
 		"group": "myJelly"
 	}, {
 		"name": "WMC exp.",
-		"version": "0.15",
+		"version": "0.16",
 		"id": "wmc-exp",
 		"color": "#0c2450",
 		"group": "myJelly dev"

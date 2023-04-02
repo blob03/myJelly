@@ -37,11 +37,12 @@ export default function (view, params) {
 			});
 		});
 		
-		// reload special event
-		// ask for the reconstruction of the page.
-		// It is used by some of the display preferences such as the user languages.
+		// Reload event to refresh everything
+		// It is required by some user settings such as the UI language.
 		view.addEventListener('viewreload', function () {
-			view.innerHTML = globalize.translateHtml(templateUserMenu, 'core');
+			const _y = document.createElement("div");
+			_y.innerHTML = globalize.translateHtml(templateUserMenu, 'core');
+			view.innerHTML = _y.querySelector('#myPreferencesMenuPage').innerHTML;
 			view.querySelector('.headerUsername').innerHTML = _user.Name;
 			view.setAttribute('data-title', globalize.translate('Settings'));
 			view.querySelector('.adminSection').classList.toggle('hide', adminEdit || !_user.Policy.IsAdministrator || layoutManager.tv);

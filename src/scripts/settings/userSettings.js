@@ -684,7 +684,7 @@ export class UserSettings {
 	enableWeatherBot(val, norefresh) {
         if (val !== undefined) {
 			let newval = parseInt(val, 10);
-			if (newval < 0 || newval > 3)
+			if (isNaN(newval) || newval < 0 || newval > 3)
 				newval = 0;
 			
 			/*** Save the new value. ***/
@@ -695,11 +695,10 @@ export class UserSettings {
 			
 			switch(newval) {
 				case 0:
-				case 3:
+				case 2:
 					/***
-						If weatherbot is disabled or enabled only for video,
-						clear any existing timer
-						then hide the widget
+						If weatherbot is disabled or only enabled during video playbacks,
+						clear any existing timer then hide the widget
 						and return. 
 					***/
 					this.showWeatherBot(false);
@@ -711,9 +710,9 @@ export class UserSettings {
             return true;
         }
 		
-		const ret = parseInt(this.get('weatherbot'), 10) || 0;
-		if (ret < 0 || ret > 3)
-			return 0;
+		const ret = parseInt(this.get('weatherbot'), 10);
+		if (isNaN(ret) || ret < 0 || ret > 3)
+			ret = 0;
         return ret;
     }
 	
@@ -830,12 +829,11 @@ export class UserSettings {
 			
 			switch(newval) {
 				case 0:
-				case 3:
+				case 2:
 					/***
-						If clock is disabled or enabled only for videos,
-						clear any existing timer
-						hide the clock 
-						return. 
+						If clock is disabled or enabled only during video playbacks,
+						clear any existing timer then hide the clock 
+						and return. 
 					***/
 					this.showClock(false);
 					break;
@@ -846,9 +844,9 @@ export class UserSettings {
             return true;
         }
 		
-		const ret = parseInt(this.get('clock'), 10) || 0;
-		if (ret < 0 || ret > 3)
-			return 0;
+		const ret = parseInt(this.get('clock'), 10);
+		if (isNaN(ret) || ret < 0 || ret > 3)
+			ret = 0;
         return ret;
     }
 	
@@ -1190,12 +1188,11 @@ export class UserSettings {
         if (val !== undefined)
             return this.set('nightModeSwitch', parseInt(val, 10));
 
-		const x = parseInt(this.get('nightModeSwitch'), 10);
+		const ret = parseInt(this.get('nightModeSwitch'), 10);
 		// 0 is a valid value.
-		if (isNaN(x) || x < 0 || x > 3) 
-			return 0; // default to 0 (disabled).
-        else 
-            return x;
+		if (isNaN(ret) || ret < 0 || ret > 3) 
+			ret = 0; // default to 0 (disabled).
+        return ret;
     }
 	
 	/**

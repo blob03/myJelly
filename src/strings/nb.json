@@ -678,6 +678,8 @@
     "LabelEasyPinCode": "Enkel PIN-kode:",
     "LabelEmbedAlbumArtDidl": "Bygg inn albumbilder i DIDL",
     "LabelEmbedAlbumArtDidlHelp": "Noen enheter foretrekker denne metoden for å få albumomslag. Andre vil kunne få problemer med avspilling hvis dette alternativet er aktivert.",
+    "LabelEnableAudioVbr": "Aktiver VBR lydkoding",
+    "LabelEnableAudioVbrHelp": "Variabel bithastighet tilbyr bedre forhold mellom kvalitet og gjennomsnittlig bithastighet, men kan i visse tilfeller forårsake buffering og problemer med kompatibilitet.",
     "LabelEnableAutomaticPortMap": "Aktiver automatisk portmapping",
     "LabelEnableAutomaticPortMapHelp": "Koble eksterne porter på ruteren automatisk til lokale porter på tjeneren din via UPnP. Dette fungerer ikke med alle rutere eller nettverkskonfigurasjoner. Endringer trer ikke i kraft før tjeneren startes på nytt.",
     "LabelEnableBlastAliveMessages": "Kringkast keepalive-meldinger",
