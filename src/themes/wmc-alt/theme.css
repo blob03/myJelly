@@ -773,7 +773,7 @@ legend {
 	border: 0px solid #63ffbd !important;
 }
 
-fieldset {
+fieldset, .fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
 	border: 1px solid #63ffbd !important;

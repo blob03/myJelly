@@ -950,7 +950,7 @@ option.selected {
 	visibility: hidden;
 }
 
-fieldset {
+fieldset, .fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
 	border: 0.1em solid #3c5b68 !important;
@@ -1519,4 +1519,8 @@ select option:selected {
 	height: 6.5em;
 	transition: opacity .6s ease-out;
 	background: linear-gradient(180deg, rgba(255, 255, 255, .4), rgba(251, 245, 188, 0.7)) !important;
+}
+
+#feelsLikeTempFrame {
+	border-top: .1em solid #000 !important;
 }

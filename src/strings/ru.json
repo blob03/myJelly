@@ -670,6 +670,7 @@
     "LabelDropSubtitleHere": "Перетащите субтитры сюда или щёлкните для навигации.",
     "LabelDroppedFrames": "Пропущенные кадры:",
     "LabelDummyChapterCount": "Лимит:",
+    "LabelDummyChapterCountHelp": "Максимальное количество изображений глав, которые будут извлечены для каждого медиафайла.",
     "LabelDummyChapterDuration": "Интервал:",
     "LabelDynamicExternalId": "{0} ID:",
     "LabelEasyPinCode": "Простой PIN-код:",

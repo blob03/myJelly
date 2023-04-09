@@ -138,6 +138,8 @@
     "Videos": "Videos",
     "WeatherApiRegistrationHelp": "Learn how to get a free key.",
     "WeatherbotScreensaverHelp": "Print the current weather condition.",
+    "WeatherbotShowFeelsLikeTemp": "'Feels Like' temperature",
+    "WeatherbotShowStation": "Location of weather station",
     "WindDir": "Wind direction",
     "WindSpeed": "Wind speed"
 }

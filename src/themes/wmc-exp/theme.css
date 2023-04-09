@@ -817,7 +817,7 @@ legend {
 	border: none !important;
 }
 
-fieldset {
+fieldset, .fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
 	border: .1em solid #a644b9 !important;
@@ -952,4 +952,8 @@ option.sourceDictionaryOption {
 	margin-top: 2em;
 	background: rgba(15,15,85,.2);
 	padding: 0.1em 1em 1em;
+}
+
+#feelsLikeTempFrame {
+	border-top: .1em solid #a644b9 !important;
 }

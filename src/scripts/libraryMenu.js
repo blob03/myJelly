@@ -293,8 +293,6 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
 				mainDrawerButton.classList.toggle('hide', layoutManager.tv);
 			if (headerCastButton)
 				headerCastButton.classList.toggle('hide', layoutManager.tv);
-
-			//enableWeatherBot(enableWeatherBot());
 			
 			const policy = user.Policy ? user.Policy : user.localUser.Policy;
 

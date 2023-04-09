@@ -99,7 +99,8 @@ function hdrWeather() {
 			}
 			if (_root.getElementsByTagName("temperature")[0])
 				_data.temp = _root.getElementsByTagName("temperature")[0].getAttribute("value");
-		
+			if (_root.getElementsByTagName("feels_like")[0])
+				_data.feelslike = _root.getElementsByTagName("feels_like")[0].getAttribute("value");
 			if (_root.getElementsByTagName("city")[0])
 				_data.name = _root.getElementsByTagName("city")[0].getAttribute("name");
 			
@@ -129,12 +130,28 @@ function hdrWeather() {
 		} 
 		
 		if (_data.temp) {
-			_dyn = toPrecision(_data.temp, 1);
-			_dyn += '<span class="headerWthUnit">';
-			_dyn += (enableUSUnits? '&#8457;': '&#8451;') + '</span>';
+			if (_data.feelslike && (self.enableWeatherBot() & 4)) {
+				_dyn = '<div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">';
+				_dyn += '<div id="measuredTempFrame">' + toPrecision(_data.temp, 1) + '</div>';
+				_dyn += '<div id="feelsLikeTempFrame">' + toPrecision(_data.feelslike, 1) + '</div>';
+				_dyn += '</div>';
+				_dyn += '<div class="headerWthTempUnit">';
+				_dyn += (enableUSUnits? '&#8457;': '&#8451;');
+				_dyn += '</div>';
+			} else {
+				_dyn = '<div style="display: flex;flex-direction: row;justify-content: center; align-items: flex-start; height: 100%;">';
+				_dyn += '<div>';
+				_dyn += toPrecision(_data.temp, 1);
+				_dyn += '</div>';
+				_dyn += '<span class="headerWthUnit">';
+				_dyn += (enableUSUnits? '&#8457;': '&#8451;');
+				_dyn += '</span></div>';
+			}
 			self._hdrwth.temp.innerHTML = _dyn;
 			self._hdrwth.temp.title = globalize.translate('Temperature');
 		}
+		
+		self._hdrwth.city.classList.toggle('hide', !(self.enableWeatherBot() & 8));
 		
 		if (_data.name) {
 			self._hdrwth.city.innerHTML = _data.name;
@@ -178,7 +195,7 @@ function hdrWeather() {
 			self._hdrwth.windDir.innerHTML = _dyn;
 			self._hdrwth.windDir.title = globalize.translate('WindDir');
 			if (_data.code) {
-				_dyn = '<span class="headerWthUnit">' + _data.code + '</span>';
+				_dyn = '<span class="headerWthWDirection">' + _data.code + '</span>';
 				self._hdrwth.windDir.innerHTML += _dyn;
 			}
 		}
@@ -684,7 +701,7 @@ export class UserSettings {
 	enableWeatherBot(val, norefresh) {
         if (val !== undefined) {
 			let newval = parseInt(val, 10);
-			if (isNaN(newval) || newval < 0 || newval > 3)
+			if (isNaN(newval) || newval < 0 || newval > 15)
 				newval = 0;
 			
 			/*** Save the new value. ***/
@@ -693,7 +710,7 @@ export class UserSettings {
 			if (norefresh === true)
 				return true;
 			
-			switch(newval) {
+			switch(newval & 3) {
 				case 0:
 				case 2:
 					/***
@@ -711,7 +728,7 @@ export class UserSettings {
         }
 		
 		const ret = parseInt(this.get('weatherbot'), 10);
-		if (isNaN(ret) || ret < 0 || ret > 3)
+		if (isNaN(ret) || ret < 0 || ret > 15)
 			ret = 0;
         return ret;
     }

@@ -137,7 +137,9 @@
     "UserPresetPerformance": "Configuration minimaliste adaptée aux hôtes plus lents.",
     "Videos": "Vidéos",
     "WeatherApiRegistrationHelp": "Voir comment obtenir une clef.",
-    "WeatherbotScreensaverHelp": "Afficher les conditions météorologiques présentes.",
+    "WeatherbotScreensaverHelp": "Afficher les conditions météo présentes.",
+    "WeatherbotShowFeelsLikeTemp": "Température ressentie",
+    "WeatherbotShowStation": "Lieu de la station météo",
     "WindDir": "Direction du vent",
     "WindSpeed": "Vent"
 }

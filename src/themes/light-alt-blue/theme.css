@@ -841,7 +841,7 @@ option.sourceDictionaryOption {
 	color: #fff;
 }
 
-fieldset {
+fieldset, .fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
 	border: 3px groove #fcfcfc !important;

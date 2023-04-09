@@ -1439,7 +1439,7 @@ import { PluginType } from '../../../types/plugin.ts';
 					userSettings.showClock(false);
 			}
 			
-			switch(userSettings.enableWeatherBot()) {
+			switch(userSettings.enableWeatherBot() & 3) {
 				case 2:
 				case 3:
 					userSettings.showWeatherBot(true);
@@ -1544,7 +1544,7 @@ import { PluginType } from '../../../types/plugin.ts';
 				default:
 					userSettings.showClock(false);
 			}
-			switch(userSettings.enableWeatherBot()) {
+			switch(userSettings.enableWeatherBot() & 3) {
 				case 1:
 				case 3:
 					userSettings.showWeatherBot(true);

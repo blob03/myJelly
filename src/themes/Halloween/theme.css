@@ -957,7 +957,7 @@ option.sourceDictionaryOption {
 	border: 3px groove #333035 !important;
 }
 
-fieldset {
+fieldset, .fieldset {
 	padding: 1.5em 2em 0 2em;
 	margin: 0 0 2em 0;
 	border: 3px groove #eb9d58 !important;
@@ -1490,4 +1490,8 @@ option:selected {
         //margin-top: -2.5em !important;
 		//height: 2.5em !important;
     }
+}
+
+#feelsLikeTempFrame {
+	border-top: .1em solid #eb9d58 !important;
 }

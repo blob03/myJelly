@@ -164,10 +164,12 @@ import './displaysettings.scss';
 		context.querySelector('#clockOptInVideo').checked = (bClock & 2);
 		
 		const bWBot = self._savedWBot = userSettings.enableWeatherBot();
-		context.querySelector('#wbOptAll').checked = (bWBot == 3);
-		context.querySelector('#wbOptList').classList.toggle('hide', (bWBot == 3));
+		context.querySelector('#wbOptAll').checked = ((bWBot & 3) == 3);
+		context.querySelector('#wbOptList').classList.toggle('hide', ((bWBot & 3) == 3));
 		context.querySelector('#wbOptInNav').checked = (bWBot & 1);
 		context.querySelector('#wbOptInVideo').checked = (bWBot & 2); 
+		context.querySelector('#wbOptFeelsLike').checked = (bWBot & 4);
+		context.querySelector('#wbOptStation').checked = (bWBot & 8);
 		
 		const bWidget = userSettings.enableBackdropWidget();
 		context.querySelector('#backdropToolsAll').checked = (bWidget == 7);
@@ -223,6 +225,10 @@ import './displaysettings.scss';
 			bWBot = bWBot | 1;
 		if (context.querySelector('#wbOptInVideo').checked)
 			bWBot = bWBot | 2;
+		if (context.querySelector('#wbOptFeelsLike').checked)
+			bWBot = bWBot | 4;
+		if (context.querySelector('#wbOptStation').checked)
+			bWBot = bWBot | 8;
 		userSettingsInstance.enableWeatherBot(bWBot, self.adminEdit);
 		
 		let bClock = 0;

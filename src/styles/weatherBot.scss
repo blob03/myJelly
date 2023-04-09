@@ -129,8 +129,18 @@
 }
 
 .headerWthUnit {
-	font-size: 40%;
-	margin: .5em 0 0 .4em;
+	font-size: 45%;
+	margin: .3em 0 0 .3em;
+}
+
+.headerWthTempUnit {
+	font-size: .2em;
+	margin: .3em 0 0 0;
+}
+
+.headerWthWDirection {
+	font-size: 60%;
+	margin: .2em 0 0 .3em;
 }
 
 #headerWthIconBg {
@@ -148,6 +158,23 @@
 #headerWthTemp {
 	display: flex;
 	font-size: 160%;
+}
+
+#measuredTempFrame {
+	display: flex;
+	font-size: .4em;
+	padding: 0 0 .1rem 0;
+	width: 100%;
+	justify-content: center;
+}
+
+#feelsLikeTempFrame {
+	display: flex;
+	font-size: .6em;
+	padding: .1rem 0 0 0;
+	border-top: .1em solid #fff;
+	width: 100%;
+	justify-content: center;
 }
 
 #headerWthWind,
