@@ -625,7 +625,8 @@ select option:selected {
 	text-shadow: 1px 1px 8px #1f2443 !important;
 }
 
-.nightMode .headerWthIconBg {
+.nightMode .headerWthIconBg,
+.nightMode .ssWeatherIcon {
 	box-shadow: 0 0 20px #3aff7e, 0 0 30px #95ffce, 0 0 50px #5ed7cb, 0 0 60px #59b0b5 !important;
 	color: #e0f1d7 !important;
 }
@@ -757,7 +758,8 @@ legend {
 	padding: 0 .5em;
 }
 
-.headerWthIconBg {
+.headerWthIconBg,
+.ssWeatherIcon {
 	background: rgba(106, 247, 182, 0.6) !important;
 }
 

@@ -26,7 +26,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.5';
+	self.version = '1.6';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = PluginType.Screensaver;
 	self.id = 'weatherbotscreensaver';
@@ -101,7 +101,8 @@ export default function () {
 				}
 				if (_root.getElementsByTagName("temperature")[0])
 					data.temp = _root.getElementsByTagName("temperature")[0].getAttribute("value");
-			
+				if (_root.getElementsByTagName("feels_like")[0])
+					data.feelslike = _root.getElementsByTagName("feels_like")[0].getAttribute("value");
 				if (_root.getElementsByTagName("city")[0])
 					data.name = _root.getElementsByTagName("city")[0].getAttribute("name");
 				
@@ -129,14 +130,24 @@ export default function () {
 				}
 		
 				let _data;
-				self.opts.locationstr.innerHTML = data.name || '';
-				self.opts.location2str.innerHTML = data.country || '';
+				
+				self.opts.city.innerHTML = data.name || '';
+				self.opts.country.innerHTML = data.country || '';
 				self.opts.conditionstr.innerHTML = data.desc || '';
+				
 				if (data.icon)
 					self.opts.iconstr.src = url.proto + url.base_icon + data.icon + '.png';
 				if (data.temp) {
-					_data = data.temp;
-					self.opts.tempstr.innerHTML = toPrecision(_data, 1);
+					if (data.feelslike && self.opts.feelslikeTemp) {
+						_data = '<div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">';
+						_data += '<div title="' + globalize.translate('WeatherbotShowFeelsLikeTemp') + '" id="ssTempFeelsLike">' + toPrecision(data.feelslike, 1) + '</div>';
+						_data += '<div title="' + globalize.translate('Temperature') + '" id="ssTempMeasured">' + toPrecision(data.temp, 1) + '</div>';
+						_data += '</div>';
+						self.opts.tempstr.innerHTML = _data;
+					} else {
+						_data = data.temp;
+						self.opts.tempstr.innerHTML = toPrecision(_data, 1);
+					}
 				}
 				if (data.hum) {
 					_data = data.hum;
@@ -152,11 +163,11 @@ export default function () {
 						_data *= 3.6; // m/s -> km/h
 					self.opts.windstr.innerHTML = toPrecision(_data, 1);
 				}
-				self.opts.windirstr.innerHTML = "";
+				self.opts.windirangle.innerHTML = "";
 				if (data.dir) {
-					self.opts.windirstr.innerHTML += data.dir;
+					self.opts.windirangle.innerHTML += data.dir;
 					if (data.code)
-						self.opts.windircodestr.innerHTML = data.code;
+						self.opts.windirname.innerHTML = data.code;
 				}
 				
 				_show('ssForeplane', true);
@@ -205,24 +216,26 @@ export default function () {
 	
 			if (TEST === true) {
 				self.hideOnMouse = false;
-				// Get currently selected Language.
+				// Read options as they are currently set in the page.
 				const _lang = document.querySelector('.selectLanguage').value;
 				self.opts.language = userSettings.convertCountryCode(_lang);
+				self.opts.feelslikeTemp = document.querySelector('#wbOptFeelsLike').checked;
+				self.opts.stationName = document.querySelector('#wbOptStation').checked;
 				self.opts.langDir = globalize.getIsRTL(_lang);
 				// Get an API key from the form.
 				self.opts.apikey = document.querySelector('#inputApikey').value || "";
-				
 				self.opts.USUnits = false;
 				const _userLocale = document.querySelector('#selectDateTimeLocale').value;
 				if (_userLocale === 'en-US' || (_userLocale === '' && _lang === 'en-US'))
 					self.opts.USUnits = true;
-				
 				self.opts.lat = document.querySelector('#inputLat').value || '78.69';
 				self.opts.lon = document.querySelector('#inputLon').value || '15.72';
 				self.opts.delay = (document.querySelector('#sliderAPIFrequency').value * 60000) || 300000;
 			} else {
 				self.hideOnMouse = true;
 				self.opts.langDir = globalize.getIsRTL();
+				self.opts.feelslikeTemp = userSettings.enableWeatherBot() & 4;
+				self.opts.stationName = userSettings.enableWeatherBot() & 8;
 				// get the last saved API key.
 				self.opts.apikey = userSettings.weatherApiKey() || "";
 				self.opts.language = userSettings.convertCountryCode(userSettings.language());
@@ -246,24 +259,22 @@ export default function () {
 			+ '<div class="ssFailure hide">'
 			+ '<span id="ssMsg" class="ssWeatherData"></span>'
 			+ '</div>'
-			+ '<div class="ssForeplane hide">'
-			+ '<span id="ssLoc" class="ssWeatherData ssWeatherTitle"></span>'
-			+ '</div>'
-			+ '<div class="ssForeplane hide">'
-			+ '<span id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></span>'
+			+ '<div id="ssPosition" class="ssForeplane hide">'
+			+ '<div id="ssLoc" class="ssWeatherData ssWeatherTitle"></div>'
+			+ '<div id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></div>'
 			+ '</div>'
 			+ '<div class="ssForeplane ssWeatherIcon hide">'
-			+ '<img id="ssIcon" class="ssWeatherData" style="width: 80px;height: 80px;">'
+			+ '<img id="ssIcon" class="ssWeatherData">'
 			+ '</div>'
 			+ '<div class="ssForeplane hide">'
 			+ '<span id="ssCond" class="ssWeatherData ssWeatherDataSmall"></span>'
 			+ '</div>'
 			
-			+'<div style="display: flex;align-items: center;justify-content: space-evenly;align-items: center;width: 22em;">'
+			+'<div id="ssDataSection">'
 			
 			+ '<div class="ssForeplane hide" style="font-size: 250%">'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons thermostat" style="font-size: 60%"></span>'
+			+ '<span class="material-icons ssIcons thermostat"></span>'
 			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssTemp" class="ssWeatherData"></span>';
 			
@@ -276,11 +287,11 @@ export default function () {
 			+ '</div>'
 			+ '</div>'
 			
-			+ '<div style="display: flex;flex-direction: column;font-size: 80%; align-items: flex-start;justify-content: center;">'
+			+ '<div id="ssDataSubSection">'
 			
 			+ '<div class="ssForeplane hide">'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons water_drop"></span>'
+			+ '<span class="material-icons ssIcons ssIconsSmall water_drop"></span>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<div dir="ltr" style="display: flex;">'
@@ -289,7 +300,6 @@ export default function () {
 			+ '</div>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons"></span>'
 			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssPressureValue" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">hPa</span>';
@@ -300,7 +310,7 @@ export default function () {
 			+ '<div class="ssForeplane hide">'
 			
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons air"></span>'
+			+ '<span class="material-icons ssIcons ssIconsSmall air"></span>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<div dir="ltr" style="display: flex;">'
@@ -315,27 +325,31 @@ export default function () {
 			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<div dir="ltr" style="display: flex;">'
-			+ '<span id="ssWindir" class="ssWeatherData"></span>'
+			+ '<span id="ssWinDirAngle" class="ssWeatherData"></span>'
 			+ '<span class="ssWeatherDataUnit">&deg;</span>'
-			+ '<span id="ssWindircode" class="ssWeatherDataUnit"></span>'
+			+ '<span id="ssWinDirName" class="ssWeatherDataUnit"></span>'
 			+ '</div>'
 			+ '</div>'
 			
 			elem.innerHTML = content;
 			document.body.appendChild(elem);
-
-			self.opts.tempstr = document.getElementById("ssTemp");
-			self.opts.humstr = document.getElementById("ssHum");
-			self.opts.pressstr = document.getElementById("ssPressureValue");
-			self.opts.visistr = document.getElementById("ssVisi");
-			self.opts.windstr = document.getElementById("ssWind");
-			self.opts.windirstr = document.getElementById("ssWindir");
-			self.opts.windircodestr = document.getElementById("ssWindircode");
-			self.opts.msgstr = document.getElementById("ssMsg");
-			self.opts.conditionstr = document.getElementById("ssCond");
-			self.opts.locationstr = document.getElementById("ssLoc");
-			self.opts.location2str = document.getElementById("ssLoc2");
-			self.opts.iconstr = document.getElementById("ssIcon");
+			
+			self.opts.elem = elem; 
+			self.opts.tempstr = elem.querySelector("#ssTemp");
+			self.opts.humstr = elem.querySelector("#ssHum");
+			self.opts.pressstr = elem.querySelector("#ssPressureValue");
+			self.opts.visistr = elem.querySelector("#ssVisi");
+			self.opts.windstr = elem.querySelector("#ssWind");
+			self.opts.windirangle = elem.querySelector("#ssWinDirAngle");
+			self.opts.windirname = elem.querySelector("#ssWinDirName");
+			self.opts.msgstr = elem.querySelector("#ssMsg");
+			self.opts.conditionstr = elem.querySelector("#ssCond");
+			self.opts.iconstr = elem.querySelector("#ssIcon");
+			self.opts.city = elem.querySelector("#ssLoc");
+			self.opts.country = elem.querySelector("#ssLoc2");
+			self.opts.position = elem.querySelector("#ssPosition");
+			self.opts.city.classList.toggle('hide', !(self.opts.stationName));
+			self.opts.country.classList.toggle('hide', !(self.opts.stationName));
 			
 			setTimeout( weather.bind(self), 10);
 			// Refresh every x minutes.

@@ -134,8 +134,8 @@
 }
 
 .headerWthTempUnit {
-	font-size: .2em;
-	margin: .3em 0 0 0;
+	font-size: .3em;
+	margin: .3em 0 0 .1em;
 }
 
 .headerWthWDirection {
@@ -163,16 +163,16 @@
 #measuredTempFrame {
 	display: flex;
 	font-size: .4em;
-	padding: 0 0 .1rem 0;
+	padding: .1rem 0 0 0;
 	width: 100%;
 	justify-content: center;
 }
 
 #feelsLikeTempFrame {
 	display: flex;
-	font-size: .6em;
-	padding: .1rem 0 0 0;
-	border-top: .1em solid #fff;
+	font-size: 1rem;
+	padding: 0 0 .1rem 0;
+	border-bottom: .03em solid #fff;
 	width: 100%;
 	justify-content: center;
 }

@@ -132,14 +132,14 @@ function hdrWeather() {
 		if (_data.temp) {
 			if (_data.feelslike && (self.enableWeatherBot() & 4)) {
 				_dyn = '<div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">';
-				_dyn += '<div id="measuredTempFrame">' + toPrecision(_data.temp, 1) + '</div>';
-				_dyn += '<div id="feelsLikeTempFrame">' + toPrecision(_data.feelslike, 1) + '</div>';
+				_dyn += '<div title="' + globalize.translate('WeatherbotShowFeelsLikeTemp') + '" id="feelsLikeTempFrame">' + toPrecision(_data.feelslike, 1) + '</div>';
+				_dyn += '<div title="' + globalize.translate('Temperature') + '" id="measuredTempFrame">' + toPrecision(_data.temp, 1) + '</div>';
 				_dyn += '</div>';
 				_dyn += '<div class="headerWthTempUnit">';
 				_dyn += (enableUSUnits? '&#8457;': '&#8451;');
 				_dyn += '</div>';
 			} else {
-				_dyn = '<div style="display: flex;flex-direction: row;justify-content: center; align-items: flex-start; height: 100%;">';
+				_dyn = '<div title="' + globalize.translate('Temperature') + '" style="display: flex;flex-direction: row;justify-content: center; align-items: flex-start; height: 100%;">';
 				_dyn += '<div>';
 				_dyn += toPrecision(_data.temp, 1);
 				_dyn += '</div>';
@@ -148,7 +148,6 @@ function hdrWeather() {
 				_dyn += '</span></div>';
 			}
 			self._hdrwth.temp.innerHTML = _dyn;
-			self._hdrwth.temp.title = globalize.translate('Temperature');
 		}
 		
 		self._hdrwth.city.classList.toggle('hide', !(self.enableWeatherBot() & 8));

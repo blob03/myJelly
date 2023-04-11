@@ -52,6 +52,24 @@
 	font-size: 120%;
 }
 
+#ssDataSection {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-items: center;
+	width: 22em;
+	margin: 1em 0 0 0;
+}
+	
+#ssDataSubSection {
+	display: flex;
+	flex-direction: column;
+	font-size: 80%;
+	align-items: flex-start;
+	justify-content: center;
+	margin: 0 0 0 1.5em;
+}
+
 .ssDataSection {
 	display: flex;
 	align-items: center;
@@ -64,13 +82,27 @@
 }
 
 .ssWeatherDataUnit {
-	font-size: 70%;
+	font-size: 50%;
 	margin: .3em 0 0 .3em;
 	font-family: initial;
 }
 
+#ssWinDirName {
+	font-size: 90%;
+	top: -.6em;
+	position: relative;
+}
+
 #ssTemp {
 	font-size: 100%;
+}
+
+#ssTempMeasured {
+	font-size: 50% !important;
+}
+
+#ssTempFeelsLike {
+	border-bottom: .03em solid #fff;
 }
 
 .ssWeatherTempUnit {
@@ -80,13 +112,32 @@
 
 .ssIcons {
 	opacity: 50%;
+	font-size: 2rem;
+}
+
+.ssIconsSmall {
+	font-size: 1.2rem !important;
 }
 
 .ssWeatherIcon {
 	border-width: 0px;
+	border-radius: 100%;
+	height: 4rem;
+	width: 4rem;
+	background: rgba(198, 216, 218, .25);
+	margin: .2em;
 }
 
 #ssCond {
 	position: relative;
-	top: -.3em;
+}
+
+#ssPosition{
+	flex-direction: column !important;
+	font-size: 130%;
+}
+
+#ssIcon {
+	width: 2.5em;
+	height: 2.5em;
 }

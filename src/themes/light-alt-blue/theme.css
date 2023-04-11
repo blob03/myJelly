@@ -584,7 +584,8 @@ h3 {
 	text-shadow: 2px 2px 3px #316d8b !important;
 }
 
-.nightMode .headerWthIconBg {
+.nightMode .headerWthIconBg,
+.nightMode .ssWeatherIcon {
   box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
 }
 
@@ -1220,7 +1221,6 @@ div:not(.sectionTitleContainer-cards) > .sectionTitle-cards,
 .ssForeplane > * > .material-icons {
 	color: #fff;
 	text-shadow: 0 0 10px #b7f8ff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #16ffde, 0 0 70px #1cfff4;
-	background: rgba(10, 10, 10, .0);
 }
 
 .ssBackplane {

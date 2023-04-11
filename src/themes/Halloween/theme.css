@@ -1373,7 +1373,8 @@ option:selected {
 	font-size: 160% !important;
 }
 
-.headerWthIconBg {
+.headerWthIconBg,
+.ssWeatherIcon {
 	background: rgba(244, 196, 134, 0.5) !important;
 }
 
@@ -1434,7 +1435,8 @@ option:selected {
 	text-shadow: 0 0 10px #fea906, 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906, 0 0 60px #fea906, 0 0 70px #fea906 !important;
 }
 
-.nightMode .headerWthIconBg {
+.nightMode .headerWthIconBg,
+.nightMode .ssWeatherIcon {
 	box-shadow: 0 0 20px #fea906, 0 0 30px #fea906, 0 0 40px #fea906, 0 0 50px #fea906;
 }
 
@@ -1492,6 +1494,7 @@ option:selected {
     }
 }
 
-#feelsLikeTempFrame {
-	border-top: .1em solid #eb9d58 !important;
+#feelsLikeTempFrame,
+#ssTempFeelsLike {
+	border-color: #eb9d58 !important;
 }

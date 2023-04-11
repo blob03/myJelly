@@ -1392,7 +1392,8 @@ select option:selected {
 	font-size: 170% !important;
 }
 
-.headerWthIconBg {
+.headerWthIconBg,
+.ssWeatherIcon {
 	background: rgba(130, 144, 164, 0.3) !important;
 }
 
@@ -1521,6 +1522,7 @@ select option:selected {
 	background: linear-gradient(180deg, rgba(255, 255, 255, .4), rgba(251, 245, 188, 0.7)) !important;
 }
 
-#feelsLikeTempFrame {
-	border-top: .1em solid #000 !important;
+#feelsLikeTempFrame,
+#ssTempFeelsLike {
+	border-color: #000 !important;
 }
