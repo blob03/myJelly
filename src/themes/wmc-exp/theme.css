@@ -960,3 +960,8 @@ option.sourceDictionaryOption {
 #ssTempFeelsLike {
 	border-color: #a644b9 !important;
 }
+
+.headerWthDataRow {
+	background: rgba(250,250,250,.1);
+	padding: .2em;
+}
