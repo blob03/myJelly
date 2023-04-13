@@ -251,7 +251,6 @@ import '../../styles/scrollstyles.scss';
     }
 
     function isOpened(dlg) {
-        //return dlg.opened;
         return !dlg.classList.contains('hide');
     }
 

@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-38",
+	"version": "10.8.9-39",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -238,6 +238,7 @@
 		"10.8.9-35": "Synchronize translations.\nFix a bogus duplication of preferencesMenuPage when saving the display settings requires a refresh of the existing menus.\nExpose the widgets options inside a checkbox list (Digital clock/Weatherbot/Display settings).",
 		"10.8.9-36": "Synchronize translations.\nAdd an option to show current 'Feel Likes' temperature (Weatherbot widget/display settings).\nAdd an option to hide the location name of the weather station reporting (weatherbot widget/display settings).",
 		"10.8.9-37": "Update SS Weatherbot (and themes) to include recent options added to the widget.",
-		"10.8.9-38": "Synchronize translations.\nApply patch 'Fix Blurred pdf'.\nApply patch 'Remove all trailing colons from translations'."
+		"10.8.9-38": "Synchronize translations.\nApply patch 'Fix Blurred pdf'.\nApply patch 'Remove all trailing colons from translations'.",
+		"10.8.9-39": "Synchronize translations.\nApply patch 'fix: dead link'.\nApply patch 'Merge pull request #4471 from Anantharajus/master'.\nApply patch 'Merge pull request #4482 from grafixeyehero/add-experimental-routes'."
 	}
 }
