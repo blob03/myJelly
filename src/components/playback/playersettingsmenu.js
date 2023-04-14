@@ -3,6 +3,7 @@ import { playbackManager } from '../playback/playbackmanager';
 import globalize from '../../scripts/globalize';
 import qualityoptions from '../qualityOptions';
 import ServerConnections from '../ServerConnections';
+import mediaInfo from '../mediainfo/mediainfo';
 import browser from '../../scripts/browser';
 
 function showQualityMenu(player, btn) {
@@ -173,9 +174,9 @@ function showPlaybackRateMenu(player, btn) {
 }
 
 function showWithUser(options, player, user) {
+	const menuItems = [];
     const supportedCommands = playbackManager.getSupportedCommands(player);
-
-    const menuItems = [];
+    
     if (supportedCommands.indexOf('SetAspectRatio') !== -1) {
         const currentAspectRatioId = playbackManager.getAspectRatio(player);
         const currentAspectRatio = playbackManager.getSupportedAspectRatios(player).filter(function (i) {
@@ -236,7 +237,28 @@ function showWithUser(options, player, user) {
             asideText: null
         });
     }
-
+	
+	const currentItem = playbackManager.currentItem(player);
+	const ratingsText = mediaInfo.getPrimaryMediaInfoHtml(currentItem, {
+		officialRating: false,
+		criticRating: true,
+		starRating: true,
+		endsAt: false,
+		year: false,
+		programIndicator: false,
+		runtime: false,
+		subtitles: false,
+		originalAirDate: false,
+		episodeTitle: false
+	});
+	if (ratingsText) {
+		menuItems.push({
+			name: globalize.translate('CriticRating'),
+			id: 'ratings',
+			asideText: ratingsText
+		});
+	}
+	
     return actionsheet.show({
         items: menuItems,
         positionTo: options.positionTo

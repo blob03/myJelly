@@ -309,7 +309,7 @@
     "HeaderAdmin": "অ্যাডমিনিস্ট্রেটর",
     "HeaderAlbumArtists": "অ্যালবাম শিল্পীরা",
     "HeaderAlert": "সতর্কতা",
-    "HeaderAllowMediaDeletionFrom": "এর থেকে মিডিয়া মুছে ফেলার অনুমতি দিন:",
+    "HeaderAllowMediaDeletionFrom": "এর থেকে মিডিয়া মুছে ফেলার অনুমতি দিন",
     "HeaderApiKey": "API কী",
     "HeaderApiKeys": "API কী গুলি",
     "HeaderApiKeysHelp": "সার্ভারের সাথে যোগাযোগ করার জন্য বহিরাগত অ্যাপ্লিকেশনগুলির একটি API কী থাকা প্রয়োজন৷ কীগুলি একটি সাধারণ ব্যবহারকারীর অ্যাকাউন্টে লগ ইন করে বা ম্যানুয়ালি অ্যাপ্লিকেশনটিকে একটি কী প্রদান করে জারি করা হয়।",
@@ -317,7 +317,7 @@
     "HeaderAudioBooks": "অডিও বই",
     "HeaderAudioSettings": "অডিও সেটিংস",
     "HeaderAutoDiscovery": "নেটওয়ার্ক আবিষ্কার",
-    "HeaderBlockItemsWithNoRating": "শুন্য বা অস্বীকৃত রেটিং তথ্য ব্লক করুন:",
+    "HeaderBlockItemsWithNoRating": "শুন্য বা অস্বীকৃত রেটিং তথ্য ব্লক করুন",
     "HeaderBranding": "ব্র্যান্ডিং",
     "HeaderCancelRecording": "রেকর্ডিং বাতিল করুন",
     "MessageBrowsePluginCatalog": "এভিলেবল প্লাগইনগুলি দেখতে আমাদের প্লাগইন ক্যাটালগ ব্রাউজ করুন।"

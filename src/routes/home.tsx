@@ -98,6 +98,7 @@ type ControllerProps = {
     }, [ tabControllers ]);
 
     const loadTab = useCallback((index: number, previousIndex: number | null) => {
+		getTabContainers();
         getTabController(index).then((controller) => {
             const refresh = !controller.refreshed;
 

@@ -680,6 +680,7 @@
     "LabelEasyPinCode": "Kod PIN",
     "LabelEmbedAlbumArtDidl": "Wbudowana okładka albumu w DIDL",
     "LabelEmbedAlbumArtDidlHelp": "Niektóre urządzenia wybierają tę metodę uzyskiwania okładki albumu. Inne mogą nie odtwarzać, gdy ta opcja jest włączona.",
+    "LabelEnableAudioVbr": "Włącz kodowanie audio VBR",
     "LabelEnableAudioVbrHelp": "Zmienna przepływność bitów oferuje lepsze proporcje jakości do przepustowości w porównaniu z przepływnością średnią, ale w niektórych rzadkich przypadkach może powodować problemy z buforowaniem i zgodnością.",
     "LabelEnableAutomaticPortMap": "Mapuj porty automatycznie",
     "LabelEnableAutomaticPortMapHelp": "Umożliwia automatyczne przekierowanie publicznego portu na twoim ruterze do lokalnego portu na serwerze przy użyciu UPnP. Ta opcja może nie działać z niektórymi modelami ruterów lub w niektórych konfiguracjach sieci. Zmiany zaczną działać po ponownym uruchomieniu serwera.",

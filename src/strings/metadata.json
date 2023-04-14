@@ -187,7 +187,7 @@
     },
     "bn-BD": {
         "ccode": "bn-BD",
-        "fsize": 41131,
+        "fsize": 41129,
         "ccodeSrc": "en-US",
         "displayName": "Bengali",
         "displayNativeName": "বাংলা",
@@ -1868,7 +1868,7 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 119634,
+        "fsize": 119625,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
@@ -1967,17 +1967,17 @@
     },
     "pl": {
         "ccode": "pl",
-        "fsize": 120794,
+        "fsize": 120852,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
         "displayNativeName": "Polski",
         "ISO6391": "pl",
         "ISO6392": "pol",
-        "keys#": 1706,
-        "completed%": 92.72,
+        "keys#": 1707,
+        "completed%": 92.77,
         "jellyfinWeb": {
             "filename": "pl.json",
-            "keys#": 1706,
+            "keys#": 1707,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -1997,7 +1997,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.94
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "pl.json",
@@ -2152,17 +2152,17 @@
     },
     "ro": {
         "ccode": "ro",
-        "fsize": 121751,
+        "fsize": 122446,
         "ccodeSrc": "en-US",
         "displayName": "Romanian; Moldavian; Moldovan",
         "displayNativeName": "Română",
         "ISO6391": "ro",
         "ISO6392": "rum",
-        "keys#": 1667,
-        "completed%": 90.6,
+        "keys#": 1684,
+        "completed%": 91.52,
         "jellyfinWeb": {
             "filename": "ro.json",
-            "keys#": 1667,
+            "keys#": 1684,
             "orphans#": 16,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -2182,7 +2182,7 @@
                 "SetUsingLastTracksHelp",
                 "SetUsingLastTracks"
             ],
-            "completed%": 97.66
+            "completed%": 98.65
         },
         "myJelly": {
             "filename": "",
