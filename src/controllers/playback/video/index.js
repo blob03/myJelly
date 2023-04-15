@@ -1285,6 +1285,15 @@ import { PluginType } from '../../../types/plugin.ts';
             resetIdle();
         }
 
+		function onWheel(e) {
+            if (e.deltaY < 0) {
+                playbackManager.volumeUp(currentPlayer);
+            }
+            if (e.deltaY > 0) {
+                playbackManager.volumeDown(currentPlayer);
+            }
+        }
+		
         function onWindowMouseDown(e) {
             clickedElement = e.target;
             mouseIsDown = true;
@@ -1465,6 +1474,7 @@ import { PluginType } from '../../../types/plugin.ts';
                     capture: true,
                     passive: true
                 });
+				document.addEventListener('wheel', onWheel);
                 /* eslint-disable-next-line compat/compat */
                 dom.addEventListener(window, window.PointerEvent ? 'pointerdown' : 'mousedown', onWindowMouseDown, {
                     capture: true,
@@ -1506,6 +1516,7 @@ import { PluginType } from '../../../types/plugin.ts';
                 capture: true,
                 passive: true
             });
+			document.removeEventListener('wheel', onWheel);
             /* eslint-disable-next-line compat/compat */
             dom.removeEventListener(window, window.PointerEvent ? 'pointerdown' : 'mousedown', onWindowMouseDown, {
                 capture: true,

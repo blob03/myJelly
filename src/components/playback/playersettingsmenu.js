@@ -40,7 +40,7 @@ function showQualityMenu(player, btn) {
     });
 
     const selectedBitrate = selectedId.length ? selectedId[0].bitrate : null;
-
+	
     return actionsheet.show({
         items: menuItems,
         positionTo: btn
@@ -72,9 +72,9 @@ function showRepeatModeMenu(player, btn) {
     });
 
     menuItems.push({
-        name: globalize.translate('none'),
-        id: 'Repeatnone',
-        selected: currentValue === 'Repeatnone'
+        name: globalize.translate('RepeatNone'),
+        id: 'RepeatNone',
+        selected: currentValue === 'RepeatNone'
     });
 
     return actionsheet.show({
@@ -218,7 +218,7 @@ function showWithUser(options, player, user) {
         menuItems.push({
             name: globalize.translate('RepeatMode'),
             id: 'repeatmode',
-            asideText: repeatMode === 'Repeatnone' ? globalize.translate('none') : globalize.translate('' + repeatMode)
+            asideText: repeatMode === 'RepeatNone' ? globalize.translate('RepeatNone') : globalize.translate('' + repeatMode)
         });
     }
 
