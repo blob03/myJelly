@@ -817,7 +817,8 @@ import { PluginType } from '../../../types/plugin.ts';
             if (player.isLocalPlayer && appHost.supports('physicalvolumecontrol')) {
 				if (!userSettings.muteButton())
 					showMuteButton = false;
-                showVolumeSlider = false;
+				if (!userSettings.volumeSlider())
+					showVolumeSlider = false;
             }
 
             const buttonMute = view.querySelector('.buttonMute');

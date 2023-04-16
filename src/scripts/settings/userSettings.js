@@ -411,6 +411,7 @@ export class UserSettings {
 		userPrefs.libraryPageSize = "";
 		userPrefs.menuPin = "0";
 		userPrefs.muteButton = "false";
+		userPrefs.volumeSlider = "false";
 		userPrefs.nightModeSwitch = "0";
 		userPrefs.preferFmp4HlsContainer = "false";
 		userPrefs.screensaver = "none";
@@ -664,6 +665,19 @@ export class UserSettings {
 		}
 		
 		return toBoolean(this.get('muteButton'), false);
+	}
+	
+	/**
+     * Get or set 'Volume slider' state.
+     * @param {boolean|undefined} val - Flag to force the 'volume' slider in osd or undefined.
+     * @return {boolean} 'Volume slider' state.
+     */
+	volumeSlider(val) {
+		if (val !== undefined) {
+			return this.set('volumeSlider', val.toString());
+		}
+		
+		return toBoolean(this.get('volumeSlider'), false);
 	}
 	
 	/**
@@ -1814,6 +1828,7 @@ export const languageAlt = currentSettings.languageAlt.bind(currentSettings);
 export const dateTimeLocale = currentSettings.dateTimeLocale.bind(currentSettings);
 export const chromecastVersion = currentSettings.chromecastVersion.bind(currentSettings);
 export const muteButton = currentSettings.muteButton.bind(currentSettings);
+export const volumeSlider = currentSettings.volumeSlider.bind(currentSettings);
 export const enableRewatchingInNextUp = currentSettings.enableRewatchingInNextUp.bind(currentSettings);
 export const skipBackLength = currentSettings.skipBackLength.bind(currentSettings);
 export const skipForwardLength = currentSettings.skipForwardLength.bind(currentSettings);

@@ -1393,7 +1393,7 @@ select option:selected {
 }
 
 .headerWthIconBg,
-.ssWeatherIcon {
+.ssWeatherIconFrame {
 	background: rgba(130, 144, 164, 0.3) !important;
 }
 

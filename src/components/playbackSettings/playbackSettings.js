@@ -170,6 +170,7 @@ import template from './playbackSettings.template.html';
 		context.querySelector('.chkRememberAudioSelections').checked = user.Configuration.RememberAudioSelections || false;
 		context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
 		context.querySelector('.chkMuteButton').checked = userSettings.muteButton();
+		context.querySelector('.chkVolumeSlider').checked = userSettings.volumeSlider();
 		context.querySelector('.selectLabelMaxVideoWidth').value = appSettings.maxVideoWidth();
 		
 		// Following two options (checkboxes) are mutually exclusive.
@@ -204,6 +205,7 @@ import template from './playbackSettings.template.html';
         userSettings.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);
         userSettings.chromecastVersion(context.querySelector('.selectChromecastVersion').value);
 		userSettings.muteButton(context.querySelector('.chkMuteButton').checked);
+		userSettings.volumeSlider(context.querySelector('.chkVolumeSlider').checked);
         userSettings.skipForwardLength(context.querySelector('#sliderSkipForwardLength').value);
         userSettings.skipBackLength(context.querySelector('#sliderSkipBackLength').value);
 		

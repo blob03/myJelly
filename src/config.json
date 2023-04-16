@@ -49,32 +49,32 @@
 	"themes": [
 	{
 		"name": "Light alt. blue",
-		"version": "2.24",
+		"version": "2.25",
 		"id": "light-alt-blue",
 		"color": "#303030",
 		"group": "myJelly"
 	}, {
 		"name": "Halloween",
-		"version": "2.70",
+		"version": "2.71",
 		"id": "Halloween",
 		"color": "#282828",
 		"group": "myJelly"
 	}, {
 		"name": "Dark alt.",
-		"version": "2.27",
+		"version": "2.28",
 		"id": "dark-alt",
 		"color": "#202020",
 		"group": "myJelly",
 		"default": true
 	}, {
 		"name": "WMC alt.",
-		"version": "1.74",
+		"version": "1.75",
 		"id": "wmc-alt",
 		"color": "#0c2450",
 		"group": "myJelly"
 	}, {
 		"name": "WMC exp.",
-		"version": "0.18",
+		"version": "0.19",
 		"id": "wmc-exp",
 		"color": "#0c2450",
 		"group": "myJelly dev"
@@ -104,7 +104,7 @@
 		"color": "#0c2450"
 	}, {
 		"name": "Light alt.",
-		"version": "1.14",
+		"version": "1.15",
 		"id": "light-alt",
 		"color": "#fff",
 		"group": "myJelly"

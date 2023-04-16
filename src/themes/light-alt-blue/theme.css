@@ -585,7 +585,7 @@ h3 {
 }
 
 .nightMode .headerWthIconBg,
-.nightMode .ssWeatherIcon {
+.nightMode .ssWeatherIconFrame {
   box-shadow: 0 0 30px #fff, 0 0 40px #fcfcfc, 0 0 50px #fcfcfb, 0 0 60px #01cdfc;
 }
 

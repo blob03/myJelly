@@ -16,6 +16,10 @@
 	height: auto;
 }
 
+.ssClockFrame {
+	font-size: 150%;
+}
+
 .ssBackplane {
 	background: rgba(10,10,10,.8);
 	background-position: 0 0;
@@ -34,11 +38,10 @@
 	height: auto;
 	border: none;
 	outline: none;
-	font-size: 150%;
 	margin: 0 !important;
 }
 
-.ssForeplane {
+.ssClockForeplane {
 	background: rgba(0, 0, 0, 0);
 	outline: none;
 	height: auto;

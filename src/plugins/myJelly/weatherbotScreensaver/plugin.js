@@ -26,7 +26,7 @@ export default function () {
 
 	self.name = 'Weatherbot';
 	self.group = 'myJelly';
-	self.version = '1.6';
+	self.version = '1.7';
 	self.description = 'WeatherbotScreensaverHelp';
 	self.type = PluginType.Screensaver;
 	self.id = 'weatherbotscreensaver';
@@ -55,7 +55,7 @@ export default function () {
 		const wapikey = this.opts.apikey;
 		if (!wapikey) {
 			console.warn("No OpenWeather API key has been configured. Weatherbot will now stop.");
-			_show('ssForeplane', false);
+			_show('ssWBForeplane', false);
 			this.opts.msgstr.innerHTML = globalize.translate('MissingAPIKey');
 			_show('ssFailure', true);
 			return;
@@ -73,7 +73,7 @@ export default function () {
 		let self = this;
 		loading.show();
 		const _contimeout = setTimeout( () => {
-			_show('ssForeplane', false);
+			_show('ssWBForeplane', false);
 			self.opts.msgstr.innerHTML = globalize.translate('Connecting');
 			_show('ssFailure', true);
 		}, 3000);
@@ -170,11 +170,11 @@ export default function () {
 						self.opts.windirname.innerHTML = data.code;
 				}
 				
-				_show('ssForeplane', true);
+				_show('ssWBForeplane', true);
 			}
 		}).catch(function (data) {
 			clearInterval(_contimeout);
-			_show('ssForeplane', false);
+			_show('ssWBForeplane', false);
 			
 			if (data.status) {
 				let _msg = data.status;
@@ -196,7 +196,7 @@ export default function () {
             self.interval = null;
         }
 		_show('ssFailure', false);
-		_show('ssForeplane', false);
+		_show('ssWBForeplane', false);
     }
 
     self.show = function (TEST) {
@@ -259,22 +259,22 @@ export default function () {
 			+ '<div class="ssFailure hide">'
 			+ '<span id="ssMsg" class="ssWeatherData"></span>'
 			+ '</div>'
-			+ '<div id="ssPosition" class="ssForeplane hide">'
+			+ '<div id="ssPosition" class="ssWBForeplane hide">'
 			+ '<div id="ssLoc" class="ssWeatherData ssWeatherTitle"></div>'
 			+ '<div id="ssLoc2" class="ssWeatherData ssWeatherDataSmall"></div>'
 			+ '</div>'
-			+ '<div class="ssForeplane ssWeatherIcon hide">'
-			+ '<img id="ssIcon" class="ssWeatherData">'
+			+ '<div class="ssWeatherIconFrame ssWBForeplane hide">'
+			+ '<img id="ssWeatherIcon" class="ssWeatherData">'
 			+ '</div>'
-			+ '<div class="ssForeplane hide">'
+			+ '<div class="ssWBForeplane hide">'
 			+ '<span id="ssCond" class="ssWeatherData ssWeatherDataSmall"></span>'
 			+ '</div>'
 			
 			+'<div id="ssDataSection">'
 			
-			+ '<div class="ssForeplane hide" style="font-size: 250%">'
+			+ '<div class="ssWBForeplane hide" style="font-size: 250%">'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons thermostat"></span>'
+			+ '<span class="material-icons ssWeatherIcons thermostat"></span>'
 			+ '<div dir="ltr" style="display: flex;">'
 			+ '<span id="ssTemp" class="ssWeatherData"></span>';
 			
@@ -289,9 +289,9 @@ export default function () {
 			
 			+ '<div id="ssDataSubSection">'
 			
-			+ '<div class="ssForeplane hide">'
+			+ '<div class="ssWBForeplane hide">'
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons ssIconsSmall water_drop"></span>'
+			+ '<span class="material-icons ssWeatherIcons ssWeatherIconsSmall water_drop"></span>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<div dir="ltr" style="display: flex;">'
@@ -307,10 +307,10 @@ export default function () {
 			content += '</div>'
 			+ '</div>'
 			+ '</div>'
-			+ '<div class="ssForeplane hide">'
+			+ '<div class="ssWBForeplane hide">'
 			
 			+ '<div class="ssDataSection">'
-			+ '<span class="material-icons ssIcons ssIconsSmall air"></span>'
+			+ '<span class="material-icons ssWeatherIcons ssWeatherIconsSmall air"></span>'
 			+ '</div>'
 			+ '<div class="ssDataSection">'
 			+ '<div dir="ltr" style="display: flex;">'
@@ -344,7 +344,7 @@ export default function () {
 			self.opts.windirname = elem.querySelector("#ssWinDirName");
 			self.opts.msgstr = elem.querySelector("#ssMsg");
 			self.opts.conditionstr = elem.querySelector("#ssCond");
-			self.opts.iconstr = elem.querySelector("#ssIcon");
+			self.opts.iconstr = elem.querySelector("#ssWeatherIcon");
 			self.opts.city = elem.querySelector("#ssLoc");
 			self.opts.country = elem.querySelector("#ssLoc2");
 			self.opts.position = elem.querySelector("#ssPosition");

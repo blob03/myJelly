@@ -626,7 +626,7 @@ select option:selected {
 }
 
 .nightMode .headerWthIconBg,
-.nightMode .ssWeatherIcon {
+.nightMode .ssWeatherIconFrame {
 	box-shadow: 0 0 20px #3aff7e, 0 0 30px #95ffce, 0 0 50px #5ed7cb, 0 0 60px #59b0b5 !important;
 	color: #e0f1d7 !important;
 }
@@ -759,7 +759,7 @@ legend {
 }
 
 .headerWthIconBg,
-.ssWeatherIcon {
+.ssWeatherIconFrame {
 	background: rgba(106, 247, 182, 0.6) !important;
 }
 

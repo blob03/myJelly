@@ -12,7 +12,7 @@ export default function () {
 
 	self.name = 'Digital Clock';
 	self.group = 'myJelly';
-	self.version = '0.99';
+	self.version = '1.0';
 	self.description = 'ClockScreensaverHelp';
 	self.type = PluginType.Screensaver;
 	self.id = 'clockscreensaver';
@@ -61,13 +61,13 @@ export default function () {
 			const idx = randomInt(1, 4);
 			if (idx)
 				elem.classList.add('alt' + idx);
-			elem.innerHTML = '<div id="ssBackplane" class="ssBackplane skinHeader-withBackground headerClock headerClockMain headerClockActive">'
-				+ '<div id="ssClockDate" class="ssForeplane ssClockDate headerClockDate"></div>'
-				+ '<div id="ssClockTime" class="ssForeplane ssClockTime headerClockTime"></div>'
+			elem.innerHTML = '<div id="ssClockFrame" class="ssClockFrame ssBackplane skinHeader-withBackground headerClock headerClockMain headerClockActive">'
+				+ '<div id="ssClockDate" class="ssClockDate ssClockForeplane headerClockDate"></div>'
+				+ '<div id="ssClockTime" class="ssClockTime ssClockForeplane headerClockTime"></div>'
 				+ '</div>';
 			document.body.appendChild(elem);
 			
-			self._bpstr_ = document.getElementById("ssBackplane");
+			self._bpstr_ = document.getElementById("ssClockFrame");
 			self._datestr_ = document.getElementById("ssClockDate");
 			self._timestr_ = document.getElementById("ssClockTime");
 			
