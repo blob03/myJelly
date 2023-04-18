@@ -701,17 +701,17 @@
     },
     "es": {
         "ccode": "es",
-        "fsize": 124800,
+        "fsize": 126524,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Castilian",
         "displayNativeName": "Español, Castellano",
         "ISO6391": "es",
         "ISO6392": "spa",
-        "keys#": 1683,
-        "completed%": 91.27,
+        "keys#": 1707,
+        "completed%": 92.57,
         "jellyfinWeb": {
             "filename": "es.json",
-            "keys#": 1683,
+            "keys#": 1707,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -731,7 +731,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 98.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -2194,17 +2194,17 @@
     },
     "ru": {
         "ccode": "ru",
-        "fsize": 174497,
+        "fsize": 175953,
         "ccodeSrc": "en-US",
         "displayName": "Russian",
         "displayNativeName": "Русский",
         "ISO6391": "ru",
         "ISO6392": "rus",
-        "keys#": 1680,
-        "completed%": 91.11,
+        "keys#": 1688,
+        "completed%": 91.54,
         "jellyfinWeb": {
             "filename": "ru.json",
-            "keys#": 1680,
+            "keys#": 1688,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -2224,7 +2224,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 98.42
+            "completed%": 98.89
         },
         "myJelly": {
             "filename": "",
@@ -2806,17 +2806,17 @@
     },
     "zh-HK": {
         "ccode": "zh-HK",
-        "fsize": 69038,
+        "fsize": 69207,
         "ccodeSrc": "en-US",
         "displayName": "Chinese; Hong Kong",
         "displayNativeName": "廣東話 (香港)",
         "ISO6391": "zh-HK",
         "ISO6392": "chi",
-        "keys#": 1135,
-        "completed%": 61.55,
+        "keys#": 1138,
+        "completed%": 61.71,
         "jellyfinWeb": {
             "filename": "zh-HK.json",
-            "keys#": 1135,
+            "keys#": 1138,
             "orphans#": 7,
             "orphans": [
                 "LabelMaxScreenshotsPerItem",
@@ -2827,7 +2827,7 @@
                 "DashboardOperatingSystem",
                 "DashboardArchitecture"
             ],
-            "completed%": 66.49
+            "completed%": 66.67
         },
         "myJelly": {
             "filename": "",
