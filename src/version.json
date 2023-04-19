@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-43",
+	"version": "10.8.9-44",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -243,6 +243,7 @@
 		"10.8.9-40": "Synchronize translations.\nApply patch 'Add Ratings to Up Next Dialog Window'.\nAdd Ratings to playback settings menu.",
 		"10.8.9-41": "Synchronize translations.\nAdd missing translation keys 'RepeatNone' and 'Studio'.\nFix incorrect translation key and casing for 'RepeatNone'.\nApply patch 'Add video volume change on mouse scroll'.",
 		"10.8.9-42": "Synchronize translations.\nAdd an option to enable the volume slider on TV and other devices with physical volume control (playback settings).",
-		"10.8.9-43": "Synchronize translations.\nApply patch 'Move fetchLocal function to utils'.\nApply patch 'Add indexes to simplify route imports'.\nApply patch 'Fix rewind and fast forward buttons not showing on audio books in mobile layout'."
+		"10.8.9-43": "Synchronize translations.\nApply patch 'Move fetchLocal function to utils'.\nApply patch 'Add indexes to simplify route imports'.\nApply patch 'Fix rewind and fast forward buttons not showing on audio books in mobile layout'.",
+		"10.8.9-44": "Fix incorrect use of type const leading to type errors in some occasions (usersettings.js).\nApply patch 'Fix info header not updated on version change'."
 	}
 }

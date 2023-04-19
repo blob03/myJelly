@@ -740,7 +740,7 @@ export class UserSettings {
             return true;
         }
 		
-		const ret = parseInt(this.get('weatherbot'), 10);
+		let ret = parseInt(this.get('weatherbot'), 10);
 		if (isNaN(ret) || ret < 0 || ret > 15)
 			ret = 0;
         return ret;
@@ -874,7 +874,7 @@ export class UserSettings {
             return true;
         }
 		
-		const ret = parseInt(this.get('clock'), 10);
+		let ret = parseInt(this.get('clock'), 10);
 		if (isNaN(ret) || ret < 0 || ret > 3)
 			ret = 0;
         return ret;
@@ -1218,7 +1218,7 @@ export class UserSettings {
         if (val !== undefined)
             return this.set('nightModeSwitch', parseInt(val, 10));
 
-		const ret = parseInt(this.get('nightModeSwitch'), 10);
+		let ret = parseInt(this.get('nightModeSwitch'), 10);
 		// 0 is a valid value.
 		if (isNaN(ret) || ret < 0 || ret > 3) 
 			ret = 0; // default to 0 (disabled).
