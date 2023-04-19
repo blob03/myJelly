@@ -4,6 +4,7 @@
  */
 
 import Events from '../../../utils/events.ts';
+import { getItems } from '../../../utils/jellyfin-apiclient/getItems.ts';
 import * as userSettings from '../../../scripts/settings/userSettings';
 
 /**
@@ -89,7 +90,7 @@ export function getItemsForPlayback(apiClient, query) {
         query.EnableTotalRecordCount = false;
         query.CollapseBoxSetItems = false;
 
-        return apiClient.getItems(apiClient.getCurrentUserId(), query);
+        return getItems(apiClient, apiClient.getCurrentUserId(), query);
     }
 }
 

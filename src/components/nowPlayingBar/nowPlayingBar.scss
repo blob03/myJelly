@@ -13,7 +13,7 @@
     will-change: transform;
     contain: layout style;
     transition: transform 200ms ease-out;
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .nowPlayingBar-hidden {
@@ -108,7 +108,7 @@
     justify-content: flex-end;
     align-items: center;
     flex-shrink: 0;
-	
+
     [dir="ltr"] & {
         margin: 0 0.5em 0 auto;
     }
@@ -127,7 +127,7 @@
 
 .nowPlayingBarVolumeSliderContainer {
     [dir="ltr"] & {
-		margin-right: 2em;
+        margin-right: 2em;
     }
 
     [dir="rtl"] & {

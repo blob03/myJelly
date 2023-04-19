@@ -51,7 +51,7 @@
 
 .nowPlayingButtonsContainer {
     display: flex;
-	
+
     [dir="rtl"] & {
         flex-direction: row-reverse;
     }
@@ -92,7 +92,7 @@
     width: 16%;
     position: relative;
     flex-shrink: 0;
-	
+
     [dir="ltr"] & {
         margin-right: 1em;
     }
@@ -185,13 +185,16 @@
     height: 4.2em;
     right: 0;
     padding-left: 7.3%;
+    padding-left: max(env(safe-area-inset-left), 7.3%);
     padding-right: 7.3%;
+    padding-right: max(env(safe-area-inset-right), 7.3%);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .layout-desktop .playlistSectionButton,
 .layout-tv .playlistSectionButton {
     background: none;
-	color: inherit;
+    color: inherit;
 }
 
 .layout-desktop .nowPlayingPlaylist,
@@ -306,12 +309,12 @@
     .nowPlayingInfoButtons {
         justify-content: center;
         font-size: 1.5em;
-		margin-left: -0.5em;
+        margin-left: -0.5em;
         margin-right: -0.5em;
     }
 
     .nowPlayingPageImageContainer {
-	    display: flex;
+        display: flex;
         flex-direction: column;
         flex-grow: 1;
         flex-shrink: 1;
@@ -348,7 +351,7 @@
     .nowPlayingInfoControls .nowPlayingPageUserDataButtonsTitle button {
         padding-top: 0;
         border-radius: 0;
-		
+
         [dir="ltr"] & {
             padding-right: 0;
             margin-right: 0;
@@ -365,7 +368,7 @@
     .nowPlayingInfoButtons .btnRepeat,
     .nowPlayingInfoButtons .btnRewind {
         font-size: smaller;
-		
+
         [dir="ltr"] & {
             margin-left: 0;
             margin-right: auto;
@@ -380,7 +383,7 @@
     .nowPlayingInfoButtons .btnShuffleQueue,
     .nowPlayingInfoButtons .btnFastForward {
         font-size: smaller;
-		
+
         [dir="ltr"] & {
             margin-left: auto;
             margin-right: 0;
@@ -399,7 +402,7 @@
     .btnPlayPause {
         padding: 0;
         margin: 0;
-        font-size: 1.7em;
+        font-size: 2em;
     }
 
     .nowPlayingPageImage.nowPlayingPageImageAudio,
@@ -407,7 +410,6 @@
         width: auto;
         max-width: 100%;
         max-height: 100%;
-        width: auto;
     }
 
     .playlistSectionButton .volumecontrol {
