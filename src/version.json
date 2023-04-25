@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.9-45",
+	"version": "10.8.9-46",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -245,6 +245,7 @@
 		"10.8.9-42": "Synchronize translations.\nAdd an option to enable the volume slider on TV and other devices with physical volume control (playback settings).",
 		"10.8.9-43": "Synchronize translations.\nApply patch 'Move fetchLocal function to utils'.\nApply patch 'Add indexes to simplify route imports'.\nApply patch 'Fix rewind and fast forward buttons not showing on audio books in mobile layout'.",
 		"10.8.9-44": "Fix incorrect use of type const leading to type errors in some occasions (usersettings.js).\nApply patch 'Fix info header not updated on version change'.",
-		"10.8.9-45": "Apply patch 'reset long doubleclick time to 5 seconds'.\nApply patch 'Merge pull request #4221 from dann-merlin/fix_long_getItems_request_URL'.\nApply patch 'migrate from JavascriptSubtitlesOctopus to JASSUB'."
+		"10.8.9-45": "Apply patch 'reset long doubleclick time to 5 seconds'.\nApply patch 'Merge pull request #4221 from dann-merlin/fix_long_getItems_request_URL'.\nApply patch 'migrate from JavascriptSubtitlesOctopus to JASSUB'.",
+		"10.8.9-46": "Synchronize translations and node packages with master.\nApply patch 'Drop progressive transcoding in web client'.\nApply patch 'Add tonemap mode options'."
 	}
 }
