@@ -2,6 +2,7 @@
 import appInfo from '../version.json';
 const BASE_DEVICE_IMAGE_URL = 'assets/img/devices/';
 
+// audit note: this module is expected to return safe text for use in HTML
 function getWebDeviceIcon(browser) {
     switch (browser) {
 		case 'LG Smart TV':

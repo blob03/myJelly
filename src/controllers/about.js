@@ -202,15 +202,13 @@ class AboutTab {
     }
 	
 	cmp(x, y) {
-		const remote = x.split('-');
-		const local = y.split('-');
-		
-		if (remote[0] > local[0])
-			return true;
-		if (remote[0] === local[0]) {
-			if (parseInt(remote[1] || '0', 10) > parseInt(local[1] || '0', 10))
+		const remote = x.split('/[.-]/');
+		const local = y.split('/[.-]/');
+		let z = 0;
+		while (local[z] !== undefined || remote[z] != undefined) {
+			if ((parseInt(remote[z], 10) || 0) > (parseInt(local[z], 10) || 0))
 				return true;
-			return false;
+			++ z;
 		}
 		return false;
 	}
