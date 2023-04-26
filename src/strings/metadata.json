@@ -279,17 +279,17 @@
     },
     "cs": {
         "ccode": "cs",
-        "fsize": 120488,
+        "fsize": 120725,
         "ccodeSrc": "en-US",
         "displayName": "Czech",
         "displayNativeName": "Česky",
         "ISO6391": "cs",
         "ISO6392": "cze",
-        "keys#": 1708,
-        "completed%": 92.47,
+        "keys#": 1710,
+        "completed%": 92.58,
         "jellyfinWeb": {
             "filename": "cs.json",
-            "keys#": 1708,
+            "keys#": 1710,
             "orphans#": 16,
             "orphans": [
                 "ButtonNetwork",
@@ -309,7 +309,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.88
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",

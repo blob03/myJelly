@@ -1,3 +1,4 @@
+import escapeHtml from 'escape-html';
 import cardBuilder from '../../../components/cardbuilder/cardBuilder';
 import loading from '../../../components/loading/loading';
 import dom from '../../../scripts/dom';
