@@ -252,7 +252,7 @@
     "EnableFallbackFontHelp": "Habilita el uso de fuentes alternativas personalizadas. Esto puede evitar el problema del renderizado incorrecto de los subtítulos.",
     "EnableFasterAnimations": "Animaciones más rápidas",
     "EnableFasterAnimationsHelp": "Usar animaciones y transiciones más rapidas.",
-    "EnableGamepadHelp": "Recibir entrada de cualquier control conectado.",
+    "EnableGamepadHelp": "Recibir entrada de cualquier control conectado",
     "EnableHardwareEncoding": "Habilitar codificación por hardware",
     "EnableNextVideoInfoOverlay": "Mostrar la información del siguiente video durante la reproducción",
     "EnableNextVideoInfoOverlayHelp": "Al finalizar un video, mostrar información sobre el siguiente video a reproducir en la lista de reproducción actual.",

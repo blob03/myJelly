@@ -258,7 +258,7 @@
     "EnableFallbackFontHelp": "Ebligi laŭmendajn alternativajn tiparojn. Ĉi tio povas eviti la problemon de malĝusta subteksta bildigo.",
     "EnableFasterAnimations": "Pli rapidaj animacioj",
     "EnableFasterAnimationsHelp": "Uzi pli rapidajn animaciojn kaj transirojn.",
-    "EnableGamepadHelp": "Aŭskulti pri enigo de iuj konektitaj regiloj.",
+    "EnableGamepadHelp": "Aŭskulti pri enigo de iuj konektitaj regiloj",
     "EnableHardwareEncoding": "Ebligi aparatan kodadon",
     "EnableIntelLowPowerH264HwEncoder": "Ebligi aparataran kodilon de energiŝpariga Intel H.264",
     "EnableIntelLowPowerHevcHwEncoder": "Ebligi aparataran kodilon de energiŝpariga Intel HEVC",

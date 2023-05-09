@@ -1079,7 +1079,7 @@
     "MediaInfoAnamorphic": "Анаморфность",
     "MediaInfoAspectRatio": "Соотношение сторон",
     "MediaInfoBitDepth": "Разрядность",
-    "MediaInfoBitrate": "Потоковая скорость",
+    "MediaInfoBitrate": "Битрейт",
     "MediaInfoBlPresentFlag": "Флаг предустановки DV bl",
     "MediaInfoChannels": "Каналы",
     "MediaInfoCodec": "Кодек",

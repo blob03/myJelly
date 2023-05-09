@@ -690,7 +690,7 @@
     "LabelImageFetchersHelp": "Activer et classer vos récupérateurs d'images par ordre de priorité.",
     "LabelImageType": "Type d'image",
     "LabelImportOnlyFavoriteChannels": "Restreindre aux chaînes ajoutées aux favoris",
-    "LabelInNetworkSignInWithEasyPassword": "Activer l'authentification locale avec  un code Easy PIN",
+    "LabelInNetworkSignInWithEasyPassword": "Activer l'authentification locale avec un code Easy PIN",
     "LabelInNetworkSignInWithEasyPasswordHelp": "Utilisez le code PIN pour vous connecter sur votre réseau local. Votre mot de passe habituel ne sera nécessaire qu'à l'extérieur de du réseau local. Si le code PIN est vide, vous n'aurez pas besoin d'un mot de passe sur votre réseau local.",
     "LabelInternetQuality": "Qualité d'Internet",
     "LabelIsForced": "Forcé",

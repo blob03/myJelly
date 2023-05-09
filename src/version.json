@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.10-1",
+	"version": "10.8.10-2",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -248,6 +248,7 @@
 		"10.8.9-45": "Apply patch 'reset long doubleclick time to 5 seconds'.\nApply patch 'Merge pull request #4221 from dann-merlin/fix_long_getItems_request_URL'.\nApply patch 'migrate from JavascriptSubtitlesOctopus to JASSUB'.",
 		"10.8.9-46": "Synchronize translations and node packages with master.\nApply patch 'Drop progressive transcoding in web client'.\nApply patch 'Add tonemap mode options'.",
 		"10.8.10-0": "Synchronize translations with master.\nApply patch 'Escape device id in raw HTML'.\nFix bug in version comparator (tab 'About').",
-		"10.8.10-1": "Synchronize translations and node packages with master.\nFix import of escape-html missing."
+		"10.8.10-1": "Synchronize translations and node packages with master.\nFix import of escape-html missing.",
+		"10.8.10-2": "Synchronize translations with master.\nApply patch 'Fix query selector target'.\nApply patch 'Fix for position time bug for remote control player'.\nApply patch 'Add enum for library tab values'."
 	}
 }

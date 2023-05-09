@@ -258,7 +258,7 @@
     "EnableFallbackFontHelp": "தனிப்பயன் மாற்று எழுத்துருக்களை இயக்கவும். இது தவறான வசன ரெண்டரிங் சிக்கலைத் தவிர்க்கலாம்.",
     "EnableFasterAnimations": "வேகமான அனிமேஷன்கள்",
     "EnableFasterAnimationsHelp": "வேகமான அனிமேஷன்கள் மற்றும் மாற்றங்களைப் பயன்படுத்தவும்.",
-    "EnableGamepadHelp": "இணைக்கப்பட்ட எந்த கட்டுப்படுத்திகளிடமிருந்தும் உள்ளீட்டைக் கேளுங்கள்.",
+    "EnableGamepadHelp": "இணைக்கப்பட்ட எந்த கட்டுப்படுத்திகளிடமிருந்தும் உள்ளீட்டைக் கேளுங்கள்",
     "EnableHardwareEncoding": "வன்பொருள் குறியாக்கத்தை இயக்கு",
     "EnableIntelLowPowerH264HwEncoder": "Intel லோ-பவர் H.264 வன்பொருள் குறியாக்கியை இயக்கவும்",
     "EnableIntelLowPowerHevcHwEncoder": "Intel லோ-பவர் HEVC வன்பொருள் குறியாக்கியை இயக்கவும்",

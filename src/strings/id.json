@@ -259,7 +259,7 @@
     "EnableFallbackFontHelp": "Aktifkan font alternatif khusus. Ini dapat menghindari masalah rendering subtitle yang salah.",
     "EnableFasterAnimations": "Animasi lebih cepat",
     "EnableFasterAnimationsHelp": "Gunakan animasi dan transisi yang lebih cepat.",
-    "EnableGamepadHelp": "Dengarkan masukan dari pengontrol yang terhubung.",
+    "EnableGamepadHelp": "Dengarkan masukan dari pengontrol yang terhubung",
     "EnableHardwareEncoding": "Aktifkan pengkodean perangkat keras",
     "EnableIntelLowPowerH264HwEncoder": "Aktifkan enkoder perangkat Intel Low-Power H.264",
     "EnableIntelLowPowerHevcHwEncoder": "Aktifkan enkoder perangkat Intel Low-Power HEVC",

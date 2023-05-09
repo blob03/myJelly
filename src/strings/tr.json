@@ -259,7 +259,7 @@
     "EnableFallbackFontHelp": "Özel alternatif yazı tiplerini etkinleştirin. Bu, yanlış altyazı oluşturma sorununu önleyebilir.",
     "EnableFasterAnimations": "Daha hızlı animasyonlar",
     "EnableFasterAnimationsHelp": "Daha hızlı animasyonlar ve geçişler kullan.",
-    "EnableGamepadHelp": "Bağlı herhangi bir kontrolcüden gelen girişi dinleyin.",
+    "EnableGamepadHelp": "Bağlı herhangi bir kontrolcüden gelen girişi dinleyin",
     "EnableHardwareEncoding": "Donanım kodlamasını etkinleştir",
     "EnableIntelLowPowerH264HwEncoder": "Intel Low-Power H.264 donanım kodlayıcısını etkinleştirin",
     "EnableIntelLowPowerHevcHwEncoder": "Intel Low-Power HEVC donanım kodlayıcısını etkinleştirin",

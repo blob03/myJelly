@@ -259,7 +259,7 @@
     "EnableFallbackFontHelp": "Омогућите прилагођене алтернативне фонтове. Ово може избећи проблем са нетачним приказивањем титлова.",
     "EnableFasterAnimations": "Брже анимације",
     "EnableFasterAnimationsHelp": "Користите брже анимације и прелазе.",
-    "EnableGamepadHelp": "Слушајте унос са било ког повезаног контролера.",
+    "EnableGamepadHelp": "Слушајте унос са било ког повезаног контролера",
     "EnableHardwareEncoding": "Омогући хардверско кодирање",
     "EnableIntelLowPowerH264HwEncoder": "Омогућите Интелов хардверски енкодер ниске потрошње H.264",
     "EnableIntelLowPowerHevcHwEncoder": "Омогућите Интелов HEVC хардверски енкодер мале снаге",
