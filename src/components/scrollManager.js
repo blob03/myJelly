@@ -48,8 +48,8 @@ import layoutManager from './layoutManager';
         });
 
         elem.scrollTo(opts);
-    } catch (e) {
-        console.error('error checking ScrollToOptions support');
+    } catch {
+		// no scroll to options support
     }
 
     /**

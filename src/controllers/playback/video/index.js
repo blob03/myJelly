@@ -1502,6 +1502,7 @@ import { PluginType } from '../../../types/plugin.ts';
                     dom.addEventListener(document, 'click', onClickCapture, { capture: true });
                 }
             } catch (e) {
+				setBackdropTransparency(TRANSPARENCY_LEVEL.None); // reset state set in viewbeforeshow
                 appRouter.goHome();
             }
         });

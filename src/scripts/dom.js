@@ -94,8 +94,8 @@
             }
         });
         window.addEventListener('test', null, opts);
-    } catch (e) {
-        console.debug('error checking capture support');
+    } catch {
+		// no capture support
     }
 
     /**
