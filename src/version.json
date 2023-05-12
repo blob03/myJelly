@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.10-3",
+	"version": "10.8.10-4",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -250,6 +250,7 @@
 		"10.8.10-0": "Synchronize translations with master.\nApply patch 'Escape device id in raw HTML'.\nFix bug in version comparator (tab 'About').",
 		"10.8.10-1": "Synchronize translations and node packages with master.\nFix import of escape-html missing.",
 		"10.8.10-2": "Synchronize translations with master.\nApply patch 'Fix query selector target'.\nApply patch 'Fix for position time bug for remote control player'.\nApply patch 'Add enum for library tab values'.",
-		"10.8.10-3": "Synchronize translations and node packages with master.\nApply patch 'fix-can-go-back'.\nApply patch 'Remove error logs for checks expected to fail'.\nApply patch 'Fix white background on video refresh'."
+		"10.8.10-3": "Synchronize translations and node packages with master.\nApply patch 'fix-can-go-back'.\nApply patch 'Remove error logs for checks expected to fail'.\nApply patch 'Fix white background on video refresh'.",
+		"10.8.10-4": "Synchronize translations and node packages with master.\nApply patch 'Fix xss in api key page'.\nApply patch 'Add initial experimental layout with MUI components'."
 	}
 }

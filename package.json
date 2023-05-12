@@ -65,6 +65,8 @@
     "worker-loader": "3.0.8"
   },
   "dependencies": {
+    "@emotion/react": "11.10.5",
+    "@emotion/styled": "11.10.5",
     "@fontsource/noto-sans": "4.5.11",
     "@fontsource/noto-sans-hk": "4.5.12",
     "@fontsource/noto-sans-jp": "4.5.12",
@@ -73,6 +75,8 @@
     "@fontsource/noto-sans-tc": "4.5.12",
     "@jellyfin/sdk": "unstable",
     "@loadable/component": "5.15.3",
+    "@mui/icons-material": "5.10.14",
+    "@mui/material": "5.10.14",
     "blurhash": "2.0.5",
     "classlist.js": "https://github.com/eligrey/classList.js/archive/1.2.20180112.tar.gz",
     "classnames": "2.3.2",
@@ -86,7 +90,7 @@
     "flv.js": "1.6.2",
     "headroom.js": "0.12.0",
     "history": "5.3.0",
-    "hls.js": "1.4.0",
+    "hls.js": "1.4.1",
     "intersection-observer": "0.12.2",
     "jassub": "1.5.13",
     "jellyfin-apiclient": "1.10.0",

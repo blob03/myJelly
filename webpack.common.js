@@ -31,8 +31,18 @@ const config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         modules: [
+            path.resolve(__dirname, 'src'),
             path.resolve(__dirname, 'node_modules')
-        ]
+        ],
+        alias: {
+            '@mui/base': '@mui/base/legacy',
+            '@mui/lab': '@mui/lab/legacy',
+            '@mui/material': '@mui/material/legacy',
+            '@mui/private-theming': '@mui/private-theming/legacy',
+            '@mui/styled-engine': '@mui/styled-engine/legacy',
+            '@mui/system': '@mui/system/legacy',
+            '@mui/utils': '@mui/utils/legacy'
+        }
     },
     plugins: [
         new DefinePlugin({
