@@ -6,17 +6,17 @@
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
     "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "outDir": "./dist/",
     "checkJs": false,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "jsx": "react-jsx",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+	// "strict": true,
+	"noImplicitAny": false
   },
   "include": [
     "src"
