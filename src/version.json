@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.10-5",
+	"version": "10.8.10-6",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -252,6 +252,7 @@
 		"10.8.10-2": "Synchronize translations with master.\nApply patch 'Fix query selector target'.\nApply patch 'Fix for position time bug for remote control player'.\nApply patch 'Add enum for library tab values'.",
 		"10.8.10-3": "Synchronize translations and node packages with master.\nApply patch 'fix-can-go-back'.\nApply patch 'Remove error logs for checks expected to fail'.\nApply patch 'Fix white background on video refresh'.",
 		"10.8.10-4": "Synchronize translations and node packages with master.\nApply patch 'Fix xss in api key page'.\nApply patch 'Add initial experimental layout with MUI components'.",
-		"10.8.10-5": "Synchronize translations.\nApply patch 'Add drawer to experimental layout'.\nApply patch 'Fix config.json being cached'.\nApply patch 'Fix scrolling in add library dialog'."
+		"10.8.10-5": "Synchronize translations.\nApply patch 'Add drawer to experimental layout'.\nApply patch 'Fix config.json being cached'.\nApply patch 'Fix scrolling in add library dialog'.",
+		"10.8.10-6": "Synchronize translations and node packages with master.\nApply patch 'fix-some-of-the-code-smells'.\nApply patch 'Refactor experimental layout user menu'.\nApply patch 'Use optional chaining in home component'.\nApply patch 'Fix experimental layout app icon url'."
 	}
 }

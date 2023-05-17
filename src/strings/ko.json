@@ -1326,7 +1326,7 @@
     "PlayNextEpisodeAutomatically": "자동으로 다음 에피소드 재생",
     "PlaybackData": "재생 데이터",
     "PlaybackErrorNoCompatibleStream": "이 클라이언트는 미디어와 호환되지 않아 서버가 데이터를 전송하지 않았습니다.",
-    "PlaybackRate": "재생율",
+    "PlaybackRate": "재생 속도",
     "Played": "재생함",
     "Playlists": "재생목록",
     "PleaseAddAtLeastOneFolder": "추가 버튼을 클릭하여 하나 이상의 폴더를 라이브러리에 추가하십시오.",
