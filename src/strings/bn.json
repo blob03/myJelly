@@ -4,6 +4,7 @@
     "Books": "পুস্তকসমূহ",
     "Channels": "চ্যানেলসমূহ",
     "Collections": "সংগ্রহশালা",
+    "Default": "ডিফল্ট",
     "Favorites": "পছন্দসমূহ",
     "Folders": "ফোল্ডারসমূহ",
     "Genres": "শৈলীধারাসমূহ",
@@ -13,6 +14,7 @@
     "MusicVideos": "সঙ্গীত ভিডিয়ো সমূহ",
     "Photos": "চিত্রসমূহ",
     "Playlists": "প্লে লিস্ট সমূহ",
+    "Shows": "টিভি পর্ব",
     "Songs": "সঙ্গীতসমূহ",
     "Sync": "সমলয় স্থাপন",
     "ValueSpecialEpisodeName": "বিশেষ পর্ব - {0}"
