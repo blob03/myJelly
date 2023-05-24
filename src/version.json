@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.10-7",
+	"version": "10.8.10-8",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -254,6 +254,7 @@
 		"10.8.10-4": "Synchronize translations and node packages with master.\nApply patch 'Fix xss in api key page'.\nApply patch 'Add initial experimental layout with MUI components'.",
 		"10.8.10-5": "Synchronize translations.\nApply patch 'Add drawer to experimental layout'.\nApply patch 'Fix config.json being cached'.\nApply patch 'Fix scrolling in add library dialog'.",
 		"10.8.10-6": "Synchronize translations and node packages with master.\nApply patch 'fix-some-of-the-code-smells'.\nApply patch 'Refactor experimental layout user menu'.\nApply patch 'Use optional chaining in home component'.\nApply patch 'Fix experimental layout app icon url'.",
-		"10.8.10-7": "Synchronize translations and node packages with master.\nApply patch 'Fix missing translation for Studio'.\nApply patch 'Add device type for chromecast devices'.\nApply patch 'standalone-urls'.\nApply patch 'Add missing translation string for AllowCollectionManagement'.\nApply patch 'Add addplugin.html to the list of plugin pages for the drawer'."
+		"10.8.10-7": "Synchronize translations and node packages with master.\nApply patch 'Fix missing translation for Studio'.\nApply patch 'Add device type for chromecast devices'.\nApply patch 'standalone-urls'.\nApply patch 'Add missing translation string for AllowCollectionManagement'.\nApply patch 'Add addplugin.html to the list of plugin pages for the drawer'.",
+		"10.8.10-8": "Synchronize translations and node packages with master.\nApply patch 'player-add-favorite'.\nApply patch 'Fix additional parts not playing in episodes'."
 	}
 }
