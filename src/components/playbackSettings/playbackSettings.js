@@ -166,6 +166,7 @@ import template from './playbackSettings.template.html';
 		context.querySelector('#selectAudioLanguage').value = user.Configuration.AudioLanguagePreference || '';
          
 		context.querySelector('.chkPreferFmp4HlsContainer').checked = userSettings.preferFmp4HlsContainer();
+		context.querySelector('.chkEnableAudioNormalization').checked = userSettings.enableAudioNormalization();
 		context.querySelector('.chkExternalVideoPlayer').checked = appSettings.enableSystemExternalPlayers();
 		context.querySelector('.chkRememberAudioSelections').checked = user.Configuration.RememberAudioSelections || false;
 		context.querySelector('.selectChromecastVersion').value = userSettings.chromecastVersion();
@@ -200,6 +201,7 @@ import template from './playbackSettings.template.html';
         setMaxBitrateFromField(context.querySelector('.selectVideoInternetQuality'), false, 'Video');
         setMaxBitrateFromField(context.querySelector('.selectMusicInternetQuality'), false, 'Audio');
 
+		userSettings.enableAudioNormalization(context.querySelector('.chkEnableAudioNormalization').checked);
 		userSettings.enableNextVideoInfoOverlay(context.querySelector('.chkEnableNextVideoOverlay').checked);
 		userSettings.allowedAudioChannels(context.querySelector('#selectAllowedAudioChannels').value);
         userSettings.preferFmp4HlsContainer(context.querySelector('.chkPreferFmp4HlsContainer').checked);

@@ -106,8 +106,8 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                 elem.addEventListener('click', onPreviousPageClick);
             }
 			
-			if (tabContent.querySelector('.btnShuffle'))
-				tabContent.querySelector('.btnShuffle').classList.toggle('hide', result.TotalRecordCount < 1);
+			
+			tabContent.querySelector('.btnShuffle')?.classList.toggle('hide', result.TotalRecordCount < 1);
 
             isLoading = false;
             loading.hide();
@@ -278,8 +278,8 @@ import '../../elements/emby-itemscontainer/emby-itemscontainer';
                 onViewStyleChange();
                 itemsContainer.refreshItems();
             });
-			if (tabContent.querySelector('.btnShuffle'))
-				tabContent.querySelector('.btnShuffle').addEventListener('click', shuffle);
+			
+			tabContent.querySelector('.btnShuffle')?.addEventListener('click', shuffle);
         };
 
         if (userSettings.libraryPageSize() > 0) {

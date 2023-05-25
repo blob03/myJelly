@@ -574,6 +574,19 @@ export class UserSettings {
         return val;
     }
 
+	/**
+     * Get or set 'Enable Audio Normalization' state.
+     * @param {boolean|undefined} val - Flag to enable 'Enable Audio Normalization' or undefined.
+     * @return {boolean} 'Enable Audio Normalization' state.
+     */
+    enableAudioNormalization(val) {
+        if (val !== undefined) {
+            return this.set('enableAudioNormalization', val.toString(), false);
+        }
+
+        return toBoolean(this.get('enableAudioNormalization', false), true);
+    }
+	
     /**
      * Get or set 'Next Video Info Overlay' state.
      * @param {boolean|undefined} val - Flag to enable 'Next Video Info Overlay' or undefined.
@@ -1789,6 +1802,7 @@ export const allowedAudioChannels = currentSettings.allowedAudioChannels.bind(cu
 export const preferFmp4HlsContainer = currentSettings.preferFmp4HlsContainer.bind(currentSettings);
 export const enableCinemaMode = currentSettings.enableCinemaMode.bind(currentSettings);
 export const AudioLanguagePreference = currentSettings.AudioLanguagePreference.bind(currentSettings);
+export const enableAudioNormalization = currentSettings.enableAudioNormalization.bind(currentSettings);
 export const enableNextVideoInfoOverlay = currentSettings.enableNextVideoInfoOverlay.bind(currentSettings);
 export const enableVideoRemainingTime = currentSettings.enableVideoRemainingTime.bind(currentSettings);
 export const enableThemeSongs = currentSettings.enableThemeSongs.bind(currentSettings);
