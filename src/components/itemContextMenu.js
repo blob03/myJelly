@@ -100,7 +100,8 @@ import toast from './toast/toast';
         }
 
         if (!browser.tv) {
-            if (itemHelper.supportsAddingToCollection(item) && options.EnableCollectionManagement) {
+            
+			if (itemHelper.supportsAddingToCollection(item) && (user.Policy.IsAdministrator || user.Policy.EnableCollectionManagement)) {
                 commands.push({
                     name: globalize.translate('AddToCollection'),
                     id: 'addtocollection',
@@ -149,14 +150,20 @@ import toast from './toast/toast';
             });
         }
 
-        if (item.CanDelete && options.deleteItem !== false) {
-            if (item.Type === 'Playlist' || item.Type === 'BoxSet') {
+        if (user.Policy.EnableContentDeletion && item.CanDelete && options.deleteItem !== false) {
+			if (item.Type === 'Playlist') {
+				commands.push({
+                    name: globalize.translate('Delete'),
+                    id: 'delete',
+                    icon: 'delete'
+                });
+            } else if (item.Type === 'BoxSet' && user.Policy.EnableCollectionManagement) {
                 commands.push({
                     name: globalize.translate('Delete'),
                     id: 'delete',
                     icon: 'delete'
                 });
-            } else {
+            } else if (item.Type !== 'BoxSet') {
                 commands.push({
                     name: globalize.translate('DeleteMedia'),
                     id: 'delete',

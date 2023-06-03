@@ -64,7 +64,6 @@ function populateImageResolutionOptions(select) {
             page.querySelector('#selectLanguage').value = config.PreferredMetadataLanguage || '';
             page.querySelector('#selectCountry').value = config.MetadataCountryCode || '';
 			page.querySelector('#valDummyChapterDuration').value = config.DummyChapterDuration || '';
-            page.querySelector('#valDummyChapterCount').value = config.DummyChapterCount || '';
             page.querySelector('#txtChapterImageResolution').value = config.ChapterImageResolution || '';
             loading.hide();
         });
@@ -77,7 +76,6 @@ function populateImageResolutionOptions(select) {
             config.PreferredMetadataLanguage = form.querySelector('#selectLanguage').value;
             config.MetadataCountryCode = form.querySelector('#selectCountry').value;
 			config.DummyChapterDuration = form.querySelector('#valDummyChapterDuration').value;
-            config.DummyChapterCount = form.querySelector('#valDummyChapterCount').value;
             config.ChapterImageResolution = form.querySelector('#txtChapterImageResolution').value;
             ApiClient.updateServerConfiguration(config).then(Dashboard.processServerConfigurationUpdateResult);
         });
