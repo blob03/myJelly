@@ -1361,6 +1361,7 @@
     "PackageInstallFailed": "Instalace {0} (verze {1}) selhala.",
     "ParentalRating": "Rodičovské hodnocení",
     "PasswordMatchError": "Heslo a potvrzení hesla musí souhlasit.",
+    "PasswordRequiredForAdmin": "Administrátorské účty musejí mít nastaveno heslo.",
     "PasswordResetComplete": "Heslo bylo obnoveno.",
     "PasswordResetConfirmation": "Opravdu chcete obnovit heslo?",
     "PasswordResetProviderHelp": "Zvolte poskytovatele resetování hesla, který bude použit při žádosti tohoto uživatele o resetování hesla.",

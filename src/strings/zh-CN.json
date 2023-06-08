@@ -1361,6 +1361,7 @@
     "PackageInstallFailed": "{0}（版本 {1}）安装失败。",
     "ParentalRating": "家长分级",
     "PasswordMatchError": "密码和确认密码必须匹配。",
+    "PasswordRequiredForAdmin": "管理员账户需要密码。",
     "PasswordResetComplete": "密码已重置。",
     "PasswordResetConfirmation": "你确定要重置密码？",
     "PasswordResetProviderHelp": "选择一个密码重置提供者用于此用户申请重置密码。",

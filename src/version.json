@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.10-11",
+	"version": "10.8.10-12",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -258,6 +258,7 @@
 		"10.8.10-8": "Synchronize translations and node packages with master.\nApply patch 'player-add-favorite'.\nApply patch 'Fix additional parts not playing in episodes'.",
 		"10.8.10-9": "Synchronize translations.\nUninstall patch 'player-add-favorite', users have another favorite button waiting in the items' main page.",
 		"10.8.10-10": "Synchronize translations and node packages with master.\nApply patch 'audio-normalization'.",
-		"10.8.10-11": "Synchronize translations and node packages with master.\nApply patch 'Fix collection permission check in context menu'.\nApply patch 'Adapt dummy chapter settings and labels'.\nApply patch 'Add Music Videos under MusicArtist view'.\nApply patch 'update JASSUB'."
+		"10.8.10-11": "Synchronize translations and node packages with master.\nApply patch 'Fix collection permission check in context menu'.\nApply patch 'Adapt dummy chapter settings and labels'.\nApply patch 'Add Music Videos under MusicArtist view'.\nApply patch 'update JASSUB'.",
+		"10.8.10-12": "Synchronize translations and node packages with master.\nApply patch 'Require passwords when creating an admin user in the startup wizard'.\nFix: Populate the list of display languages with local dictionnaries rather than languages returned by the server (Startup Wizard)."
 	}
 }

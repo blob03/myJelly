@@ -1361,6 +1361,7 @@
     "PackageInstallFailed": "L'installation de {0} (version {1}) a échoué.",
     "ParentalRating": "Classification parentale",
     "PasswordMatchError": "Le mot de passe et sa confirmation doivent correspondre.",
+    "PasswordRequiredForAdmin": "Un mot de passe est requis pour les comptes administrateur.",
     "PasswordResetComplete": "Le mot de passe a été réinitialisé.",
     "PasswordResetConfirmation": "Êtes-vous sûr de vouloir réinitialiser le mot de passe ?",
     "PasswordResetProviderHelp": "Choisir un fournisseur de réinitialisation de mot de passe à utiliser lorsqu'un utilisateur demande la réinitialisation de son mot de passe.",

@@ -1361,6 +1361,7 @@
     "PackageInstallFailed": "Помилка встановлення {0} (версія {1}).",
     "ParentalRating": "Parental Rating",
     "PasswordMatchError": "Пароль і підтвердження пароля повинні збігатися.",
+    "PasswordRequiredForAdmin": "Для облікових записів адміністратора потрібен пароль.",
     "PasswordResetComplete": "Пароль скинуто.",
     "PasswordResetConfirmation": "Ви впевнені, що хочете скинути пароль?",
     "PasswordResetProviderHelp": "Виберіть метод скидання пароля, який буде використовуватися, коли цей користувач запитує скидання пароля.",
