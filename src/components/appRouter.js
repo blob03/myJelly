@@ -3,6 +3,7 @@ import { appHost } from './apphost';
 import { clearBackdrop, setBackdropTransparency } from './backdrop/backdrop';
 import globalize from '../scripts/globalize';
 import Events from '../utils/events.ts';
+import Dashboard from '../utils/dashboard';
 import itemHelper from './itemHelper';
 import loading from './loading/loading';
 import viewManager from './viewManager/viewManager';
@@ -163,20 +164,21 @@ class AppRouter {
             Events.off(apiClient, 'requestfail', this.onRequestFail);
             Events.on(apiClient, 'requestfail', this.onRequestFail);
         });
-
-        return ServerConnections.connect().then(result => {
-            this.firstConnectionResult = result;
-
-            // Handle the initial route
-            this.#goToRoute({ location: history.location });
-
-            // Handle route changes
-            history.listen(params => {
-                this.#goToRoute(params);
-            });
-        }).catch().then(() => {
-            loading.hide();
-        });
+		
+		//Ensure any active session is terminated.
+		Dashboard.logout();
+		
+		return ServerConnections.connect().then(result => {
+			this.firstConnectionResult = result;		
+			// Handle the initial route
+			this.#goToRoute({ location: history.location });
+			// Handle route changes
+			history.listen(params => {
+				this.#goToRoute(params);
+			});
+		}).catch().then(() => {
+			loading.hide();
+		});
     }
 
     baseUrl() {

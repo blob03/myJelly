@@ -9,16 +9,9 @@ import Dashboard from '../../../utils/dashboard';
 import globalize from '../../../scripts/globalize';
 import cultures from '../../../scripts/cultures';
 
-//function load(page, lang, languageOptions) {
 function load(page, lang) {
 	const allCultures = cultures.getDictionaries();
 	let selectLanguage = page.querySelector('#selectLocalizationLanguage');
-	//let allCultures = languageOptions.map( x => {
-	//	return {
-	//		Name: x.Name,
-	//		ISO6391: x.Value,
-	//	};
-	//});
 	settingsHelper.populateDictionaries(selectLanguage, allCultures, "displayNativeName", lang);
 	loading.hide();
 }
@@ -55,9 +48,7 @@ export default function (view) {
 	
 	const defaultLang = globalize.getDefaultCulture().ccode;
 	const promise1 = ApiClient.getJSON(ApiClient.getUrl('Startup/Configuration'));
-	//const promise2 = ApiClient.getJSON(ApiClient.getUrl('Localization/Options'));
 	let config = [];
-	//Promise.all([promise1, promise2]).then(function (responses) {
 	Promise.all([promise1]).then(function (responses) {
 		config = { ...responses[0] };
 		if (!config.UICulture)
