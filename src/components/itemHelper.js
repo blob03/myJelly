@@ -310,7 +310,7 @@ export function supportsMediaSourceSelection (item) {
 }
 
 export function sortTracks (trackA, trackB) {
-    let cmp = trackA.IsExternal - trackB.IsExternal;
+	let cmp = trackA.IsExternal - trackB.IsExternal;
     if (cmp != 0) return cmp;
     cmp = trackB.IsForced - trackA.IsForced;
     if (cmp != 0) return cmp;

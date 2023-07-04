@@ -318,11 +318,13 @@ import './login.scss';
 		}
 
         function getApiClient() {
+			let apiClient;
             const serverId = params? params.serverid: null;
             if (serverId) {
-                return ServerConnections.getOrCreateApiClient(serverId);
+				apiClient = ServerConnections.getApiClient(serverId);
             }
-            return ServerConnections.currentApiClient();
+			
+            return apiClient?apiClient:ServerConnections.currentApiClient();
         }
 
         function showVisualForm() {

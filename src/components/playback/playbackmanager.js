@@ -1250,14 +1250,8 @@ class PlaybackManager {
                 }
             }
 
-            let nextIndex = indexInList + 1;
-            if (nextIndex >= mediaStreams.length) {
-                nextIndex = 0;
-            }
-
-            nextIndex = nextIndex === -1 ? -1 : mediaStreams[nextIndex].Index;
-
-            self.setAudioStreamIndex(nextIndex, player);
+			if (indexInList !== -1)
+				self.setAudioStreamIndex(mediaStreams[indexInList].Index, player);
         };
 
         self.changeSubtitleStream = function (player) {

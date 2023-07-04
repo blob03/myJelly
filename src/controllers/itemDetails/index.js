@@ -256,7 +256,7 @@ function renderAudioSelections(page, mediaSources) {
     select.setLabel(globalize.translate('Audio'));
     const selectedId = mediaSource.DefaultAudioStreamIndex;
     select.innerHTML = tracks.map(function (v) {
-        const selected = v.Index === selectedId ? ' selected' : '';
+        const selected = v.Index === selectedId ? 'selected' : '';
         return '<option value="' + v.Index + '" ' + selected + '>' + v.DisplayTitle + '</option>';
     }).join('');
 

@@ -399,6 +399,8 @@ import globalize from '../../scripts/globalize';
         } else {
             startInterval(this);
         }
+		
+		updateValues.call(this);
     };
 
     /**

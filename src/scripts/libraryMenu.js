@@ -714,7 +714,7 @@ import { currentSettings, enableNightModeSwitch, enableMenuPin, toggleNightMode,
             icon: 'bug_report'
         });
         links.push({
-            name: globalize.translate('TabNotifications'),
+            name: globalize.translate('Notifications'),
             icon: 'notifications',
             href: '#/notificationsettings.html',
             pageIds: ['notificationSettingsPage', 'notificationSettingPage']

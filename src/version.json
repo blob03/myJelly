@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.10-13",
+	"version": "10.8.10-14",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -260,6 +260,7 @@
 		"10.8.10-10": "Synchronize translations and node packages with master.\nApply patch 'audio-normalization'.",
 		"10.8.10-11": "Synchronize translations and node packages with master.\nApply patch 'Fix collection permission check in context menu'.\nApply patch 'Adapt dummy chapter settings and labels'.\nApply patch 'Add Music Videos under MusicArtist view'.\nApply patch 'update JASSUB'.",
 		"10.8.10-12": "Synchronize translations and node packages with master.\nApply patch 'Require passwords when creating an admin user in the startup wizard'.\nFix: Populate the list of available languages with local dictionaries (Wizard/Startup page).",
-		"10.8.10-13": "Added: Forced termination of any active session at router startup (appRouter)."
+		"10.8.10-13": "Added: Forced termination of any active session at router startup (appRouter).",
+		"10.8.10-14": "Synchronize translations and node packages with master.\nFix: Undefined serverid/apiclient causes appRouter failure to start up.\nFix: Incorrect key used for the notification tab (Dashboard).\nApply patch 'Disable ALAC on MacOS in non-Safari browsers'.\nApply patch 'Fix xss in custom subtitles element'.\nApply ptach 'Fix initial state of volume slider'."
 	}
 }
