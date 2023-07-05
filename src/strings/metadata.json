@@ -1006,17 +1006,17 @@
     },
     "fa": {
         "ccode": "fa",
-        "fsize": 133079,
+        "fsize": 133128,
         "ccodeSrc": "en-US",
         "displayName": "Persian",
         "displayNativeName": "فارسی",
         "ISO6391": "fa",
         "ISO6392": "per",
-        "keys#": 1456,
-        "completed%": 78.62,
+        "keys#": 1457,
+        "completed%": 78.67,
         "jellyfinWeb": {
             "filename": "fa.json",
-            "keys#": 1456,
+            "keys#": 1457,
             "orphans#": 23,
             "orphans": [
                 "LabelSelectUsers",
@@ -1043,7 +1043,7 @@
                 "LabelMonitorUsers",
                 "LabelNotificationEnabled"
             ],
-            "completed%": 84.8
+            "completed%": 84.86
         },
         "myJelly": {
             "filename": "",
@@ -1196,7 +1196,7 @@
     },
     "fr": {
         "ccode": "fr",
-        "fsize": 129546,
+        "fsize": 129545,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
@@ -1306,17 +1306,17 @@
     },
     "he": {
         "ccode": "he",
-        "fsize": 70875,
+        "fsize": 70960,
         "ccodeSrc": "en-US",
         "displayName": "Hebrew",
         "displayNativeName": "עברית",
         "ISO6391": "he",
         "ISO6392": "heb",
-        "keys#": 1039,
-        "completed%": 56.1,
+        "keys#": 1040,
+        "completed%": 56.16,
         "jellyfinWeb": {
             "filename": "he.json",
-            "keys#": 1039,
+            "keys#": 1040,
             "orphans#": 19,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1339,7 +1339,7 @@
                 "DashboardOperatingSystem",
                 "Screenshot"
             ],
-            "completed%": 60.51
+            "completed%": 60.57
         },
         "myJelly": {
             "filename": "",
@@ -1425,7 +1425,7 @@
     },
     "hu": {
         "ccode": "hu",
-        "fsize": 125866,
+        "fsize": 125877,
         "ccodeSrc": "en-US",
         "displayName": "Hungarian",
         "displayNativeName": "Magyar",
@@ -2122,17 +2122,17 @@
     },
     "ms": {
         "ccode": "ms",
-        "fsize": 13156,
+        "fsize": 13612,
         "ccodeSrc": "en-US",
         "displayName": "Malay",
         "displayNativeName": "Bahasa Melayu",
         "ISO6391": "ms",
         "ISO6392": "may",
-        "keys#": 238,
-        "completed%": 12.85,
+        "keys#": 244,
+        "completed%": 13.17,
         "jellyfinWeb": {
             "filename": "ms.json",
-            "keys#": 238,
+            "keys#": 244,
             "orphans#": 4,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -2140,7 +2140,7 @@
                 "DashboardOperatingSystem",
                 "DashboardArchitecture"
             ],
-            "completed%": 13.86
+            "completed%": 14.21
         },
         "myJelly": {
             "filename": "",
