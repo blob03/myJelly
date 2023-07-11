@@ -3774,18 +3774,19 @@ class PlaybackManager {
 
     audioTracks(player = this._currentPlayer) {
         if (player.audioTracks) {
-            const result = player.audioTracks();
-            if (result) {
-                return result.sort(itemHelper.sortTracks);
+            let tracks = player.audioTracks();
+            if (tracks) {
+                return tracks.sort(itemHelper.sortTracks);
             }
         }
 
         const mediaSource = this.currentMediaSource(player);
 
         const mediaStreams = (mediaSource || {}).MediaStreams || [];
-        return mediaStreams.filter(function (s) {
+		let tracks = mediaStreams.filter(function (s) {
             return s.Type === 'Audio';
-			}).sort(itemHelper.sortTracks);
+		});
+		return tracks.sort(itemHelper.sortTracks);
     }
 
     subtitleTracks(player = this._currentPlayer) {

@@ -248,7 +248,7 @@ function renderVideoSelections(page, mediaSources) {
 function renderAudioSelections(page, mediaSources) {
     const mediaSource = getSelectedMediaSource(page, mediaSources);
 	
-    const tracks = mediaSource.MediaStreams.filter(function (m) {
+    let tracks = mediaSource.MediaStreams.filter(function (m) {
         return m.Type === 'Audio';
     });
 	tracks.sort(itemHelper.sortTracks);

@@ -26,12 +26,6 @@ import { getParameterByName } from '../../../utils/url.ts';
         }).join('');
     }
 
-    Array.prototype.remove = function (from, to) {
-        const rest = this.slice((to || from) + 1 || this.length);
-        this.length = from < 0 ? this.length + from : from;
-        return this.push.apply(this, rest);
-    };
-
     const ScheduledTaskPage = {
         refreshScheduledTask: function (view) {
             loading.show();
@@ -59,13 +53,13 @@ import { getParameterByName } from '../../../utils/url.ts';
 
                 html += '<div class="listItem listItem-border">';
                 html += '<span class="material-icons listItemIcon schedule"></span>';
-                if (trigger.MaxRuntimeMs) {
+                if (trigger.MaxRuntimeTicks) {
                     html += '<div class="listItemBody two-line">';
                 } else {
                     html += '<div class="listItemBody">';
                 }
                 html += "<div class='listItemBodyText'>" + ScheduledTaskPage.getTriggerFriendlyName(trigger) + '</div>';
-                if (trigger.MaxRuntimeMs) {
+                if (trigger.MaxRuntimeTicks) {
                     html += '<div class="listItemBodyText secondary">';
                     const hours = trigger.MaxRuntimeTicks / 36e9;
                     if (hours == 1) {
@@ -145,7 +139,7 @@ import { getParameterByName } from '../../../utils/url.ts';
             loading.show();
             const id = getParameterByName('id');
             ApiClient.getScheduledTask(id).then(function (task) {
-                task.Triggers.remove(index);
+                task.Triggers.splice(index, 1);
                 ApiClient.updateScheduledTaskTriggers(task.Id, task.Triggers).then(function () {
                     ScheduledTaskPage.refreshScheduledTask(view);
                 });
@@ -203,7 +197,7 @@ import { getParameterByName } from '../../../utils/url.ts';
             let timeLimit = $('#txtTimeLimit', page).val() || '0';
             timeLimit = parseFloat(timeLimit) * 3600000;
 
-            trigger.MaxRuntimeMs = timeLimit || null;
+            trigger.MaxRuntimeTicks = timeLimit * 1e4 || null;
 
             return trigger;
         }
