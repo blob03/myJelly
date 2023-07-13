@@ -50,10 +50,10 @@ import alert from '../../components/alert';
                     });
 
                     config.IsRemoteIPFilterBlacklist = form.querySelector('#selectExternalAddressFilterMode').value === 'blacklist';
-                    config.PublicPort = form.querySelector('#txtPublicPort').value;
+                    config.PublicHttpPort = form.querySelector('#txtPublicHttpPort').value;
                     config.PublicHttpsPort = form.querySelector('#txtPublicHttpsPort').value;
-                    config.HttpServerPortNumber = form.querySelector('#txtPortNumber').value;
-                    config.HttpsPortNumber = form.querySelector('#txtHttpsPort').value;
+                    config.InternalHttpPort = form.querySelector('#txtPortNumber').value;
+					config.InternalHttpsPort = form.querySelector('#txtHttpsPort').value;
                     config.EnableHttps = form.querySelector('#chkEnableHttps').checked;
                     config.RequireHttps = form.querySelector('#chkRequireHttps').checked;
                     config.EnableUPnP = enableUpnp;
@@ -61,16 +61,9 @@ import alert from '../../components/alert';
                     config.EnableRemoteAccess = form.querySelector('#chkRemoteAccess').checked;
                     config.CertificatePath = form.querySelector('#txtCertificatePath').value || null;
                     config.CertificatePassword = form.querySelector('#txtCertPassword').value || null;
-                    config.UPnPCreateHttpPortMap = form.querySelector('#chkCreateHttpPortMap').checked;
                     config.AutoDiscovery = form.querySelector('#chkAutodiscovery').checked;
-                    config.AutoDiscoveryTracing = form.querySelector('#chkAutodiscoveryTracing').checked;
-                    config.EnableIPV6 = form.querySelector('#chkEnableIP6').checked;
-                    config.EnableIPV4 = form.querySelector('#chkEnableIP4').checked;
-                    config.UPnPCreateHttpPortMap = form.querySelector('#chkCreateHttpPortMap').checked;
-                    config.UDPPortRange = form.querySelector('#txtUDPPortRange').value;
-                    config.HDHomerunPortRange = form.querySelector('#txtHDHomerunPortRange').value;
-                    config.EnableSSDPTracing = form.querySelector('#chkEnableSSDPTracing').checked;
-                    config.SSDPTracingFilter = form.querySelector('#txtSSDPTracingFilter').value;
+                    config.EnableIPv6 = form.querySelector('#chkEnableIP6').checked;
+					config.EnableIPv4 = form.querySelector('#chkEnableIP4').checked;
                     ApiClient.updateNamedConfiguration('network', config).then(Dashboard.processServerConfigurationUpdateResult, Dashboard.processErrorResponse);
                 });
             });
@@ -85,7 +78,7 @@ import alert from '../../components/alert';
     }
 
     function getValidationAlert(form) {
-        if (form.querySelector('#txtPublicPort').value === form.querySelector('#txtPublicHttpsPort').value) {
+        if (form.querySelector('#txtPublicHttpPort').value === form.querySelector('#txtPublicHttpsPort').value) {
             return 'The public http and https ports must be different.';
         }
 
@@ -133,8 +126,8 @@ import alert from '../../components/alert';
 
     export default function (view) {
         function loadPage(page, config) {
-            page.querySelector('#txtPortNumber').value = config.HttpServerPortNumber;
-            page.querySelector('#txtPublicPort').value = config.PublicPort;
+            page.querySelector('#txtPortNumber').value = config.InternalHttpPort;
+			page.querySelector('#txtPublicHttpPort').value = config.PublicHttpPort;
             page.querySelector('#txtPublicHttpsPort').value = config.PublicHttpsPort;
             page.querySelector('#txtLocalAddress').value = (config.LocalNetworkAddresses || []).join(', ');
             page.querySelector('#txtLanNetworks').value = (config.LocalNetworkSubnets || []).join(', ');
@@ -142,7 +135,7 @@ import alert from '../../components/alert';
             page.querySelector('#txtExternalAddressFilter').value = (config.RemoteIPFilter || []).join(', ');
             page.querySelector('#selectExternalAddressFilterMode').value = config.IsRemoteIPFilterBlacklist ? 'blacklist' : 'whitelist';
             page.querySelector('#chkRemoteAccess').checked = config.EnableRemoteAccess == null || config.EnableRemoteAccess;
-            page.querySelector('#txtHttpsPort').value = config.HttpsPortNumber;
+            page.querySelector('#txtHttpsPort').value = config.InternalHttpsPort;
             page.querySelector('#chkEnableHttps').checked = config.EnableHttps;
             page.querySelector('#chkRequireHttps').checked = config.RequireHttps;
             page.querySelector('#txtBaseUrl').value = config.BaseUrl || '';
@@ -151,16 +144,9 @@ import alert from '../../components/alert';
             page.querySelector('#txtCertPassword').value = config.CertificatePassword || '';
             page.querySelector('#chkEnableUpnp').checked = config.EnableUPnP;
             triggerChange(page.querySelector('#chkRemoteAccess'));
-            page.querySelector('#chkCreateHttpPortMap').checked = config.UPnPCreateHttpPortMap;
             page.querySelector('#chkAutodiscovery').checked = config.AutoDiscovery;
-            page.querySelector('#chkAutodiscoveryTracing').checked = config.AutoDiscoveryTracing;
-            page.querySelector('#chkEnableIP6').checked = config.EnableIPV6;
-            page.querySelector('#chkEnableIP4').checked = config.EnableIPV4;
-            page.querySelector('#chkCreateHttpPortMap').checked = config.UPnPCreateHttpPortMap;
-            page.querySelector('#txtUDPPortRange').value = config.UDPPortRange || '';
-            page.querySelector('#txtHDHomerunPortRange').checked = config.HDHomerunPortRange || '';
-            page.querySelector('#chkEnableSSDPTracing').checked = config.EnableSSDPTracing;
-            page.querySelector('#txtSSDPTracingFilter').value = config.SSDPTracingFilter || '';
+            page.querySelector('#chkEnableIP6').checked = config.EnableIPv6;
+            page.querySelector('#chkEnableIP4').checked = config.EnableIPv4;
             page.querySelector('#txtPublishedServer').value = (config.PublishedServerUriBySubnet || []).join(', ');
             loading.hide();
         }
@@ -169,13 +155,13 @@ import alert from '../../components/alert';
             if (this.checked) {
                 view.querySelector('.fldExternalAddressFilter').classList.remove('hide');
                 view.querySelector('.fldExternalAddressFilterMode').classList.remove('hide');
-                view.querySelector('.fldPublicPort').classList.remove('hide');
+                view.querySelector('.fldPublicHttpPort').classList.remove('hide');
                 view.querySelector('.fldPublicHttpsPort').classList.remove('hide');
                 view.querySelector('.fldEnableUpnp').classList.remove('hide');
             } else {
                 view.querySelector('.fldExternalAddressFilter').classList.add('hide');
                 view.querySelector('.fldExternalAddressFilterMode').classList.add('hide');
-                view.querySelector('.fldPublicPort').classList.add('hide');
+                view.querySelector('.fldPublicHttpPort').classList.add('hide');
                 view.querySelector('.fldPublicHttpsPort').classList.add('hide');
                 view.querySelector('.fldEnableUpnp').classList.add('hide');
             }

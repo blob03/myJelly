@@ -21,9 +21,6 @@ type IProps = {
 const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
     const element = useRef<HTMLDivElement>(null);
 	const PASS_PLACEHOLDER = '********';
-	const EASYPASS_LEN_MAX = 8;
-	const EASYPASS_PACEHOLDER = '*'.repeat(EASYPASS_LEN_MAX);
-	const EASYPASS_PATTERN = "[0-9]{1," + EASYPASS_LEN_MAX + "}";
 	
     const loadUser = useCallback(() => {
         const page = element.current;
@@ -43,8 +40,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                     throw new Error('Unexpected null user.Configuration');
                 }
 
-                let showLocalAccessSection = false;
-
 				const txtNewPassword = page.querySelector('#txtNewPassword') as HTMLInputElement;
 				const txtNewPasswordConfirm = page.querySelector('#txtNewPasswordConfirm') as HTMLInputElement;
 				txtNewPassword.value = '';
@@ -54,7 +49,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 					txtNewPassword.placeholder = PASS_PLACEHOLDER;
 					txtNewPasswordConfirm.placeholder = PASS_PLACEHOLDER;
                     (page.querySelector('#btnResetPassword') as HTMLDivElement).classList.remove('hide');
-                    showLocalAccessSection = true;
                 } else {
 					txtNewPassword.removeAttribute('placeholder');
 					txtNewPasswordConfirm.removeAttribute('placeholder');
@@ -66,26 +60,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                 } else {
                     (page.querySelector('.passwordSection') as HTMLDivElement).classList.add('hide');
                 }
-
-                if (showLocalAccessSection && (loggedInUser?.Policy?.IsAdministrator || user.Policy.EnableUserPreferenceAccess)) {
-                    (page.querySelector('.localAccessSection') as HTMLDivElement).classList.remove('hide');
-                } else {
-                    (page.querySelector('.localAccessSection') as HTMLDivElement).classList.add('hide');
-                }
-
-                const txtEasyPassword = page.querySelector('#txtEasyPassword') as HTMLInputElement;
-                txtEasyPassword.value = '';
-
-                if (user.HasConfiguredEasyPassword) {
-                    txtEasyPassword.placeholder = EASYPASS_PACEHOLDER;
-                    (page.querySelector('#btnResetEasyPassword') as HTMLDivElement).classList.remove('hide');
-                } else {
-                    txtEasyPassword.removeAttribute('placeholder');
-                    (page.querySelector('#btnResetEasyPassword') as HTMLDivElement).classList.add('hide');
-                }
-
-                const chkEnableLocalEasyPassword = page.querySelector('.chkEnableLocalEasyPassword') as HTMLInputElement;
-                chkEnableLocalEasyPassword.checked = user.Configuration.EnableLocalPassword || false;
 
             });
         });
@@ -144,61 +118,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 					}
 				);
 			});
-        };
-
-        const onLocalAccessSubmit = (e: Event) => {
-            loading.show();
-            saveEasyPassword();
-            e.preventDefault();
-            return false;
-        };
-
-        const saveEasyPassword = () => {
-            const easyPassword = (page.querySelector('#txtEasyPassword') as HTMLInputElement).value;
-			if (easyPassword) {
-				if (isNaN(parseInt(easyPassword, 10)) || easyPassword.length > EASYPASS_LEN_MAX) {
-					loading.hide();
-					toast(globalize.translate('EasyPasswordLenMax', EASYPASS_LEN_MAX));
-					return;
-				}
-                window.ApiClient.updateEasyPassword(userId, easyPassword).then(function () {
-                    onEasyPasswordSaved();
-                });
-            } else {
-                onEasyPasswordSaved();
-            }
-        };
-
-        const onEasyPasswordSaved = () => {
-            window.ApiClient.getUser(userId).then(function (user) {
-                if (!user.Configuration) {
-                    throw new Error('Unexpected null user.Configuration');
-                }
-
-                if (!user.Id) {
-                    throw new Error('Unexpected null user.Id');
-                }
-
-                user.Configuration.EnableLocalPassword = (page.querySelector('.chkEnableLocalEasyPassword') as HTMLInputElement).checked;
-                window.ApiClient.updateUserConfiguration(user.Id, user.Configuration).then(function () {
-                    loading.hide();
-                    toast(globalize.translate('SettingsSaved'));
-                    loadUser();
-                });
-            });
-        };
-
-        const resetEasyPassword = () => {
-            const msg = globalize.translate('PinCodeResetConfirmation');
-
-            confirm(msg, globalize.translate('HeaderPinCodeReset')).then(function () {
-                loading.show();
-                window.ApiClient.resetEasyPassword(userId).then(function () {
-                    loading.hide();
-					toast(globalize.translate('PinCodeResetComplete'));
-                    loadUser();
-                });
-            });
         };
 
         const resetPassword = () => {
@@ -260,9 +179,7 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
 		(page.querySelector('#selectPresets') as HTMLSelectElement).addEventListener('change', onPresetChange);
 		(page.querySelector('#selectPresets') as HTMLSelectElement).dispatchEvent(new CustomEvent('change', undefined));
         (page.querySelector('.updatePasswordForm') as HTMLFormElement).addEventListener('submit', onSubmit);
-        (page.querySelector('.localAccessForm') as HTMLFormElement).addEventListener('submit', onLocalAccessSubmit);
-
-        (page.querySelector('#btnResetEasyPassword') as HTMLButtonElement).addEventListener('click', resetEasyPassword);
+       
         (page.querySelector('#btnResetPassword') as HTMLButtonElement).addEventListener('click', resetPassword);
 		(page.querySelector('#btnResetSettings') as HTMLButtonElement).addEventListener('click', resetSettings);
     }, [loadUser, userId]);
@@ -325,52 +242,6 @@ const UserPasswordForm: FunctionComponent<IProps> = ({userId}: IProps) => {
                             id='btnResetPassword'
                             className='raised button-cancel block hide'
                             title='ResetPassword'
-                        />
-                    </div>
-                </div>
-            </form>
-            <br />
-            <form
-                className='localAccessForm localAccessSection hide'
-                style={{margin: '0 auto'}}
-            >
-                <div className='verticalSection'>
-                    <h2 className='sectionTitle'>
-                        {globalize.translate('HeaderEasyPinCode')}
-                    </h2>
-                    <div className='fieldDescription'>
-                        {globalize.translate('EasyPasswordHelp')}
-                    </div>
-                    <br />
-                    <div className='inputContainer'>
-                        <InputElement
-                            type='password'
-                            id='txtEasyPassword'
-                            label='LabelEasyPinCode'
-                            options={'autoComplete="off" pattern="' + EASYPASS_PATTERN + '" maxlength="' + EASYPASS_LEN_MAX + '" title="' + globalize.translate('EasyPasswordLenMax', EASYPASS_LEN_MAX) + '"'}
-                        />
-                    </div>
-                    <br />
-                    <div className='checkboxContainer checkboxContainer-withDescription'>
-                        <CheckBoxElement
-                            className='chkEnableLocalEasyPassword'
-                            title='LabelInNetworkSignInWithEasyPassword'
-                        />
-                        <div className='fieldDescription checkboxFieldDescription'>
-                            {globalize.translate('LabelInNetworkSignInWithEasyPasswordHelp')}
-                        </div>
-                    </div>
-                    <div>
-                        <ButtonElement
-                            type='submit'
-                            className='raised button-submit block'
-                            title='Save'
-                        />
-                        <ButtonElement
-                            type='button'
-                            id='btnResetEasyPassword'
-                            className='raised button-cancel block hide'
-                            title='ButtonResetEasyPassword'
                         />
                     </div>
                 </div>

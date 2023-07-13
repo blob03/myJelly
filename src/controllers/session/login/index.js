@@ -193,14 +193,7 @@ import './login.scss';
 			if (user?.Policy?.EnableRemoteAccess === false && !inLocalNet)
 				continue;
 
-			let haspw = false;
-			if (user?.HasPassword === true) {
-				if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
-					if (user?.HasConfiguredEasyPassword === true)
-						haspw = true;
-				} else
-					haspw = true;
-			}
+			let haspw = user?.HasPassword || false;
 			
 			// TODO move card creation code to Card component
 			let cssClass = 'card squareCard scalableCard squareCard-scalable';
@@ -221,17 +214,9 @@ import './login.scss';
 			
 			if (webSettings.loginAuth() === true) {
 				if (haspw === true) {
-					if (user?.Configuration.EnableLocalPassword === true && inLocalNet === true) {
-						// If the 'EnableLocalPassword' option is set and no 'Easy' password has been configured,
-						// then access is granted without a password, from a local network only.
-						html += '<div class="countIndicator" style="border-radius: 0;background: none;box-shadow: none">';
-						html += '<span class="material-icons cardImageIcon pin" title="' + globalize.translate('HeaderEasyPinCode') + '" style="color: #afb2bd;font-size: 2rem;"></span>';
-						html += '</div>';
-					} else {
 						html += '<div class="countIndicator" style="border-radius: 0;background: none;box-shadow: none">';
 						html += '<span class="material-icons cardImageIcon password" title="' + globalize.translate('HeaderPassword') + '"style="color: #afb2bd;font-size: 1.5rem;"></span>';
 						html += '</div>';
-					}
 				}
 			}
 			if (webSettings.loginRole() === true) {

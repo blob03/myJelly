@@ -13,15 +13,12 @@ function loadUser(page, params) {
             libraryMenu.setTitle(user.Name);
             page.querySelector('.username').innerText = user.Name;
             let showPasswordSection = true;
-            let showLocalAccessSection = false;
 
             if (user.ConnectLinkType == 'Guest') {
-                page.querySelector('.localAccessSection').classList.add('hide');
                 showPasswordSection = false;
             } else if (user.HasConfiguredPassword) {
                 page.querySelector('#btnResetPassword').classList.remove('hide');
                 page.querySelector('#fldCurrentPassword').classList.remove('hide');
-                showLocalAccessSection = true;
             } else {
                 page.querySelector('#btnResetPassword').classList.add('hide');
                 page.querySelector('#fldCurrentPassword').classList.add('hide');
@@ -32,26 +29,6 @@ function loadUser(page, params) {
             } else {
                 page.querySelector('.passwordSection').classList.add('hide');
             }
-
-            if (showLocalAccessSection && (loggedInUser.Policy.IsAdministrator || user.Policy.EnableUserPreferenceAccess)) {
-                page.querySelector('.localAccessSection').classList.remove('hide');
-            } else {
-                page.querySelector('.localAccessSection').classList.add('hide');
-            }
-
-            const txtEasyPassword = page.querySelector('#txtEasyPassword');
-            txtEasyPassword.value = '';
-
-            if (user.HasConfiguredEasyPassword) {
-                txtEasyPassword.placeholder = '******';
-                page.querySelector('#btnResetEasyPassword').classList.remove('hide');
-            } else {
-                txtEasyPassword.removeAttribute('placeholder');
-                txtEasyPassword.placeholder = '';
-                page.querySelector('#btnResetEasyPassword').classList.add('hide');
-            }
-
-            page.querySelector('.chkEnableLocalEasyPassword').checked = user.Configuration.EnableLocalPassword;
 
             import('../../../components/autoFocuser').then(({ default: autoFocuser }) => {
                 autoFocuser.autoFocus(page);
@@ -64,30 +41,6 @@ function loadUser(page, params) {
 }
 
 export default function (view, params) {
-    function saveEasyPassword() {
-        const userId = params.userId;
-        const easyPassword = view.querySelector('#txtEasyPassword').value;
-
-        if (easyPassword) {
-            ApiClient.updateEasyPassword(userId, easyPassword).then(function () {
-                onEasyPasswordSaved(userId);
-            });
-        } else {
-            onEasyPasswordSaved(userId);
-        }
-    }
-
-    function onEasyPasswordSaved(userId) {
-        ApiClient.getUser(userId).then(function (user) {
-            user.Configuration.EnableLocalPassword = view.querySelector('.chkEnableLocalEasyPassword').checked;
-            ApiClient.updateUserConfiguration(user.Id, user.Configuration).then(function () {
-                loading.hide();
-                toast(globalize.translate('SettingsSaved'));
-
-                loadUser(view, params);
-            });
-        });
-    }
 
     function savePassword() {
         const userId = params.userId;
@@ -128,13 +81,6 @@ export default function (view, params) {
         return false;
     }
 
-    function onLocalAccessSubmit(e) {
-        loading.show();
-        saveEasyPassword();
-        e.preventDefault();
-        return false;
-    }
-
     function resetPassword() {
         const msg = globalize.translate('PasswordResetConfirmation');
         confirm(msg, globalize.translate('ResetPassword')).then(function () {
@@ -151,26 +97,7 @@ export default function (view, params) {
         });
     }
 
-    function resetEasyPassword() {
-        const msg = globalize.translate('PinCodeResetConfirmation');
-
-        confirm(msg, globalize.translate('HeaderPinCodeReset')).then(function () {
-            const userId = params.userId;
-            loading.show();
-            ApiClient.resetEasyPassword(userId).then(function () {
-                loading.hide();
-                Dashboard.alert({
-                    message: globalize.translate('PinCodeResetComplete'),
-                    title: globalize.translate('HeaderPinCodeReset')
-                });
-                loadUser(view, params);
-            });
-        });
-    }
-
     view.querySelector('.updatePasswordForm').addEventListener('submit', onSubmit);
-    view.querySelector('.localAccessForm').addEventListener('submit', onLocalAccessSubmit);
-    view.querySelector('#btnResetEasyPassword').addEventListener('click', resetEasyPassword);
     view.querySelector('#btnResetPassword').addEventListener('click', resetPassword);
     view.addEventListener('viewshow', function () {
         loadUser(view, params);
