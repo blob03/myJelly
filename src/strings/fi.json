@@ -1162,7 +1162,7 @@
     "MessageNoServersAvailable": "Automaattisen palvelintunnistuksen avulla ei löydy palvelimia.",
     "MessageNoTrailersFound": "Asenna trailerit-kanava parantaaksesi elokuvakokemusta lisäämällä internet-trailereiden kirjasto.",
     "MessageNothingHere": "Täällä ei ole mitään.",
-    "MessagePasswordResetForUsers": "Seuraavien käyttäjien salasanat on tyhjennetty ja he voivat nyt kirjautua käyttäen tyhjennykseen käytettäjä Helppo PIN -koodeja.",
+    "MessagePasswordResetForUsers": "Seuraavat käyttäjät ovat nollanneet salasanansa ja he voivat nyt kirjautua nollaukseen käyttämillään PIN-koodeilla.",
     "MessagePlayAccessRestricted": "Tämän sisällön toistoa on rajoitettu. Lisätietoja saat palvelimen ylläpidolta.",
     "MessagePlaybackError": "Toistettaessa tiedostoa Google Cast -vastaanottimella tapahtui virhe.",
     "MessagePleaseEnsureInternetMetadata": "Varmista, että metatietojen lataus on käytössä.",

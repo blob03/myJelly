@@ -376,7 +376,6 @@ export class UserSettings {
 		userConf.AudioLanguagePreference = "";
 		userConf.DisplayCollectionsView = false;
 		userConf.DisplayMissingEpisodes = false;
-		userConf.EnableLocalPassword = false;
 		userConf.EnableNextEpisodeAutoPlay = false;
 		userConf.GroupedFolders = [];
 		userConf.HidePlayedInLatest = true;

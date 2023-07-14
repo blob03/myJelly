@@ -1162,7 +1162,7 @@
     "MessageNoServersAvailable": "Aucun serveur n'a été trouvé en utilisant la recherche automatique de serveur.",
     "MessageNoTrailersFound": "Installez la chaîne Trailers pour améliorer votre expérience cinéma, par l'ajout d'une médiathèque de bandes-annonces disponibles sur Internet.",
     "MessageNothingHere": "Il n'y a rien ici.",
-    "MessagePasswordResetForUsers": "Les mot de passes de ces utilisateurs ont été réinitialisés. Ils peuvent maintenant se connecter avec les codes Easy PIN utilisés pour la réinitialisation.",
+    "MessagePasswordResetForUsers": "Le mot de passe de cet utilisateur a été réinitialisé. Il peut désormais se connecter avec le code PIN utilisé pour la réinitialisation.",
     "MessagePlayAccessRestricted": "La lecture de ce contenu est actuellement restreinte. Contactez l'administrateur de votre serveur pour plus d'informations.",
     "MessagePlaybackError": "Une erreur s'est produite lors de la lecture de ce fichier sur votre récepteur Google Cast.",
     "MessagePleaseEnsureInternetMetadata": "Veuillez vous assurer que le téléchargement des métadonnées depuis Internet est activé.",

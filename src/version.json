@@ -1,6 +1,6 @@
 {
 	"name": "myJelly",
-	"version": "10.8.10-17",
+	"version": "10.8.10-18",
 	"contact": "maxla2323@protonmail.com",
 	"description": "AppDescription",
 	"repository": "https://github.com/blob03/myJelly",
@@ -264,6 +264,7 @@
 		"10.8.10-14": "Synchronize translations and node packages with master.\nFix: Undefined serverid/apiclient causes appRouter failure to start up.\nFix: Incorrect key used for the notification tab (Dashboard).\nApply patch 'Disable ALAC on MacOS in non-Safari browsers'.\nApply patch 'Fix xss in custom subtitles element'.\nApply patch 'Fix initial state of volume slider'.",
 		"10.8.10-15": "Synchronize translations with master.\nApply patch 'Add confirmation for 3rd party repos'.",
 		"10.8.10-16": "Synchronize translations with master.\nApply patch 'Fix scheduled task time limit key'.\nApply patch 'Fix sending URLs instead of strings to jassub, leading to DataCloneErrors'.\nApply patch 'Fix nullable types'.\nApply patch 'Add no extend native rule'.",
-		"10.8.10-17": "Synchronize translations and Node.js packages with master.\nApply patch 'Remove easy password/pin configuration'.\nApply patch 'thornbill/edgy-emby-scroller'.\nApply patch 'Cleanup network config'."
+		"10.8.10-17": "Synchronize translations and Node.js packages with master.\nApply patch 'Remove easy password/pin configuration'.\nApply patch 'thornbill/edgy-emby-scroller'.\nApply patch 'Cleanup network config'.",
+		"10.8.10-18": "Synchronize translations with master.\nRemove leftovers from the defunct EasyPassword feature.\nApply patch 'Add encoder settings for ffmpeg's segment deletion'."
 	}
 }
