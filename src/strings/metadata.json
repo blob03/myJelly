@@ -446,17 +446,17 @@
     },
     "cs": {
         "ccode": "cs",
-        "fsize": 122796,
+        "fsize": 123779,
         "ccodeSrc": "en-US",
         "displayName": "Czech",
         "displayNativeName": "Česky",
         "ISO6391": "cs",
         "ISO6392": "cze",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "cs.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -508,7 +508,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -630,17 +630,17 @@
     },
     "de": {
         "ccode": "de",
-        "fsize": 125287,
+        "fsize": 126215,
         "ccodeSrc": "en-US",
         "displayName": "German",
         "displayNativeName": "Deutsch",
         "ISO6391": "de",
         "ISO6392": "ger",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "de.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -692,7 +692,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -774,17 +774,17 @@
     },
     "en-GB": {
         "ccode": "en-GB",
-        "fsize": 113251,
+        "fsize": 114104,
         "ccodeSrc": "en-US",
         "displayName": "English, Great Britain",
         "displayNativeName": "English, Great Britain",
         "ISO6391": "en-GB",
         "ISO6392": "en-GB",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "en-GB.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -836,7 +836,7 @@
                 "LabelDummyChapterCountHelp",
                 "LabelDummyChapterCount"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -987,17 +987,17 @@
     },
     "es-AR": {
         "ccode": "es-AR",
-        "fsize": 126617,
+        "fsize": 126667,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Argentina",
         "displayNativeName": "Español, República Argentina",
         "ISO6391": "es-AR",
         "ISO6392": "es-AR",
-        "keys#": 1686,
-        "completed%": 91.14,
+        "keys#": 1687,
+        "completed%": 91.19,
         "jellyfinWeb": {
             "filename": "es-AR.json",
-            "keys#": 1686,
+            "keys#": 1687,
             "orphans#": 47,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1048,7 +1048,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 98.31
+            "completed%": 98.37
         },
         "myJelly": {
             "filename": "",
@@ -1085,17 +1085,17 @@
     },
     "es-MX": {
         "ccode": "es-MX",
-        "fsize": 128976,
+        "fsize": 129024,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Mexico",
         "displayNativeName": "Español, Mexico",
         "ISO6391": "es-MX",
         "ISO6392": "es-MX",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1709,
+        "completed%": 92.38,
         "jellyfinWeb": {
             "filename": "es-MX.json",
-            "keys#": 1708,
+            "keys#": 1709,
             "orphans#": 46,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1145,7 +1145,7 @@
                 "SetUsingLastTracks",
                 "NextUpRewatching"
             ],
-            "completed%": 99.59
+            "completed%": 99.65
         },
         "myJelly": {
             "filename": "",
@@ -1157,17 +1157,17 @@
     },
     "es": {
         "ccode": "es",
-        "fsize": 128906,
+        "fsize": 129938,
         "ccodeSrc": "en-US",
         "displayName": "Spanish, Castilian",
         "displayNativeName": "Español, Castellano",
         "ISO6391": "es",
         "ISO6392": "spa",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "es.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1219,7 +1219,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -1433,17 +1433,17 @@
     },
     "fi": {
         "ccode": "fi",
-        "fsize": 119541,
+        "fsize": 120463,
         "ccodeSrc": "en-US",
         "displayName": "Finnish",
         "displayNativeName": "Suomi",
         "ISO6391": "fi",
         "ISO6392": "fin",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "fi.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 46,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1493,7 +1493,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -1630,17 +1630,17 @@
     },
     "fr": {
         "ccode": "fr",
-        "fsize": 129903,
+        "fsize": 130977,
         "ccodeSrc": "en-US",
         "displayName": "French",
         "displayNativeName": "Français",
         "ISO6391": "fr",
         "ISO6392": "fre",
-        "keys#": 1843,
-        "completed%": 99.62,
+        "keys#": 1850,
+        "completed%": 100.0,
         "jellyfinWeb": {
             "filename": "fr.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1692,7 +1692,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "fr.json",
@@ -1767,17 +1767,17 @@
     },
     "he": {
         "ccode": "he",
-        "fsize": 70964,
+        "fsize": 76512,
         "ccodeSrc": "en-US",
         "displayName": "Hebrew",
         "displayNativeName": "עברית",
         "ISO6391": "he",
         "ISO6392": "heb",
-        "keys#": 1031,
-        "completed%": 55.73,
+        "keys#": 1150,
+        "completed%": 62.16,
         "jellyfinWeb": {
             "filename": "he.json",
-            "keys#": 1031,
+            "keys#": 1150,
             "orphans#": 28,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1809,7 +1809,7 @@
                 "LabelAutoDiscoveryTracingHelp",
                 "LabelEasyPinCode"
             ],
-            "completed%": 60.12
+            "completed%": 67.06
         },
         "myJelly": {
             "filename": "",
@@ -1913,17 +1913,17 @@
     },
     "hu": {
         "ccode": "hu",
-        "fsize": 125877,
+        "fsize": 130097,
         "ccodeSrc": "en-US",
         "displayName": "Hungarian",
         "displayNativeName": "Magyar",
         "ISO6391": "hu",
         "ISO6392": "hun",
-        "keys#": 1670,
-        "completed%": 90.27,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "hu.json",
-            "keys#": 1670,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -1975,7 +1975,7 @@
                 "LabelDummyChapterCountHelp",
                 "LabelDummyChapterCount"
             ],
-            "completed%": 97.38
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -2120,17 +2120,17 @@
     },
     "it": {
         "ccode": "it",
-        "fsize": 123549,
+        "fsize": 124470,
         "ccodeSrc": "en-US",
         "displayName": "Italian",
         "displayNativeName": "Italiano",
         "ISO6391": "it",
         "ISO6392": "ita",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "it.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -2182,7 +2182,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -2194,17 +2194,17 @@
     },
     "ja": {
         "ccode": "ja",
-        "fsize": 138917,
+        "fsize": 143078,
         "ccodeSrc": "en-US",
         "displayName": "Japanese",
         "displayNativeName": "日本語",
         "ISO6391": "ja",
         "ISO6392": "jpn",
-        "keys#": 1673,
-        "completed%": 90.43,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "ja.json",
-            "keys#": 1673,
+            "keys#": 1715,
             "orphans#": 45,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -2253,7 +2253,7 @@
                 "LabelDummyChapterCountHelp",
                 "LabelDummyChapterCount"
             ],
-            "completed%": 97.55
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -2438,17 +2438,17 @@
     },
     "ko": {
         "ccode": "ko",
-        "fsize": 115141,
+        "fsize": 127030,
         "ccodeSrc": "en-US",
         "displayName": "Korean",
         "displayNativeName": "한국어",
         "ISO6391": "ko",
         "ISO6392": "kor",
-        "keys#": 1560,
-        "completed%": 84.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "ko.json",
-            "keys#": 1560,
+            "keys#": 1715,
             "orphans#": 45,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -2497,7 +2497,7 @@
                 "LabelDummyChapterCountHelp",
                 "LabelDummyChapterCount"
             ],
-            "completed%": 90.96
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -3004,17 +3004,17 @@
     },
     "nl": {
         "ccode": "nl",
-        "fsize": 121921,
+        "fsize": 122865,
         "ccodeSrc": "en-US",
         "displayName": "Dutch; Flemish",
         "displayNativeName": "Nederlands",
         "ISO6391": "nl",
         "ISO6392": "dut",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "nl.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 47,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -3065,7 +3065,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -3143,17 +3143,17 @@
     },
     "pl": {
         "ccode": "pl",
-        "fsize": 122832,
+        "fsize": 124287,
         "ccodeSrc": "en-US",
         "displayName": "Polish",
         "displayNativeName": "Polski",
         "ISO6391": "pl",
         "ISO6392": "pol",
-        "keys#": 1697,
-        "completed%": 91.73,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "pl.json",
-            "keys#": 1697,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -3205,7 +3205,7 @@
                 "LabelDummyChapterCountHelp",
                 "LabelDummyChapterCount"
             ],
-            "completed%": 98.95
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -3525,17 +3525,17 @@
     },
     "ru": {
         "ccode": "ru",
-        "fsize": 176992,
+        "fsize": 182619,
         "ccodeSrc": "en-US",
         "displayName": "Russian",
         "displayNativeName": "Русский",
         "ISO6391": "ru",
         "ISO6392": "rus",
-        "keys#": 1677,
-        "completed%": 90.65,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "ru.json",
-            "keys#": 1677,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -3587,7 +3587,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 97.78
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -3768,6 +3768,31 @@
             "completed%": 0
         }
     },
+    "so": {
+        "ccode": "so",
+        "fsize": 397,
+        "ccodeSrc": "en-US",
+        "displayName": "Somali",
+        "displayNativeName": "Soomaaliga",
+        "ISO6391": "so",
+        "ISO6392": "som",
+        "keys#": 13,
+        "completed%": 0.7,
+        "jellyfinWeb": {
+            "filename": "so.json",
+            "keys#": 13,
+            "orphans#": 0,
+            "orphans": [],
+            "completed%": 0.76
+        },
+        "myJelly": {
+            "filename": "",
+            "keys#": 0,
+            "orphans#": 0,
+            "orphans": [],
+            "completed%": 0
+        }
+    },
     "sq": {
         "ccode": "sq",
         "fsize": 24678,
@@ -3874,17 +3899,17 @@
     },
     "sv": {
         "ccode": "sv",
-        "fsize": 115064,
+        "fsize": 115145,
         "ccodeSrc": "en-US",
         "displayName": "Swedish",
         "displayNativeName": "Svenska",
         "ISO6391": "sv",
         "ISO6392": "swe",
-        "keys#": 1655,
-        "completed%": 89.46,
+        "keys#": 1656,
+        "completed%": 89.51,
         "jellyfinWeb": {
             "filename": "sv.json",
-            "keys#": 1655,
+            "keys#": 1656,
             "orphans#": 47,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -3935,7 +3960,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 96.5
+            "completed%": 96.56
         },
         "myJelly": {
             "filename": "",
@@ -4127,17 +4152,17 @@
     },
     "tr": {
         "ccode": "tr",
-        "fsize": 122194,
+        "fsize": 124302,
         "ccodeSrc": "en-US",
         "displayName": "Turkish",
         "displayNativeName": "Türkçe",
         "ISO6391": "tr",
         "ISO6392": "tur",
-        "keys#": 1692,
-        "completed%": 91.46,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "tr.json",
-            "keys#": 1692,
+            "keys#": 1715,
             "orphans#": 40,
             "orphans": [
                 "HeaderEasyPinCode",
@@ -4181,7 +4206,7 @@
                 "OptionAllUsers",
                 "OptionAdminUsers"
             ],
-            "completed%": 98.66
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -4218,17 +4243,17 @@
     },
     "uk": {
         "ccode": "uk",
-        "fsize": 175138,
+        "fsize": 176592,
         "ccodeSrc": "en-US",
         "displayName": "Ukrainian",
         "displayNativeName": "Українська",
         "ISO6391": "uk",
         "ISO6392": "ukr",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "uk.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 45,
             "orphans": [
                 "OptionDislikes",
@@ -4277,7 +4302,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
@@ -4387,17 +4412,17 @@
     },
     "vi": {
         "ccode": "vi",
-        "fsize": 136476,
+        "fsize": 137238,
         "ccodeSrc": "en-US",
         "displayName": "Vietnamese",
         "displayNativeName": "Việtnam",
         "ISO6391": "vi",
         "ISO6392": "vie",
-        "keys#": 1692,
-        "completed%": 91.46,
+        "keys#": 1697,
+        "completed%": 91.73,
         "jellyfinWeb": {
             "filename": "vi.json",
-            "keys#": 1692,
+            "keys#": 1697,
             "orphans#": 47,
             "orphans": [
                 "OptionDislikes",
@@ -4448,7 +4473,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 98.66
+            "completed%": 98.95
         },
         "myJelly": {
             "filename": "",
@@ -4460,17 +4485,17 @@
     },
     "zh-CN": {
         "ccode": "zh-CN",
-        "fsize": 107791,
+        "fsize": 108577,
         "ccodeSrc": "en-US",
         "displayName": "Chinese",
         "displayNativeName": "中文",
         "ISO6391": "zh-CN",
         "ISO6392": "chi",
-        "keys#": 1708,
-        "completed%": 92.32,
+        "keys#": 1715,
+        "completed%": 92.7,
         "jellyfinWeb": {
             "filename": "zh-CN.json",
-            "keys#": 1708,
+            "keys#": 1715,
             "orphans#": 48,
             "orphans": [
                 "AdditionalNotificationServices",
@@ -4522,7 +4547,7 @@
                 "LabelDummyChapterCount",
                 "LabelDummyChapterCountHelp"
             ],
-            "completed%": 99.59
+            "completed%": 100.0
         },
         "myJelly": {
             "filename": "",
