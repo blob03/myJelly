@@ -1,3 +1,8 @@
+<h2 align="center">That repository is no longer maintained</h2>
+<h2 align="center">New home is located at https://bitbucket.org/myjelly/workspace/overview/</h2>
+</br>
+</br>
+
 <h1 align="center">My Jelly</h1>
 <h2 align="center">Jellyfin Web client modified to better fit LG WebOS</h2>
 <h2 align="center">Includes bug fixes + some extra features.</h2>
